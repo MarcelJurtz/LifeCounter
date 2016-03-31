@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.marceljurtz.lifecounter.MainActivity"
+    android:background="@drawable/background_small">
+
+    <!-- Gegner -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="20"
+        android:id="@+id/txtLifeCountGuest"
+        android:layout_marginTop="60dp"
+        android:textColor="#161618"
+        android:textAlignment="center"
+        android:textSize="80dp"
+        android:rotation="180"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"/>
+
+    <!-- Eigene -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="20"
+        android:id="@+id/txtLifeCountHome"
+        android:textColor="#161618"
+        android:textAlignment="center"
+        android:textSize="80dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="60dp" />
+
+    <!-- Eigene -->
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cmdMinusHome"
+        android:background="@drawable/button_minus_25"
+        android:layout_alignTop="@+id/txtLifeCountHome"
+        android:layout_toLeftOf="@+id/txtLifeCountHome"
+        android:layout_toStartOf="@+id/txtLifeCountHome"
+        android:layout_marginTop="32dp"
+        android:layout_marginRight="20dp" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cmdPlusHome"
+        android:background="@drawable/button_plus_25"
+        android:layout_alignTop="@+id/txtLifeCountHome"
+        android:layout_toRightOf="@+id/txtLifeCountHome"
+        android:layout_toEndOf="@+id/txtLifeCountHome"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="32dp" />
+
+    <!-- Gegner -->
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cmdPlusGuest"
+        android:background="@drawable/button_plus_25"
+        android:layout_marginTop="32dp"
+        android:layout_alignTop="@+id/txtLifeCountGuest"
+        android:layout_toLeftOf="@+id/txtLifeCountGuest"
+        android:layout_toStartOf="@+id/txtLifeCountGuest"
+        android:layout_marginRight="20dp" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cmdMinusGuest"
+        android:background="@drawable/button_minus_25"
+        android:layout_marginTop="32dp"
+        android:layout_alignTop="@+id/txtLifeCountGuest"
+        android:layout_toRightOf="@+id/txtLifeCountGuest"
+        android:layout_toEndOf="@+id/txtLifeCountGuest"
+        android:layout_marginLeft="20dp" />
+
+    <!-- RESET -->
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cmdResetLP"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/button_repeat_40" />
+</RelativeLayout>
