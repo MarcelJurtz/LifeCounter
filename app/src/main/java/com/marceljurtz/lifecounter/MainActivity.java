@@ -21,17 +21,29 @@ public class MainActivity extends AppCompatActivity {
     ImageButton cmdMinusGuest;
     ImageButton cmdMinusHome;
     ImageButton cmdResetLP;
+    ImageButton cmdTogglePoison;
+    ImageButton cmdPlusPoisonHome;
+    ImageButton cmdPlusPoisonGuest;
+    ImageButton cmdMinusPoisonHome;
+    ImageButton cmdMinusPoisonGuest;
 
     TextView txtLifeCountGuest;
     TextView txtLifeCountHome;
+    TextView txtPoisonCountGuest;
+    TextView txtPoisonCountHome;
 
     int LP_Home;
     int LP_Guest;
     int LP_Default;
 
-    HashSet<View> views;
+    int PP_Home;
+    int PP_Guest;
+    int PP_Default;
+
     final int PLAYER_HOME = 0;
     final int PLAYER_GUEST = 1;
+
+    boolean poisonEnabled = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,16 +54,11 @@ public class MainActivity extends AppCompatActivity {
 
         mainLayout = (RelativeLayout)findViewById(R.id.mainLayout);
         LP_Default = 20;
-
-        views = new HashSet<View>();
+        PP_Default = 0;
 
         /* ### TextViews ### */
         txtLifeCountGuest = (TextView)findViewById(R.id.txtLifeCountGuest);
         txtLifeCountHome = (TextView)findViewById(R.id.txtLifeCountHome);
-        views.add(txtLifeCountGuest);
-        views.add(txtLifeCountHome);
-
-        reset();
 
         /* ### ImageButtons ### */
 
@@ -69,7 +76,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-        views.add(cmdMinusGuest);
 
         // Home - Minus
         cmdMinusHome = (ImageButton)findViewById(R.id.cmdMinusHome);
@@ -85,7 +91,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-        views.add(cmdMinusHome);
 
         // Guest - Plus
         cmdPlusGuest = (ImageButton)findViewById(R.id.cmdPlusGuest);
@@ -93,10 +98,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 LP_Guest++;
-                update(LP_Guest,txtLifeCountGuest);
+                update(LP_Guest, txtLifeCountGuest);
             }
         });
-        views.add(cmdPlusGuest);
 
         // Home - Plus
         cmdPlusHome = (ImageButton)findViewById(R.id.cmdPlusHome);
@@ -107,7 +111,6 @@ public class MainActivity extends AppCompatActivity {
                     update(LP_Home, txtLifeCountHome);
             }
         });
-        views.add(cmdPlusHome);
 
         // Reset
         cmdResetLP = (ImageButton)findViewById(R.id.cmdResetLP);
@@ -117,34 +120,150 @@ public class MainActivity extends AppCompatActivity {
                 reset();
             }
         });
+
+        cmdTogglePoison = (ImageButton)findViewById(R.id.cmdTogglePoison);
+        cmdTogglePoison.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                poisonEnabled = !poisonEnabled;
+                togglePoison(poisonEnabled);
+            }
+        });
+
+        // PoisonCount Home
+        txtPoisonCountHome = (TextView)findViewById(R.id.txtPoisonCountHome);
+
+        // PoisonCount Guest
+        txtPoisonCountGuest = (TextView)findViewById(R.id.txtPoisonCountGuest);
+
+        // Poison Home Plus
+        cmdPlusPoisonHome = (ImageButton)findViewById(R.id.cmdPlusPoisonHome);
+        cmdPlusPoisonHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(PP_Home < 9) {
+                    PP_Home++;
+                    update(PP_Home,txtPoisonCountHome);
+                }
+                else {
+                    setWinner(PLAYER_GUEST);
+                }
+            }
+        });
+
+        // Poison Home Minus
+        cmdMinusPoisonHome = (ImageButton)findViewById(R.id.cmdMinusPoisonHome);
+        cmdMinusPoisonHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(PP_Home > 0) {
+                    PP_Home--;
+                    update(PP_Home, txtPoisonCountHome);
+                }
+            }
+        });
+
+        // Poison Guest Plus
+        cmdPlusPoisonGuest = (ImageButton)findViewById(R.id.cmdPlusPoisonGuest);
+        cmdPlusPoisonGuest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(PP_Guest < 9) {
+                    PP_Guest++;
+                    update(PP_Guest,txtPoisonCountGuest);
+                }
+                else {
+                    setWinner(PLAYER_HOME);
+                }
+            }
+        });
+
+        // Poison Guest Minus
+        cmdMinusPoisonGuest = (ImageButton)findViewById(R.id.cmdMinusPoisonGuest);
+        cmdMinusPoisonGuest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(PP_Guest > 0) {
+                    PP_Guest--;
+                    update(PP_Guest, txtPoisonCountGuest);
+                }
+            }
+        });
+
+        reset();
     }
 
     // Update TextView
-    private void update(int LP, TextView txtLifePoints) {
-            txtLifePoints.setText(LP+"");
+    private void update(int points, TextView txtPoints) {
+            txtPoints.setText(points+"");
     }
 
     // Beide Leben wieder auf 20 setzen
     private void reset() {
-        for(View view: views) {
-            view.setVisibility(View.VISIBLE);
-        }
+        cmdMinusGuest.setVisibility(View.VISIBLE);
+        cmdMinusHome.setVisibility(View.VISIBLE);
+        cmdPlusGuest.setVisibility(View.VISIBLE);
+        cmdPlusHome.setVisibility(View.VISIBLE);
         LP_Guest = LP_Default;
         LP_Home = LP_Default;
         txtLifeCountGuest.setText(LP_Guest+"");
         txtLifeCountHome.setText(LP_Home+"");
-        mainLayout.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.background_small));
+
+        PP_Guest = PP_Default;
+        PP_Home = PP_Default;
+        txtPoisonCountGuest.setText(PP_Guest+"");
+        txtPoisonCountHome.setText(PP_Home+"");
+
+        poisonEnabled = false;
+        togglePoison(false);
+        // mainLayout.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.background_small));
     }
 
     private void setWinner(int player) {
-        for(View view: views) {
-            view.setVisibility(View.INVISIBLE);
-        }
+
+        cmdMinusGuest.setVisibility(View.GONE);
+        cmdMinusHome.setVisibility(View.GONE);
+        cmdPlusGuest.setVisibility(View.GONE);
+        cmdPlusHome.setVisibility(View.GONE);
+        togglePoisonViews(false);
+
         if(player == PLAYER_HOME) {
-            mainLayout.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.background_small_winner_home));
+            txtLifeCountHome.setText("WINNER");
+            txtLifeCountGuest.setText("LOOSER");
+            // mainLayout.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.background_small_winner_home));
         }
         else {
-            mainLayout.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.background_small_winner_guest));
+            txtLifeCountHome.setText("LOOSER");
+            txtLifeCountGuest.setText("WINNER");
+            // mainLayout.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.background_small_winner_guest));
+        }
+    }
+
+    private void togglePoison(boolean toggle) {
+        if(toggle) {
+            cmdTogglePoison.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.button_trigger_poison_enabled));
+        }
+        else {
+            cmdTogglePoison.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.button_trigger_poison_disabled));
+        }
+        togglePoisonViews(toggle);
+    }
+    private void togglePoisonViews(boolean toggle) {
+        if(toggle) {
+            txtPoisonCountGuest.setVisibility(View.VISIBLE);
+            txtPoisonCountHome.setVisibility(View.VISIBLE);
+            cmdPlusPoisonGuest.setVisibility(View.VISIBLE);
+            cmdPlusPoisonHome.setVisibility(View.VISIBLE);
+            cmdMinusPoisonGuest.setVisibility(View.VISIBLE);
+            cmdMinusPoisonHome.setVisibility(View.VISIBLE);
+        }
+        else {
+            txtPoisonCountGuest.setVisibility(View.INVISIBLE);
+            txtPoisonCountHome.setVisibility(View.INVISIBLE);
+            cmdPlusPoisonGuest.setVisibility(View.INVISIBLE);
+            cmdPlusPoisonHome.setVisibility(View.INVISIBLE);
+            cmdMinusPoisonGuest.setVisibility(View.INVISIBLE);
+            cmdMinusPoisonHome.setVisibility(View.INVISIBLE);
         }
     }
 }
