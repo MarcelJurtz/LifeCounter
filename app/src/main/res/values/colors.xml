@@ -3,4 +3,7 @@
     <color name="colorPrimary">#161618</color>
     <color name="colorPrimaryDark">#161618</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="homeDefault">#008fff</color>
+    <color name="guestDefault">#ee4d2e</color>
+    <color name="settingsBar">#161618</color>
 </resources>
