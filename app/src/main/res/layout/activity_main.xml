@@ -3,20 +3,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.marceljurtz.lifecounter.MainActivity"
     android:id="@+id/mainLayout">
+    <LinearLayout
+        android:id="@+id/layout_center"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_centerVertical="true"
+        android:background="@color/settingsBar">
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_top"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/layout_center"
+        android:background="@color/guestDefault">
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_bottom"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/layout_center"
+        android:background="@color/homeDefault">
+
+    </LinearLayout>
     <!-- Gegner -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="20"
         android:id="@+id/txtLifeCountGuest"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="80dp"
         android:textColor="#161618"
         android:textAlignment="center"
         android:textSize="80dp"
@@ -35,7 +58,7 @@
         android:textSize="80dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="60dp" />
+        android:layout_marginBottom="80dp" />
 
     <!-- Eigene -->
     <ImageButton
@@ -112,7 +135,8 @@
         android:textSize="40dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:paddingBottom="10dp"/>
+        android:paddingBottom="10dp"
+        android:layout_marginBottom="20dp" />
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -148,7 +172,8 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:paddingTop="10dp"
-        android:rotation="180"/>
+        android:rotation="180"
+        android:layout_marginTop="20dp" />
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -171,4 +196,105 @@
         android:layout_toStartOf="@+id/txtPoisonCountGuest"
         android:layout_marginTop="7dp"
         android:layout_marginRight="16dp"/>
+
+    <!-- Colors: Home -->
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cmdBlackHome"
+        android:background="@drawable/black_35"
+        android:layout_centerHorizontal="true"
+        android:layout_alignTop="@id/cmdResetLP"
+        android:layout_marginTop="60dp" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cmdBlueHome"
+        android:background="@drawable/blue_35"
+        android:layout_alignTop="@id/cmdResetLP"
+        android:layout_toLeftOf="@id/cmdBlackHome"
+        android:layout_marginTop="60dp"
+        android:layout_marginRight="20dp"/>
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cmdGreenHome"
+        android:background="@drawable/green_35"
+        android:layout_alignTop="@id/cmdResetLP"
+        android:layout_toLeftOf="@id/cmdBlueHome"
+        android:layout_marginTop="60dp"
+        android:layout_marginRight="20dp"/>
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cmdRedHome"
+        android:background="@drawable/red_35"
+        android:layout_alignTop="@id/cmdResetLP"
+        android:layout_toRightOf="@id/cmdBlackHome"
+        android:layout_marginTop="60dp"
+        android:layout_marginLeft="20dp"/>
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cmdWhiteHome"
+        android:background="@drawable/white_35"
+        android:layout_alignTop="@id/cmdResetLP"
+        android:layout_toRightOf="@id/cmdRedHome"
+        android:layout_marginTop="60dp"
+        android:layout_marginLeft="20dp"/>
+
+    <!-- Colors: Guest -->
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cmdBlackGuest"
+        android:background="@drawable/black_35"
+        android:layout_centerHorizontal="true"
+        android:layout_alignBottom="@id/cmdResetLP"
+        android:layout_marginBottom="60dp" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cmdRedGuest"
+        android:background="@drawable/red_35"
+        android:layout_alignBottom="@id/cmdResetLP"
+        android:layout_toLeftOf="@id/cmdBlackGuest"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="60dp"/>
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cmdWhiteGuest"
+        android:background="@drawable/white_35"
+        android:layout_alignBottom="@id/cmdResetLP"
+        android:layout_toLeftOf="@id/cmdRedGuest"
+        android:layout_marginBottom="60dp"
+        android:layout_marginRight = "20dp"/>
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cmdBlueGuest"
+        android:background="@drawable/blue_35"
+        android:layout_alignBottom="@id/cmdResetLP"
+        android:layout_toRightOf="@id/cmdBlackGuest"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="60dp" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cmdGreenGuest"
+        android:background="@drawable/green_35"
+        android:layout_alignBottom="@id/cmdResetLP"
+        android:layout_toRightOf="@id/cmdBlueGuest"
+        android:layout_marginBottom="60dp"
+        android:layout_marginLeft="20dp"/>
+
 </RelativeLayout>

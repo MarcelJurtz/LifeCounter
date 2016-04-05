@@ -1,9 +1,13 @@
 package com.marceljurtz.lifecounter;
 
+import android.graphics.Color;
+import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.method.CharacterPickerDialog;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -15,6 +19,8 @@ import java.util.Set;
 public class MainActivity extends AppCompatActivity {
 
     RelativeLayout mainLayout;
+    LinearLayout layoutHome;
+    LinearLayout layoutGuest;
 
     ImageButton cmdPlusGuest;
     ImageButton cmdPlusHome;
@@ -26,6 +32,16 @@ public class MainActivity extends AppCompatActivity {
     ImageButton cmdPlusPoisonGuest;
     ImageButton cmdMinusPoisonHome;
     ImageButton cmdMinusPoisonGuest;
+    ImageButton cmdBlackHome;
+    ImageButton cmdBlackGuest;
+    ImageButton cmdBlueHome;
+    ImageButton cmdBlueGuest;
+    ImageButton cmdGreenHome;
+    ImageButton cmdGreenGuest;
+    ImageButton cmdRedHome;
+    ImageButton cmdRedGuest;
+    ImageButton cmdWhiteHome;
+    ImageButton cmdWhiteGuest;
 
     TextView txtLifeCountGuest;
     TextView txtLifeCountHome;
@@ -43,6 +59,12 @@ public class MainActivity extends AppCompatActivity {
     final int PLAYER_HOME = 0;
     final int PLAYER_GUEST = 1;
 
+    final int black = Color.parseColor("#000000");
+    final int blue = Color.parseColor("#378BC6");
+    final int green = Color.parseColor("#5BD387");
+    final int red = Color.parseColor("#AF1D1D");
+    final int white = Color.parseColor("#FFFFDD");
+
     boolean poisonEnabled = false;
 
     @Override
@@ -53,6 +75,8 @@ public class MainActivity extends AppCompatActivity {
         ab.hide();
 
         mainLayout = (RelativeLayout)findViewById(R.id.mainLayout);
+        layoutGuest = (LinearLayout)findViewById(R.id.layout_top);
+        layoutHome = (LinearLayout)findViewById(R.id.layout_bottom);
         LP_Default = 20;
         PP_Default = 0;
 
@@ -190,6 +214,77 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        cmdBlackHome = (ImageButton)findViewById(R.id.cmdBlackHome);
+        cmdBlackHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // setLayoutColor(black,layoutHome);
+            }
+        });
+        cmdBlackGuest = (ImageButton)findViewById(R.id.cmdBlackGuest);
+        cmdBlackGuest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // setLayoutColor(black,layoutGuest);
+            }
+        });
+        cmdBlueHome = (ImageButton)findViewById(R.id.cmdBlueHome);
+        cmdBlueHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setLayoutColor(blue,layoutHome);
+            }
+        });
+        cmdBlueGuest = (ImageButton)findViewById(R.id.cmdBlueGuest);
+        cmdBlueGuest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setLayoutColor(blue,layoutGuest);
+            }
+        });
+        cmdGreenHome = (ImageButton)findViewById(R.id.cmdGreenHome);
+        cmdGreenHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setLayoutColor(green,layoutHome);
+            }
+        });
+        cmdGreenGuest = (ImageButton)findViewById(R.id.cmdGreenGuest);
+        cmdGreenGuest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setLayoutColor(green, layoutGuest);
+            }
+        });
+        cmdRedHome = (ImageButton)findViewById(R.id.cmdRedHome);
+        cmdRedHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setLayoutColor(red,layoutHome);
+            }
+        });
+        cmdRedGuest = (ImageButton)findViewById(R.id.cmdRedGuest);
+        cmdRedGuest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setLayoutColor(red,layoutGuest);
+            }
+        });
+        cmdWhiteHome = (ImageButton)findViewById(R.id.cmdWhiteHome);
+        cmdWhiteHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setLayoutColor(white,layoutHome);
+            }
+        });
+        cmdWhiteGuest = (ImageButton)findViewById(R.id.cmdWhiteGuest);
+        cmdWhiteGuest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setLayoutColor(white,layoutGuest);
+            }
+        });
+
         reset();
     }
 
@@ -265,5 +360,8 @@ public class MainActivity extends AppCompatActivity {
             cmdMinusPoisonGuest.setVisibility(View.INVISIBLE);
             cmdMinusPoisonHome.setVisibility(View.INVISIBLE);
         }
+    }
+    private void setLayoutColor(int color, LinearLayout layout) {
+        layout.setBackgroundColor(color);
     }
 }
