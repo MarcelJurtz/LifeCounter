@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     ImageButton cmdPlusPoisonGuest;
     ImageButton cmdMinusPoisonHome;
     ImageButton cmdMinusPoisonGuest;
+    ImageButton cmdToggleColorSettings;
     ImageButton cmdBlackHome;
     ImageButton cmdBlackGuest;
     ImageButton cmdBlueHome;
@@ -66,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
     final int white = Color.parseColor("#FFFFDD");
 
     boolean poisonEnabled = false;
+    boolean colorSettingsEnabled = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -214,6 +216,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        cmdToggleColorSettings = (ImageButton)findViewById(R.id.cmdToggleColors);
+        cmdToggleColorSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                colorSettingsEnabled = !colorSettingsEnabled;
+                toggleColorSettings(colorSettingsEnabled);
+            }
+        });
+
         cmdBlackHome = (ImageButton)findViewById(R.id.cmdBlackHome);
         cmdBlackHome.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -288,12 +299,14 @@ public class MainActivity extends AppCompatActivity {
         reset();
     }
 
-    // Update TextView
+    // Update TextViews (Punktanzahl)
     private void update(int points, TextView txtPoints) {
             txtPoints.setText(points+"");
     }
 
+    // Reset
     // Beide Leben wieder auf 20 setzen
+    // PoisonCounter deaktivieren
     private void reset() {
         cmdMinusGuest.setVisibility(View.VISIBLE);
         cmdMinusHome.setVisibility(View.VISIBLE);
@@ -310,8 +323,10 @@ public class MainActivity extends AppCompatActivity {
         txtPoisonCountHome.setText(PP_Home+"");
 
         poisonEnabled = false;
-        togglePoison(false);
-        // mainLayout.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.background_small));
+        togglePoison(poisonEnabled);
+
+        colorSettingsEnabled = false;
+        toggleColorSettings(colorSettingsEnabled);
     }
 
     private void setWinner(int player) {
@@ -334,15 +349,20 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    // PoisonCounter umschalten
+    // ändert Hintergrund
     private void togglePoison(boolean toggle) {
-        if(toggle) {
-            cmdTogglePoison.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.button_trigger_poison_enabled));
+        if(!toggle) {
+            cmdTogglePoison.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.button_trigger_poison_disabled));
         }
         else {
-            cmdTogglePoison.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.button_trigger_poison_disabled));
+            cmdTogglePoison.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.button_trigger_poison_enabled));
         }
         togglePoisonViews(toggle);
     }
+
+    // PoisonCounter umschalten
+    // ändert sichtbarkeit (da bei reset extra benötigt)
     private void togglePoisonViews(boolean toggle) {
         if(toggle) {
             txtPoisonCountGuest.setVisibility(View.VISIBLE);
@@ -361,6 +381,38 @@ public class MainActivity extends AppCompatActivity {
             cmdMinusPoisonHome.setVisibility(View.INVISIBLE);
         }
     }
+
+    // ColorSettings umschalten
+    private void toggleColorSettings(boolean toggle) {
+        if(!toggle) {
+            cmdToggleColorSettings.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.button_trigger_poison_disabled));
+            cmdBlackHome.setVisibility(View.INVISIBLE);
+            cmdBlackGuest.setVisibility(View.INVISIBLE);
+            cmdBlueHome.setVisibility(View.INVISIBLE);
+            cmdBlueGuest.setVisibility(View.INVISIBLE);
+            cmdGreenHome.setVisibility(View.INVISIBLE);
+            cmdGreenGuest.setVisibility(View.INVISIBLE);
+            cmdRedHome.setVisibility(View.INVISIBLE);
+            cmdRedGuest.setVisibility(View.INVISIBLE);
+            cmdWhiteHome.setVisibility(View.INVISIBLE);
+            cmdWhiteGuest.setVisibility(View.INVISIBLE);
+        }
+        else {
+            cmdToggleColorSettings.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.button_trigger_poison_enabled));
+            cmdBlackHome.setVisibility(View.VISIBLE);
+            cmdBlackGuest.setVisibility(View.VISIBLE);
+            cmdBlueHome.setVisibility(View.VISIBLE);
+            cmdBlueGuest.setVisibility(View.VISIBLE);
+            cmdGreenHome.setVisibility(View.VISIBLE);
+            cmdGreenGuest.setVisibility(View.VISIBLE);
+            cmdRedHome.setVisibility(View.VISIBLE);
+            cmdRedGuest.setVisibility(View.VISIBLE);
+            cmdWhiteHome.setVisibility(View.VISIBLE);
+            cmdWhiteGuest.setVisibility(View.VISIBLE);
+        }
+    }
+
+    // Hintergrundfarbe setzen
     private void setLayoutColor(int color, LinearLayout layout) {
         layout.setBackgroundColor(color);
     }
