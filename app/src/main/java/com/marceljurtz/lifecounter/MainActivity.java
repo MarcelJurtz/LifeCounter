@@ -60,11 +60,11 @@ public class MainActivity extends AppCompatActivity {
     final int PLAYER_HOME = 0;
     final int PLAYER_GUEST = 1;
 
-    final int black = Color.parseColor("#000000");
-    final int blue = Color.parseColor("#378BC6");
-    final int green = Color.parseColor("#5BD387");
-    final int red = Color.parseColor("#AF1D1D");
-    final int white = Color.parseColor("#FFFFDD");
+    final int black = Color.parseColor("#CCC2C0");
+    final int blue = Color.parseColor("#AAE0FA");
+    final int green = Color.parseColor("#9BD3AE");
+    final int red = Color.parseColor("#FAAA8F");
+    final int white = Color.parseColor("#FFFCD6");
 
     boolean poisonEnabled = false;
     boolean colorSettingsEnabled = false;
@@ -229,14 +229,14 @@ public class MainActivity extends AppCompatActivity {
         cmdBlackHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // setLayoutColor(black,layoutHome);
+                setLayoutColor(black,layoutHome);
             }
         });
         cmdBlackGuest = (ImageButton)findViewById(R.id.cmdBlackGuest);
         cmdBlackGuest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // setLayoutColor(black,layoutGuest);
+                setLayoutColor(black,layoutGuest);
             }
         });
         cmdBlueHome = (ImageButton)findViewById(R.id.cmdBlueHome);
@@ -385,7 +385,7 @@ public class MainActivity extends AppCompatActivity {
     // ColorSettings umschalten
     private void toggleColorSettings(boolean toggle) {
         if(!toggle) {
-            cmdToggleColorSettings.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.button_trigger_poison_disabled));
+            cmdToggleColorSettings.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.settings_disabled));
             cmdBlackHome.setVisibility(View.INVISIBLE);
             cmdBlackGuest.setVisibility(View.INVISIBLE);
             cmdBlueHome.setVisibility(View.INVISIBLE);
@@ -398,7 +398,7 @@ public class MainActivity extends AppCompatActivity {
             cmdWhiteGuest.setVisibility(View.INVISIBLE);
         }
         else {
-            cmdToggleColorSettings.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.button_trigger_poison_enabled));
+            cmdToggleColorSettings.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.settings_enabled));
             cmdBlackHome.setVisibility(View.VISIBLE);
             cmdBlackGuest.setVisibility(View.VISIBLE);
             cmdBlueHome.setVisibility(View.VISIBLE);
