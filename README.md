@@ -1,15 +1,22 @@
-Marcels Magic The Gathering - Life Counter
+Magic The Gathering - Life Counter
 ===================
 
 
 Diese Anwendung dient als Lebenszähler für Magic The Gathering.
-Der Gebrauch beschränkt sich durch das Layout auf 2 Spieler, die beide gegenübersitzend gleichzeitig Ihre Lebensanzahl aus passender Perspektive einsehen können. Optional kann ein zusätzlicher Counter für Gift eingeblendet werden.
+Der Gebrauch beschränkt sich durch das Layout auf 2 Spieler, die beide gegenübersitzend gleichzeitig Ihre Lebensanzahl aus passender Perspektive einsehen können. 
+Optional kann ein zusätzlicher Counter für Gift eingeblendet werden.
+Jeder Spieler kann die Hintergrundfarbe seiner Seite auswählen.
 
 ---
 
 
 Changelog
 -------------
+
+####07.04.2016 - Version 1.2
+
+ - Optionalen Farbwähler eingefügt
+ - Performance verbessert
 
 ####02.04.2016 - Version 1.1
 
