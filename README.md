@@ -13,17 +13,21 @@ Jeder Spieler kann die Hintergrundfarbe seiner Seite auswählen.
 Changelog
 -------------
 
-####07.04.2016 - Version 1.2
+####17.04.2016 - Version 1.1
+
+ - Screen-Timeout deaktiviert
+
+####07.04.2016 - Version 1.0
 
  - Optionalen Farbwähler eingefügt
  - Performance verbessert
 
-####02.04.2016 - Version 1.1
+####02.04.2016 - Version 0.1
 
  - Optionalen Gift-Counter eingefügt
  - Bugfixes
 
-####31.03.2016 - Version 1.0
+####31.03.2016 - Version 0.2
 
 Erste Funktionsfähige Version abgeschlossen.
 
