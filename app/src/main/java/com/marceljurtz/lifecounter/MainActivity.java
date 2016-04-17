@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.method.CharacterPickerDialog;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -75,6 +76,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         android.support.v7.app.ActionBar ab = getSupportActionBar();
         ab.hide();
+        // Screen-Timeout verhindern
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
         mainLayout = (RelativeLayout)findViewById(R.id.mainLayout);
         layoutGuest = (LinearLayout)findViewById(R.id.layout_top);
