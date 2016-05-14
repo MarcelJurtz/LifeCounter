@@ -425,11 +425,11 @@ public class MainActivity extends AppCompatActivity {
 
         if(player == PLAYER_HOME) {
             txtLifeCountHome.setText("WINNER");
-            txtLifeCountGuest.setText("LOOSER");
+            txtLifeCountGuest.setText("LOSER");
             // mainLayout.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.background_small_winner_home));
         }
         else {
-            txtLifeCountHome.setText("LOOSER");
+            txtLifeCountHome.setText("LOSER");
             txtLifeCountGuest.setText("WINNER");
             // mainLayout.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.background_small_winner_guest));
         }
