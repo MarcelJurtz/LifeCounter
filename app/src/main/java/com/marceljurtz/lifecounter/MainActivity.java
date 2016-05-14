@@ -96,13 +96,26 @@ public class MainActivity extends AppCompatActivity {
         cmdMinusGuest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(LP_Guest > 1) {
+                if (LP_Guest > 1) {
                     LP_Guest--;
                     update(LP_Guest, txtLifeCountGuest);
+                } else {
+                    setWinner(PLAYER_HOME);
+                }
+            }
+        });
+        cmdMinusGuest.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+
+                if(LP_Guest > 5) {
+                    LP_Guest -= 5;
+                    update(LP_Guest,txtLifeCountGuest);
                 }
                 else {
                     setWinner(PLAYER_HOME);
                 }
+                return true;
             }
         });
 
@@ -111,13 +124,25 @@ public class MainActivity extends AppCompatActivity {
         cmdMinusHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(LP_Home > 1) {
+                if (LP_Home > 1) {
                     LP_Home--;
                     update(LP_Home, txtLifeCountHome);
+                } else {
+                    setWinner(PLAYER_GUEST);
+                }
+            }
+        });
+        cmdMinusHome.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                if(LP_Home > 5) {
+                    LP_Home -= 5;
+                    update(LP_Home,txtLifeCountHome);
                 }
                 else {
                     setWinner(PLAYER_GUEST);
                 }
+                return true;
             }
         });
 
@@ -130,14 +155,30 @@ public class MainActivity extends AppCompatActivity {
                 update(LP_Guest, txtLifeCountGuest);
             }
         });
+        cmdPlusGuest.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                LP_Guest += 5;
+                update(LP_Guest,txtLifeCountGuest);
+                return true;
+            }
+        });
 
         // Home - Plus
         cmdPlusHome = (ImageButton)findViewById(R.id.cmdPlusHome);
         cmdPlusHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    LP_Home++;
-                    update(LP_Home, txtLifeCountHome);
+                LP_Home++;
+                update(LP_Home, txtLifeCountHome);
+            }
+        });
+        cmdPlusHome.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                LP_Home += 5;
+                update(LP_Home,txtLifeCountHome);
+                return true;
             }
         });
 
@@ -179,16 +220,38 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+        cmdPlusPoisonHome.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                if(PP_Home < 5) {
+                    PP_Home += 5;
+                    update(PP_Home,txtPoisonCountHome);
+                }
+                else {
+                    setWinner(PLAYER_GUEST);
+                }
+                return true;
+            }
+        });
 
         // Poison Home Minus
         cmdMinusPoisonHome = (ImageButton)findViewById(R.id.cmdMinusPoisonHome);
         cmdMinusPoisonHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(PP_Home > 0) {
+                if (PP_Home > 0) {
                     PP_Home--;
                     update(PP_Home, txtPoisonCountHome);
                 }
+            }
+        });
+        cmdMinusPoisonHome.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                PP_Home -= 5;
+                if(PP_Home < 0) PP_Home=0;
+                update(PP_Home,txtPoisonCountHome);
+                return true;
             }
         });
 
@@ -197,13 +260,24 @@ public class MainActivity extends AppCompatActivity {
         cmdPlusPoisonGuest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(PP_Guest < 9) {
+                if (PP_Guest < 9) {
                     PP_Guest++;
-                    update(PP_Guest,txtPoisonCountGuest);
-                }
-                else {
+                    update(PP_Guest, txtPoisonCountGuest);
+                } else {
                     setWinner(PLAYER_HOME);
                 }
+            }
+        });
+        cmdPlusPoisonGuest.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                if (PP_Guest < 5) {
+                    PP_Guest += 5;
+                    update(PP_Guest, txtPoisonCountGuest);
+                } else {
+                    setWinner(PLAYER_HOME);
+                }
+                return true;
             }
         });
 
@@ -212,10 +286,19 @@ public class MainActivity extends AppCompatActivity {
         cmdMinusPoisonGuest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(PP_Guest > 0) {
+                if (PP_Guest > 0) {
                     PP_Guest--;
                     update(PP_Guest, txtPoisonCountGuest);
                 }
+            }
+        });
+        cmdMinusPoisonGuest.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                PP_Guest -= 5;
+                if(PP_Guest < 0)PP_Guest = 0;
+                update(PP_Guest,txtPoisonCountGuest);
+                return true;
             }
         });
 
