@@ -1,12 +1,18 @@
 package com.marceljurtz.lifecounter;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.InputType;
 import android.text.method.CharacterPickerDialog;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -67,6 +73,9 @@ public class MainActivity extends AppCompatActivity {
     final int red = Color.parseColor("#FAAA8F");
     final int white = Color.parseColor("#FFFCD6");
 
+    final String PREF_NAME = "JURTZ_LIFECOUNTER_PREFS";
+    final String PREF_DEFAULT_LP = "JURTZ_LIFECOUNTER_DEFAULT_LP";
+
     boolean poisonEnabled = false;
     boolean colorSettingsEnabled = false;
 
@@ -82,13 +91,28 @@ public class MainActivity extends AppCompatActivity {
         mainLayout = (RelativeLayout)findViewById(R.id.mainLayout);
         layoutGuest = (LinearLayout)findViewById(R.id.layout_top);
         layoutHome = (LinearLayout)findViewById(R.id.layout_bottom);
-        LP_Default = 20;
+
+        SharedPreferences sp =  getSharedPreferences(PREF_NAME, Activity.MODE_PRIVATE);
+        LP_Default = sp.getInt(PREF_DEFAULT_LP,20);
         PP_Default = 0;
 
         /* ### TextViews ### */
         txtLifeCountGuest = (TextView)findViewById(R.id.txtLifeCountGuest);
+        txtLifeCountGuest.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                setDefaultLifepoints();
+                return true;
+            }
+        });
         txtLifeCountHome = (TextView)findViewById(R.id.txtLifeCountHome);
-
+        txtLifeCountHome.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                setDefaultLifepoints();
+                return true;
+            }
+        });
         /* ### ImageButtons ### */
 
         // Guest - Minus
@@ -501,5 +525,39 @@ public class MainActivity extends AppCompatActivity {
     // Hintergrundfarbe setzen
     private void setLayoutColor(int color, LinearLayout layout) {
         layout.setBackgroundColor(color);
+    }
+
+    // Dialog anzeigen zum Setzen der Standardanzahl an Lebenspunkten
+    // Speichern in Shared Preferences
+    private void setDefaultLifepoints() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        final EditText input = new EditText(this);
+        input.setText(LP_Default+"");
+        input.setInputType(InputType.TYPE_CLASS_NUMBER);
+        builder.setView(input);
+
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            String inputText = "";
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                inputText = input.getText().toString();
+                int inputValue;
+                try {
+                    inputValue = Integer.parseInt(inputText);
+                    SharedPreferences sp = getSharedPreferences(PREF_NAME, Activity.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sp.edit();
+                    editor.putInt(PREF_DEFAULT_LP, inputValue);
+                    editor.commit();
+                    LP_Default = inputValue;
+                    reset();
+                } catch (Exception ex) {
+                    // Fehler bei Parsing
+                }
+            }
+        });
+        builder.show();
     }
 }
