@@ -70,7 +70,8 @@
         android:layout_toLeftOf="@+id/txtLifeCountHome"
         android:layout_toStartOf="@+id/txtLifeCountHome"
         android:layout_marginTop="32dp"
-        android:layout_marginRight="20dp" />
+        android:layout_marginRight="20dp"
+        android:padding="15dp" />
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -81,7 +82,8 @@
         android:layout_toRightOf="@+id/txtLifeCountHome"
         android:layout_toEndOf="@+id/txtLifeCountHome"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="32dp" />
+        android:layout_marginTop="32dp"
+        android:padding="15dp" />
 
     <!-- Gegner -->
     <ImageButton
@@ -93,7 +95,8 @@
         android:layout_alignTop="@+id/txtLifeCountGuest"
         android:layout_toLeftOf="@+id/txtLifeCountGuest"
         android:layout_toStartOf="@+id/txtLifeCountGuest"
-        android:layout_marginRight="20dp" />
+        android:layout_marginRight="20dp"
+        android:padding="15dp" />
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -104,7 +107,8 @@
         android:layout_alignTop="@+id/txtLifeCountGuest"
         android:layout_toRightOf="@+id/txtLifeCountGuest"
         android:layout_toEndOf="@+id/txtLifeCountGuest"
-        android:layout_marginLeft="20dp" />
+        android:layout_marginLeft="20dp"
+        android:padding="15dp" />
 
     <!-- RESET -->
     <ImageButton
