@@ -2,16 +2,20 @@ package com.marceljurtz.lifecounter;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.media.Image;
+import android.renderscript.ScriptGroup;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
 import android.text.method.CharacterPickerDialog;
+import android.util.TypedValue;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -534,8 +538,12 @@ public class MainActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
         final EditText input = new EditText(this);
-        input.setText(LP_Default+"");
+        input.setText(LP_Default + "");
+        input.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 32);
         input.setInputType(InputType.TYPE_CLASS_NUMBER);
+        input.setSelection(input.getText().toString().length());
+
+
         builder.setView(input);
 
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -558,6 +566,15 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-        builder.show();
+        AlertDialog dialog = builder.create();
+        dialog.setOnShowListener(new DialogInterface.OnShowListener() {
+            @Override
+            public void onShow(DialogInterface dialog) {
+                InputMethodManager inputMethodManager = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                inputMethodManager.showSoftInput(input,InputMethodManager.SHOW_IMPLICIT);
+            }
+        });
+
+        dialog.show();
     }
 }
