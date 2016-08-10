@@ -9,7 +9,7 @@
         android:id="@+id/layout_center"
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
         android:layout_centerVertical="true"
         android:background="@color/settingsBar">
 
@@ -42,7 +42,7 @@
         android:layout_marginTop="80dp"
         android:textColor="#161618"
         android:textAlignment="center"
-        android:textSize="80dp"
+        android:textSize="90dp"
         android:rotation="180"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"/>
@@ -55,7 +55,7 @@
         android:id="@+id/txtLifeCountHome"
         android:textColor="#161618"
         android:textAlignment="center"
-        android:textSize="80dp"
+        android:textSize="90dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="80dp" />
@@ -69,7 +69,7 @@
         android:layout_alignTop="@+id/txtLifeCountHome"
         android:layout_toLeftOf="@+id/txtLifeCountHome"
         android:layout_toStartOf="@+id/txtLifeCountHome"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="45dp"
         android:layout_marginRight="20dp"
         android:padding="15dp" />
 
@@ -82,7 +82,7 @@
         android:layout_toRightOf="@+id/txtLifeCountHome"
         android:layout_toEndOf="@+id/txtLifeCountHome"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="45dp"
         android:padding="15dp" />
 
     <!-- Gegner -->
@@ -91,7 +91,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/cmdPlusGuest"
         android:background="@drawable/button_plus_35"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="45dp"
         android:layout_alignTop="@+id/txtLifeCountGuest"
         android:layout_toLeftOf="@+id/txtLifeCountGuest"
         android:layout_toStartOf="@+id/txtLifeCountGuest"
@@ -103,7 +103,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/cmdMinusGuest"
         android:background="@drawable/button_minus_35"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="45dp"
         android:layout_alignTop="@+id/txtLifeCountGuest"
         android:layout_toRightOf="@+id/txtLifeCountGuest"
         android:layout_toEndOf="@+id/txtLifeCountGuest"
