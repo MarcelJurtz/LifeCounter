@@ -77,6 +77,11 @@ public class MainActivity extends AppCompatActivity {
     final int red = Color.parseColor("#FAAA8F");
     final int white = Color.parseColor("#FFFCD6");
 
+    final int MAX_POISON = 25;
+    final int MIN_POISON = 0;
+    final int MAX_LIFE = 1000;
+    final int MIN_LIFE = -100;
+
     final String PREF_NAME = "JURTZ_LIFECOUNTER_PREFS";
     final String PREF_DEFAULT_LP = "JURTZ_LIFECOUNTER_DEFAULT_LP";
 
@@ -96,6 +101,8 @@ public class MainActivity extends AppCompatActivity {
         layoutGuest = (LinearLayout)findViewById(R.id.layout_top);
         layoutHome = (LinearLayout)findViewById(R.id.layout_bottom);
 
+        // Lade Standard Lebensanzahl aus Einstellungen
+        // Falls nicht gesetzt: 20
         SharedPreferences sp =  getSharedPreferences(PREF_NAME, Activity.MODE_PRIVATE);
         LP_Default = sp.getInt(PREF_DEFAULT_LP,20);
         PP_Default = 0;
@@ -124,25 +131,22 @@ public class MainActivity extends AppCompatActivity {
         cmdMinusGuest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (LP_Guest > 1) {
-                    LP_Guest--;
-                    update(LP_Guest, txtLifeCountGuest);
-                } else {
-                    setWinner(PLAYER_HOME);
+                LP_Guest--;
+                if(LP_Guest < MIN_LIFE) {
+                    LP_Guest = MIN_LIFE;
                 }
+                update(LP_Guest, txtLifeCountGuest);
             }
         });
         cmdMinusGuest.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
 
-                if(LP_Guest > 5) {
-                    LP_Guest -= 5;
-                    update(LP_Guest,txtLifeCountGuest);
+                LP_Guest -= 5;
+                if(LP_Guest < MIN_LIFE) {
+                    LP_Guest = MIN_LIFE;
                 }
-                else {
-                    setWinner(PLAYER_HOME);
-                }
+                update(LP_Guest,txtLifeCountGuest);
                 return true;
             }
         });
@@ -152,24 +156,21 @@ public class MainActivity extends AppCompatActivity {
         cmdMinusHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (LP_Home > 1) {
-                    LP_Home--;
-                    update(LP_Home, txtLifeCountHome);
-                } else {
-                    setWinner(PLAYER_GUEST);
+                LP_Home--;
+                if(LP_Home < MIN_LIFE) {
+                    LP_Home = MIN_LIFE;
                 }
+                update(LP_Home,txtLifeCountHome);
             }
         });
         cmdMinusHome.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                if(LP_Home > 5) {
-                    LP_Home -= 5;
-                    update(LP_Home,txtLifeCountHome);
+                LP_Home -= 5;
+                if(LP_Home < MIN_LIFE) {
+                    LP_Home = MIN_LIFE;
                 }
-                else {
-                    setWinner(PLAYER_GUEST);
-                }
+                update(LP_Home,txtLifeCountHome);
                 return true;
             }
         });
@@ -180,6 +181,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 LP_Guest++;
+                if(LP_Guest > MAX_LIFE) {
+                    LP_Guest = MAX_LIFE;
+                }
                 update(LP_Guest, txtLifeCountGuest);
             }
         });
@@ -187,6 +191,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onLongClick(View v) {
                 LP_Guest += 5;
+                if(LP_Guest > MAX_LIFE) {
+                    LP_Guest = MAX_LIFE;
+                }
                 update(LP_Guest,txtLifeCountGuest);
                 return true;
             }
@@ -198,6 +205,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 LP_Home++;
+                if(LP_Home > MAX_LIFE) {
+                    LP_Home = MAX_LIFE;
+                }
                 update(LP_Home, txtLifeCountHome);
             }
         });
@@ -205,6 +215,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onLongClick(View v) {
                 LP_Home += 5;
+                if(LP_Home > MAX_LIFE) {
+                    LP_Home = MAX_LIFE;
+                }
                 update(LP_Home,txtLifeCountHome);
                 return true;
             }
@@ -239,25 +252,21 @@ public class MainActivity extends AppCompatActivity {
         cmdPlusPoisonHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(PP_Home < 9) {
-                    PP_Home++;
+                PP_Home++;
+                if(PP_Home > MAX_POISON) {
+                    PP_Home = MAX_POISON;
+                }
                     update(PP_Home,txtPoisonCountHome);
-                }
-                else {
-                    setWinner(PLAYER_GUEST);
-                }
             }
         });
         cmdPlusPoisonHome.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                if(PP_Home < 5) {
-                    PP_Home += 5;
-                    update(PP_Home,txtPoisonCountHome);
+                PP_Home += 5;
+                if(PP_Home > MAX_POISON) {
+                    PP_Home = MAX_POISON;
                 }
-                else {
-                    setWinner(PLAYER_GUEST);
-                }
+                update(PP_Home,txtPoisonCountHome);
                 return true;
             }
         });
@@ -267,17 +276,20 @@ public class MainActivity extends AppCompatActivity {
         cmdMinusPoisonHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (PP_Home > 0) {
-                    PP_Home--;
-                    update(PP_Home, txtPoisonCountHome);
+                PP_Home--;
+                if (PP_Home < MIN_POISON) {
+                    PP_Home = MIN_POISON;
                 }
+                update(PP_Home, txtPoisonCountHome);
             }
         });
         cmdMinusPoisonHome.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
                 PP_Home -= 5;
-                if(PP_Home < 0) PP_Home=0;
+                if(PP_Home < MIN_POISON) {
+                    PP_Home = MIN_POISON;
+                }
                 update(PP_Home,txtPoisonCountHome);
                 return true;
             }
@@ -288,23 +300,21 @@ public class MainActivity extends AppCompatActivity {
         cmdPlusPoisonGuest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (PP_Guest < 9) {
-                    PP_Guest++;
-                    update(PP_Guest, txtPoisonCountGuest);
-                } else {
-                    setWinner(PLAYER_HOME);
+                PP_Guest++;
+                if(PP_Guest > MAX_POISON) {
+                    PP_Guest = MAX_POISON;
                 }
+                update(PP_Guest, txtPoisonCountGuest);
             }
         });
         cmdPlusPoisonGuest.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                if (PP_Guest < 5) {
-                    PP_Guest += 5;
-                    update(PP_Guest, txtPoisonCountGuest);
-                } else {
-                    setWinner(PLAYER_HOME);
+                PP_Guest += 5;
+                if (PP_Guest > MAX_POISON) {
+                    PP_Guest = MAX_POISON;
                 }
+                update(PP_Guest, txtPoisonCountGuest);
                 return true;
             }
         });
@@ -314,17 +324,20 @@ public class MainActivity extends AppCompatActivity {
         cmdMinusPoisonGuest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (PP_Guest > 0) {
-                    PP_Guest--;
-                    update(PP_Guest, txtPoisonCountGuest);
+                PP_Guest--;
+                if(PP_Guest < MIN_POISON) {
+                    PP_Guest = MIN_POISON;
                 }
+                update(PP_Guest, txtPoisonCountGuest);
             }
         });
         cmdMinusPoisonGuest.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
                 PP_Guest -= 5;
-                if(PP_Guest < 0)PP_Guest = 0;
+                if(PP_Guest < MIN_POISON) {
+                    PP_Guest = MIN_POISON;
+                }
                 update(PP_Guest,txtPoisonCountGuest);
                 return true;
             }
@@ -339,6 +352,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+        // ########################### BUTTONS FARBEINSTELLUNUGEN ########################### //
         cmdBlackHome = (ImageButton)findViewById(R.id.cmdBlackHome);
         cmdBlackHome.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -410,6 +425,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // ########################### BUTTONS FARBAUSWAHL ########################### //
+
         reset();
     }
 
@@ -422,45 +439,25 @@ public class MainActivity extends AppCompatActivity {
     // Beide Leben wieder auf 20 setzen
     // PoisonCounter deaktivieren
     private void reset() {
-        cmdMinusGuest.setVisibility(View.VISIBLE);
-        cmdMinusHome.setVisibility(View.VISIBLE);
-        cmdPlusGuest.setVisibility(View.VISIBLE);
-        cmdPlusHome.setVisibility(View.VISIBLE);
+        // Lifepoints
         LP_Guest = LP_Default;
         LP_Home = LP_Default;
         txtLifeCountGuest.setText(LP_Guest+"");
         txtLifeCountHome.setText(LP_Home+"");
 
+        // Poisonpoints
         PP_Guest = PP_Default;
         PP_Home = PP_Default;
         txtPoisonCountGuest.setText(PP_Guest+"");
         txtPoisonCountHome.setText(PP_Home+"");
 
+
+        // Settings
         poisonEnabled = false;
         togglePoison(poisonEnabled);
 
         colorSettingsEnabled = false;
         toggleColorSettings(colorSettingsEnabled);
-    }
-
-    private void setWinner(int player) {
-
-        cmdMinusGuest.setVisibility(View.GONE);
-        cmdMinusHome.setVisibility(View.GONE);
-        cmdPlusGuest.setVisibility(View.GONE);
-        cmdPlusHome.setVisibility(View.GONE);
-        togglePoisonViews(false);
-
-        if(player == PLAYER_HOME) {
-            txtLifeCountHome.setText("WINNER");
-            txtLifeCountGuest.setText("LOSER");
-            // mainLayout.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.background_small_winner_home));
-        }
-        else {
-            txtLifeCountHome.setText("LOSER");
-            txtLifeCountGuest.setText("WINNER");
-            // mainLayout.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.background_small_winner_guest));
-        }
     }
 
     // PoisonCounter umschalten
@@ -543,7 +540,6 @@ public class MainActivity extends AppCompatActivity {
         input.setInputType(InputType.TYPE_CLASS_NUMBER);
         input.setSelection(input.getText().toString().length());
 
-
         builder.setView(input);
 
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -555,6 +551,9 @@ public class MainActivity extends AppCompatActivity {
                 int inputValue;
                 try {
                     inputValue = Integer.parseInt(inputText);
+                    if(inputValue > MAX_LIFE) {
+                        inputValue = MAX_LIFE;
+                    }
                     SharedPreferences sp = getSharedPreferences(PREF_NAME, Activity.MODE_PRIVATE);
                     SharedPreferences.Editor editor = sp.edit();
                     editor.putInt(PREF_DEFAULT_LP, inputValue);
