@@ -13,21 +13,27 @@ Jeder Spieler kann die Hintergrundfarbe seiner Seite auswählen.
 Changelog
 -------------
 
-####17.04.2016 - Version 1.1
+####13.08.2016 - Version 5
+
+ - Sämtliche Grafiken durch höherwertigere ersetzt
+ - Winner / Loser deaktiviert, um Effekte zur Regeneration zu Erhalten
+ - Möglichkeit zum Anpassen der Standardanzahl an Leben eingefügt
+
+####17.04.2016 - Version 4
 
  - Screen-Timeout deaktiviert
 
-####07.04.2016 - Version 1.0
+####07.04.2016 - Version 3
 
  - Optionalen Farbwähler eingefügt
  - Performance verbessert
 
-####02.04.2016 - Version 0.1
+####02.04.2016 - Version 2
 
  - Optionalen Gift-Counter eingefügt
  - Bugfixes
 
-####31.03.2016 - Version 0.2
+####31.03.2016 - Version 1
 
 Erste Funktionsfähige Version abgeschlossen.
 
