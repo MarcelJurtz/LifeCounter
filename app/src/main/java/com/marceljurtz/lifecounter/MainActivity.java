@@ -464,10 +464,10 @@ public class MainActivity extends AppCompatActivity {
     // ändert Hintergrund
     private void togglePoison(boolean toggle) {
         if(!toggle) {
-            cmdTogglePoison.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.button_trigger_poison_disabled));
+            cmdTogglePoison.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.icon_poison_disabled));
         }
         else {
-            cmdTogglePoison.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.button_trigger_poison_enabled));
+            cmdTogglePoison.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.icon_poison));
         }
         togglePoisonViews(toggle);
     }
@@ -496,7 +496,7 @@ public class MainActivity extends AppCompatActivity {
     // ColorSettings umschalten
     private void toggleColorSettings(boolean toggle) {
         if(!toggle) {
-            cmdToggleColorSettings.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.settings_disabled));
+            cmdToggleColorSettings.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.icon_settings_disabled));
             cmdBlackHome.setVisibility(View.INVISIBLE);
             cmdBlackGuest.setVisibility(View.INVISIBLE);
             cmdBlueHome.setVisibility(View.INVISIBLE);
@@ -509,7 +509,7 @@ public class MainActivity extends AppCompatActivity {
             cmdWhiteGuest.setVisibility(View.INVISIBLE);
         }
         else {
-            cmdToggleColorSettings.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.settings_enabled));
+            cmdToggleColorSettings.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.icon_settings));
             cmdBlackHome.setVisibility(View.VISIBLE);
             cmdBlackGuest.setVisibility(View.VISIBLE);
             cmdBlueHome.setVisibility(View.VISIBLE);
