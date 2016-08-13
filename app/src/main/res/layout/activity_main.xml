@@ -62,53 +62,49 @@
 
     <!-- Eigene -->
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:id="@+id/cmdMinusHome"
-        android:background="@drawable/button_minus_35"
+        android:background="@drawable/icon_minus"
         android:layout_alignTop="@+id/txtLifeCountHome"
         android:layout_toLeftOf="@+id/txtLifeCountHome"
         android:layout_toStartOf="@+id/txtLifeCountHome"
         android:layout_marginTop="45dp"
-        android:layout_marginRight="20dp"
-        android:padding="15dp" />
+        android:layout_marginRight="20dp"/>
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:id="@+id/cmdPlusHome"
-        android:background="@drawable/button_plus_35"
+        android:background="@drawable/icon_plus"
         android:layout_alignTop="@+id/txtLifeCountHome"
         android:layout_toRightOf="@+id/txtLifeCountHome"
         android:layout_toEndOf="@+id/txtLifeCountHome"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="45dp"
-        android:padding="15dp" />
+        android:layout_marginTop="45dp"/>
 
     <!-- Gegner -->
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:id="@+id/cmdPlusGuest"
-        android:background="@drawable/button_plus_35"
+        android:background="@drawable/icon_plus"
         android:layout_marginTop="45dp"
         android:layout_alignTop="@+id/txtLifeCountGuest"
         android:layout_toLeftOf="@+id/txtLifeCountGuest"
         android:layout_toStartOf="@+id/txtLifeCountGuest"
-        android:layout_marginRight="20dp"
-        android:padding="15dp" />
+        android:layout_marginRight="20dp"/>
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:id="@+id/cmdMinusGuest"
-        android:background="@drawable/button_minus_35"
+        android:background="@drawable/icon_minus"
         android:layout_marginTop="45dp"
         android:layout_alignTop="@+id/txtLifeCountGuest"
         android:layout_toRightOf="@+id/txtLifeCountGuest"
         android:layout_toEndOf="@+id/txtLifeCountGuest"
-        android:layout_marginLeft="20dp"
-        android:padding="15dp" />
+        android:layout_marginLeft="20dp"/>
 
     <!-- RESET -->
     <ImageButton
@@ -154,10 +150,10 @@
         android:layout_marginBottom="20dp" />
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:id="@+id/cmdPlusPoisonHome"
-        android:background="@drawable/button_plus_35"
+        android:background="@drawable/icon_plus"
         android:layout_alignTop="@+id/txtPoisonCountHome"
         android:layout_toRightOf="@+id/txtPoisonCountHome"
         android:layout_toEndOf="@+id/txtPoisonCountHome"
@@ -165,10 +161,10 @@
         android:layout_marginTop="7dp"/>
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:id="@+id/cmdMinusPoisonHome"
-        android:background="@drawable/button_minus_35"
+        android:background="@drawable/icon_minus"
         android:layout_alignTop="@+id/txtPoisonCountHome"
         android:layout_toLeftOf="@+id/txtPoisonCountHome"
         android:layout_toStartOf="@+id/txtPoisonCountHome"
@@ -191,10 +187,10 @@
         android:layout_marginTop="20dp" />
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:id="@+id/cmdMinusPoisonGuest"
-        android:background="@drawable/button_minus_35"
+        android:background="@drawable/icon_minus"
         android:layout_alignTop="@+id/txtPoisonCountGuest"
         android:layout_toRightOf="@+id/txtPoisonCountGuest"
         android:layout_toEndOf="@+id/txtPoisonCountGuest"
@@ -202,10 +198,10 @@
         android:layout_marginTop="7dp"/>
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:id="@+id/cmdPlusPoisonGuest"
-        android:background="@drawable/button_plus_35"
+        android:background="@drawable/icon_plus"
         android:layout_alignTop="@+id/txtPoisonCountGuest"
         android:layout_toLeftOf="@+id/txtPoisonCountGuest"
         android:layout_toStartOf="@+id/txtPoisonCountGuest"
