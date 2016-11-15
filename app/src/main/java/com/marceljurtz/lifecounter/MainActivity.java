@@ -60,33 +60,18 @@ public class MainActivity extends AppCompatActivity {
     TextView txtPoisonCountGuest;
     TextView txtPoisonCountHome;
 
-    int LP_Home;
-    int LP_Guest;
     int LP_Default;
-
-    int PP_Home;
-    int PP_Guest;
     int PP_Default;
 
-    final int PLAYER_HOME = 0;
-    final int PLAYER_GUEST = 1;
-
-    final int black = Color.parseColor("#CCC2C0");
-    final int blue = Color.parseColor("#AAE0FA");
-    final int green = Color.parseColor("#9BD3AE");
-    final int red = Color.parseColor("#FAAA8F");
-    final int white = Color.parseColor("#FFFCD6");
-
-    final int MAX_POISON = 25;
-    final int MIN_POISON = 0;
-    final int MAX_LIFE = 1000;
-    final int MIN_LIFE = -100;
-
+    // Shared Preferences
     final String PREF_NAME = "JURTZ_LIFECOUNTER_PREFS";
     final String PREF_DEFAULT_LP = "JURTZ_LIFECOUNTER_DEFAULT_LP";
 
     boolean poisonEnabled = false;
     boolean colorSettingsEnabled = false;
+
+    Player player1;
+    Player player2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,6 +82,9 @@ public class MainActivity extends AppCompatActivity {
         // Screen-Timeout verhindern
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
+        player1 = new Player();
+        player2 = new Player();
+
         mainLayout = (RelativeLayout)findViewById(R.id.mainLayout);
         layoutGuest = (LinearLayout)findViewById(R.id.layout_top);
         layoutHome = (LinearLayout)findViewById(R.id.layout_bottom);
@@ -106,6 +94,8 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sp =  getSharedPreferences(PREF_NAME, Activity.MODE_PRIVATE);
         LP_Default = sp.getInt(PREF_DEFAULT_LP,20);
         PP_Default = 0;
+        player1.setDefaults(LP_Default,PP_Default);
+        player2.setDefaults(LP_Default,PP_Default);
 
         /* ### TextViews ### */
         txtLifeCountGuest = (TextView)findViewById(R.id.txtLifeCountGuest);
@@ -124,6 +114,13 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+        // PoisonCount Home
+        txtPoisonCountHome = (TextView)findViewById(R.id.txtPoisonCountHome);
+
+        // PoisonCount Guest
+        txtPoisonCountGuest = (TextView)findViewById(R.id.txtPoisonCountGuest);
+
         /* ### ImageButtons ### */
 
         // Guest - Minus
@@ -131,22 +128,13 @@ public class MainActivity extends AppCompatActivity {
         cmdMinusGuest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LP_Guest--;
-                if(LP_Guest < MIN_LIFE) {
-                    LP_Guest = MIN_LIFE;
-                }
-                update(LP_Guest, txtLifeCountGuest);
+                player2.updateLifepoints(-1,txtLifeCountGuest);
             }
         });
         cmdMinusGuest.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-
-                LP_Guest -= 5;
-                if(LP_Guest < MIN_LIFE) {
-                    LP_Guest = MIN_LIFE;
-                }
-                update(LP_Guest,txtLifeCountGuest);
+                player2.updateLifepoints(-5,txtLifeCountGuest);
                 return true;
             }
         });
@@ -156,21 +144,13 @@ public class MainActivity extends AppCompatActivity {
         cmdMinusHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LP_Home--;
-                if(LP_Home < MIN_LIFE) {
-                    LP_Home = MIN_LIFE;
-                }
-                update(LP_Home,txtLifeCountHome);
+                player1.updateLifepoints(-1,txtLifeCountHome);
             }
         });
         cmdMinusHome.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                LP_Home -= 5;
-                if(LP_Home < MIN_LIFE) {
-                    LP_Home = MIN_LIFE;
-                }
-                update(LP_Home,txtLifeCountHome);
+                player1.updateLifepoints(-5,txtLifeCountHome);
                 return true;
             }
         });
@@ -180,21 +160,13 @@ public class MainActivity extends AppCompatActivity {
         cmdPlusGuest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LP_Guest++;
-                if(LP_Guest > MAX_LIFE) {
-                    LP_Guest = MAX_LIFE;
-                }
-                update(LP_Guest, txtLifeCountGuest);
+                player2.updateLifepoints(1,txtLifeCountGuest);
             }
         });
         cmdPlusGuest.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                LP_Guest += 5;
-                if(LP_Guest > MAX_LIFE) {
-                    LP_Guest = MAX_LIFE;
-                }
-                update(LP_Guest,txtLifeCountGuest);
+                player2.updateLifepoints(5,txtLifeCountGuest);
                 return true;
             }
         });
@@ -204,21 +176,13 @@ public class MainActivity extends AppCompatActivity {
         cmdPlusHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LP_Home++;
-                if(LP_Home > MAX_LIFE) {
-                    LP_Home = MAX_LIFE;
-                }
-                update(LP_Home, txtLifeCountHome);
+                player1.updateLifepoints(1,txtLifeCountHome);
             }
         });
         cmdPlusHome.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                LP_Home += 5;
-                if(LP_Home > MAX_LIFE) {
-                    LP_Home = MAX_LIFE;
-                }
-                update(LP_Home,txtLifeCountHome);
+                player1.updateLifepoints(5, txtLifeCountHome);
                 return true;
             }
         });
@@ -228,7 +192,7 @@ public class MainActivity extends AppCompatActivity {
         cmdResetLP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                reset();
+                resetGame();
             }
         });
 
@@ -241,32 +205,20 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // PoisonCount Home
-        txtPoisonCountHome = (TextView)findViewById(R.id.txtPoisonCountHome);
 
-        // PoisonCount Guest
-        txtPoisonCountGuest = (TextView)findViewById(R.id.txtPoisonCountGuest);
 
         // Poison Home Plus
         cmdPlusPoisonHome = (ImageButton)findViewById(R.id.cmdPlusPoisonHome);
         cmdPlusPoisonHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PP_Home++;
-                if(PP_Home > MAX_POISON) {
-                    PP_Home = MAX_POISON;
-                }
-                    update(PP_Home,txtPoisonCountHome);
+                player1.updatePoisonPoints(1, txtPoisonCountHome);
             }
         });
         cmdPlusPoisonHome.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                PP_Home += 5;
-                if(PP_Home > MAX_POISON) {
-                    PP_Home = MAX_POISON;
-                }
-                update(PP_Home,txtPoisonCountHome);
+                player1.updatePoisonPoints(5, txtPoisonCountHome);
                 return true;
             }
         });
@@ -276,21 +228,13 @@ public class MainActivity extends AppCompatActivity {
         cmdMinusPoisonHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PP_Home--;
-                if (PP_Home < MIN_POISON) {
-                    PP_Home = MIN_POISON;
-                }
-                update(PP_Home, txtPoisonCountHome);
+                player1.updatePoisonPoints(-1,txtPoisonCountHome);
             }
         });
         cmdMinusPoisonHome.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                PP_Home -= 5;
-                if(PP_Home < MIN_POISON) {
-                    PP_Home = MIN_POISON;
-                }
-                update(PP_Home,txtPoisonCountHome);
+                player1.updatePoisonPoints(-5,txtPoisonCountHome);
                 return true;
             }
         });
@@ -300,21 +244,13 @@ public class MainActivity extends AppCompatActivity {
         cmdPlusPoisonGuest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PP_Guest++;
-                if(PP_Guest > MAX_POISON) {
-                    PP_Guest = MAX_POISON;
-                }
-                update(PP_Guest, txtPoisonCountGuest);
+                player2.updatePoisonPoints(1,txtPoisonCountGuest);
             }
         });
         cmdPlusPoisonGuest.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                PP_Guest += 5;
-                if (PP_Guest > MAX_POISON) {
-                    PP_Guest = MAX_POISON;
-                }
-                update(PP_Guest, txtPoisonCountGuest);
+                player2.updatePoisonPoints(5,txtPoisonCountGuest);
                 return true;
             }
         });
@@ -324,21 +260,13 @@ public class MainActivity extends AppCompatActivity {
         cmdMinusPoisonGuest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PP_Guest--;
-                if(PP_Guest < MIN_POISON) {
-                    PP_Guest = MIN_POISON;
-                }
-                update(PP_Guest, txtPoisonCountGuest);
+                player2.updatePoisonPoints(-1,txtPoisonCountGuest);
             }
         });
         cmdMinusPoisonGuest.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                PP_Guest -= 5;
-                if(PP_Guest < MIN_POISON) {
-                    PP_Guest = MIN_POISON;
-                }
-                update(PP_Guest,txtPoisonCountGuest);
+                player2.updatePoisonPoints(-5,txtPoisonCountGuest);
                 return true;
             }
         });
@@ -358,99 +286,101 @@ public class MainActivity extends AppCompatActivity {
         cmdBlackHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setLayoutColor(black,layoutHome);
+                setLayoutColor(ColorService.black,layoutHome);
             }
         });
+
         cmdBlackGuest = (ImageButton)findViewById(R.id.cmdBlackGuest);
         cmdBlackGuest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setLayoutColor(black,layoutGuest);
+                setLayoutColor(ColorService.black,layoutGuest);
             }
         });
+
         cmdBlueHome = (ImageButton)findViewById(R.id.cmdBlueHome);
         cmdBlueHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setLayoutColor(blue,layoutHome);
+                setLayoutColor(ColorService.blue,layoutHome);
             }
         });
+
         cmdBlueGuest = (ImageButton)findViewById(R.id.cmdBlueGuest);
         cmdBlueGuest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setLayoutColor(blue,layoutGuest);
+                setLayoutColor(ColorService.blue,layoutGuest);
             }
         });
+
         cmdGreenHome = (ImageButton)findViewById(R.id.cmdGreenHome);
         cmdGreenHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setLayoutColor(green,layoutHome);
+                setLayoutColor(ColorService.green,layoutHome);
             }
         });
+
         cmdGreenGuest = (ImageButton)findViewById(R.id.cmdGreenGuest);
         cmdGreenGuest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setLayoutColor(green, layoutGuest);
+                setLayoutColor(ColorService.green, layoutGuest);
             }
         });
+
         cmdRedHome = (ImageButton)findViewById(R.id.cmdRedHome);
         cmdRedHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setLayoutColor(red,layoutHome);
+                setLayoutColor(ColorService.red,layoutHome);
             }
         });
+
         cmdRedGuest = (ImageButton)findViewById(R.id.cmdRedGuest);
         cmdRedGuest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setLayoutColor(red,layoutGuest);
+                setLayoutColor(ColorService.red,layoutGuest);
             }
         });
+
         cmdWhiteHome = (ImageButton)findViewById(R.id.cmdWhiteHome);
         cmdWhiteHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setLayoutColor(white,layoutHome);
+                setLayoutColor(ColorService.white,layoutHome);
             }
         });
+
         cmdWhiteGuest = (ImageButton)findViewById(R.id.cmdWhiteGuest);
+
         cmdWhiteGuest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setLayoutColor(white,layoutGuest);
+                setLayoutColor(ColorService.white,layoutGuest);
             }
         });
 
+
         // ########################### BUTTONS FARBAUSWAHL ########################### //
 
-        reset();
+        resetGame();
     }
 
-    // Update TextViews (Punktanzahl)
-    private void update(int points, TextView txtPoints) {
-            txtPoints.setText(points+"");
-    }
 
     // Reset
     // Beide Leben wieder auf 20 setzen
     // PoisonCounter deaktivieren
-    private void reset() {
+    private void resetGame() {
         // Lifepoints
-        LP_Guest = LP_Default;
-        LP_Home = LP_Default;
-        txtLifeCountGuest.setText(LP_Guest+"");
-        txtLifeCountHome.setText(LP_Home+"");
-
-        // Poisonpoints
-        PP_Guest = PP_Default;
-        PP_Home = PP_Default;
-        txtPoisonCountGuest.setText(PP_Guest+"");
-        txtPoisonCountHome.setText(PP_Home+"");
-
+        //LP_Guest = LP_Default;
+        //LP_Home = LP_Default;
+        player1.setDefaults(LP_Default, PP_Default);
+        player1.reset(txtLifeCountHome,txtPoisonCountHome);
+        player2.setDefaults(LP_Default, PP_Default);
+        player2.reset(txtLifeCountGuest, txtPoisonCountGuest);
 
         // Settings
         poisonEnabled = false;
@@ -543,37 +473,44 @@ public class MainActivity extends AppCompatActivity {
         builder.setView(input);
 
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            String inputText = "";
+                    String inputText = "";
 
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                inputText = input.getText().toString();
-                int inputValue;
-                try {
-                    inputValue = Integer.parseInt(inputText);
-                    if(inputValue > MAX_LIFE) {
-                        inputValue = MAX_LIFE;
-                    }
-                    SharedPreferences sp = getSharedPreferences(PREF_NAME, Activity.MODE_PRIVATE);
-                    SharedPreferences.Editor editor = sp.edit();
-                    editor.putInt(PREF_DEFAULT_LP, inputValue);
-                    editor.commit();
-                    LP_Default = inputValue;
-                    reset();
-                } catch (Exception ex) {
-                    // Fehler bei Parsing
-                }
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        inputText = input.getText().toString();
+                        int inputValue;
+                        try {
+                            inputValue = Integer.parseInt(inputText);
+                            if (inputValue > ValueService.getMaxLife()) {
+                                inputValue = ValueService.getMaxLife();
+                            }
+                            SharedPreferences sp = getSharedPreferences(PREF_NAME, Activity.MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sp.edit();
+                            editor.putInt(PREF_DEFAULT_LP, inputValue);
+                            editor.commit();
+                            LP_Default = inputValue;
+                        } catch (Exception ex) {
+                            // Fehler bei Parsing
+                        } finally {
+                            resetGame();
+                        }
             }
-        });
-        AlertDialog dialog = builder.create();
-        dialog.setOnShowListener(new DialogInterface.OnShowListener() {
-            @Override
-            public void onShow(DialogInterface dialog) {
-                InputMethodManager inputMethodManager = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-                inputMethodManager.showSoftInput(input,InputMethodManager.SHOW_IMPLICIT);
-            }
-        });
+        }
 
-        dialog.show();
+            );
+            AlertDialog dialog = builder.create();
+        dialog.setOnShowListener(new DialogInterface.OnShowListener()
+
+                                 {
+                                     @Override
+                                     public void onShow(DialogInterface dialog) {
+                                         InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                                         inputMethodManager.showSoftInput(input, InputMethodManager.SHOW_IMPLICIT);
+            }
+                                 }
+
+            );
+
+            dialog.show();
+        }
     }
-}
