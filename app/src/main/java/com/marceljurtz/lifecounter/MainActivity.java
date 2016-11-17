@@ -69,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
 
     boolean poisonEnabled = false;
     boolean colorSettingsEnabled = false;
+    boolean powerSaveOn = false;
 
     Player player1;
     Player player2;
@@ -144,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
         cmdMinusHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                player1.updateLifepoints(-1,txtLifeCountHome);
+                player1.updateLifepoints(-1, txtLifeCountHome);
             }
         });
         cmdMinusHome.setOnLongClickListener(new View.OnLongClickListener() {
@@ -160,7 +161,7 @@ public class MainActivity extends AppCompatActivity {
         cmdPlusGuest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                player2.updateLifepoints(1,txtLifeCountGuest);
+                player2.updateLifepoints(1, txtLifeCountGuest);
             }
         });
         cmdPlusGuest.setOnLongClickListener(new View.OnLongClickListener() {
@@ -176,7 +177,7 @@ public class MainActivity extends AppCompatActivity {
         cmdPlusHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                player1.updateLifepoints(1,txtLifeCountHome);
+                player1.updateLifepoints(1, txtLifeCountHome);
             }
         });
         cmdPlusHome.setOnLongClickListener(new View.OnLongClickListener() {
@@ -228,7 +229,7 @@ public class MainActivity extends AppCompatActivity {
         cmdMinusPoisonHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                player1.updatePoisonPoints(-1,txtPoisonCountHome);
+                player1.updatePoisonPoints(-1, txtPoisonCountHome);
             }
         });
         cmdMinusPoisonHome.setOnLongClickListener(new View.OnLongClickListener() {
@@ -244,7 +245,7 @@ public class MainActivity extends AppCompatActivity {
         cmdPlusPoisonGuest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                player2.updatePoisonPoints(1,txtPoisonCountGuest);
+                player2.updatePoisonPoints(1, txtPoisonCountGuest);
             }
         });
         cmdPlusPoisonGuest.setOnLongClickListener(new View.OnLongClickListener() {
@@ -260,7 +261,7 @@ public class MainActivity extends AppCompatActivity {
         cmdMinusPoisonGuest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                player2.updatePoisonPoints(-1,txtPoisonCountGuest);
+                player2.updatePoisonPoints(-1, txtPoisonCountGuest);
             }
         });
         cmdMinusPoisonGuest.setOnLongClickListener(new View.OnLongClickListener() {
@@ -286,7 +287,14 @@ public class MainActivity extends AppCompatActivity {
         cmdBlackHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setLayoutColor(ColorService.black,layoutHome);
+                setLayoutColor(ColorService.black, layoutHome);
+            }
+        });
+        cmdBlackHome.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                toggleEnergySaveMode();
+                return true;
             }
         });
 
@@ -295,6 +303,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 setLayoutColor(ColorService.black,layoutGuest);
+            }
+        });
+        cmdBlackGuest.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                toggleEnergySaveMode();
+                return true;
             }
         });
 
@@ -453,8 +468,31 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    // Energiesparmodus für AMOLED-Displays
+    public void toggleEnergySaveMode() {
+        if(!powerSaveOn) {
+            layoutHome.setBackgroundColor(ColorService.powerSafe);
+            layoutGuest.setBackgroundColor(ColorService.powerSafe);
+            txtLifeCountGuest.setTextColor(ColorService.powerSafeTextcolor);
+            txtLifeCountHome.setTextColor(ColorService.powerSafeTextcolor);
+            txtPoisonCountGuest.setTextColor(ColorService.powerSafeTextcolor);
+            txtPoisonCountHome.setTextColor(ColorService.powerSafeTextcolor);
+        } else {
+            layoutHome.setBackgroundColor(ColorService.black);
+            layoutGuest.setBackgroundColor(ColorService.black);
+            txtLifeCountGuest.setTextColor(ColorService.regularTextcolor);
+            txtLifeCountHome.setTextColor(ColorService.regularTextcolor);
+            txtPoisonCountGuest.setTextColor(ColorService.regularTextcolor);
+            txtPoisonCountHome.setTextColor(ColorService.regularTextcolor);
+        }
+        powerSaveOn = !powerSaveOn;
+    }
+
     // Hintergrundfarbe setzen
     private void setLayoutColor(int color, LinearLayout layout) {
+        if(powerSaveOn) {
+            toggleEnergySaveMode();
+        }
         layout.setBackgroundColor(color);
     }
 

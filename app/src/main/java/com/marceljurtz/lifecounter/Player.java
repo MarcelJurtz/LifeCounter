@@ -3,7 +3,8 @@ package com.marceljurtz.lifecounter;
 import android.widget.TextView;
 
 /**
- * Created by marcel on 11.11.16.
+ * Klasse repräsentiert einen Spieler
+ * Funktion: Verwaltung Punkt Leben/Gift
  */
 public class Player {
     private int lifePoints;
@@ -20,11 +21,15 @@ public class Player {
         this.lifePoints = 0;
         this.poisonPoints = 0;
     }
+
+    // Neuladen von Standardwerten
+    // Bei Änderung der Standardanzahl (Lang-Klick auf Textfeld)
     public void initPoints() {
         this.lifePoints = this.defaultLifepoints;
         this.poisonPoints = this.defaultPoisonpoints;
     }
 
+    // Rücksetzen der Textfelder auf Standardwerte
     public void reset(TextView txtLifepoints, TextView txtPoisonpoints) {
         this.poisonPoints = defaultPoisonpoints;
         txtPoisonpoints.setText(this.poisonPoints+"");
@@ -32,6 +37,9 @@ public class Player {
         txtLifepoints.setText(this.lifePoints+"");
 
     }
+
+    // Update TextView "LifePoints"
+    // Eingabe des Werts zur Änderung der aktuellen Zahl (+/-)
     public void updateLifepoints(int lp, TextView txtLifePoints) {
         this.lifePoints += lp;
         if(this.lifePoints > ValueService.getMaxLife()) {
@@ -42,8 +50,8 @@ public class Player {
         txtLifePoints.setText(this.lifePoints+"");
     }
 
-    // Update TextView "PoisonPoints" to given new Value
-    // negative int for decreasing poisonpoints
+    // Update TextView "PoisonPoints"
+    // Eingabe des Werts zur Änderung der aktuellen Zahl (+/-)
     public void updatePoisonPoints(int pp, TextView txtPoisonPoints) {
         this.poisonPoints += pp;
         if(this.poisonPoints > ValueService.getMaxPoison()) {
