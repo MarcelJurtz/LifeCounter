@@ -67,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
     final String PREF_NAME = "JURTZ_LIFECOUNTER_PREFS";
     final String PREF_DEFAULT_LP = "JURTZ_LIFECOUNTER_DEFAULT_LP";
 
+    // Defaultsettings
     boolean poisonEnabled = false;
     boolean colorSettingsEnabled = false;
     boolean powerSaveOn = false;
@@ -98,7 +99,6 @@ public class MainActivity extends AppCompatActivity {
         player1.setDefaults(LP_Default,PP_Default);
         player2.setDefaults(LP_Default,PP_Default);
 
-        /* ### TextViews ### */
         txtLifeCountGuest = (TextView)findViewById(R.id.txtLifeCountGuest);
         txtLifeCountGuest.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
@@ -121,8 +121,6 @@ public class MainActivity extends AppCompatActivity {
 
         // PoisonCount Guest
         txtPoisonCountGuest = (TextView)findViewById(R.id.txtPoisonCountGuest);
-
-        /* ### ImageButtons ### */
 
         // Guest - Minus
         cmdMinusGuest = (ImageButton)findViewById(R.id.cmdMinusGuest);
@@ -206,8 +204,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
         // Poison Home Plus
         cmdPlusPoisonHome = (ImageButton)findViewById(R.id.cmdPlusPoisonHome);
         cmdPlusPoisonHome.setOnClickListener(new View.OnClickListener() {
@@ -281,8 +277,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-        // ########################### BUTTONS FARBEINSTELLUNUGEN ########################### //
         cmdBlackHome = (ImageButton)findViewById(R.id.cmdBlackHome);
         cmdBlackHome.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -377,9 +371,6 @@ public class MainActivity extends AppCompatActivity {
                 setLayoutColor(ColorService.white,layoutGuest);
             }
         });
-
-
-        // ########################### BUTTONS FARBAUSWAHL ########################### //
 
         resetGame();
     }
