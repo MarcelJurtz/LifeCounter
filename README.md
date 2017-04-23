@@ -43,9 +43,9 @@ In the latest release, an energy-saving mode for AMOLED-Screens has been impleme
 ### Mar. 31, 2016 - Version 1
 
  * First release:
-  * 2 players, mirror-flipped alignment for parallel insight
-  * Default with 20 lives, currently not changeable
-  * Reset functionality
+   * 2 players, mirror-flipped alignment for parallel insight
+   * Default with 20 lives, currently not changeable
+   * Reset functionality
 
 
 ## Screenshots
