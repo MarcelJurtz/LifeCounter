@@ -56,4 +56,4 @@ In the latest release, an energy-saving mode for AMOLED-Screens has been impleme
 ## Icon
 
 
-![Icon](images/icon.png | width=100)
+![Icon](images/icon.png)
