@@ -1,68 +1,59 @@
-Magic The Gathering - Life Counter
-===================
+# Magic The Gathering - Life Counter
+
+This app is a 2-player lifecounter for Magic the Gathering
+Players should be seated in front of each other, since the layout contains identical controls mirror-flipped for both players.
+Additional poison-counter can be (de)activated.
+Each player can choose the background-color of the individual side.
+
+In the latest release, an energy-saving mode for AMOLED-Screens has been implemented. To use this feature, hold the 'black'-button at the color selector.
 
 
-Diese Anwendung dient als Lebenszähler für Magic The Gathering.
-Der Gebrauch beschränkt sich durch das Layout auf 2 Spieler, die beide gegenübersitzend gleichzeitig Ihre Lebensanzahl aus passender Perspektive einsehen können. 
-Optional kann ein zusätzlicher Counter für Gift eingeblendet werden.
-Jeder Spieler kann die Hintergrundfarbe seiner Seite auswählen.
-
----
+## Changelog
 
 
-Changelog
--------------
+### Nov. 19, 2016 - Version 7
 
-####13.08.2016 - Version 5
+ * New energy-saving mode for AMOLED-Displays
 
- - Sämtliche Grafiken durch höherwertigere ersetzt
- - Winner / Loser deaktiviert, um Effekte zur Regeneration zu Erhalten
- - Möglichkeit zum Anpassen der Standardanzahl an Leben eingefügt
+### Aug. 18, 2016 - Version 6
 
-####17.04.2016 - Version 4
+ * Small bugfixes and improvements
+ * Swapped out some images
 
- - Screen-Timeout deaktiviert
+### Aug. 13, 2016 - Version 5
 
-####07.04.2016 - Version 3
+ * Improved all images to better resolution
+ * Deactivated winner / loser information
+ * New option to set default amount of lives
 
- - Optionalen Farbwähler eingefügt
- - Performance verbessert
+### Apr. 17, 2016 - Version 4
 
-####02.04.2016 - Version 2
+ * Screen-timeout deactivated
 
- - Optionalen Gift-Counter eingefügt
- - Bugfixes
+### Apr. 07, 2016 - Version 3
 
-####31.03.2016 - Version 1
+ * New option to select background-color
+ * Improved performance
 
-Erste Funktionsfähige Version abgeschlossen.
+### Apr. 02, 2016 - Version 2
 
- - 2 Spieler, Anordnung kopfüber, dass beide Spieler gleichzeitig aus Ihrer perspektive die notwendigen Informationen haben.
- - Herunterzählen bis 0, Hochzählen ohne Limit
- - Standardanzahl Leben: 20
- - Resetfunktion
+ * New poison-counter implemented
+ * Bugfixes
 
-----------
+### Mar. 31, 2016 - Version 1
 
-Screenshots
--------------
-![Screenshots](images/screenshots.png "MTG LifeCounter Screenshots")
+ * First release:
+ ** 2 players, mirror-flipped alignment for parallel insight
+ ** Default with 20 lives, currently not changeable
+ ** Reset functionality
 
-----------
 
-Icon
--------------------
+## Screenshots
 
-![Icon](images/icon.png "MTG LifeCounter Icon")
+![Screenshots](images/screenshots.png)
 
----
 
-Unterstütze mich
-------------------------
+## Icon
 
-Sämtliche meiner Projekte kommen aus Überzeugung ohne Werbung aus, falls du mich trotzdem unterstützen willst, sind Spenden natürlich gerne willkommen. 
 
-Bitcoin-Adresse: 1AufUmfFezX3GQzRqu9N3vMFTs1XFKsrM5
-
-Kontakt: jurtzmarcel@gmail.com
-
+![Icon](images/icon.png | width=100)
