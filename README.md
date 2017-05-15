@@ -7,6 +7,9 @@ Each player can choose the background-color of the individual side.
 
 In the latest release, an energy-saving mode for AMOLED-Screens has been implemented. To use this feature, hold the 'black'-button at the color selector.
 
+## Download
+
+Use the .apk-files included in *RELEASE*, or via [PlayStore](https://play.google.com/store/apps/details?id=com.marceljurtz.lifecounter).
 
 ## Changelog
 
