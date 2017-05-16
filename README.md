@@ -1,5 +1,7 @@
 # Magic The Gathering - Life Counter
 
+[![Icon Completed](https://raw.githubusercontent.com/MarcelJurtz/ProjectStatusIcons/master/Completed.png)](https://github.com/MarcelJurtz/ProjectStatusIcons)
+
 This app is a 2-player lifecounter for Magic the Gathering
 Players should be seated in front of each other, since the layout contains identical controls mirror-flipped for both players.
 Additional poison-counter can be (de)activated.
