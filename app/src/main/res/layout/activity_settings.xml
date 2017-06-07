@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.marceljurtz.lifecounter.SettingsActivity">
+
+    <!-- BLACK -->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/lColorBlack">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/setting_color_black"
+            android:id="@+id/lblColorBlack" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/txtColorBlack"
+            android:textAlignment="viewEnd"
+            android:layout_gravity="end" />
+
+        <Button
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_weight="0"
+            android:background="@drawable/button_round"
+            android:id="@+id/cmdSelectBlack" />
+    </LinearLayout>
+
+    <!-- BLUE -->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lColorBlack"
+        android:id="@+id/lColorBlue">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/setting_color_blue"
+            android:id="@+id/lblColorBlue" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/txtColorBlue"
+            android:textAlignment="viewEnd"
+            android:layout_gravity="end" />
+
+        <Button
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_weight="0"
+            android:background="@drawable/button_round"
+            android:id="@+id/cmdSelectBlue" />
+    </LinearLayout>
+
+    <!-- GREEN -->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lColorBlue"
+        android:id="@+id/lColorGreen">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/setting_color_green"
+            android:id="@+id/lblColorGreen" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/txtColorGreen"
+            android:textAlignment="viewEnd"
+            android:layout_gravity="end" />
+
+        <Button
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_weight="0"
+            android:background="@drawable/button_round"
+            android:id="@+id/cmdSelectGreen" />
+    </LinearLayout>
+
+    <!-- RED -->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lColorGreen"
+        android:id="@+id/lColorRed">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/setting_color_red"
+            android:id="@+id/lblColorRed" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/txtColorRed"
+            android:textAlignment="viewEnd"
+            android:layout_gravity="end" />
+
+        <Button
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_weight="0"
+            android:background="@drawable/button_round"
+            android:id="@+id/cmdSelectRed" />
+    </LinearLayout>
+
+    <!-- WHITE -->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lColorRed"
+        android:id="@+id/lColorWhite">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/setting_color_white"
+            android:id="@+id/lblColorWhite" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/txtColorWhite"
+            android:textAlignment="viewEnd"
+            android:layout_gravity="end"/>
+
+        <Button
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_weight="0"
+            android:background="@drawable/button_round"
+            android:id="@+id/cmdSelectWhite" />
+    </LinearLayout>
+</RelativeLayout>

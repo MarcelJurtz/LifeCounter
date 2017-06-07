@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
@@ -278,6 +279,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 colorSettingsEnabled = !colorSettingsEnabled;
                 toggleColorSettings(colorSettingsEnabled);
+            }
+        });
+        cmdToggleColorSettings.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
+                startActivity(intent);
+                return true;
             }
         });
 
