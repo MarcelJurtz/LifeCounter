@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.media.Image;
 import android.renderscript.ScriptGroup;
 import android.support.v7.app.AppCompatActivity;
@@ -16,6 +17,7 @@ import android.util.TypedValue;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -44,16 +46,18 @@ public class MainActivity extends AppCompatActivity {
     ImageButton cmdMinusPoisonHome;
     ImageButton cmdMinusPoisonGuest;
     ImageButton cmdToggleColorSettings;
-    ImageButton cmdBlackHome;
-    ImageButton cmdBlackGuest;
-    ImageButton cmdBlueHome;
-    ImageButton cmdBlueGuest;
-    ImageButton cmdGreenHome;
-    ImageButton cmdGreenGuest;
-    ImageButton cmdRedHome;
-    ImageButton cmdRedGuest;
-    ImageButton cmdWhiteHome;
-    ImageButton cmdWhiteGuest;
+
+    Button cmdBlackGuest;
+    Button cmdBlueGuest;
+    Button cmdGreenGuest;
+    Button cmdRedGuest;
+    Button cmdWhiteGuest;
+
+    Button cmdBlackHome;
+    Button cmdBlueHome;
+    Button cmdGreenHome;
+    Button cmdRedHome;
+    Button cmdWhiteHome;
 
     TextView txtLifeCountGuest;
     TextView txtLifeCountHome;
@@ -263,7 +267,7 @@ public class MainActivity extends AppCompatActivity {
         cmdMinusPoisonGuest.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                player2.updatePoisonPoints(-5,txtPoisonCountGuest);
+                player2.updatePoisonPoints(-5, txtPoisonCountGuest);
                 return true;
             }
         });
@@ -277,7 +281,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        cmdBlackHome = (ImageButton)findViewById(R.id.cmdBlackHome);
+        cmdBlackHome = (Button)findViewById(R.id.cmdBlackHome);
+        ((GradientDrawable)cmdBlackHome.getBackground()).setColor(ColorService.getDefaultBlack());
         cmdBlackHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -292,7 +297,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        cmdBlackGuest = (ImageButton)findViewById(R.id.cmdBlackGuest);
+        cmdBlackGuest = (Button)findViewById(R.id.cmdBlackGuest);
+        ((GradientDrawable)cmdBlackGuest.getBackground()).setColor(ColorService.getDefaultBlack());
         cmdBlackGuest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -307,15 +313,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        cmdBlueHome = (ImageButton)findViewById(R.id.cmdBlueHome);
+        cmdBlueHome = (Button)findViewById(R.id.cmdBlueHome);
+        ((GradientDrawable)cmdBlueHome.getBackground()).setColor(ColorService.getDefaultBlue());
         cmdBlueHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setLayoutColor(ColorService.blue,layoutHome);
+                setLayoutColor(ColorService.blue, layoutHome);
             }
         });
 
-        cmdBlueGuest = (ImageButton)findViewById(R.id.cmdBlueGuest);
+        cmdBlueGuest = (Button)findViewById(R.id.cmdBlueGuest);
+        ((GradientDrawable)cmdBlueGuest.getBackground()).setColor(ColorService.getDefaultBlue());
         cmdBlueGuest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -323,15 +331,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        cmdGreenHome = (ImageButton)findViewById(R.id.cmdGreenHome);
+        cmdGreenHome = (Button)findViewById(R.id.cmdGreenHome);
+        ((GradientDrawable)cmdGreenHome.getBackground()).setColor(ColorService.getDefaultGreen());
         cmdGreenHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setLayoutColor(ColorService.green,layoutHome);
+                setLayoutColor(ColorService.green, layoutHome);
             }
         });
 
-        cmdGreenGuest = (ImageButton)findViewById(R.id.cmdGreenGuest);
+        cmdGreenGuest = (Button)findViewById(R.id.cmdGreenGuest);
+        ((GradientDrawable)cmdGreenGuest.getBackground()).setColor(ColorService.getDefaultGreen());
         cmdGreenGuest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -339,15 +349,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        cmdRedHome = (ImageButton)findViewById(R.id.cmdRedHome);
+        cmdRedHome = (Button)findViewById(R.id.cmdRedHome);
+        ((GradientDrawable)cmdRedHome.getBackground()).setColor(ColorService.getDefaultRed());
         cmdRedHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setLayoutColor(ColorService.red,layoutHome);
+                setLayoutColor(ColorService.red, layoutHome);
             }
         });
 
-        cmdRedGuest = (ImageButton)findViewById(R.id.cmdRedGuest);
+        cmdRedGuest = (Button)findViewById(R.id.cmdRedGuest);
+        ((GradientDrawable)cmdRedGuest.getBackground()).setColor(ColorService.getDefaultRed());
         cmdRedGuest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -355,16 +367,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        cmdWhiteHome = (ImageButton)findViewById(R.id.cmdWhiteHome);
+        cmdWhiteHome = (Button)findViewById(R.id.cmdWhiteHome);
+        ((GradientDrawable)cmdWhiteHome.getBackground()).setColor(ColorService.getDefaultWhite());
         cmdWhiteHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setLayoutColor(ColorService.white,layoutHome);
+                setLayoutColor(ColorService.white, layoutHome);
             }
         });
 
-        cmdWhiteGuest = (ImageButton)findViewById(R.id.cmdWhiteGuest);
-
+        cmdWhiteGuest = (Button)findViewById(R.id.cmdWhiteGuest);
+        ((GradientDrawable)cmdWhiteGuest.getBackground()).setColor(ColorService.getDefaultWhite());
         cmdWhiteGuest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
