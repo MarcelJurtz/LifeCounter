@@ -15,6 +15,13 @@ Use the .apk-files included in *RELEASE*, or via [PlayStore](https://play.google
 
 ## Changelog
 
+### June 08, 2017 - Version 8
+
+ * New settings-activity to customize colors, accessible by holding the settings-icon
+ * Moved customization of default lifepoints to new settings-activity
+ * TODO: 
+   * Customization of intervals when reducing / incrementing lifepoints and poisonpoints
+   * Build new apk
 
 ### Nov. 19, 2016 - Version 7
 
