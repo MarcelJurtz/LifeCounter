@@ -8,8 +8,8 @@ public class ColorService {
     private static final int green = Color.parseColor("#9BD3AE");
     private static final int red = Color.parseColor("#FAAA8F");
     private static final int white = Color.parseColor("#FFFCD6");
-    public static final int powerSafe = Color.parseColor("#000000");
-    public static final int powerSafeTextcolor = Color.parseColor("#CCC2C0");
+    public static final int powerSave = Color.parseColor("#000000");
+    public static final int powerSaveTextcolor = Color.parseColor("#CCC2C0");
     public static final int regularTextcolor = Color.parseColor("#161618");
 
     public static int getDefaultBlack(){

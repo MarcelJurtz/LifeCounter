@@ -21,6 +21,8 @@ public class SettingsActivity extends Activity {
     TextView txtRed;
     TextView txtWhite;
 
+    EditText txtLifepoints;
+
     Button cmdSelectBlack;
     Button cmdSelectBlue;
     Button cmdSelectGreen;
@@ -48,6 +50,8 @@ public class SettingsActivity extends Activity {
         txtRed = (TextView) findViewById(R.id.txtColorRed);
         txtWhite = (TextView) findViewById(R.id.txtColorWhite);
 
+        txtLifepoints = (EditText) findViewById(R.id.txtLiveSelection);
+
         selectedBlack = SettingsService.getColor(getApplicationContext(),getString(R.string.shared_preferences_color_black), ColorService.getDefaultBlack());
         selectedBlue = SettingsService.getColor(getApplicationContext(), getString(R.string.shared_preferences_color_blue), ColorService.getDefaultBlue());
         selectedGreen = SettingsService.getColor(getApplicationContext(),getString(R.string.shared_preferences_color_green), ColorService.getDefaultGreen());
@@ -59,6 +63,8 @@ public class SettingsActivity extends Activity {
         txtGreen.setText(ColorService.getHexString(selectedGreen));
         txtRed.setText(ColorService.getHexString(selectedRed));
         txtWhite.setText(ColorService.getHexString(selectedWhite));
+
+        txtLifepoints.setText(String.valueOf(SettingsService.getLifepoints(getApplicationContext())));
 
         cmdSelectBlack = (Button) findViewById(R.id.cmdSelectBlack);
         updateColor(cmdSelectBlack, txtBlack, selectedBlack);
@@ -199,6 +205,8 @@ public class SettingsActivity extends Activity {
                 SettingsService.saveColor(getApplicationContext(), getString(R.string.shared_preferences_color_green),selectedGreen);
                 SettingsService.saveColor(getApplicationContext(), getString(R.string.shared_preferences_color_red),selectedRed);
                 SettingsService.saveColor(getApplicationContext(), getString(R.string.shared_preferences_color_white),selectedWhite);
+
+                SettingsService.setLifepoints(getApplicationContext(), Integer.parseInt(txtLifepoints.getText().toString()));
                 finish();
             }
         });
@@ -227,6 +235,9 @@ public class SettingsActivity extends Activity {
                 updateColor(cmdSelectGreen, txtGreen, selectedGreen);
                 updateColor(cmdSelectRed, txtRed, selectedRed);
                 updateColor(cmdSelectWhite, txtWhite, selectedWhite);
+
+                SettingsService.resetLifepoints(getApplicationContext());
+                txtLifepoints.setText(String.valueOf(SettingsService.getLifepoints(getApplicationContext())));
             }
         });
 

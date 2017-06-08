@@ -181,7 +181,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/lColorRed"
-        android:id="@+id/lColorWhite">
+        android:id="@+id/lColorWhite"
+        android:paddingBottom="10dp">
 
 
         <TextView
@@ -213,6 +214,41 @@
             android:layout_weight="0"
             android:background="@drawable/button_round"
             android:id="@+id/cmdSelectWhite" />
+    </LinearLayout>
+
+    <!-- LIVES -->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lColorWhite"
+        android:id="@+id/lLiveSelection">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/setting_default_lives"
+            android:id="@+id/lblLiveSelection" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:layout_weight="0"
+            android:paddingEnd="16dp"
+            android:paddingRight="16dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/txtLiveSelection"
+            android:hint="20" />
+
     </LinearLayout>
 
     <LinearLayout
