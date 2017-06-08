@@ -175,4 +175,35 @@
             android:background="@drawable/button_round"
             android:id="@+id/cmdSelectWhite" />
     </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/linearLayout">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Save"
+            android:id="@+id/cmdSaveChanges"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Discard"
+            android:id="@+id/cmdDiscardChanges"/>
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Reset"
+        android:id="@+id/cmdResetSettings"
+        android:layout_above="@+id/linearLayout"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

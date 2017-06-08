@@ -132,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
         cmdMinusGuest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                player2.updateLifepoints(-1,txtLifeCountGuest);
+                player2.updateLifepoints(-1, txtLifeCountGuest);
             }
         });
         cmdMinusGuest.setOnLongClickListener(new View.OnLongClickListener() {
@@ -291,11 +291,10 @@ public class MainActivity extends AppCompatActivity {
         });
 
         cmdBlackHome = (Button)findViewById(R.id.cmdBlackHome);
-        ((GradientDrawable)cmdBlackHome.getBackground()).setColor(ColorService.getDefaultBlack());
         cmdBlackHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setLayoutColor(ColorService.black, layoutHome);
+                setLayoutColor(SettingsService.getColor(getApplicationContext(),getString(R.string.shared_preferences_color_black),ColorService.getDefaultBlack()), layoutHome);
             }
         });
         cmdBlackHome.setOnLongClickListener(new View.OnLongClickListener() {
@@ -307,11 +306,10 @@ public class MainActivity extends AppCompatActivity {
         });
 
         cmdBlackGuest = (Button)findViewById(R.id.cmdBlackGuest);
-        ((GradientDrawable)cmdBlackGuest.getBackground()).setColor(ColorService.getDefaultBlack());
         cmdBlackGuest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setLayoutColor(ColorService.black,layoutGuest);
+                setLayoutColor(SettingsService.getColor(getApplicationContext(),getString(R.string.shared_preferences_color_black),ColorService.getDefaultBlack()), layoutGuest);
             }
         });
         cmdBlackGuest.setOnLongClickListener(new View.OnLongClickListener() {
@@ -323,80 +321,92 @@ public class MainActivity extends AppCompatActivity {
         });
 
         cmdBlueHome = (Button)findViewById(R.id.cmdBlueHome);
-        ((GradientDrawable)cmdBlueHome.getBackground()).setColor(ColorService.getDefaultBlue());
         cmdBlueHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setLayoutColor(ColorService.blue, layoutHome);
+                setLayoutColor(SettingsService.getColor(getApplicationContext(),getString(R.string.shared_preferences_color_blue),ColorService.getDefaultBlue()), layoutHome);
             }
         });
 
         cmdBlueGuest = (Button)findViewById(R.id.cmdBlueGuest);
-        ((GradientDrawable)cmdBlueGuest.getBackground()).setColor(ColorService.getDefaultBlue());
         cmdBlueGuest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setLayoutColor(ColorService.blue,layoutGuest);
+                setLayoutColor(SettingsService.getColor(getApplicationContext(),getString(R.string.shared_preferences_color_blue),ColorService.getDefaultBlue()),layoutGuest);
             }
         });
 
         cmdGreenHome = (Button)findViewById(R.id.cmdGreenHome);
-        ((GradientDrawable)cmdGreenHome.getBackground()).setColor(ColorService.getDefaultGreen());
         cmdGreenHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setLayoutColor(ColorService.green, layoutHome);
+                setLayoutColor(SettingsService.getColor(getApplicationContext(),getString(R.string.shared_preferences_color_green),ColorService.getDefaultGreen()), layoutHome);
             }
         });
 
         cmdGreenGuest = (Button)findViewById(R.id.cmdGreenGuest);
-        ((GradientDrawable)cmdGreenGuest.getBackground()).setColor(ColorService.getDefaultGreen());
         cmdGreenGuest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setLayoutColor(ColorService.green, layoutGuest);
+                setLayoutColor(SettingsService.getColor(getApplicationContext(),getString(R.string.shared_preferences_color_green),ColorService.getDefaultGreen()), layoutGuest);
             }
         });
 
         cmdRedHome = (Button)findViewById(R.id.cmdRedHome);
-        ((GradientDrawable)cmdRedHome.getBackground()).setColor(ColorService.getDefaultRed());
         cmdRedHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setLayoutColor(ColorService.red, layoutHome);
+                setLayoutColor(SettingsService.getColor(getApplicationContext(),getString(R.string.shared_preferences_color_red),ColorService.getDefaultRed()), layoutHome);
             }
         });
 
         cmdRedGuest = (Button)findViewById(R.id.cmdRedGuest);
-        ((GradientDrawable)cmdRedGuest.getBackground()).setColor(ColorService.getDefaultRed());
         cmdRedGuest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setLayoutColor(ColorService.red,layoutGuest);
+                setLayoutColor(SettingsService.getColor(getApplicationContext(),getString(R.string.shared_preferences_color_red),ColorService.getDefaultRed()),layoutGuest);
             }
         });
 
         cmdWhiteHome = (Button)findViewById(R.id.cmdWhiteHome);
-        ((GradientDrawable)cmdWhiteHome.getBackground()).setColor(ColorService.getDefaultWhite());
         cmdWhiteHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setLayoutColor(ColorService.white, layoutHome);
+                setLayoutColor(SettingsService.getColor(getApplicationContext(),getString(R.string.shared_preferences_color_white),ColorService.getDefaultWhite()), layoutHome);
             }
         });
 
         cmdWhiteGuest = (Button)findViewById(R.id.cmdWhiteGuest);
-        ((GradientDrawable)cmdWhiteGuest.getBackground()).setColor(ColorService.getDefaultWhite());
         cmdWhiteGuest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setLayoutColor(ColorService.white,layoutGuest);
+                setLayoutColor(SettingsService.getColor(getApplicationContext(),getString(R.string.shared_preferences_color_white),ColorService.getDefaultWhite()),layoutGuest);
             }
         });
 
         resetGame();
     }
 
+    @Override
+    protected void onStart() {
+
+        ((GradientDrawable)cmdWhiteGuest.getBackground()).setColor(SettingsService.getColor(getApplicationContext(), getString(R.string.shared_preferences_color_white), ColorService.getDefaultWhite()));
+        ((GradientDrawable)cmdWhiteHome.getBackground()).setColor(SettingsService.getColor(getApplicationContext(), getString(R.string.shared_preferences_color_white), ColorService.getDefaultWhite()));
+
+        ((GradientDrawable)cmdRedGuest.getBackground()).setColor(SettingsService.getColor(getApplicationContext(), getString(R.string.shared_preferences_color_red), ColorService.getDefaultRed()));
+        ((GradientDrawable)cmdRedHome.getBackground()).setColor(SettingsService.getColor(getApplicationContext(), getString(R.string.shared_preferences_color_red), ColorService.getDefaultRed()));
+
+        ((GradientDrawable)cmdGreenGuest.getBackground()).setColor(SettingsService.getColor(getApplicationContext(), getString(R.string.shared_preferences_color_green), ColorService.getDefaultGreen()));
+        ((GradientDrawable)cmdGreenHome.getBackground()).setColor(SettingsService.getColor(getApplicationContext(), getString(R.string.shared_preferences_color_green), ColorService.getDefaultGreen()));
+
+        ((GradientDrawable)cmdBlueGuest.getBackground()).setColor(SettingsService.getColor(getApplicationContext(), getString(R.string.shared_preferences_color_blue), ColorService.getDefaultBlue()));
+        ((GradientDrawable)cmdBlueHome.getBackground()).setColor(SettingsService.getColor(getApplicationContext(), getString(R.string.shared_preferences_color_blue), ColorService.getDefaultBlue()));
+
+        ((GradientDrawable)cmdBlackGuest.getBackground()).setColor(SettingsService.getColor(getApplicationContext(), getString(R.string.shared_preferences_color_black), ColorService.getDefaultBlack()));
+        ((GradientDrawable)cmdBlackHome.getBackground()).setColor(SettingsService.getColor(getApplicationContext(), getString(R.string.shared_preferences_color_black), ColorService.getDefaultBlack()));
+
+        super.onStart();
+    }
 
     // Reset
     // Beide Leben wieder auf 20 setzen

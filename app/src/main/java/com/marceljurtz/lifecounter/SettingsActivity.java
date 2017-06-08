@@ -26,6 +26,9 @@ public class SettingsActivity extends Activity {
     Button cmdSelectRed;
     Button cmdSelectWhite;
 
+    Button cmdSaveChanges;
+    Button cmdDiscardChanges;
+
     static int selectedBlack;
     static int selectedBlue;
     static int selectedGreen;
@@ -43,13 +46,11 @@ public class SettingsActivity extends Activity {
         txtRed = (EditText) findViewById(R.id.txtColorRed);
         txtWhite = (EditText) findViewById(R.id.txtColorWhite);
 
-        SharedPreferences sp = getSharedPreferences(getString(R.string.shared_preferences_name), Activity.MODE_PRIVATE);
-
-        selectedBlack = sp.getInt(getString(R.string.shared_preferences_color_black), ColorService.getDefaultBlack());
-        selectedBlue = sp.getInt(getString(R.string.shared_preferences_color_blue), ColorService.getDefaultBlue());
-        selectedGreen= sp.getInt(getString(R.string.shared_preferences_color_green), ColorService.getDefaultGreen());
-        selectedRed = sp.getInt(getString(R.string.shared_preferences_color_red), ColorService.getDefaultRed());
-        selectedWhite = sp.getInt(getString(R.string.shared_preferences_color_white), ColorService.getDefaultWhite());
+        selectedBlack = SettingsService.getColor(getApplicationContext(),getString(R.string.shared_preferences_color_black), ColorService.getDefaultBlack());
+        selectedBlue = SettingsService.getColor(getApplicationContext(), getString(R.string.shared_preferences_color_blue), ColorService.getDefaultBlue());
+        selectedGreen = SettingsService.getColor(getApplicationContext(),getString(R.string.shared_preferences_color_green), ColorService.getDefaultGreen());
+        selectedRed = SettingsService.getColor(getApplicationContext(), getString(R.string.shared_preferences_color_red), ColorService.getDefaultRed());
+        selectedWhite = SettingsService.getColor(getApplicationContext(), getString(R.string.shared_preferences_color_white), ColorService.getDefaultWhite());
 
         txtBlack.setText(String.format("#%06X", 0xFFFFFF & selectedBlack));
         txtBlue.setText(String.format("#%06X", 0xFFFFFF & selectedBlue));
@@ -97,7 +98,7 @@ public class SettingsActivity extends Activity {
 
                 cp.show();
 
-                Button okColor = (Button)cp.findViewById(R.id.okColorButton);
+                Button okColor = (Button) cp.findViewById(R.id.okColorButton);
                 okColor.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -123,7 +124,7 @@ public class SettingsActivity extends Activity {
 
                 cp.show();
 
-                Button okColor = (Button)cp.findViewById(R.id.okColorButton);
+                Button okColor = (Button) cp.findViewById(R.id.okColorButton);
                 okColor.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -149,7 +150,7 @@ public class SettingsActivity extends Activity {
 
                 cp.show();
 
-                Button okColor = (Button)cp.findViewById(R.id.okColorButton);
+                Button okColor = (Button) cp.findViewById(R.id.okColorButton);
                 okColor.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -175,7 +176,7 @@ public class SettingsActivity extends Activity {
 
                 cp.show();
 
-                Button okColor = (Button)cp.findViewById(R.id.okColorButton);
+                Button okColor = (Button) cp.findViewById(R.id.okColorButton);
                 okColor.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -184,6 +185,27 @@ public class SettingsActivity extends Activity {
                         cp.dismiss();
                     }
                 });
+            }
+        });
+
+        cmdSaveChanges = (Button) findViewById(R.id.cmdSaveChanges);
+        cmdSaveChanges.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SettingsService.saveColor(getApplicationContext(), getString(R.string.shared_preferences_color_black),selectedBlack);
+                SettingsService.saveColor(getApplicationContext(), getString(R.string.shared_preferences_color_blue),selectedBlue);
+                SettingsService.saveColor(getApplicationContext(), getString(R.string.shared_preferences_color_green),selectedGreen);
+                SettingsService.saveColor(getApplicationContext(), getString(R.string.shared_preferences_color_red),selectedRed);
+                SettingsService.saveColor(getApplicationContext(), getString(R.string.shared_preferences_color_white),selectedWhite);
+                finish();
+            }
+        });
+
+        cmdDiscardChanges = (Button) findViewById(R.id.cmdDiscardChanges);
+        cmdDiscardChanges.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
 
