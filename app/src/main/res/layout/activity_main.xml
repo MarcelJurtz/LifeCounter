@@ -209,100 +209,100 @@
         android:layout_marginRight="16dp"/>
 
     <!-- Colors: Home -->
-    <ImageButton
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+    <Button
+        android:layout_width="36dp"
+        android:layout_height="36dp"
         android:id="@+id/cmdBlackHome"
-        android:background="@drawable/icon_schwarz"
+        android:background="@drawable/button_round"
         android:layout_centerHorizontal="true"
         android:layout_alignTop="@id/cmdResetLP"
         android:layout_marginTop="60dp" />
 
-    <ImageButton
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+    <Button
+        android:layout_width="36dp"
+        android:layout_height="36dp"
         android:id="@+id/cmdBlueHome"
-        android:background="@drawable/icon_blau"
+        android:background="@drawable/button_round"
         android:layout_alignTop="@id/cmdResetLP"
         android:layout_toLeftOf="@id/cmdBlackHome"
         android:layout_marginTop="60dp"
         android:layout_marginRight="20dp"/>
 
-    <ImageButton
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+    <Button
+        android:layout_width="36dp"
+        android:layout_height="36dp"
         android:id="@+id/cmdGreenHome"
-        android:background="@drawable/icon_gruen"
+        android:background="@drawable/button_round"
         android:layout_alignTop="@id/cmdResetLP"
         android:layout_toLeftOf="@id/cmdBlueHome"
         android:layout_marginTop="60dp"
         android:layout_marginRight="20dp"/>
 
-    <ImageButton
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+    <Button
+        android:layout_width="36dp"
+        android:layout_height="36dp"
         android:id="@+id/cmdRedHome"
-        android:background="@drawable/icon_rot"
+        android:background="@drawable/button_round"
         android:layout_alignTop="@id/cmdResetLP"
         android:layout_toRightOf="@id/cmdBlackHome"
         android:layout_marginTop="60dp"
         android:layout_marginLeft="20dp"/>
 
-    <ImageButton
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+    <Button
+        android:layout_width="36dp"
+        android:layout_height="36dp"
         android:id="@+id/cmdWhiteHome"
-        android:background="@drawable/icon_weiss"
+        android:background="@drawable/button_round"
         android:layout_alignTop="@id/cmdResetLP"
         android:layout_toRightOf="@id/cmdRedHome"
         android:layout_marginTop="60dp"
         android:layout_marginLeft="20dp"/>
 
     <!-- Colors: Guest -->
-    <ImageButton
+    <Button
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:id="@+id/cmdBlackGuest"
-        android:background="@drawable/icon_schwarz"
+        android:background="@drawable/button_round"
         android:layout_centerHorizontal="true"
         android:layout_alignBottom="@id/cmdResetLP"
         android:layout_marginBottom="60dp" />
 
-    <ImageButton
+    <Button
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:id="@+id/cmdRedGuest"
-        android:background="@drawable/icon_rot"
+        android:background="@drawable/button_round"
         android:layout_alignBottom="@id/cmdResetLP"
         android:layout_toLeftOf="@id/cmdBlackGuest"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="60dp"/>
 
-    <ImageButton
+    <Button
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:id="@+id/cmdWhiteGuest"
-        android:background="@drawable/icon_weiss"
+        android:background="@drawable/button_round"
         android:layout_alignBottom="@id/cmdResetLP"
         android:layout_toLeftOf="@id/cmdRedGuest"
         android:layout_marginBottom="60dp"
         android:layout_marginRight = "20dp"/>
 
-    <ImageButton
+    <Button
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:id="@+id/cmdBlueGuest"
-        android:background="@drawable/icon_blau"
+        android:background="@drawable/button_round"
         android:layout_alignBottom="@id/cmdResetLP"
         android:layout_toRightOf="@id/cmdBlackGuest"
         android:layout_marginLeft="20dp"
         android:layout_marginBottom="60dp" />
 
-    <ImageButton
+    <Button
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:id="@+id/cmdGreenGuest"
-        android:background="@drawable/icon_gruen"
+        android:background="@drawable/button_round"
         android:layout_alignBottom="@id/cmdResetLP"
         android:layout_toRightOf="@id/cmdBlueGuest"
         android:layout_marginBottom="60dp"

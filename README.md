@@ -60,3 +60,15 @@ Use the .apk-files included in *RELEASE*, or via [PlayStore](https://play.google
 ## Icon
 
 ![Icon](images/icon_small.png)
+
+## Dependencies
+
+### Android Material Color Picker Dialog
+
+![Android Material Color Picker Dialog by Pes8](https://github.com/Pes8/android-material-color-picker-dialog)
+
+Also distributed under MIT-License.
+
+## License
+
+![MIT](LICENSE)

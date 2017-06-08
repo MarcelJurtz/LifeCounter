@@ -2,6 +2,8 @@ package com.marceljurtz.lifecounter;
 
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 /**
  * Klasse repräsentiert einen Spieler
  * Funktion: Verwaltung Punkt Leben/Gift
@@ -11,15 +13,23 @@ public class Player {
     private int poisonPoints;
     private int defaultLifepoints;
     private int defaultPoisonpoints;
+    private TextView txtLifepoints;
+    private TextView txtPoisonpoints;
 
     public void setDefaults(int defaultLP, int defaultPP) {
         this.defaultPoisonpoints = defaultPP;
         this.defaultLifepoints = defaultLP;
+        this.lifePoints = this.defaultLifepoints;
+        this.poisonPoints = this.defaultPoisonpoints;
+        txtLifepoints.setText(String.valueOf(this.lifePoints));
+        txtPoisonpoints.setText(String.valueOf(this.poisonPoints));
     }
 
-    public Player() {
+    public Player(TextView lp, TextView pp) {
         this.lifePoints = 0;
         this.poisonPoints = 0;
+        txtLifepoints = lp;
+        txtPoisonpoints = pp;
     }
 
     // Neuladen von Standardwerten
