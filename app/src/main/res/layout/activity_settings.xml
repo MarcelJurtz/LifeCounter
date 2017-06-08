@@ -226,8 +226,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Save"
-            android:id="@+id/cmdSaveChanges"/>
+            android:text="Reset"
+            android:id="@+id/cmdResetSettings"/>
 
         <Button
             android:layout_width="match_parent"
@@ -241,8 +241,8 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Reset"
-        android:id="@+id/cmdResetSettings"
+        android:text="Save"
+        android:id="@+id/cmdSaveChanges"
         android:layout_above="@+id/linearLayout"
         android:layout_centerHorizontal="true" />
 </RelativeLayout>
