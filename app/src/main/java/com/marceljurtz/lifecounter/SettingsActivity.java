@@ -216,7 +216,17 @@ public class SettingsActivity extends Activity {
             @Override
             public void onClick(View v) {
                 // Reset colors
+                selectedBlack = ColorService.getDefaultBlack();
+                selectedBlue = ColorService.getDefaultBlue();
+                selectedGreen = ColorService.getDefaultGreen();
+                selectedRed = ColorService.getDefaultRed();
+                selectedWhite = ColorService.getDefaultWhite();
 
+                updateColor(cmdSelectBlack, txtBlack, selectedBlack);
+                updateColor(cmdSelectBlue, txtBlue, selectedBlue);
+                updateColor(cmdSelectGreen, txtGreen, selectedGreen);
+                updateColor(cmdSelectRed, txtRed, selectedRed);
+                updateColor(cmdSelectWhite, txtWhite, selectedWhite);
             }
         });
 

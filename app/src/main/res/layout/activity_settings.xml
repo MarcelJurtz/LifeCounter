@@ -17,7 +17,8 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/lColorBlack">
+        android:id="@+id/lColorBlack"
+        android:paddingBottom="10dp">
 
 
         <TextView
@@ -28,14 +29,19 @@
             android:text="@string/setting_color_black"
             android:id="@+id/lblColorBlack" />
 
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="0"
+            android:paddingEnd="16dp"
+            android:paddingRight="16dp"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:id="@+id/txtColorBlack"
-            android:textAlignment="viewEnd"
-            android:layout_gravity="end"
             android:hint="Black" />
 
         <Button
@@ -52,7 +58,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/lColorBlack"
-        android:id="@+id/lColorBlue">
+        android:id="@+id/lColorBlue"
+        android:paddingBottom="10dp">
 
 
         <TextView
@@ -63,14 +70,19 @@
             android:text="@string/setting_color_blue"
             android:id="@+id/lblColorBlue" />
 
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="0"
+            android:paddingEnd="16dp"
+            android:paddingRight="16dp"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:id="@+id/txtColorBlue"
-            android:textAlignment="viewEnd"
-            android:layout_gravity="end"
             android:hint="Blue" />
 
         <Button
@@ -87,7 +99,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/lColorBlue"
-        android:id="@+id/lColorGreen">
+        android:id="@+id/lColorGreen"
+        android:paddingBottom="10dp">
 
 
         <TextView
@@ -98,14 +111,19 @@
             android:text="@string/setting_color_green"
             android:id="@+id/lblColorGreen" />
 
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="0"
+            android:paddingRight="16dp"
+            android:paddingEnd="16dp"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:id="@+id/txtColorGreen"
-            android:textAlignment="viewEnd"
-            android:layout_gravity="end"
             android:hint="Green" />
 
         <Button
@@ -122,7 +140,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/lColorGreen"
-        android:id="@+id/lColorRed">
+        android:id="@+id/lColorRed"
+        android:paddingBottom="10dp">
 
 
         <TextView
@@ -133,14 +152,19 @@
             android:text="@string/setting_color_red"
             android:id="@+id/lblColorRed" />
 
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="0"
+            android:paddingEnd="16dp"
+            android:paddingRight="16dp"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:id="@+id/txtColorRed"
-            android:textAlignment="viewEnd"
-            android:layout_gravity="end"
             android:hint="Red" />
 
         <Button
@@ -168,14 +192,19 @@
             android:text="@string/setting_color_white"
             android:id="@+id/lblColorWhite" />
 
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="0"
+            android:paddingEnd="16dp"
+            android:paddingRight="16dp"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:id="@+id/txtColorWhite"
-            android:textAlignment="viewEnd"
-            android:layout_gravity="end"
             android:hint="White" />
 
         <Button

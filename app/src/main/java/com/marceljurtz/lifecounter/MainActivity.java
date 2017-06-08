@@ -501,8 +501,8 @@ public class MainActivity extends AppCompatActivity {
             txtPoisonCountGuest.setTextColor(ColorService.powerSafeTextcolor);
             txtPoisonCountHome.setTextColor(ColorService.powerSafeTextcolor);
         } else {
-            layoutHome.setBackgroundColor(ColorService.black);
-            layoutGuest.setBackgroundColor(ColorService.black);
+            layoutHome.setBackgroundColor(SettingsService.getColor(getApplicationContext(),getString(R.string.shared_preferences_color_black),ColorService.getDefaultBlack()));
+            layoutGuest.setBackgroundColor(SettingsService.getColor(getApplicationContext(),getString(R.string.shared_preferences_color_black),ColorService.getDefaultBlack()));
             txtLifeCountGuest.setTextColor(ColorService.regularTextcolor);
             txtLifeCountHome.setTextColor(ColorService.regularTextcolor);
             txtPoisonCountGuest.setTextColor(ColorService.regularTextcolor);
