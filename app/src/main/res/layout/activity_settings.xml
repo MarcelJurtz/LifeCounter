@@ -28,13 +28,15 @@
             android:text="@string/setting_color_black"
             android:id="@+id/lblColorBlack" />
 
-        <EditText
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:id="@+id/txtColorBlack"
             android:textAlignment="viewEnd"
-            android:layout_gravity="end" />
+            android:layout_gravity="end"
+            android:hint="Black" />
 
         <Button
             android:layout_width="36dp"
@@ -61,13 +63,15 @@
             android:text="@string/setting_color_blue"
             android:id="@+id/lblColorBlue" />
 
-        <EditText
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:id="@+id/txtColorBlue"
             android:textAlignment="viewEnd"
-            android:layout_gravity="end" />
+            android:layout_gravity="end"
+            android:hint="Blue" />
 
         <Button
             android:layout_width="36dp"
@@ -94,13 +98,15 @@
             android:text="@string/setting_color_green"
             android:id="@+id/lblColorGreen" />
 
-        <EditText
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:id="@+id/txtColorGreen"
             android:textAlignment="viewEnd"
-            android:layout_gravity="end" />
+            android:layout_gravity="end"
+            android:hint="Green" />
 
         <Button
             android:layout_width="36dp"
@@ -127,13 +133,15 @@
             android:text="@string/setting_color_red"
             android:id="@+id/lblColorRed" />
 
-        <EditText
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:id="@+id/txtColorRed"
             android:textAlignment="viewEnd"
-            android:layout_gravity="end" />
+            android:layout_gravity="end"
+            android:hint="Red" />
 
         <Button
             android:layout_width="36dp"
@@ -160,13 +168,15 @@
             android:text="@string/setting_color_white"
             android:id="@+id/lblColorWhite" />
 
-        <EditText
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:id="@+id/txtColorWhite"
             android:textAlignment="viewEnd"
-            android:layout_gravity="end"/>
+            android:layout_gravity="end"
+            android:hint="White" />
 
         <Button
             android:layout_width="36dp"

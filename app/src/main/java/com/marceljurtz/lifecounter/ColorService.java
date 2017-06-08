@@ -31,4 +31,16 @@ public class ColorService {
     public static int getDefaultWhite(){
         return white;
     }
+
+    public static int[] getRGB(int color) {
+        int[] rgb = new int[3];
+        rgb[0] = (color >> 16) & 0xFF;
+        rgb[1] = (color >> 8) & 0xFF;
+        rgb[2] = (color >> 0) & 0xFF;
+        return rgb;
+    }
+
+    public static String getHexString(int color) {
+        return String.format("#%06X", 0xFFFFFF & color);
+    }
 }
