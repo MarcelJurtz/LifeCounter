@@ -59,4 +59,4 @@ Use the .apk-files included in *RELEASE*, or via [PlayStore](https://play.google
 
 ## Icon
 
-![Icon](images/icon.png)
+![Icon](images/icon_small.png)
