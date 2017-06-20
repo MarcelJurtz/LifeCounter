@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 public class SettingsService {
 
     private static final int DEFAULT_LIFEPOINTS = 20;
+    private static final int DEFAULT_LONG_CLICK_POINTS = 5;
 
     public static int getColor(Context context, String colorString, int nullReturn) {
         SharedPreferences sp = context.getSharedPreferences(context.getString(R.string.shared_preferences_name), Activity.MODE_PRIVATE);
@@ -38,5 +39,21 @@ public class SettingsService {
 
     public static int getDefaultPoisonPoints() {
         return 0;
+    }
+
+    public static int getLongClickPoints(Context context) {
+        SharedPreferences sp = context.getSharedPreferences(context.getString(R.string.shared_preferences_name), Activity.MODE_PRIVATE);
+        return sp.getInt(context.getString(R.string.shared_preferences_long_click_points), DEFAULT_LONG_CLICK_POINTS);
+    }
+
+    public static void setLongClickPoints(Context context, int points) {
+        SharedPreferences sp = context.getSharedPreferences(context.getString(R.string.shared_preferences_name), Activity.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putInt(context.getString(R.string.shared_preferences_long_click_points), points);
+        editor.commit();
+    }
+
+    public static void resetLongClickPoints(Context context) {
+        setLongClickPoints(context, DEFAULT_LONG_CLICK_POINTS);
     }
 }

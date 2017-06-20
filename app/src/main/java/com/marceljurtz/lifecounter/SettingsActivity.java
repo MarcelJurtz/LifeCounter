@@ -22,6 +22,7 @@ public class SettingsActivity extends Activity {
     TextView txtWhite;
 
     EditText txtLifepoints;
+    EditText txtLongClickPoints;
 
     Button cmdSelectBlack;
     Button cmdSelectBlue;
@@ -51,6 +52,7 @@ public class SettingsActivity extends Activity {
         txtWhite = (TextView) findViewById(R.id.txtColorWhite);
 
         txtLifepoints = (EditText) findViewById(R.id.txtLiveSelection);
+        txtLongClickPoints = (EditText) findViewById(R.id.txtLongClickPoints);
 
         selectedBlack = SettingsService.getColor(getApplicationContext(),getString(R.string.shared_preferences_color_black), ColorService.getDefaultBlack());
         selectedBlue = SettingsService.getColor(getApplicationContext(), getString(R.string.shared_preferences_color_blue), ColorService.getDefaultBlue());
@@ -65,6 +67,7 @@ public class SettingsActivity extends Activity {
         txtWhite.setText(ColorService.getHexString(selectedWhite));
 
         txtLifepoints.setText(String.valueOf(SettingsService.getLifepoints(getApplicationContext())));
+        txtLongClickPoints.setText(String.valueOf(SettingsService.getLongClickPoints(getApplicationContext())));
 
         cmdSelectBlack = (Button) findViewById(R.id.cmdSelectBlack);
         updateColor(cmdSelectBlack, txtBlack, selectedBlack);
@@ -207,6 +210,7 @@ public class SettingsActivity extends Activity {
                 SettingsService.saveColor(getApplicationContext(), getString(R.string.shared_preferences_color_white),selectedWhite);
 
                 SettingsService.setLifepoints(getApplicationContext(), Integer.parseInt(txtLifepoints.getText().toString()));
+                SettingsService.setLongClickPoints(getApplicationContext(), Integer.parseInt(txtLongClickPoints.getText().toString()));
                 finish();
             }
         });
@@ -237,7 +241,9 @@ public class SettingsActivity extends Activity {
                 updateColor(cmdSelectWhite, txtWhite, selectedWhite);
 
                 SettingsService.resetLifepoints(getApplicationContext());
+                SettingsService.resetLongClickPoints(getApplicationContext());
                 txtLifepoints.setText(String.valueOf(SettingsService.getLifepoints(getApplicationContext())));
+                txtLongClickPoints.setText(String.valueOf(SettingsService.getLongClickPoints(getApplicationContext())));
             }
         });
 

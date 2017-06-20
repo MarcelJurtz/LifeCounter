@@ -69,6 +69,10 @@ public class MainActivity extends AppCompatActivity {
     int LP_Default;
     int PP_Default;
 
+    // amount of points that will be added / substraced on long click
+    // default: 5
+    int longClickPoints;
+
     // Default settings
     boolean poisonEnabled = false;
     boolean colorSettingsEnabled = false;
@@ -98,7 +102,6 @@ public class MainActivity extends AppCompatActivity {
 
         player_home.setDefaults(LP_Default, PP_Default);
         player_guest.setDefaults(LP_Default, PP_Default);
-
 
         resetGame();
     }
@@ -131,6 +134,9 @@ public class MainActivity extends AppCompatActivity {
     // Beide Leben wieder auf 20 setzen
     // PoisonCounter deaktivieren
     private void resetGame() {
+
+        longClickPoints = SettingsService.getLongClickPoints(getApplicationContext());
+
         // Lifepoints
         //LP_Guest = LP_Default;
         //LP_Home = LP_Default;
@@ -368,7 +374,7 @@ public class MainActivity extends AppCompatActivity {
         cmdMinusGuest.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                player_guest.updateLifepoints(-5, txtLifeCountGuest);
+                player_guest.updateLifepoints(longClickPoints * -1, txtLifeCountGuest);
                 return true;
             }
         });
@@ -384,7 +390,7 @@ public class MainActivity extends AppCompatActivity {
         cmdMinusHome.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                player_home.updateLifepoints(-5, txtLifeCountHome);
+                player_home.updateLifepoints(longClickPoints * -1, txtLifeCountHome);
                 return true;
             }
         });
@@ -400,7 +406,7 @@ public class MainActivity extends AppCompatActivity {
         cmdPlusGuest.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                player_guest.updateLifepoints(5, txtLifeCountGuest);
+                player_guest.updateLifepoints(longClickPoints, txtLifeCountGuest);
                 return true;
             }
         });
@@ -416,7 +422,7 @@ public class MainActivity extends AppCompatActivity {
         cmdPlusHome.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                player_home.updateLifepoints(5, txtLifeCountHome);
+                player_home.updateLifepoints(longClickPoints, txtLifeCountHome);
                 return true;
             }
         });
