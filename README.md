@@ -2,10 +2,10 @@
 
 [![Icon Completed](https://raw.githubusercontent.com/MarcelJurtz/ProjectStatusIcons/master/Completed.png)](https://github.com/MarcelJurtz/ProjectStatusIcons)
 
-This app is a 2-player lifecounter for Magic the Gathering
+This app is a 2-player, customizable lifecounter for Magic the Gathering
 Players should be seated in front of each other, since the layout contains identical controls mirror-flipped for both players.
 Additional poison-counter can be (de)activated.
-Each player can choose the background-color of the individual side.
+Each player can choose the background-color of the individual side, which can be customized individually (default mtg-colors are preset).
 
 In the latest release, an energy-saving mode for AMOLED-Screens has been implemented. To use this feature, hold the 'black'-button at the color selector.
 
@@ -15,6 +15,12 @@ Use the .apk-files included in *RELEASE*, or via [PlayStore](https://play.google
 
 ## Changelog
 
+### Jun. 20, 2017 - Version 8
+
+ * New customization-options - hold the settings-button pressed to enter customization-menu
+   * custom colors
+   * custom lifepoints
+   * custom lifepoint amount on long click
 
 ### Nov. 19, 2016 - Version 7
 
