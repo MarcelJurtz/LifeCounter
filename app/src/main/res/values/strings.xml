@@ -6,6 +6,7 @@
     <string name="setting_color_red">Red:</string>
     <string name="setting_color_white">White:</string>
     <string name="setting_default_lives">Lifepoints:</string>
+    <string name="setting_default_long_click_points">Points on hold (+/-):</string>
 
     <string name="shared_preferences_name">MTG_SETTINGS</string>
     <string name="shared_preferences_color_black">COLOR_BLACK</string>
@@ -15,4 +16,5 @@
     <string name="shared_preferences_color_white">COLOR_WHITE</string>
 
     <string name="shared_preferences_lifepoints">DEFAULT_LIFEPOINTS</string>
+    <string name="shared_preferences_long_click_points">DEFAULT_LONG_CLICK_POINTS</string>
 </resources>
