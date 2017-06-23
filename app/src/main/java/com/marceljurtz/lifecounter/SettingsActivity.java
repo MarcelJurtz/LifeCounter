@@ -1,15 +1,14 @@
 package com.marceljurtz.lifecounter;
 
 import android.app.Activity;
-import android.content.SharedPreferences;
-import android.graphics.Color;
+import android.content.DialogInterface;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
+import android.app.AlertDialog;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.pes.androidmaterialcolorpickerdialog.ColorPicker;
 
@@ -39,6 +38,9 @@ public class SettingsActivity extends Activity {
     static int selectedGreen;
     static int selectedRed;
     static int selectedWhite;
+
+    // Controlling the reset confirmation
+    boolean resetConfirmed = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -122,7 +124,7 @@ public class SettingsActivity extends Activity {
         });
 
         cmdSelectGreen = (Button) findViewById(R.id.cmdSelectGreen);
-        updateColor(cmdSelectGreen,txtGreen, selectedGreen);
+        updateColor(cmdSelectGreen, txtGreen, selectedGreen);
         cmdSelectGreen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -223,30 +225,41 @@ public class SettingsActivity extends Activity {
             }
         });
 
+
+
         cmdReset = (Button) findViewById(R.id.cmdResetSettings);
         cmdReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Reset colors
-                selectedBlack = ColorService.getDefaultBlack();
-                selectedBlue = ColorService.getDefaultBlue();
-                selectedGreen = ColorService.getDefaultGreen();
-                selectedRed = ColorService.getDefaultRed();
-                selectedWhite = ColorService.getDefaultWhite();
 
-                updateColor(cmdSelectBlack, txtBlack, selectedBlack);
-                updateColor(cmdSelectBlue, txtBlue, selectedBlue);
-                updateColor(cmdSelectGreen, txtGreen, selectedGreen);
-                updateColor(cmdSelectRed, txtRed, selectedRed);
-                updateColor(cmdSelectWhite, txtWhite, selectedWhite);
+                new AlertDialog.Builder(SettingsActivity.this)
+                        .setMessage("Reset all settings?")
+                        .setCancelable(false)
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                // Reset colors
+                                selectedBlack = ColorService.getDefaultBlack();
+                                selectedBlue = ColorService.getDefaultBlue();
+                                selectedGreen = ColorService.getDefaultGreen();
+                                selectedRed = ColorService.getDefaultRed();
+                                selectedWhite = ColorService.getDefaultWhite();
 
-                SettingsService.resetLifepoints(getApplicationContext());
-                SettingsService.resetLongClickPoints(getApplicationContext());
-                txtLifepoints.setText(String.valueOf(SettingsService.getLifepoints(getApplicationContext())));
-                txtLongClickPoints.setText(String.valueOf(SettingsService.getLongClickPoints(getApplicationContext())));
+                                updateColor(cmdSelectBlack, txtBlack, selectedBlack);
+                                updateColor(cmdSelectBlue, txtBlue, selectedBlue);
+                                updateColor(cmdSelectGreen, txtGreen, selectedGreen);
+                                updateColor(cmdSelectRed, txtRed, selectedRed);
+                                updateColor(cmdSelectWhite, txtWhite, selectedWhite);
+
+                                SettingsService.resetLifepoints(getApplicationContext());
+                                SettingsService.resetLongClickPoints(getApplicationContext());
+                                txtLifepoints.setText(String.valueOf(SettingsService.getLifepoints(getApplicationContext())));
+                                txtLongClickPoints.setText(String.valueOf(SettingsService.getLongClickPoints(getApplicationContext())));
+                            }
+                        })
+                        .setNegativeButton("No", null)
+                        .show();
             }
         });
-
     }
 
     public void updateColor(Button button, TextView txt, int color) {
