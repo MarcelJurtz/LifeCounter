@@ -15,3 +15,8 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+
+# Resolving java.lang.NoClassDefFoundError: android.support.v7.internal.view.menu.MenuBuilder on Samsung devices
+-keep class * extends android.support.v7.internal.view.menu.MenuBuilder
+-keep class * implements android.support.v7.internal.view.menu.MenuBuilder
+-keep class android.support.v7.internal.view.menu.MenuBuilder
