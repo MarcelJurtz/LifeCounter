@@ -15,6 +15,10 @@ Use the .apk-files included in *RELEASE*, or via [PlayStore](https://play.google
 
 ## Changelog
 
+### Jun. 23, 2017 - Version 9
+
+ * Added confirmation dialog to reset settings
+
 ### Jun. 20, 2017 - Version 8
 
  * New settings-activity to customize colors, accessible by holding the settings-icon
