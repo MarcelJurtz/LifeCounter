@@ -28,7 +28,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Settings"
+                android:text="@string/settings_title"
                 android:id="@+id/lblHeadline"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
@@ -340,14 +340,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Reset"
+                android:text="@string/settings_reset"
                 android:id="@+id/cmdResetSettings"/>
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Discard"
+                android:text="@string/settings_cancel"
                 android:id="@+id/cmdDiscardChanges"/>
 
         </LinearLayout>
@@ -355,7 +355,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Save"
+            android:text="@string/settings_confirm"
             android:id="@+id/cmdSaveChanges"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true" />

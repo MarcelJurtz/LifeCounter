@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">LifeCounter</string>
+    <string name="setting_color_black">Schwarz:</string>
+    <string name="setting_color_blue">Blau:</string>
+    <string name="setting_color_green">Grün:</string>
+    <string name="setting_color_red">Rot:</string>
+    <string name="setting_color_white">Weiß:</string>
+    <string name="setting_default_lives">Lebenspunkte:</string>
+    <string name="setting_default_long_click_points">Gedrückt halten (+/-):</string>
+
+    <string name="settings_title">Einstellungen</string>
+    <string name="settings_confirm">Speichern</string>
+    <string name="settings_cancel">Abbrechen</string>
+    <string name="settings_reset">Zurücksetzen</string>
+    <string name="settings_confirm_reset">Alle Einstellungen zurücksetzen?</string>
+    <string name="settings_confirm_reset_true">Ja</string>
+    <string name="settings_confirm_reset_false">Nein</string>
+
+    <string name="shared_preferences_name">MTG_SETTINGS</string>
+    <string name="shared_preferences_color_black">COLOR_BLACK</string>
+    <string name="shared_preferences_color_blue">COLOR_BLUE</string>
+    <string name="shared_preferences_color_green">COLOR_GREEN</string>
+    <string name="shared_preferences_color_red">COLOR_RED</string>
+    <string name="shared_preferences_color_white">COLOR_WHITE</string>
+
+    <string name="shared_preferences_lifepoints">DEFAULT_LIFEPOINTS</string>
+    <string name="shared_preferences_long_click_points">DEFAULT_LONG_CLICK_POINTS</string>
+</resources>
