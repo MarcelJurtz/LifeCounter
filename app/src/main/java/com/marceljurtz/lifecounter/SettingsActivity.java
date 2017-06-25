@@ -233,9 +233,9 @@ public class SettingsActivity extends Activity {
             public void onClick(View v) {
 
                 new AlertDialog.Builder(SettingsActivity.this)
-                        .setMessage("Reset all settings?")
+                        .setMessage(R.string.settings_confirm_reset)
                         .setCancelable(false)
-                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        .setPositiveButton(R.string.settings_confirm_reset_true, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 // Reset colors
                                 selectedBlack = ColorService.getDefaultBlack();
@@ -256,7 +256,7 @@ public class SettingsActivity extends Activity {
                                 txtLongClickPoints.setText(String.valueOf(SettingsService.getLongClickPoints(getApplicationContext())));
                             }
                         })
-                        .setNegativeButton("No", null)
+                        .setNegativeButton(R.string.settings_confirm_reset_false, null)
                         .show();
             }
         });
