@@ -125,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
         ((GradientDrawable)cmdBlackGuest.getBackground()).setColor(SettingsService.getColor(getApplicationContext(), getString(R.string.shared_preferences_color_black), ColorService.getDefaultBlack()));
         ((GradientDrawable)cmdBlackHome.getBackground()).setColor(SettingsService.getColor(getApplicationContext(), getString(R.string.shared_preferences_color_black), ColorService.getDefaultBlack()));
 
-        resetGame();
+        resetGameTemporary();
 
         super.onStart();
     }
@@ -134,12 +134,7 @@ public class MainActivity extends AppCompatActivity {
     // Beide Leben wieder auf 20 setzen
     // PoisonCounter deaktivieren
     private void resetGame() {
-
-        longClickPoints = SettingsService.getLongClickPoints(getApplicationContext());
-
         // Lifepoints
-        //LP_Guest = LP_Default;
-        //LP_Home = LP_Default;
         LP_Default = SettingsService.getLifepoints(getApplicationContext());
         PP_Default = 0;
 
@@ -148,15 +143,24 @@ public class MainActivity extends AppCompatActivity {
         player_guest.setDefaults(LP_Default, PP_Default);
         player_guest.reset(txtLifeCountGuest, txtPoisonCountGuest);
 
+        setLayoutColor(SettingsService.getColor(getApplicationContext(), getString(R.string.shared_preferences_color_black), ColorService.getDefaultBlack()), layoutHome);
+        setLayoutColor(SettingsService.getColor(getApplicationContext(), getString(R.string.shared_preferences_color_black), ColorService.getDefaultBlack()), layoutGuest);
+
+        resetGameTemporary();
+    }
+
+    // Only resets gui without changing the lifepoints.
+    // This is needed for changig between apps
+    // otherwise, the game will reset by minimization
+    private void resetGameTemporary() {
+        longClickPoints = SettingsService.getLongClickPoints(getApplicationContext());
+
         // Settings
         poisonEnabled = false;
         togglePoison(poisonEnabled);
 
         colorSettingsEnabled = false;
         toggleColorButtonsVisibility(colorSettingsEnabled);
-
-        setLayoutColor(SettingsService.getColor(getApplicationContext(), getString(R.string.shared_preferences_color_black), ColorService.getDefaultBlack()), layoutHome);
-        setLayoutColor(SettingsService.getColor(getApplicationContext(),getString(R.string.shared_preferences_color_black),ColorService.getDefaultBlack()), layoutGuest);
     }
 
     // PoisonCounter umschalten
@@ -456,7 +460,7 @@ public class MainActivity extends AppCompatActivity {
         cmdPlusPoisonHome.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                player_home.updatePoisonPoints(5, txtPoisonCountHome);
+                player_home.updatePoisonPoints(longClickPoints, txtPoisonCountHome);
                 return true;
             }
         });
@@ -472,7 +476,7 @@ public class MainActivity extends AppCompatActivity {
         cmdMinusPoisonHome.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                player_home.updatePoisonPoints(-5, txtPoisonCountHome);
+                player_home.updatePoisonPoints(-longClickPoints, txtPoisonCountHome);
                 return true;
             }
         });
@@ -488,7 +492,7 @@ public class MainActivity extends AppCompatActivity {
         cmdPlusPoisonGuest.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                player_guest.updatePoisonPoints(5, txtPoisonCountGuest);
+                player_guest.updatePoisonPoints(longClickPoints, txtPoisonCountGuest);
                 return true;
             }
         });
@@ -504,7 +508,7 @@ public class MainActivity extends AppCompatActivity {
         cmdMinusPoisonGuest.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                player_guest.updatePoisonPoints(-5, txtPoisonCountGuest);
+                player_guest.updatePoisonPoints(-longClickPoints, txtPoisonCountGuest);
                 return true;
             }
         });

@@ -24,22 +24,36 @@
             android:paddingTop="@dimen/activity_vertical_margin"
             tools:context="com.marceljurtz.lifecounter.SettingsActivity">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="@string/settings_title"
-                android:id="@+id/lblHeadline"
+                android:id="@+id/rlHeadline"
+                android:paddingBottom="10dp"
                 android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:paddingBottom="10dp" />
+                android:gravity="fill">
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/cmdBack"
+                    android:src="@drawable/ic_keyboard_backspace_24dp"
+                    android:background="@android:color/transparent"
+                    android:layout_alignParentLeft="true" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/settings_title"
+                    android:id="@+id/lblHeadline" />
+            </RelativeLayout>
+
 
             <!-- BLACK -->
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/lblHeadline"
+                android:layout_below="@+id/rlHeadline"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:id="@+id/lColorBlack"
