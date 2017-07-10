@@ -149,6 +149,9 @@ public class MainActivity extends AppCompatActivity {
         resetGameTemporary();
     }
 
+    // Only resets gui without changing the lifepoints.
+    // This is needed for changig between apps
+    // otherwise, the game will reset by minimization
     private void resetGameTemporary() {
         longClickPoints = SettingsService.getLongClickPoints(getApplicationContext());
 
@@ -457,7 +460,7 @@ public class MainActivity extends AppCompatActivity {
         cmdPlusPoisonHome.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                player_home.updatePoisonPoints(5, txtPoisonCountHome);
+                player_home.updatePoisonPoints(longClickPoints, txtPoisonCountHome);
                 return true;
             }
         });
@@ -473,7 +476,7 @@ public class MainActivity extends AppCompatActivity {
         cmdMinusPoisonHome.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                player_home.updatePoisonPoints(-5, txtPoisonCountHome);
+                player_home.updatePoisonPoints(-longClickPoints, txtPoisonCountHome);
                 return true;
             }
         });
@@ -489,7 +492,7 @@ public class MainActivity extends AppCompatActivity {
         cmdPlusPoisonGuest.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                player_guest.updatePoisonPoints(5, txtPoisonCountGuest);
+                player_guest.updatePoisonPoints(longClickPoints, txtPoisonCountGuest);
                 return true;
             }
         });
@@ -505,7 +508,7 @@ public class MainActivity extends AppCompatActivity {
         cmdMinusPoisonGuest.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                player_guest.updatePoisonPoints(-5, txtPoisonCountGuest);
+                player_guest.updatePoisonPoints(-longClickPoints, txtPoisonCountGuest);
                 return true;
             }
         });
