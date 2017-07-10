@@ -8,6 +8,7 @@ import android.app.AlertDialog;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.pes.androidmaterialcolorpickerdialog.ColorPicker;
@@ -32,6 +33,8 @@ public class SettingsActivity extends Activity {
     Button cmdSaveChanges;
     Button cmdDiscardChanges;
     Button cmdReset;
+
+    ImageButton cmdBack;
 
     static int selectedBlack;
     static int selectedBlue;
@@ -258,6 +261,14 @@ public class SettingsActivity extends Activity {
                         })
                         .setNegativeButton(R.string.settings_confirm_reset_false, null)
                         .show();
+            }
+        });
+
+        cmdBack = (ImageButton)findViewById(R.id.cmdBack);
+        cmdBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }
