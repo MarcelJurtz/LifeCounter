@@ -38,6 +38,11 @@ Use the .apk-files included in *RELEASE*, or via [PlayStore](https://play.google
 
 ## Changelog
 
+### Jul. 11, 2017 - Version 11 / 1.8.2
+
+ * Fixed automatic resetting when switching between Apps
+ * Adjusted settings layout
+
 ### Jun. 25, 2017 - Version 10 / 1.8.1
 
  * Added multi language support
