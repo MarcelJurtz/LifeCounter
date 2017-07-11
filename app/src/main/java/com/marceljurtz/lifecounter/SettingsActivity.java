@@ -30,7 +30,6 @@ public class SettingsActivity extends Activity {
     Button cmdSelectRed;
     Button cmdSelectWhite;
 
-    Button cmdSaveChanges;
     Button cmdDiscardChanges;
     Button cmdReset;
 
@@ -50,6 +49,7 @@ public class SettingsActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
+        // Textviews for color description
         txtBlack = (TextView) findViewById(R.id.txtColorBlack);
         txtBlue = (TextView) findViewById(R.id.txtColorBlue);
         txtGreen = (TextView) findViewById(R.id.txtColorGreen);
@@ -59,12 +59,14 @@ public class SettingsActivity extends Activity {
         txtLifepoints = (EditText) findViewById(R.id.txtLiveSelection);
         txtLongClickPoints = (EditText) findViewById(R.id.txtLongClickPoints);
 
+        // Get customized color values from settings
         selectedBlack = SettingsService.getColor(getApplicationContext(),getString(R.string.shared_preferences_color_black), ColorService.getDefaultBlack());
         selectedBlue = SettingsService.getColor(getApplicationContext(), getString(R.string.shared_preferences_color_blue), ColorService.getDefaultBlue());
         selectedGreen = SettingsService.getColor(getApplicationContext(),getString(R.string.shared_preferences_color_green), ColorService.getDefaultGreen());
         selectedRed = SettingsService.getColor(getApplicationContext(), getString(R.string.shared_preferences_color_red), ColorService.getDefaultRed());
         selectedWhite = SettingsService.getColor(getApplicationContext(), getString(R.string.shared_preferences_color_white), ColorService.getDefaultWhite());
 
+        // Add hex value of colors to textviews
         txtBlack.setText(ColorService.getHexString(selectedBlack));
         txtBlue.setText(ColorService.getHexString(selectedBlue));
         txtGreen.setText(ColorService.getHexString(selectedGreen));
@@ -73,6 +75,11 @@ public class SettingsActivity extends Activity {
 
         txtLifepoints.setText(String.valueOf(SettingsService.getLifepoints(getApplicationContext())));
         txtLongClickPoints.setText(String.valueOf(SettingsService.getLongClickPoints(getApplicationContext())));
+
+
+        /***************************************************/
+        /*                     BUTTONS                     */
+        /***************************************************/
 
         cmdSelectBlack = (Button) findViewById(R.id.cmdSelectBlack);
         updateColor(cmdSelectBlack, txtBlack, selectedBlack);
@@ -204,22 +211,6 @@ public class SettingsActivity extends Activity {
             }
         });
 
-        cmdSaveChanges = (Button) findViewById(R.id.cmdSaveChanges);
-        cmdSaveChanges.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SettingsService.saveColor(getApplicationContext(), getString(R.string.shared_preferences_color_black),selectedBlack);
-                SettingsService.saveColor(getApplicationContext(), getString(R.string.shared_preferences_color_blue),selectedBlue);
-                SettingsService.saveColor(getApplicationContext(), getString(R.string.shared_preferences_color_green),selectedGreen);
-                SettingsService.saveColor(getApplicationContext(), getString(R.string.shared_preferences_color_red),selectedRed);
-                SettingsService.saveColor(getApplicationContext(), getString(R.string.shared_preferences_color_white),selectedWhite);
-
-                SettingsService.setLifepoints(getApplicationContext(), Integer.parseInt(txtLifepoints.getText().toString()));
-                SettingsService.setLongClickPoints(getApplicationContext(), Integer.parseInt(txtLongClickPoints.getText().toString()));
-                finish();
-            }
-        });
-
         cmdDiscardChanges = (Button) findViewById(R.id.cmdDiscardChanges);
         cmdDiscardChanges.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -229,7 +220,7 @@ public class SettingsActivity extends Activity {
         });
 
 
-
+        // Reset button with confirmation dialog
         cmdReset = (Button) findViewById(R.id.cmdResetSettings);
         cmdReset.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -268,13 +259,32 @@ public class SettingsActivity extends Activity {
         cmdBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                SaveSettings();
                 finish();
             }
         });
     }
 
+    public void SaveSettings() {
+        SettingsService.saveColor(getApplicationContext(), getString(R.string.shared_preferences_color_black),selectedBlack);
+        SettingsService.saveColor(getApplicationContext(), getString(R.string.shared_preferences_color_blue),selectedBlue);
+        SettingsService.saveColor(getApplicationContext(), getString(R.string.shared_preferences_color_green),selectedGreen);
+        SettingsService.saveColor(getApplicationContext(), getString(R.string.shared_preferences_color_red),selectedRed);
+        SettingsService.saveColor(getApplicationContext(), getString(R.string.shared_preferences_color_white), selectedWhite);
+
+        SettingsService.setLifepoints(getApplicationContext(), Integer.parseInt(txtLifepoints.getText().toString()));
+        SettingsService.setLongClickPoints(getApplicationContext(), Integer.parseInt(txtLongClickPoints.getText().toString()));
+    }
+
+    // Set button background and textview text to match
     public void updateColor(Button button, TextView txt, int color) {
         ((GradientDrawable)button.getBackground()).setColor(color);
         txt.setText(ColorService.getHexString(color));
+    }
+
+    @Override
+    public void onBackPressed(){
+        SaveSettings();
+        finish();
     }
 }

@@ -9,7 +9,6 @@
     <string name="setting_default_long_click_points">Points on hold (+/-):</string>
 
     <string name="settings_title">Settings</string>
-    <string name="settings_confirm">Save</string>
     <string name="settings_cancel">Discard</string>
     <string name="settings_reset">Reset</string>
     <string name="settings_confirm_reset">Reset all settings?</string>
