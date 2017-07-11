@@ -9,7 +9,6 @@
     <string name="setting_default_long_click_points">Gedrückt halten (+/-):</string>
 
     <string name="settings_title">Einstellungen</string>
-    <string name="settings_confirm">Speichern</string>
     <string name="settings_cancel">Abbrechen</string>
     <string name="settings_reset">Zurücksetzen</string>
     <string name="settings_confirm_reset">Alle Einstellungen zurücksetzen?</string>
