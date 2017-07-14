@@ -1,6 +1,6 @@
 # Magic The Gathering - Life Counter
 
-[![Icon Completed](https://raw.githubusercontent.com/MarcelJurtz/ProjectStatusIcons/master/Completed.png)](https://github.com/MarcelJurtz/ProjectStatusIcons)
+![Icon](ASSETS/icon_small.png)
 
 This app is a 2-player, customizable lifecounter for Magic the Gathering
 Players should be seated in front of each other, since the layout contains identical controls mirror-flipped for both players.
@@ -28,16 +28,12 @@ All settings are saved using androids SharedPreferences.
 
 For direct download, use the .apk-files from the [*RELEASE*-Folder](./RELEASE).
 
-<a href="https://play.google.com/store/apps/details?id=com.marceljurtz.lifecounter"><img src="Assets/google-play-badge.png" width="200" alt="Get it on Google Play"></a>
+<a href="https://play.google.com/store/apps/details?id=com.marceljurtz.lifecounter"><img src="https://raw.githubusercontent.com/MarcelJurtz/MTG_LifeCounter/master/ASSETS/google-play-badge.png" width="200" alt="Get it on Google Play"></a>
 
 
 ## Screenshots
 
 ![Screenshots](ASSETS/screenshots.png)
-
-## Icon
-
-![Icon](ASSETS/icon_small.png)
 
 ## Languages
 
