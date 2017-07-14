@@ -12,15 +12,32 @@ By holding the button to select *black* background color, the energy-saving mode
 
 ## Customization
 
-Using the settings-button, color options are toggled visible / invisible. Each player can choose their background color.  
+Using the settings-button, color options are toggled visible / invisible. Each player can choose their background color.
+
 The default colors are matched to the original five colors black, blue, green, red and white.  
-By holding the settings-button pressed, an options menu is popping up, where each of the colors can be customized.  
+By holding the settings-button pressed, an options menu is popping up, where each of the colors can be customized.
+
 Also, the player can choose
 
  * how much lifepoints will be used as default
  * how much points will be added / substracted by holding the plus / minus buttons pressed
 
 All settings are saved using androids SharedPreferences.
+
+## Download
+
+For direct download, use the .apk-files from the [*RELEASE*-Folder](./RELEASE).
+
+<a href="https://play.google.com/store/apps/details?id=com.marceljurtz.lifecounter"><img src="Assets/google-play-badge.png" width="200" alt="Get it on Google Play"></a>
+
+
+## Screenshots
+
+![Screenshots](ASSETS/screenshots.png)
+
+## Icon
+
+![Icon](ASSETS/icon_small.png)
 
 ## Languages
 
@@ -31,10 +48,6 @@ The following languages are currently supported:
 
 If you'd like to contribute to the translations, feel free to contact me / submit a pull request.
 The strings are located under ```/app/src/main/res/values/strings.xml```
-
-## Download
-
-Use the .apk-files included in *RELEASE*, or via [PlayStore](https://play.google.com/store/apps/details?id=com.marceljurtz.lifecounter).
 
 ## Changelog
 
@@ -96,23 +109,16 @@ Use the .apk-files included in *RELEASE*, or via [PlayStore](https://play.google
    * Default with 20 lives, currently not changeable
    * Reset functionality
 
-
-## Screenshots
-
-![Screenshots](images/screenshots.png)
-
-## Icon
-
-![Icon](images/icon_small.png)
-
 ## Dependencies
 
 ### Android Material Color Picker Dialog
 
-![Android Material Color Picker Dialog by Pes8](https://github.com/Pes8/android-material-color-picker-dialog)
+[Android Material Color Picker Dialog by Pes8](https://github.com/Pes8/android-material-color-picker-dialog)
 
 Also distributed under MIT-License.
 
 ## License
 
-![MIT](LICENSE)
+[MIT](LICENSE)
+
+Google Play and the Google Play logo are trademarks of Google Inc.
