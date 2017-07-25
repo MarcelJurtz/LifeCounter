@@ -30,6 +30,7 @@ For direct download, use the .apk-files from the [*RELEASE*-Folder](./RELEASE).
 
 <a href="https://play.google.com/store/apps/details?id=com.marceljurtz.lifecounter"><img src="https://raw.githubusercontent.com/MarcelJurtz/MTG_LifeCounter/master/ASSETS/google-play-badge.png" width="200" alt="Get it on Google Play"></a>
 
+<a href="https://f-droid.org/packages/com.marceljurtz.lifecounter/"><img src="https://raw.githubusercontent.com/MarcelJurtz/MTG_LifeCounter/master/ASSETS/fdroid-badge.png" width="200" alt="Get it on F-Droid"></a>
 
 ## Screenshots
 
