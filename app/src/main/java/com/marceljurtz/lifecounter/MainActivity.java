@@ -22,7 +22,6 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -34,8 +33,8 @@ import java.util.Set;
 public class MainActivity extends AppCompatActivity {
 
     RelativeLayout mainLayout;
-    LinearLayout layoutHome;
-    LinearLayout layoutGuest;
+    RelativeLayout layoutHome;
+    RelativeLayout layoutGuest;
 
     ImageButton cmdPlusGuest;
     ImageButton cmdPlusHome;
@@ -246,7 +245,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // Hintergrundfarbe setzen
-    private void setLayoutColor(int color, LinearLayout layout) {
+    private void setLayoutColor(int color, RelativeLayout layout) {
         if(powerSaveOn) {
             toggleEnergySaveMode();
         }
@@ -358,8 +357,8 @@ public class MainActivity extends AppCompatActivity {
 
         // Layouts
         mainLayout = (RelativeLayout)findViewById(R.id.mainLayout);
-        layoutGuest = (LinearLayout)findViewById(R.id.layout_top);
-        layoutHome = (LinearLayout)findViewById(R.id.layout_bottom);
+        layoutGuest = (RelativeLayout)findViewById(R.id.layout_top);
+        layoutHome = (RelativeLayout)findViewById(R.id.layout_bottom);
 
         // Textviews for lifepoints and poisonpoints
         txtLifeCountGuest = (TextView)findViewById(R.id.txtLifeCountGuest);
