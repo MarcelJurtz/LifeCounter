@@ -4,7 +4,9 @@
     <modules>
       <module fileurl="file://D:\AndroidStudioProjects\lifecounter\android_mtg_lifecounter.iml" filepath="D:\AndroidStudioProjects\lifecounter\android_mtg_lifecounter.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://D:\AndroidStudioProjects\lifecounter\app\app.iml" filepath="D:\AndroidStudioProjects\lifecounter\app\app.iml" />
       <module fileurl="file://$PROJECT_DIR$/lifecounter.iml" filepath="$PROJECT_DIR$/lifecounter.iml" />
+      <module fileurl="file://D:\AndroidStudioProjects\lifecounter\lifecounter.iml" filepath="D:\AndroidStudioProjects\lifecounter\lifecounter.iml" />
     </modules>
   </component>
 </project>
