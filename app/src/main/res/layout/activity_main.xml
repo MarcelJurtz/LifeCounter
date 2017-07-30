@@ -5,7 +5,11 @@
     android:layout_height="match_parent"
     tools:context="com.marceljurtz.lifecounter.MainActivity"
     android:id="@+id/mainLayout">
-    <!-- CENTER LAYOUT -->
+
+    <!-- ################################### -->
+    <!--            CENTER LAYOUT            -->
+    <!-- ################################### -->
+
     <RelativeLayout
         android:id="@+id/layout_center"
         android:orientation="vertical"
@@ -14,7 +18,7 @@
         android:layout_centerVertical="true"
         android:background="@color/settingsBar">
 
-        <!-- RESET -->
+        <!-- Reset-Button -->
         <ImageButton
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -44,6 +48,11 @@
 
     </RelativeLayout>
 
+
+    <!-- ################################### -->
+    <!--              TOP LAYOUT             -->
+    <!-- ################################### -->
+
     <RelativeLayout
         android:id="@+id/layout_top"
         android:orientation="vertical"
@@ -52,128 +61,89 @@
         android:layout_above="@+id/layout_center"
         android:background="@color/guestDefault">
 
-        <!-- Lifecount Guest -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="20"
-            android:id="@+id/txtLifeCountGuest"
-            android:textColor="#161618"
-            android:textAlignment="center"
-            android:textSize="90dp"
-            android:rotation="180"
-            android:layout_centerInParent="true"/>
+            <!-- Lifecount Guest -->
+            <TextView
+                android:id="@+id/txtLifeCountGuest"
+                style="@style/mtg_textview_lifepoints"
+                android:rotation="180"/>
 
-        <!-- Add / Reduce Life Away -->
-        <ImageButton
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:id="@+id/cmdPlusGuest"
-            android:background="@drawable/icon_plus"
-            android:layout_marginTop="45dp"
-            android:layout_alignTop="@+id/txtLifeCountGuest"
-            android:layout_toLeftOf="@+id/txtLifeCountGuest"
-            android:layout_toStartOf="@+id/txtLifeCountGuest"
-            android:layout_marginRight="20dp"/>
+            <!-- Add / Reduce Life Away -->
+            <ImageButton
+                android:id="@+id/cmdPlusGuest"
+                style="@style/mtg_button_lifepoints_top"
+                android:background="@drawable/icon_plus"
+                android:layout_marginRight="@dimen/button_space_vertical"
+                android:layout_toLeftOf="@id/txtLifeCountGuest"
+                android:layout_toStartOf="@id/txtLifeCountGuest" />
 
-        <ImageButton
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:id="@+id/cmdMinusGuest"
-            android:background="@drawable/icon_minus"
-            android:layout_marginTop="45dp"
-            android:layout_alignTop="@+id/txtLifeCountGuest"
-            android:layout_toRightOf="@+id/txtLifeCountGuest"
-            android:layout_toEndOf="@+id/txtLifeCountGuest"
-            android:layout_marginLeft="20dp"/>
+            <ImageButton
+                android:id="@+id/cmdMinusGuest"
+                style="@style/mtg_button_lifepoints_top"
+                android:background="@drawable/icon_minus"
+                android:layout_toRightOf="@+id/txtLifeCountGuest"
+                android:layout_toEndOf="@+id/txtLifeCountGuest"
+                android:layout_marginLeft="@dimen/button_space_vertical"/>
 
         <!-- Poison Away -->
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0"
             android:id="@+id/txtPoisonCountGuest"
-            android:textColor="#161618"
-            android:textAlignment="center"
-            android:textSize="40dp"
+            style="@style/mtg_textview_poison"
             android:layout_above="@id/txtLifeCountGuest"
-            android:layout_centerHorizontal="true"
             android:rotation="180" />
 
         <!-- Add / Reduce Poison Away -->
         <ImageButton
-            android:layout_width="30dp"
-            android:layout_height="30dp"
             android:id="@+id/cmdMinusPoisonGuest"
+            style="@style/mtg_button_poison_top"
             android:background="@drawable/icon_minus"
-            android:layout_alignTop="@+id/txtPoisonCountGuest"
             android:layout_toRightOf="@+id/txtPoisonCountGuest"
             android:layout_toEndOf="@+id/txtPoisonCountGuest"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="7dp"/>
+            android:layout_marginLeft="@dimen/button_poison_space_vertical" />
 
         <ImageButton
-            android:layout_width="30dp"
-            android:layout_height="30dp"
             android:id="@+id/cmdPlusPoisonGuest"
+            style="@style/mtg_button_poison_top"
             android:background="@drawable/icon_plus"
-            android:layout_alignTop="@+id/txtPoisonCountGuest"
             android:layout_toLeftOf="@+id/txtPoisonCountGuest"
             android:layout_toStartOf="@+id/txtPoisonCountGuest"
-            android:layout_marginTop="7dp"
-            android:layout_marginRight="16dp"/>
+            android:layout_marginRight="@dimen/button_poison_space_vertical"/>
 
         <!-- Colors: Guest -->
         <Button
-            android:layout_width="35dp"
-            android:layout_height="35dp"
             android:id="@+id/cmdBlackGuest"
-            android:background="@drawable/button_round"
-            android:layout_centerHorizontal="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="@dimen/margin_color_buttons" />
+            style="@style/mtg_color_button_top"
+            android:layout_centerHorizontal="true"/>
 
         <Button
-            android:layout_width="35dp"
-            android:layout_height="35dp"
             android:id="@+id/cmdRedGuest"
-            android:background="@drawable/button_round"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="@dimen/margin_color_buttons"
+            style="@style/mtg_color_button_top"
             android:layout_toLeftOf="@id/cmdBlackGuest"
-            android:layout_marginRight="20dp"/>
+            android:layout_marginRight="@dimen/button_space_vertical"/>
 
         <Button
-            android:layout_width="35dp"
-            android:layout_height="35dp"
             android:id="@+id/cmdWhiteGuest"
-            android:background="@drawable/button_round"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="@dimen/margin_color_buttons"
+            style="@style/mtg_color_button_top"
             android:layout_toLeftOf="@id/cmdRedGuest"
-            android:layout_marginRight = "20dp"/>
+            android:layout_marginRight = "@dimen/button_space_vertical"/>
 
         <Button
-            android:layout_width="35dp"
-            android:layout_height="35dp"
             android:id="@+id/cmdBlueGuest"
-            android:background="@drawable/button_round"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="@dimen/margin_color_buttons"
+            style="@style/mtg_color_button_top"
             android:layout_toRightOf="@id/cmdBlackGuest"
-            android:layout_marginLeft="20dp" />
+            android:layout_marginLeft="@dimen/button_space_vertical" />
 
         <Button
-            android:layout_width="35dp"
-            android:layout_height="35dp"
             android:id="@+id/cmdGreenGuest"
-            android:background="@drawable/button_round"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="@dimen/margin_color_buttons"
+            style="@style/mtg_color_button_top"
             android:layout_toRightOf="@id/cmdBlueGuest"
-            android:layout_marginLeft="20dp"/>
+            android:layout_marginLeft="@dimen/button_space_vertical"/>
 
     </RelativeLayout>
+
+
+    <!-- ################################### -->
+    <!--            BOTTOM LAYOUT            -->
+    <!-- ################################### -->
 
     <RelativeLayout
         android:id="@+id/layout_bottom"
@@ -185,122 +155,79 @@
 
         <!-- Lifecount Home -->
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="20"
             android:id="@+id/txtLifeCountHome"
-            android:textColor="#161618"
-            android:textAlignment="center"
-            android:textSize="90dp"
-            android:layout_centerInParent="true" />
+            style="@style/mtg_textview_lifepoints" />
 
         <!-- Add / Reduce Life Home -->
         <ImageButton
-            android:layout_width="40dp"
-            android:layout_height="40dp"
             android:id="@+id/cmdMinusHome"
+            style="@style/mtg_button_lifepoints_bottom"
             android:background="@drawable/icon_minus"
-            android:layout_alignTop="@+id/txtLifeCountHome"
             android:layout_toLeftOf="@+id/txtLifeCountHome"
             android:layout_toStartOf="@+id/txtLifeCountHome"
-            android:layout_marginTop="45dp"
-            android:layout_marginRight="20dp"/>
+            android:layout_marginRight="@dimen/button_space_vertical"/>
 
         <ImageButton
-            android:layout_width="40dp"
-            android:layout_height="40dp"
             android:id="@+id/cmdPlusHome"
+            style="@style/mtg_button_lifepoints_bottom"
             android:background="@drawable/icon_plus"
-            android:layout_alignTop="@+id/txtLifeCountHome"
             android:layout_toRightOf="@+id/txtLifeCountHome"
             android:layout_toEndOf="@+id/txtLifeCountHome"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="45dp"/>
+            android:layout_marginLeft="@dimen/button_space_vertical" />
+
 
         <!-- Poison Home -->
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0"
             android:id="@+id/txtPoisonCountHome"
-            android:textColor="#161618"
-            android:textAlignment="center"
-            android:textSize="40dp"
-            android:layout_below="@id/txtLifeCountHome"
-            android:layout_centerHorizontal="true"/>
+            style="@style/mtg_textview_poison"
+            android:layout_below="@id/txtLifeCountHome" />
 
         <!-- Add / Reduce Poison Home -->
         <ImageButton
-            android:layout_width="30dp"
-            android:layout_height="30dp"
             android:id="@+id/cmdPlusPoisonHome"
+            style="@style/mtg_button_poison_bottom"
             android:background="@drawable/icon_plus"
-            android:layout_alignTop="@+id/txtPoisonCountHome"
             android:layout_toRightOf="@+id/txtPoisonCountHome"
             android:layout_toEndOf="@+id/txtPoisonCountHome"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="7dp"/>
+            android:layout_marginLeft="16dp"/>
 
         <ImageButton
-            android:layout_width="30dp"
-            android:layout_height="30dp"
             android:id="@+id/cmdMinusPoisonHome"
+            style="@style/mtg_button_poison_bottom"
             android:background="@drawable/icon_minus"
-            android:layout_alignTop="@+id/txtPoisonCountHome"
             android:layout_toLeftOf="@+id/txtPoisonCountHome"
             android:layout_toStartOf="@+id/txtPoisonCountHome"
-            android:layout_marginTop="7dp"
             android:layout_marginRight="16dp"/>
 
         <!-- Colors: Home -->
         <Button
-            android:layout_width="36dp"
-            android:layout_height="36dp"
             android:id="@+id/cmdBlackHome"
-            android:background="@drawable/button_round"
-            android:layout_centerHorizontal="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="@dimen/margin_color_buttons" />
+            style="@style/mtg_color_button_bottom"
+            android:layout_centerHorizontal="true" />
 
         <Button
-            android:layout_width="36dp"
-            android:layout_height="36dp"
             android:id="@+id/cmdBlueHome"
-            android:background="@drawable/button_round"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="@dimen/margin_color_buttons"
+            style="@style/mtg_color_button_bottom"
             android:layout_toLeftOf="@id/cmdBlackHome"
-            android:layout_marginRight="20dp"/>
+            android:layout_marginRight="@dimen/button_space_vertical"/>
 
         <Button
-            android:layout_width="36dp"
-            android:layout_height="36dp"
             android:id="@+id/cmdGreenHome"
-            android:background="@drawable/button_round"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="@dimen/margin_color_buttons"
+            style="@style/mtg_color_button_bottom"
             android:layout_toLeftOf="@id/cmdBlueHome"
-            android:layout_marginRight="20dp"/>
+            android:layout_marginRight="@dimen/button_space_vertical"/>
 
         <Button
-            android:layout_width="36dp"
-            android:layout_height="36dp"
             android:id="@+id/cmdRedHome"
-            android:background="@drawable/button_round"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="@dimen/margin_color_buttons"
+            style="@style/mtg_color_button_bottom"
             android:layout_toRightOf="@id/cmdBlackHome"
-            android:layout_marginLeft="20dp"/>
+            android:layout_marginLeft="@dimen/button_space_vertical"/>
 
         <Button
-            android:layout_width="36dp"
-            android:layout_height="36dp"
             android:id="@+id/cmdWhiteHome"
-            android:background="@drawable/button_round"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="@dimen/margin_color_buttons"
+            style="@style/mtg_color_button_bottom"
             android:layout_toRightOf="@id/cmdRedHome"
-            android:layout_marginLeft="20dp"/>
+            android:layout_marginLeft="@dimen/button_space_vertical"/>
 
     </RelativeLayout>
 </RelativeLayout>

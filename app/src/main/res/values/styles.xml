@@ -8,4 +8,68 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="mtg_color_button_bottom">
+        <item name="android:layout_height">@dimen/size_color_button</item>
+        <item name="android:layout_width">@dimen/size_color_button</item>
+        <item name="android:background">@drawable/button_round</item>
+        <item name="android:layout_alignParentTop">true</item>
+        <item name="android:layout_marginTop">@dimen/color_button_space_horizontal</item>
+    </style>
+
+    <style name="mtg_color_button_top">
+        <item name="android:layout_height">@dimen/size_color_button</item>
+        <item name="android:layout_width">@dimen/size_color_button</item>
+        <item name="android:background">@drawable/button_round</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:layout_marginBottom">@dimen/color_button_space_horizontal</item>
+    </style>
+
+    <style name="mtg_textview_lifepoints">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">20</item>
+        <item name="android:textColor">@color/textColor</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">@dimen/textsize_life</item>
+        <item name="android:layout_centerInParent">true</item>
+    </style>
+
+    <style name="mtg_button_lifepoints_bottom">
+        <item name="android:layout_width">40dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_marginTop">45dp</item>
+        <item name="android:layout_alignTop">@id/txtLifeCountHome</item>
+    </style>
+
+    <style name="mtg_button_lifepoints_top">
+        <item name="android:layout_width">40dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_marginBottom">45dp</item>
+        <item name="android:layout_alignBottom">@id/txtLifeCountGuest</item>
+    </style>
+
+    <style name="mtg_textview_poison">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">0</item>
+        <item name="android:textColor">@color/textColor</item>
+        <item name="android:textSize">@dimen/textsize_poison</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="mtg_button_poison_bottom">
+        <item name="android:layout_width">@dimen/size_config_buttons</item>
+        <item name="android:layout_height">@dimen/size_config_buttons</item>
+        <item name="android:layout_marginBottom">7dp</item>
+        <item name="android:layout_alignBottom">@+id/txtPoisonCountHome</item>
+    </style>
+
+    <style name="mtg_button_poison_top">
+        <item name="android:layout_width">@dimen/size_config_buttons</item>
+        <item name="android:layout_height">@dimen/size_config_buttons</item>
+        <item name="android:layout_marginTop">7dp</item>
+        <item name="android:layout_alignTop">@+id/txtPoisonCountGuest</item>
+    </style>
+
 </resources>
