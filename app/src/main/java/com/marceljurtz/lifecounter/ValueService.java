@@ -2,7 +2,7 @@ package com.marceljurtz.lifecounter;
 
 /**
  * Verwaltung der Standardwerte
- * Hinweis: Standardanzahl Leben über Shared Preferences in MainActivity
+ * Hinweis: Standardanzahl Leben über Shared Preferences in GameActivity
  */
 public class ValueService {
     private static final int MAX_POISON = 25;

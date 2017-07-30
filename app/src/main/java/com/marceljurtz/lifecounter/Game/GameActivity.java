@@ -1,36 +1,26 @@
-package com.marceljurtz.lifecounter;
+package com.marceljurtz.lifecounter.Game;
 
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
-import android.media.Image;
-import android.renderscript.ScriptGroup;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.InputType;
-import android.text.method.CharacterPickerDialog;
-import android.util.TypedValue;
 import android.view.View;
 import android.view.WindowManager;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
+import com.marceljurtz.lifecounter.ColorService;
+import com.marceljurtz.lifecounter.R;
+import com.marceljurtz.lifecounter.Settings.SettingsActivity;
+import com.marceljurtz.lifecounter.Settings.SettingsService;
 
-import java.util.HashSet;
-import java.util.Set;
+public class GameActivity extends AppCompatActivity implements IGameActivity {
 
-public class MainActivity extends AppCompatActivity {
+    private GameController controller;
 
     RelativeLayout mainLayout;
     RelativeLayout layoutHome;
@@ -108,25 +98,41 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
 
-        // Set color button background colors
-        ((GradientDrawable)cmdWhiteGuest.getBackground()).setColor(SettingsService.getColor(getApplicationContext(), getString(R.string.shared_preferences_color_white), ColorService.getDefaultWhite()));
-        ((GradientDrawable)cmdWhiteHome.getBackground()).setColor(SettingsService.getColor(getApplicationContext(), getString(R.string.shared_preferences_color_white), ColorService.getDefaultWhite()));
-
-        ((GradientDrawable)cmdRedGuest.getBackground()).setColor(SettingsService.getColor(getApplicationContext(), getString(R.string.shared_preferences_color_red), ColorService.getDefaultRed()));
-        ((GradientDrawable)cmdRedHome.getBackground()).setColor(SettingsService.getColor(getApplicationContext(), getString(R.string.shared_preferences_color_red), ColorService.getDefaultRed()));
-
-        ((GradientDrawable)cmdGreenGuest.getBackground()).setColor(SettingsService.getColor(getApplicationContext(), getString(R.string.shared_preferences_color_green), ColorService.getDefaultGreen()));
-        ((GradientDrawable)cmdGreenHome.getBackground()).setColor(SettingsService.getColor(getApplicationContext(), getString(R.string.shared_preferences_color_green), ColorService.getDefaultGreen()));
-
-        ((GradientDrawable)cmdBlueGuest.getBackground()).setColor(SettingsService.getColor(getApplicationContext(), getString(R.string.shared_preferences_color_blue), ColorService.getDefaultBlue()));
-        ((GradientDrawable)cmdBlueHome.getBackground()).setColor(SettingsService.getColor(getApplicationContext(), getString(R.string.shared_preferences_color_blue), ColorService.getDefaultBlue()));
-
-        ((GradientDrawable)cmdBlackGuest.getBackground()).setColor(SettingsService.getColor(getApplicationContext(), getString(R.string.shared_preferences_color_black), ColorService.getDefaultBlack()));
-        ((GradientDrawable)cmdBlackHome.getBackground()).setColor(SettingsService.getColor(getApplicationContext(), getString(R.string.shared_preferences_color_black), ColorService.getDefaultBlack()));
+        controller = new GameController(this, getApplicationContext());
 
         resetGameTemporary();
 
         super.onStart();
+    }
+
+    @Override
+    public void initColorButtonBlack(int color) {
+        ((GradientDrawable)cmdBlackGuest.getBackground()).setColor(color);
+        ((GradientDrawable)cmdBlackHome.getBackground()).setColor(color);
+    }
+
+    @Override
+    public void initColorButtonBlue(int color) {
+        ((GradientDrawable)cmdBlueGuest.getBackground()).setColor(color);
+        ((GradientDrawable)cmdBlueHome.getBackground()).setColor(color);
+    }
+
+    @Override
+    public void initColorButtonGreen(int color) {
+        ((GradientDrawable)cmdGreenGuest.getBackground()).setColor(color);
+        ((GradientDrawable)cmdGreenHome.getBackground()).setColor(color);
+    }
+
+    @Override
+    public void initColorButtonRed(int color) {
+        ((GradientDrawable)cmdRedGuest.getBackground()).setColor(color);
+        ((GradientDrawable)cmdRedHome.getBackground()).setColor(color);
+    }
+
+    @Override
+    public void initColorButtonWhite(int color) {
+        ((GradientDrawable)cmdWhiteGuest.getBackground()).setColor(color);
+        ((GradientDrawable)cmdWhiteHome.getBackground()).setColor(color);
     }
 
     // Reset

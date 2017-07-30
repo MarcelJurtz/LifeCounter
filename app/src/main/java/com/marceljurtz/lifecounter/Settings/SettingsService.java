@@ -1,8 +1,10 @@
-package com.marceljurtz.lifecounter;
+package com.marceljurtz.lifecounter.Settings;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+
+import com.marceljurtz.lifecounter.R;
 
 public class SettingsService {
 

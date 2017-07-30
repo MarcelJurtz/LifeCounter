@@ -1,4 +1,4 @@
-package com.marceljurtz.lifecounter;
+package com.marceljurtz.lifecounter.Settings;
 
 import android.app.Activity;
 import android.content.DialogInterface;
@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.marceljurtz.lifecounter.ColorService;
+import com.marceljurtz.lifecounter.R;
 import com.pes.androidmaterialcolorpickerdialog.ColorPicker;
 
 public class SettingsActivity extends Activity {

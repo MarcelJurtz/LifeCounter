@@ -1,6 +1,8 @@
-package com.marceljurtz.lifecounter;
+package com.marceljurtz.lifecounter.Game;
 
 import android.widget.TextView;
+
+import com.marceljurtz.lifecounter.ValueService;
 
 import org.w3c.dom.Text;
 
