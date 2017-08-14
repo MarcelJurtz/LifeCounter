@@ -12,11 +12,7 @@ public class GameModel {
     private final Context context;
     private final SharedPreferences sPrefs;
 
-    public static final int default_black = Color.parseColor("#CCC2C0");
-    public static final int default_blue = Color.parseColor("#AAE0FA");
-    public static final int default_green = Color.parseColor("#9BD3AE");
-    public static final int default_red = Color.parseColor("#FAAA8F");
-    public static final int default_white = Color.parseColor("#FFFCD6");
+
 
     public GameModel(Context context) {
         this.context = context;

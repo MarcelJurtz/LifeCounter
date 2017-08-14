@@ -1,7 +1,6 @@
 package com.marceljurtz.lifecounter.Game;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -18,7 +17,7 @@ import com.marceljurtz.lifecounter.R;
 import com.marceljurtz.lifecounter.Settings.SettingsActivity;
 import com.marceljurtz.lifecounter.Settings.SettingsService;
 
-public class GameActivity extends AppCompatActivity implements IGameActivity {
+public class GameActivity extends AppCompatActivity implements IView {
 
     private GameController controller;
 

@@ -26,29 +26,6 @@ public class GameController {
         gameActivity.initColorButtonWhite(getWhiteInt());
     }
 
-    private Color getBlack() {
-        return gameModel.getColor(getString(R.string.shared_preferences_color_black), gameModel.default_black);
-    }
-
-    private Color getBlue() {
-        return gameModel.getColor(getString(R.string.shared_preferences_color_blue), gameModel.default_blue);
-    }
-
-    private Color getGreen() {
-        return gameModel.getColor(getString(R.string.shared_preferences_color_green), gameModel.default_green);
-    }
-
-    private Color getRed() {
-        return gameModel.getColor(getString(R.string.shared_preferences_color_red), gameModel.default_red);
-    }
-
-    private Color getWhite() {
-        return gameModel.getColor(getString(R.string.shared_preferences_color_white), gameModel.default_white);
-    }
-
-
-
-
     private int getBlackInt() {
         return Color.parseColor(getBlack().toString());
     }

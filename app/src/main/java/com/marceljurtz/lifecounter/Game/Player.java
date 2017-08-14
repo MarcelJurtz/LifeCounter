@@ -1,15 +1,12 @@
 package com.marceljurtz.lifecounter.Game;
 
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.marceljurtz.lifecounter.ValueService;
 
 import org.w3c.dom.Text;
 
-/**
- * Klasse repräsentiert einen Spieler
- * Funktion: Verwaltung Punkt Leben/Gift
- */
 public class Player {
     private int lifePoints;
     private int poisonPoints;
@@ -17,6 +14,7 @@ public class Player {
     private int defaultPoisonpoints;
     private TextView txtLifepoints;
     private TextView txtPoisonpoints;
+    private RelativeLayout backgroundLayout;
 
     public void setDefaults(int defaultLP, int defaultPP) {
         this.defaultPoisonpoints = defaultPP;
