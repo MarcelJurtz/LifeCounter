@@ -1,35 +1,39 @@
 package com.marceljurtz.lifecounter.Game;
 
+import android.content.Context;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.marceljurtz.lifecounter.ValueService;
-
-import org.w3c.dom.Text;
+import com.marceljurtz.lifecounter.Helper.PlayerID;
 
 public class Player {
     private int lifePoints;
     private int poisonPoints;
     private int defaultLifepoints;
     private int defaultPoisonpoints;
-    private TextView txtLifepoints;
-    private TextView txtPoisonpoints;
+    //private TextView txtLifepoints;
+    //private TextView txtPoisonpoints;
     private RelativeLayout backgroundLayout;
+
+    private PlayerID playerID;
+
+    private final int DEFAULT_LIFEPOINTS = 20;
 
     public void setDefaults(int defaultLP, int defaultPP) {
         this.defaultPoisonpoints = defaultPP;
         this.defaultLifepoints = defaultLP;
         this.lifePoints = this.defaultLifepoints;
         this.poisonPoints = this.defaultPoisonpoints;
-        txtLifepoints.setText(String.valueOf(this.lifePoints));
-        txtPoisonpoints.setText(String.valueOf(this.poisonPoints));
+        //txtLifepoints.setText(String.valueOf(this.lifePoints));
+        //txtPoisonpoints.setText(String.valueOf(this.poisonPoints));
     }
 
-    public Player(TextView lp, TextView pp) {
+    public Player(PlayerID id) {
         this.lifePoints = 0;
         this.poisonPoints = 0;
-        txtLifepoints = lp;
-        txtPoisonpoints = pp;
+        this.playerID = id;
+        //txtLifepoints = lp;
+        //txtPoisonpoints = pp;
     }
 
     // Neuladen von Standardwerten
@@ -48,6 +52,18 @@ public class Player {
 
     }
 
+    public PlayerID getPlayerID() {
+        return this.playerID;
+    }
+
+    public int getLifePoints() {
+        return this.lifePoints;
+    }
+
+    public int getPoisonPoints() {
+        return this.poisonPoints;
+    }
+
     // Update TextView "LifePoints"
     // Eingabe des Werts zur Änderung der aktuellen Zahl (+/-)
     public void updateLifepoints(int lp, TextView txtLifePoints) {
@@ -60,6 +76,20 @@ public class Player {
         txtLifePoints.setText(this.lifePoints+"");
     }
 
+    public void updateLifepoints(int amount) {
+        this.lifePoints += amount;
+        if(this.lifePoints < 0) {
+            this.lifePoints = 0;
+        }
+    }
+
+    public void updatePoisonpoints(int amount) {
+        this.poisonPoints += amount;
+        if(this.lifePoints < 0) {
+            this.poisonPoints = 0;
+        }
+    }
+
     // Update TextView "PoisonPoints"
     // Eingabe des Werts zur Änderung der aktuellen Zahl (+/-)
     public void updatePoisonPoints(int pp, TextView txtPoisonPoints) {
@@ -70,6 +100,10 @@ public class Player {
             this.poisonPoints = ValueService.getMinPoison();
         }
         txtPoisonPoints.setText(poisonPoints+"");
+    }
+
+    public static int getDefaultLifepoints(Context context) {
+
     }
 
 

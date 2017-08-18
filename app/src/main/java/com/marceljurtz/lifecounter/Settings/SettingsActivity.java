@@ -11,7 +11,6 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.marceljurtz.lifecounter.ColorService;
 import com.marceljurtz.lifecounter.R;
 import com.pes.androidmaterialcolorpickerdialog.ColorPicker;
 

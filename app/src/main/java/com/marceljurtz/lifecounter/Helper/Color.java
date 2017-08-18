@@ -1,15 +1,13 @@
 package com.marceljurtz.lifecounter.Helper;
 
-import com.marceljurtz.lifecounter.R;
-
 public class Color {
 
     // Default colors for magic cards
-    public static final int default_black = android.graphics.Color.parseColor("#CCC2C0");
-    public static final int default_blue = android.graphics.Color.parseColor("#AAE0FA");
-    public static final int default_green = android.graphics.Color.parseColor("#9BD3AE");
-    public static final int default_red = android.graphics.Color.parseColor("#FAAA8F");
-    public static final int default_white = android.graphics.Color.parseColor("#FFFCD6");
+    public static final int DEFAULT_BLACK = android.graphics.Color.parseColor("#CCC2C0");
+    public static final int DEFAULT_BLUE = android.graphics.Color.parseColor("#AAE0FA");
+    public static final int DEFAULT_GREEN = android.graphics.Color.parseColor("#9BD3AE");
+    public static final int DEFAULT_RED = android.graphics.Color.parseColor("#FAAA8F");
+    public static final int DEFAULT_WHITE = android.graphics.Color.parseColor("#FFFCD6");
 
     public static final int color_save = android.graphics.Color.parseColor("#000000");
 
@@ -45,15 +43,15 @@ public class Color {
     public static Color getDefaultColor(MagicColor color) {
         switch(color) {
             case BLUE:
-                return new Color(MagicColor.BLUE, default_blue);
+                return new Color(MagicColor.BLUE, DEFAULT_BLUE);
             case GREEN:
-                return new Color(MagicColor.GREEN, default_green);
+                return new Color(MagicColor.GREEN, DEFAULT_GREEN);
             case RED:
-                return new Color(MagicColor.RED, default_red);
+                return new Color(MagicColor.RED, DEFAULT_RED);
             case WHITE:
-                return new Color(MagicColor.WHITE, default_white);
+                return new Color(MagicColor.WHITE, DEFAULT_WHITE);
             default:
-                return new Color(MagicColor.BLACK, default_black);
+                return new Color(MagicColor.BLACK, DEFAULT_BLACK);
         }
     }
 }

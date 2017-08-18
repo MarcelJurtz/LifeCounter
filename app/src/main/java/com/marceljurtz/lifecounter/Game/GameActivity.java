@@ -12,7 +12,7 @@ import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.marceljurtz.lifecounter.ColorService;
+import com.marceljurtz.lifecounter.Helper.PlayerID;
 import com.marceljurtz.lifecounter.R;
 import com.marceljurtz.lifecounter.Settings.SettingsActivity;
 import com.marceljurtz.lifecounter.Settings.SettingsService;
@@ -533,5 +533,21 @@ public class GameActivity extends AppCompatActivity implements IView {
                 return true;
             }
         });
+    }
+
+    public void setLifepoints(PlayerID id, int points) {
+        if(id.equals(PlayerID.ONE)) {
+            txtLifeCountHome.setText(points + "");
+        } else if(id.equals(PlayerID.TWO)) {
+            txtLifeCountGuest.setText(points + "");
+        }
+    }
+
+    public void setPoisonpoints(PlayerID id, int points) {
+        if(id.equals(PlayerID.ONE)) {
+            txtPoisonCountHome.setText(points + "");
+        } else if(id.equals(PlayerID.TWO)) {
+            txtPoisonCountGuest.setText(points + "");
+        }
     }
 }
