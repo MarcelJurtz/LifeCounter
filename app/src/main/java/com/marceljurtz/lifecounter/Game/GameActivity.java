@@ -2,6 +2,7 @@ package com.marceljurtz.lifecounter.Game;
 
 import android.content.Intent;
 import android.graphics.drawable.GradientDrawable;
+import android.provider.Settings;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -167,86 +168,72 @@ public class GameActivity extends AppCompatActivity implements IView {
         toggleColorButtonsVisibility(colorSettingsEnabled);
     }
 
-    // PoisonCounter umschalten
-    // ändert Hintergrund
-    private void togglePoison(boolean toggle) {
-        if(!toggle) {
-            cmdTogglePoison.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.icon_poison_disabled));
-        }
-        else {
-            cmdTogglePoison.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.icon_poison));
-        }
-        togglePoisonViewsVisibility(toggle);
+    public void enablePoisonControls() {
+        cmdTogglePoison.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.icon_poison_disabled));
+
+        txtPoisonCountGuest.setVisibility(View.VISIBLE);
+        txtPoisonCountHome.setVisibility(View.VISIBLE);
+        cmdPlusPoisonGuest.setVisibility(View.VISIBLE);
+        cmdPlusPoisonHome.setVisibility(View.VISIBLE);
+        cmdMinusPoisonGuest.setVisibility(View.VISIBLE);
+        cmdMinusPoisonHome.setVisibility(View.VISIBLE);
     }
 
-    // PoisonCounter umschalten
-    // ändert sichtbarkeit (da bei reset extra benötigt)
-    private void togglePoisonViewsVisibility(boolean toggle) {
-        if(toggle) {
-            txtPoisonCountGuest.setVisibility(View.VISIBLE);
-            txtPoisonCountHome.setVisibility(View.VISIBLE);
-            cmdPlusPoisonGuest.setVisibility(View.VISIBLE);
-            cmdPlusPoisonHome.setVisibility(View.VISIBLE);
-            cmdMinusPoisonGuest.setVisibility(View.VISIBLE);
-            cmdMinusPoisonHome.setVisibility(View.VISIBLE);
-        }
-        else {
-            txtPoisonCountGuest.setVisibility(View.INVISIBLE);
-            txtPoisonCountHome.setVisibility(View.INVISIBLE);
-            cmdPlusPoisonGuest.setVisibility(View.INVISIBLE);
-            cmdPlusPoisonHome.setVisibility(View.INVISIBLE);
-            cmdMinusPoisonGuest.setVisibility(View.INVISIBLE);
-            cmdMinusPoisonHome.setVisibility(View.INVISIBLE);
-        }
+    public void disablePoisonControls() {
+        cmdTogglePoison.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.icon_poison));
+
+        txtPoisonCountGuest.setVisibility(View.INVISIBLE);
+        txtPoisonCountHome.setVisibility(View.INVISIBLE);
+        cmdPlusPoisonGuest.setVisibility(View.INVISIBLE);
+        cmdPlusPoisonHome.setVisibility(View.INVISIBLE);
+        cmdMinusPoisonGuest.setVisibility(View.INVISIBLE);
+        cmdMinusPoisonHome.setVisibility(View.INVISIBLE);
     }
 
-    private void toggleColorButtonsVisibility(boolean toggle) {
-        if(!toggle) {
-            cmdToggleColorSettings.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.icon_settings_disabled));
-            cmdBlackHome.setVisibility(View.INVISIBLE);
-            cmdBlackGuest.setVisibility(View.INVISIBLE);
-            cmdBlueHome.setVisibility(View.INVISIBLE);
-            cmdBlueGuest.setVisibility(View.INVISIBLE);
-            cmdGreenHome.setVisibility(View.INVISIBLE);
-            cmdGreenGuest.setVisibility(View.INVISIBLE);
-            cmdRedHome.setVisibility(View.INVISIBLE);
-            cmdRedGuest.setVisibility(View.INVISIBLE);
-            cmdWhiteHome.setVisibility(View.INVISIBLE);
-            cmdWhiteGuest.setVisibility(View.INVISIBLE);
-        }
-        else {
-            cmdToggleColorSettings.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.icon_settings));
-            cmdBlackHome.setVisibility(View.VISIBLE);
-            cmdBlackGuest.setVisibility(View.VISIBLE);
-            cmdBlueHome.setVisibility(View.VISIBLE);
-            cmdBlueGuest.setVisibility(View.VISIBLE);
-            cmdGreenHome.setVisibility(View.VISIBLE);
-            cmdGreenGuest.setVisibility(View.VISIBLE);
-            cmdRedHome.setVisibility(View.VISIBLE);
-            cmdRedGuest.setVisibility(View.VISIBLE);
-            cmdWhiteHome.setVisibility(View.VISIBLE);
-            cmdWhiteGuest.setVisibility(View.VISIBLE);
-        }
+    public void enableSettingsControls() {
+        cmdToggleColorSettings.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.icon_settings));
+        cmdBlackHome.setVisibility(View.VISIBLE);
+        cmdBlackGuest.setVisibility(View.VISIBLE);
+        cmdBlueHome.setVisibility(View.VISIBLE);
+        cmdBlueGuest.setVisibility(View.VISIBLE);
+        cmdGreenHome.setVisibility(View.VISIBLE);
+        cmdGreenGuest.setVisibility(View.VISIBLE);
+        cmdRedHome.setVisibility(View.VISIBLE);
+        cmdRedGuest.setVisibility(View.VISIBLE);
+        cmdWhiteHome.setVisibility(View.VISIBLE);
+        cmdWhiteGuest.setVisibility(View.VISIBLE);
     }
 
-    // Energiesparmodus für AMOLED-Displays
-    public void toggleEnergySaveMode() {
-        if(!powerSaveOn) {
-            layoutHome.setBackgroundColor(ColorService.powerSave);
-            layoutGuest.setBackgroundColor(ColorService.powerSave);
-            txtLifeCountGuest.setTextColor(ColorService.powerSaveTextcolor);
-            txtLifeCountHome.setTextColor(ColorService.powerSaveTextcolor);
-            txtPoisonCountGuest.setTextColor(ColorService.powerSaveTextcolor);
-            txtPoisonCountHome.setTextColor(ColorService.powerSaveTextcolor);
-        } else {
-            layoutHome.setBackgroundColor(SettingsService.getColor(getApplicationContext(), getString(R.string.shared_preferences_color_black), ColorService.getDefaultBlack()));
-            layoutGuest.setBackgroundColor(SettingsService.getColor(getApplicationContext(), getString(R.string.shared_preferences_color_black), ColorService.getDefaultBlack()));
-            txtLifeCountGuest.setTextColor(ColorService.regularTextcolor);
-            txtLifeCountHome.setTextColor(ColorService.regularTextcolor);
-            txtPoisonCountGuest.setTextColor(ColorService.regularTextcolor);
-            txtPoisonCountHome.setTextColor(ColorService.regularTextcolor);
-        }
-        powerSaveOn = !powerSaveOn;
+    public void disableSettingsControls() {
+        cmdToggleColorSettings.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.icon_settings_disabled));
+        cmdBlackHome.setVisibility(View.INVISIBLE);
+        cmdBlackGuest.setVisibility(View.INVISIBLE);
+        cmdBlueHome.setVisibility(View.INVISIBLE);
+        cmdBlueGuest.setVisibility(View.INVISIBLE);
+        cmdGreenHome.setVisibility(View.INVISIBLE);
+        cmdGreenGuest.setVisibility(View.INVISIBLE);
+        cmdRedHome.setVisibility(View.INVISIBLE);
+        cmdRedGuest.setVisibility(View.INVISIBLE);
+        cmdWhiteHome.setVisibility(View.INVISIBLE);
+        cmdWhiteGuest.setVisibility(View.INVISIBLE);
+    }
+
+    public void enableEnergySaving() {
+        layoutHome.setBackgroundColor(ColorService.powerSave);
+        layoutGuest.setBackgroundColor(ColorService.powerSave);
+        txtLifeCountGuest.setTextColor(ColorService.powerSaveTextcolor);
+        txtLifeCountHome.setTextColor(ColorService.powerSaveTextcolor);
+        txtPoisonCountGuest.setTextColor(ColorService.powerSaveTextcolor);
+        txtPoisonCountHome.setTextColor(ColorService.powerSaveTextcolor);
+    }
+
+    public void disableEnergySaving() {
+        layoutHome.setBackgroundColor(SettingsService.getColor(getApplicationContext(), getString(R.string.shared_preferences_color_black), ColorService.getDefaultBlack()));
+        layoutGuest.setBackgroundColor(SettingsService.getColor(getApplicationContext(), getString(R.string.shared_preferences_color_black), ColorService.getDefaultBlack()));
+        txtLifeCountGuest.setTextColor(ColorService.regularTextcolor);
+        txtLifeCountHome.setTextColor(ColorService.regularTextcolor);
+        txtPoisonCountGuest.setTextColor(ColorService.regularTextcolor);
+        txtPoisonCountHome.setTextColor(ColorService.regularTextcolor);
     }
 
     // Hintergrundfarbe setzen
@@ -267,7 +254,7 @@ public class GameActivity extends AppCompatActivity implements IView {
         cmdBlackHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setLayoutColor(SettingsService.getColor(getApplicationContext(),getString(R.string.shared_preferences_color_black),ColorService.getDefaultBlack()), layoutHome);
+                setLayoutColor(controller.getBlackInt(), layoutHome);
             }
         });
         cmdBlackHome.setOnLongClickListener(new View.OnLongClickListener() {
@@ -282,7 +269,7 @@ public class GameActivity extends AppCompatActivity implements IView {
         cmdBlackGuest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setLayoutColor(SettingsService.getColor(getApplicationContext(),getString(R.string.shared_preferences_color_black),ColorService.getDefaultBlack()), layoutGuest);
+                setLayoutColor(controller.getBlackInt(), layoutGuest);
             }
         });
         cmdBlackGuest.setOnLongClickListener(new View.OnLongClickListener() {
@@ -297,7 +284,7 @@ public class GameActivity extends AppCompatActivity implements IView {
         cmdBlueHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setLayoutColor(SettingsService.getColor(getApplicationContext(),getString(R.string.shared_preferences_color_blue),ColorService.getDefaultBlue()), layoutHome);
+                setLayoutColor(controller.getBlueInt(),  layoutHome);
             }
         });
 
@@ -305,7 +292,7 @@ public class GameActivity extends AppCompatActivity implements IView {
         cmdBlueGuest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setLayoutColor(SettingsService.getColor(getApplicationContext(),getString(R.string.shared_preferences_color_blue),ColorService.getDefaultBlue()),layoutGuest);
+                setLayoutColor(controller.getBlueInt(), layoutGuest);
             }
         });
 
@@ -313,7 +300,7 @@ public class GameActivity extends AppCompatActivity implements IView {
         cmdGreenHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setLayoutColor(SettingsService.getColor(getApplicationContext(),getString(R.string.shared_preferences_color_green),ColorService.getDefaultGreen()), layoutHome);
+                setLayoutColor(controller.getGreenInt(),  layoutHome);
             }
         });
 
@@ -321,7 +308,7 @@ public class GameActivity extends AppCompatActivity implements IView {
         cmdGreenGuest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setLayoutColor(SettingsService.getColor(getApplicationContext(),getString(R.string.shared_preferences_color_green),ColorService.getDefaultGreen()), layoutGuest);
+                setLayoutColor(controller.getGreenInt(), layoutGuest);
             }
         });
 
@@ -329,7 +316,7 @@ public class GameActivity extends AppCompatActivity implements IView {
         cmdRedHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setLayoutColor(SettingsService.getColor(getApplicationContext(),getString(R.string.shared_preferences_color_red),ColorService.getDefaultRed()), layoutHome);
+                setLayoutColor(controller.getRedInt(), layoutHome);
             }
         });
 
@@ -337,7 +324,7 @@ public class GameActivity extends AppCompatActivity implements IView {
         cmdRedGuest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setLayoutColor(SettingsService.getColor(getApplicationContext(),getString(R.string.shared_preferences_color_red),ColorService.getDefaultRed()),layoutGuest);
+                setLayoutColor(controller.getRedInt(), layoutGuest);
             }
         });
 
@@ -345,7 +332,7 @@ public class GameActivity extends AppCompatActivity implements IView {
         cmdWhiteHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setLayoutColor(SettingsService.getColor(getApplicationContext(),getString(R.string.shared_preferences_color_white),ColorService.getDefaultWhite()), layoutHome);
+                setLayoutColor(controller.getWhiteInt(), layoutHome);
             }
         });
 
@@ -353,7 +340,7 @@ public class GameActivity extends AppCompatActivity implements IView {
         cmdWhiteGuest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setLayoutColor(SettingsService.getColor(getApplicationContext(),getString(R.string.shared_preferences_color_white),ColorService.getDefaultWhite()),layoutGuest);
+                setLayoutColor(controller.getWhiteInt(),layoutGuest);
             }
         });
     }
@@ -371,18 +358,22 @@ public class GameActivity extends AppCompatActivity implements IView {
         txtPoisonCountHome = (TextView)findViewById(R.id.txtPoisonCountHome);
         txtPoisonCountGuest = (TextView)findViewById(R.id.txtPoisonCountGuest);
 
-        // Guest - Minus
-        cmdMinusGuest = (ImageButton)findViewById(R.id.cmdMinusGuest);
-        cmdMinusGuest.setOnClickListener(new View.OnClickListener() {
+        // ******************************************************* //
+        //                    LIFEPOINTS HOME                      //
+        // ******************************************************* //
+
+        // Home - Plus
+        cmdPlusHome = (ImageButton)findViewById(R.id.cmdPlusHome);
+        cmdPlusHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                player_guest.updateLifepoints(-1, txtLifeCountGuest);
+                controller.updateLifepoints(player_home.getPlayerID(), 1);
             }
         });
-        cmdMinusGuest.setOnLongClickListener(new View.OnLongClickListener() {
+        cmdPlusHome.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                player_guest.updateLifepoints(longClickPoints * -1, txtLifeCountGuest);
+                controller.updateLifepoints(player_home.getPlayerID(), SettingsService.getLongClickPoints());
                 return true;
             }
         });
@@ -392,48 +383,54 @@ public class GameActivity extends AppCompatActivity implements IView {
         cmdMinusHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                player_home.updateLifepoints(-1, txtLifeCountHome);
+                controller.updateLifepoints(player_home.getPlayerID(), -1);
             }
         });
         cmdMinusHome.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                player_home.updateLifepoints(longClickPoints * -1, txtLifeCountHome);
+                controller.updateLifepoints(player_home.getPlayerID(), -SettingsService.getLongClickPoints());
                 return true;
             }
         });
+
+        // ******************************************************* //
+        //                    LIFEPOINTS GUEST                     //
+        // ******************************************************* //
 
         // Guest - Plus
         cmdPlusGuest = (ImageButton)findViewById(R.id.cmdPlusGuest);
         cmdPlusGuest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                player_guest.updateLifepoints(1, txtLifeCountGuest);
+                controller.updateLifepoints(player_guest.getPlayerID(), 1);
             }
         });
         cmdPlusGuest.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                player_guest.updateLifepoints(longClickPoints, txtLifeCountGuest);
+                controller.updateLifepoints(player_guest.getPlayerID(), SettingsService.getLongClickPoints());
                 return true;
             }
         });
 
-        // Home - Plus
-        cmdPlusHome = (ImageButton)findViewById(R.id.cmdPlusHome);
-        cmdPlusHome.setOnClickListener(new View.OnClickListener() {
+        // Guest - Minus
+        cmdMinusGuest = (ImageButton)findViewById(R.id.cmdMinusGuest);
+        cmdMinusGuest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                player_home.updateLifepoints(1, txtLifeCountHome);
+                controller.updateLifepoints(player_guest.getPlayerID(), -1);
             }
         });
-        cmdPlusHome.setOnLongClickListener(new View.OnLongClickListener() {
+        cmdMinusGuest.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                player_home.updateLifepoints(longClickPoints, txtLifeCountHome);
+                controller.updateLifepoints(player_guest.getPlayerID(), -SettingsService.getLongClickPoints());
                 return true;
             }
         });
+
+
 
         // Reset
         cmdResetLP = (ImageButton)findViewById(R.id.cmdResetLP);
@@ -453,18 +450,22 @@ public class GameActivity extends AppCompatActivity implements IView {
             }
         });
 
+        // ******************************************************* //
+        //                       POISON HOME                       //
+        // ******************************************************* //
+
         // Poison Home Plus
         cmdPlusPoisonHome = (ImageButton)findViewById(R.id.cmdPlusPoisonHome);
         cmdPlusPoisonHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                player_home.updatePoisonPoints(1, txtPoisonCountHome);
+                controller.updatePoisonpoints(player_home.getPlayerID(), 1);
             }
         });
         cmdPlusPoisonHome.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                player_home.updatePoisonPoints(longClickPoints, txtPoisonCountHome);
+                controller.updatePoisonpoints(player_home.getPlayerID(), SettingsService.getLongClickPoints());
                 return true;
             }
         });
@@ -474,29 +475,34 @@ public class GameActivity extends AppCompatActivity implements IView {
         cmdMinusPoisonHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                player_home.updatePoisonPoints(-1, txtPoisonCountHome);
+                controller.updatePoisonpoints(player_home.getPlayerID(), -1);
             }
         });
         cmdMinusPoisonHome.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                player_home.updatePoisonPoints(-longClickPoints, txtPoisonCountHome);
+                controller.updatePoisonpoints(player_home.getPlayerID(), -SettingsService.getLongClickPoints());
                 return true;
             }
         });
+
+        // ******************************************************* //
+        //                       POISON GUEST                      //
+        // ******************************************************* //
+
 
         // Poison Guest Plus
         cmdPlusPoisonGuest = (ImageButton)findViewById(R.id.cmdPlusPoisonGuest);
         cmdPlusPoisonGuest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                player_guest.updatePoisonPoints(1, txtPoisonCountGuest);
+                controller.updatePoisonpoints(player_guest.getPlayerID(), 1);
             }
         });
         cmdPlusPoisonGuest.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                player_guest.updatePoisonPoints(longClickPoints, txtPoisonCountGuest);
+                controller.updatePoisonpoints(player_guest.getPlayerID(), SettingsService.getLongClickPoints());
                 return true;
             }
         });
@@ -506,13 +512,13 @@ public class GameActivity extends AppCompatActivity implements IView {
         cmdMinusPoisonGuest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                player_guest.updatePoisonPoints(-1, txtPoisonCountGuest);
+                controller.updatePoisonpoints(player_guest.getPlayerID(), -1);
             }
         });
         cmdMinusPoisonGuest.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                player_guest.updatePoisonPoints(-longClickPoints, txtPoisonCountGuest);
+                controller.updatePoisonpoints(player_guest.getPlayerID(), -SettingsService.getLongClickPoints());
                 return true;
             }
         });

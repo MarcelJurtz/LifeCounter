@@ -11,12 +11,20 @@ public class GameController {
     private GameModel gameModel;
     private GameActivity gameActivity;
 
+    private boolean settingsVisible;
+    private boolean poisonVisible;
+    private boolean energySavingEnabled;
+
     private Player player1;
     private Player player2;
 
     public GameController(GameActivity gameActivity, Context context) {
         this.context = context;
         this.gameActivity = gameActivity;
+
+        settingsVisible = false;
+        poisonVisible = false;
+        energySavingEnabled = false;
 
         player1 = new Player(PlayerID.ONE);
         player2 = new Player(PlayerID.TWO);
@@ -31,23 +39,62 @@ public class GameController {
         gameActivity.initColorButtonWhite(getWhiteInt());
     }
 
-    private int getBlackInt() {
+    public void setSettingsVisible() {
+        settingsVisible = !settingsVisible;
+        if(settingsVisible) {
+            gameActivity.enableSettingsControls();
+        } else {
+            gameActivity.disableSettingsControls();
+        }
+    }
+
+    public boolean getSettingsVisible() {
+        return settingsVisible;
+    }
+
+    public void setPoisonVisible() {
+        poisonVisible = !poisonVisible;
+        if(poisonVisible) {
+            gameActivity.enablePoisonControls();
+        } else {
+            gameActivity.disablePoisonControls();
+        }
+    }
+
+    public boolean getPoisonVisible() {
+        return poisonVisible;
+    }
+
+    public void setEnergySavingEnabled() {
+        energySavingEnabled = !energySavingEnabled;
+        if(energySavingEnabled) {
+            gameActivity.enableEnergySaving();
+        } else {
+            gameActivity.disableEnergySaving();
+        }
+    }
+
+    public boolean getEnergySavingEnabled() {
+        return energySavingEnabled;
+    }
+
+    public int getBlackInt() {
         return Color.parseColor(getBlack().toString());
     }
 
-    private int getBlueInt() {
+    public int getBlueInt() {
         return Color.parseColor(getBlue().toString());
     }
 
-    private int getGreenInt() {
+    public int getGreenInt() {
         return Color.parseColor(getGreen().toString());
     }
 
-    private int getRedInt() {
+    public int getRedInt() {
         return Color.parseColor(getRed().toString());
     }
 
-    private int getWhiteInt() {
+    public int getWhiteInt() {
         return Color.parseColor(getWhite().toString());
     }
 
