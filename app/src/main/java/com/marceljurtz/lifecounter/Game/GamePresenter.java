@@ -145,23 +145,41 @@ public class GamePresenter implements IPresenter {
     }
 
     @Override
-    public void onLifeUpdate(Player player, ClickType clickType) {
+    public void onLifeUpdate(PlayerID playerID, ClickType clickType) {
+        int points = 0;
 
+        // TODO: Update Points
+
+        String pointsStr = String.format("%02d",points);
+        gameActivity.setLifepoints(playerID, pointsStr);
     }
 
     @Override
-    public void onPoisonUpdate(Player player, ClickType clickType) {
+    public void onPoisonUpdate(PlayerID playerID, ClickType clickType) {
+        int points = 0;
 
+        // TODO: Update Points
+
+        String pointsStr = String.format("%02d",points);
+        gameActivity.setPoisonpoints(playerID, pointsStr);
     }
 
     @Override
     public void colorButtonClick(PlayerID playerID, MagicColor color, ClickType clickType) {
-
+        if(clickType.equals(ClickType.SHORT)) {
+            int newColor = com.marceljurtz.lifecounter.Helper.Color.getDefaultColorInt(color);
+            gameActivity.setLayoutColor(playerID, newColor);
+        }
     }
 
     @Override
     public void poisonButtonClick() {
-
+        poisonVisible = !poisonVisible;
+        if(poisonVisible) {
+            gameActivity.enablePoisonControls();
+        } else {
+            gameActivity.disablePoisonControls();
+        }
     }
 
     @Override

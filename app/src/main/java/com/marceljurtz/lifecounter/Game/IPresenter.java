@@ -12,8 +12,8 @@ public interface IPresenter {
 
     // Update life- and poisonpoints
     // Use ClickType to differentiate between regular and long clicks
-    void onLifeUpdate(Player player, ClickType clickType);
-    void onPoisonUpdate(Player player, ClickType clickType);
+    void onLifeUpdate(PlayerID playerID, ClickType clickType);
+    void onPoisonUpdate(PlayerID playerID, ClickType clickType);
 
     void colorButtonClick(PlayerID playerID, MagicColor color, ClickType clickType);
     void poisonButtonClick();

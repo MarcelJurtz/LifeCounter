@@ -54,4 +54,8 @@ public class Color {
                 return new Color(MagicColor.BLACK, DEFAULT_BLACK);
         }
     }
+
+    public static int getDefaultColorInt(MagicColor color) {
+        return getDefaultColor(color).intValue;
+    }
 }
