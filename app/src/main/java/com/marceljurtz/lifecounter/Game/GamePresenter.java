@@ -1,11 +1,15 @@
 package com.marceljurtz.lifecounter.Game;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 
+import com.marceljurtz.lifecounter.Helper.ClickType;
+import com.marceljurtz.lifecounter.Helper.MagicColor;
 import com.marceljurtz.lifecounter.Helper.PlayerID;
+import com.marceljurtz.lifecounter.Settings.SettingsActivity;
 
-public class GameController {
+public class GamePresenter implements IPresenter {
 
     private Context context;
     private GameModel gameModel;
@@ -18,7 +22,7 @@ public class GameController {
     private Player player1;
     private Player player2;
 
-    public GameController(GameActivity gameActivity, Context context) {
+    public GamePresenter(GameActivity gameActivity, Context context) {
         this.context = context;
         this.gameActivity = gameActivity;
 
@@ -117,6 +121,53 @@ public class GameController {
         } else if(id.equals(player2.getPlayerID())) {
             player2.updateLifepoints(amount);
             gameActivity.setPoisonpoints(id, player2.getPoisonPoints());
+        }
+    }
+
+    @Override
+    public void onCreate(IView view) {
+
+    }
+
+    @Override
+    public void onPause() {
+
+    }
+
+    @Override
+    public void onResume() {
+
+    }
+
+    @Override
+    public void onDestroy() {
+
+    }
+
+    @Override
+    public void onLifeUpdate(Player player, ClickType clickType) {
+
+    }
+
+    @Override
+    public void onPoisonUpdate(Player player, ClickType clickType) {
+
+    }
+
+    @Override
+    public void colorButtonClick(PlayerID playerID, MagicColor color, ClickType clickType) {
+
+    }
+
+    @Override
+    public void poisonButtonClick() {
+
+    }
+
+    @Override
+    public void settingsButtonClick(ClickType clickType) {
+        if(clickType.equals(ClickType.LONG)) {
+            gameActivity.loadSettingsActivity();
         }
     }
 }
