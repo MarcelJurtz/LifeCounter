@@ -25,8 +25,22 @@ public class PreferenceManager {
     }
 
 
+    //region Long and Short Click Point Amounts
+    private static final int LONGCLICK_POINTS = 5;
+    private static final int SHORTCLICK_POINTS = 1;
 
-    // DEFAULT MAX AND MIN VALUES
+    public static int getShortclickPoints() {
+        return SHORTCLICK_POINTS;
+    }
+
+    public static int getLongclickPoints(Context context) {
+        SharedPreferences sprefs = context.getSharedPreferences(context.getString(R.string.shared_preferences_name), Activity.MODE_PRIVATE);
+        int points = sprefs.getInt(context.getString(R.string.shared_preferences_long_click_points), LONGCLICK_POINTS);
+        return points;
+    }
+    //endregion
+
+    //region MAX and MIN Values
     private static final int MAX_POISON = 25;
     private static final int MIN_POISON = 0;
     private static final int MAX_LIFE = 1000;
@@ -47,9 +61,9 @@ public class PreferenceManager {
     public static int getMinLife() {
         return MIN_LIFE;
     }
+    //endregion
 
-
-    // DEFAULT COLORS
+    //region Colors
     public static final int powerSave = android.graphics.Color.parseColor("#000000");
     public static final int powerSaveTextcolor = android.graphics.Color.parseColor("#CCC2C0");
     public static final int regularTextcolor = android.graphics.Color.parseColor("#161618");
@@ -95,4 +109,5 @@ public class PreferenceManager {
     public static String getHexString(int color) {
         return String.format("#%06X", 0xFFFFFF & color);
     }
+    //endregion
 }

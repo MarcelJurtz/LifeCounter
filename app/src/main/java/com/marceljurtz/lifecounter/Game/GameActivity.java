@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.marceljurtz.lifecounter.Helper.ClickType;
 import com.marceljurtz.lifecounter.Helper.MagicColor;
+import com.marceljurtz.lifecounter.Helper.Operator;
 import com.marceljurtz.lifecounter.Helper.PlayerID;
 import com.marceljurtz.lifecounter.R;
 import com.marceljurtz.lifecounter.Settings.SettingsActivity;
@@ -225,13 +226,13 @@ public class GameActivity extends AppCompatActivity implements IView {
         cmdPlusHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.updateLifepoints(player_home.getPlayerID(), 1);
+                presenter.onLifeUpdate(player_home.getPlayerID(), ClickType.SHORT, Operator.ADD);
             }
         });
         cmdPlusHome.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                presenter.updateLifepoints(player_home.getPlayerID(), SettingsService.getLongClickPoints());
+                presenter.onLifeUpdate(player_home.getPlayerID(), ClickType.LONG, Operator.ADD);
                 return true;
             }
         });
@@ -241,13 +242,13 @@ public class GameActivity extends AppCompatActivity implements IView {
         cmdMinusHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.updateLifepoints(player_home.getPlayerID(), -1);
+                presenter.onLifeUpdate(player_home.getPlayerID(), ClickType.SHORT, Operator.SUBSTRACT);
             }
         });
         cmdMinusHome.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                presenter.updateLifepoints(player_home.getPlayerID(), -SettingsService.getLongClickPoints());
+                presenter.onLifeUpdate(player_home.getPlayerID(), ClickType.LONG, Operator.SUBSTRACT);
                 return true;
             }
         });
@@ -261,13 +262,13 @@ public class GameActivity extends AppCompatActivity implements IView {
         cmdPlusGuest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.updateLifepoints(player_guest.getPlayerID(), 1);
+                presenter.onLifeUpdate(player_guest.getPlayerID(), ClickType.SHORT, Operator.ADD);
             }
         });
         cmdPlusGuest.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                presenter.updateLifepoints(player_guest.getPlayerID(), SettingsService.getLongClickPoints());
+                presenter.onLifeUpdate(player_guest.getPlayerID(), ClickType.LONG, Operator.ADD);
                 return true;
             }
         });
@@ -277,13 +278,13 @@ public class GameActivity extends AppCompatActivity implements IView {
         cmdMinusGuest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.updateLifepoints(player_guest.getPlayerID(), -1);
+                presenter.onLifeUpdate(player_guest.getPlayerID(), ClickType.SHORT, Operator.SUBSTRACT);
             }
         });
         cmdMinusGuest.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                presenter.updateLifepoints(player_guest.getPlayerID(), -SettingsService.getLongClickPoints());
+                presenter.onLifeUpdate(player_guest.getPlayerID(), ClickType.LONG, Operator.SUBSTRACT);
                 return true;
             }
         });

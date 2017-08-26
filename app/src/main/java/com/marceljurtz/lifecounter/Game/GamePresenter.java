@@ -6,6 +6,7 @@ import android.graphics.Color;
 
 import com.marceljurtz.lifecounter.Helper.ClickType;
 import com.marceljurtz.lifecounter.Helper.MagicColor;
+import com.marceljurtz.lifecounter.Helper.Operator;
 import com.marceljurtz.lifecounter.Helper.PlayerID;
 import com.marceljurtz.lifecounter.Settings.SettingsActivity;
 
@@ -145,20 +146,18 @@ public class GamePresenter implements IPresenter {
     }
 
     @Override
-    public void onLifeUpdate(PlayerID playerID, ClickType clickType) {
-        int points = 0;
-
-        // TODO: Update Points
+    public void onLifeUpdate(PlayerID playerID, ClickType clickType, Operator operator) {
+        gameModel.updateLifepoints(playerID, clickType, operator);
+        int points = gameModel.getPlayerLifepoints(playerID);
 
         String pointsStr = String.format("%02d",points);
         gameActivity.setLifepoints(playerID, pointsStr);
     }
 
     @Override
-    public void onPoisonUpdate(PlayerID playerID, ClickType clickType) {
-        int points = 0;
-
-        // TODO: Update Points
+    public void onPoisonUpdate(PlayerID playerID, ClickType clickType, Operator operator) {
+        gameModel.updatePoisonpoints(playerID, clickType, operator);
+        int points = gameModel.getPlayerPoisonpoints(playerID);
 
         String pointsStr = String.format("%02d",points);
         gameActivity.setPoisonpoints(playerID, pointsStr);

@@ -5,8 +5,13 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 
+import com.marceljurtz.lifecounter.Helper.ClickType;
+import com.marceljurtz.lifecounter.Helper.Operator;
+import com.marceljurtz.lifecounter.Helper.PlayerID;
 import com.marceljurtz.lifecounter.Helper.PreferenceManager;
 import com.marceljurtz.lifecounter.R;
+
+import static com.marceljurtz.lifecounter.Helper.PlayerID.TWO;
 
 public class GameModel {
 
@@ -42,6 +47,68 @@ public class GameModel {
 
         for (Player p: players) {
             p.setDefaults(lifepoints, DEFAULT_POISONPOINTS);
+        }
+    }
+
+    public void updateLifepoints(PlayerID playerID, ClickType clickType, Operator operator) {
+
+        int amount = PreferenceManager.SHORTCLICK_POINTS;
+        if(clickType.equals(ClickType.LONG)) amount = PreferenceManager.LONGCLICK_POINTS;
+
+        if(operator.equals(Operator.SUBSTRACT)) amount *= -1;
+
+        switch(playerID) {
+            case ONE:
+                players[0].updateLifepoints(amount);
+                break;
+            case TWO:
+                players[1].updateLifepoints(amount);
+                break;
+            default:
+                // Nothing to do
+                break;
+        }
+    }
+
+    public void updatePoisonpoints(PlayerID playerID, ClickType clickType, Operator operator) {
+
+        int amount = PreferenceManager.SHORTCLICK_POINTS;
+        if(clickType.equals(ClickType.LONG)) amount = PreferenceManager.LONGCLICK_POINTS;
+
+        if(operator.equals(Operator.SUBSTRACT)) amount *= -1;
+
+        switch(playerID) {
+            case ONE:
+                players[0].updatePoisonpoints(amount);
+                break;
+            case TWO:
+                players[1].updatePoisonpoints(amount);
+                break;
+            default:
+                // Nothing to do
+                break;
+        }
+    }
+
+    public int getPlayerLifepoints(PlayerID playerID) {
+        switch(playerID) {
+            case ONE :
+                return players[0].getLifePoints();
+            case TWO:
+                return players[1].getLifePoints();
+            default:
+                return 0;
+        }
+    }
+
+    public int getPlayerPoisonpoints(PlayerID playerID) {
+        switch(playerID) {
+            case ONE :
+                return players[0].getPoisonPoints();
+            case TWO:
+                return players[1].getPoisonPoints();
+            default:
+                return 0;
         }
     }
 }
