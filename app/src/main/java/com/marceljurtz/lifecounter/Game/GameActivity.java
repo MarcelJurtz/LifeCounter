@@ -1,6 +1,9 @@
 package com.marceljurtz.lifecounter.Game;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.GradientDrawable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -16,6 +19,7 @@ import com.marceljurtz.lifecounter.Helper.ClickType;
 import com.marceljurtz.lifecounter.Helper.MagicColor;
 import com.marceljurtz.lifecounter.Helper.Operator;
 import com.marceljurtz.lifecounter.Helper.PlayerID;
+import com.marceljurtz.lifecounter.Helper.PreferenceManager;
 import com.marceljurtz.lifecounter.R;
 import com.marceljurtz.lifecounter.Settings.SettingsActivity;
 import com.marceljurtz.lifecounter.Settings.SettingsService;
@@ -72,6 +76,8 @@ public class GameActivity extends AppCompatActivity implements IView {
     Player player_home;
     Player player_guest;
 
+    SharedPreferences preferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,6 +89,9 @@ public class GameActivity extends AppCompatActivity implements IView {
 
         // Disable screen timeout
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+
+        // Init SharedPreferences
+        preferences = getApplicationContext().getSharedPreferences(PreferenceManager.PREFS, Activity.MODE_PRIVATE);
 
         //region Initialize Views
 
@@ -329,7 +338,7 @@ public class GameActivity extends AppCompatActivity implements IView {
         cmdPlusPoisonHome.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                presenter.updatePoisonpoints(player_home.getPlayerID(), SettingsService.getLongClickPoints());
+                presenter.updatePoisonpoints(player_home.getPlayerID(), SettingsService.getLongClickPoints(getApplicationContext()));
                 return true;
             }
         });
@@ -345,7 +354,7 @@ public class GameActivity extends AppCompatActivity implements IView {
         cmdMinusPoisonHome.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                presenter.updatePoisonpoints(player_home.getPlayerID(), -SettingsService.getLongClickPoints());
+                presenter.updatePoisonpoints(player_home.getPlayerID(), -SettingsService.getLongClickPoints(getApplicationContext()));
                 return true;
             }
         });
@@ -365,7 +374,7 @@ public class GameActivity extends AppCompatActivity implements IView {
         cmdPlusPoisonGuest.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                presenter.updatePoisonpoints(player_guest.getPlayerID(), SettingsService.getLongClickPoints());
+                presenter.updatePoisonpoints(player_guest.getPlayerID(), SettingsService.getLongClickPoints(getApplicationContext()));
                 return true;
             }
         });
@@ -381,7 +390,7 @@ public class GameActivity extends AppCompatActivity implements IView {
         cmdMinusPoisonGuest.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                presenter.updatePoisonpoints(player_guest.getPlayerID(), -SettingsService.getLongClickPoints());
+                presenter.updatePoisonpoints(player_guest.getPlayerID(), -SettingsService.getLongClickPoints(getApplicationContext()));
                 return true;
             }
         });
@@ -412,7 +421,7 @@ public class GameActivity extends AppCompatActivity implements IView {
 
     @Override
     protected void onStart() {
-        presenter = new GamePresenter(this, getApplicationContext());
+        presenter = new GamePresenter(this, preferences);
         super.onStart();
     }
 
@@ -455,6 +464,18 @@ public class GameActivity extends AppCompatActivity implements IView {
     public void loadSettingsActivity() {
         Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    public void setPlayerLayoutBackgroundColor(PlayerID playerID, int color) {
+        switch(playerID) {
+            case ONE:
+                layoutHome.setBackgroundColor(color);
+                break;
+            case TWO:
+                layoutGuest.setBackgroundColor(color);
+                break;
+        }
     }
 
     @Override
@@ -561,23 +582,23 @@ public class GameActivity extends AppCompatActivity implements IView {
 
     //region Toggle Energy Saving Option
     @Override
-    public void enableEnergySaving() {
-        layoutHome.setBackgroundColor(ColorService.powerSave);
-        layoutGuest.setBackgroundColor(ColorService.powerSave);
-        txtLifeCountGuest.setTextColor(ColorService.powerSaveTextcolor);
-        txtLifeCountHome.setTextColor(ColorService.powerSaveTextcolor);
-        txtPoisonCountGuest.setTextColor(ColorService.powerSaveTextcolor);
-        txtPoisonCountHome.setTextColor(ColorService.powerSaveTextcolor);
+    public void enableEnergySaving(int powerSaveColor, int powerSaveTextColor) {
+        layoutHome.setBackgroundColor(powerSaveColor);
+        layoutGuest.setBackgroundColor(powerSaveColor);
+        txtLifeCountGuest.setTextColor(powerSaveTextColor);
+        txtLifeCountHome.setTextColor(powerSaveTextColor);
+        txtPoisonCountGuest.setTextColor(powerSaveTextColor);
+        txtPoisonCountHome.setTextColor(powerSaveTextColor);
     }
 
     @Override
-    public void disableEnergySaving() {
-        layoutHome.setBackgroundColor(SettingsService.getColor(getApplicationContext(), getString(R.string.shared_preferences_color_black), ColorService.getDefaultBlack()));
-        layoutGuest.setBackgroundColor(SettingsService.getColor(getApplicationContext(), getString(R.string.shared_preferences_color_black), ColorService.getDefaultBlack()));
-        txtLifeCountGuest.setTextColor(ColorService.regularTextcolor);
-        txtLifeCountHome.setTextColor(ColorService.regularTextcolor);
-        txtPoisonCountGuest.setTextColor(ColorService.regularTextcolor);
-        txtPoisonCountHome.setTextColor(ColorService.regularTextcolor);
+    public void disableEnergySaving(int defaultBlack, int regularTextColor) {
+        layoutHome.setBackgroundColor(defaultBlack);
+        layoutGuest.setBackgroundColor(defaultBlack);
+        txtLifeCountGuest.setTextColor(regularTextColor);
+        txtLifeCountHome.setTextColor(regularTextColor);
+        txtPoisonCountGuest.setTextColor(regularTextColor);
+        txtPoisonCountHome.setTextColor(regularTextColor);
     }
     //endregion
 
@@ -600,4 +621,9 @@ public class GameActivity extends AppCompatActivity implements IView {
         }
     }
     //endregion
+
+    @Override
+    public Context getContext() {
+        return getApplicationContext();
+    }
 }

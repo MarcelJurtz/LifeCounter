@@ -2,17 +2,19 @@ package com.marceljurtz.lifecounter.Game;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 
 import com.marceljurtz.lifecounter.Helper.ClickType;
 import com.marceljurtz.lifecounter.Helper.MagicColor;
 import com.marceljurtz.lifecounter.Helper.Operator;
 import com.marceljurtz.lifecounter.Helper.PlayerID;
+import com.marceljurtz.lifecounter.Helper.PreferenceManager;
 import com.marceljurtz.lifecounter.Settings.SettingsActivity;
 
 public class GamePresenter implements IPresenter {
 
-    private Context context;
+    private SharedPreferences preferences;
     private GameModel gameModel;
     private GameActivity gameActivity;
 
@@ -23,8 +25,8 @@ public class GamePresenter implements IPresenter {
     private Player player1;
     private Player player2;
 
-    public GamePresenter(GameActivity gameActivity, Context context) {
-        this.context = context;
+    public GamePresenter(GameActivity gameActivity, SharedPreferences preferences) {
+        this.preferences = preferences;
         this.gameActivity = gameActivity;
 
         settingsVisible = false;
@@ -34,14 +36,14 @@ public class GamePresenter implements IPresenter {
         player1 = new Player(PlayerID.ONE);
         player2 = new Player(PlayerID.TWO);
 
-        gameModel = new GameModel(context, new Player[]{player1, player2});
+        gameModel = new GameModel(preferences, new Player[]{player1, player2});
 
         // Initiate default colors
-        gameActivity.initColorButtonBlack(getBlackInt());
-        gameActivity.initColorButtonBlue(getBlueInt());
-        gameActivity.initColorButtonGreen(getGreenInt());
-        gameActivity.initColorButtonRed(getRedInt());
-        gameActivity.initColorButtonWhite(getWhiteInt());
+        gameActivity.initColorButton(MagicColor.BLACK, PreferenceManager.getDefaultBlack(preferences));
+        gameActivity.initColorButton(MagicColor.BLUE, PreferenceManager.getDefaultBlue(preferences));
+        gameActivity.initColorButton(MagicColor.GREEN, PreferenceManager.getDefaultGreen(preferences));
+        gameActivity.initColorButton(MagicColor.RED, PreferenceManager.getDefaultRed(preferences));
+        gameActivity.initColorButton(MagicColor.WHITE, PreferenceManager.getDefaultWhite(preferences));
     }
 
     public void setSettingsVisible() {
@@ -73,9 +75,9 @@ public class GamePresenter implements IPresenter {
     public void setEnergySavingEnabled() {
         energySavingEnabled = !energySavingEnabled;
         if(energySavingEnabled) {
-            gameActivity.enableEnergySaving();
+            gameActivity.enableEnergySaving(PreferenceManager.powerSave, PreferenceManager.powerSaveTextcolor);
         } else {
-            gameActivity.disableEnergySaving();
+            gameActivity.disableEnergySaving(PreferenceManager.getDefaultBlack(preferences), PreferenceManager.regularTextcolor);
         }
     }
 
@@ -83,34 +85,14 @@ public class GamePresenter implements IPresenter {
         return energySavingEnabled;
     }
 
-    public int getBlackInt() {
-        return Color.parseColor(getBlack().toString());
-    }
-
-    public int getBlueInt() {
-        return Color.parseColor(getBlue().toString());
-    }
-
-    public int getGreenInt() {
-        return Color.parseColor(getGreen().toString());
-    }
-
-    public int getRedInt() {
-        return Color.parseColor(getRed().toString());
-    }
-
-    public int getWhiteInt() {
-        return Color.parseColor(getWhite().toString());
-    }
-
     // Increase or decrease lifepoints
     public void updateLifepoints(PlayerID id, int amount) {
         if(id.equals(player1.getPlayerID())) {
             player1.updateLifepoints(amount);
-            gameActivity.setLifepoints(id, player1.getLifePoints());
+            gameActivity.setLifepoints(id, String.format("%02d",player1.getLifePoints()));
         } else if(id.equals(player2.getPlayerID())) {
             player2.updateLifepoints(amount);
-            gameActivity.setLifepoints(id, player2.getLifePoints());
+            gameActivity.setLifepoints(id, String.format("%02d",player2.getLifePoints()));
         }
     }
 
@@ -118,10 +100,10 @@ public class GamePresenter implements IPresenter {
     public void updatePoisonpoints(PlayerID id, int amount) {
         if(id.equals(player1.getPlayerID())) {
             player1.updateLifepoints(amount);
-            gameActivity.setPoisonpoints(id, player1.getPoisonPoints());
+            gameActivity.setPoisonpoints(id, String.format("%02d",player1.getPoisonPoints()));
         } else if(id.equals(player2.getPlayerID())) {
             player2.updateLifepoints(amount);
-            gameActivity.setPoisonpoints(id, player2.getPoisonPoints());
+            gameActivity.setPoisonpoints(id, String.format("%02d",player2.getPoisonPoints()));
         }
     }
 
@@ -186,5 +168,10 @@ public class GamePresenter implements IPresenter {
         if(clickType.equals(ClickType.LONG)) {
             gameActivity.loadSettingsActivity();
         }
+    }
+
+    @Override
+    public void resetButtonClick() {
+
     }
 }

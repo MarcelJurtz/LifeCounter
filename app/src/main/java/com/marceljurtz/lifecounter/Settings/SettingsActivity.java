@@ -2,6 +2,7 @@ package com.marceljurtz.lifecounter.Settings;
 
 import android.app.Activity;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.app.AlertDialog;
@@ -11,6 +12,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.marceljurtz.lifecounter.Helper.PreferenceManager;
 import com.marceljurtz.lifecounter.R;
 import com.pes.androidmaterialcolorpickerdialog.ColorPicker;
 
@@ -45,10 +47,14 @@ public class SettingsActivity extends Activity {
     // Controlling the reset confirmation
     boolean resetConfirmed = false;
 
+    SharedPreferences preferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+
+        preferences = getApplicationContext().getSharedPreferences(PreferenceManager.PREFS, Activity.MODE_PRIVATE);
 
         // Textviews for color description
         txtBlack = (TextView) findViewById(R.id.txtColorBlack);
@@ -61,18 +67,18 @@ public class SettingsActivity extends Activity {
         txtLongClickPoints = (EditText) findViewById(R.id.txtLongClickPoints);
 
         // Get customized color values from settings
-        selectedBlack = SettingsService.getColor(getApplicationContext(),getString(R.string.shared_preferences_color_black), ColorService.getDefaultBlack());
-        selectedBlue = SettingsService.getColor(getApplicationContext(), getString(R.string.shared_preferences_color_blue), ColorService.getDefaultBlue());
-        selectedGreen = SettingsService.getColor(getApplicationContext(),getString(R.string.shared_preferences_color_green), ColorService.getDefaultGreen());
-        selectedRed = SettingsService.getColor(getApplicationContext(), getString(R.string.shared_preferences_color_red), ColorService.getDefaultRed());
-        selectedWhite = SettingsService.getColor(getApplicationContext(), getString(R.string.shared_preferences_color_white), ColorService.getDefaultWhite());
+        selectedBlack = PreferenceManager.getDefaultBlack(preferences);
+        selectedBlue = PreferenceManager.getDefaultBlue(preferences);
+        selectedGreen = PreferenceManager.getDefaultGreen(preferences);
+        selectedRed = PreferenceManager.getDefaultRed(preferences);
+        selectedWhite = PreferenceManager.getDefaultWhite(preferences);
 
         // Add hex value of colors to textviews
-        txtBlack.setText(ColorService.getHexString(selectedBlack));
-        txtBlue.setText(ColorService.getHexString(selectedBlue));
-        txtGreen.setText(ColorService.getHexString(selectedGreen));
-        txtRed.setText(ColorService.getHexString(selectedRed));
-        txtWhite.setText(ColorService.getHexString(selectedWhite));
+        txtBlack.setText(PreferenceManager.getHexString(selectedBlack));
+        txtBlue.setText(PreferenceManager.getHexString(selectedBlue));
+        txtGreen.setText(PreferenceManager.getHexString(selectedGreen));
+        txtRed.setText(PreferenceManager.getHexString(selectedRed));
+        txtWhite.setText(PreferenceManager.getHexString(selectedWhite));
 
         txtLifepoints.setText(String.valueOf(SettingsService.getLifepoints(getApplicationContext())));
         txtLongClickPoints.setText(String.valueOf(SettingsService.getLongClickPoints(getApplicationContext())));
@@ -88,9 +94,9 @@ public class SettingsActivity extends Activity {
             @Override
             public void onClick(View v) {
 
-                int r = ColorService.getRGB(selectedBlack)[0];
-                int g = ColorService.getRGB(selectedBlack)[1];
-                int b = ColorService.getRGB(selectedBlack)[2];
+                int r = PreferenceManager.getRGB(selectedBlack)[0];
+                int g = PreferenceManager.getRGB(selectedBlack)[1];
+                int b = PreferenceManager.getRGB(selectedBlack)[2];
 
                 final ColorPicker cp = new ColorPicker(SettingsActivity.this, r, g, b);
 
@@ -114,9 +120,9 @@ public class SettingsActivity extends Activity {
             @Override
             public void onClick(View v) {
 
-                int r = ColorService.getRGB(selectedBlue)[0];
-                int g = ColorService.getRGB(selectedBlue)[1];
-                int b = ColorService.getRGB(selectedBlue)[2];
+                int r = PreferenceManager.getRGB(selectedBlue)[0];
+                int g = PreferenceManager.getRGB(selectedBlue)[1];
+                int b = PreferenceManager.getRGB(selectedBlue)[2];
 
                 final ColorPicker cp = new ColorPicker(SettingsActivity.this, r, g, b);
 
@@ -140,9 +146,9 @@ public class SettingsActivity extends Activity {
             @Override
             public void onClick(View v) {
 
-                int r = ColorService.getRGB(selectedGreen)[0];
-                int g = ColorService.getRGB(selectedGreen)[1];
-                int b = ColorService.getRGB(selectedGreen)[2];
+                int r = PreferenceManager.getRGB(selectedGreen)[0];
+                int g = PreferenceManager.getRGB(selectedGreen)[1];
+                int b = PreferenceManager.getRGB(selectedGreen)[2];
 
                 final ColorPicker cp = new ColorPicker(SettingsActivity.this, r, g, b);
 
@@ -166,9 +172,9 @@ public class SettingsActivity extends Activity {
             @Override
             public void onClick(View v) {
 
-                int r = ColorService.getRGB(selectedRed)[0];
-                int g = ColorService.getRGB(selectedRed)[1];
-                int b = ColorService.getRGB(selectedRed)[2];
+                int r = PreferenceManager.getRGB(selectedRed)[0];
+                int g = PreferenceManager.getRGB(selectedRed)[1];
+                int b = PreferenceManager.getRGB(selectedRed)[2];
 
                 final ColorPicker cp = new ColorPicker(SettingsActivity.this, r, g, b);
 
@@ -192,9 +198,9 @@ public class SettingsActivity extends Activity {
             @Override
             public void onClick(View v) {
 
-                int r = ColorService.getRGB(selectedWhite)[0];
-                int g = ColorService.getRGB(selectedWhite)[1];
-                int b = ColorService.getRGB(selectedWhite)[2];
+                int r = PreferenceManager.getRGB(selectedWhite)[0];
+                int g = PreferenceManager.getRGB(selectedWhite)[1];
+                int b = PreferenceManager.getRGB(selectedWhite)[2];
 
                 final ColorPicker cp = new ColorPicker(SettingsActivity.this, r, g, b);
 
@@ -233,11 +239,11 @@ public class SettingsActivity extends Activity {
                         .setPositiveButton(R.string.settings_confirm_reset_true, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 // Reset colors
-                                selectedBlack = ColorService.getDefaultBlack();
-                                selectedBlue = ColorService.getDefaultBlue();
-                                selectedGreen = ColorService.getDefaultGreen();
-                                selectedRed = ColorService.getDefaultRed();
-                                selectedWhite = ColorService.getDefaultWhite();
+                                selectedBlack = PreferenceManager.getDefaultBlack(preferences);
+                                selectedBlue = PreferenceManager.getDefaultBlue(preferences);
+                                selectedGreen = PreferenceManager.getDefaultGreen(preferences);
+                                selectedRed = PreferenceManager.getDefaultRed(preferences);
+                                selectedWhite = PreferenceManager.getDefaultWhite(preferences);
 
                                 updateColor(cmdSelectBlack, txtBlack, selectedBlack);
                                 updateColor(cmdSelectBlue, txtBlue, selectedBlue);
@@ -267,6 +273,7 @@ public class SettingsActivity extends Activity {
     }
 
     public void SaveSettings() {
+        /* TODO: Save Changes
         SettingsService.saveColor(getApplicationContext(), getString(R.string.shared_preferences_color_black),selectedBlack);
         SettingsService.saveColor(getApplicationContext(), getString(R.string.shared_preferences_color_blue),selectedBlue);
         SettingsService.saveColor(getApplicationContext(), getString(R.string.shared_preferences_color_green),selectedGreen);
@@ -275,12 +282,13 @@ public class SettingsActivity extends Activity {
 
         SettingsService.setLifepoints(getApplicationContext(), Integer.parseInt(txtLifepoints.getText().toString()));
         SettingsService.setLongClickPoints(getApplicationContext(), Integer.parseInt(txtLongClickPoints.getText().toString()));
+        */
     }
 
     // Set button background and textview text to match
     public void updateColor(Button button, TextView txt, int color) {
         ((GradientDrawable)button.getBackground()).setColor(color);
-        txt.setText(ColorService.getHexString(color));
+        txt.setText(PreferenceManager.getHexString(color));
     }
 
     @Override

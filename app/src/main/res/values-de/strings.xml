@@ -14,14 +14,4 @@
     <string name="settings_confirm_reset">Alle Einstellungen zurücksetzen?</string>
     <string name="settings_confirm_reset_true">Ja</string>
     <string name="settings_confirm_reset_false">Nein</string>
-
-    <string name="shared_preferences_name">MTG_SETTINGS</string>
-    <string name="shared_preferences_color_black">COLOR_BLACK</string>
-    <string name="shared_preferences_color_blue">COLOR_BLUE</string>
-    <string name="shared_preferences_color_green">COLOR_GREEN</string>
-    <string name="shared_preferences_color_red">COLOR_RED</string>
-    <string name="shared_preferences_color_white">COLOR_WHITE</string>
-
-    <string name="shared_preferences_lifepoints">DEFAULT_LIFEPOINTS</string>
-    <string name="shared_preferences_long_click_points">DEFAULT_LONG_CLICK_POINTS</string>
 </resources>

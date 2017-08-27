@@ -1,5 +1,6 @@
 package com.marceljurtz.lifecounter.Game;
 
+import android.content.Context;
 import android.graphics.Color;
 
 import com.marceljurtz.lifecounter.Helper.MagicColor;
@@ -18,7 +19,9 @@ public interface IView {
     void setPlayerLayoutBackgroundColor(PlayerID playerID, int color);
     void setLifepoints(PlayerID id, String points);
     void setPoisonpoints(PlayerID id, String points);
-    void enableEnergySaving();
-    void disableEnergySaving();
+    void enableEnergySaving(int powerSaveColor, int powerSaveTextColor);
+    void disableEnergySaving(int defaultBlack, int regularTextColor);
     void loadSettingsActivity();
+
+    Context getContext();
 }

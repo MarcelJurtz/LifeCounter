@@ -1,55 +1,28 @@
 package com.marceljurtz.lifecounter.Game;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.marceljurtz.lifecounter.Helper.PlayerID;
+import com.marceljurtz.lifecounter.Helper.PreferenceManager;
 
 public class Player {
     private int lifePoints;
     private int poisonPoints;
-    private int defaultLifepoints;
-    private int defaultPoisonpoints;
-    //private TextView txtLifepoints;
-    //private TextView txtPoisonpoints;
-    private RelativeLayout backgroundLayout;
-
     private PlayerID playerID;
 
     private final int DEFAULT_LIFEPOINTS = 20;
 
-    public void setDefaults(int defaultLP, int defaultPP) {
-        this.defaultPoisonpoints = defaultPP;
-        this.defaultLifepoints = defaultLP;
-        this.lifePoints = this.defaultLifepoints;
-        this.poisonPoints = this.defaultPoisonpoints;
-        //txtLifepoints.setText(String.valueOf(this.lifePoints));
-        //txtPoisonpoints.setText(String.valueOf(this.poisonPoints));
-    }
-
     public Player(PlayerID id) {
-        this.lifePoints = 0;
+        this.lifePoints = DEFAULT_LIFEPOINTS;
         this.poisonPoints = 0;
-        this.playerID = id;
-        //txtLifepoints = lp;
-        //txtPoisonpoints = pp;
     }
 
-    // Neuladen von Standardwerten
-    // Bei Änderung der Standardanzahl (Lang-Klick auf Textfeld)
-    public void initPoints() {
-        this.lifePoints = this.defaultLifepoints;
-        this.poisonPoints = this.defaultPoisonpoints;
-    }
-
-    // Rücksetzen der Textfelder auf Standardwerte
-    public void reset(TextView txtLifepoints, TextView txtPoisonpoints) {
-        this.poisonPoints = defaultPoisonpoints;
-        txtPoisonpoints.setText(this.poisonPoints+"");
-        this.lifePoints = defaultLifepoints;
-        txtLifepoints.setText(this.lifePoints+"");
-
+    public void resetPoints(SharedPreferences preferences) {
+        this.lifePoints = PreferenceManager.getDefaultLifepoints(preferences);
+        this.poisonPoints = 0;
     }
 
     public PlayerID getPlayerID() {
@@ -60,51 +33,23 @@ public class Player {
         return this.lifePoints;
     }
 
-    public int getPoisonPoints() {
-        return this.poisonPoints;
-    }
-
-    // Update TextView "LifePoints"
-    // Eingabe des Werts zur Änderung der aktuellen Zahl (+/-)
-    public void updateLifepoints(int lp, TextView txtLifePoints) {
-        this.lifePoints += lp;
-        if(this.lifePoints > ValueService.getMaxLife()) {
-            this.lifePoints = ValueService.getMaxLife();
-        } else if(this.lifePoints < ValueService.getMinLife()) {
-            this.lifePoints = ValueService.getMinLife();
-        }
-        txtLifePoints.setText(this.lifePoints+"");
-    }
+    public int getPoisonPoints() { return this.poisonPoints; }
 
     public void updateLifepoints(int amount) {
         this.lifePoints += amount;
-        if(this.lifePoints < 0) {
-            this.lifePoints = 0;
+        if(this.lifePoints < PreferenceManager.getMinLife()) {
+            this.lifePoints = PreferenceManager.getMinLife();
+        } else if(this.lifePoints > PreferenceManager.getMaxLife()) {
+            this.lifePoints = PreferenceManager.getMaxLife();
         }
     }
 
     public void updatePoisonpoints(int amount) {
         this.poisonPoints += amount;
-        if(this.lifePoints < 0) {
-            this.poisonPoints = 0;
+        if(this.lifePoints < PreferenceManager.getMinPoison()) {
+            this.poisonPoints = PreferenceManager.getMinPoison();
+        } else if(this.lifePoints > PreferenceManager.getMaxPoison()) {
+            this.lifePoints = PreferenceManager.getMaxPoison();
         }
     }
-
-    // Update TextView "PoisonPoints"
-    // Eingabe des Werts zur Änderung der aktuellen Zahl (+/-)
-    public void updatePoisonPoints(int pp, TextView txtPoisonPoints) {
-        this.poisonPoints += pp;
-        if(this.poisonPoints > ValueService.getMaxPoison()) {
-            this.poisonPoints = ValueService.getMaxPoison();
-        } else if (poisonPoints < ValueService.getMinPoison()) {
-            this.poisonPoints = ValueService.getMinPoison();
-        }
-        txtPoisonPoints.setText(poisonPoints+"");
-    }
-
-    public static int getDefaultLifepoints(Context context) {
-
-    }
-
-
 }

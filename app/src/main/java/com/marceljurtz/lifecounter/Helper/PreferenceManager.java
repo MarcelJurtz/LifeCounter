@@ -1,7 +1,6 @@
 package com.marceljurtz.lifecounter.Helper;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.marceljurtz.lifecounter.R;
@@ -10,18 +9,50 @@ public class PreferenceManager {
 
     private static final int DEFAULT_LIFEPOINTS = 0;
 
-    public static int getColor(Context context, MagicColor color) {
-        SharedPreferences sPrefs = context.getSharedPreferences(context.getString(R.string.shared_preferences_name), Activity.MODE_PRIVATE);
-        return sPrefs.getInt(colorString, Color.getDefaultColor(color));
+    //region Preference Strings
+
+    public static final String PREFS = "MTG_SETTINGS";
+    private static final String PREF_COLOR_BLACK = "COLOR_BLACK";
+    private static final String PREF_COLOR_BLUE = "COLOR_BLUE";
+    private static final String PREF_COLOR_GREEN = "COLOR_GREEN";
+    private static final String PREF_COLOR_RED = "COLOR_RED";
+    private static final String PREF_COLOR_WHITE = "COLOR_WHITE";
+
+    private static final String PREF_LONG_CLICK_POINTS = "DEFAULT_LONG_CLICK_POINTS";
+    private static final String PREF_LIFEPOINTS = "DEFAULT_LIFEPOINTS";
+
+
+    //endregion
+
+    public static int getCustomColor(SharedPreferences preferences, MagicColor color) {
+        String colorString;
+
+        switch(color) {
+            case BLUE:
+                colorString = PREF_COLOR_BLUE;
+                break;
+            case GREEN:
+                colorString = PREF_COLOR_GREEN;
+                break;
+            case RED:
+                colorString = PREF_COLOR_RED;
+                break;
+            case WHITE:
+                colorString = PREF_COLOR_WHITE;
+                break;
+            default:
+                colorString = PREF_COLOR_BLACK;
+        }
+
+        return preferences.getInt(colorString, Color.getDefaultColorInt(color));
     }
 
-    public static void setColor(Context context, MagicColor settingsColor, Color newColor) {
+    public static void saveColor(SharedPreferences preferences, MagicColor settingsColor, Color newColor) {
 
     }
 
-    public static int getDefaultLifepoints(Context context) {
-        SharedPreferences sprefs = context.getSharedPreferences(context.getString(R.string.shared_preferences_name), Activity.MODE_PRIVATE);
-        return sprefs.getInt(context.getString(R.string.shared_preferences_lifepoints), DEFAULT_LIFEPOINTS);
+    public static int getDefaultLifepoints(SharedPreferences preferences) {
+        return preferences.getInt(PREF_LIFEPOINTS, DEFAULT_LIFEPOINTS);
     }
 
 
@@ -33,9 +64,8 @@ public class PreferenceManager {
         return SHORTCLICK_POINTS;
     }
 
-    public static int getLongclickPoints(Context context) {
-        SharedPreferences sprefs = context.getSharedPreferences(context.getString(R.string.shared_preferences_name), Activity.MODE_PRIVATE);
-        int points = sprefs.getInt(context.getString(R.string.shared_preferences_long_click_points), LONGCLICK_POINTS);
+    public static int getLongclickPoints(SharedPreferences preferences) {
+        int points = preferences.getInt(PREF_LONG_CLICK_POINTS, LONGCLICK_POINTS);
         return points;
     }
     //endregion
@@ -68,33 +98,28 @@ public class PreferenceManager {
     public static final int powerSaveTextcolor = android.graphics.Color.parseColor("#CCC2C0");
     public static final int regularTextcolor = android.graphics.Color.parseColor("#161618");
 
-    public static int getDefaultBlack(Context context){
-        SharedPreferences sprefs = context.getSharedPreferences(context.getString(R.string.shared_preferences_name), Activity.MODE_PRIVATE);
-        int black = sprefs.getInt(context.getString(R.string.shared_preferences_color_black), Color.DEFAULT_BLACK);
+    public static int getDefaultBlack(SharedPreferences preferences){
+        int black = preferences.getInt(PREF_COLOR_BLACK, Color.DEFAULT_BLACK);
         return black;
     }
 
-    public static int getDefaultBlue(Context context){
-        SharedPreferences sprefs = context.getSharedPreferences(context.getString(R.string.shared_preferences_name), Activity.MODE_PRIVATE);
-        int blue = sprefs.getInt(context.getString(R.string.shared_preferences_color_blue), Color.DEFAULT_BLUE);
+    public static int getDefaultBlue(SharedPreferences preferences){
+        int blue = preferences.getInt(PREF_COLOR_BLUE, Color.DEFAULT_BLUE);
         return blue;
     }
 
-    public static int getDefaultGreen(Context context){
-        SharedPreferences sprefs = context.getSharedPreferences(context.getString(R.string.shared_preferences_name), Activity.MODE_PRIVATE);
-        int green = sprefs.getInt(context.getString(R.string.shared_preferences_color_green), Color.DEFAULT_GREEN);
+    public static int getDefaultGreen(SharedPreferences preferences){
+        int green = preferences.getInt(PREF_COLOR_GREEN, Color.DEFAULT_GREEN);
         return green;
     }
 
-    public static int getDefaultRed(Context context{
-        SharedPreferences sprefs = context.getSharedPreferences(context.getString(R.string.shared_preferences_name), Activity.MODE_PRIVATE);
-        int red = sprefs.getInt(context.getString(R.string.shared_preferences_color_red), Color.DEFAULT_RED);
+    public static int getDefaultRed(SharedPreferences preferences) {
+        int red = preferences.getInt(PREF_COLOR_RED, Color.DEFAULT_RED);
         return red;
     }
 
-    public static int getDefaultWhite(Context context){
-        SharedPreferences sprefs = context.getSharedPreferences(context.getString(R.string.shared_preferences_name), Activity.MODE_PRIVATE);
-        int white = sprefs.getInt(context.getString(R.string.shared_preferences_color_white), Color.DEFAULT_WHITE);
+    public static int getDefaultWhite(SharedPreferences preferences){
+        int white = preferences.getInt(PREF_COLOR_WHITE, Color.DEFAULT_WHITE);
         return white;
     }
 
