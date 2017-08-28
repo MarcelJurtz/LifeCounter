@@ -22,7 +22,6 @@ import com.marceljurtz.lifecounter.Helper.PlayerID;
 import com.marceljurtz.lifecounter.Helper.PreferenceManager;
 import com.marceljurtz.lifecounter.R;
 import com.marceljurtz.lifecounter.Settings.SettingsActivity;
-import com.marceljurtz.lifecounter.Settings.SettingsService;
 
 public class GameActivity extends AppCompatActivity implements IView {
 
@@ -84,7 +83,7 @@ public class GameActivity extends AppCompatActivity implements IView {
         setContentView(R.layout.activity_main);
 
         // Hide ActionBar
-        ActionBar ab = getSupportActionBar();
+        final ActionBar ab = getSupportActionBar();
         ab.hide();
 
         // Disable screen timeout
@@ -92,6 +91,13 @@ public class GameActivity extends AppCompatActivity implements IView {
 
         // Init SharedPreferences
         preferences = getApplicationContext().getSharedPreferences(PreferenceManager.PREFS, Activity.MODE_PRIVATE);
+
+        // Players
+        player_home = new Player(PlayerID.ONE);
+        player_guest = new Player(PlayerID.TWO);
+
+        // Init GamePresenter
+        presenter = new GamePresenter(this, preferences);
 
         //region Initialize Views
 
@@ -332,13 +338,13 @@ public class GameActivity extends AppCompatActivity implements IView {
         cmdPlusPoisonHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.updatePoisonpoints(player_home.getPlayerID(), 1);
+                presenter.onPoisonUpdate(player_home.getPlayerID(), ClickType.SHORT, Operator.ADD);
             }
         });
         cmdPlusPoisonHome.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                presenter.updatePoisonpoints(player_home.getPlayerID(), SettingsService.getLongClickPoints(getApplicationContext()));
+                presenter.onPoisonUpdate(player_home.getPlayerID(), ClickType.LONG, Operator.ADD);
                 return true;
             }
         });
@@ -348,13 +354,13 @@ public class GameActivity extends AppCompatActivity implements IView {
         cmdMinusPoisonHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.updatePoisonpoints(player_home.getPlayerID(), -1);
+                presenter.onPoisonUpdate(player_home.getPlayerID(), ClickType.SHORT, Operator.SUBSTRACT);
             }
         });
         cmdMinusPoisonHome.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                presenter.updatePoisonpoints(player_home.getPlayerID(), -SettingsService.getLongClickPoints(getApplicationContext()));
+                presenter.onPoisonUpdate(player_home.getPlayerID(), ClickType.LONG, Operator.SUBSTRACT);
                 return true;
             }
         });
@@ -368,13 +374,13 @@ public class GameActivity extends AppCompatActivity implements IView {
         cmdPlusPoisonGuest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.updatePoisonpoints(player_guest.getPlayerID(), 1);
+                presenter.onPoisonUpdate(player_guest.getPlayerID(), ClickType.SHORT, Operator.ADD);
             }
         });
         cmdPlusPoisonGuest.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                presenter.updatePoisonpoints(player_guest.getPlayerID(), SettingsService.getLongClickPoints(getApplicationContext()));
+                presenter.onPoisonUpdate(player_guest.getPlayerID(), ClickType.LONG, Operator.ADD);
                 return true;
             }
         });
@@ -384,13 +390,13 @@ public class GameActivity extends AppCompatActivity implements IView {
         cmdMinusPoisonGuest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.updatePoisonpoints(player_guest.getPlayerID(), -1);
+                presenter.onPoisonUpdate(player_guest.getPlayerID(), ClickType.SHORT, Operator.SUBSTRACT);
             }
         });
         cmdMinusPoisonGuest.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                presenter.updatePoisonpoints(player_guest.getPlayerID(), -SettingsService.getLongClickPoints(getApplicationContext()));
+                presenter.onPoisonUpdate(player_guest.getPlayerID(), ClickType.LONG, Operator.SUBSTRACT);
                 return true;
             }
         });
@@ -421,7 +427,6 @@ public class GameActivity extends AppCompatActivity implements IView {
 
     @Override
     protected void onStart() {
-        presenter = new GamePresenter(this, preferences);
         super.onStart();
     }
 

@@ -7,7 +7,9 @@ import com.marceljurtz.lifecounter.R;
 
 public class PreferenceManager {
 
-    private static final int DEFAULT_LIFEPOINTS = 0;
+    // Defaults for reset
+    private static final int DEFAULT_LIFEPOINTS = 20;
+    private static final int DEFAULT_LONG_CLICK_POINTS = 5;
 
     //region Preference Strings
 
@@ -91,6 +93,18 @@ public class PreferenceManager {
     public static int getMinLife() {
         return MIN_LIFE;
     }
+    //endregion
+
+    //region Reset functionality
+
+    public static void resetLifepoints(SharedPreferences preferences) {
+
+    }
+
+    public static void resetLongClickPoints(SharedPreferences preferences) {
+
+    }
+
     //endregion
 
     //region Colors

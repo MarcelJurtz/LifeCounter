@@ -51,7 +51,7 @@
     <style name="mtg_textview_poison">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:text">0</item>
+        <item name="android:text">00</item>
         <item name="android:textColor">@color/textColor</item>
         <item name="android:textSize">@dimen/textsize_poison</item>
         <item name="android:layout_centerHorizontal">true</item>

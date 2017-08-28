@@ -85,28 +85,6 @@ public class GamePresenter implements IPresenter {
         return energySavingEnabled;
     }
 
-    // Increase or decrease lifepoints
-    public void updateLifepoints(PlayerID id, int amount) {
-        if(id.equals(player1.getPlayerID())) {
-            player1.updateLifepoints(amount);
-            gameActivity.setLifepoints(id, String.format("%02d",player1.getLifePoints()));
-        } else if(id.equals(player2.getPlayerID())) {
-            player2.updateLifepoints(amount);
-            gameActivity.setLifepoints(id, String.format("%02d",player2.getLifePoints()));
-        }
-    }
-
-    // Increase or decrease poison points
-    public void updatePoisonpoints(PlayerID id, int amount) {
-        if(id.equals(player1.getPlayerID())) {
-            player1.updateLifepoints(amount);
-            gameActivity.setPoisonpoints(id, String.format("%02d",player1.getPoisonPoints()));
-        } else if(id.equals(player2.getPlayerID())) {
-            player2.updateLifepoints(amount);
-            gameActivity.setPoisonpoints(id, String.format("%02d",player2.getPoisonPoints()));
-        }
-    }
-
     @Override
     public void onCreate(IView view) {
 

@@ -16,6 +16,7 @@ public class Player {
     private final int DEFAULT_LIFEPOINTS = 20;
 
     public Player(PlayerID id) {
+        this.playerID = id;
         this.lifePoints = DEFAULT_LIFEPOINTS;
         this.poisonPoints = 0;
     }
@@ -46,9 +47,9 @@ public class Player {
 
     public void updatePoisonpoints(int amount) {
         this.poisonPoints += amount;
-        if(this.lifePoints < PreferenceManager.getMinPoison()) {
+        if(this.poisonPoints < PreferenceManager.getMinPoison()) {
             this.poisonPoints = PreferenceManager.getMinPoison();
-        } else if(this.lifePoints > PreferenceManager.getMaxPoison()) {
+        } else if(this.poisonPoints > PreferenceManager.getMaxPoison()) {
             this.lifePoints = PreferenceManager.getMaxPoison();
         }
     }

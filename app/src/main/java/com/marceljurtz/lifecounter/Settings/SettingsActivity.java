@@ -80,8 +80,8 @@ public class SettingsActivity extends Activity {
         txtRed.setText(PreferenceManager.getHexString(selectedRed));
         txtWhite.setText(PreferenceManager.getHexString(selectedWhite));
 
-        txtLifepoints.setText(String.valueOf(SettingsService.getLifepoints(getApplicationContext())));
-        txtLongClickPoints.setText(String.valueOf(SettingsService.getLongClickPoints(getApplicationContext())));
+        txtLifepoints.setText(String.valueOf(PreferenceManager.getDefaultLifepoints(preferences)));
+        txtLongClickPoints.setText(String.valueOf(PreferenceManager.getLongclickPoints(preferences)));
 
 
         /***************************************************/
@@ -251,10 +251,10 @@ public class SettingsActivity extends Activity {
                                 updateColor(cmdSelectRed, txtRed, selectedRed);
                                 updateColor(cmdSelectWhite, txtWhite, selectedWhite);
 
-                                SettingsService.resetLifepoints(getApplicationContext());
-                                SettingsService.resetLongClickPoints(getApplicationContext());
-                                txtLifepoints.setText(String.valueOf(SettingsService.getLifepoints(getApplicationContext())));
-                                txtLongClickPoints.setText(String.valueOf(SettingsService.getLongClickPoints(getApplicationContext())));
+                                PreferenceManager.resetLifepoints(preferences);
+                                PreferenceManager.resetLongClickPoints(preferences);
+                                txtLifepoints.setText(String.valueOf(PreferenceManager.getDefaultLifepoints(preferences)));
+                                txtLongClickPoints.setText(String.valueOf(PreferenceManager.getLongclickPoints(preferences)));
                             }
                         })
                         .setNegativeButton(R.string.settings_confirm_reset_false, null)
