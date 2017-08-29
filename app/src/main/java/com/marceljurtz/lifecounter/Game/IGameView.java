@@ -1,36 +1,37 @@
 package com.marceljurtz.lifecounter.Game;
 
-import android.content.Context;
-import android.graphics.Color;
-
+import com.marceljurtz.lifecounter.Helper.BaseInterface.IView;
 import com.marceljurtz.lifecounter.Helper.MagicColor;
 import com.marceljurtz.lifecounter.Helper.PlayerID;
 
-public interface IView {
-    /*
-    void initColorButtonBlack(int color);
-    void initColorButtonBlue(int color);
-    void initColorButtonGreen(int color);
-    void initColorButtonRed(int color);
-    void initColorButtonWhite(int color);
-    */
+public interface IGameView extends IView {
+    // Set color of button, identified by original magic color
     void initColorButton(MagicColor colorLocation, int color);
+
+    // Set players background color TODO Validate possible duplicate
     void setLayoutColor(PlayerID playerID, int color);
     void setPlayerLayoutBackgroundColor(PlayerID playerID, int color);
+
+    // Set life- / poisonpoints
     void setLifepoints(PlayerID id, String points);
     void setPoisonpoints(PlayerID id, String points);
+
+    // Enable / Disable energy saving mode
     void enableEnergySaving(int powerSaveColor, int powerSaveTextColor);
     void disableEnergySaving(int defaultBlack, int regularTextColor);
+
+    // Launch settings activity
     void loadSettingsActivity();
 
+    // Enable / Disable color controls
     void settingsButtonEnable();
-    void settingsButtonDisable();
-
-    void disableSettingsControls();
     void enableSettingsControls();
+    void settingsButtonDisable();
+    void disableSettingsControls();
 
-    void disablePoisonControls();
+    // Enable / Disable poison controls
     void enablePoisonControls();
-    void poisonButtonDisable();
     void poisonButtonEnable();
+    void disablePoisonControls();
+    void poisonButtonDisable();
 }

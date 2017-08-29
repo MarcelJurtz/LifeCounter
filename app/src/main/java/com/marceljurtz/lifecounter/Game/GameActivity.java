@@ -1,7 +1,6 @@
 package com.marceljurtz.lifecounter.Game;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.GradientDrawable;
@@ -15,6 +14,7 @@ import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.marceljurtz.lifecounter.Helper.BaseInterface.IView;
 import com.marceljurtz.lifecounter.Helper.ClickType;
 import com.marceljurtz.lifecounter.Helper.MagicColor;
 import com.marceljurtz.lifecounter.Helper.Operator;
@@ -23,9 +23,9 @@ import com.marceljurtz.lifecounter.Helper.PreferenceManager;
 import com.marceljurtz.lifecounter.R;
 import com.marceljurtz.lifecounter.Settings.SettingsActivity;
 
-public class GameActivity extends AppCompatActivity implements IView {
+public class GameActivity extends AppCompatActivity implements IGameView {
 
-    private GamePresenter presenter;
+    private IGamePresenter presenter;
 
     RelativeLayout mainLayout;
     RelativeLayout layoutHome;

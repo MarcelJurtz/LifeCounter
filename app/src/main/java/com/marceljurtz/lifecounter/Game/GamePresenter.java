@@ -1,22 +1,20 @@
 package com.marceljurtz.lifecounter.Game;
 
-import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 
+import com.marceljurtz.lifecounter.Helper.BaseInterface.IPresenter;
+import com.marceljurtz.lifecounter.Helper.BaseInterface.IView;
 import com.marceljurtz.lifecounter.Helper.ClickType;
 import com.marceljurtz.lifecounter.Helper.MagicColor;
 import com.marceljurtz.lifecounter.Helper.Operator;
 import com.marceljurtz.lifecounter.Helper.PlayerID;
 import com.marceljurtz.lifecounter.Helper.PreferenceManager;
-import com.marceljurtz.lifecounter.Settings.SettingsActivity;
 
-public class GamePresenter implements IPresenter {
+public class GamePresenter implements IGamePresenter {
 
     private SharedPreferences preferences;
     private GameModel gameModel;
-    private IView gameActivity;
+    private IGameView gameActivity;
 
     private boolean settingsVisible;
     private boolean poisonVisible;
