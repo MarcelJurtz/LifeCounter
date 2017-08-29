@@ -97,7 +97,11 @@ public class GamePresenter implements IPresenter {
 
     @Override
     public void onResume() {
-
+        gameActivity.initColorButton(MagicColor.BLACK, PreferenceManager.getCustomColor(preferences, MagicColor.BLACK));
+        gameActivity.initColorButton(MagicColor.BLUE, PreferenceManager.getCustomColor(preferences, MagicColor.BLUE));
+        gameActivity.initColorButton(MagicColor.GREEN, PreferenceManager.getCustomColor(preferences, MagicColor.GREEN));
+        gameActivity.initColorButton(MagicColor.RED, PreferenceManager.getCustomColor(preferences, MagicColor.RED));
+        gameActivity.initColorButton(MagicColor.WHITE, PreferenceManager.getCustomColor(preferences, MagicColor.WHITE));
     }
 
     @Override

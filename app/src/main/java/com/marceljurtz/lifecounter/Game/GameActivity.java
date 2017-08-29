@@ -427,6 +427,7 @@ public class GameActivity extends AppCompatActivity implements IView {
 
     @Override
     protected void onStart() {
+        presenter.onResume();
         super.onStart();
     }
 
