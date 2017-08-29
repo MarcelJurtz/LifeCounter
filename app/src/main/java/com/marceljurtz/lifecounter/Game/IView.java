@@ -23,5 +23,14 @@ public interface IView {
     void disableEnergySaving(int defaultBlack, int regularTextColor);
     void loadSettingsActivity();
 
-    Context getContext();
+    void settingsButtonEnable();
+    void settingsButtonDisable();
+
+    void disableSettingsControls();
+    void enableSettingsControls();
+
+    void disablePoisonControls();
+    void enablePoisonControls();
+    void poisonButtonDisable();
+    void poisonButtonEnable();
 }

@@ -533,9 +533,8 @@ public class GameActivity extends AppCompatActivity implements IView {
     //endregion
 
     //region Toggle Poison Controls
+    @Override
     public void enablePoisonControls() {
-        cmdTogglePoison.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.icon_poison_disabled));
-
         txtPoisonCountGuest.setVisibility(View.VISIBLE);
         txtPoisonCountHome.setVisibility(View.VISIBLE);
         cmdPlusPoisonGuest.setVisibility(View.VISIBLE);
@@ -544,9 +543,13 @@ public class GameActivity extends AppCompatActivity implements IView {
         cmdMinusPoisonHome.setVisibility(View.VISIBLE);
     }
 
-    public void disablePoisonControls() {
+    @Override
+    public void poisonButtonEnable() {
         cmdTogglePoison.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.icon_poison));
+    }
 
+    @Override
+    public void disablePoisonControls() {
         txtPoisonCountGuest.setVisibility(View.INVISIBLE);
         txtPoisonCountHome.setVisibility(View.INVISIBLE);
         cmdPlusPoisonGuest.setVisibility(View.INVISIBLE);
@@ -554,9 +557,15 @@ public class GameActivity extends AppCompatActivity implements IView {
         cmdMinusPoisonGuest.setVisibility(View.INVISIBLE);
         cmdMinusPoisonHome.setVisibility(View.INVISIBLE);
     }
+
+    @Override
+    public void poisonButtonDisable(){
+        cmdTogglePoison.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.icon_poison_disabled));
+    }
     //endregion
 
     //region Toggle Settings Controls
+    @Override
     public void enableSettingsControls() {
         cmdToggleColorSettings.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.icon_settings));
         cmdBlackHome.setVisibility(View.VISIBLE);
@@ -571,6 +580,12 @@ public class GameActivity extends AppCompatActivity implements IView {
         cmdWhiteGuest.setVisibility(View.VISIBLE);
     }
 
+    @Override
+    public void settingsButtonEnable() {
+        cmdToggleColorSettings.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.icon_settings));
+    }
+
+    @Override
     public void disableSettingsControls() {
         cmdToggleColorSettings.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.icon_settings_disabled));
         cmdBlackHome.setVisibility(View.INVISIBLE);
@@ -584,6 +599,13 @@ public class GameActivity extends AppCompatActivity implements IView {
         cmdWhiteHome.setVisibility(View.INVISIBLE);
         cmdWhiteGuest.setVisibility(View.INVISIBLE);
     }
+
+    @Override
+    public void settingsButtonDisable() {
+        cmdToggleColorSettings.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.icon_settings_disabled));
+    }
+
+
     //endregion
 
     //region Toggle Energy Saving Option
@@ -627,9 +649,4 @@ public class GameActivity extends AppCompatActivity implements IView {
         }
     }
     //endregion
-
-    @Override
-    public Context getContext() {
-        return getApplicationContext();
-    }
 }

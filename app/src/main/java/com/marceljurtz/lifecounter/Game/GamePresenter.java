@@ -16,7 +16,7 @@ public class GamePresenter implements IPresenter {
 
     private SharedPreferences preferences;
     private GameModel gameModel;
-    private GameActivity gameActivity;
+    private IView gameActivity;
 
     private boolean settingsVisible;
     private boolean poisonVisible;
@@ -29,9 +29,7 @@ public class GamePresenter implements IPresenter {
         this.preferences = preferences;
         this.gameActivity = gameActivity;
 
-        settingsVisible = false;
-        poisonVisible = false;
-        energySavingEnabled = false;
+
 
         player1 = new Player(PlayerID.ONE);
         player2 = new Player(PlayerID.TWO);
@@ -97,6 +95,14 @@ public class GamePresenter implements IPresenter {
 
     @Override
     public void onResume() {
+        settingsVisible = false;
+        gameActivity.disableSettingsControls();
+
+        poisonVisible = false;
+        gameActivity.disablePoisonControls();
+
+        energySavingEnabled = false;
+
         gameActivity.initColorButton(MagicColor.BLACK, PreferenceManager.getCustomColor(preferences, MagicColor.BLACK));
         gameActivity.initColorButton(MagicColor.BLUE, PreferenceManager.getCustomColor(preferences, MagicColor.BLUE));
         gameActivity.initColorButton(MagicColor.GREEN, PreferenceManager.getCustomColor(preferences, MagicColor.GREEN));
@@ -140,8 +146,10 @@ public class GamePresenter implements IPresenter {
         poisonVisible = !poisonVisible;
         if(poisonVisible) {
             gameActivity.enablePoisonControls();
+            gameActivity.poisonButtonEnable();
         } else {
             gameActivity.disablePoisonControls();
+            gameActivity.poisonButtonDisable();
         }
     }
 
@@ -149,6 +157,15 @@ public class GamePresenter implements IPresenter {
     public void settingsButtonClick(ClickType clickType) {
         if(clickType.equals(ClickType.LONG)) {
             gameActivity.loadSettingsActivity();
+        } else {
+            settingsVisible = !settingsVisible;
+            if(settingsVisible) {
+                gameActivity.enableSettingsControls();
+                gameActivity.settingsButtonEnable();
+            } else {
+                gameActivity.disableSettingsControls();
+                gameActivity.settingsButtonDisable();
+            }
         }
     }
 
