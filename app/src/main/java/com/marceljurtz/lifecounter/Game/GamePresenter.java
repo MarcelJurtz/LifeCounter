@@ -132,7 +132,7 @@ public class GamePresenter implements IGamePresenter {
     }
 
     @Override
-    public void colorButtonClick(PlayerID playerID, MagicColor color, ClickType clickType) {
+    public void onColorButtonClick(PlayerID playerID, MagicColor color, ClickType clickType) {
         if(clickType.equals(ClickType.SHORT)) {
             int newColor = com.marceljurtz.lifecounter.Helper.Color.getDefaultColorInt(color);
             gameActivity.setLayoutColor(playerID, newColor);
@@ -140,7 +140,7 @@ public class GamePresenter implements IGamePresenter {
     }
 
     @Override
-    public void poisonButtonClick() {
+    public void onPoisonButtonClick() {
         poisonVisible = !poisonVisible;
         if(poisonVisible) {
             gameActivity.enablePoisonControls();
@@ -152,7 +152,7 @@ public class GamePresenter implements IGamePresenter {
     }
 
     @Override
-    public void settingsButtonClick(ClickType clickType) {
+    public void onSettingsButtonClick(ClickType clickType) {
         if(clickType.equals(ClickType.LONG)) {
             gameActivity.loadSettingsActivity();
         } else {
@@ -168,7 +168,7 @@ public class GamePresenter implements IGamePresenter {
     }
 
     @Override
-    public void resetButtonClick() {
+    public void onResetButtonClick() {
 
     }
 }

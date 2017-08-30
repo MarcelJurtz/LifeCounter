@@ -12,14 +12,14 @@ public interface IGamePresenter extends IPresenter {
     void onPoisonUpdate(PlayerID playerID, ClickType clickType, Operator operator);
 
     // Change player background color
-    void colorButtonClick(PlayerID playerID, MagicColor color, ClickType clickType);
+    void onColorButtonClick(PlayerID playerID, MagicColor color, ClickType clickType);
 
     // Enable / Disable poison controls
-    void poisonButtonClick();
+    void onPoisonButtonClick();
 
     // Enable / Disable color controls
-    void settingsButtonClick(ClickType clickType);
+    void onSettingsButtonClick(ClickType clickType);
 
     // Hit reset button
-    void resetButtonClick();
+    void onResetButtonClick();
 }

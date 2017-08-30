@@ -14,7 +14,6 @@ import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.marceljurtz.lifecounter.Helper.BaseInterface.IView;
 import com.marceljurtz.lifecounter.Helper.ClickType;
 import com.marceljurtz.lifecounter.Helper.MagicColor;
 import com.marceljurtz.lifecounter.Helper.Operator;
@@ -108,14 +107,14 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         cmdBlackHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.colorButtonClick(PlayerID.ONE, MagicColor.BLACK, ClickType.SHORT);
+                presenter.onColorButtonClick(PlayerID.ONE, MagicColor.BLACK, ClickType.SHORT);
             }
         });
         cmdBlackHome.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
                 // toggleEnergySaveMode();
-                presenter.colorButtonClick(PlayerID.ONE, MagicColor.BLACK, ClickType.LONG);
+                presenter.onColorButtonClick(PlayerID.ONE, MagicColor.BLACK, ClickType.LONG);
                 return true;
             }
         });
@@ -125,14 +124,14 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         cmdBlackGuest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.colorButtonClick(PlayerID.TWO, MagicColor.BLACK, ClickType.SHORT);
+                presenter.onColorButtonClick(PlayerID.TWO, MagicColor.BLACK, ClickType.SHORT);
             }
         });
         cmdBlackGuest.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
                 //toggleEnergySaveMode();
-                presenter.colorButtonClick(PlayerID.TWO, MagicColor.BLACK, ClickType.LONG);
+                presenter.onColorButtonClick(PlayerID.TWO, MagicColor.BLACK, ClickType.LONG);
                 return true;
             }
         });
@@ -144,7 +143,7 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         cmdBlueHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.colorButtonClick(PlayerID.ONE, MagicColor.BLUE, ClickType.SHORT);
+                presenter.onColorButtonClick(PlayerID.ONE, MagicColor.BLUE, ClickType.SHORT);
             }
         });
 
@@ -153,7 +152,7 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         cmdBlueGuest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.colorButtonClick(PlayerID.TWO, MagicColor.BLUE, ClickType.SHORT);
+                presenter.onColorButtonClick(PlayerID.TWO, MagicColor.BLUE, ClickType.SHORT);
             }
         });
 
@@ -164,7 +163,7 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         cmdGreenHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.colorButtonClick(PlayerID.ONE, MagicColor.GREEN, ClickType.SHORT);
+                presenter.onColorButtonClick(PlayerID.ONE, MagicColor.GREEN, ClickType.SHORT);
             }
         });
 
@@ -173,7 +172,7 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         cmdGreenGuest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.colorButtonClick(PlayerID.TWO, MagicColor.GREEN, ClickType.SHORT);
+                presenter.onColorButtonClick(PlayerID.TWO, MagicColor.GREEN, ClickType.SHORT);
             }
         });
 
@@ -184,7 +183,7 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         cmdRedHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.colorButtonClick(PlayerID.ONE, MagicColor.RED, ClickType.SHORT);
+                presenter.onColorButtonClick(PlayerID.ONE, MagicColor.RED, ClickType.SHORT);
             }
         });
 
@@ -193,7 +192,7 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         cmdRedGuest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.colorButtonClick(PlayerID.TWO, MagicColor.RED, ClickType.SHORT);
+                presenter.onColorButtonClick(PlayerID.TWO, MagicColor.RED, ClickType.SHORT);
             }
         });
 
@@ -204,7 +203,7 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         cmdWhiteHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.colorButtonClick(PlayerID.ONE, MagicColor.WHITE, ClickType.SHORT);
+                presenter.onColorButtonClick(PlayerID.ONE, MagicColor.WHITE, ClickType.SHORT);
             }
         });
 
@@ -213,7 +212,7 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         cmdWhiteGuest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.colorButtonClick(PlayerID.TWO, MagicColor.WHITE, ClickType.SHORT);
+                presenter.onColorButtonClick(PlayerID.TWO, MagicColor.WHITE, ClickType.SHORT);
             }
         });
 
@@ -313,7 +312,7 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         cmdResetLP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.resetButtonClick();
+                presenter.onResetButtonClick();
             }
         });
 
@@ -325,7 +324,7 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         cmdTogglePoison.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.poisonButtonClick();
+                presenter.onPoisonButtonClick();
             }
         });
 
@@ -409,13 +408,13 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         cmdToggleColorSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.settingsButtonClick(ClickType.SHORT);
+                presenter.onSettingsButtonClick(ClickType.SHORT);
             }
         });
         cmdToggleColorSettings.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                presenter.settingsButtonClick(ClickType.LONG);
+                presenter.onSettingsButtonClick(ClickType.LONG);
                 return true;
             }
         });
