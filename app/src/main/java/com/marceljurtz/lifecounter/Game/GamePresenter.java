@@ -169,6 +169,20 @@ public class GamePresenter implements IGamePresenter {
 
     @Override
     public void onResetButtonClick() {
+        player1.resetPoints(preferences);
+        player2.resetPoints(preferences);
 
+        settingsVisible = false;
+        poisonVisible = false;
+        gameActivity.disablePoisonControls();
+        gameActivity.settingsButtonDisable();
+        gameActivity.disableSettingsControls();
+        gameActivity.poisonButtonDisable();
+
+        gameActivity.setLifepoints(PlayerID.ONE, String.format("%02d",player1.getLifePoints()));
+        gameActivity.setLifepoints(PlayerID.TWO, String.format("%02d",player2.getLifePoints()));
+
+        gameActivity.setPoisonpoints(PlayerID.ONE, String.format("%02d",player1.getPoisonPoints()));
+        gameActivity.setPoisonpoints(PlayerID.TWO, String.format("%02d",player2.getPoisonPoints()));
     }
 }
