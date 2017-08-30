@@ -12,11 +12,12 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.marceljurtz.lifecounter.Helper.MagicColor;
 import com.marceljurtz.lifecounter.Helper.PreferenceManager;
 import com.marceljurtz.lifecounter.R;
 import com.pes.androidmaterialcolorpickerdialog.ColorPicker;
 
-public class SettingsActivity extends Activity {
+public class SettingsActivity extends Activity implements ISettingsView {
 
     TextView txtBlack;
     TextView txtBlue;
@@ -48,6 +49,8 @@ public class SettingsActivity extends Activity {
     boolean resetConfirmed = false;
 
     SharedPreferences preferences;
+
+    ISettingsPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -293,7 +296,26 @@ public class SettingsActivity extends Activity {
 
     @Override
     public void onBackPressed(){
-        SaveSettings();
+        presenter.onBackButtonClick();
+    }
+
+    @Override
+    public int getSelectedColor(MagicColor magicColor) {
+        return 0;
+    }
+
+    @Override
+    public int getSelectedLifepoints() {
+        return Integer.parseInt(txtLifepoints.getText().toString());
+    }
+
+    @Override
+    public int getSelectedLongClickPoints() {
+        return Integer.parseInt(txtLongClickPoints.getText().toString());
+    }
+
+    @Override
+    public void loadGameActivity() {
         finish();
     }
 }

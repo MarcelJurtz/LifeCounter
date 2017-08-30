@@ -10,5 +10,5 @@ public interface ISettingsView extends IView {
     int getSelectedLongClickPoints();
 
     // Launch Game Activity
-    void loadSettingsActivity();
+    void loadGameActivity();
 }
