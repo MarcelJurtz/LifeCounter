@@ -82,7 +82,7 @@ public class GamePresenter implements IGamePresenter {
     }
 
     @Override
-    public void onCreate(IView view) {
+    public void onCreate() {
 
     }
 

@@ -144,9 +144,5 @@ public class PreferenceManager {
         rgb[2] = (color >> 0) & 0xFF;
         return rgb;
     }
-
-    public static String getHexString(int color) {
-        return String.format("#%06X", 0xFFFFFF & color);
-    }
     //endregion
 }

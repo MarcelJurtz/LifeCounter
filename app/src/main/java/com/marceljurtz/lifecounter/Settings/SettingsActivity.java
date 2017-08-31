@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.marceljurtz.lifecounter.Helper.Color;
 import com.marceljurtz.lifecounter.Helper.MagicColor;
 import com.marceljurtz.lifecounter.Helper.PreferenceManager;
 import com.marceljurtz.lifecounter.R;
@@ -53,6 +54,24 @@ public class SettingsActivity extends Activity implements ISettingsView {
     ISettingsPresenter presenter;
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        presenter.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        presenter.onPause();
+        super.onPause();
+    }
+
+    @Override
+    protected void onDestroy() {
+        presenter.onDestroy();
+        super.onDestroy();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
@@ -69,157 +88,52 @@ public class SettingsActivity extends Activity implements ISettingsView {
         txtLifepoints = (EditText) findViewById(R.id.txtLiveSelection);
         txtLongClickPoints = (EditText) findViewById(R.id.txtLongClickPoints);
 
-        // Get customized color values from settings
-        selectedBlack = PreferenceManager.getDefaultBlack(preferences);
-        selectedBlue = PreferenceManager.getDefaultBlue(preferences);
-        selectedGreen = PreferenceManager.getDefaultGreen(preferences);
-        selectedRed = PreferenceManager.getDefaultRed(preferences);
-        selectedWhite = PreferenceManager.getDefaultWhite(preferences);
-
-        // Add hex value of colors to textviews
-        txtBlack.setText(PreferenceManager.getHexString(selectedBlack));
-        txtBlue.setText(PreferenceManager.getHexString(selectedBlue));
-        txtGreen.setText(PreferenceManager.getHexString(selectedGreen));
-        txtRed.setText(PreferenceManager.getHexString(selectedRed));
-        txtWhite.setText(PreferenceManager.getHexString(selectedWhite));
-
         txtLifepoints.setText(String.valueOf(PreferenceManager.getDefaultLifepoints(preferences)));
         txtLongClickPoints.setText(String.valueOf(PreferenceManager.getLongclickPoints(preferences)));
 
 
-        /***************************************************/
-        /*                     BUTTONS                     */
-        /***************************************************/
 
+        //region Color Selection Buttons
         cmdSelectBlack = (Button) findViewById(R.id.cmdSelectBlack);
-        updateColor(cmdSelectBlack, txtBlack, selectedBlack);
         cmdSelectBlack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                int r = PreferenceManager.getRGB(selectedBlack)[0];
-                int g = PreferenceManager.getRGB(selectedBlack)[1];
-                int b = PreferenceManager.getRGB(selectedBlack)[2];
-
-                final ColorPicker cp = new ColorPicker(SettingsActivity.this, r, g, b);
-
-                cp.show();
-
-                Button okColor = (Button) cp.findViewById(R.id.okColorButton);
-                okColor.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        selectedBlack = cp.getColor();
-                        updateColor(cmdSelectBlack, txtBlack, selectedBlack);
-                        cp.dismiss();
-                    }
-                });
+                presenter.onColorSelectButtonClick(MagicColor.BLACK);
             }
         });
 
         cmdSelectBlue = (Button) findViewById(R.id.cmdSelectBlue);
-        updateColor(cmdSelectBlue, txtBlue, selectedBlue);
         cmdSelectBlue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                int r = PreferenceManager.getRGB(selectedBlue)[0];
-                int g = PreferenceManager.getRGB(selectedBlue)[1];
-                int b = PreferenceManager.getRGB(selectedBlue)[2];
-
-                final ColorPicker cp = new ColorPicker(SettingsActivity.this, r, g, b);
-
-                cp.show();
-
-                Button okColor = (Button) cp.findViewById(R.id.okColorButton);
-                okColor.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        selectedBlue = cp.getColor();
-                        updateColor(cmdSelectBlue, txtBlue, selectedBlue);
-                        cp.dismiss();
-                    }
-                });
+                presenter.onColorSelectButtonClick(MagicColor.BLUE);
             }
         });
 
         cmdSelectGreen = (Button) findViewById(R.id.cmdSelectGreen);
-        updateColor(cmdSelectGreen, txtGreen, selectedGreen);
         cmdSelectGreen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                int r = PreferenceManager.getRGB(selectedGreen)[0];
-                int g = PreferenceManager.getRGB(selectedGreen)[1];
-                int b = PreferenceManager.getRGB(selectedGreen)[2];
-
-                final ColorPicker cp = new ColorPicker(SettingsActivity.this, r, g, b);
-
-                cp.show();
-
-                Button okColor = (Button) cp.findViewById(R.id.okColorButton);
-                okColor.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        selectedGreen = cp.getColor();
-                        updateColor(cmdSelectGreen, txtGreen, selectedGreen);
-                        cp.dismiss();
-                    }
-                });
+                presenter.onColorSelectButtonClick(MagicColor.GREEN);
             }
         });
 
         cmdSelectRed = (Button) findViewById(R.id.cmdSelectRed);
-        updateColor(cmdSelectRed, txtRed, selectedRed);
         cmdSelectRed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                int r = PreferenceManager.getRGB(selectedRed)[0];
-                int g = PreferenceManager.getRGB(selectedRed)[1];
-                int b = PreferenceManager.getRGB(selectedRed)[2];
-
-                final ColorPicker cp = new ColorPicker(SettingsActivity.this, r, g, b);
-
-                cp.show();
-
-                Button okColor = (Button) cp.findViewById(R.id.okColorButton);
-                okColor.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        selectedRed = cp.getColor();
-                        updateColor(cmdSelectRed, txtRed, selectedRed);
-                        cp.dismiss();
-                    }
-                });
+                presenter.onColorSelectButtonClick(MagicColor.RED);
             }
         });
 
         cmdSelectWhite = (Button) findViewById(R.id.cmdSelectWhite);
-        updateColor(cmdSelectWhite, txtWhite, selectedWhite);
         cmdSelectWhite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                int r = PreferenceManager.getRGB(selectedWhite)[0];
-                int g = PreferenceManager.getRGB(selectedWhite)[1];
-                int b = PreferenceManager.getRGB(selectedWhite)[2];
-
-                final ColorPicker cp = new ColorPicker(SettingsActivity.this, r, g, b);
-
-                cp.show();
-
-                Button okColor = (Button) cp.findViewById(R.id.okColorButton);
-                okColor.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        selectedWhite = cp.getColor();
-                        updateColor(cmdSelectWhite, txtWhite, selectedWhite);
-                        cp.dismiss();
-                    }
-                });
+                presenter.onColorSelectButtonClick(MagicColor.WHITE);
             }
         });
+        //endregion
 
         cmdDiscardChanges = (Button) findViewById(R.id.cmdDiscardChanges);
         cmdDiscardChanges.setOnClickListener(new View.OnClickListener() {
@@ -248,11 +162,13 @@ public class SettingsActivity extends Activity implements ISettingsView {
                                 selectedRed = PreferenceManager.getDefaultRed(preferences);
                                 selectedWhite = PreferenceManager.getDefaultWhite(preferences);
 
+                                /*
                                 updateColor(cmdSelectBlack, txtBlack, selectedBlack);
                                 updateColor(cmdSelectBlue, txtBlue, selectedBlue);
                                 updateColor(cmdSelectGreen, txtGreen, selectedGreen);
                                 updateColor(cmdSelectRed, txtRed, selectedRed);
                                 updateColor(cmdSelectWhite, txtWhite, selectedWhite);
+                                */
 
                                 PreferenceManager.resetLifepoints(preferences);
                                 PreferenceManager.resetLongClickPoints(preferences);
@@ -273,6 +189,9 @@ public class SettingsActivity extends Activity implements ISettingsView {
                 finish();
             }
         });
+
+        presenter = new SettingsPresenter(this, preferences);
+        presenter.onCreate();
     }
 
     public void SaveSettings() {
@@ -288,20 +207,14 @@ public class SettingsActivity extends Activity implements ISettingsView {
         */
     }
 
-    // Set button background and textview text to match
-    public void updateColor(Button button, TextView txt, int color) {
-        ((GradientDrawable)button.getBackground()).setColor(color);
-        txt.setText(PreferenceManager.getHexString(color));
-    }
-
     @Override
     public void onBackPressed(){
         presenter.onBackButtonClick();
     }
 
     @Override
-    public int getSelectedColor(MagicColor magicColor) {
-        return 0;
+    public Color getSelectedColor(MagicColor magicColor) {
+        return new Color(MagicColor.BLACK, 0);
     }
 
     @Override
@@ -317,5 +230,50 @@ public class SettingsActivity extends Activity implements ISettingsView {
     @Override
     public void loadGameActivity() {
         finish();
+    }
+
+    @Override
+    public void loadColorPickerDialog(MagicColor color, int r, int g, int b) {
+        final ColorPicker cp = new ColorPicker(SettingsActivity.this, r, g, b);
+        final MagicColor baseColor = color;
+
+        cp.show();
+
+        Button okColor = (Button) cp.findViewById(R.id.okColorButton);
+        okColor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int newColor = cp.getColor();
+                //updateColor(cmdSelectWhite, txtWhite, selectedWhite);
+                presenter.onColorSelectValueUpdate(new Color(baseColor, newColor));
+                cp.dismiss();
+            }
+        });
+    }
+
+    @Override
+    public void updateColorButtonValue(Color color) {
+        switch(color.getBasecolor()) {
+            case BLUE:
+                ((GradientDrawable)cmdSelectBlue.getBackground()).setColor(color.getIntValue());
+                txtBlue.setText(color.getHexString());
+                break;
+            case GREEN:
+                ((GradientDrawable)cmdSelectGreen.getBackground()).setColor(color.getIntValue());
+                txtGreen.setText(color.getHexString());
+                break;
+            case RED:
+                ((GradientDrawable)cmdSelectRed.getBackground()).setColor(color.getIntValue());
+                txtRed.setText(color.getHexString());
+                break;
+            case WHITE:
+                ((GradientDrawable)cmdSelectWhite.getBackground()).setColor(color.getIntValue());
+                txtWhite.setText(color.getHexString());
+                break;
+            default:
+                ((GradientDrawable)cmdSelectBlack.getBackground()).setColor(color.getIntValue());
+                txtBlack.setText(color.getHexString());
+                break;
+        }
     }
 }

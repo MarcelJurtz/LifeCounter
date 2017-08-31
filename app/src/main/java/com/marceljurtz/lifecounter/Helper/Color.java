@@ -18,10 +18,13 @@ public class Color {
     private static final String shared_preferences_color_white = "COLOR_WHITE";
 
     private int intValue;
+    private MagicColor baseColor;
     private String prefString;
 
     public Color(MagicColor baseColor, int intValue) {
         this.intValue = intValue;
+        this.baseColor = baseColor;
+        // TODO REMOVE TO PREFERENCE MANAGER
         switch(baseColor) {
             case BLUE:
                 prefString = shared_preferences_color_blue;
@@ -57,5 +60,17 @@ public class Color {
 
     public static int getDefaultColorInt(MagicColor color) {
         return getDefaultColor(color).intValue;
+    }
+
+    public MagicColor getBasecolor() {
+        return baseColor;
+    }
+
+    public int getIntValue() {
+        return intValue;
+    }
+
+    public String getHexString() {
+        return String.format("#%06X", 0xFFFFFF & intValue);
     }
 }
