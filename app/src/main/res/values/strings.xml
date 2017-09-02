@@ -17,4 +17,7 @@
     <string name="settings_confirm_reset">Reset all settings?</string>
     <string name="settings_confirm_reset_true">Yes</string>
     <string name="settings_confirm_reset_false">No</string>
+
+    <string name="cmdPowerSaveEnable">Enable Power Saving</string>
+    <string name="cmdPowerSaveDisable">Disable Power Saving</string>
 </resources>

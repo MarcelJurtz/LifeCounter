@@ -253,10 +253,11 @@
         android:layout_gravity="start"
         android:background="@color/toolbarBackground">
 
-        <EditText
+        <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Hello World!"/>
+            android:id="@+id/cmdTogglePowerSave"
+            android:text="@string/cmdPowerSaveEnable"/>
 
     </RelativeLayout>
 </android.support.v4.widget.DrawerLayout>

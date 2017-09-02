@@ -8,6 +8,7 @@ import com.marceljurtz.lifecounter.Helper.MagicColor;
 import com.marceljurtz.lifecounter.Helper.Operator;
 import com.marceljurtz.lifecounter.Helper.PlayerID;
 import com.marceljurtz.lifecounter.Helper.PreferenceManager;
+import com.marceljurtz.lifecounter.R;
 
 public class GamePresenter implements IGamePresenter {
 
@@ -210,5 +211,11 @@ public class GamePresenter implements IGamePresenter {
 
         gameActivity.setPoisonpoints(PlayerID.ONE, String.format("%02d",player1.getPoisonPoints()));
         gameActivity.setPoisonpoints(PlayerID.TWO, String.format("%02d",player2.getPoisonPoints()));
+    }
+
+    @Override
+    public void onTogglePowerSaveClick() {
+        togglePowerSavingMode();
+        gameActivity.setDrawerTextPowerSaving(!powerSaveEnabled);
     }
 }

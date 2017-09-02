@@ -22,4 +22,6 @@ public interface IGamePresenter extends IPresenter {
 
     // Hit reset button
     void onResetButtonClick();
+
+    void onTogglePowerSaveClick();
 }

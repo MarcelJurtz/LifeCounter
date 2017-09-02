@@ -33,4 +33,8 @@ public interface IGameView extends IView {
     void poisonButtonEnable();
     void disablePoisonControls();
     void poisonButtonDisable();
+
+
+    // Drawer Layout Interaction
+    void setDrawerTextPowerSaving(boolean shouldBeEnabled);
 }

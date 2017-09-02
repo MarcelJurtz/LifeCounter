@@ -12,6 +12,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -63,6 +64,8 @@ public class GameActivity extends AppCompatActivity implements IGameView {
     TextView txtLifeCountHome;
     TextView txtPoisonCountGuest;
     TextView txtPoisonCountHome;
+
+    Button cmdDrawerTogglePowerSaving;
 
     int LP_Default;
     int PP_Default;
@@ -433,6 +436,18 @@ public class GameActivity extends AppCompatActivity implements IGameView {
 
         //endregion
 
+        //region Drawer Layout
+
+        cmdDrawerTogglePowerSaving = (Button)findViewById(R.id.cmdTogglePowerSave);
+        cmdDrawerTogglePowerSaving.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.onTogglePowerSaveClick();
+            }
+        });
+
+        //endregion
+
         //endregion
     }
 
@@ -622,6 +637,25 @@ public class GameActivity extends AppCompatActivity implements IGameView {
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         drawerToggle.onConfigurationChanged(new Configuration());
+    }
+
+    //endregion
+
+
+    //region Navigation Drawer
+
+    @Override
+    public void setDrawerTextPowerSaving(boolean shouldBeEnabled) {
+        String string = "";
+        if(shouldBeEnabled) {
+            string = getResources().getString(R.string.cmdPowerSaveEnable);
+        } else {
+            string = getResources().getString(R.string.cmdPowerSaveDisable);
+        }
+
+        // Close drawer
+        cmdDrawerTogglePowerSaving.setText(string);
+        mainLayout.closeDrawer(Gravity.START);
     }
 
     //endregion
