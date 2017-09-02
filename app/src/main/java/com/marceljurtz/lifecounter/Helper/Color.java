@@ -1,21 +1,29 @@
+/*
+Custom Color Manager for Magic Lifecounter
+
+* MagicColor for identification of original color
+* Int-Value for setting backgroundcolors and stuff
+* Int-Value can be customized and is saved via SharedPreferences
+* For this, use the prefString-member
+ */
+
 package com.marceljurtz.lifecounter.Helper;
 
 public class Color {
 
-    // Default colors for magic cards
+    //region Default colors
+
     public static final int DEFAULT_BLACK = android.graphics.Color.parseColor("#CCC2C0");
     public static final int DEFAULT_BLUE = android.graphics.Color.parseColor("#AAE0FA");
     public static final int DEFAULT_GREEN = android.graphics.Color.parseColor("#9BD3AE");
     public static final int DEFAULT_RED = android.graphics.Color.parseColor("#FAAA8F");
     public static final int DEFAULT_WHITE = android.graphics.Color.parseColor("#FFFCD6");
 
-    public static final int color_save = android.graphics.Color.parseColor("#000000");
+    public static final int COLOR_ENERGY_SAVE = android.graphics.Color.parseColor("#000000");
 
-    private static final String shared_preferences_color_black = "COLOR_BLACK";
-    private static final String shared_preferences_color_blue = "COLOR_BLUE";
-    private static final String shared_preferences_color_green = "COLOR_GREEN";
-    private static final String shared_preferences_color_red = "COLOR_RED";
-    private static final String shared_preferences_color_white = "COLOR_WHITE";
+    //endregion
+
+    //region Constructors and properties
 
     private int intValue;
     private MagicColor baseColor;
@@ -24,24 +32,53 @@ public class Color {
     public Color(MagicColor baseColor, int intValue) {
         this.intValue = intValue;
         this.baseColor = baseColor;
-        // TODO REMOVE TO PREFERENCE MANAGER
+
         switch(baseColor) {
             case BLUE:
-                prefString = shared_preferences_color_blue;
+                prefString = PreferenceManager.PREF_COLOR_BLUE;
                 break;
             case GREEN:
-                prefString = shared_preferences_color_green;
+                prefString = PreferenceManager.PREF_COLOR_GREEN;
                 break;
             case RED:
-                prefString = shared_preferences_color_red;
+                prefString = PreferenceManager.PREF_COLOR_RED;
                 break;
             case WHITE:
-                prefString = shared_preferences_color_white;
+                prefString = PreferenceManager.PREF_COLOR_WHITE;
                 break;
             default:
-                prefString = shared_preferences_color_black;
+                prefString = PreferenceManager.PREF_COLOR_BLACK;
         }
     }
+
+
+    public Color(MagicColor baseColor) {
+        this(baseColor, getDefaultColorInt(baseColor));
+    }
+
+    //endregion
+
+    //region Getter
+
+    public String getPreferenceString() {
+        return this.prefString;
+    }
+
+    public MagicColor getBasecolor() {
+        return baseColor;
+    }
+
+    public int getIntValue() {
+        return intValue;
+    }
+
+    public String getHexString() {
+        return String.format("#%06X", 0xFFFFFF & intValue);
+    }
+
+    //endregion
+
+    //region Static members
 
     public static Color getDefaultColor(MagicColor color) {
         switch(color) {
@@ -62,15 +99,5 @@ public class Color {
         return getDefaultColor(color).intValue;
     }
 
-    public MagicColor getBasecolor() {
-        return baseColor;
-    }
-
-    public int getIntValue() {
-        return intValue;
-    }
-
-    public String getHexString() {
-        return String.format("#%06X", 0xFFFFFF & intValue);
-    }
+    //endregion
 }

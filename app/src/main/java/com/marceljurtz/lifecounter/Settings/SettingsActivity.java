@@ -20,6 +20,8 @@ import com.pes.androidmaterialcolorpickerdialog.ColorPicker;
 
 public class SettingsActivity extends Activity implements ISettingsView {
 
+    //region View declarations
+
     TextView txtBlack;
     TextView txtBlue;
     TextView txtGreen;
@@ -40,36 +42,12 @@ public class SettingsActivity extends Activity implements ISettingsView {
 
     ImageButton cmdBack;
 
-    static int selectedBlack;
-    static int selectedBlue;
-    static int selectedGreen;
-    static int selectedRed;
-    static int selectedWhite;
-
-    // Controlling the reset confirmation
-    boolean resetConfirmed = false;
+    //endregion
 
     SharedPreferences preferences;
-
     ISettingsPresenter presenter;
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        presenter.onResume();
-    }
-
-    @Override
-    protected void onPause() {
-        presenter.onPause();
-        super.onPause();
-    }
-
-    @Override
-    protected void onDestroy() {
-        presenter.onDestroy();
-        super.onDestroy();
-    }
+    //region Activity Lifecycle Functions
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,7 +56,7 @@ public class SettingsActivity extends Activity implements ISettingsView {
 
         preferences = getApplicationContext().getSharedPreferences(PreferenceManager.PREFS, Activity.MODE_PRIVATE);
 
-        // Textviews for color description
+        //region View Initialization
         txtBlack = (TextView) findViewById(R.id.txtColorBlack);
         txtBlue = (TextView) findViewById(R.id.txtColorBlue);
         txtGreen = (TextView) findViewById(R.id.txtColorGreen);
@@ -87,11 +65,7 @@ public class SettingsActivity extends Activity implements ISettingsView {
 
         txtLifepoints = (EditText) findViewById(R.id.txtLiveSelection);
         txtLongClickPoints = (EditText) findViewById(R.id.txtLongClickPoints);
-
-        txtLifepoints.setText(String.valueOf(PreferenceManager.getDefaultLifepoints(preferences)));
-        txtLongClickPoints.setText(String.valueOf(PreferenceManager.getLongclickPoints(preferences)));
-
-
+        //endregion
 
         //region Color Selection Buttons
         cmdSelectBlack = (Button) findViewById(R.id.cmdSelectBlack);
@@ -135,82 +109,67 @@ public class SettingsActivity extends Activity implements ISettingsView {
         });
         //endregion
 
+        //region Cancel Button Click
+
         cmdDiscardChanges = (Button) findViewById(R.id.cmdDiscardChanges);
         cmdDiscardChanges.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                presenter.onCancelButtonClick();
             }
         });
 
+        //endregion
 
-        // Reset button with confirmation dialog
+        //region Reset Button Click
+
         cmdReset = (Button) findViewById(R.id.cmdResetSettings);
         cmdReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                new AlertDialog.Builder(SettingsActivity.this)
-                        .setMessage(R.string.settings_confirm_reset)
-                        .setCancelable(false)
-                        .setPositiveButton(R.string.settings_confirm_reset_true, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                // Reset colors
-                                selectedBlack = PreferenceManager.getDefaultBlack(preferences);
-                                selectedBlue = PreferenceManager.getDefaultBlue(preferences);
-                                selectedGreen = PreferenceManager.getDefaultGreen(preferences);
-                                selectedRed = PreferenceManager.getDefaultRed(preferences);
-                                selectedWhite = PreferenceManager.getDefaultWhite(preferences);
-
-                                /*
-                                updateColor(cmdSelectBlack, txtBlack, selectedBlack);
-                                updateColor(cmdSelectBlue, txtBlue, selectedBlue);
-                                updateColor(cmdSelectGreen, txtGreen, selectedGreen);
-                                updateColor(cmdSelectRed, txtRed, selectedRed);
-                                updateColor(cmdSelectWhite, txtWhite, selectedWhite);
-                                */
-
-                                PreferenceManager.resetLifepoints(preferences);
-                                PreferenceManager.resetLongClickPoints(preferences);
-                                txtLifepoints.setText(String.valueOf(PreferenceManager.getDefaultLifepoints(preferences)));
-                                txtLongClickPoints.setText(String.valueOf(PreferenceManager.getLongclickPoints(preferences)));
-                            }
-                        })
-                        .setNegativeButton(R.string.settings_confirm_reset_false, null)
-                        .show();
+                presenter.onResetButtonClick();
             }
         });
+
+        //endregion
+
+        //region Back Button Click
 
         cmdBack = (ImageButton)findViewById(R.id.cmdBack);
         cmdBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SaveSettings();
-                finish();
+                onBackPressed();
             }
         });
+
+        //endregion
 
         presenter = new SettingsPresenter(this, preferences);
         presenter.onCreate();
     }
 
-    public void SaveSettings() {
-        /* TODO: Save Changes
-        SettingsService.saveColor(getApplicationContext(), getString(R.string.shared_preferences_color_black),selectedBlack);
-        SettingsService.saveColor(getApplicationContext(), getString(R.string.shared_preferences_color_blue),selectedBlue);
-        SettingsService.saveColor(getApplicationContext(), getString(R.string.shared_preferences_color_green),selectedGreen);
-        SettingsService.saveColor(getApplicationContext(), getString(R.string.shared_preferences_color_red),selectedRed);
-        SettingsService.saveColor(getApplicationContext(), getString(R.string.shared_preferences_color_white), selectedWhite);
-
-        SettingsService.setLifepoints(getApplicationContext(), Integer.parseInt(txtLifepoints.getText().toString()));
-        SettingsService.setLongClickPoints(getApplicationContext(), Integer.parseInt(txtLongClickPoints.getText().toString()));
-        */
+    @Override
+    protected void onResume() {
+        super.onResume();
+        presenter.onResume();
     }
 
     @Override
-    public void onBackPressed(){
-        presenter.onBackButtonClick();
+    protected void onPause() {
+        presenter.onPause();
+        super.onPause();
     }
+
+    @Override
+    protected void onDestroy() {
+        presenter.onDestroy();
+        super.onDestroy();
+    }
+
+    //endregion
+
+    //region Get EditText and color values
 
     @Override
     public Color getSelectedColor(MagicColor magicColor) {
@@ -218,13 +177,34 @@ public class SettingsActivity extends Activity implements ISettingsView {
     }
 
     @Override
-    public int getSelectedLifepoints() {
-        return Integer.parseInt(txtLifepoints.getText().toString());
+    public String getLifepoints() {
+        return txtLifepoints.getText().toString();
     }
 
     @Override
-    public int getSelectedLongClickPoints() {
-        return Integer.parseInt(txtLongClickPoints.getText().toString());
+    public String getLongClickPoints() {
+        return txtLongClickPoints.getText().toString();
+    }
+
+    //endregion
+
+    //region Set EditText values
+
+    @Override
+    public void setLifepoints(String lifepointText) {
+        txtLifepoints.setText(lifepointText);
+    }
+
+    @Override
+    public void setLongClickPoints(String longClickPointText) {
+        txtLongClickPoints.setText(longClickPointText);
+    }
+
+    //endregion
+
+    @Override
+    public void onBackPressed(){
+        presenter.onBackButtonClick();
     }
 
     @Override
@@ -275,5 +255,24 @@ public class SettingsActivity extends Activity implements ISettingsView {
                 txtBlack.setText(color.getHexString());
                 break;
         }
+    }
+
+    @Override
+    public void loadResetConfirmationDialog() {
+        new AlertDialog.Builder(SettingsActivity.this)
+                .setMessage(R.string.settings_confirm_reset)
+                .setCancelable(false)
+                .setPositiveButton(R.string.settings_confirm_reset_true, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        presenter.onResetButtonConfirm();
+                    }
+                })
+                .setNegativeButton(R.string.settings_confirm_reset_false, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        presenter.onResetButtonCancel();
+                    }
+                })
+                .show();
     }
 }

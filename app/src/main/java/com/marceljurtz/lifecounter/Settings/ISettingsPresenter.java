@@ -10,4 +10,7 @@ public interface ISettingsPresenter extends IPresenter {
     void onResetButtonClick();
     void onColorSelectButtonClick(MagicColor color);
     void onColorSelectValueUpdate(Color color);
+
+    void onResetButtonConfirm();
+    void onResetButtonCancel();
 }
