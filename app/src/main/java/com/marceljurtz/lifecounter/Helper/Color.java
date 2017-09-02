@@ -99,5 +99,14 @@ public class Color {
         return getDefaultColor(color).intValue;
     }
 
+    // Get RGB version for int color
+    public static int[] getRGB(int color) {
+        int[] rgb = new int[3];
+        rgb[0] = (color >> 16) & 0xFF;
+        rgb[1] = (color >> 8) & 0xFF;
+        rgb[2] = (color >> 0) & 0xFF;
+        return rgb;
+    }
+
     //endregion
 }

@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import com.marceljurtz.lifecounter.Helper.BaseInterface.IPresenter;
 import com.marceljurtz.lifecounter.Helper.BaseInterface.IView;
 import com.marceljurtz.lifecounter.Helper.ClickType;
+import com.marceljurtz.lifecounter.Helper.Color;
 import com.marceljurtz.lifecounter.Helper.MagicColor;
 import com.marceljurtz.lifecounter.Helper.Operator;
 import com.marceljurtz.lifecounter.Helper.PlayerID;
@@ -81,6 +82,8 @@ public class GamePresenter implements IGamePresenter {
         return energySavingEnabled;
     }
 
+    //region Activity Lifecycle functions
+
     @Override
     public void onCreate() {
 
@@ -113,6 +116,8 @@ public class GamePresenter implements IGamePresenter {
 
     }
 
+    //endregion
+
     @Override
     public void onLifeUpdate(PlayerID playerID, ClickType clickType, Operator operator) {
         gameModel.updateLifepoints(playerID, clickType, operator);
@@ -134,8 +139,28 @@ public class GamePresenter implements IGamePresenter {
     @Override
     public void onColorButtonClick(PlayerID playerID, MagicColor color, ClickType clickType) {
         if(clickType.equals(ClickType.SHORT)) {
-            int newColor = com.marceljurtz.lifecounter.Helper.Color.getDefaultColorInt(color);
-            gameActivity.setLayoutColor(playerID, newColor);
+
+            Color newColor;
+
+            switch (color) {
+                case BLUE:
+                    newColor = new Color(MagicColor.BLUE, PreferenceManager.getCustomColor(preferences, MagicColor.BLUE));
+                    break;
+                case GREEN:
+                    newColor = new Color(MagicColor.GREEN, PreferenceManager.getCustomColor(preferences, MagicColor.GREEN));
+                    break;
+                case RED:
+                    newColor = new Color(MagicColor.RED, PreferenceManager.getCustomColor(preferences, MagicColor.RED));
+                    break;
+                case WHITE:
+                    newColor = new Color(MagicColor.WHITE, PreferenceManager.getCustomColor(preferences, MagicColor.WHITE));
+                    break;
+                default:
+                    newColor = new Color(MagicColor.BLACK, PreferenceManager.getCustomColor(preferences, MagicColor.BLACK));
+                    break;
+            }
+
+            gameActivity.setLayoutColor(playerID, newColor.getIntValue());
         }
     }
 

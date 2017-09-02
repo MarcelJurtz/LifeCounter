@@ -10,7 +10,6 @@ public interface IGameView extends IView {
 
     // Set players background color TODO Validate possible duplicate
     void setLayoutColor(PlayerID playerID, int color);
-    void setPlayerLayoutBackgroundColor(PlayerID playerID, int color);
 
     // Set life- / poisonpoints
     void setLifepoints(PlayerID id, String points);

@@ -472,18 +472,6 @@ public class GameActivity extends AppCompatActivity implements IGameView {
     }
 
     @Override
-    public void setPlayerLayoutBackgroundColor(PlayerID playerID, int color) {
-        switch(playerID) {
-            case ONE:
-                layoutHome.setBackgroundColor(color);
-                break;
-            case TWO:
-                layoutGuest.setBackgroundColor(color);
-                break;
-        }
-    }
-
-    @Override
     public void setLayoutColor(PlayerID playerID, int color) {
         if(playerID.equals(PlayerID.ONE)) {
             layoutHome.setBackgroundColor(color);
@@ -491,45 +479,6 @@ public class GameActivity extends AppCompatActivity implements IGameView {
             layoutGuest.setBackgroundColor(color);
         }
     }
-
-    //region TODO: REMOVE! TEMPORARY DEPRECATED RUBBISH
-    // Reset
-    // Beide Leben wieder auf 20 setzen
-    // PoisonCounter deaktivieren
-    /*
-    private void resetGame() {
-        // Lifepoints
-        LP_Default = SettingsService.getLifepoints(getApplicationContext());
-        PP_Default = 0;
-
-        player_home.setDefaults(LP_Default, PP_Default);
-        player_home.reset(txtLifeCountHome, txtPoisonCountHome);
-        player_guest.setDefaults(LP_Default, PP_Default);
-        player_guest.reset(txtLifeCountGuest, txtPoisonCountGuest);
-
-        setLayoutColor(SettingsService.getColor(getApplicationContext(), getString(R.string.shared_preferences_color_black), ColorService.getDefaultBlack()), layoutHome);
-        setLayoutColor(SettingsService.getColor(getApplicationContext(), getString(R.string.shared_preferences_color_black), ColorService.getDefaultBlack()), layoutGuest);
-
-        resetGameTemporary();
-    }
-    */
-    // Only resets gui without changing the lifepoints.
-    // This is needed for changig between apps
-    // otherwise, the game will reset by minimization
-
-    /*
-    private void resetGameTemporary() {
-        longClickPoints = SettingsService.getLongClickPoints(getApplicationContext());
-
-        // Settings
-        poisonEnabled = false;
-        togglePoison(poisonEnabled);
-
-        colorSettingsEnabled = false;
-        toggleColorButtonsVisibility(colorSettingsEnabled);
-    }
-    */
-    //endregion
 
     //region Toggle Poison Controls
     @Override

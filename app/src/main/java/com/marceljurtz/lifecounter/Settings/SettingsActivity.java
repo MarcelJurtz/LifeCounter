@@ -172,11 +172,6 @@ public class SettingsActivity extends Activity implements ISettingsView {
     //region Get EditText and color values
 
     @Override
-    public Color getSelectedColor(MagicColor magicColor) {
-        return new Color(MagicColor.BLACK, 0);
-    }
-
-    @Override
     public String getLifepoints() {
         return txtLifepoints.getText().toString();
     }

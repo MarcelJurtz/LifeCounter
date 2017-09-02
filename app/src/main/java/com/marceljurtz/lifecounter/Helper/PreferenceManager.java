@@ -1,17 +1,31 @@
+/*
+
+    Preference Manager for saving, loading and restoring default values
+
+    *
+ */
+
 package com.marceljurtz.lifecounter.Helper;
 
-import android.app.Activity;
 import android.content.SharedPreferences;
-
-import com.marceljurtz.lifecounter.R;
 
 public class PreferenceManager {
 
-    // Defaults for reset
-    private static final int DEFAULT_LIFEPOINTS = 20;
-    private static final int DEFAULT_LONG_CLICK_POINTS = 5;
+    //region Default values
 
-    //region Preference Strings
+    private static final int DEFAULT_LIFEPOINTS = 20;
+    private static final int DEFAULT_LONGCLICK_POINTS = 5;
+    private static final int DEFAULT_SHORTCLICK_POINTS = 1;
+
+    // MAX and MIN Values
+    private static final int MAX_POISON = 25;
+    private static final int MIN_POISON = 0;
+    private static final int MAX_LIFE = 1000;
+    private static final int MIN_LIFE = -100;
+
+    //endregion
+
+    //region Preference strings
 
     public static final String PREFS = "MTG_SETTINGS";
     public static final String PREF_COLOR_BLACK = "COLOR_BLACK";
@@ -26,6 +40,9 @@ public class PreferenceManager {
 
     //endregion
 
+    //region Custom colors
+
+    // Get custom color
     public static int getCustomColor(SharedPreferences preferences, MagicColor color) {
         String colorString;
 
@@ -49,79 +66,14 @@ public class PreferenceManager {
         return preferences.getInt(colorString, Color.getDefaultColorInt(color));
     }
 
-    //region Save Settings
-
+    // Set custom color
     public static void saveColor(SharedPreferences preferences, Color color) {
         SharedPreferences.Editor editor = preferences.edit();
         editor.putInt(color.getPreferenceString(), color.getIntValue());
         editor.commit();
     }
 
-    public static void saveDefaultLifepoints(SharedPreferences preferences, int lifepoints) {
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putInt(PREF_LIFEPOINTS, lifepoints);
-        editor.commit();
-    }
-
-    public static void saveDefaultLongClickPoints(SharedPreferences preferences, int longClickPoints) {
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putInt(PREF_LONG_CLICK_POINTS, longClickPoints);
-        editor.commit();
-    }
-
-    //endregion
-
-    // region Load Settings
-    public static int getDefaultLifepoints(SharedPreferences preferences) {
-        return preferences.getInt(PREF_LIFEPOINTS, DEFAULT_LIFEPOINTS);
-    }
-
-    private static final int LONGCLICK_POINTS = 5;
-    private static final int SHORTCLICK_POINTS = 1;
-
-    public static int getShortclickPoints() {
-        return SHORTCLICK_POINTS;
-    }
-
-    public static int getLongclickPoints(SharedPreferences preferences) {
-        int points = preferences.getInt(PREF_LONG_CLICK_POINTS, LONGCLICK_POINTS);
-        return points;
-    }
-    //endregion
-
-    //region MAX and MIN Values
-    private static final int MAX_POISON = 25;
-    private static final int MIN_POISON = 0;
-    private static final int MAX_LIFE = 1000;
-    private static final int MIN_LIFE = -100;
-
-    public static int getMaxPoison(){
-        return MAX_POISON;
-    }
-
-    public static int getMinPoison(){
-        return MIN_POISON;
-    }
-
-    public static int getMaxLife(){
-        return MAX_LIFE;
-    }
-
-    public static int getMinLife() {
-        return MIN_LIFE;
-    }
-    //endregion
-
-    //region Reset functionality
-
-    public static void resetLifepoints(SharedPreferences preferences) {
-        saveDefaultLifepoints(preferences, DEFAULT_LIFEPOINTS);
-    }
-
-    public static void resetLongClickPoints(SharedPreferences preferences) {
-        saveDefaultLongClickPoints(preferences, LONGCLICK_POINTS);
-    }
-
+    // Reset all custom colors
     public static void resetColors(SharedPreferences preferences) {
         saveColor(preferences, new Color(MagicColor.BLACK));
         saveColor(preferences, new Color(MagicColor.BLUE));
@@ -130,13 +82,12 @@ public class PreferenceManager {
         saveColor(preferences, new Color(MagicColor.WHITE));
     }
 
-    //endregion
-
-    //region Colors
+    // Powersave values
     public static final int powerSave = android.graphics.Color.parseColor("#000000");
     public static final int powerSaveTextcolor = android.graphics.Color.parseColor("#CCC2C0");
     public static final int regularTextcolor = android.graphics.Color.parseColor("#161618");
 
+    // Getter for default colors
     public static int getDefaultBlack(SharedPreferences preferences){
         int black = preferences.getInt(PREF_COLOR_BLACK, Color.DEFAULT_BLACK);
         return black;
@@ -162,12 +113,69 @@ public class PreferenceManager {
         return white;
     }
 
-    public static int[] getRGB(int color) {
-        int[] rgb = new int[3];
-        rgb[0] = (color >> 16) & 0xFF;
-        rgb[1] = (color >> 8) & 0xFF;
-        rgb[2] = (color >> 0) & 0xFF;
-        return rgb;
+    //endregion
+
+    //region Lifepoints and Longclickpoints
+
+    // Get Lifepoints
+    public static int getDefaultLifepoints(SharedPreferences preferences) {
+        return preferences.getInt(PREF_LIFEPOINTS, DEFAULT_LIFEPOINTS);
     }
+
+    // Set Lifepoints
+    public static void saveDefaultLifepoints(SharedPreferences preferences, int lifepoints) {
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putInt(PREF_LIFEPOINTS, lifepoints);
+        editor.commit();
+    }
+
+    // Reset Lifepoints
+    public static void resetLifepoints(SharedPreferences preferences) {
+        saveDefaultLifepoints(preferences, DEFAULT_LIFEPOINTS);
+    }
+
+    // Get Shortclickpoints
+    public static int getDefaultShortclickPoints() {
+        return DEFAULT_SHORTCLICK_POINTS;
+    }
+
+    // Get Longclickpoints
+    public static int getLongclickPoints(SharedPreferences preferences) {
+        int points = preferences.getInt(PREF_LONG_CLICK_POINTS, DEFAULT_LONGCLICK_POINTS);
+        return points;
+    }
+
+    // Set Longclickpoints
+    public static void saveDefaultLongClickPoints(SharedPreferences preferences, int longClickPoints) {
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putInt(PREF_LONG_CLICK_POINTS, longClickPoints);
+        editor.commit();
+    }
+
+    // Reset Longclickpoints
+    public static void resetLongClickPoints(SharedPreferences preferences) {
+        saveDefaultLongClickPoints(preferences, DEFAULT_LONGCLICK_POINTS);
+    }
+
+    //endregion
+
+    //region Min / Max values
+
+    public static int getMaxPoison(){
+        return MAX_POISON;
+    }
+
+    public static int getMinPoison(){
+        return MIN_POISON;
+    }
+
+    public static int getMaxLife(){
+        return MAX_LIFE;
+    }
+
+    public static int getMinLife() {
+        return MIN_LIFE;
+    }
+
     //endregion
 }

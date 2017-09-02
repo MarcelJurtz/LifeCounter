@@ -100,9 +100,9 @@ public class SettingsPresenter implements ISettingsPresenter {
     public void onColorSelectButtonClick(MagicColor color) {
         int savedColor = PreferenceManager.getCustomColor(preferences, color);
 
-        int r = PreferenceManager.getRGB(savedColor)[0];
-        int g = PreferenceManager.getRGB(savedColor)[1];
-        int b = PreferenceManager.getRGB(savedColor)[2];
+        int r = Color.getRGB(savedColor)[0];
+        int g = Color.getRGB(savedColor)[1];
+        int b = Color.getRGB(savedColor)[2];
 
         settingsView.loadColorPickerDialog(color, r, g, b);
     }

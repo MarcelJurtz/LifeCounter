@@ -40,7 +40,7 @@ public class GameModel {
 
     public void updateLifepoints(PlayerID playerID, ClickType clickType, Operator operator) {
 
-        int amount = PreferenceManager.getShortclickPoints();
+        int amount = PreferenceManager.getDefaultShortclickPoints();
         if(clickType.equals(ClickType.LONG)) amount = PreferenceManager.getLongclickPoints(preferences);
 
         if(operator.equals(Operator.SUBSTRACT)) amount *= -1;
@@ -60,7 +60,7 @@ public class GameModel {
 
     public void updatePoisonpoints(PlayerID playerID, ClickType clickType, Operator operator) {
 
-        int amount = PreferenceManager.getShortclickPoints();
+        int amount = PreferenceManager.getDefaultShortclickPoints();
         if(clickType.equals(ClickType.LONG)) amount = PreferenceManager.getLongclickPoints(preferences);
 
         if(operator.equals(Operator.SUBSTRACT)) amount *= -1;
