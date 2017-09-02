@@ -8,6 +8,9 @@
     <string name="setting_default_lives">Lifepoints:</string>
     <string name="setting_default_long_click_points">Points on hold (+/-):</string>
 
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
+
     <string name="settings_title">Settings</string>
     <string name="settings_cancel">Discard</string>
     <string name="settings_reset">Reset</string>

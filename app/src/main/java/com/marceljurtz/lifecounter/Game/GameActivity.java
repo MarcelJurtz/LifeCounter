@@ -3,10 +3,15 @@ package com.marceljurtz.lifecounter.Game;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.graphics.drawable.GradientDrawable;
+import android.support.annotation.Nullable;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -26,7 +31,7 @@ public class GameActivity extends AppCompatActivity implements IGameView {
 
     private IGamePresenter presenter;
 
-    RelativeLayout mainLayout;
+    DrawerLayout mainLayout;
     RelativeLayout layoutHome;
     RelativeLayout layoutGuest;
 
@@ -76,14 +81,34 @@ public class GameActivity extends AppCompatActivity implements IGameView {
 
     SharedPreferences preferences;
 
+    Toolbar toolbar;
+    ActionBarDrawerToggle drawerToggle;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Hide ActionBar
-        final ActionBar ab = getSupportActionBar();
-        ab.hide();
+        //region Layouts and TextViews
+
+        // Layouts
+        mainLayout = (DrawerLayout)findViewById(R.id.mainLayout);
+        layoutGuest = (RelativeLayout)findViewById(R.id.layout_top);
+        layoutHome = (RelativeLayout)findViewById(R.id.layout_bottom);
+
+        // Textviews for Lifepoints and Poisonpoints
+        txtLifeCountGuest = (TextView)findViewById(R.id.txtLifeCountGuest);
+        txtLifeCountHome = (TextView)findViewById(R.id.txtLifeCountHome);
+        txtPoisonCountHome = (TextView)findViewById(R.id.txtPoisonCountHome);
+        txtPoisonCountGuest = (TextView)findViewById(R.id.txtPoisonCountGuest);
+
+        //endregion
+
+        toolbar = (Toolbar)findViewById(R.id.tbMain);
+        setSupportActionBar(toolbar);
+
+        drawerToggle = new ActionBarDrawerToggle(GameActivity.this, mainLayout, R.string.drawer_open, R.string.drawer_close);
+        mainLayout.setDrawerListener(drawerToggle);
 
         // Disable screen timeout
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
@@ -218,20 +243,7 @@ public class GameActivity extends AppCompatActivity implements IGameView {
 
         //endregion
 
-        //region Layouts and TextViews
 
-        // Layouts
-        mainLayout = (RelativeLayout)findViewById(R.id.mainLayout);
-        layoutGuest = (RelativeLayout)findViewById(R.id.layout_top);
-        layoutHome = (RelativeLayout)findViewById(R.id.layout_bottom);
-
-        // Textviews for Lifepoints and Poisonpoints
-        txtLifeCountGuest = (TextView)findViewById(R.id.txtLifeCountGuest);
-        txtLifeCountHome = (TextView)findViewById(R.id.txtLifeCountHome);
-        txtPoisonCountHome = (TextView)findViewById(R.id.txtPoisonCountHome);
-        txtPoisonCountGuest = (TextView)findViewById(R.id.txtPoisonCountGuest);
-
-        //endregion
 
         //region Lifepoints Home
 
@@ -596,5 +608,21 @@ public class GameActivity extends AppCompatActivity implements IGameView {
             txtPoisonCountGuest.setText(points);
         }
     }
+    //endregion
+
+    //region Overrides for NavigationDrawer
+
+    @Override
+    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        drawerToggle.syncState();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        drawerToggle.onConfigurationChanged(new Configuration());
+    }
+
     //endregion
 }

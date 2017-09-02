@@ -7,4 +7,5 @@
     <color name="guestDefault">#CCC2C0</color>
     <color name="settingsBar">#161618</color>
     <color name="textColor">#161618</color>
+    <color name="toolbarBackground">#CCC2C0</color>
 </resources>
