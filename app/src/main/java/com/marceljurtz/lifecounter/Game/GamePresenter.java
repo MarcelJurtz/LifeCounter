@@ -2,8 +2,6 @@ package com.marceljurtz.lifecounter.Game;
 
 import android.content.SharedPreferences;
 
-import com.marceljurtz.lifecounter.Helper.BaseInterface.IPresenter;
-import com.marceljurtz.lifecounter.Helper.BaseInterface.IView;
 import com.marceljurtz.lifecounter.Helper.ClickType;
 import com.marceljurtz.lifecounter.Helper.Color;
 import com.marceljurtz.lifecounter.Helper.MagicColor;
@@ -19,7 +17,7 @@ public class GamePresenter implements IGamePresenter {
 
     private boolean settingsVisible;
     private boolean poisonVisible;
-    private boolean energySavingEnabled;
+    private boolean powerSaveEnabled;
 
     private Player player1;
     private Player player2;
@@ -27,8 +25,6 @@ public class GamePresenter implements IGamePresenter {
     public GamePresenter(GameActivity gameActivity, SharedPreferences preferences) {
         this.preferences = preferences;
         this.gameActivity = gameActivity;
-
-
 
         player1 = new Player(PlayerID.ONE);
         player2 = new Player(PlayerID.TWO);
@@ -69,17 +65,17 @@ public class GamePresenter implements IGamePresenter {
         return poisonVisible;
     }
 
-    public void setEnergySavingEnabled() {
-        energySavingEnabled = !energySavingEnabled;
-        if(energySavingEnabled) {
+    public void togglePowerSavingMode() {
+        powerSaveEnabled = !powerSaveEnabled;
+        if(powerSaveEnabled) {
             gameActivity.enableEnergySaving(PreferenceManager.powerSave, PreferenceManager.powerSaveTextcolor);
         } else {
             gameActivity.disableEnergySaving(PreferenceManager.getDefaultBlack(preferences), PreferenceManager.regularTextcolor);
         }
     }
 
-    public boolean getEnergySavingEnabled() {
-        return energySavingEnabled;
+    public boolean getPowerSaveEnabled() {
+        return powerSaveEnabled;
     }
 
     //region Activity Lifecycle functions
@@ -102,7 +98,7 @@ public class GamePresenter implements IGamePresenter {
         poisonVisible = false;
         gameActivity.disablePoisonControls();
 
-        energySavingEnabled = false;
+        powerSaveEnabled = false;
 
         gameActivity.initColorButton(MagicColor.BLACK, PreferenceManager.getCustomColor(preferences, MagicColor.BLACK));
         gameActivity.initColorButton(MagicColor.BLUE, PreferenceManager.getCustomColor(preferences, MagicColor.BLUE));
@@ -140,6 +136,9 @@ public class GamePresenter implements IGamePresenter {
     public void onColorButtonClick(PlayerID playerID, MagicColor color, ClickType clickType) {
         if(clickType.equals(ClickType.SHORT)) {
 
+            // Disable PowerSaveMode if enabled
+            if(powerSaveEnabled) togglePowerSavingMode();
+
             Color newColor;
 
             switch (color) {
@@ -161,6 +160,8 @@ public class GamePresenter implements IGamePresenter {
             }
 
             gameActivity.setLayoutColor(playerID, newColor.getIntValue());
+        } else if(clickType.equals(ClickType.LONG) && color.equals(MagicColor.BLACK)) {
+            togglePowerSavingMode();
         }
     }
 
