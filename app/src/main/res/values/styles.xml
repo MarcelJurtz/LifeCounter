@@ -72,4 +72,32 @@
         <item name="android:layout_alignTop">@+id/txtPoisonCountGuest</item>
     </style>
 
+    <!-- Navigation Drawer -->
+    <style name="nd_button">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/navdrawer_button</item>
+    </style>
+
+    <style name="nd_button_border_bottom_only">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/navdrawer_button_bottom_only</item>
+    </style>
+
+    <style name="ndHeaderText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/ndHeaderTextSize</item>
+        <item name="android:paddingLeft">@dimen/ndPadding</item>
+    </style>
+
+    <style name="ndSubHeaderText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/ndSubHeaderTextSize</item>
+        <item name="android:paddingLeft">@dimen/ndPadding</item>
+    </style>
+
+
 </resources>

@@ -20,4 +20,10 @@
 
     <string name="cmdPowerSaveEnable">Energiesparmodus aktivieren</string>
     <string name="cmdPowerSaveDisable">Energiesparmodus deaktivieren</string>
+
+    <string name="cmdTogglePlayerAmount2">4-Spielermodus laden</string>
+    <string name="cmdTogglePlayerAmount4">2-Spielermodus laden</string>
+
+    <string name="ndHeader">MTG LifeCounter</string>
+    <string name="cmdAbout">Über</string>
 </resources>

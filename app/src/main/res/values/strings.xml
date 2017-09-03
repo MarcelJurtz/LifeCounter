@@ -20,4 +20,10 @@
 
     <string name="cmdPowerSaveEnable">Enable Power Saving</string>
     <string name="cmdPowerSaveDisable">Disable Power Saving</string>
+
+    <string name="cmdTogglePlayerAmount2">Enter 4-Player Mode</string>
+    <string name="cmdTogglePlayerAmount4">Enter 2-Player Mode</string>
+
+    <string name="ndHeader">MTG LifeCounter</string>
+    <string name="cmdAbout">About</string>
 </resources>

@@ -3,6 +3,7 @@ package com.marceljurtz.lifecounter.Game;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
 import android.content.res.Configuration;
 import android.graphics.drawable.GradientDrawable;
 import android.support.annotation.Nullable;
@@ -20,6 +21,7 @@ import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.marceljurtz.lifecounter.BuildConfig;
 import com.marceljurtz.lifecounter.Helper.ClickType;
 import com.marceljurtz.lifecounter.Helper.MagicColor;
 import com.marceljurtz.lifecounter.Helper.Operator;
@@ -443,6 +445,18 @@ public class GameActivity extends AppCompatActivity implements IGameView {
             @Override
             public void onClick(View v) {
                 presenter.onTogglePowerSaveClick();
+            }
+        });
+
+        TextView lblVersionInfo = (TextView)findViewById(R.id.lblAppVersion);
+        String versionName = BuildConfig.VERSION_NAME;
+        lblVersionInfo.setText("Version " + versionName);
+
+        Button cmdSettings = (Button)findViewById(R.id.cmdSettings);
+        cmdSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.onSettingsButtonClick(ClickType.LONG);
             }
         });
 

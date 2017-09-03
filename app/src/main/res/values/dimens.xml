@@ -11,4 +11,9 @@
     <dimen name="button_poison_space_vertical">16dp</dimen>
 
     <dimen name="size_config_buttons">30dp</dimen>
+
+    <dimen name="ndHeaderTextSize">32dp</dimen>
+    <dimen name="ndSubHeaderTextSize">12dp</dimen>
+    <dimen name="ndPadding">5dp</dimen>
+    <dimen name="spacerMargin">10dp</dimen>
 </resources>
