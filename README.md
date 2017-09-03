@@ -10,6 +10,15 @@ Each player can choose the background-color of the individual side, which can be
 
 By holding the button to select *black* background color, the energy-saving mode for AMOLED-displays can be enabled / disabled.
 
+## Donations
+
+I develop all of my apps in my spare time. I'm also strictly against ads, so I don't earn anything for my work.
+If you'd like to support me, feel free to use any of the options below. Feel free to contact me for any further questions or enquiries.
+
+* Bitcoin: 1HDdKd3uoxdvS8pBKKKxEkjoJqUuBiEjkL
+* Bitcoin Cash: 1CvMvEYwqFJ788TuGvf6iGNsBSpCLeyic
+* Ethereum: 0xa85c88d505Eb784D199907257da22D73b1Fc767d
+
 ## Customization
 
 Using the settings-button, color options are toggled visible / invisible. Each player can choose their background color.
