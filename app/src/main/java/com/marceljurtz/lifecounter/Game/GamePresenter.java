@@ -73,6 +73,7 @@ public class GamePresenter implements IGamePresenter {
         } else {
             gameActivity.disableEnergySaving(PreferenceManager.getDefaultBlack(preferences), PreferenceManager.regularTextcolor);
         }
+        gameActivity.setDrawerTextPowerSaving(!powerSaveEnabled);
     }
 
     public boolean getPowerSaveEnabled() {
@@ -216,6 +217,5 @@ public class GamePresenter implements IGamePresenter {
     @Override
     public void onTogglePowerSaveClick() {
         togglePowerSavingMode();
-        gameActivity.setDrawerTextPowerSaving(!powerSaveEnabled);
     }
 }
