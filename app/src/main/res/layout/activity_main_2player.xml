@@ -77,7 +77,7 @@
 
             <!-- Lifecount Guest -->
             <TextView
-                android:id="@+id/txtLifecount2p1"
+                android:id="@+id/txtLifeCount2p1"
                 style="@style/mtg_textview_lifepoints"
                 android:rotation="180" />
 
@@ -86,23 +86,25 @@
                 android:id="@+id/cmdPlusGuest"
                 style="@style/mtg_button_lifepoints_top"
                 android:layout_marginRight="@dimen/button_space_vertical"
-                android:layout_toLeftOf="@id/txtLifecount2p1"
-                android:layout_toStartOf="@id/txtLifecount2p1"
+                android:layout_toLeftOf="@id/txtLifeCount2p1"
+                android:layout_toStartOf="@id/txtLifeCount2p1"
+                android:layout_alignTop="@id/txtLifeCount2p1"
                 android:background="@drawable/icon_plus" />
 
             <ImageButton
                 android:id="@+id/cmdMinusGuest"
                 style="@style/mtg_button_lifepoints_top"
                 android:layout_marginLeft="@dimen/button_space_vertical"
-                android:layout_toEndOf="@+id/txtLifecount2p1"
-                android:layout_toRightOf="@+id/txtLifecount2p1"
+                android:layout_toEndOf="@+id/txtLifeCount2p1"
+                android:layout_toRightOf="@+id/txtLifeCount2p1"
+                android:layout_alignTop="@id/txtLifeCount2p1"
                 android:background="@drawable/icon_minus" />
 
             <!-- Poison Away -->
             <TextView
                 android:id="@+id/txtPoisonCount2p1"
                 style="@style/mtg_textview_poison"
-                android:layout_above="@id/txtLifecount2p1"
+                android:layout_above="@id/txtLifeCount2p1"
                 android:rotation="180" />
 
             <!-- Add / Reduce Poison Away -->
@@ -112,6 +114,7 @@
                 android:layout_marginLeft="@dimen/button_poison_space_vertical"
                 android:layout_toEndOf="@+id/txtPoisonCount2p1"
                 android:layout_toRightOf="@+id/txtPoisonCount2p1"
+                android:layout_alignTop="@+id/txtPoisonCount2p1"
                 android:background="@drawable/icon_minus" />
 
             <ImageButton
@@ -120,6 +123,7 @@
                 android:layout_marginRight="@dimen/button_poison_space_vertical"
                 android:layout_toLeftOf="@+id/txtPoisonCount2p1"
                 android:layout_toStartOf="@+id/txtPoisonCount2p1"
+                android:layout_alignTop="@+id/txtPoisonCount2p1"
                 android:background="@drawable/icon_plus" />
 
             <!-- Colors: Guest -->
@@ -169,7 +173,7 @@
 
             <!-- Lifecount Home -->
             <TextView
-                android:id="@+id/txtLifecount2p2"
+                android:id="@+id/txtLifeCount2p2"
                 style="@style/mtg_textview_lifepoints" />
 
             <!-- Add / Reduce Life Home -->
@@ -177,16 +181,18 @@
                 android:id="@+id/cmdMinusHome"
                 style="@style/mtg_button_lifepoints_bottom"
                 android:layout_marginRight="@dimen/button_space_vertical"
-                android:layout_toLeftOf="@id/txtLifecount2p2"
-                android:layout_toStartOf="@id/txtLifecount2p2"
+                android:layout_toLeftOf="@id/txtLifeCount2p2"
+                android:layout_toStartOf="@id/txtLifeCount2p2"
+                android:layout_alignBottom="@id/txtLifeCount2p2"
                 android:background="@drawable/icon_minus" />
 
             <ImageButton
                 android:id="@+id/cmdPlusHome"
                 style="@style/mtg_button_lifepoints_bottom"
                 android:layout_marginLeft="@dimen/button_space_vertical"
-                android:layout_toEndOf="@id/txtLifecount2p2"
-                android:layout_toRightOf="@id/txtLifecount2p2"
+                android:layout_toEndOf="@id/txtLifeCount2p2"
+                android:layout_toRightOf="@id/txtLifeCount2p2"
+                android:layout_alignBottom="@id/txtLifeCount2p2"
                 android:background="@drawable/icon_plus" />
 
 
@@ -194,7 +200,7 @@
             <TextView
                 android:id="@+id/txtPoisonCount2p2"
                 style="@style/mtg_textview_poison"
-                android:layout_below="@id/txtLifecount2p2" />
+                android:layout_below="@id/txtLifeCount2p2" />
 
             <!-- Add / Reduce Poison Home -->
             <ImageButton
@@ -203,6 +209,7 @@
                 android:layout_marginLeft="16dp"
                 android:layout_toEndOf="@id/txtPoisonCount2p2"
                 android:layout_toRightOf="@id/txtPoisonCount2p2"
+                android:layout_alignBottom="@+id/txtPoisonCount2p2"
                 android:background="@drawable/icon_plus" />
 
             <ImageButton
@@ -211,6 +218,7 @@
                 android:layout_marginRight="16dp"
                 android:layout_toLeftOf="@id/txtPoisonCount2p2"
                 android:layout_toStartOf="@id/txtPoisonCount2p2"
+                android:layout_alignBottom="@+id/txtPoisonCount2p2"
                 android:background="@drawable/icon_minus" />
 
             <!-- Colors: Home -->

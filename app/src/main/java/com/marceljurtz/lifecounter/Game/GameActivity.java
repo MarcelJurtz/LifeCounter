@@ -134,6 +134,8 @@ public class GameActivity extends AppCompatActivity /*implements IGameView*/ {
 
         int playeramount = PreferenceManager.getPlayerAmount(preferences);
 
+        //playeramount = 4;
+
         if(playeramount == 4) {
             setContentView(R.layout.activity_main_4player);
 
@@ -152,26 +154,26 @@ public class GameActivity extends AppCompatActivity /*implements IGameView*/ {
             //txtPoisonCountPlayer3 = (TextView)findViewById(R.id.txtPoisonCount4p3);
             //txtPoisonCountPlayer4 = (TextView)findViewById(R.id.txtPoisonCount4p4);
 
-            //cmdBlackPlayer1 = (ImageButton)findViewById(R.id.cmdBlack4p1);
-            //cmdBlackPlayer2 = (ImageButton)findViewById(R.id.cmdBlack4p2);
-            //cmdBlackPlayer3 = (ImageButton)findViewById(R.id.cmdBlack4p3);
-            //cmdBlackPlayer4 = (ImageButton)findViewById(R.id.cmdBlack4p4);
-            //cmdBluePlayer1 = (ImageButton)findViewById(R.id.cmdBlue4p1);
-            //cmdBluePlayer2 = (ImageButton)findViewById(R.id.cmdBlue4p2);
-            //cmdBluePlayer3 = (ImageButton)findViewById(R.id.cmdBlue4p3);
-            //cmdBluePlayer4 = (ImageButton)findViewById(R.id.cmdBlue4p4);
-            //cmdGreenPlayer1 = (ImageButton)findViewById(R.id.cmdGreen4p1);
-            //cmdGreenPlayer2 = (ImageButton)findViewById(R.id.cmdGreen4p2);
-            //cmdGreenPlayer3 = (ImageButton)findViewById(R.id.cmdGreen4p3);
-            //cmdGreenPlayer4 = (ImageButton)findViewById(R.id.cmdGreen4p4);
-            //cmdRedPlayer1 = (ImageButton)findViewById(R.id.cmdRed4p1);
-            //cmdRedPlayer2 = (ImageButton)findViewById(R.id.cmdRed4p2);
-            //cmdRedPlayer3 = (ImageButton)findViewById(R.id.cmdRed4p3);
-            //cmdRedPlayer4 = (ImageButton)findViewById(R.id.cmdRed4p4);
-            //cmdWhitePlayer1 = (ImageButton)findViewById(R.id.cmdWhite4p1);
-            //cmdWhitePlayer2 = (ImageButton)findViewById(R.id.cmdWhite4p2);
-            //cmdWhitePlayer3 = (ImageButton)findViewById(R.id.cmdWhite4p3);
-            //cmdWhitePlayer4 = (ImageButton)findViewById(R.id.cmdWhite4p4);
+            //cmdBlackPlayer1 = (Button)findViewById(R.id.cmdBlack4p1);
+            //cmdBlackPlayer2 = (Button)findViewById(R.id.cmdBlack4p2);
+            //cmdBlackPlayer3 = (Button)findViewById(R.id.cmdBlack4p3);
+            //cmdBlackPlayer4 = (Button)findViewById(R.id.cmdBlack4p4);
+            //cmdBluePlayer1 = (Button)findViewById(R.id.cmdBlue4p1);
+            //cmdBluePlayer2 = (Button)findViewById(R.id.cmdBlue4p2);
+            //cmdBluePlayer3 = (Button)findViewById(R.id.cmdBlue4p3);
+            //cmdBluePlayer4 = (Button)findViewById(R.id.cmdBlue4p4);
+            //cmdGreenPlayer1 = (Button)findViewById(R.id.cmdGreen4p1);
+            //cmdGreenPlayer2 = (Button)findViewById(R.id.cmdGreen4p2);
+            //cmdGreenPlayer3 = (Button)findViewById(R.id.cmdGreen4p3);
+            //cmdGreenPlayer4 = (Button)findViewById(R.id.cmdGreen4p4);
+            //cmdRedPlayer1 = (Button)findViewById(R.id.cmdRed4p1);
+            //cmdRedPlayer2 = (Button)findViewById(R.id.cmdRed4p2);
+            //cmdRedPlayer3 = (Button)findViewById(R.id.cmdRed4p3);
+            //cmdRedPlayer4 = (Button)findViewById(R.id.cmdRed4p4);
+            //cmdWhitePlayer1 = (Button)findViewById(R.id.cmdWhite4p1);
+            //cmdWhitePlayer2 = (Button)findViewById(R.id.cmdWhite4p2);
+            //cmdWhitePlayer3 = (Button)findViewById(R.id.cmdWhite4p3);
+            //cmdWhitePlayer4 = (Button)findViewById(R.id.cmdWhite4p4);
 
         } else {
             setContentView(R.layout.activity_main_2player);
@@ -185,19 +187,20 @@ public class GameActivity extends AppCompatActivity /*implements IGameView*/ {
             txtPoisonCountPlayer1 = (TextView)findViewById(R.id.txtPoisonCount2p1);
             txtPoisonCountPlayer2 = (TextView)findViewById(R.id.txtPoisonCount2p2);
 
-            cmdBlackPlayer1 = (ImageButton)findViewById(R.id.cmdBlack2p1);
-            cmdBlackPlayer2 = (ImageButton)findViewById(R.id.cmdBlack2p2);
-            cmdBluePlayer1 = (ImageButton)findViewById(R.id.cmdBlue2p1);
-            cmdBluePlayer2 = (ImageButton)findViewById(R.id.cmdBlue2p2);
-            cmdGreenPlayer1 = (ImageButton)findViewById(R.id.cmdGreen2p1);
-            cmdGreenPlayer2 = (ImageButton)findViewById(R.id.cmdGreen2p2);
-            cmdRedPlayer1 = (ImageButton)findViewById(R.id.cmdRed2p1);
-            cmdRedPlayer2 = (ImageButton)findViewById(R.id.cmdRed2p2);
-            cmdWhitePlayer1 = (ImageButton)findViewById(R.id.cmdWhite2p1);
-            cmdWhitePlayer2 = (ImageButton)findViewById(R.id.cmdWhite2p2);
+            cmdBlackPlayer1 = (Button)findViewById(R.id.cmdBlack2p1);
+            cmdBlackPlayer2 = (Button)findViewById(R.id.cmdBlack2p2);
+            cmdBluePlayer1 = (Button)findViewById(R.id.cmdBlue2p1);
+            cmdBluePlayer2 = (Button)findViewById(R.id.cmdBlue2p2);
+            cmdGreenPlayer1 = (Button)findViewById(R.id.cmdGreen2p1);
+            cmdGreenPlayer2 = (Button)findViewById(R.id.cmdGreen2p2);
+            cmdRedPlayer1 = (Button)findViewById(R.id.cmdRed2p1);
+            cmdRedPlayer2 = (Button)findViewById(R.id.cmdRed2p2);
+            cmdWhitePlayer1 = (Button)findViewById(R.id.cmdWhite2p1);
+            cmdWhitePlayer2 = (Button)findViewById(R.id.cmdWhite2p2);
 
         }
 
+        /*
 
         //region Button Black
 
@@ -395,8 +398,9 @@ public class GameActivity extends AppCompatActivity /*implements IGameView*/ {
         }
         //endregion
 
+        */
 
-        mainLayout = (DrawerLayout)findViewById(R.id.mainLayout);
+        //mainLayout = (DrawerLayout)findViewById(R.id.mainLayout);
 
 
 
