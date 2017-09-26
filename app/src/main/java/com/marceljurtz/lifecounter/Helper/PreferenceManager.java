@@ -17,6 +17,8 @@ public class PreferenceManager {
     private static final int DEFAULT_LONGCLICK_POINTS = 5;
     private static final int DEFAULT_SHORTCLICK_POINTS = 1;
 
+    private static final int DEFAULT_PLAYER_AMOUNT = 2;
+
     // MAX and MIN Values
     private static final int MAX_POISON = 25;
     private static final int MIN_POISON = 0;
@@ -36,6 +38,8 @@ public class PreferenceManager {
 
     private static final String PREF_LONG_CLICK_POINTS = "DEFAULT_LONG_CLICK_POINTS";
     private static final String PREF_LIFEPOINTS = "DEFAULT_LIFEPOINTS";
+
+    private static final String PREF_PLAYER_AMOUNT = "PLAYER_AMOUNT";
 
 
     //endregion
@@ -113,6 +117,20 @@ public class PreferenceManager {
         return white;
     }
 
+    //endregion
+
+    //region Amount of Players
+    public static int getPlayerAmount(SharedPreferences preferences) {
+        return preferences.getInt(PREF_PLAYER_AMOUNT, DEFAULT_PLAYER_AMOUNT);
+    }
+
+    public static void saveDefaultPlayerAmount(SharedPreferences preferences, int playeramount) {
+        if(playeramount == 2 || playeramount == 4) {
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putInt(PREF_PLAYER_AMOUNT, playeramount);
+            editor.commit();
+        }
+    }
     //endregion
 
     //region Lifepoints and Longclickpoints

@@ -8,4 +8,9 @@
     <color name="settingsBar">#161618</color>
     <color name="textColor">#161618</color>
     <color name="toolbarBackground">#CCC2C0</color>
+    <color name="mtg_black">#CCC2C0</color>
+    <color name="mtg_blue">#AAE0FA</color>
+    <color name="mtg_green">#9BD3AE</color>
+    <color name="mtg_red">#FAAA8F</color>
+    <color name="mtg_white">#FFFCD6</color>
 </resources>

@@ -68,7 +68,7 @@
         <!-- ################################### -->
 
         <RelativeLayout
-            android:id="@+id/layout_top"
+            android:id="@+id/rl2Player1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_above="@+id/layout_center"
@@ -77,7 +77,7 @@
 
             <!-- Lifecount Guest -->
             <TextView
-                android:id="@+id/txtLifeCountGuest"
+                android:id="@+id/txtLifecount2p1"
                 style="@style/mtg_textview_lifepoints"
                 android:rotation="180" />
 
@@ -86,23 +86,23 @@
                 android:id="@+id/cmdPlusGuest"
                 style="@style/mtg_button_lifepoints_top"
                 android:layout_marginRight="@dimen/button_space_vertical"
-                android:layout_toLeftOf="@id/txtLifeCountGuest"
-                android:layout_toStartOf="@id/txtLifeCountGuest"
+                android:layout_toLeftOf="@id/txtLifecount2p1"
+                android:layout_toStartOf="@id/txtLifecount2p1"
                 android:background="@drawable/icon_plus" />
 
             <ImageButton
                 android:id="@+id/cmdMinusGuest"
                 style="@style/mtg_button_lifepoints_top"
                 android:layout_marginLeft="@dimen/button_space_vertical"
-                android:layout_toEndOf="@+id/txtLifeCountGuest"
-                android:layout_toRightOf="@+id/txtLifeCountGuest"
+                android:layout_toEndOf="@+id/txtLifecount2p1"
+                android:layout_toRightOf="@+id/txtLifecount2p1"
                 android:background="@drawable/icon_minus" />
 
             <!-- Poison Away -->
             <TextView
-                android:id="@+id/txtPoisonCountGuest"
+                android:id="@+id/txtPoisonCount2p1"
                 style="@style/mtg_textview_poison"
-                android:layout_above="@id/txtLifeCountGuest"
+                android:layout_above="@id/txtLifecount2p1"
                 android:rotation="180" />
 
             <!-- Add / Reduce Poison Away -->
@@ -110,47 +110,47 @@
                 android:id="@+id/cmdMinusPoisonGuest"
                 style="@style/mtg_button_poison_top"
                 android:layout_marginLeft="@dimen/button_poison_space_vertical"
-                android:layout_toEndOf="@+id/txtPoisonCountGuest"
-                android:layout_toRightOf="@+id/txtPoisonCountGuest"
+                android:layout_toEndOf="@+id/txtPoisonCount2p1"
+                android:layout_toRightOf="@+id/txtPoisonCount2p1"
                 android:background="@drawable/icon_minus" />
 
             <ImageButton
                 android:id="@+id/cmdPlusPoisonGuest"
                 style="@style/mtg_button_poison_top"
                 android:layout_marginRight="@dimen/button_poison_space_vertical"
-                android:layout_toLeftOf="@+id/txtPoisonCountGuest"
-                android:layout_toStartOf="@+id/txtPoisonCountGuest"
+                android:layout_toLeftOf="@+id/txtPoisonCount2p1"
+                android:layout_toStartOf="@+id/txtPoisonCount2p1"
                 android:background="@drawable/icon_plus" />
 
             <!-- Colors: Guest -->
             <Button
-                android:id="@+id/cmdBlackGuest"
+                android:id="@+id/cmdBlack2p1"
                 style="@style/mtg_color_button_top"
                 android:layout_centerHorizontal="true" />
 
             <Button
-                android:id="@+id/cmdRedGuest"
+                android:id="@+id/cmdRed2p1"
                 style="@style/mtg_color_button_top"
                 android:layout_marginRight="@dimen/button_space_vertical"
-                android:layout_toLeftOf="@id/cmdBlackGuest" />
+                android:layout_toLeftOf="@id/cmdBlack2p1" />
 
             <Button
-                android:id="@+id/cmdWhiteGuest"
+                android:id="@+id/cmdWhite2p1"
                 style="@style/mtg_color_button_top"
                 android:layout_marginRight="@dimen/button_space_vertical"
-                android:layout_toLeftOf="@id/cmdRedGuest" />
+                android:layout_toLeftOf="@id/cmdRed2p1" />
 
             <Button
-                android:id="@+id/cmdBlueGuest"
+                android:id="@+id/cmdBlue2p1"
                 style="@style/mtg_color_button_top"
                 android:layout_marginLeft="@dimen/button_space_vertical"
-                android:layout_toRightOf="@id/cmdBlackGuest" />
+                android:layout_toRightOf="@id/cmdBlack2p1" />
 
             <Button
-                android:id="@+id/cmdGreenGuest"
+                android:id="@+id/cmdGreen2p1"
                 style="@style/mtg_color_button_top"
                 android:layout_marginLeft="@dimen/button_space_vertical"
-                android:layout_toRightOf="@id/cmdBlueGuest" />
+                android:layout_toRightOf="@id/cmdBlue2p1" />
 
         </RelativeLayout>
 
@@ -160,7 +160,7 @@
         <!-- ################################### -->
 
         <RelativeLayout
-            android:id="@+id/layout_bottom"
+            android:id="@+id/rl2Player2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/layout_center"
@@ -169,7 +169,7 @@
 
             <!-- Lifecount Home -->
             <TextView
-                android:id="@+id/txtLifeCountHome"
+                android:id="@+id/txtLifecount2p2"
                 style="@style/mtg_textview_lifepoints" />
 
             <!-- Add / Reduce Life Home -->
@@ -177,74 +177,77 @@
                 android:id="@+id/cmdMinusHome"
                 style="@style/mtg_button_lifepoints_bottom"
                 android:layout_marginRight="@dimen/button_space_vertical"
-                android:layout_toLeftOf="@+id/txtLifeCountHome"
-                android:layout_toStartOf="@+id/txtLifeCountHome"
+                android:layout_toLeftOf="@id/txtLifecount2p2"
+                android:layout_toStartOf="@id/txtLifecount2p2"
                 android:background="@drawable/icon_minus" />
 
             <ImageButton
                 android:id="@+id/cmdPlusHome"
                 style="@style/mtg_button_lifepoints_bottom"
                 android:layout_marginLeft="@dimen/button_space_vertical"
-                android:layout_toEndOf="@+id/txtLifeCountHome"
-                android:layout_toRightOf="@+id/txtLifeCountHome"
+                android:layout_toEndOf="@id/txtLifecount2p2"
+                android:layout_toRightOf="@id/txtLifecount2p2"
                 android:background="@drawable/icon_plus" />
 
 
             <!-- Poison Home -->
             <TextView
-                android:id="@+id/txtPoisonCountHome"
+                android:id="@+id/txtPoisonCount2p2"
                 style="@style/mtg_textview_poison"
-                android:layout_below="@id/txtLifeCountHome" />
+                android:layout_below="@id/txtLifecount2p2" />
 
             <!-- Add / Reduce Poison Home -->
             <ImageButton
                 android:id="@+id/cmdPlusPoisonHome"
                 style="@style/mtg_button_poison_bottom"
                 android:layout_marginLeft="16dp"
-                android:layout_toEndOf="@+id/txtPoisonCountHome"
-                android:layout_toRightOf="@+id/txtPoisonCountHome"
+                android:layout_toEndOf="@id/txtPoisonCount2p2"
+                android:layout_toRightOf="@id/txtPoisonCount2p2"
                 android:background="@drawable/icon_plus" />
 
             <ImageButton
                 android:id="@+id/cmdMinusPoisonHome"
                 style="@style/mtg_button_poison_bottom"
                 android:layout_marginRight="16dp"
-                android:layout_toLeftOf="@+id/txtPoisonCountHome"
-                android:layout_toStartOf="@+id/txtPoisonCountHome"
+                android:layout_toLeftOf="@id/txtPoisonCount2p2"
+                android:layout_toStartOf="@id/txtPoisonCount2p2"
                 android:background="@drawable/icon_minus" />
 
             <!-- Colors: Home -->
             <Button
-                android:id="@+id/cmdBlackHome"
+                android:id="@+id/cmdBlack2p2"
                 style="@style/mtg_color_button_bottom"
                 android:layout_centerHorizontal="true" />
 
             <Button
-                android:id="@+id/cmdBlueHome"
+                android:id="@+id/cmdBlue2p2"
                 style="@style/mtg_color_button_bottom"
                 android:layout_marginRight="@dimen/button_space_vertical"
-                android:layout_toLeftOf="@id/cmdBlackHome" />
+                android:layout_toLeftOf="@id/cmdBlack2p2" />
 
             <Button
-                android:id="@+id/cmdGreenHome"
+                android:id="@+id/cmdGreen2p2"
                 style="@style/mtg_color_button_bottom"
                 android:layout_marginRight="@dimen/button_space_vertical"
-                android:layout_toLeftOf="@id/cmdBlueHome" />
+                android:layout_toLeftOf="@id/cmdBlue2p2" />
 
             <Button
-                android:id="@+id/cmdRedHome"
+                android:id="@+id/cmdRed2p2"
                 style="@style/mtg_color_button_bottom"
                 android:layout_marginLeft="@dimen/button_space_vertical"
-                android:layout_toRightOf="@id/cmdBlackHome" />
+                android:layout_toRightOf="@id/cmdBlack2p2" />
 
             <Button
-                android:id="@+id/cmdWhiteHome"
+                android:id="@+id/cmdWhite2p2"
                 style="@style/mtg_color_button_bottom"
                 android:layout_marginLeft="@dimen/button_space_vertical"
-                android:layout_toRightOf="@id/cmdRedHome" />
+                android:layout_toRightOf="@id/cmdRed2p2" />
 
         </RelativeLayout>
     </RelativeLayout>
+
+
+    <!-- Navigation Drawer -->
 
     <LinearLayout
         android:orientation="vertical"
@@ -262,16 +265,16 @@
             style="@style/ndSubHeaderText"
             android:id="@+id/lblAppVersion"/>
 
-        <!-- Spacer / Horizontal Line -->
+        <!-- Spacer / Horizontal Line
         <View
             android:layout_width="fill_parent"
             android:layout_height="2dp"
             android:layout_marginTop="@dimen/spacerMargin"
             android:layout_marginBottom="@dimen/spacerMargin"
-            android:background="#000"/>
+            android:background="#000"/>-->
 
         <Button
-            style="@style/nd_button_border_bottom_only"
+            style="@style/nd_button"
             android:id="@+id/cmdTogglePowerSave"
             android:text="@string/cmdPowerSaveEnable"/>
 
