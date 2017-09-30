@@ -8,20 +8,20 @@ import com.marceljurtz.lifecounter.Helper.PlayerID;
 
 public interface IGamePresenter extends IPresenter {
     // Updating players life- and poisonpoints
-    void onLifeUpdate(PlayerID playerID, ClickType clickType, Operator operator);
-    void onPoisonUpdate(PlayerID playerID, ClickType clickType, Operator operator);
+    //void onLifeUpdate(PlayerID playerID, ClickType clickType, Operator operator);
+    //void onPoisonUpdate(PlayerID playerID, ClickType clickType, Operator operator);
 
     // Change player background color
     void onColorButtonClick(PlayerID playerID, MagicColor color, ClickType clickType);
 
     // Enable / Disable poison controls
-    void onPoisonButtonClick();
+    //void onPoisonButtonClick();
 
     // Enable / Disable color controls
-    void onSettingsButtonClick(ClickType clickType);
+    //void onSettingsButtonClick(ClickType clickType);
 
     // Hit reset button
-    void onResetButtonClick();
+    //void onResetButtonClick();
 
-    void onTogglePowerSaveClick();
+    //void onTogglePowerSaveClick();
 }

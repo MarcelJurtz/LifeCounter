@@ -10,7 +10,7 @@ import com.marceljurtz.lifecounter.Helper.PlayerID;
 import com.marceljurtz.lifecounter.Helper.PreferenceManager;
 import com.marceljurtz.lifecounter.R;
 
-public class GamePresenter /* implements IGamePresenter */{
+public class GamePresenter implements IGamePresenter {
 
     private SharedPreferences preferences;
     private GameModel gameModel;
@@ -25,7 +25,7 @@ public class GamePresenter /* implements IGamePresenter */{
 
     public GamePresenter(GameActivity gameActivity, SharedPreferences preferences) {
         this.preferences = preferences;
-        //this.gameActivity = gameActivity;
+        this.gameActivity = gameActivity;
 
         player1 = new Player(PlayerID.ONE);
         player2 = new Player(PlayerID.TWO);
@@ -33,15 +33,34 @@ public class GamePresenter /* implements IGamePresenter */{
         gameModel = new GameModel(preferences, new Player[]{player1, player2});
 
         // Initiate default colors
-        /*
         gameActivity.initColorButton(MagicColor.BLACK, PreferenceManager.getDefaultBlack(preferences));
         gameActivity.initColorButton(MagicColor.BLUE, PreferenceManager.getDefaultBlue(preferences));
         gameActivity.initColorButton(MagicColor.GREEN, PreferenceManager.getDefaultGreen(preferences));
         gameActivity.initColorButton(MagicColor.RED, PreferenceManager.getDefaultRed(preferences));
         gameActivity.initColorButton(MagicColor.WHITE, PreferenceManager.getDefaultWhite(preferences));
-        */
     }
-/*
+
+    @Override
+    public void onCreate() {
+
+    }
+
+    @Override
+    public void onPause() {
+
+    }
+
+    @Override
+    public void onResume() {
+
+    }
+
+    @Override
+    public void onDestroy() {
+
+    }
+
+    /*
     public void setSettingsVisible() {
         settingsVisible = !settingsVisible;
         if(settingsVisible) {
@@ -136,12 +155,14 @@ public class GamePresenter /* implements IGamePresenter */{
         gameActivity.setPoisonpoints(playerID, pointsStr);
     }
 
+    */
+
     @Override
     public void onColorButtonClick(PlayerID playerID, MagicColor color, ClickType clickType) {
         if(clickType.equals(ClickType.SHORT)) {
 
             // Disable PowerSaveMode if enabled
-            if(powerSaveEnabled) togglePowerSavingMode();
+            //if(powerSaveEnabled) togglePowerSavingMode();
 
             Color newColor;
 
@@ -165,9 +186,11 @@ public class GamePresenter /* implements IGamePresenter */{
 
             gameActivity.setLayoutColor(playerID, newColor.getIntValue());
         } else if(clickType.equals(ClickType.LONG) && color.equals(MagicColor.BLACK)) {
-            togglePowerSavingMode();
+            //togglePowerSavingMode();
         }
     }
+
+    /*
 
     @Override
     public void onPoisonButtonClick() {

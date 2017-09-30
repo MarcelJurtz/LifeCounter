@@ -12,29 +12,29 @@ public interface IGameView extends IView {
     void setLayoutColor(PlayerID playerID, int color);
 
     // Set life- / poisonpoints
-    void setLifepoints(PlayerID id, String points);
-    void setPoisonpoints(PlayerID id, String points);
+    //void setLifepoints(PlayerID id, String points);
+    //void setPoisonpoints(PlayerID id, String points);
 
     // Enable / Disable energy saving mode
-    void enableEnergySaving(int powerSaveColor, int powerSaveTextColor);
-    void disableEnergySaving(int defaultBlack, int regularTextColor);
+    //void enableEnergySaving(int powerSaveColor, int powerSaveTextColor);
+    //void disableEnergySaving(int defaultBlack, int regularTextColor);
 
     // Launch settings activity
-    void loadSettingsActivity();
+    //void loadSettingsActivity();
 
     // Enable / Disable color controls
-    void settingsButtonEnable();
-    void enableSettingsControls();
-    void settingsButtonDisable();
-    void disableSettingsControls();
+    //void settingsButtonEnable();
+    //void enableSettingsControls();
+    //void settingsButtonDisable();
+    //void disableSettingsControls();
 
     // Enable / Disable poison controls
-    void enablePoisonControls();
-    void poisonButtonEnable();
-    void disablePoisonControls();
-    void poisonButtonDisable();
+    //void enablePoisonControls();
+    //void poisonButtonEnable();
+    //void disablePoisonControls();
+    //void poisonButtonDisable();
 
 
     // Drawer Layout Interaction
-    void setDrawerTextPowerSaving(boolean shouldBeEnabled);
+    //void setDrawerTextPowerSaving(boolean shouldBeEnabled);
 }

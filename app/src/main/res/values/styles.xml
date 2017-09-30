@@ -29,7 +29,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:text">20</item>
         <item name="android:textColor">@color/textColor</item>
-        <item name="android:textAlignment">center</item>
+        <item name="android:gravity">center</item>
         <item name="android:textSize">@dimen/textsize_life</item>
         <item name="android:layout_centerInParent">true</item>
     </style>
@@ -53,7 +53,7 @@
         <item name="android:textColor">@color/textColor</item>
         <item name="android:textSize">@dimen/textsize_poison</item>
         <item name="android:layout_centerHorizontal">true</item>
-        <item name="android:textAlignment">center</item>
+        <item name="android:gravity">center</item>
     </style>
 
     <style name="mtg_button_poison_bottom">
@@ -101,6 +101,10 @@
         <item name="android:layout_marginTop">@dimen/ndPadding</item>
         <item name="android:layout_marginBottom">@dimen/ndPadding</item>
     </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 
 </resources>

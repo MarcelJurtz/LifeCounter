@@ -8,6 +8,9 @@ import android.content.res.Configuration;
 import android.graphics.drawable.GradientDrawable;
 import android.provider.Settings;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -33,9 +36,9 @@ import com.marceljurtz.lifecounter.Settings.SettingsActivity;
 
 import org.w3c.dom.Text;
 
-public class GameActivity extends AppCompatActivity /*implements IGameView*/ {
+public class GameActivity extends AppCompatActivity implements IGameView {
 
-    private IGamePresenter presenter;
+    private GamePresenter presenter;
 
     DrawerLayout mainLayout;
     RelativeLayout layoutPlayer1;
@@ -117,8 +120,12 @@ public class GameActivity extends AppCompatActivity /*implements IGameView*/ {
     boolean colorSettingsEnabled = false;
     boolean powerSaveOn = false;
 
+    int playeramount;
+
     Player player1;
     Player player2;
+    Player player3;
+    Player player4;
 
     SharedPreferences preferences;
 
@@ -134,20 +141,40 @@ public class GameActivity extends AppCompatActivity /*implements IGameView*/ {
 
         int playeramount = PreferenceManager.getPlayerAmount(preferences);
 
+        //mainLayout = (DrawerLayout)findViewById(R.id.mainLayout);
+
+
+        toolbar = (Toolbar) findViewById(R.id.tbMain);
+        setSupportActionBar(toolbar);
+
+        // DEBUG ONLY
+        //getSupportActionBar().hide();
+
+        //drawerToggle = new ActionBarDrawerToggle(GameActivity.this, mainLayout, R.string.drawer_open, R.string.drawer_close);
+        //mainLayout.setDrawerListener(drawerToggle);
+
+        // Disable screen timeout
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+
+
+        // Players
+        player1 = new Player(PlayerID.ONE);
+        player2 = new Player(PlayerID.TWO);
+
         //playeramount = 4;
 
-        if(playeramount == 4) {
+        if (playeramount == 4) {
             setContentView(R.layout.activity_main_4player);
 
-            layoutPlayer1 = (RelativeLayout)findViewById(R.id.rl4Player1);
-            layoutPlayer2 = (RelativeLayout)findViewById(R.id.rl4Player2);
-            layoutPlayer3 = (RelativeLayout)findViewById(R.id.rl4Player3);
-            layoutPlayer4 = (RelativeLayout)findViewById(R.id.rl4Player4);
+            layoutPlayer1 = (RelativeLayout) findViewById(R.id.rl4Player1);
+            layoutPlayer2 = (RelativeLayout) findViewById(R.id.rl4Player2);
+            layoutPlayer3 = (RelativeLayout) findViewById(R.id.rl4Player3);
+            layoutPlayer4 = (RelativeLayout) findViewById(R.id.rl4Player4);
 
-            txtLifeCountPlayer1 = (TextView)findViewById(R.id.txtLifeCount4p1);
-            txtLifeCountPlayer2 = (TextView)findViewById(R.id.txtLifeCount4p2);
-            txtLifeCountPlayer3 = (TextView)findViewById(R.id.txtLifeCount4p3);
-            txtLifeCountPlayer4 = (TextView)findViewById(R.id.txtLifeCount4p4);
+            txtLifeCountPlayer1 = (TextView) findViewById(R.id.txtLifeCount4p1);
+            txtLifeCountPlayer2 = (TextView) findViewById(R.id.txtLifeCount4p2);
+            txtLifeCountPlayer3 = (TextView) findViewById(R.id.txtLifeCount4p3);
+            txtLifeCountPlayer4 = (TextView) findViewById(R.id.txtLifeCount4p4);
 
             //txtPoisonCountPlayer1 = (TextView)findViewById(R.id.txtPoisonCount4p1);
             //txtPoisonCountPlayer2 = (TextView)findViewById(R.id.txtPoisonCount4p2);
@@ -178,14 +205,14 @@ public class GameActivity extends AppCompatActivity /*implements IGameView*/ {
         } else {
             setContentView(R.layout.activity_main_2player);
 
-            layoutPlayer1 = (RelativeLayout)findViewById(R.id.rl2Player1);
-            layoutPlayer2 = (RelativeLayout)findViewById(R.id.rl2Player2);
+            layoutPlayer1 = (RelativeLayout) findViewById(R.id.rl2Player1);
+            layoutPlayer2 = (RelativeLayout) findViewById(R.id.rl2Player2);
 
-            txtLifeCountPlayer1 = (TextView)findViewById(R.id.txtLifeCount2p1);
-            txtLifeCountPlayer2 = (TextView)findViewById(R.id.txtLifeCount2p2);
+            txtLifeCountPlayer1 = (TextView) findViewById(R.id.txtLifeCount2p1);
+            txtLifeCountPlayer2 = (TextView) findViewById(R.id.txtLifeCount2p2);
 
-            txtPoisonCountPlayer1 = (TextView)findViewById(R.id.txtPoisonCount2p1);
-            txtPoisonCountPlayer2 = (TextView)findViewById(R.id.txtPoisonCount2p2);
+            txtPoisonCountPlayer1 = (TextView) findViewById(R.id.txtPoisonCount2p1);
+            txtPoisonCountPlayer2 = (TextView) findViewById(R.id.txtPoisonCount2p2);
 
             cmdBlackPlayer1 = (Button)findViewById(R.id.cmdBlack2p1);
             cmdBlackPlayer2 = (Button)findViewById(R.id.cmdBlack2p2);
@@ -200,7 +227,8 @@ public class GameActivity extends AppCompatActivity /*implements IGameView*/ {
 
         }
 
-        /*
+        // Init GamePresenter
+        presenter = new GamePresenter(this, preferences);
 
         //region Button Black
 
@@ -398,33 +426,9 @@ public class GameActivity extends AppCompatActivity /*implements IGameView*/ {
         }
         //endregion
 
-        */
-
-        //mainLayout = (DrawerLayout)findViewById(R.id.mainLayout);
 
 
 
-
-        toolbar = (Toolbar) findViewById(R.id.tbMain);
-        setSupportActionBar(toolbar);
-
-        // DEBUG ONLY
-        getSupportActionBar().hide();
-
-        //drawerToggle = new ActionBarDrawerToggle(GameActivity.this, mainLayout, R.string.drawer_open, R.string.drawer_close);
-        //mainLayout.setDrawerListener(drawerToggle);
-
-        // Disable screen timeout
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-
-
-
-        // Players
-        player1 = new Player(PlayerID.ONE);
-        player2 = new Player(PlayerID.TWO);
-
-        // Init GamePresenter
-        //presenter = new GamePresenter(this, preferences);
 
         /*
 
@@ -647,40 +651,65 @@ public class GameActivity extends AppCompatActivity /*implements IGameView*/ {
         super.onStart();
     }
 
+    */
+
+    }
     @Override
     public void initColorButton(MagicColor colorLocation, int color) {
-        Button buttonHome;
-        Button buttonGuest;
+
+        Button buttonPlayer1;
+        Button buttonPlayer2;
+        Button buttonPlayer3;
+        Button buttonPlayer4;
+
         switch(colorLocation) {
             case BLACK:
-                buttonHome = cmdBlackHome;
-                buttonGuest = cmdBlackPlayer1;
+                buttonPlayer1 = cmdBlackPlayer1;
+                buttonPlayer2 = cmdBlackPlayer2;
+                buttonPlayer3 = cmdBlackPlayer3;
+                buttonPlayer4 = cmdBlackPlayer4;
                 break;
             case BLUE:
-                buttonHome = cmdBlueHome;
-                buttonGuest = cmdBluePlayer1;
+                buttonPlayer1 = cmdBluePlayer1;
+                buttonPlayer2 = cmdBluePlayer2;
+                buttonPlayer3 = cmdBluePlayer3;
+                buttonPlayer4 = cmdBluePlayer4;
                 break;
             case GREEN:
-                buttonHome = cmdGreenHome;
-                buttonGuest = cmdGreenPlayer1;
+                buttonPlayer1 = cmdGreenPlayer1;
+                buttonPlayer2 = cmdGreenPlayer2;
+                buttonPlayer3 = cmdGreenPlayer3;
+                buttonPlayer4 = cmdGreenPlayer4;
                 break;
             case RED:
-                buttonHome = cmdRedHome;
-                buttonGuest = cmdRedPlayer1;
+                buttonPlayer1 = cmdRedPlayer1;
+                buttonPlayer2 = cmdRedPlayer2;
+                buttonPlayer3 = cmdRedPlayer3;
+                buttonPlayer4 = cmdRedPlayer4;
                 break;
             case WHITE:
-                buttonHome = cmdWhiteHome;
-                buttonGuest = cmdWhitePlayer1;
+                buttonPlayer1 = cmdWhitePlayer1;
+                buttonPlayer2 = cmdWhitePlayer2;
+                buttonPlayer3 = cmdWhitePlayer3;
+                buttonPlayer4 = cmdWhitePlayer4;
                 break;
             default:
-                buttonHome = null;
-                buttonGuest = null;
+                buttonPlayer1 = null;
+                buttonPlayer2 = null;
+                buttonPlayer3 = null;
+                buttonPlayer4 = null;
         }
-        if(buttonHome != null && buttonGuest != null) {
-            ((GradientDrawable)buttonHome.getBackground()).setColor(color);
-            ((GradientDrawable)buttonGuest.getBackground()).setColor(color);
+        if(buttonPlayer1 != null && buttonPlayer2 != null) {
+            ((GradientDrawable)buttonPlayer1.getBackground()).setColor(color);
+            ((GradientDrawable)buttonPlayer2.getBackground()).setColor(color);
+            if(playeramount == 4) {
+                ((GradientDrawable)buttonPlayer3.getBackground()).setColor(color);
+                ((GradientDrawable)buttonPlayer4.getBackground()).setColor(color);
+            }
         }
     }
+
+    /*
 
     @Override
     public void loadSettingsActivity() {
@@ -688,15 +717,22 @@ public class GameActivity extends AppCompatActivity /*implements IGameView*/ {
         startActivity(intent);
     }
 
+    */
+
     @Override
     public void setLayoutColor(PlayerID playerID, int color) {
         if(playerID.equals(PlayerID.ONE)) {
             layoutPlayer1.setBackgroundColor(color);
         } else if(playerID.equals(PlayerID.TWO)) {
-            layoutGuest.setBackgroundColor(color);
+            layoutPlayer2.setBackgroundColor(color);
+        } else if(playerID.equals(PlayerID.THREE)) {
+            layoutPlayer3.setBackgroundColor(color);
+        } else if(playerID.equals(PlayerID.FOUR)) {
+            layoutPlayer4.setBackgroundColor(color);
         }
     }
 
+    /*
     //region Toggle Poison Controls
     @Override
     public void enablePoisonControls() {
@@ -849,6 +885,6 @@ public class GameActivity extends AppCompatActivity /*implements IGameView*/ {
     }
 
     //endregion
-    */
     }
+    */
 }
