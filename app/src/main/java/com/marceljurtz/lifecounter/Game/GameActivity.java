@@ -138,8 +138,13 @@ public class GameActivity extends AppCompatActivity implements IGameView {
 
         // Init SharedPreferences
         preferences = getApplicationContext().getSharedPreferences(PreferenceManager.PREFS, Activity.MODE_PRIVATE);
+        playeramount = PreferenceManager.getPlayerAmount(preferences);
 
-        int playeramount = PreferenceManager.getPlayerAmount(preferences);
+        if(playeramount == 4) {
+            setContentView(R.layout.activity_main_4player);
+        } else {
+            setContentView(R.layout.activity_main_2player);
+        }
 
         mainLayout = (DrawerLayout)findViewById(R.id.mainLayout);
 
@@ -164,8 +169,6 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         //playeramount = 4;
 
         if (playeramount == 4) {
-            setContentView(R.layout.activity_main_4player);
-
             layoutPlayer1 = (RelativeLayout) findViewById(R.id.rl4Player1);
             layoutPlayer2 = (RelativeLayout) findViewById(R.id.rl4Player2);
             layoutPlayer3 = (RelativeLayout) findViewById(R.id.rl4Player3);
@@ -203,8 +206,6 @@ public class GameActivity extends AppCompatActivity implements IGameView {
             //cmdWhitePlayer4 = (Button)findViewById(R.id.cmdWhite4p4);
 
         } else {
-            setContentView(R.layout.activity_main_2player);
-
             layoutPlayer1 = (RelativeLayout) findViewById(R.id.rl2Player1);
             layoutPlayer2 = (RelativeLayout) findViewById(R.id.rl2Player2);
 
@@ -618,6 +619,7 @@ public class GameActivity extends AppCompatActivity implements IGameView {
 
         //endregion
 
+        */
         //region Drawer Layout
 
         cmdDrawerTogglePowerSaving = (Button)findViewById(R.id.cmdTogglePowerSave);
@@ -636,12 +638,12 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         cmdSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.onSettingsButtonClick(ClickType.LONG);
+                //presenter.onSettingsButtonClick(ClickType.LONG);
             }
         });
 
         //endregion
-
+        /*
         //endregion
     }
 
@@ -912,8 +914,8 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         }
 
         // Close drawer
-        //cmdDrawerTogglePowerSaving.setText(string);
-        //mainLayout.closeDrawer(Gravity.START);
+        cmdDrawerTogglePowerSaving.setText(string);
+        mainLayout.closeDrawer(Gravity.START);
     }
 
     //endregion
