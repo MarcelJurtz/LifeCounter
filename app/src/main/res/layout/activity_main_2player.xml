@@ -88,7 +88,7 @@
                 android:layout_marginRight="@dimen/button_space_vertical"
                 android:layout_toLeftOf="@id/txtLifeCount2p1"
                 android:layout_toStartOf="@id/txtLifeCount2p1"
-                android:layout_alignTop="@id/txtLifeCount2p1"
+                android:layout_alignBottom="@id/txtLifeCount2p1"
                 android:background="@drawable/icon_plus" />
 
             <ImageButton
@@ -97,7 +97,7 @@
                 android:layout_marginLeft="@dimen/button_space_vertical"
                 android:layout_toEndOf="@+id/txtLifeCount2p1"
                 android:layout_toRightOf="@+id/txtLifeCount2p1"
-                android:layout_alignTop="@id/txtLifeCount2p1"
+                android:layout_alignBottom="@id/txtLifeCount2p1"
                 android:background="@drawable/icon_minus" />
 
             <!-- Poison Away -->
@@ -183,7 +183,7 @@
                 android:layout_marginRight="@dimen/button_space_vertical"
                 android:layout_toLeftOf="@id/txtLifeCount2p2"
                 android:layout_toStartOf="@id/txtLifeCount2p2"
-                android:layout_alignBottom="@id/txtLifeCount2p2"
+                android:layout_alignTop="@id/txtLifeCount2p2"
                 android:background="@drawable/icon_minus" />
 
             <ImageButton
@@ -192,7 +192,7 @@
                 android:layout_marginLeft="@dimen/button_space_vertical"
                 android:layout_toEndOf="@id/txtLifeCount2p2"
                 android:layout_toRightOf="@id/txtLifeCount2p2"
-                android:layout_alignBottom="@id/txtLifeCount2p2"
+                android:layout_alignTop="@id/txtLifeCount2p2"
                 android:background="@drawable/icon_plus" />
 
 
