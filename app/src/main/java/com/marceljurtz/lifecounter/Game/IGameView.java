@@ -16,8 +16,8 @@ public interface IGameView extends IView {
     //void setPoisonpoints(PlayerID id, String points);
 
     // Enable / Disable energy saving mode
-    //void enableEnergySaving(int powerSaveColor, int powerSaveTextColor);
-    //void disableEnergySaving(int defaultBlack, int regularTextColor);
+    void enableEnergySaving(int powerSaveColor, int powerSaveTextColor);
+    void disableEnergySaving(int defaultBlack, int regularTextColor);
 
     // Launch settings activity
     //void loadSettingsActivity();
@@ -36,5 +36,5 @@ public interface IGameView extends IView {
 
 
     // Drawer Layout Interaction
-    //void setDrawerTextPowerSaving(boolean shouldBeEnabled);
+    void setDrawerTextPowerSaving(boolean shouldBeEnabled);
 }

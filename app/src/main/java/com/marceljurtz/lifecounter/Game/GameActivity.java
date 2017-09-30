@@ -141,7 +141,7 @@ public class GameActivity extends AppCompatActivity implements IGameView {
 
         int playeramount = PreferenceManager.getPlayerAmount(preferences);
 
-        //mainLayout = (DrawerLayout)findViewById(R.id.mainLayout);
+        mainLayout = (DrawerLayout)findViewById(R.id.mainLayout);
 
 
         toolbar = (Toolbar) findViewById(R.id.tbMain);
@@ -809,27 +809,59 @@ public class GameActivity extends AppCompatActivity implements IGameView {
 
     //endregion
 
+    */
+
     //region Toggle Energy Saving Option
     @Override
     public void enableEnergySaving(int powerSaveColor, int powerSaveTextColor) {
         layoutPlayer1.setBackgroundColor(powerSaveColor);
-        layoutGuest.setBackgroundColor(powerSaveColor);
-        txtLifeCountGuest.setTextColor(powerSaveTextColor);
-        txtLifeCountHome.setTextColor(powerSaveTextColor);
-        txtPoisonCountGuest.setTextColor(powerSaveTextColor);
-        txtPoisonCountHome.setTextColor(powerSaveTextColor);
+        layoutPlayer2.setBackgroundColor(powerSaveColor);
+        if(playeramount == 4) {
+            layoutPlayer3.setBackgroundColor(powerSaveColor);
+            layoutPlayer4.setBackgroundColor(powerSaveColor);
+        }
+
+        txtLifeCountPlayer1.setTextColor(powerSaveTextColor);
+        txtLifeCountPlayer2.setTextColor(powerSaveTextColor);
+        if(playeramount == 4) {
+            txtLifeCountPlayer3.setTextColor(powerSaveTextColor);
+            txtLifeCountPlayer4.setTextColor(powerSaveTextColor);
+        }
+
+        txtPoisonCountPlayer1.setTextColor(powerSaveTextColor);
+        txtPoisonCountPlayer2.setTextColor(powerSaveTextColor);
+        if(playeramount == 4) {
+            txtPoisonCountPlayer3.setTextColor(powerSaveTextColor);
+            txtPoisonCountPlayer4.setTextColor(powerSaveTextColor);
+        }
     }
 
     @Override
     public void disableEnergySaving(int defaultBlack, int regularTextColor) {
         layoutPlayer1.setBackgroundColor(defaultBlack);
-        layoutGuest.setBackgroundColor(defaultBlack);
-        txtLifeCountGuest.setTextColor(regularTextColor);
-        txtLifeCountHome.setTextColor(regularTextColor);
-        txtPoisonCountGuest.setTextColor(regularTextColor);
-        txtPoisonCountHome.setTextColor(regularTextColor);
+        layoutPlayer2.setBackgroundColor(defaultBlack);
+        if(playeramount == 4) {
+            layoutPlayer3.setBackgroundColor(defaultBlack);
+            layoutPlayer4.setBackgroundColor(defaultBlack);
+        }
+
+        txtLifeCountPlayer1.setTextColor(regularTextColor);
+        txtLifeCountPlayer2.setTextColor(regularTextColor);
+        if(playeramount == 4) {
+            txtLifeCountPlayer3.setTextColor(regularTextColor);
+            txtLifeCountPlayer4.setTextColor(regularTextColor);
+        }
+
+        txtPoisonCountPlayer1.setTextColor(regularTextColor);
+        txtPoisonCountPlayer2.setTextColor(regularTextColor);
+        if(playeramount == 4) {
+            txtPoisonCountPlayer3.setTextColor(regularTextColor);
+            txtPoisonCountPlayer4.setTextColor(regularTextColor);
+        }
     }
     //endregion
+
+    /*
 
     //region Set Life- and Poisonpoints
     @Override
@@ -867,9 +899,9 @@ public class GameActivity extends AppCompatActivity implements IGameView {
 
     //endregion
 
-
+}
+*/
     //region Navigation Drawer
-
     @Override
     public void setDrawerTextPowerSaving(boolean shouldBeEnabled) {
         String string = "";
@@ -880,11 +912,9 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         }
 
         // Close drawer
-        cmdDrawerTogglePowerSaving.setText(string);
-        mainLayout.closeDrawer(Gravity.START);
+        //cmdDrawerTogglePowerSaving.setText(string);
+        //mainLayout.closeDrawer(Gravity.START);
     }
 
     //endregion
-    }
-    */
 }

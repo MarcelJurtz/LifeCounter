@@ -87,6 +87,8 @@ public class GamePresenter implements IGamePresenter {
         return poisonVisible;
     }
 
+*/
+
     public void togglePowerSavingMode() {
         powerSaveEnabled = !powerSaveEnabled;
         if(powerSaveEnabled) {
@@ -96,6 +98,8 @@ public class GamePresenter implements IGamePresenter {
         }
         gameActivity.setDrawerTextPowerSaving(!powerSaveEnabled);
     }
+
+    /*
 
     public boolean getPowerSaveEnabled() {
         return powerSaveEnabled;
@@ -162,7 +166,7 @@ public class GamePresenter implements IGamePresenter {
         if(clickType.equals(ClickType.SHORT)) {
 
             // Disable PowerSaveMode if enabled
-            //if(powerSaveEnabled) togglePowerSavingMode();
+            if(powerSaveEnabled) togglePowerSavingMode();
 
             Color newColor;
 
@@ -186,7 +190,7 @@ public class GamePresenter implements IGamePresenter {
 
             gameActivity.setLayoutColor(playerID, newColor.getIntValue());
         } else if(clickType.equals(ClickType.LONG) && color.equals(MagicColor.BLACK)) {
-            //togglePowerSavingMode();
+            togglePowerSavingMode();
         }
     }
 
@@ -238,10 +242,10 @@ public class GamePresenter implements IGamePresenter {
         gameActivity.setPoisonpoints(PlayerID.ONE, String.format("%02d",player1.getPoisonPoints()));
         gameActivity.setPoisonpoints(PlayerID.TWO, String.format("%02d",player2.getPoisonPoints()));
     }
-
+    */
     @Override
     public void onTogglePowerSaveClick() {
         togglePowerSavingMode();
     }
-    */
+
 }
