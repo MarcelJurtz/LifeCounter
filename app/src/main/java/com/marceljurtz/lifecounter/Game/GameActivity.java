@@ -226,9 +226,15 @@ public class GameActivity extends AppCompatActivity implements IGameView {
             cmdWhitePlayer1 = (Button)findViewById(R.id.cmdWhite2p1);
             cmdWhitePlayer2 = (Button)findViewById(R.id.cmdWhite2p2);
 
+            cmdPlusPoisonPlayer1 = (ImageButton)findViewById(R.id.cmdPlusPoisonHome);
+            cmdPlusPoisonPlayer2 = (ImageButton)findViewById(R.id.cmdPlusPoisonGuest);
+            cmdMinusPoisonPlayer1 = (ImageButton)findViewById(R.id.cmdMinusPoisonHome);
+            cmdMinusPoisonPlayer2 = (ImageButton)findViewById(R.id.cmdMinusPoisonGuest);
+
         }
 
         cmdToggleColorSettings = (ImageButton)findViewById(R.id.cmdToggleColors);
+        cmdTogglePoison = (ImageButton)findViewById(R.id.cmdTogglePoison);
 
         // Init GamePresenter
         presenter = new GamePresenter(this, preferences);
@@ -517,10 +523,9 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         });
 
         // endregion
-
+        */
         //region Button Toggle Poison
 
-        cmdTogglePoison = (ImageButton)findViewById(R.id.cmdTogglePoison);
         cmdTogglePoison.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -529,7 +534,7 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         });
 
         //endregion
-
+        /*
         //region Poison Buttons Home
 
         // Poison Home Plus
@@ -733,16 +738,28 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         }
     }
 
-    /*
     //region Toggle Poison Controls
     @Override
     public void enablePoisonControls() {
-        txtPoisonCountGuest.setVisibility(View.VISIBLE);
-        txtPoisonCountHome.setVisibility(View.VISIBLE);
-        cmdPlusPoisonPlayer2.setVisibility(View.VISIBLE);
+        txtPoisonCountPlayer1.setVisibility(View.VISIBLE);
+        txtPoisonCountPlayer2.setVisibility(View.VISIBLE);
+
         cmdPlusPoisonPlayer1.setVisibility(View.VISIBLE);
+        cmdPlusPoisonPlayer1.setVisibility(View.VISIBLE);
+
         cmdMinusPoisonPlayer2.setVisibility(View.VISIBLE);
         cmdMinusPoisonPlayer1.setVisibility(View.VISIBLE);
+
+        if(playeramount == 4) {
+            txtPoisonCountPlayer3.setVisibility(View.VISIBLE);
+            txtPoisonCountPlayer4.setVisibility(View.VISIBLE);
+
+            cmdPlusPoisonPlayer3.setVisibility(View.VISIBLE);
+            cmdPlusPoisonPlayer4.setVisibility(View.VISIBLE);
+
+            cmdMinusPoisonPlayer3.setVisibility(View.VISIBLE);
+            cmdMinusPoisonPlayer4.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
@@ -752,12 +769,25 @@ public class GameActivity extends AppCompatActivity implements IGameView {
 
     @Override
     public void disablePoisonControls() {
-        txtPoisonCountGuest.setVisibility(View.INVISIBLE);
-        txtPoisonCountHome.setVisibility(View.INVISIBLE);
-        cmdPlusPoisonPlayer2.setVisibility(View.INVISIBLE);
+        txtPoisonCountPlayer1.setVisibility(View.INVISIBLE);
+        txtPoisonCountPlayer2.setVisibility(View.INVISIBLE);
+
         cmdPlusPoisonPlayer1.setVisibility(View.INVISIBLE);
+        cmdPlusPoisonPlayer1.setVisibility(View.INVISIBLE);
+
         cmdMinusPoisonPlayer2.setVisibility(View.INVISIBLE);
         cmdMinusPoisonPlayer1.setVisibility(View.INVISIBLE);
+
+        if(playeramount == 4) {
+            txtPoisonCountPlayer3.setVisibility(View.INVISIBLE);
+            txtPoisonCountPlayer4.setVisibility(View.INVISIBLE);
+
+            cmdPlusPoisonPlayer3.setVisibility(View.INVISIBLE);
+            cmdPlusPoisonPlayer4.setVisibility(View.INVISIBLE);
+
+            cmdMinusPoisonPlayer3.setVisibility(View.INVISIBLE);
+            cmdMinusPoisonPlayer4.setVisibility(View.INVISIBLE);
+        }
     }
 
     @Override
@@ -765,7 +795,7 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         cmdTogglePoison.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.icon_poison_disabled));
     }
     //endregion
-    */
+
     //region Toggle Settings Controls
     @Override
     public void enableSettingsControls() {
@@ -825,20 +855,20 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         cmdWhitePlayer2.setVisibility(View.INVISIBLE);
 
         if(playeramount == 4) {
-            cmdBlackPlayer1.setVisibility(View.INVISIBLE);
-            cmdBlackPlayer2.setVisibility(View.INVISIBLE);
+            cmdBlackPlayer3.setVisibility(View.INVISIBLE);
+            cmdBlackPlayer4.setVisibility(View.INVISIBLE);
 
-            cmdBluePlayer1.setVisibility(View.INVISIBLE);
-            cmdBluePlayer2.setVisibility(View.INVISIBLE);
+            cmdBluePlayer3.setVisibility(View.INVISIBLE);
+            cmdBluePlayer4.setVisibility(View.INVISIBLE);
 
-            cmdGreenPlayer1.setVisibility(View.INVISIBLE);
-            cmdGreenPlayer2.setVisibility(View.INVISIBLE);
+            cmdGreenPlayer3.setVisibility(View.INVISIBLE);
+            cmdGreenPlayer4.setVisibility(View.INVISIBLE);
 
-            cmdRedPlayer1.setVisibility(View.INVISIBLE);
-            cmdRedPlayer2.setVisibility(View.INVISIBLE);
+            cmdRedPlayer3.setVisibility(View.INVISIBLE);
+            cmdRedPlayer4.setVisibility(View.INVISIBLE);
 
-            cmdWhitePlayer1.setVisibility(View.INVISIBLE);
-            cmdWhitePlayer2.setVisibility(View.INVISIBLE);
+            cmdWhitePlayer3.setVisibility(View.INVISIBLE);
+            cmdWhitePlayer4.setVisibility(View.INVISIBLE);
         }
     }
 

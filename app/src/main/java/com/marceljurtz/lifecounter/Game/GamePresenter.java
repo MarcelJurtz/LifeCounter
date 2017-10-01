@@ -43,6 +43,10 @@ public class GamePresenter implements IGamePresenter {
         gameActivity.disableSettingsControls();
         gameActivity.settingsButtonDisable();
         settingsVisible = false;
+
+        gameActivity.poisonButtonDisable();
+        gameActivity.disablePoisonControls();
+        poisonVisible = false;
     }
 
     @Override
@@ -62,7 +66,8 @@ public class GamePresenter implements IGamePresenter {
         gameActivity.settingsButtonDisable();
 
         poisonVisible = false;
-        //gameActivity.disablePoisonControls();
+        gameActivity.disablePoisonControls();
+        gameActivity.poisonButtonDisable();
 
         powerSaveEnabled = false;
 
@@ -91,21 +96,10 @@ public class GamePresenter implements IGamePresenter {
     public boolean getSettingsVisible() {
         return settingsVisible;
     }
-
-    public void setPoisonVisible() {
-        poisonVisible = !poisonVisible;
-        if(poisonVisible) {
-            gameActivity.enablePoisonControls();
-        } else {
-            gameActivity.disablePoisonControls();
-        }
-    }
-
-    public boolean getPoisonVisible() {
-        return poisonVisible;
-    }
-
 */
+    /*public boolean getPoisonVisible() {
+        return poisonVisible;
+    }*/
 
     public void togglePowerSavingMode() {
         powerSaveEnabled = !powerSaveEnabled;
@@ -200,8 +194,6 @@ public class GamePresenter implements IGamePresenter {
         }
     }
 
-    /*
-
     @Override
     public void onPoisonButtonClick() {
         poisonVisible = !poisonVisible;
@@ -213,7 +205,7 @@ public class GamePresenter implements IGamePresenter {
             gameActivity.poisonButtonDisable();
         }
     }
-    */
+
     @Override
     public void onSettingsButtonClick(ClickType clickType) {
         if(clickType.equals(ClickType.LONG)) {

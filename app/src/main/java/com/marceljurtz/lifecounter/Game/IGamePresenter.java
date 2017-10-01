@@ -15,7 +15,7 @@ public interface IGamePresenter extends IPresenter {
     void onColorButtonClick(PlayerID playerID, MagicColor color, ClickType clickType);
 
     // Enable / Disable poison controls
-    //void onPoisonButtonClick();
+    void onPoisonButtonClick();
 
     // Enable / Disable color controls
     void onSettingsButtonClick(ClickType clickType);
