@@ -12,8 +12,8 @@ public interface IGameView extends IView {
     void setLayoutColor(PlayerID playerID, int color);
 
     // Set life- / poisonpoints
-    //void setLifepoints(PlayerID id, String points);
-    //void setPoisonpoints(PlayerID id, String points);
+    void setLifepoints(PlayerID id, String points);
+    void setPoisonpoints(PlayerID id, String points);
 
     // Enable / Disable energy saving mode
     void enableEnergySaving(int powerSaveColor, int powerSaveTextColor);

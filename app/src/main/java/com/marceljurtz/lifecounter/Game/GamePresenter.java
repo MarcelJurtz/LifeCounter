@@ -140,7 +140,7 @@ public class GamePresenter implements IGamePresenter {
     }
 
     //endregion
-
+*/
     @Override
     public void onLifeUpdate(PlayerID playerID, ClickType clickType, Operator operator) {
         gameModel.updateLifepoints(playerID, clickType, operator);
@@ -159,7 +159,7 @@ public class GamePresenter implements IGamePresenter {
         gameActivity.setPoisonpoints(playerID, pointsStr);
     }
 
-    */
+
 
     @Override
     public void onColorButtonClick(PlayerID playerID, MagicColor color, ClickType clickType) {

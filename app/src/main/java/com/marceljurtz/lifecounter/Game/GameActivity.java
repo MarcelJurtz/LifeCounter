@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.res.Configuration;
 import android.graphics.drawable.GradientDrawable;
+import android.media.Image;
 import android.provider.Settings;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -226,10 +227,15 @@ public class GameActivity extends AppCompatActivity implements IGameView {
             cmdWhitePlayer1 = (Button)findViewById(R.id.cmdWhite2p1);
             cmdWhitePlayer2 = (Button)findViewById(R.id.cmdWhite2p2);
 
-            cmdPlusPoisonPlayer1 = (ImageButton)findViewById(R.id.cmdPlusPoisonHome);
-            cmdPlusPoisonPlayer2 = (ImageButton)findViewById(R.id.cmdPlusPoisonGuest);
-            cmdMinusPoisonPlayer1 = (ImageButton)findViewById(R.id.cmdMinusPoisonHome);
-            cmdMinusPoisonPlayer2 = (ImageButton)findViewById(R.id.cmdMinusPoisonGuest);
+            cmdPlusPlayer1 = (ImageButton)findViewById(R.id.cmdPlusGuest);
+            cmdPlusPlayer2 = (ImageButton)findViewById(R.id.cmdPlusHome);
+            cmdMinusPlayer1 = (ImageButton)findViewById(R.id.cmdMinusGuest);
+            cmdMinusPlayer2 = (ImageButton)findViewById(R.id.cmdMinusHome);
+
+            cmdPlusPoisonPlayer1 = (ImageButton)findViewById(R.id.cmdPlusPoisonGuest);
+            cmdPlusPoisonPlayer2 = (ImageButton)findViewById(R.id.cmdPlusPoisonHome);
+            cmdMinusPoisonPlayer1 = (ImageButton)findViewById(R.id.cmdMinusPoisonGuest);
+            cmdMinusPoisonPlayer2 = (ImageButton)findViewById(R.id.cmdMinusPoisonHome);
 
         }
 
@@ -436,39 +442,30 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         //endregion
 
 
-
-
-
-        /*
-
-        // Home - Plus
-        cmdPlusPlayer2 = (ImageButton)findViewById(R.id.cmdPlus_p1);
-        cmdPlusPlayer2.setOnClickListener(new View.OnClickListener() {
+        cmdPlusPlayer1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.onLifeUpdate(player_home.getPlayerID(), ClickType.SHORT, Operator.ADD);
+                presenter.onLifeUpdate(player1.getPlayerID(), ClickType.SHORT, Operator.ADD);
             }
         });
-        cmdPlusPlayer2.setOnLongClickListener(new View.OnLongClickListener() {
+        cmdPlusPlayer1.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                presenter.onLifeUpdate(player_home.getPlayerID(), ClickType.LONG, Operator.ADD);
+                presenter.onLifeUpdate(player1.getPlayerID(), ClickType.LONG, Operator.ADD);
                 return true;
             }
         });
 
-        // Home - Minus
-        cmdMinusPlayer2 = (ImageButton)findViewById(R.id.cmdMinus_p1);
-        cmdMinusPlayer2.setOnClickListener(new View.OnClickListener() {
+        cmdMinusPlayer1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.onLifeUpdate(player_home.getPlayerID(), ClickType.SHORT, Operator.SUBSTRACT);
+                presenter.onLifeUpdate(player1.getPlayerID(), ClickType.SHORT, Operator.SUBSTRACT);
             }
         });
-        cmdMinusPlayer2.setOnLongClickListener(new View.OnLongClickListener() {
+        cmdMinusPlayer1.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                presenter.onLifeUpdate(player_home.getPlayerID(), ClickType.LONG, Operator.SUBSTRACT);
+                presenter.onLifeUpdate(player1.getPlayerID(), ClickType.LONG, Operator.SUBSTRACT);
                 return true;
             }
         });
@@ -477,34 +474,30 @@ public class GameActivity extends AppCompatActivity implements IGameView {
 
         //region Lifepoints Guest
 
-        // Guest - Plus
-        cmdPlusPlayer1 = (ImageButton)findViewById(R.id.cmdPlus_p2);
-        cmdPlusPlayer1.setOnClickListener(new View.OnClickListener() {
+        cmdPlusPlayer2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.onLifeUpdate(player_guest.getPlayerID(), ClickType.SHORT, Operator.ADD);
+                presenter.onLifeUpdate(player2.getPlayerID(), ClickType.SHORT, Operator.ADD);
             }
         });
-        cmdPlusPlayer1.setOnLongClickListener(new View.OnLongClickListener() {
+        cmdPlusPlayer2.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                presenter.onLifeUpdate(player_guest.getPlayerID(), ClickType.LONG, Operator.ADD);
+                presenter.onLifeUpdate(player2.getPlayerID(), ClickType.LONG, Operator.ADD);
                 return true;
             }
         });
 
-        // Guest - Minus
-        cmdMinusPlayer1 = (ImageButton)findViewById(R.id.cmdMinus_p2);
-        cmdMinusPlayer1.setOnClickListener(new View.OnClickListener() {
+        cmdMinusPlayer2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.onLifeUpdate(player_guest.getPlayerID(), ClickType.SHORT, Operator.SUBSTRACT);
+                presenter.onLifeUpdate(player2.getPlayerID(), ClickType.SHORT, Operator.SUBSTRACT);
             }
         });
-        cmdMinusPlayer1.setOnLongClickListener(new View.OnLongClickListener() {
+        cmdMinusPlayer2.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                presenter.onLifeUpdate(player_guest.getPlayerID(), ClickType.LONG, Operator.SUBSTRACT);
+                presenter.onLifeUpdate(player2.getPlayerID(), ClickType.LONG, Operator.SUBSTRACT);
                 return true;
             }
         });
@@ -512,7 +505,7 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         //endregion
 
         //region Reset Button
-
+/*
         // Reset Button
         cmdResetLP = (ImageButton)findViewById(R.id.cmdResetLP);
         cmdResetLP.setOnClickListener(new View.OnClickListener() {
@@ -534,37 +527,35 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         });
 
         //endregion
-        /*
+
         //region Poison Buttons Home
 
         // Poison Home Plus
-        cmdPlusPoisonPlayer1 = (ImageButton)findViewById(R.id.cmdPlusPoison_p1);
         cmdPlusPoisonPlayer1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.onPoisonUpdate(player_home.getPlayerID(), ClickType.SHORT, Operator.ADD);
+                presenter.onPoisonUpdate(player1.getPlayerID(), ClickType.SHORT, Operator.ADD);
             }
         });
         cmdPlusPoisonPlayer1.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                presenter.onPoisonUpdate(player_home.getPlayerID(), ClickType.LONG, Operator.ADD);
+                presenter.onPoisonUpdate(player1.getPlayerID(), ClickType.LONG, Operator.ADD);
                 return true;
             }
         });
 
         // Poison Home Minus
-        cmdMinusPoisonPlayer1 = (ImageButton)findViewById(R.id.cmdMinusPoison_p1);
         cmdMinusPoisonPlayer1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.onPoisonUpdate(player_home.getPlayerID(), ClickType.SHORT, Operator.SUBSTRACT);
+                presenter.onPoisonUpdate(player1.getPlayerID(), ClickType.SHORT, Operator.SUBSTRACT);
             }
         });
         cmdMinusPoisonPlayer1.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                presenter.onPoisonUpdate(player_home.getPlayerID(), ClickType.LONG, Operator.SUBSTRACT);
+                presenter.onPoisonUpdate(player1.getPlayerID(), ClickType.LONG, Operator.SUBSTRACT);
                 return true;
             }
         });
@@ -574,39 +565,37 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         //region Poison Buttons Guest
 
         // Poison Guest Plus
-        cmdPlusPoisonPlayer2 = (ImageButton)findViewById(R.id.cmdPlusPoison_p2);
         cmdPlusPoisonPlayer2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.onPoisonUpdate(player_guest.getPlayerID(), ClickType.SHORT, Operator.ADD);
+                presenter.onPoisonUpdate(player2.getPlayerID(), ClickType.SHORT, Operator.ADD);
             }
         });
         cmdPlusPoisonPlayer2.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                presenter.onPoisonUpdate(player_guest.getPlayerID(), ClickType.LONG, Operator.ADD);
+                presenter.onPoisonUpdate(player2.getPlayerID(), ClickType.LONG, Operator.ADD);
                 return true;
             }
         });
 
         // Poison Guest Minus
-        cmdMinusPoisonPlayer2 = (ImageButton)findViewById(R.id.cmdMinusPoison_p2);
         cmdMinusPoisonPlayer2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.onPoisonUpdate(player_guest.getPlayerID(), ClickType.SHORT, Operator.SUBSTRACT);
+                presenter.onPoisonUpdate(player2.getPlayerID(), ClickType.SHORT, Operator.SUBSTRACT);
             }
         });
         cmdMinusPoisonPlayer2.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                presenter.onPoisonUpdate(player_guest.getPlayerID(), ClickType.LONG, Operator.SUBSTRACT);
+                presenter.onPoisonUpdate(player2.getPlayerID(), ClickType.LONG, Operator.SUBSTRACT);
                 return true;
             }
         });
 
         //endregion
-        */
+
         //region Settings Button
         cmdToggleColorSettings.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -745,10 +734,10 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         txtPoisonCountPlayer2.setVisibility(View.VISIBLE);
 
         cmdPlusPoisonPlayer1.setVisibility(View.VISIBLE);
-        cmdPlusPoisonPlayer1.setVisibility(View.VISIBLE);
+        cmdPlusPoisonPlayer2.setVisibility(View.VISIBLE);
 
-        cmdMinusPoisonPlayer2.setVisibility(View.VISIBLE);
         cmdMinusPoisonPlayer1.setVisibility(View.VISIBLE);
+        cmdMinusPoisonPlayer2.setVisibility(View.VISIBLE);
 
         if(playeramount == 4) {
             txtPoisonCountPlayer3.setVisibility(View.VISIBLE);
@@ -773,10 +762,10 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         txtPoisonCountPlayer2.setVisibility(View.INVISIBLE);
 
         cmdPlusPoisonPlayer1.setVisibility(View.INVISIBLE);
-        cmdPlusPoisonPlayer1.setVisibility(View.INVISIBLE);
+        cmdPlusPoisonPlayer2.setVisibility(View.INVISIBLE);
 
-        cmdMinusPoisonPlayer2.setVisibility(View.INVISIBLE);
         cmdMinusPoisonPlayer1.setVisibility(View.INVISIBLE);
+        cmdMinusPoisonPlayer2.setVisibility(View.INVISIBLE);
 
         if(playeramount == 4) {
             txtPoisonCountPlayer3.setVisibility(View.INVISIBLE);
@@ -932,46 +921,46 @@ public class GameActivity extends AppCompatActivity implements IGameView {
     }
     //endregion
 
-    /*
+
 
     //region Set Life- and Poisonpoints
     @Override
     public void setLifepoints(PlayerID id, String points) {
         if(id.equals(PlayerID.ONE)) {
-            txtLifeCountHome.setText(points);
+            txtLifeCountPlayer1.setText(points);
         } else if(id.equals(PlayerID.TWO)) {
-            txtLifeCountGuest.setText(points);
+            txtLifeCountPlayer2.setText(points);
         }
     }
 
-    @Override
-    public void setPoisonpoints(PlayerID id, String points) {
-        if(id.equals(PlayerID.ONE)) {
-            txtPoisonCountHome.setText(points);
-        } else if(id.equals(PlayerID.TWO)) {
-            txtPoisonCountGuest.setText(points);
+        @Override
+        public void setPoisonpoints(PlayerID id, String points) {
+            if(id.equals(PlayerID.ONE)) {
+                txtPoisonCountPlayer1.setText(points);
+            } else if(id.equals(PlayerID.TWO)) {
+                txtPoisonCountPlayer2.setText(points);
+            }
         }
+        //endregion
+/*
+        //region Overrides for NavigationDrawer
+
+        @Override
+        protected void onPostCreate(@Nullable Bundle savedInstanceState) {
+            super.onPostCreate(savedInstanceState);
+            drawerToggle.syncState();
+        }
+
+        @Override
+        public void onConfigurationChanged(Configuration newConfig) {
+            super.onConfigurationChanged(newConfig);
+            drawerToggle.onConfigurationChanged(new Configuration());
+        }
+
+        //endregion
+
     }
-    //endregion
-
-    //region Overrides for NavigationDrawer
-
-    @Override
-    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-        drawerToggle.syncState();
-    }
-
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-        drawerToggle.onConfigurationChanged(new Configuration());
-    }
-
-    //endregion
-
-}
-*/
+    */
     //region Navigation Drawer
     @Override
     public void setDrawerTextPowerSaving(boolean shouldBeEnabled) {
