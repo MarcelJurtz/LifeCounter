@@ -241,6 +241,7 @@ public class GameActivity extends AppCompatActivity implements IGameView {
 
         cmdToggleColorSettings = (ImageButton)findViewById(R.id.cmdToggleColors);
         cmdTogglePoison = (ImageButton)findViewById(R.id.cmdTogglePoison);
+        cmdResetLP = (ImageButton)findViewById(R.id.cmdResetLP);
 
         // Init GamePresenter
         presenter = new GamePresenter(this, preferences);
@@ -505,9 +506,8 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         //endregion
 
         //region Reset Button
-/*
+
         // Reset Button
-        cmdResetLP = (ImageButton)findViewById(R.id.cmdResetLP);
         cmdResetLP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -516,7 +516,7 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         });
 
         // endregion
-        */
+
         //region Button Toggle Poison
 
         cmdTogglePoison.setOnClickListener(new View.OnClickListener() {
@@ -942,9 +942,9 @@ public class GameActivity extends AppCompatActivity implements IGameView {
             }
         }
         //endregion
-/*
-        //region Overrides for NavigationDrawer
 
+        //region Overrides for NavigationDrawer
+/*
         @Override
         protected void onPostCreate(@Nullable Bundle savedInstanceState) {
             super.onPostCreate(savedInstanceState);
@@ -956,11 +956,9 @@ public class GameActivity extends AppCompatActivity implements IGameView {
             super.onConfigurationChanged(newConfig);
             drawerToggle.onConfigurationChanged(new Configuration());
         }
-
+*/
         //endregion
 
-    }
-    */
     //region Navigation Drawer
     @Override
     public void setDrawerTextPowerSaving(boolean shouldBeEnabled) {

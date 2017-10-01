@@ -221,7 +221,7 @@ public class GamePresenter implements IGamePresenter {
             }
         }
     }
-    /*
+
     @Override
     public void onResetButtonClick() {
         player1.resetPoints(preferences);
@@ -240,7 +240,7 @@ public class GamePresenter implements IGamePresenter {
         gameActivity.setPoisonpoints(PlayerID.ONE, String.format("%02d",player1.getPoisonPoints()));
         gameActivity.setPoisonpoints(PlayerID.TWO, String.format("%02d",player2.getPoisonPoints()));
     }
-    */
+
     @Override
     public void onTogglePowerSaveClick() {
         togglePowerSavingMode();
