@@ -38,6 +38,11 @@ public class GamePresenter implements IGamePresenter {
         gameActivity.initColorButton(MagicColor.GREEN, PreferenceManager.getDefaultGreen(preferences));
         gameActivity.initColorButton(MagicColor.RED, PreferenceManager.getDefaultRed(preferences));
         gameActivity.initColorButton(MagicColor.WHITE, PreferenceManager.getDefaultWhite(preferences));
+
+        // Settings, Energy-Saving & Poison
+        gameActivity.disableSettingsControls();
+        gameActivity.settingsButtonDisable();
+        settingsVisible = false;
     }
 
     @Override
@@ -52,7 +57,20 @@ public class GamePresenter implements IGamePresenter {
 
     @Override
     public void onResume() {
+        settingsVisible = false;
+        gameActivity.disableSettingsControls();
+        gameActivity.settingsButtonDisable();
 
+        poisonVisible = false;
+        //gameActivity.disablePoisonControls();
+
+        powerSaveEnabled = false;
+
+        gameActivity.initColorButton(MagicColor.BLACK, PreferenceManager.getCustomColor(preferences, MagicColor.BLACK));
+        gameActivity.initColorButton(MagicColor.BLUE, PreferenceManager.getCustomColor(preferences, MagicColor.BLUE));
+        gameActivity.initColorButton(MagicColor.GREEN, PreferenceManager.getCustomColor(preferences, MagicColor.GREEN));
+        gameActivity.initColorButton(MagicColor.RED, PreferenceManager.getCustomColor(preferences, MagicColor.RED));
+        gameActivity.initColorButton(MagicColor.WHITE, PreferenceManager.getCustomColor(preferences, MagicColor.WHITE));
     }
 
     @Override
@@ -119,19 +137,7 @@ public class GamePresenter implements IGamePresenter {
 
     @Override
     public void onResume() {
-        settingsVisible = false;
-        gameActivity.disableSettingsControls();
 
-        poisonVisible = false;
-        gameActivity.disablePoisonControls();
-
-        powerSaveEnabled = false;
-
-        gameActivity.initColorButton(MagicColor.BLACK, PreferenceManager.getCustomColor(preferences, MagicColor.BLACK));
-        gameActivity.initColorButton(MagicColor.BLUE, PreferenceManager.getCustomColor(preferences, MagicColor.BLUE));
-        gameActivity.initColorButton(MagicColor.GREEN, PreferenceManager.getCustomColor(preferences, MagicColor.GREEN));
-        gameActivity.initColorButton(MagicColor.RED, PreferenceManager.getCustomColor(preferences, MagicColor.RED));
-        gameActivity.initColorButton(MagicColor.WHITE, PreferenceManager.getCustomColor(preferences, MagicColor.WHITE));
     }
 
     @Override
@@ -207,7 +213,7 @@ public class GamePresenter implements IGamePresenter {
             gameActivity.poisonButtonDisable();
         }
     }
-
+    */
     @Override
     public void onSettingsButtonClick(ClickType clickType) {
         if(clickType.equals(ClickType.LONG)) {
@@ -223,7 +229,7 @@ public class GamePresenter implements IGamePresenter {
             }
         }
     }
-
+    /*
     @Override
     public void onResetButtonClick() {
         player1.resetPoints(preferences);

@@ -18,7 +18,7 @@ public interface IGamePresenter extends IPresenter {
     //void onPoisonButtonClick();
 
     // Enable / Disable color controls
-    //void onSettingsButtonClick(ClickType clickType);
+    void onSettingsButtonClick(ClickType clickType);
 
     // Hit reset button
     //void onResetButtonClick();

@@ -228,6 +228,8 @@ public class GameActivity extends AppCompatActivity implements IGameView {
 
         }
 
+        cmdToggleColorSettings = (ImageButton)findViewById(R.id.cmdToggleColors);
+
         // Init GamePresenter
         presenter = new GamePresenter(this, preferences);
 
@@ -599,10 +601,8 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         });
 
         //endregion
-
+        */
         //region Settings Button
-
-        cmdToggleColorSettings = (ImageButton)findViewById(R.id.cmdToggleColors);
         cmdToggleColorSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -619,7 +619,6 @@ public class GameActivity extends AppCompatActivity implements IGameView {
 
         //endregion
 
-        */
         //region Drawer Layout
 
         cmdDrawerTogglePowerSaving = (Button)findViewById(R.id.cmdTogglePowerSave);
@@ -638,7 +637,7 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         cmdSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //presenter.onSettingsButtonClick(ClickType.LONG);
+                presenter.onSettingsButtonClick(ClickType.LONG);
             }
         });
 
@@ -711,7 +710,7 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         }
     }
 
-    /*
+
 
     @Override
     public void loadSettingsActivity() {
@@ -719,7 +718,7 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         startActivity(intent);
     }
 
-    */
+
 
     @Override
     public void setLayoutColor(PlayerID playerID, int color) {
@@ -766,21 +765,41 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         cmdTogglePoison.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.icon_poison_disabled));
     }
     //endregion
-
+    */
     //region Toggle Settings Controls
     @Override
     public void enableSettingsControls() {
-        cmdToggleColorSettings.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.icon_settings));
-        cmdBlackHome.setVisibility(View.VISIBLE);
         cmdBlackPlayer1.setVisibility(View.VISIBLE);
-        cmdBlueHome.setVisibility(View.VISIBLE);
+        cmdBlackPlayer2.setVisibility(View.VISIBLE);
+
         cmdBluePlayer1.setVisibility(View.VISIBLE);
-        cmdGreenHome.setVisibility(View.VISIBLE);
+        cmdBluePlayer2.setVisibility(View.VISIBLE);
+
         cmdGreenPlayer1.setVisibility(View.VISIBLE);
-        cmdRedHome.setVisibility(View.VISIBLE);
+        cmdGreenPlayer2.setVisibility(View.VISIBLE);
+
         cmdRedPlayer1.setVisibility(View.VISIBLE);
-        cmdWhiteHome.setVisibility(View.VISIBLE);
+        cmdRedPlayer2.setVisibility(View.VISIBLE);
+
         cmdWhitePlayer1.setVisibility(View.VISIBLE);
+        cmdWhitePlayer2.setVisibility(View.VISIBLE);
+
+        if(playeramount == 4) {
+            cmdBlackPlayer1.setVisibility(View.VISIBLE);
+            cmdBlackPlayer2.setVisibility(View.VISIBLE);
+
+            cmdBluePlayer1.setVisibility(View.VISIBLE);
+            cmdBluePlayer2.setVisibility(View.VISIBLE);
+
+            cmdGreenPlayer1.setVisibility(View.VISIBLE);
+            cmdGreenPlayer2.setVisibility(View.VISIBLE);
+
+            cmdRedPlayer1.setVisibility(View.VISIBLE);
+            cmdRedPlayer2.setVisibility(View.VISIBLE);
+
+            cmdWhitePlayer1.setVisibility(View.VISIBLE);
+            cmdWhitePlayer2.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
@@ -790,24 +809,44 @@ public class GameActivity extends AppCompatActivity implements IGameView {
 
     @Override
     public void disableSettingsControls() {
-        cmdToggleColorSettings.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.icon_settings_disabled));
-        cmdBlackHome.setVisibility(View.INVISIBLE);
         cmdBlackPlayer1.setVisibility(View.INVISIBLE);
-        cmdBlueHome.setVisibility(View.INVISIBLE);
+        cmdBlackPlayer2.setVisibility(View.INVISIBLE);
+
         cmdBluePlayer1.setVisibility(View.INVISIBLE);
-        cmdGreenHome.setVisibility(View.INVISIBLE);
+        cmdBluePlayer2.setVisibility(View.INVISIBLE);
+
         cmdGreenPlayer1.setVisibility(View.INVISIBLE);
-        cmdRedHome.setVisibility(View.INVISIBLE);
+        cmdGreenPlayer2.setVisibility(View.INVISIBLE);
+
         cmdRedPlayer1.setVisibility(View.INVISIBLE);
-        cmdWhiteHome.setVisibility(View.INVISIBLE);
+        cmdRedPlayer2.setVisibility(View.INVISIBLE);
+
         cmdWhitePlayer1.setVisibility(View.INVISIBLE);
+        cmdWhitePlayer2.setVisibility(View.INVISIBLE);
+
+        if(playeramount == 4) {
+            cmdBlackPlayer1.setVisibility(View.INVISIBLE);
+            cmdBlackPlayer2.setVisibility(View.INVISIBLE);
+
+            cmdBluePlayer1.setVisibility(View.INVISIBLE);
+            cmdBluePlayer2.setVisibility(View.INVISIBLE);
+
+            cmdGreenPlayer1.setVisibility(View.INVISIBLE);
+            cmdGreenPlayer2.setVisibility(View.INVISIBLE);
+
+            cmdRedPlayer1.setVisibility(View.INVISIBLE);
+            cmdRedPlayer2.setVisibility(View.INVISIBLE);
+
+            cmdWhitePlayer1.setVisibility(View.INVISIBLE);
+            cmdWhitePlayer2.setVisibility(View.INVISIBLE);
+        }
     }
 
     @Override
     public void settingsButtonDisable() {
         cmdToggleColorSettings.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.icon_settings_disabled));
     }
-
+/*
 
     //endregion
 
