@@ -38,7 +38,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginBottom="40dp"
-                android:layout_above="@id/cmdResetLP"
+                android:layout_above="@id/cmdResetLP4p"
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/icon_poison_disabled" />
 
@@ -58,7 +58,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="40dp"
-                android:layout_below="@id/cmdResetLP"
+                android:layout_below="@id/cmdResetLP4p"
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/icon_settings_disabled" />
 
