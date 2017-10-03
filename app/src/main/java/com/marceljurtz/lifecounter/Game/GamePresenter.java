@@ -22,6 +22,8 @@ public class GamePresenter implements IGamePresenter {
 
     private Player player1;
     private Player player2;
+    private Player player3;
+    private Player player4;
 
     public GamePresenter(GameActivity gameActivity, SharedPreferences preferences) {
         this.preferences = preferences;
@@ -30,7 +32,14 @@ public class GamePresenter implements IGamePresenter {
         player1 = new Player(PlayerID.ONE);
         player2 = new Player(PlayerID.TWO);
 
-        gameModel = new GameModel(preferences, new Player[]{player1, player2});
+        if(gameActivity.getPlayerAmount() == 4) {
+            player3 = new Player(PlayerID.THREE);
+            player4 = new Player(PlayerID.FOUR);
+            gameModel = new GameModel(preferences, new Player[]{player1, player2, player3, player4});
+        } else {
+            gameModel = new GameModel(preferences, new Player[]{player1, player2});
+        }
+
 
         // Initiate default colors
         gameActivity.initColorButton(MagicColor.BLACK, PreferenceManager.getDefaultBlack(preferences));

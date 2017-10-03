@@ -86,20 +86,20 @@
 
                 <ImageButton
                     android:id="@+id/cmdPlus4p1"
-                    style="@style/mtg_button_lifepoints_top"
-                    android:layout_marginRight="@dimen/button_space_vertical"
-                    android:layout_toLeftOf="@id/txtLifeCount4p1"
-                    android:layout_toStartOf="@id/txtLifeCount4p1"
-                    android:layout_alignBottom="@id/txtLifeCount4p1"
+                    android:rotation="90"
+                    android:layout_width="@dimen/buttonPlusMinusLifepoints"
+                    android:layout_height="@dimen/buttonPlusMinusLifepoints"
+                    android:layout_above="@id/txtLifeCount4p1"
+                    android:layout_centerHorizontal="true"
                     android:background="@drawable/icon_plus" />
 
                 <ImageButton
                     android:id="@+id/cmdMinus4p1"
-                    style="@style/mtg_button_lifepoints_top"
-                    android:layout_marginLeft="@dimen/button_space_vertical"
-                    android:layout_toEndOf="@+id/txtLifeCount4p1"
-                    android:layout_toRightOf="@+id/txtLifeCount4p1"
-                    android:layout_alignBottom="@id/txtLifeCount4p1"
+                    android:rotation="90"
+                    android:layout_width="@dimen/buttonPlusMinusLifepoints"
+                    android:layout_height="@dimen/buttonPlusMinusLifepoints"
+                    android:layout_below="@+id/txtLifeCount4p1"
+                    android:layout_centerHorizontal="true"
                     android:background="@drawable/icon_minus" />
 
                 <TextView
@@ -187,20 +187,20 @@
 
                 <ImageButton
                     android:id="@+id/cmdPlus4p3"
-                    style="@style/mtg_button_lifepoints_top"
-                    android:layout_marginRight="@dimen/button_space_vertical"
-                    android:layout_toLeftOf="@id/txtLifeCount4p3"
-                    android:layout_toStartOf="@id/txtLifeCount4p3"
-                    android:layout_alignBottom="@id/txtLifeCount4p3"
+                    android:rotation="90"
+                    android:layout_width="@dimen/buttonPlusMinusLifepoints"
+                    android:layout_height="@dimen/buttonPlusMinusLifepoints"
+                    android:layout_above="@id/txtLifeCount4p3"
+                    android:layout_centerHorizontal="true"
                     android:background="@drawable/icon_plus" />
 
                 <ImageButton
                     android:id="@+id/cmdMinus4p3"
-                    style="@style/mtg_button_lifepoints_top"
-                    android:layout_marginLeft="@dimen/button_space_vertical"
-                    android:layout_toEndOf="@+id/txtLifeCount4p3"
-                    android:layout_toRightOf="@+id/txtLifeCount4p3"
-                    android:layout_alignBottom="@id/txtLifeCount4p3"
+                    android:rotation="90"
+                    android:layout_width="@dimen/buttonPlusMinusLifepoints"
+                    android:layout_height="@dimen/buttonPlusMinusLifepoints"
+                    android:layout_below="@id/txtLifeCount4p3"
+                    android:layout_centerHorizontal="true"
                     android:background="@drawable/icon_minus" />
 
                 <TextView
@@ -295,21 +295,21 @@
 
                 <ImageButton
                     android:id="@+id/cmdPlus4p2"
-                    style="@style/mtg_button_lifepoints_top"
-                    android:layout_marginRight="@dimen/button_space_vertical"
-                    android:layout_toLeftOf="@id/txtLifeCount4p2"
-                    android:layout_toStartOf="@id/txtLifeCount4p2"
-                    android:layout_alignBottom="@id/txtLifeCount4p2"
+                    android:rotation="90"
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="@dimen/buttonPlusMinusLifepoints"
+                    android:layout_height="@dimen/buttonPlusMinusLifepoints"
+                    android:layout_above="@id/txtLifeCount4p2"
                     android:background="@drawable/icon_plus" />
 
                 <ImageButton
                     android:id="@+id/cmdMinus4p2"
-                    style="@style/mtg_button_lifepoints_top"
-                    android:layout_marginLeft="@dimen/button_space_vertical"
-                    android:layout_toEndOf="@+id/txtLifeCount4p2"
-                    android:layout_toRightOf="@+id/txtLifeCount4p2"
-                    android:layout_alignBottom="@id/txtLifeCount4p2"
-                    android:background="@drawable/icon_minus" />1
+                    android:rotation="90"
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="@dimen/buttonPlusMinusLifepoints"
+                    android:layout_height="@dimen/buttonPlusMinusLifepoints"
+                    android:layout_below="@id/txtLifeCount4p2"
+                    android:background="@drawable/icon_minus" />
 
                 <TextView
                     android:id="@+id/txtPoisonCount4p2"
@@ -395,20 +395,20 @@
 
                 <ImageButton
                     android:id="@+id/cmdPlus4p4"
-                    style="@style/mtg_button_lifepoints_top"
-                    android:layout_marginRight="@dimen/button_space_vertical"
-                    android:layout_toLeftOf="@id/txtLifeCount4p4"
-                    android:layout_toStartOf="@id/txtLifeCount4p4"
-                    android:layout_alignBottom="@id/txtLifeCount4p4"
+                    android:rotation="90"
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="@dimen/buttonPlusMinusLifepoints"
+                    android:layout_height="@dimen/buttonPlusMinusLifepoints"
+                    android:layout_above="@id/txtLifeCount4p4"
                     android:background="@drawable/icon_plus" />
 
                 <ImageButton
                     android:id="@+id/cmdMinus4p4"
-                    style="@style/mtg_button_lifepoints_top"
-                    android:layout_marginLeft="@dimen/button_space_vertical"
-                    android:layout_toEndOf="@+id/txtLifeCount4p4"
-                    android:layout_toRightOf="@+id/txtLifeCount4p4"
-                    android:layout_alignBottom="@id/txtLifeCount4p4"
+                    android:rotation="90"
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="@dimen/buttonPlusMinusLifepoints"
+                    android:layout_height="@dimen/buttonPlusMinusLifepoints"
+                    android:layout_below="@id/txtLifeCount4p4"
                     android:background="@drawable/icon_minus" />
 
                 <TextView

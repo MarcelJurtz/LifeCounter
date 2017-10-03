@@ -170,6 +170,10 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         // Players
         player1 = new Player(PlayerID.ONE);
         player2 = new Player(PlayerID.TWO);
+        if(playeramount == 4) {
+            player3 = new Player(PlayerID.THREE);
+            player4 = new Player(PlayerID.FOUR);
+        }
 
         //playeramount = 4;
 
@@ -538,6 +542,64 @@ public class GameActivity extends AppCompatActivity implements IGameView {
             }
         });
 
+        if(playeramount == 4) {
+            cmdPlusPlayer3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    presenter.onLifeUpdate(player3.getPlayerID(), ClickType.SHORT, Operator.ADD);
+                }
+            });
+            cmdPlusPlayer3.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    presenter.onLifeUpdate(player3.getPlayerID(), ClickType.LONG, Operator.ADD);
+                    return true;
+                }
+            });
+
+            cmdMinusPlayer3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    presenter.onLifeUpdate(player3.getPlayerID(), ClickType.SHORT, Operator.SUBSTRACT);
+                }
+            });
+            cmdMinusPlayer3.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    presenter.onLifeUpdate(player3.getPlayerID(), ClickType.LONG, Operator.SUBSTRACT);
+                    return true;
+                }
+            });
+
+            cmdPlusPlayer4.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    presenter.onLifeUpdate(player4.getPlayerID(), ClickType.SHORT, Operator.ADD);
+                }
+            });
+            cmdPlusPlayer4.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    presenter.onLifeUpdate(player4.getPlayerID(), ClickType.LONG, Operator.ADD);
+                    return true;
+                }
+            });
+
+            cmdMinusPlayer4.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    presenter.onLifeUpdate(player4.getPlayerID(), ClickType.SHORT, Operator.SUBSTRACT);
+                }
+            });
+            cmdMinusPlayer4.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    presenter.onLifeUpdate(player4.getPlayerID(), ClickType.LONG, Operator.SUBSTRACT);
+                    return true;
+                }
+            });
+        }
+
         //endregion
 
         //region Reset Button
@@ -897,11 +959,8 @@ public class GameActivity extends AppCompatActivity implements IGameView {
     public void settingsButtonDisable() {
         cmdToggleColorSettings.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.icon_settings_disabled));
     }
-/*
 
     //endregion
-
-    */
 
     //region Toggle Energy Saving Option
     @Override
@@ -962,6 +1021,10 @@ public class GameActivity extends AppCompatActivity implements IGameView {
             txtLifeCountPlayer1.setText(points);
         } else if(id.equals(PlayerID.TWO)) {
             txtLifeCountPlayer2.setText(points);
+        } else if(id.equals(PlayerID.THREE)) {
+            txtLifeCountPlayer3.setText(points);
+        } else if(id.equals(PlayerID.FOUR)) {
+            txtLifeCountPlayer4.setText(points);
         }
     }
 
@@ -1007,4 +1070,9 @@ public class GameActivity extends AppCompatActivity implements IGameView {
     }
 
     //endregion
+
+    @Override
+    public int getPlayerAmount() {
+        return playeramount;
+    }
 }

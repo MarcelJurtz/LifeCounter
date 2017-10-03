@@ -37,4 +37,6 @@ public interface IGameView extends IView {
 
     // Drawer Layout Interaction
     void setDrawerTextPowerSaving(boolean shouldBeEnabled);
+
+    int getPlayerAmount();
 }

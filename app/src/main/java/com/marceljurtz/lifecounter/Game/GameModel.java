@@ -21,7 +21,6 @@ public class GameModel {
         this.preferences = preferences;
         this.players = players;
 
-
         startGame();
     }
 
@@ -52,6 +51,12 @@ public class GameModel {
             case TWO:
                 players[1].updateLifepoints(amount);
                 break;
+            case THREE:
+                players[2].updateLifepoints(amount);
+                break;
+            case FOUR:
+                players[3].updateLifepoints(amount);
+                break;
             default:
                 // Nothing to do
                 break;
@@ -72,6 +77,12 @@ public class GameModel {
             case TWO:
                 players[1].updatePoisonpoints(amount);
                 break;
+            case THREE:
+                players[2].updatePoisonpoints(amount);
+                break;
+            case FOUR:
+                players[3].updatePoisonpoints(amount);
+                break;
             default:
                 // Nothing to do
                 break;
@@ -84,6 +95,10 @@ public class GameModel {
                 return players[0].getLifePoints();
             case TWO:
                 return players[1].getLifePoints();
+            case THREE:
+                return players[2].getLifePoints();
+            case FOUR:
+                return players[3].getLifePoints();
             default:
                 return 0;
         }
@@ -95,6 +110,10 @@ public class GameModel {
                 return players[0].getPoisonPoints();
             case TWO:
                 return players[1].getPoisonPoints();
+            case THREE:
+                return players[2].getPoisonPoints();
+            case FOUR:
+                return players[3].getPoisonPoints();
             default:
                 return 0;
         }
