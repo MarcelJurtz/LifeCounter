@@ -259,7 +259,7 @@
 
     <LinearLayout
         android:orientation="vertical"
-        android:id="@+id/rlDrawer"
+        android:id="@+id/rlDrawer2p"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="start"
@@ -271,7 +271,7 @@
 
         <TextView
             style="@style/ndSubHeaderText"
-            android:id="@+id/lblAppVersion"/>
+            android:id="@+id/lblAppVersion2p"/>
 
         <!-- Spacer / Horizontal Line
         <View
@@ -283,22 +283,22 @@
 
         <Button
             style="@style/nd_button"
-            android:id="@+id/cmdTogglePowerSave"
+            android:id="@+id/cmdTogglePowerSave2p"
             android:text="@string/cmdPowerSaveEnable"/>
 
         <Button
             style="@style/nd_button_border_bottom_only"
-            android:id="@+id/cmdTogglePlayerAmount"
+            android:id="@+id/cmdTogglePlayerAmount2p"
             android:text="@string/cmdTogglePlayerAmount4"/>
 
         <Button
             style="@style/nd_button_border_bottom_only"
-            android:id="@+id/cmdSettings"
+            android:id="@+id/cmdSettings2p"
             android:text="@string/settings_title"/>
 
         <Button
             style="@style/nd_button_border_bottom_only"
-            android:id="@+id/cmdAbout"
+            android:id="@+id/cmdAbout2p"
             android:text="@string/cmdAbout"/>
 
     </LinearLayout>

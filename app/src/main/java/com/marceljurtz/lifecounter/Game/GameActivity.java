@@ -108,6 +108,8 @@ public class GameActivity extends AppCompatActivity implements IGameView {
     TextView txtPoisonCountPlayer4;
 
     Button cmdDrawerTogglePowerSaving;
+    TextView lblVersionInfo;
+    Button cmdSettings;
 
     int LP_Default;
     int PP_Default;
@@ -140,6 +142,8 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         // Init SharedPreferences
         preferences = getApplicationContext().getSharedPreferences(PreferenceManager.PREFS, Activity.MODE_PRIVATE);
         playeramount = PreferenceManager.getPlayerAmount(preferences);
+
+        playeramount = 4;
 
         if(playeramount == 4) {
             setContentView(R.layout.activity_main_4player);
@@ -180,31 +184,59 @@ public class GameActivity extends AppCompatActivity implements IGameView {
             txtLifeCountPlayer3 = (TextView) findViewById(R.id.txtLifeCount4p3);
             txtLifeCountPlayer4 = (TextView) findViewById(R.id.txtLifeCount4p4);
 
-            //txtPoisonCountPlayer1 = (TextView)findViewById(R.id.txtPoisonCount4p1);
-            //txtPoisonCountPlayer2 = (TextView)findViewById(R.id.txtPoisonCount4p2);
-            //txtPoisonCountPlayer3 = (TextView)findViewById(R.id.txtPoisonCount4p3);
-            //txtPoisonCountPlayer4 = (TextView)findViewById(R.id.txtPoisonCount4p4);
+            cmdPlusPlayer1 = (ImageButton)findViewById(R.id.cmdPlus4p1);
+            cmdPlusPlayer2 = (ImageButton)findViewById(R.id.cmdPlus4p2);
+            cmdPlusPlayer3 = (ImageButton)findViewById(R.id.cmdPlus4p3);
+            cmdPlusPlayer4 = (ImageButton)findViewById(R.id.cmdPlus4p4);
 
-            //cmdBlackPlayer1 = (Button)findViewById(R.id.cmdBlack4p1);
-            //cmdBlackPlayer2 = (Button)findViewById(R.id.cmdBlack4p2);
-            //cmdBlackPlayer3 = (Button)findViewById(R.id.cmdBlack4p3);
-            //cmdBlackPlayer4 = (Button)findViewById(R.id.cmdBlack4p4);
-            //cmdBluePlayer1 = (Button)findViewById(R.id.cmdBlue4p1);
-            //cmdBluePlayer2 = (Button)findViewById(R.id.cmdBlue4p2);
-            //cmdBluePlayer3 = (Button)findViewById(R.id.cmdBlue4p3);
-            //cmdBluePlayer4 = (Button)findViewById(R.id.cmdBlue4p4);
-            //cmdGreenPlayer1 = (Button)findViewById(R.id.cmdGreen4p1);
-            //cmdGreenPlayer2 = (Button)findViewById(R.id.cmdGreen4p2);
-            //cmdGreenPlayer3 = (Button)findViewById(R.id.cmdGreen4p3);
-            //cmdGreenPlayer4 = (Button)findViewById(R.id.cmdGreen4p4);
-            //cmdRedPlayer1 = (Button)findViewById(R.id.cmdRed4p1);
-            //cmdRedPlayer2 = (Button)findViewById(R.id.cmdRed4p2);
-            //cmdRedPlayer3 = (Button)findViewById(R.id.cmdRed4p3);
-            //cmdRedPlayer4 = (Button)findViewById(R.id.cmdRed4p4);
-            //cmdWhitePlayer1 = (Button)findViewById(R.id.cmdWhite4p1);
-            //cmdWhitePlayer2 = (Button)findViewById(R.id.cmdWhite4p2);
-            //cmdWhitePlayer3 = (Button)findViewById(R.id.cmdWhite4p3);
-            //cmdWhitePlayer4 = (Button)findViewById(R.id.cmdWhite4p4);
+            cmdMinusPlayer1 = (ImageButton)findViewById(R.id.cmdMinus4p1);
+            cmdMinusPlayer2 = (ImageButton)findViewById(R.id.cmdMinus4p2);
+            cmdMinusPlayer3 = (ImageButton)findViewById(R.id.cmdMinus4p3);
+            cmdMinusPlayer4 = (ImageButton)findViewById(R.id.cmdMinus4p4);
+
+            txtPoisonCountPlayer1 = (TextView)findViewById(R.id.txtPoisonCount4p1);
+            txtPoisonCountPlayer2 = (TextView)findViewById(R.id.txtPoisonCount4p2);
+            txtPoisonCountPlayer3 = (TextView)findViewById(R.id.txtPoisonCount4p3);
+            txtPoisonCountPlayer4 = (TextView)findViewById(R.id.txtPoisonCount4p4);
+
+            cmdPlusPoisonPlayer1 = (ImageButton)findViewById(R.id.cmdPlusPoison4p1);
+            cmdPlusPoisonPlayer2 = (ImageButton)findViewById(R.id.cmdPlusPoison4p2);
+            cmdPlusPoisonPlayer3 = (ImageButton)findViewById(R.id.cmdPlusPoison4p3);
+            cmdPlusPoisonPlayer4 = (ImageButton)findViewById(R.id.cmdPlusPoison4p4);
+
+            cmdMinusPoisonPlayer1 = (ImageButton)findViewById(R.id.cmdMinusPoison4p1);
+            cmdMinusPoisonPlayer2 = (ImageButton)findViewById(R.id.cmdMinusPoison4p2);
+            cmdMinusPoisonPlayer3 = (ImageButton)findViewById(R.id.cmdMinusPoison4p3);
+            cmdMinusPoisonPlayer4 = (ImageButton)findViewById(R.id.cmdMinusPoison4p4);
+
+            cmdBlackPlayer1 = (Button)findViewById(R.id.cmdBlack4p1);
+            cmdBlackPlayer2 = (Button)findViewById(R.id.cmdBlack4p2);
+            cmdBlackPlayer3 = (Button)findViewById(R.id.cmdBlack4p3);
+            cmdBlackPlayer4 = (Button)findViewById(R.id.cmdBlack4p4);
+            cmdBluePlayer1 = (Button)findViewById(R.id.cmdBlue4p1);
+            cmdBluePlayer2 = (Button)findViewById(R.id.cmdBlue4p2);
+            cmdBluePlayer3 = (Button)findViewById(R.id.cmdBlue4p3);
+            cmdBluePlayer4 = (Button)findViewById(R.id.cmdBlue4p4);
+            cmdGreenPlayer1 = (Button)findViewById(R.id.cmdGreen4p1);
+            cmdGreenPlayer2 = (Button)findViewById(R.id.cmdGreen4p2);
+            cmdGreenPlayer3 = (Button)findViewById(R.id.cmdGreen4p3);
+            cmdGreenPlayer4 = (Button)findViewById(R.id.cmdGreen4p4);
+            cmdRedPlayer1 = (Button)findViewById(R.id.cmdRed4p1);
+            cmdRedPlayer2 = (Button)findViewById(R.id.cmdRed4p2);
+            cmdRedPlayer3 = (Button)findViewById(R.id.cmdRed4p3);
+            cmdRedPlayer4 = (Button)findViewById(R.id.cmdRed4p4);
+            cmdWhitePlayer1 = (Button)findViewById(R.id.cmdWhite4p1);
+            cmdWhitePlayer2 = (Button)findViewById(R.id.cmdWhite4p2);
+            cmdWhitePlayer3 = (Button)findViewById(R.id.cmdWhite4p3);
+            cmdWhitePlayer4 = (Button)findViewById(R.id.cmdWhite4p4);
+
+            cmdToggleColorSettings = (ImageButton)findViewById(R.id.cmdToggleColors4p);
+            cmdTogglePoison = (ImageButton)findViewById(R.id.cmdTogglePoison4p);
+            cmdResetLP = (ImageButton)findViewById(R.id.cmdResetLP4p);
+
+            cmdDrawerTogglePowerSaving = (Button)findViewById(R.id.cmdTogglePowerSave4p);
+            cmdSettings = (Button)findViewById(R.id.cmdSettings4p);
+            lblVersionInfo = (TextView)findViewById(R.id.lblAppVersion4p);
 
         } else {
             layoutPlayer1 = (RelativeLayout) findViewById(R.id.rl2Player1);
@@ -237,11 +269,14 @@ public class GameActivity extends AppCompatActivity implements IGameView {
             cmdMinusPoisonPlayer1 = (ImageButton)findViewById(R.id.cmdMinusPoisonGuest);
             cmdMinusPoisonPlayer2 = (ImageButton)findViewById(R.id.cmdMinusPoisonHome);
 
-        }
+            cmdToggleColorSettings = (ImageButton)findViewById(R.id.cmdToggleColors);
+            cmdTogglePoison = (ImageButton)findViewById(R.id.cmdTogglePoison);
+            cmdResetLP = (ImageButton)findViewById(R.id.cmdResetLP);
 
-        cmdToggleColorSettings = (ImageButton)findViewById(R.id.cmdToggleColors);
-        cmdTogglePoison = (ImageButton)findViewById(R.id.cmdTogglePoison);
-        cmdResetLP = (ImageButton)findViewById(R.id.cmdResetLP);
+            cmdDrawerTogglePowerSaving = (Button)findViewById(R.id.cmdTogglePowerSave2p);
+            cmdSettings = (Button)findViewById(R.id.cmdSettings2p);
+            lblVersionInfo = (TextView)findViewById(R.id.lblAppVersion2p);
+        }
 
         // Init GamePresenter
         presenter = new GamePresenter(this, preferences);
@@ -615,7 +650,6 @@ public class GameActivity extends AppCompatActivity implements IGameView {
 
         //region Drawer Layout
 
-        cmdDrawerTogglePowerSaving = (Button)findViewById(R.id.cmdTogglePowerSave);
         cmdDrawerTogglePowerSaving.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -623,11 +657,9 @@ public class GameActivity extends AppCompatActivity implements IGameView {
             }
         });
 
-        TextView lblVersionInfo = (TextView)findViewById(R.id.lblAppVersion);
         String versionName = BuildConfig.VERSION_NAME;
         lblVersionInfo.setText("Version " + versionName);
 
-        Button cmdSettings = (Button)findViewById(R.id.cmdSettings);
         cmdSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -804,20 +836,20 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         cmdWhitePlayer2.setVisibility(View.VISIBLE);
 
         if(playeramount == 4) {
-            cmdBlackPlayer1.setVisibility(View.VISIBLE);
-            cmdBlackPlayer2.setVisibility(View.VISIBLE);
+            cmdBlackPlayer3.setVisibility(View.VISIBLE);
+            cmdBlackPlayer4.setVisibility(View.VISIBLE);
 
-            cmdBluePlayer1.setVisibility(View.VISIBLE);
-            cmdBluePlayer2.setVisibility(View.VISIBLE);
+            cmdBluePlayer3.setVisibility(View.VISIBLE);
+            cmdBluePlayer4.setVisibility(View.VISIBLE);
 
-            cmdGreenPlayer1.setVisibility(View.VISIBLE);
-            cmdGreenPlayer2.setVisibility(View.VISIBLE);
+            cmdGreenPlayer3.setVisibility(View.VISIBLE);
+            cmdGreenPlayer4.setVisibility(View.VISIBLE);
 
-            cmdRedPlayer1.setVisibility(View.VISIBLE);
-            cmdRedPlayer2.setVisibility(View.VISIBLE);
+            cmdRedPlayer3.setVisibility(View.VISIBLE);
+            cmdRedPlayer4.setVisibility(View.VISIBLE);
 
-            cmdWhitePlayer1.setVisibility(View.VISIBLE);
-            cmdWhitePlayer2.setVisibility(View.VISIBLE);
+            cmdWhitePlayer3.setVisibility(View.VISIBLE);
+            cmdWhitePlayer4.setVisibility(View.VISIBLE);
         }
     }
 
