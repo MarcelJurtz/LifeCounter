@@ -772,6 +772,7 @@ public class GameActivity extends AppCompatActivity implements IGameView {
 
     @Override
     public void restartActivity() {
+        mainLayout.closeDrawer(Gravity.START);
         recreate();
     }
 
