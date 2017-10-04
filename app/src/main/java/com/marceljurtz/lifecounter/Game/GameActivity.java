@@ -135,8 +135,6 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         preferences = getApplicationContext().getSharedPreferences(PreferenceManager.PREFS, Activity.MODE_PRIVATE);
         playeramount = PreferenceManager.getPlayerAmount(preferences);
 
-        playeramount = 4;
-
         if(playeramount == 4) {
             setContentView(R.layout.activity_main_4player);
         } else {
@@ -236,6 +234,7 @@ public class GameActivity extends AppCompatActivity implements IGameView {
             lblVersionInfo = (TextView)findViewById(R.id.lblVersionInfo);
             */
             navigationView = (NavigationView) findViewById(R.id.navigationView4p);
+            navigationView.getMenu().findItem(R.id.nav_useramount).setTitle(R.string.menu_entry_load_players_2);
 
         } else {
             layoutPlayer1 = (RelativeLayout) findViewById(R.id.rl2Player1);
@@ -279,6 +278,7 @@ public class GameActivity extends AppCompatActivity implements IGameView {
             */
 
             navigationView = (NavigationView) findViewById(R.id.navigationView2p);
+            navigationView.getMenu().findItem(R.id.nav_useramount).setTitle(R.string.menu_entry_load_players_4);
         }
 
         // Init GamePresenter
@@ -768,6 +768,11 @@ public class GameActivity extends AppCompatActivity implements IGameView {
     protected void onStart() {
         presenter.onResume();
         super.onStart();
+    }
+
+    @Override
+    public void restartActivity() {
+        recreate();
     }
 
     @Override

@@ -257,6 +257,13 @@ public class GamePresenter implements IGamePresenter {
 
     @Override
     public void onToggleUseramountClick() {
-        // TODO
+        if(gameActivity.getPlayerAmount() == 4) {
+            // Load 2 Player View
+            PreferenceManager.saveDefaultPlayerAmount(preferences, 2);
+        } else if(gameActivity.getPlayerAmount() == 2) {
+            // Load 4 Player View
+            PreferenceManager.saveDefaultPlayerAmount(preferences, 4);
+        }
+        gameActivity.restartActivity();
     }
 }

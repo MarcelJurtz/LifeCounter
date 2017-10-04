@@ -39,4 +39,6 @@ public interface IGameView extends IView {
     void setDrawerTextPowerSaving(boolean shouldBeEnabled);
 
     int getPlayerAmount();
+
+    void restartActivity();
 }
