@@ -19,10 +19,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -39,7 +41,7 @@ import org.w3c.dom.Text;
 
 public class GameActivity extends AppCompatActivity implements IGameView {
 
-    private GamePresenter presenter;
+    private IGamePresenter presenter;
 
     DrawerLayout mainLayout;
     RelativeLayout layoutPlayer1;
@@ -111,17 +113,7 @@ public class GameActivity extends AppCompatActivity implements IGameView {
     TextView lblVersionInfo;
     Button cmdSettings;
 
-    int LP_Default;
-    int PP_Default;
-
-    // amount of points that will be added / substraced on long click
-    // default: 5
-    int longClickPoints;
-
-    // Default settings
-    boolean poisonEnabled = false;
-    boolean colorSettingsEnabled = false;
-    boolean powerSaveOn = false;
+    NavigationView  navigationView;
 
     int playeramount;
 
@@ -238,9 +230,12 @@ public class GameActivity extends AppCompatActivity implements IGameView {
             cmdTogglePoison = (ImageButton)findViewById(R.id.cmdTogglePoison4p);
             cmdResetLP = (ImageButton)findViewById(R.id.cmdResetLP4p);
 
-            cmdDrawerTogglePowerSaving = (Button)findViewById(R.id.cmdTogglePowerSave4p);
-            cmdSettings = (Button)findViewById(R.id.cmdSettings4p);
-            lblVersionInfo = (TextView)findViewById(R.id.lblAppVersion4p);
+            /*
+            cmdDrawerTogglePowerSaving = (Button)findViewById(R.id.nav_energy_save_mode);
+            cmdSettings = (Button)findViewById(R.id.nav_settings);
+            lblVersionInfo = (TextView)findViewById(R.id.lblVersionInfo);
+            */
+            navigationView = (NavigationView) findViewById(R.id.navigationView4p);
 
         } else {
             layoutPlayer1 = (RelativeLayout) findViewById(R.id.rl2Player1);
@@ -277,9 +272,13 @@ public class GameActivity extends AppCompatActivity implements IGameView {
             cmdTogglePoison = (ImageButton)findViewById(R.id.cmdTogglePoison);
             cmdResetLP = (ImageButton)findViewById(R.id.cmdResetLP);
 
+            /*
             cmdDrawerTogglePowerSaving = (Button)findViewById(R.id.cmdTogglePowerSave2p);
             cmdSettings = (Button)findViewById(R.id.cmdSettings2p);
             lblVersionInfo = (TextView)findViewById(R.id.lblAppVersion2p);
+            */
+
+            navigationView = (NavigationView) findViewById(R.id.navigationView2p);
         }
 
         // Init GamePresenter
@@ -602,6 +601,32 @@ public class GameActivity extends AppCompatActivity implements IGameView {
 
         //endregion
 
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(MenuItem item) {
+                int id = item.getItemId();
+                switch(id) {
+                    case R.id.nav_settings:
+                        presenter.onSettingsButtonClick(ClickType.LONG);
+                        break;
+                    case R.id.nav_about:
+                        // TODO
+                        break;
+                    case R.id.nav_energy_save_mode:
+                        presenter.onTogglePowerSaveClick();
+                        break;
+                    case R.id.nav_useramount:
+                        presenter.onToggleUseramountClick();
+                        break;
+                    default:
+                        break;
+                }
+                return true;
+            }
+        });
+
+
+
         //region Reset Button
 
         // Reset Button
@@ -710,7 +735,7 @@ public class GameActivity extends AppCompatActivity implements IGameView {
 
         //endregion
 
-        //region Drawer Layout
+        /* region Drawer Layout
 
         cmdDrawerTogglePowerSaving.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -719,8 +744,12 @@ public class GameActivity extends AppCompatActivity implements IGameView {
             }
         });
 
+
+
         String versionName = BuildConfig.VERSION_NAME;
         lblVersionInfo.setText("Version " + versionName);
+
+
 
         cmdSettings.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -730,8 +759,9 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         });
 
         //endregion
-        /*
+
         //endregion
+        */
     }
 
     @Override
@@ -740,9 +770,6 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         super.onStart();
     }
 
-    */
-
-    }
     @Override
     public void initColorButton(MagicColor colorLocation, int color) {
 
@@ -1065,7 +1092,7 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         }
 
         // Close drawer
-        cmdDrawerTogglePowerSaving.setText(string);
+        navigationView.getMenu().findItem(R.id.nav_energy_save_mode).setTitle(string);
         mainLayout.closeDrawer(Gravity.START);
     }
 

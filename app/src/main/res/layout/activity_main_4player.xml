@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/mainLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -176,7 +177,7 @@
                 android:id="@+id/rl4Player3"
                 android:layout_alignParentBottom="true"
                 android:layout_weight="1"
-                android:background="@color/mtg_green">
+                android:background="@color/mtg_black">
 
                 <!-- PLAYER 3 -->
                 <TextView
@@ -481,49 +482,14 @@
             </RelativeLayout>
         </LinearLayout>
     </RelativeLayout>
-    <LinearLayout
-        android:orientation="vertical"
-        android:id="@+id/rlDrawer4p"
-        android:layout_width="match_parent"
+
+    <android.support.design.widget.NavigationView
+        android:id="@+id/navigationView4p"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="@color/toolbarBackground">
+        app:headerLayout="@layout/drawer_header"
+        app:menu="@menu/drawer">
 
-        <TextView
-            style="@style/ndHeaderText"
-            android:text="@string/ndHeader"/>
-
-        <TextView
-            style="@style/ndSubHeaderText"
-            android:id="@+id/lblAppVersion4p"/>
-
-        <!-- Spacer / Horizontal Line
-        <View
-            android:layout_width="fill_parent"
-            android:layout_height="2dp"
-            android:layout_marginTop="@dimen/spacerMargin"
-            android:layout_marginBottom="@dimen/spacerMargin"
-            android:background="#000"/>-->
-
-        <Button
-            style="@style/nd_button"
-            android:id="@+id/cmdTogglePowerSave4p"
-            android:text="@string/cmdPowerSaveEnable"/>
-
-        <Button
-            style="@style/nd_button_border_bottom_only"
-            android:id="@+id/cmdTogglePlayerAmount4p"
-            android:text="@string/cmdTogglePlayerAmount2"/>
-
-        <Button
-            style="@style/nd_button_border_bottom_only"
-            android:id="@+id/cmdSettings4p"
-            android:text="@string/settings_title"/>
-
-        <Button
-            style="@style/nd_button_border_bottom_only"
-            android:id="@+id/cmdAbout4p"
-            android:text="@string/cmdAbout"/>
-
-    </LinearLayout>
+    </android.support.design.widget.NavigationView>
 </android.support.v4.widget.DrawerLayout>
