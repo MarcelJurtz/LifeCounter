@@ -77,6 +77,13 @@
         <item name="android:paddingLeft">@dimen/ndPadding</item>
     </style>
 
+    <style name="nd_button_noborder">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingLeft">@dimen/ndPadding</item>
+    </style>
+
     <style name="nd_button_border_bottom_only">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>

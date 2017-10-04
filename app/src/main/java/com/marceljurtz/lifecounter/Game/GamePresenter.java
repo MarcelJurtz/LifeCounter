@@ -255,4 +255,8 @@ public class GamePresenter implements IGamePresenter {
         togglePowerSavingMode();
     }
 
+    @Override
+    public void onToggleUseramountClick() {
+        // TODO
+    }
 }

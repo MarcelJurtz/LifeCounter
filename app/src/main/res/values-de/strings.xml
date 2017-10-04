@@ -26,4 +26,19 @@
 
     <string name="ndHeader">MTG LifeCounter</string>
     <string name="cmdAbout">Über</string>
+    <string name="title_activity_main">MainActivity</string>
+
+    <string name="navigation_drawer_open">Navigation Drawer Öffnen</string>
+    <string name="navigation_drawer_close">Navigation Drawer Schließen</string>
+
+    <string name="menu_entry_energysaving_enable">Energiesparmodus aktivieren</string>
+    <string name="menu_entry_energysaving_disable">Energiesparmodus deaktivieren</string>
+    <string name="menu_entry_load_players_2">2-Spielermodus laden</string>
+    <string name="menu_entry_load_players_4">4-Spielermodus laden</string>
+    <string name="menu_entry_settings">Einstellungen</string>
+    <string name="menu_entry_about">Über</string>
+    <string name="menu_area_settings">Konfiguration</string>
+    <string name="menu_area_general"></string>
+
+    <string name="action_settings">Einstellungen</string>
 </resources>

@@ -31,5 +31,14 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
+    <string name="menu_entry_energysaving_enable">Enable Power Saving</string>
+    <string name="menu_entry_energysaving_disable">Disable Power</string>
+    <string name="menu_entry_load_players_2">Load 2 player mode</string>
+    <string name="menu_entry_load_players_4">Load 4 player mode</string>
+    <string name="menu_entry_settings">Settings</string>
+    <string name="menu_entry_about">About</string>
+    <string name="menu_area_settings">Configuration</string>
+    <string name="menu_area_general"></string>
+
     <string name="action_settings">Settings</string>
 </resources>
