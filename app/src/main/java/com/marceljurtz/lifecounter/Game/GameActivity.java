@@ -29,6 +29,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.marceljurtz.lifecounter.BuildConfig;
+import com.marceljurtz.lifecounter.Dicing.DicingActivity;
 import com.marceljurtz.lifecounter.Helper.ClickType;
 import com.marceljurtz.lifecounter.Helper.MagicColor;
 import com.marceljurtz.lifecounter.Helper.Operator;
@@ -618,6 +619,9 @@ public class GameActivity extends AppCompatActivity implements IGameView {
                     case R.id.nav_useramount:
                         presenter.onToggleUseramountClick();
                         break;
+                    case R.id.nav_dicing:
+                        presenter.onMenuEntryDicingClick();
+                        break;
                     default:
                         break;
                 }
@@ -839,7 +843,11 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         startActivity(intent);
     }
 
-
+    @Override
+    public void loadDicingActivity() {
+        Intent intent = new Intent(getApplicationContext(), DicingActivity.class);
+        startActivity(intent);
+    }
 
     @Override
     public void setLayoutColor(PlayerID playerID, int color) {

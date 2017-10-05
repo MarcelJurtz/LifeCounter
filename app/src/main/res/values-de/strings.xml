@@ -37,6 +37,7 @@
     <string name="menu_entry_load_players_4">4-Spielermodus laden</string>
     <string name="menu_entry_settings">Einstellungen</string>
     <string name="menu_entry_about">Über</string>
+    <string name="menu_entry_load_dicing">Würfeln</string>
     <string name="menu_area_settings">Konfiguration</string>
     <string name="menu_area_general"></string>
 

@@ -232,6 +232,11 @@ public class GamePresenter implements IGamePresenter {
     }
 
     @Override
+    public void onMenuEntryDicingClick() {
+        gameActivity.loadDicingActivity();
+    }
+
+    @Override
     public void onResetButtonClick() {
         player1.resetPoints(preferences);
         player2.resetPoints(preferences);

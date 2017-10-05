@@ -9,6 +9,13 @@
             android:id="@+id/nav_useramount"
             android:icon="@drawable/ic_person_black_24dp"
             android:title="@string/menu_entry_load_players_4" />
+
+        <item
+            android:id="@+id/nav_dicing"
+            android:icon="@drawable/ic_casino_black_24dp"
+            android:title="@string/menu_entry_load_dicing">
+
+        </item>
     </group>
 
     <group android:id="@+id/navGroupConfig">
