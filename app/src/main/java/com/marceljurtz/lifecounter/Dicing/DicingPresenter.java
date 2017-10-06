@@ -1,5 +1,7 @@
 package com.marceljurtz.lifecounter.Dicing;
 
+import android.content.Intent;
+
 import com.marceljurtz.lifecounter.Game.GameActivity;
 import com.marceljurtz.lifecounter.Game.IGameView;
 
@@ -35,5 +37,25 @@ public class DicingPresenter implements IDicingPresenter {
     @Override
     public void onScreenTap() {
         view.setDicingText(model.ThrowDice()+"");
+    }
+
+    @Override
+    public void onMenuEntry2PlayerTap() {
+        view.start2PlayerGame();
+    }
+
+    @Override
+    public void onMenuEntry4PlayerTap() {
+        view.start4PlayerGame();
+    }
+
+    @Override
+    public void onMenuEntrySettingsTap() {
+        view.startSettingsActivity();
+    }
+
+    @Override
+    public void onMenuEntryAboutTap() {
+
     }
 }

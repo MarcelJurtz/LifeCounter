@@ -13,4 +13,6 @@
     <color name="mtg_green">#9BD3AE</color>
     <color name="mtg_red">#FAAA8F</color>
     <color name="mtg_white">#FFFCD6</color>
+    <color name="dicing_foreground">#9BD3AE</color>
+    <color name="dicing_background">#161618</color>
 </resources>
