@@ -28,6 +28,7 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.marceljurtz.lifecounter.About.AboutActivity;
 import com.marceljurtz.lifecounter.BuildConfig;
 import com.marceljurtz.lifecounter.Dicing.DicingActivity;
 import com.marceljurtz.lifecounter.Helper.ClickType;
@@ -611,7 +612,7 @@ public class GameActivity extends AppCompatActivity implements IGameView {
                         presenter.onSettingsButtonClick(ClickType.LONG);
                         break;
                     case R.id.nav_about:
-                        // TODO
+                        presenter.onMenuEntryAboutClick();
                         break;
                     case R.id.nav_energy_save_mode:
                         presenter.onTogglePowerSaveClick();
@@ -846,6 +847,12 @@ public class GameActivity extends AppCompatActivity implements IGameView {
     @Override
     public void loadDicingActivity() {
         Intent intent = new Intent(getApplicationContext(), DicingActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public void loadAboutActivity() {
+        Intent intent = new Intent(getApplicationContext(), AboutActivity.class);
         startActivity(intent);
     }
 

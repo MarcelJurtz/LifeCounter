@@ -28,4 +28,6 @@ public interface IGamePresenter extends IPresenter {
     void onToggleUseramountClick();
 
     void onMenuEntryDicingClick();
+
+    void onMenuEntryAboutClick();
 }

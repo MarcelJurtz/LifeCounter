@@ -22,7 +22,8 @@
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme" />
-        <activity android:name=".Dicing.DicingActivity"></activity>
+        <activity android:name=".Dicing.DicingActivity" />
+        <activity android:name=".About.AboutActivity"></activity>
     </application>
 
 </manifest>

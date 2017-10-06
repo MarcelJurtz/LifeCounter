@@ -237,6 +237,11 @@ public class GamePresenter implements IGamePresenter {
     }
 
     @Override
+    public void onMenuEntryAboutClick() {
+        gameActivity.loadAboutActivity();
+    }
+
+    @Override
     public void onResetButtonClick() {
         player1.resetPoints(preferences);
         player2.resetPoints(preferences);
