@@ -56,6 +56,6 @@ public class DicingPresenter implements IDicingPresenter {
 
     @Override
     public void onMenuEntryAboutTap() {
-
+        view.startAboutActivity();
     }
 }

@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.marceljurtz.lifecounter.About.AboutActivity;
 import com.marceljurtz.lifecounter.Game.GameActivity;
 import com.marceljurtz.lifecounter.R;
 import com.marceljurtz.lifecounter.Settings.SettingsActivity;
@@ -103,6 +104,13 @@ public class DicingActivity extends AppCompatActivity implements IDicingView {
     @Override
     public void startSettingsActivity() {
         Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
+        finish();
+        startActivity(intent);
+    }
+
+    @Override
+    public void startAboutActivity() {
+        Intent intent = new Intent(getApplicationContext(), AboutActivity.class);
         finish();
         startActivity(intent);
     }

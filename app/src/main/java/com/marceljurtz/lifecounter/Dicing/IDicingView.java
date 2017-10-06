@@ -7,4 +7,5 @@ public interface IDicingView extends IView {
     void start2PlayerGame();
     void start4PlayerGame();
     void startSettingsActivity();
+    void startAboutActivity();
 }
