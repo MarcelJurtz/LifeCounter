@@ -232,16 +232,6 @@ public class GamePresenter implements IGamePresenter {
     }
 
     @Override
-    public void onMenuEntryDicingClick() {
-        gameActivity.loadDicingActivity();
-    }
-
-    @Override
-    public void onMenuEntryAboutClick() {
-        gameActivity.loadAboutActivity();
-    }
-
-    @Override
     public void onResetButtonClick() {
         player1.resetPoints(preferences);
         player2.resetPoints(preferences);
@@ -260,13 +250,9 @@ public class GamePresenter implements IGamePresenter {
         gameActivity.setPoisonpoints(PlayerID.TWO, String.format("%02d",player2.getPoisonPoints()));
     }
 
+    //region NavDrawer Handling
     @Override
-    public void onTogglePowerSaveClick() {
-        togglePowerSavingMode();
-    }
-
-    @Override
-    public void onToggleUseramountClick() {
+    public void onMenuEntryTogglePlayerTap() {
         if(gameActivity.getPlayerAmount() == 4) {
             // Load 2 Player View
             PreferenceManager.saveDefaultPlayerAmount(preferences, 2);
@@ -276,4 +262,25 @@ public class GamePresenter implements IGamePresenter {
         }
         gameActivity.restartActivity();
     }
+
+    @Override
+    public void onMenuEntryDicingTap() {
+        gameActivity.loadDicingActivity();
+    }
+
+    @Override
+    public void onMenuEntryEnergySaveTap() {
+        togglePowerSavingMode();
+    }
+
+    @Override
+    public void onMenuEntrySettingsTap() {
+        onSettingsButtonClick(ClickType.LONG);
+    }
+
+    @Override
+    public void onMenuEntryAboutTap() {
+        gameActivity.loadAboutActivity();
+    }
+    //endregion
 }

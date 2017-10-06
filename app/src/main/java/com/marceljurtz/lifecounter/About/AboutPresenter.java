@@ -1,5 +1,7 @@
 package com.marceljurtz.lifecounter.About;
 
+import com.marceljurtz.lifecounter.Helper.BaseInterface.IAboutNavDrawerInteraction;
+
 public class AboutPresenter implements IAboutPresenter {
 
     String languageCode;
@@ -9,6 +11,8 @@ public class AboutPresenter implements IAboutPresenter {
         this.view = view;
         this.languageCode = languageCode;
     }
+
+    //region Activity Lifecycle
 
     @Override
     public void onCreate() {
@@ -33,4 +37,30 @@ public class AboutPresenter implements IAboutPresenter {
     public void onDestroy() {
 
     }
+
+    //endregion
+
+    //region NavDrawer Handling
+
+    @Override
+    public void onMenuEntryTwoPlayerTap() {
+        view.start2PlayerGame();
+    }
+
+    @Override
+    public void onMenuEntryFourPlayerTap() {
+        view.start4PlayerGame();
+    }
+
+    @Override
+    public void onMenuEntryDicingTap() {
+        view.startDicingActivity();
+    }
+
+    @Override
+    public void onMenuEntrySettingsTap() {
+        view.startSettingsActivity();
+    }
+
+    //endregion
 }

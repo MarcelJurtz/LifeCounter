@@ -44,10 +44,10 @@ public class DicingActivity extends AppCompatActivity implements IDicingView {
             public boolean onNavigationItemSelected(MenuItem item) {
                 switch(item.getItemId()) {
                     case R.id.nav_dicing_useramount_2:
-                        presenter.onMenuEntry2PlayerTap();
+                        presenter.onMenuEntryTwoPlayerTap();
                         break;
                     case R.id.nav_dicing_useramount_4:
-                        presenter.onMenuEntry4PlayerTap();
+                        presenter.onMenuEntryFourPlayerTap();
                         break;
                     case R.id.nav_dicing_settings:
                         presenter.onMenuEntrySettingsTap();

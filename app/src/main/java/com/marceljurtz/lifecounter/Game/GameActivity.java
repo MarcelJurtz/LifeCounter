@@ -609,19 +609,20 @@ public class GameActivity extends AppCompatActivity implements IGameView {
                 int id = item.getItemId();
                 switch(id) {
                     case R.id.nav_settings:
-                        presenter.onSettingsButtonClick(ClickType.LONG);
+                        //presenter.onSettingsButtonClick(ClickType.LONG);
+                        presenter.onMenuEntrySettingsTap();
                         break;
                     case R.id.nav_about:
-                        presenter.onMenuEntryAboutClick();
+                        presenter.onMenuEntryAboutTap();
                         break;
                     case R.id.nav_energy_save_mode:
-                        presenter.onTogglePowerSaveClick();
+                        presenter.onMenuEntryEnergySaveTap();
                         break;
                     case R.id.nav_useramount:
-                        presenter.onToggleUseramountClick();
+                        presenter.onMenuEntryTogglePlayerTap();
                         break;
                     case R.id.nav_dicing:
-                        presenter.onMenuEntryDicingClick();
+                        presenter.onMenuEntryDicingTap();
                         break;
                     default:
                         break;

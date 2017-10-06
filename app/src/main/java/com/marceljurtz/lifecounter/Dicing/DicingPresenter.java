@@ -1,10 +1,5 @@
 package com.marceljurtz.lifecounter.Dicing;
 
-import android.content.Intent;
-
-import com.marceljurtz.lifecounter.Game.GameActivity;
-import com.marceljurtz.lifecounter.Game.IGameView;
-
 public class DicingPresenter implements IDicingPresenter {
 
     private DicingModel model;
@@ -13,6 +8,8 @@ public class DicingPresenter implements IDicingPresenter {
     public DicingPresenter(IDicingView view) {
         this.view = view;
     }
+
+    //region Activity Lifecycle
 
     @Override
     public void onCreate() {
@@ -34,20 +31,15 @@ public class DicingPresenter implements IDicingPresenter {
 
     }
 
+    //endregion
+
     @Override
     public void onScreenTap() {
         view.setDicingText(model.ThrowDice()+"");
     }
 
-    @Override
-    public void onMenuEntry2PlayerTap() {
-        view.start2PlayerGame();
-    }
 
-    @Override
-    public void onMenuEntry4PlayerTap() {
-        view.start4PlayerGame();
-    }
+    //region NavDrawer Handling
 
     @Override
     public void onMenuEntrySettingsTap() {
@@ -58,4 +50,18 @@ public class DicingPresenter implements IDicingPresenter {
     public void onMenuEntryAboutTap() {
         view.startAboutActivity();
     }
+
+    @Override
+    public void onMenuEntryTwoPlayerTap() {
+        // TODO Set amount of players
+        view.start2PlayerGame();
+    }
+
+    @Override
+    public void onMenuEntryFourPlayerTap() {
+        // TODO Set amount of players
+        view.start4PlayerGame();
+    }
+
+    //endregion
 }

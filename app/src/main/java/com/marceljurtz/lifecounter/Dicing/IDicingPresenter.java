@@ -1,12 +1,8 @@
 package com.marceljurtz.lifecounter.Dicing;
 
+import com.marceljurtz.lifecounter.Helper.BaseInterface.IDicingNavDrawerInteraction;
 import com.marceljurtz.lifecounter.Helper.BaseInterface.IPresenter;
 
-public interface IDicingPresenter extends IPresenter {
+public interface IDicingPresenter extends IPresenter, IDicingNavDrawerInteraction{
     void onScreenTap();
-
-    void onMenuEntry2PlayerTap();
-    void onMenuEntry4PlayerTap();
-    void onMenuEntrySettingsTap();
-    void onMenuEntryAboutTap();
 }

@@ -1,10 +1,16 @@
 package com.marceljurtz.lifecounter.About;
 
+import android.content.Intent;
+import android.support.design.widget.NavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.webkit.WebView;
 
+import com.marceljurtz.lifecounter.Dicing.DicingActivity;
+import com.marceljurtz.lifecounter.Game.GameActivity;
 import com.marceljurtz.lifecounter.R;
+import com.marceljurtz.lifecounter.Settings.SettingsActivity;
 
 import java.util.Locale;
 
@@ -12,6 +18,7 @@ public class AboutActivity extends AppCompatActivity implements IAboutView {
 
     IAboutPresenter presenter;
     WebView mainWebView;
+    NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,8 +27,33 @@ public class AboutActivity extends AppCompatActivity implements IAboutView {
 
         mainWebView = (WebView)findViewById(R.id.wvAbout);
 
+        navigationView = (NavigationView)findViewById(R.id.navigationViewAbout);
+
         presenter = new AboutPresenter(this, Locale.getDefault().getDisplayLanguage());
         presenter.onCreate();
+
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(MenuItem item) {
+                switch(item.getItemId()) {
+                    case R.id.nav_about_dicing:
+                        presenter.onMenuEntryDicingTap();
+                        break;
+                    case R.id.nav_about_useramount_2:
+                        presenter.onMenuEntryTwoPlayerTap();
+                        break;
+                    case R.id.nav_about_useramount_4:
+                        presenter.onMenuEntryFourPlayerTap();
+                        break;
+                    case R.id.nav_about_settings:
+                        presenter.onMenuEntrySettingsTap();
+                        break;
+                    default:
+                        break;
+                }
+                return true;
+            }
+        });
     }
 
     @Override
@@ -46,4 +78,33 @@ public class AboutActivity extends AppCompatActivity implements IAboutView {
     public void loadAboutPage(String url) {
         mainWebView.loadUrl(url);
     }
+
+    @Override
+    public void start2PlayerGame() {
+        Intent intent = new Intent(getApplicationContext(), GameActivity.class);
+        finish();
+        startActivity(intent);
+    }
+
+    @Override
+    public void start4PlayerGame() {
+        Intent intent = new Intent(getApplicationContext(), GameActivity.class);
+        finish();
+        startActivity(intent);
+    }
+
+    @Override
+    public void startSettingsActivity() {
+        Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
+        finish();
+        startActivity(intent);
+    }
+
+    @Override
+    public void startDicingActivity() {
+        Intent intent = new Intent(getApplicationContext(), DicingActivity.class);
+        finish();
+        startActivity(intent);
+    }
+
 }
