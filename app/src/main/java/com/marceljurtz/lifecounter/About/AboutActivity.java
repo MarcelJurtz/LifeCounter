@@ -1,6 +1,8 @@
 package com.marceljurtz.lifecounter.About;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.design.widget.NavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +11,7 @@ import android.webkit.WebView;
 
 import com.marceljurtz.lifecounter.Dicing.DicingActivity;
 import com.marceljurtz.lifecounter.Game.GameActivity;
+import com.marceljurtz.lifecounter.Helper.PreferenceManager;
 import com.marceljurtz.lifecounter.R;
 import com.marceljurtz.lifecounter.Settings.SettingsActivity;
 
@@ -80,14 +83,7 @@ public class AboutActivity extends AppCompatActivity implements IAboutView {
     }
 
     @Override
-    public void start2PlayerGame() {
-        Intent intent = new Intent(getApplicationContext(), GameActivity.class);
-        finish();
-        startActivity(intent);
-    }
-
-    @Override
-    public void start4PlayerGame() {
+    public void startGameActivity() {
         Intent intent = new Intent(getApplicationContext(), GameActivity.class);
         finish();
         startActivity(intent);
@@ -107,4 +103,8 @@ public class AboutActivity extends AppCompatActivity implements IAboutView {
         startActivity(intent);
     }
 
+    @Override
+    public SharedPreferences getPreferences() {
+        return getApplicationContext().getSharedPreferences(PreferenceManager.PREFS, Activity.MODE_PRIVATE);
+    }
 }

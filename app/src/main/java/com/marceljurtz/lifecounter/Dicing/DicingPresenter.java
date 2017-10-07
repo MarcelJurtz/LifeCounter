@@ -1,9 +1,14 @@
 package com.marceljurtz.lifecounter.Dicing;
 
+import android.content.SharedPreferences;
+
+import com.marceljurtz.lifecounter.Helper.PreferenceManager;
+
 public class DicingPresenter implements IDicingPresenter {
 
     private DicingModel model;
     private IDicingView view;
+    private SharedPreferences preferences;
 
     public DicingPresenter(IDicingView view) {
         this.view = view;
@@ -14,6 +19,7 @@ public class DicingPresenter implements IDicingPresenter {
     @Override
     public void onCreate() {
         model = new DicingModel();
+        preferences = view.getPreferences();
     }
 
     @Override
@@ -53,14 +59,14 @@ public class DicingPresenter implements IDicingPresenter {
 
     @Override
     public void onMenuEntryTwoPlayerTap() {
-        // TODO Set amount of players
-        view.start2PlayerGame();
+        PreferenceManager.saveDefaultPlayerAmount(preferences, 2);
+        view.startGameActivity();
     }
 
     @Override
     public void onMenuEntryFourPlayerTap() {
-        // TODO Set amount of players
-        view.start4PlayerGame();
+        PreferenceManager.saveDefaultPlayerAmount(preferences, 4);
+        view.startGameActivity();
     }
 
     //endregion

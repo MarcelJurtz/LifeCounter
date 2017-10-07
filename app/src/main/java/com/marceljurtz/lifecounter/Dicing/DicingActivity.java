@@ -1,6 +1,8 @@
 package com.marceljurtz.lifecounter.Dicing;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.design.widget.NavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,6 +13,7 @@ import android.widget.TextView;
 
 import com.marceljurtz.lifecounter.About.AboutActivity;
 import com.marceljurtz.lifecounter.Game.GameActivity;
+import com.marceljurtz.lifecounter.Helper.PreferenceManager;
 import com.marceljurtz.lifecounter.R;
 import com.marceljurtz.lifecounter.Settings.SettingsActivity;
 
@@ -88,14 +91,7 @@ public class DicingActivity extends AppCompatActivity implements IDicingView {
     }
 
     @Override
-    public void start2PlayerGame() {
-        Intent intent = new Intent(getApplicationContext(), GameActivity.class);
-        finish();
-        startActivity(intent);
-    }
-
-    @Override
-    public void start4PlayerGame() {
+    public void startGameActivity() {
         Intent intent = new Intent(getApplicationContext(), GameActivity.class);
         finish();
         startActivity(intent);
@@ -113,5 +109,10 @@ public class DicingActivity extends AppCompatActivity implements IDicingView {
         Intent intent = new Intent(getApplicationContext(), AboutActivity.class);
         finish();
         startActivity(intent);
+    }
+
+    @Override
+    public SharedPreferences getPreferences() {
+        return getApplicationContext().getSharedPreferences(PreferenceManager.PREFS, Activity.MODE_PRIVATE);
     }
 }

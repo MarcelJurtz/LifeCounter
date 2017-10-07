@@ -1,11 +1,15 @@
 package com.marceljurtz.lifecounter.About;
 
+import android.content.SharedPreferences;
+
 import com.marceljurtz.lifecounter.Helper.BaseInterface.IAboutNavDrawerInteraction;
+import com.marceljurtz.lifecounter.Helper.PreferenceManager;
 
 public class AboutPresenter implements IAboutPresenter {
 
     String languageCode;
     IAboutView view;
+    private SharedPreferences preferences;
 
     public AboutPresenter(IAboutView view, String languageCode) {
         this.view = view;
@@ -16,6 +20,8 @@ public class AboutPresenter implements IAboutPresenter {
 
     @Override
     public void onCreate() {
+        preferences = view.getPreferences();
+
         if (languageCode.equals("Deutsch")) {
             view.loadAboutPage("file:///android_asset/about_de.html");
         } else {
@@ -44,12 +50,14 @@ public class AboutPresenter implements IAboutPresenter {
 
     @Override
     public void onMenuEntryTwoPlayerTap() {
-        view.start2PlayerGame();
+        PreferenceManager.saveDefaultPlayerAmount(preferences, 2);
+        view.startGameActivity();
     }
 
     @Override
     public void onMenuEntryFourPlayerTap() {
-        view.start4PlayerGame();
+        PreferenceManager.saveDefaultPlayerAmount(preferences, 4);
+        view.startGameActivity();
     }
 
     @Override
