@@ -7,6 +7,7 @@
     <string name="setting_color_white">White:</string>
     <string name="setting_default_lives">Lifepoints:</string>
     <string name="setting_default_long_click_points">Points on hold (+/-):</string>
+    <string name="setting_screen_timeout_disable">Disable screen timeout:</string>
 
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>

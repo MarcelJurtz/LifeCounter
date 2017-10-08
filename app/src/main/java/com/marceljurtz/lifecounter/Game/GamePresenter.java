@@ -85,6 +85,10 @@ public class GamePresenter implements IGamePresenter {
         gameActivity.initColorButton(MagicColor.GREEN, PreferenceManager.getCustomColor(preferences, MagicColor.GREEN));
         gameActivity.initColorButton(MagicColor.RED, PreferenceManager.getCustomColor(preferences, MagicColor.RED));
         gameActivity.initColorButton(MagicColor.WHITE, PreferenceManager.getCustomColor(preferences, MagicColor.WHITE));
+
+        if(PreferenceManager.getScreenTimeoutDisabled(preferences)) {
+            gameActivity.disableScreenTimeout();
+        }
     }
 
     @Override

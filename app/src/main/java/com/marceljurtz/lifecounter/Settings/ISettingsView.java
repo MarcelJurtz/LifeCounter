@@ -17,4 +17,6 @@ public interface ISettingsView extends IView {
     void loadResetConfirmationDialog();
     void loadColorPickerDialog(MagicColor color, int r, int g, int b);
     void updateColorButtonValue(Color color);
+
+    void setKeepScreenOnCheckbox(boolean checked);
 }

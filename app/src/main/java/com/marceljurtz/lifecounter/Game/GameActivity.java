@@ -155,9 +155,6 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         //drawerToggle = new ActionBarDrawerToggle(GameActivity.this, mainLayout, R.string.drawer_open, R.string.drawer_close);
         //mainLayout.setDrawerListener(drawerToggle);
 
-        // Disable screen timeout
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-
 
         // Players
         player1 = new Player(PlayerID.ONE);
@@ -1123,5 +1120,10 @@ public class GameActivity extends AppCompatActivity implements IGameView {
     @Override
     public int getPlayerAmount() {
         return playeramount;
+    }
+
+    @Override
+    public void disableScreenTimeout() {
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     }
 }

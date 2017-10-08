@@ -47,6 +47,8 @@ public class SettingsPresenter implements ISettingsPresenter {
 
         longClickPoints = PreferenceManager.getLongclickPoints(preferences);
         settingsView.setLongClickPoints(String.format("%02d", longClickPoints));
+
+        settingsView.setKeepScreenOnCheckbox(PreferenceManager.getScreenTimeoutDisabled(preferences));
     }
 
     @Override
@@ -129,6 +131,12 @@ public class SettingsPresenter implements ISettingsPresenter {
     }
 
     //endregion
+
+    @Override
+    public void onKeepScreenOnCheckboxClick(boolean checked) {
+        PreferenceManager.saveScreenTimeoutDisabled(preferences, checked);
+    }
+
 
     //region Reset Button Click
 

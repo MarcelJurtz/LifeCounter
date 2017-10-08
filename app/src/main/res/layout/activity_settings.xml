@@ -333,6 +333,37 @@
 
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/lLongClickPoints"
+                android:id="@+id/lKeepScreenOn">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/setting_screen_timeout_disable"
+                    android:id="@+id/lblKeepScreenOn" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:paddingEnd="16dp"
+                    android:paddingRight="16dp"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:id="@+id/chkKeepScreenOn" />
+
+            </LinearLayout>
+
         </RelativeLayout>
     </ScrollView>
 

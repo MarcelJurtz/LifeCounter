@@ -11,6 +11,9 @@ public interface IGameView extends IView {
     // Set players background color TODO Validate possible duplicate
     void setLayoutColor(PlayerID playerID, int color);
 
+    // Disable Screen timeout
+    void disableScreenTimeout();
+
     // Set life- / poisonpoints
     void setLifepoints(PlayerID id, String points);
     void setPoisonpoints(PlayerID id, String points);

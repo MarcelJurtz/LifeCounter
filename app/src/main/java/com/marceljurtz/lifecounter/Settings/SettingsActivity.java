@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.app.AlertDialog;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -42,6 +44,8 @@ public class SettingsActivity extends Activity implements ISettingsView {
 
     ImageButton cmdBack;
 
+    CheckBox chkKeepScreenOn;
+
     //endregion
 
     SharedPreferences preferences;
@@ -65,6 +69,14 @@ public class SettingsActivity extends Activity implements ISettingsView {
 
         txtLifepoints = (EditText) findViewById(R.id.txtLiveSelection);
         txtLongClickPoints = (EditText) findViewById(R.id.txtLongClickPoints);
+
+        chkKeepScreenOn = (CheckBox)findViewById(R.id.chkKeepScreenOn);
+        chkKeepScreenOn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                presenter.onKeepScreenOnCheckboxClick(isChecked);
+            }
+        });
         //endregion
 
         //region Color Selection Buttons
@@ -269,5 +281,10 @@ public class SettingsActivity extends Activity implements ISettingsView {
                     }
                 })
                 .show();
+    }
+
+    @Override
+    public void setKeepScreenOnCheckbox(boolean checked) {
+        chkKeepScreenOn.setChecked(checked);
     }
 }

@@ -19,6 +19,8 @@ public class PreferenceManager {
 
     private static final int DEFAULT_PLAYER_AMOUNT = 2;
 
+    private static final boolean DEFAULT_KEEP_SCREEN_ON = true;
+
     // MAX and MIN Values
     private static final int MAX_POISON = 25;
     private static final int MIN_POISON = 0;
@@ -41,6 +43,7 @@ public class PreferenceManager {
 
     private static final String PREF_PLAYER_AMOUNT = "PLAYER_AMOUNT";
 
+    private static final String PREF_KEEP_SCREEN_ON = "KEEP_SCREEN_ON";
 
     //endregion
 
@@ -131,6 +134,20 @@ public class PreferenceManager {
             editor.commit();
         }
     }
+    //endregion
+
+    //region Keep Screen On
+
+    public static boolean getScreenTimeoutDisabled(SharedPreferences preferences) {
+        return preferences.getBoolean(PREF_KEEP_SCREEN_ON, DEFAULT_KEEP_SCREEN_ON);
+    }
+
+    public static void saveScreenTimeoutDisabled(SharedPreferences preferences, boolean timeoutDisabled) {
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putBoolean(PREF_KEEP_SCREEN_ON, timeoutDisabled);
+        editor.commit();
+    }
+
     //endregion
 
     //region Lifepoints and Longclickpoints

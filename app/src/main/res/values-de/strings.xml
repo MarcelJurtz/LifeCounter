@@ -7,6 +7,7 @@
     <string name="setting_color_white">Weiß:</string>
     <string name="setting_default_lives">Lebenspunkte:</string>
     <string name="setting_default_long_click_points">Gedrückt halten (+/-):</string>
+    <string name="setting_screen_timeout_disable">Bildschirm-timeout deaktivieren:</string>
 
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
