@@ -363,7 +363,6 @@
                     android:id="@+id/chkKeepScreenOn" />
 
             </LinearLayout>
-
         </RelativeLayout>
     </ScrollView>
 
