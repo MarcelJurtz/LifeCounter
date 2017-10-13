@@ -59,13 +59,27 @@
     <style name="mtg_button_poison_bottom">
         <item name="android:layout_width">@dimen/size_config_buttons</item>
         <item name="android:layout_height">@dimen/size_config_buttons</item>
-        <item name="android:layout_marginBottom">7dp</item>
     </style>
 
     <style name="mtg_button_poison_top">
         <item name="android:layout_width">@dimen/size_config_buttons</item>
         <item name="android:layout_height">@dimen/size_config_buttons</item>
-        <item name="android:layout_marginTop">7dp</item>
+    </style>
+
+    <style name="poisonbutton_4p">
+        <item name="android:layout_width">@dimen/size_config_buttons</item>
+        <item name="android:layout_height">@dimen/size_config_buttons</item>
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:adjustViewBounds">true</item>
+        <item name="android:background">?android:selectableItemBackground</item>
+    </style>
+
+    <style name="poisonbutton_4p_plus" parent="poisonbutton_4p">
+        <item name="android:src">@drawable/icon_plus</item>
+    </style>
+
+    <style name="poisonbutton_4p_minus" parent="poisonbutton_4p">
+        <item name="android:src">@drawable/icon_minus</item>
     </style>
 
     <!-- Navigation Drawer -->

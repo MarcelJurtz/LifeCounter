@@ -112,23 +112,23 @@
 
                 <ImageButton
                     android:id="@+id/cmdMinusPoison4p1"
-                    style="@style/mtg_button_poison_top"
+                    style="@style/poisonbutton_4p_minus"
                     android:rotation="90"
                     android:layout_alignStart="@id/txtPoisonCount4p1"
                     android:layout_alignLeft="@id/txtPoisonCount4p1"
-                    android:layout_marginLeft="@dimen/button_poison_space_vertical_4p"
-                    android:layout_above="@id/txtPoisonCount4p1"
-                    android:background="@drawable/icon_minus" />
+                    android:layout_alignEnd="@+id/txtPoisonCount4p1"
+                    android:layout_alignRight="@+id/txtPoisonCount4p1"
+                    android:layout_above="@id/txtPoisonCount4p1" />
 
                 <ImageButton
                     android:id="@+id/cmdPlusPoison4p1"
-                    style="@style/mtg_button_poison_top"
+                    style="@style/poisonbutton_4p_plus"
                     android:rotation="90"
                     android:layout_alignStart="@id/txtPoisonCount4p1"
                     android:layout_alignLeft="@id/txtPoisonCount4p1"
-                    android:layout_marginRight="@dimen/button_poison_space_vertical_4p"
-                    android:layout_below="@id/txtPoisonCount4p1"
-                    android:background="@drawable/icon_plus" />
+                    android:layout_alignEnd="@+id/txtPoisonCount4p1"
+                    android:layout_alignRight="@+id/txtPoisonCount4p1"
+                    android:layout_below="@id/txtPoisonCount4p1" />
 
                 <Button
                     android:id="@+id/cmdBlack4p1"
@@ -216,23 +216,23 @@
 
                 <ImageButton
                     android:id="@+id/cmdMinusPoison4p3"
-                    style="@style/mtg_button_poison_top"
+                    style="@style/poisonbutton_4p_minus"
                     android:rotation="90"
                     android:layout_alignStart="@id/txtPoisonCount4p3"
                     android:layout_alignLeft="@id/txtPoisonCount4p3"
-                    android:layout_marginRight="@dimen/button_poison_space_vertical_4p"
-                    android:layout_above="@id/txtPoisonCount4p3"
-                    android:background="@drawable/icon_minus" />
+                    android:layout_alignEnd="@+id/txtPoisonCount4p3"
+                    android:layout_alignRight="@+id/txtPoisonCount4p3"
+                    android:layout_above="@id/txtPoisonCount4p3" />
 
                 <ImageButton
                     android:id="@+id/cmdPlusPoison4p3"
-                    style="@style/mtg_button_poison_top"
+                    style="@style/poisonbutton_4p_plus"
                     android:rotation="90"
                     android:layout_alignStart="@id/txtPoisonCount4p3"
                     android:layout_alignLeft="@id/txtPoisonCount4p3"
-                    android:layout_marginRight="@dimen/button_poison_space_vertical_4p"
-                    android:layout_below="@id/txtPoisonCount4p3"
-                    android:background="@drawable/icon_plus" />
+                    android:layout_alignEnd="@+id/txtPoisonCount4p3"
+                    android:layout_alignRight="@+id/txtPoisonCount4p3"
+                    android:layout_below="@id/txtPoisonCount4p3" />
 
                 <Button
                     android:id="@+id/cmdBlack4p3"
@@ -326,23 +326,23 @@
 
                 <ImageButton
                     android:id="@+id/cmdMinusPoison4p2"
-                    style="@style/mtg_button_poison_top"
+                    style="@style/poisonbutton_4p_minus"
                     android:rotation="270"
                     android:layout_alignStart="@id/txtPoisonCount4p2"
                     android:layout_alignLeft="@id/txtPoisonCount4p2"
-                    android:layout_marginLeft="@dimen/button_poison_space_vertical_4p"
-                    android:layout_below="@id/txtPoisonCount4p2"
-                    android:background="@drawable/icon_minus" />
+                    android:layout_alignEnd="@+id/txtPoisonCount4p2"
+                    android:layout_alignRight="@+id/txtPoisonCount4p2"
+                    android:layout_below="@id/txtPoisonCount4p2" />
 
                 <ImageButton
                     android:id="@+id/cmdPlusPoison4p2"
-                    style="@style/mtg_button_poison_top"
+                    style="@style/poisonbutton_4p_plus"
                     android:rotation="270"
                     android:layout_alignStart="@id/txtPoisonCount4p2"
                     android:layout_alignLeft="@id/txtPoisonCount4p2"
-                    android:layout_marginLeft="@dimen/button_poison_space_vertical_4p"
-                    android:layout_above="@id/txtPoisonCount4p2"
-                    android:background="@drawable/icon_plus" />
+                    android:layout_alignEnd="@+id/txtPoisonCount4p2"
+                    android:layout_alignRight="@+id/txtPoisonCount4p2"
+                    android:layout_above="@id/txtPoisonCount4p2" />
 
                 <Button
                     android:id="@+id/cmdBlack4p2"
@@ -429,23 +429,23 @@
 
                 <ImageButton
                     android:id="@+id/cmdMinusPoison4p4"
-                    style="@style/mtg_button_poison_top"
+                    style="@style/poisonbutton_4p_minus"
                     android:rotation="270"
                     android:layout_alignStart="@id/txtPoisonCount4p4"
                     android:layout_alignLeft="@id/txtPoisonCount4p4"
-                    android:layout_marginLeft="@dimen/button_poison_space_vertical_4p"
-                    android:layout_below="@id/txtPoisonCount4p4"
-                    android:background="@drawable/icon_minus" />
+                    android:layout_alignEnd="@+id/txtPoisonCount4p4"
+                    android:layout_alignRight="@+id/txtPoisonCount4p4"
+                    android:layout_below="@id/txtPoisonCount4p4" />
 
                 <ImageButton
                     android:id="@+id/cmdPlusPoison4p4"
-                    style="@style/mtg_button_poison_top"
+                    style="@style/poisonbutton_4p_plus"
                     android:rotation="270"
                     android:layout_alignStart="@id/txtPoisonCount4p4"
                     android:layout_alignLeft="@id/txtPoisonCount4p4"
-                    android:layout_marginLeft="@dimen/button_poison_space_vertical_4p"
-                    android:layout_above="@id/txtPoisonCount4p4"
-                    android:background="@drawable/icon_plus" />
+                    android:layout_alignEnd="@+id/txtPoisonCount4p4"
+                    android:layout_alignRight="@+id/txtPoisonCount4p4"
+                    android:layout_above="@id/txtPoisonCount4p4" />
 
                 <Button
                     android:id="@+id/cmdBlack4p4"
