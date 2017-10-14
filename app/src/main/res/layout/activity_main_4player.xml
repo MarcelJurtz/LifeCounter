@@ -88,20 +88,22 @@
                 <ImageButton
                     android:id="@+id/cmdPlus4p1"
                     android:rotation="90"
-                    android:layout_width="@dimen/buttonPlusMinusLifepoints"
-                    android:layout_height="@dimen/buttonPlusMinusLifepoints"
-                    android:layout_below="@id/txtLifeCount4p1"
-                    android:layout_centerHorizontal="true"
-                    android:background="@drawable/icon_plus" />
+                    style="@style/lifebutton_4p_plus"
+                    android:layout_alignStart="@id/txtLifeCount4p1"
+                    android:layout_alignLeft="@id/txtLifeCount4p1"
+                    android:layout_alignEnd="@id/txtLifeCount4p1"
+                    android:layout_alignRight="@id/txtLifeCount4p1"
+                    android:layout_below="@id/txtLifeCount4p1" />
 
                 <ImageButton
                     android:id="@+id/cmdMinus4p1"
                     android:rotation="90"
-                    android:layout_width="@dimen/buttonPlusMinusLifepoints"
-                    android:layout_height="@dimen/buttonPlusMinusLifepoints"
-                    android:layout_above="@+id/txtLifeCount4p1"
-                    android:layout_centerHorizontal="true"
-                    android:background="@drawable/icon_minus" />
+                    style="@style/lifebutton_4p_minus"
+                    android:layout_alignStart="@id/txtLifeCount4p1"
+                    android:layout_alignLeft="@id/txtLifeCount4p1"
+                    android:layout_alignEnd="@id/txtLifeCount4p1"
+                    android:layout_alignRight="@id/txtLifeCount4p1"
+                    android:layout_above="@id/txtLifeCount4p1" />
 
                 <TextView
                     android:id="@+id/txtPoisonCount4p1"
@@ -192,20 +194,22 @@
                 <ImageButton
                     android:id="@+id/cmdPlus4p3"
                     android:rotation="90"
-                    android:layout_width="@dimen/buttonPlusMinusLifepoints"
-                    android:layout_height="@dimen/buttonPlusMinusLifepoints"
-                    android:layout_below="@id/txtLifeCount4p3"
-                    android:layout_centerHorizontal="true"
-                    android:background="@drawable/icon_plus" />
+                    style="@style/lifebutton_4p_plus"
+                    android:layout_alignStart="@id/txtLifeCount4p3"
+                    android:layout_alignLeft="@id/txtLifeCount4p3"
+                    android:layout_alignEnd="@id/txtLifeCount4p3"
+                    android:layout_alignRight="@id/txtLifeCount4p3"
+                    android:layout_below="@id/txtLifeCount4p3" />
 
                 <ImageButton
                     android:id="@+id/cmdMinus4p3"
                     android:rotation="90"
-                    android:layout_width="@dimen/buttonPlusMinusLifepoints"
-                    android:layout_height="@dimen/buttonPlusMinusLifepoints"
-                    android:layout_above="@id/txtLifeCount4p3"
-                    android:layout_centerHorizontal="true"
-                    android:background="@drawable/icon_minus" />
+                    style="@style/lifebutton_4p_minus"
+                    android:layout_alignStart="@id/txtLifeCount4p3"
+                    android:layout_alignLeft="@id/txtLifeCount4p3"
+                    android:layout_alignEnd="@id/txtLifeCount4p3"
+                    android:layout_alignRight="@id/txtLifeCount4p3"
+                    android:layout_above="@id/txtLifeCount4p3" />
 
                 <TextView
                     android:id="@+id/txtPoisonCount4p3"
@@ -302,20 +306,22 @@
                 <ImageButton
                     android:id="@+id/cmdPlus4p2"
                     android:rotation="270"
-                    android:layout_centerHorizontal="true"
-                    android:layout_width="@dimen/buttonPlusMinusLifepoints"
-                    android:layout_height="@dimen/buttonPlusMinusLifepoints"
-                    android:layout_above="@id/txtLifeCount4p2"
-                    android:background="@drawable/icon_plus" />
+                    style="@style/lifebutton_4p_plus"
+                    android:layout_alignStart="@id/txtLifeCount4p2"
+                    android:layout_alignLeft="@id/txtLifeCount4p2"
+                    android:layout_alignEnd="@id/txtLifeCount4p2"
+                    android:layout_alignRight="@id/txtLifeCount4p2"
+                    android:layout_above="@id/txtLifeCount4p2" />
 
                 <ImageButton
                     android:id="@+id/cmdMinus4p2"
                     android:rotation="270"
-                    android:layout_centerHorizontal="true"
-                    android:layout_width="@dimen/buttonPlusMinusLifepoints"
-                    android:layout_height="@dimen/buttonPlusMinusLifepoints"
-                    android:layout_below="@id/txtLifeCount4p2"
-                    android:background="@drawable/icon_minus" />
+                    style="@style/lifebutton_4p_minus"
+                    android:layout_alignStart="@id/txtLifeCount4p2"
+                    android:layout_alignLeft="@id/txtLifeCount4p2"
+                    android:layout_alignEnd="@id/txtLifeCount4p2"
+                    android:layout_alignRight="@id/txtLifeCount4p2"
+                    android:layout_below="@id/txtLifeCount4p2"/>
 
                 <TextView
                     android:id="@+id/txtPoisonCount4p2"
@@ -405,20 +411,22 @@
                 <ImageButton
                     android:id="@+id/cmdPlus4p4"
                     android:rotation="270"
-                    android:layout_centerHorizontal="true"
-                    android:layout_width="@dimen/buttonPlusMinusLifepoints"
-                    android:layout_height="@dimen/buttonPlusMinusLifepoints"
-                    android:layout_above="@id/txtLifeCount4p4"
-                    android:background="@drawable/icon_plus" />
+                    style="@style/lifebutton_4p_plus"
+                    android:layout_alignStart="@id/txtLifeCount4p4"
+                    android:layout_alignLeft="@id/txtLifeCount4p4"
+                    android:layout_alignEnd="@id/txtLifeCount4p4"
+                    android:layout_alignRight="@id/txtLifeCount4p4"
+                    android:layout_above="@id/txtLifeCount4p4" />
 
                 <ImageButton
                     android:id="@+id/cmdMinus4p4"
                     android:rotation="270"
-                    android:layout_centerHorizontal="true"
-                    android:layout_width="@dimen/buttonPlusMinusLifepoints"
-                    android:layout_height="@dimen/buttonPlusMinusLifepoints"
-                    android:layout_below="@id/txtLifeCount4p4"
-                    android:background="@drawable/icon_minus" />
+                    style="@style/lifebutton_4p_minus"
+                    android:layout_alignStart="@id/txtLifeCount4p4"
+                    android:layout_alignLeft="@id/txtLifeCount4p4"
+                    android:layout_alignEnd="@id/txtLifeCount4p4"
+                    android:layout_alignRight="@id/txtLifeCount4p4"
+                    android:layout_below="@id/txtLifeCount4p4" />
 
                 <TextView
                     android:id="@+id/txtPoisonCount4p4"

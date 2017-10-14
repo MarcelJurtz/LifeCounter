@@ -66,6 +66,22 @@
         <item name="android:layout_height">@dimen/size_config_buttons</item>
     </style>
 
+    <style name="lifebutton_4p">
+        <item name="android:layout_width">@dimen/buttonPlusMinusLifepoints</item>
+        <item name="android:layout_height">@dimen/buttonPlusMinusLifepoints</item>
+        <item name="android:scaleType">centerInside</item>
+        <item name="android:adjustViewBounds">true</item>
+        <item name="android:background">?android:selectableItemBackground</item>
+    </style>
+
+    <style name="lifebutton_4p_plus" parent="lifebutton_4p">
+        <item name="android:src">@drawable/icon_plus</item>
+    </style>
+
+    <style name="lifebutton_4p_minus" parent="lifebutton_4p">
+        <item name="android:src">@drawable/icon_minus</item>
+    </style>
+
     <style name="poisonbutton_4p">
         <item name="android:layout_width">@dimen/size_config_buttons</item>
         <item name="android:layout_height">@dimen/size_config_buttons</item>
