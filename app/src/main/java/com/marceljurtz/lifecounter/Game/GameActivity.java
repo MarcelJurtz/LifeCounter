@@ -721,6 +721,65 @@ public class GameActivity extends AppCompatActivity implements IGameView {
 
         //endregion
 
+        if(playeramount == 4) {
+            cmdPlusPoisonPlayer3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    presenter.onPoisonUpdate(player3.getPlayerID(), ClickType.SHORT, Operator.ADD);
+                }
+            });
+            cmdPlusPoisonPlayer3.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    presenter.onPoisonUpdate(player3.getPlayerID(), ClickType.LONG, Operator.ADD);
+                    return true;
+                }
+            });
+
+            cmdMinusPoisonPlayer3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    presenter.onPoisonUpdate(player3.getPlayerID(), ClickType.SHORT, Operator.SUBSTRACT);
+                }
+            });
+            cmdMinusPoisonPlayer3.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    presenter.onPoisonUpdate(player3.getPlayerID(), ClickType.LONG, Operator.SUBSTRACT);
+                    return true;
+                }
+            });
+
+
+            cmdPlusPoisonPlayer4.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    presenter.onPoisonUpdate(player4.getPlayerID(), ClickType.SHORT, Operator.ADD);
+                }
+            });
+            cmdPlusPoisonPlayer4.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    presenter.onPoisonUpdate(player4.getPlayerID(), ClickType.LONG, Operator.ADD);
+                    return true;
+                }
+            });
+
+            cmdMinusPoisonPlayer4.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    presenter.onPoisonUpdate(player4.getPlayerID(), ClickType.SHORT, Operator.SUBSTRACT);
+                }
+            });
+            cmdMinusPoisonPlayer4.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    presenter.onPoisonUpdate(player4.getPlayerID(), ClickType.LONG, Operator.SUBSTRACT);
+                    return true;
+                }
+            });
+        }
+
         //region Settings Button
         cmdToggleColorSettings.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -1080,6 +1139,10 @@ public class GameActivity extends AppCompatActivity implements IGameView {
                 txtPoisonCountPlayer1.setText(points);
             } else if(id.equals(PlayerID.TWO)) {
                 txtPoisonCountPlayer2.setText(points);
+            } else if(id.equals(PlayerID.THREE)) {
+                txtPoisonCountPlayer3.setText(points);
+            } else if(id.equals(PlayerID.FOUR)) {
+                txtPoisonCountPlayer4.setText(points);
             }
         }
         //endregion
