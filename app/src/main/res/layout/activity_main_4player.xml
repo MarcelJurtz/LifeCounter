@@ -134,46 +134,33 @@
 
                 <Button
                     android:id="@+id/cmdBlack4p1"
-                    android:layout_height="@dimen/size_color_button"
-                    android:layout_width="@dimen/size_color_button"
-                    android:background="@drawable/button_round"
-                    android:layout_centerInParent="true"/>
+                    style="@style/colorbutton_4p"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/txtLifeCount4p1" />
 
                 <Button
                     android:id="@+id/cmdRed4p1"
-                    android:layout_height="@dimen/size_color_button"
-                    android:layout_width="@dimen/size_color_button"
-                    android:background="@drawable/button_round"
-                    android:layout_above="@id/cmdBlack4p1"
-                    android:layout_marginBottom="@dimen/button_space_vertical"
-                    android:layout_centerHorizontal="true"/>
+                    style="@style/colorbutton_4p_top"
+                    android:layout_toRightOf="@id/txtLifeCount4p1"
+                    android:layout_above="@id/cmdBlack4p1" />
 
                 <Button
                     android:id="@+id/cmdWhite4p1"
-                    android:layout_height="@dimen/size_color_button"
-                    android:layout_width="@dimen/size_color_button"
-                    android:background="@drawable/button_round"
-                    android:layout_above="@id/cmdRed4p1"
-                    android:layout_marginBottom="@dimen/button_space_vertical"
-                    android:layout_centerHorizontal="true"/>
+                    style="@style/colorbutton_4p_top"
+                    android:layout_toRightOf="@id/txtLifeCount4p1"
+                    android:layout_above="@id/cmdRed4p1" />
 
                 <Button
                     android:id="@+id/cmdBlue4p1"
-                    android:layout_height="@dimen/size_color_button"
-                    android:layout_width="@dimen/size_color_button"
-                    android:background="@drawable/button_round"
-                    android:layout_below="@id/cmdBlack4p1"
-                    android:layout_marginTop="@dimen/button_space_vertical"
-                    android:layout_centerHorizontal="true"/>
+                    style="@style/colorbutton_4p_bottom"
+                    android:layout_toRightOf="@id/txtLifeCount4p1"
+                    android:layout_below="@id/cmdBlack4p1" />
 
                 <Button
                     android:id="@+id/cmdGreen4p1"
-                    android:layout_height="@dimen/size_color_button"
-                    android:layout_width="@dimen/size_color_button"
-                    android:background="@drawable/button_round"
-                    android:layout_below="@id/cmdBlue4p1"
-                    android:layout_marginTop="@dimen/button_space_vertical"
-                    android:layout_centerHorizontal="true"/>
+                    style="@style/colorbutton_4p_bottom"
+                    android:layout_toRightOf="@id/txtLifeCount4p1"
+                    android:layout_below="@id/cmdBlue4p1" />
 
             </RelativeLayout>
             <RelativeLayout
@@ -240,45 +227,32 @@
 
                 <Button
                     android:id="@+id/cmdBlack4p3"
-                    android:layout_height="@dimen/size_color_button"
-                    android:layout_width="@dimen/size_color_button"
-                    android:background="@drawable/button_round"
-                    android:layout_centerInParent="true" />
+                    style="@style/colorbutton_4p"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/txtLifeCount4p3" />
 
                 <Button
                     android:id="@+id/cmdRed4p3"
-                    android:layout_height="@dimen/size_color_button"
-                    android:layout_width="@dimen/size_color_button"
-                    android:background="@drawable/button_round"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginBottom="@dimen/button_space_vertical"
+                    style="@style/colorbutton_4p_top"
+                    android:layout_toRightOf="@id/txtLifeCount4p3"
                     android:layout_above="@id/cmdBlack4p3" />
 
                 <Button
                     android:id="@+id/cmdWhite4p3"
-                    android:layout_height="@dimen/size_color_button"
-                    android:layout_width="@dimen/size_color_button"
-                    android:background="@drawable/button_round"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginBottom="@dimen/button_space_vertical"
+                    style="@style/colorbutton_4p_top"
+                    android:layout_toRightOf="@id/txtLifeCount4p3"
                     android:layout_above="@id/cmdRed4p3" />
 
                 <Button
                     android:id="@+id/cmdBlue4p3"
-                    android:layout_height="@dimen/size_color_button"
-                    android:layout_width="@dimen/size_color_button"
-                    android:background="@drawable/button_round"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="@dimen/button_space_vertical"
+                    style="@style/colorbutton_4p_bottom"
+                    android:layout_toRightOf="@id/txtLifeCount4p3"
                     android:layout_below="@id/cmdBlack4p3" />
 
                 <Button
                     android:id="@+id/cmdGreen4p3"
-                    android:layout_height="@dimen/size_color_button"
-                    android:layout_width="@dimen/size_color_button"
-                    android:background="@drawable/button_round"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="@dimen/button_space_vertical"
+                    style="@style/colorbutton_4p_bottom"
+                    android:layout_toRightOf="@id/txtLifeCount4p3"
                     android:layout_below="@id/cmdBlue4p3" />
 
             </RelativeLayout>
@@ -352,45 +326,32 @@
 
                 <Button
                     android:id="@+id/cmdBlack4p2"
-                    android:layout_height="@dimen/size_color_button"
-                    android:layout_width="@dimen/size_color_button"
-                    android:background="@drawable/button_round"
-                    android:layout_centerInParent="true" />
+                    style="@style/colorbutton_4p"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@id/txtLifeCount4p2" />
 
                 <Button
                     android:id="@+id/cmdBlue4p2"
-                    android:layout_height="@dimen/size_color_button"
-                    android:layout_width="@dimen/size_color_button"
-                    android:background="@drawable/button_round"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginBottom="@dimen/button_space_vertical"
+                    style="@style/colorbutton_4p_top"
+                    android:layout_toLeftOf="@id/txtLifeCount4p2"
                     android:layout_above="@id/cmdBlack4p2" />
 
                 <Button
                     android:id="@+id/cmdGreen4p2"
-                    android:layout_height="@dimen/size_color_button"
-                    android:layout_width="@dimen/size_color_button"
-                    android:background="@drawable/button_round"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginBottom="@dimen/button_space_vertical"
+                    style="@style/colorbutton_4p_top"
+                    android:layout_toLeftOf="@id/txtLifeCount4p2"
                     android:layout_above="@id/cmdBlue4p2" />
 
                 <Button
                     android:id="@+id/cmdRed4p2"
-                    android:layout_height="@dimen/size_color_button"
-                    android:layout_width="@dimen/size_color_button"
-                    android:background="@drawable/button_round"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="@dimen/button_space_vertical"
+                    style="@style/colorbutton_4p_bottom"
+                    android:layout_toLeftOf="@id/txtLifeCount4p2"
                     android:layout_below="@id/cmdBlack4p2" />
 
                 <Button
                     android:id="@+id/cmdWhite4p2"
-                    android:layout_height="@dimen/size_color_button"
-                    android:layout_width="@dimen/size_color_button"
-                    android:background="@drawable/button_round"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="@dimen/button_space_vertical"
+                    style="@style/colorbutton_4p_bottom"
+                    android:layout_toLeftOf="@id/txtLifeCount4p2"
                     android:layout_below="@id/cmdRed4p2" />
 
             </RelativeLayout>
@@ -457,45 +418,32 @@
 
                 <Button
                     android:id="@+id/cmdBlack4p4"
-                    android:layout_height="@dimen/size_color_button"
-                    android:layout_width="@dimen/size_color_button"
-                    android:background="@drawable/button_round"
-                    android:layout_centerInParent="true" />
+                    style="@style/colorbutton_4p"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@id/txtLifeCount4p4" />
 
                 <Button
                     android:id="@+id/cmdBlue4p4"
-                    android:layout_height="@dimen/size_color_button"
-                    android:layout_width="@dimen/size_color_button"
-                    android:background="@drawable/button_round"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginBottom="@dimen/button_space_vertical"
+                    style="@style/colorbutton_4p_top"
+                    android:layout_toLeftOf="@id/txtLifeCount4p4"
                     android:layout_above="@id/cmdBlack4p4" />
 
                 <Button
                     android:id="@+id/cmdGreen4p4"
-                    android:layout_height="@dimen/size_color_button"
-                    android:layout_width="@dimen/size_color_button"
-                    android:background="@drawable/button_round"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginBottom="@dimen/button_space_vertical"
+                    style="@style/colorbutton_4p_top"
+                    android:layout_toLeftOf="@id/txtLifeCount4p4"
                     android:layout_above="@id/cmdBlue4p4" />
 
                 <Button
                     android:id="@+id/cmdRed4p4"
-                    android:layout_height="@dimen/size_color_button"
-                    android:layout_width="@dimen/size_color_button"
-                    android:background="@drawable/button_round"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="@dimen/button_space_vertical"
+                    style="@style/colorbutton_4p_bottom"
+                    android:layout_toLeftOf="@id/txtLifeCount4p4"
                     android:layout_below="@id/cmdBlack4p4" />
 
                 <Button
                     android:id="@+id/cmdWhite4p4"
-                    android:layout_height="@dimen/size_color_button"
-                    android:layout_width="@dimen/size_color_button"
-                    android:background="@drawable/button_round"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="@dimen/button_space_vertical"
+                    style="@style/colorbutton_4p_bottom"
+                    android:layout_toLeftOf="@id/txtLifeCount4p4"
                     android:layout_below="@id/cmdRed4p4" />
 
             </RelativeLayout>

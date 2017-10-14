@@ -98,6 +98,20 @@
         <item name="android:src">@drawable/icon_minus</item>
     </style>
 
+    <style name="colorbutton_4p">
+        <item name="android:layout_height">@dimen/size_color_button</item>
+        <item name="android:layout_width">@dimen/size_color_button</item>
+        <item name="android:background">@drawable/button_round</item>
+    </style>
+
+    <style name="colorbutton_4p_top" parent="colorbutton_4p">
+        <item name="android:layout_marginBottom">@dimen/button_space_vertical</item>
+    </style>
+
+    <style name="colorbutton_4p_bottom" parent="colorbutton_4p">
+        <item name="android:layout_marginTop">@dimen/button_space_vertical</item>
+    </style>
+
     <!-- Navigation Drawer -->
     <style name="nd_button">
         <item name="android:layout_width">match_parent</item>
