@@ -6,7 +6,7 @@
     <string name="setting_color_red">Rouge :</string>
     <string name="setting_color_white">Blanc :</string>
     <string name="setting_default_lives">Points de vie :</string>
-    <string name="setting_default_long_click_points">Points en attente (+/-):</string>
+    <string name="setting_default_long_click_points">Points en attente (+/-) :</string>
 
     <string name="settings_title">Paramètres</string>
     <string name="settings_cancel">Annuler</string>
