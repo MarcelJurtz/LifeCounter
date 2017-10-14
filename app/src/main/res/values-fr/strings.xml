@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">LifeCounter</string>
+    <string name="setting_color_black">Noir :</string>
+    <string name="setting_color_blue">Bleu :</string>
+    <string name="setting_color_green">Vert :</string>
+    <string name="setting_color_red">Rouge :</string>
+    <string name="setting_color_white">Blanc :</string>
+    <string name="setting_default_lives">Points de vie :</string>
+    <string name="setting_default_long_click_points">Points en attente (+/-):</string>
+
+    <string name="settings_title">Paramètres</string>
+    <string name="settings_cancel">Annuler</string>
+    <string name="settings_reset">Réinitialiser</string>
+    <string name="settings_confirm_reset">Réinitialiser tous les paramètres ?</string>
+    <string name="settings_confirm_reset_true">Oui</string>
+    <string name="settings_confirm_reset_false">Non</string>
+</resources>
