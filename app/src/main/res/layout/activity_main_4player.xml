@@ -114,7 +114,7 @@
 
                 <ImageButton
                     android:id="@+id/cmdMinusPoison4p1"
-                    style="@style/poisonbutton_4p_minus"
+                    style="@style/poisonbutton_minus"
                     android:rotation="90"
                     android:layout_alignStart="@id/txtPoisonCount4p1"
                     android:layout_alignLeft="@id/txtPoisonCount4p1"
@@ -124,7 +124,7 @@
 
                 <ImageButton
                     android:id="@+id/cmdPlusPoison4p1"
-                    style="@style/poisonbutton_4p_plus"
+                    style="@style/poisonbutton_plus"
                     android:rotation="90"
                     android:layout_alignStart="@id/txtPoisonCount4p1"
                     android:layout_alignLeft="@id/txtPoisonCount4p1"
@@ -207,7 +207,7 @@
 
                 <ImageButton
                     android:id="@+id/cmdMinusPoison4p3"
-                    style="@style/poisonbutton_4p_minus"
+                    style="@style/poisonbutton_minus"
                     android:rotation="90"
                     android:layout_alignStart="@id/txtPoisonCount4p3"
                     android:layout_alignLeft="@id/txtPoisonCount4p3"
@@ -217,7 +217,7 @@
 
                 <ImageButton
                     android:id="@+id/cmdPlusPoison4p3"
-                    style="@style/poisonbutton_4p_plus"
+                    style="@style/poisonbutton_plus"
                     android:rotation="90"
                     android:layout_alignStart="@id/txtPoisonCount4p3"
                     android:layout_alignLeft="@id/txtPoisonCount4p3"
@@ -306,7 +306,7 @@
 
                 <ImageButton
                     android:id="@+id/cmdMinusPoison4p2"
-                    style="@style/poisonbutton_4p_minus"
+                    style="@style/poisonbutton_minus"
                     android:rotation="270"
                     android:layout_alignStart="@id/txtPoisonCount4p2"
                     android:layout_alignLeft="@id/txtPoisonCount4p2"
@@ -316,7 +316,7 @@
 
                 <ImageButton
                     android:id="@+id/cmdPlusPoison4p2"
-                    style="@style/poisonbutton_4p_plus"
+                    style="@style/poisonbutton_plus"
                     android:rotation="270"
                     android:layout_alignStart="@id/txtPoisonCount4p2"
                     android:layout_alignLeft="@id/txtPoisonCount4p2"
@@ -398,7 +398,7 @@
 
                 <ImageButton
                     android:id="@+id/cmdMinusPoison4p4"
-                    style="@style/poisonbutton_4p_minus"
+                    style="@style/poisonbutton_minus"
                     android:rotation="270"
                     android:layout_alignStart="@id/txtPoisonCount4p4"
                     android:layout_alignLeft="@id/txtPoisonCount4p4"
@@ -408,7 +408,7 @@
 
                 <ImageButton
                     android:id="@+id/cmdPlusPoison4p4"
-                    style="@style/poisonbutton_4p_plus"
+                    style="@style/poisonbutton_plus"
                     android:rotation="270"
                     android:layout_alignStart="@id/txtPoisonCount4p4"
                     android:layout_alignLeft="@id/txtPoisonCount4p4"

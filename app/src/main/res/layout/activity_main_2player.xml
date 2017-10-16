@@ -111,51 +111,50 @@
             <!-- Add / Reduce Poison Away -->
             <ImageButton
                 android:id="@+id/cmdMinusPoisonGuest"
-                style="@style/mtg_button_poison_top"
-                android:layout_marginLeft="@dimen/button_poison_space_vertical"
+                style="@style/poisonbutton_minus"
                 android:layout_toEndOf="@+id/txtPoisonCount2p1"
                 android:layout_toRightOf="@+id/txtPoisonCount2p1"
-                android:layout_alignTop="@+id/txtPoisonCount2p1"
-                android:background="@drawable/icon_minus" />
+                android:layout_alignBottom="@id/txtPoisonCount2p1"
+                android:layout_alignTop="@+id/txtPoisonCount2p1" />
 
             <ImageButton
                 android:id="@+id/cmdPlusPoisonGuest"
-                style="@style/mtg_button_poison_top"
-                android:layout_marginRight="@dimen/button_poison_space_vertical"
-                android:layout_toLeftOf="@+id/txtPoisonCount2p1"
-                android:layout_toStartOf="@+id/txtPoisonCount2p1"
-                android:layout_alignTop="@+id/txtPoisonCount2p1"
-                android:background="@drawable/icon_plus" />
+                style="@style/poisonbutton_plus"
+                android:layout_toStartOf="@id/txtPoisonCount2p1"
+                android:layout_toLeftOf="@id/txtPoisonCount2p1"
+                android:layout_alignBottom="@id/txtPoisonCount2p1"
+                android:layout_alignTop="@+id/txtPoisonCount2p1" />
 
             <!-- Colors: Guest -->
             <Button
                 android:id="@+id/cmdBlack2p1"
-                style="@style/mtg_color_button_top"
+                style="@style/colorbutton_2p"
+                android:layout_below="@id/txtLifeCount2p1"
                 android:layout_centerHorizontal="true" />
 
             <Button
-                android:id="@+id/cmdRed2p1"
-                style="@style/mtg_color_button_top"
-                android:layout_marginRight="@dimen/button_space_vertical"
+                android:id="@+id/cmdBlue2p1"
+                style="@style/colorbutton_2p_left"
+                android:layout_below="@id/txtLifeCount2p1"
                 android:layout_toLeftOf="@id/cmdBlack2p1" />
 
             <Button
-                android:id="@+id/cmdWhite2p1"
-                style="@style/mtg_color_button_top"
-                android:layout_marginRight="@dimen/button_space_vertical"
-                android:layout_toLeftOf="@id/cmdRed2p1" />
+                android:id="@+id/cmdGreen2p1"
+                style="@style/colorbutton_2p_left"
+                android:layout_below="@id/txtLifeCount2p1"
+                android:layout_toLeftOf="@id/cmdBlue2p1" />
 
             <Button
-                android:id="@+id/cmdBlue2p1"
-                style="@style/mtg_color_button_top"
-                android:layout_marginLeft="@dimen/button_space_vertical"
+                android:id="@+id/cmdRed2p1"
+                style="@style/colorbutton_2p_right"
+                android:layout_below="@id/txtLifeCount2p1"
                 android:layout_toRightOf="@id/cmdBlack2p1" />
 
             <Button
-                android:id="@+id/cmdGreen2p1"
-                style="@style/mtg_color_button_top"
-                android:layout_marginLeft="@dimen/button_space_vertical"
-                android:layout_toRightOf="@id/cmdBlue2p1" />
+                android:id="@+id/cmdWhite2p1"
+                style="@style/colorbutton_2p_right"
+                android:layout_below="@id/txtLifeCount2p1"
+                android:layout_toRightOf="@id/cmdRed2p1" />
 
         </RelativeLayout>
 
@@ -206,51 +205,50 @@
             <!-- Add / Reduce Poison Home -->
             <ImageButton
                 android:id="@+id/cmdPlusPoisonHome"
-                style="@style/mtg_button_poison_bottom"
-                android:layout_marginLeft="16dp"
-                android:layout_toEndOf="@id/txtPoisonCount2p2"
-                android:layout_toRightOf="@id/txtPoisonCount2p2"
-                android:layout_alignBottom="@+id/txtPoisonCount2p2"
-                android:background="@drawable/icon_plus" />
+                style="@style/poisonbutton_plus"
+                android:layout_toEndOf="@+id/txtPoisonCount2p2"
+                android:layout_toRightOf="@+id/txtPoisonCount2p2"
+                android:layout_alignBottom="@id/txtPoisonCount2p2"
+                android:layout_alignTop="@+id/txtPoisonCount2p2" />
 
             <ImageButton
                 android:id="@+id/cmdMinusPoisonHome"
-                style="@style/mtg_button_poison_bottom"
-                android:layout_marginRight="16dp"
-                android:layout_toLeftOf="@id/txtPoisonCount2p2"
+                style="@style/poisonbutton_minus"
                 android:layout_toStartOf="@id/txtPoisonCount2p2"
-                android:layout_alignBottom="@+id/txtPoisonCount2p2"
-                android:background="@drawable/icon_minus" />
+                android:layout_toLeftOf="@id/txtPoisonCount2p2"
+                android:layout_alignBottom="@id/txtPoisonCount2p2"
+                android:layout_alignTop="@+id/txtPoisonCount2p2" />
 
             <!-- Colors: Home -->
             <Button
                 android:id="@+id/cmdBlack2p2"
-                style="@style/mtg_color_button_bottom"
+                style="@style/colorbutton_2p"
+                android:layout_above="@id/txtLifeCount2p2"
                 android:layout_centerHorizontal="true" />
 
             <Button
-                android:id="@+id/cmdBlue2p2"
-                style="@style/mtg_color_button_bottom"
-                android:layout_marginRight="@dimen/button_space_vertical"
+                android:id="@+id/cmdRed2p2"
+                style="@style/colorbutton_2p_left"
+                android:layout_above="@id/txtLifeCount2p2"
                 android:layout_toLeftOf="@id/cmdBlack2p2" />
 
             <Button
-                android:id="@+id/cmdGreen2p2"
-                style="@style/mtg_color_button_bottom"
-                android:layout_marginRight="@dimen/button_space_vertical"
-                android:layout_toLeftOf="@id/cmdBlue2p2" />
+                android:id="@+id/cmdWhite2p2"
+                style="@style/colorbutton_2p_left"
+                android:layout_above="@id/txtLifeCount2p2"
+                android:layout_toLeftOf="@id/cmdRed2p2" />
 
             <Button
-                android:id="@+id/cmdRed2p2"
-                style="@style/mtg_color_button_bottom"
-                android:layout_marginLeft="@dimen/button_space_vertical"
+                android:id="@+id/cmdBlue2p2"
+                style="@style/colorbutton_2p_right"
+                android:layout_above="@id/txtLifeCount2p2"
                 android:layout_toRightOf="@id/cmdBlack2p2" />
 
             <Button
-                android:id="@+id/cmdWhite2p2"
-                style="@style/mtg_color_button_bottom"
-                android:layout_marginLeft="@dimen/button_space_vertical"
-                android:layout_toRightOf="@id/cmdRed2p2" />
+                android:id="@+id/cmdGreen2p2"
+                style="@style/colorbutton_2p_right"
+                android:layout_above="@id/txtLifeCount2p2"
+                android:layout_toRightOf="@id/cmdBlue2p2" />
 
         </RelativeLayout>
     </RelativeLayout>

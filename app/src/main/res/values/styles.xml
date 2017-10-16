@@ -8,22 +8,6 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="mtg_color_button_bottom">
-        <item name="android:layout_height">@dimen/size_color_button</item>
-        <item name="android:layout_width">@dimen/size_color_button</item>
-        <item name="android:background">@drawable/button_round</item>
-        <item name="android:layout_alignParentTop">true</item>
-        <item name="android:layout_marginTop">@dimen/color_button_space_horizontal</item>
-    </style>
-
-    <style name="mtg_color_button_top">
-        <item name="android:layout_height">@dimen/size_color_button</item>
-        <item name="android:layout_width">@dimen/size_color_button</item>
-        <item name="android:background">@drawable/button_round</item>
-        <item name="android:layout_alignParentBottom">true</item>
-        <item name="android:layout_marginBottom">@dimen/color_button_space_horizontal</item>
-    </style>
-
     <style name="mtg_textview_lifepoints">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -56,16 +40,6 @@
         <item name="android:gravity">center</item>
     </style>
 
-    <style name="mtg_button_poison_bottom">
-        <item name="android:layout_width">@dimen/size_config_buttons</item>
-        <item name="android:layout_height">@dimen/size_config_buttons</item>
-    </style>
-
-    <style name="mtg_button_poison_top">
-        <item name="android:layout_width">@dimen/size_config_buttons</item>
-        <item name="android:layout_height">@dimen/size_config_buttons</item>
-    </style>
-
     <style name="lifebutton_4p">
         <item name="android:layout_width">@dimen/buttonPlusMinusLifepoints</item>
         <item name="android:layout_height">@dimen/buttonPlusMinusLifepoints</item>
@@ -82,7 +56,7 @@
         <item name="android:src">@drawable/icon_minus</item>
     </style>
 
-    <style name="poisonbutton_4p">
+    <style name="poisonbutton">
         <item name="android:layout_width">@dimen/size_config_buttons</item>
         <item name="android:layout_height">@dimen/size_config_buttons</item>
         <item name="android:scaleType">fitCenter</item>
@@ -90,13 +64,15 @@
         <item name="android:background">?android:selectableItemBackground</item>
     </style>
 
-    <style name="poisonbutton_4p_plus" parent="poisonbutton_4p">
+    <style name="poisonbutton_plus" parent="poisonbutton">
         <item name="android:src">@drawable/icon_plus</item>
     </style>
 
-    <style name="poisonbutton_4p_minus" parent="poisonbutton_4p">
+    <style name="poisonbutton_minus" parent="poisonbutton">
         <item name="android:src">@drawable/icon_minus</item>
     </style>
+
+    <!-- COLOR BUTTONS -->
 
     <style name="colorbutton_4p">
         <item name="android:layout_height">@dimen/size_color_button</item>
@@ -112,7 +88,23 @@
         <item name="android:layout_marginTop">@dimen/button_space_vertical</item>
     </style>
 
-    <!-- Navigation Drawer -->
+
+    <style name="colorbutton_2p">
+        <item name="android:layout_height">@dimen/size_color_button</item>
+        <item name="android:layout_width">@dimen/size_color_button</item>
+        <item name="android:background">@drawable/button_round</item>
+    </style>
+
+    <style name="colorbutton_2p_left" parent="colorbutton_4p">
+        <item name="android:layout_marginRight">@dimen/button_space_vertical</item>
+    </style>
+
+    <style name="colorbutton_2p_right" parent="colorbutton_4p">
+        <item name="android:layout_marginLeft">@dimen/button_space_vertical</item>
+    </style>
+
+    <!-- NAVIGATION DRAWER -->
+
     <style name="nd_button">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
