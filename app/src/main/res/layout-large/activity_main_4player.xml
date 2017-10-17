@@ -83,7 +83,7 @@
                     android:id="@+id/txtLifeCount4p1"
                     android:rotation="90"
                     android:layout_centerInParent="true"
-                    style="@style/mtg_textview_lifepoints_smallerscreen_left" />
+                    style="@style/mtg_textview_lifepoints" />
 
                 <ImageButton
                     android:id="@+id/cmdPlus4p1"
@@ -176,7 +176,7 @@
                     android:id="@+id/txtLifeCount4p3"
                     android:rotation="90"
                     android:layout_centerInParent="true"
-                    style="@style/mtg_textview_lifepoints_smallerscreen_left" />
+                    style="@style/mtg_textview_lifepoints" />
 
                 <ImageButton
                     android:id="@+id/cmdPlus4p3"
@@ -275,7 +275,7 @@
                     android:id="@+id/txtLifeCount4p2"
                     android:layout_centerInParent="true"
                     android:rotation="270"
-                    style="@style/mtg_textview_lifepoints_smallerscreen_right" />
+                    style="@style/mtg_textview_lifepoints" />
 
                 <ImageButton
                     android:id="@+id/cmdPlus4p2"
@@ -367,7 +367,7 @@
                     android:id="@+id/txtLifeCount4p4"
                     android:rotation="270"
                     android:layout_centerInParent="true"
-                    style="@style/mtg_textview_lifepoints_smallerscreen_right" />
+                    style="@style/mtg_textview_lifepoints" />
 
                 <ImageButton
                     android:id="@+id/cmdPlus4p4"

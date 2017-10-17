@@ -16,6 +16,26 @@
         <item name="android:gravity">center</item>
         <item name="android:textSize">@dimen/textsize_life</item>
         <item name="android:layout_centerInParent">true</item>
+        <item name="android:maxLines">1</item>
+    </style>
+
+    <style name="mtg_textview_lifepoints_smallerscreen">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">20</item>
+        <item name="android:textColor">@color/textColor</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/textsize_life</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:maxLines">1</item>
+    </style>
+
+    <style name="mtg_textview_lifepoints_smallerscreen_right" parent="mtg_textview_lifepoints_smallerscreen">
+        <item name="android:layout_alignParentLeft">true</item>
+    </style>
+
+    <style name="mtg_textview_lifepoints_smallerscreen_left" parent="mtg_textview_lifepoints_smallerscreen">
+        <item name="android:layout_alignParentRight">true</item>
     </style>
 
     <style name="mtg_button_lifepoints_bottom">
@@ -38,6 +58,7 @@
         <item name="android:textSize">@dimen/textsize_poison</item>
         <item name="android:layout_centerHorizontal">true</item>
         <item name="android:gravity">center</item>
+        <item name="android:maxLines">1</item>
     </style>
 
     <style name="lifebutton_4p">

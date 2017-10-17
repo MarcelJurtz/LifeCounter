@@ -1177,7 +1177,6 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         navigationView.getMenu().findItem(R.id.nav_energy_save_mode).setTitle(string);
         mainLayout.closeDrawer(Gravity.START);
     }
-
     //endregion
 
     @Override
