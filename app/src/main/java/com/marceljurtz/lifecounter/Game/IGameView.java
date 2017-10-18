@@ -45,4 +45,6 @@ public interface IGameView extends IView {
     int getPlayerAmount();
 
     void restartActivity();
+
+    int getScreenSize();
 }

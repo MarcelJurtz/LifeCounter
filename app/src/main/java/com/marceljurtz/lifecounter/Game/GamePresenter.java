@@ -29,6 +29,14 @@ public class GamePresenter implements IGamePresenter {
         this.preferences = preferences;
         this.gameActivity = gameActivity;
 
+        int screenLayout = gameActivity.getScreenSize();
+        // Configuration.SCREENLAYOUT_SIZE_LARGE;   --> 3
+        // Configuration.SCREENLAYOUT_SIZE_NORMAL;  --> 2
+        // Configuration.SCREENLAYOUT_SIZE_SMALL;   --> 1
+        // Configuration.SCREENLAYOUT_SIZE_XLARGE;  --> 4
+
+        // TODO Handle visibility of views when screen is small
+
         player1 = new Player(PlayerID.ONE);
         player2 = new Player(PlayerID.TWO);
 

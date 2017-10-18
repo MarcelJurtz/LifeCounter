@@ -1188,4 +1188,9 @@ public class GameActivity extends AppCompatActivity implements IGameView {
     public void disableScreenTimeout() {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     }
+
+    @Override
+    public int getScreenSize() {
+        return getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK;
+    }
 }
