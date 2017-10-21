@@ -29,14 +29,14 @@ public interface IGameView extends IView {
 
     // Enable / Disable color controls
     void settingsButtonEnable();
-    void enableSettingsControls();
+    void enableSettingsControls(boolean hideOtherControls);
     void settingsButtonDisable();
-    void disableSettingsControls();
+    void disableSettingsControls(boolean showOtherControls);
 
     // Enable / Disable poison controls
-    void enablePoisonControls();
+    void enablePoisonControls(boolean rearrangeLifepoints);
     void poisonButtonEnable();
-    void disablePoisonControls();
+    void disablePoisonControls(boolean rearrangeLifepoints);
     void poisonButtonDisable();
 
     // Drawer Layout Interaction

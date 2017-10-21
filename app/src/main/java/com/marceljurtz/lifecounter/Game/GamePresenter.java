@@ -25,6 +25,13 @@ public class GamePresenter implements IGamePresenter {
     private Player player3;
     private Player player4;
 
+    private final int SCREEN_SMALL = 1;
+    private final int SCREEN_NORMAL = 2;
+    private final int SCREEN_LARGE = 3;
+    private final int SCREEN_XLARGE = 4;
+
+    private boolean hideOtherControlsWhenSettingsDisplayed = false;
+
     public GamePresenter(GameActivity gameActivity, SharedPreferences preferences) {
         this.preferences = preferences;
         this.gameActivity = gameActivity;
@@ -35,7 +42,7 @@ public class GamePresenter implements IGamePresenter {
         // Configuration.SCREENLAYOUT_SIZE_SMALL;   --> 1
         // Configuration.SCREENLAYOUT_SIZE_XLARGE;  --> 4
 
-        // TODO Handle visibility of views when screen is small
+        if(screenLayout != SCREEN_XLARGE) hideOtherControlsWhenSettingsDisplayed = true;
 
         player1 = new Player(PlayerID.ONE);
         player2 = new Player(PlayerID.TWO);
@@ -57,12 +64,12 @@ public class GamePresenter implements IGamePresenter {
         gameActivity.initColorButton(MagicColor.WHITE, PreferenceManager.getDefaultWhite(preferences));
 
         // Settings, Energy-Saving & Poison
-        gameActivity.disableSettingsControls();
+        gameActivity.disableSettingsControls(hideOtherControlsWhenSettingsDisplayed);
         gameActivity.settingsButtonDisable();
         settingsVisible = false;
 
         gameActivity.poisonButtonDisable();
-        gameActivity.disablePoisonControls();
+        gameActivity.disablePoisonControls(hideOtherControlsWhenSettingsDisplayed);
         poisonVisible = false;
     }
 
@@ -79,11 +86,11 @@ public class GamePresenter implements IGamePresenter {
     @Override
     public void onResume() {
         settingsVisible = false;
-        gameActivity.disableSettingsControls();
+        gameActivity.disableSettingsControls(hideOtherControlsWhenSettingsDisplayed);
         gameActivity.settingsButtonDisable();
 
         poisonVisible = false;
-        gameActivity.disablePoisonControls();
+        gameActivity.disablePoisonControls(hideOtherControlsWhenSettingsDisplayed);
         gameActivity.poisonButtonDisable();
 
         powerSaveEnabled = false;
@@ -219,10 +226,10 @@ public class GamePresenter implements IGamePresenter {
     public void onPoisonButtonClick() {
         poisonVisible = !poisonVisible;
         if(poisonVisible) {
-            gameActivity.enablePoisonControls();
+            gameActivity.enablePoisonControls(hideOtherControlsWhenSettingsDisplayed);
             gameActivity.poisonButtonEnable();
         } else {
-            gameActivity.disablePoisonControls();
+            gameActivity.disablePoisonControls(hideOtherControlsWhenSettingsDisplayed);
             gameActivity.poisonButtonDisable();
         }
     }
@@ -234,10 +241,10 @@ public class GamePresenter implements IGamePresenter {
         } else {
             settingsVisible = !settingsVisible;
             if(settingsVisible) {
-                gameActivity.enableSettingsControls();
+                gameActivity.enableSettingsControls(hideOtherControlsWhenSettingsDisplayed);
                 gameActivity.settingsButtonEnable();
             } else {
-                gameActivity.disableSettingsControls();
+                gameActivity.disableSettingsControls(hideOtherControlsWhenSettingsDisplayed);
                 gameActivity.settingsButtonDisable();
             }
         }
@@ -250,9 +257,9 @@ public class GamePresenter implements IGamePresenter {
 
         settingsVisible = false;
         poisonVisible = false;
-        gameActivity.disablePoisonControls();
+        gameActivity.disablePoisonControls(hideOtherControlsWhenSettingsDisplayed);
         gameActivity.settingsButtonDisable();
-        gameActivity.disableSettingsControls();
+        gameActivity.disableSettingsControls(hideOtherControlsWhenSettingsDisplayed);
         gameActivity.poisonButtonDisable();
 
         gameActivity.setLifepoints(PlayerID.ONE, String.format("%02d",player1.getLifePoints()));
@@ -260,6 +267,17 @@ public class GamePresenter implements IGamePresenter {
 
         gameActivity.setPoisonpoints(PlayerID.ONE, String.format("%02d",player1.getPoisonPoints()));
         gameActivity.setPoisonpoints(PlayerID.TWO, String.format("%02d",player2.getPoisonPoints()));
+
+        if(gameActivity.getPlayerAmount() == 4) {
+            player3.resetPoints(preferences);
+            player4.resetPoints(preferences);
+
+            gameActivity.setLifepoints(PlayerID.THREE, String.format("%02d",player3.getLifePoints()));
+            gameActivity.setLifepoints(PlayerID.FOUR, String.format("%02d",player4.getLifePoints()));
+
+            gameActivity.setPoisonpoints(PlayerID.THREE, String.format("%02d",player3.getPoisonPoints()));
+            gameActivity.setPoisonpoints(PlayerID.FOUR, String.format("%02d",player4.getPoisonPoints()));
+        }
     }
 
     //region NavDrawer Handling

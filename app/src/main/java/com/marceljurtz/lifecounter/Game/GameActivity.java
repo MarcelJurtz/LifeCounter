@@ -928,7 +928,7 @@ public class GameActivity extends AppCompatActivity implements IGameView {
 
     //region Toggle Poison Controls
     @Override
-    public void enablePoisonControls() {
+    public void enablePoisonControls(boolean rearrangeLifepoints) {
         txtPoisonCountPlayer1.setVisibility(View.VISIBLE);
         txtPoisonCountPlayer2.setVisibility(View.VISIBLE);
 
@@ -948,6 +948,24 @@ public class GameActivity extends AppCompatActivity implements IGameView {
             cmdMinusPoisonPlayer3.setVisibility(View.VISIBLE);
             cmdMinusPoisonPlayer4.setVisibility(View.VISIBLE);
         }
+
+        if(rearrangeLifepoints) {
+            RelativeLayout.LayoutParams paramsLeft = (RelativeLayout.LayoutParams)txtLifeCountPlayer1.getLayoutParams();
+            paramsLeft.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+            paramsLeft.addRule(RelativeLayout.ALIGN_PARENT_END);
+
+            RelativeLayout.LayoutParams paramsRight = (RelativeLayout.LayoutParams)txtLifeCountPlayer2.getLayoutParams();
+            paramsRight.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
+            paramsRight.addRule(RelativeLayout.ALIGN_PARENT_START);
+
+            txtLifeCountPlayer1.setLayoutParams(paramsLeft);
+            txtLifeCountPlayer2.setLayoutParams(paramsRight);
+
+            if(playeramount == 4) {
+                txtLifeCountPlayer3.setLayoutParams(paramsLeft);
+                txtLifeCountPlayer4.setLayoutParams(paramsRight);
+            }
+        }
     }
 
     @Override
@@ -956,7 +974,7 @@ public class GameActivity extends AppCompatActivity implements IGameView {
     }
 
     @Override
-    public void disablePoisonControls() {
+    public void disablePoisonControls(boolean rearrangeLifepoints) {
         txtPoisonCountPlayer1.setVisibility(View.INVISIBLE);
         txtPoisonCountPlayer2.setVisibility(View.INVISIBLE);
 
@@ -976,6 +994,24 @@ public class GameActivity extends AppCompatActivity implements IGameView {
             cmdMinusPoisonPlayer3.setVisibility(View.INVISIBLE);
             cmdMinusPoisonPlayer4.setVisibility(View.INVISIBLE);
         }
+
+        if(rearrangeLifepoints) {
+            RelativeLayout.LayoutParams paramsLeft = (RelativeLayout.LayoutParams)txtLifeCountPlayer1.getLayoutParams();
+            paramsLeft.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, 0);
+            paramsLeft.addRule(RelativeLayout.ALIGN_PARENT_END, 0);
+
+            RelativeLayout.LayoutParams paramsRight = (RelativeLayout.LayoutParams)txtLifeCountPlayer2.getLayoutParams();
+            paramsRight.addRule(RelativeLayout.ALIGN_PARENT_LEFT, 0);
+            paramsRight.addRule(RelativeLayout.ALIGN_PARENT_START, 0);
+
+            txtLifeCountPlayer1.setLayoutParams(paramsLeft);
+            txtLifeCountPlayer2.setLayoutParams(paramsRight);
+
+            if(playeramount == 4) {
+                txtLifeCountPlayer3.setLayoutParams(paramsLeft);
+                txtLifeCountPlayer4.setLayoutParams(paramsRight);
+            }
+        }
     }
 
     @Override
@@ -986,7 +1022,7 @@ public class GameActivity extends AppCompatActivity implements IGameView {
 
     //region Toggle Settings Controls
     @Override
-    public void enableSettingsControls() {
+    public void enableSettingsControls(boolean hideOtherControls) {
         cmdBlackPlayer1.setVisibility(View.VISIBLE);
         cmdBlackPlayer2.setVisibility(View.VISIBLE);
 
@@ -1018,6 +1054,28 @@ public class GameActivity extends AppCompatActivity implements IGameView {
             cmdWhitePlayer3.setVisibility(View.VISIBLE);
             cmdWhitePlayer4.setVisibility(View.VISIBLE);
         }
+
+        if(hideOtherControls) {
+            txtLifeCountPlayer1.setVisibility(View.INVISIBLE);
+            txtLifeCountPlayer2.setVisibility(View.INVISIBLE);
+
+            cmdPlusPlayer1.setVisibility(View.INVISIBLE);
+            cmdPlusPlayer2.setVisibility(View.INVISIBLE);
+
+            cmdMinusPlayer1.setVisibility(View.INVISIBLE);
+            cmdMinusPlayer2.setVisibility(View.INVISIBLE);
+
+            if(playeramount == 4) {
+                txtLifeCountPlayer3.setVisibility(View.INVISIBLE);
+                txtLifeCountPlayer4.setVisibility(View.INVISIBLE);
+
+                cmdPlusPlayer3.setVisibility(View.INVISIBLE);
+                cmdPlusPlayer4.setVisibility(View.INVISIBLE);
+
+                cmdMinusPlayer3.setVisibility(View.INVISIBLE);
+                cmdMinusPlayer4.setVisibility(View.INVISIBLE);
+            }
+        }
     }
 
     @Override
@@ -1026,7 +1084,7 @@ public class GameActivity extends AppCompatActivity implements IGameView {
     }
 
     @Override
-    public void disableSettingsControls() {
+    public void disableSettingsControls(boolean showOtherControls) {
         cmdBlackPlayer1.setVisibility(View.INVISIBLE);
         cmdBlackPlayer2.setVisibility(View.INVISIBLE);
 
@@ -1057,6 +1115,28 @@ public class GameActivity extends AppCompatActivity implements IGameView {
 
             cmdWhitePlayer3.setVisibility(View.INVISIBLE);
             cmdWhitePlayer4.setVisibility(View.INVISIBLE);
+        }
+
+        if(showOtherControls) {
+            txtLifeCountPlayer1.setVisibility(View.VISIBLE);
+            txtLifeCountPlayer2.setVisibility(View.VISIBLE);
+
+            cmdPlusPlayer1.setVisibility(View.VISIBLE);
+            cmdPlusPlayer2.setVisibility(View.VISIBLE);
+
+            cmdMinusPlayer1.setVisibility(View.VISIBLE);
+            cmdMinusPlayer2.setVisibility(View.VISIBLE);
+
+            if(playeramount == 4) {
+                txtLifeCountPlayer3.setVisibility(View.VISIBLE);
+                txtLifeCountPlayer4.setVisibility(View.VISIBLE);
+
+                cmdPlusPlayer3.setVisibility(View.VISIBLE);
+                cmdPlusPlayer4.setVisibility(View.VISIBLE);
+
+                cmdMinusPlayer3.setVisibility(View.VISIBLE);
+                cmdMinusPlayer4.setVisibility(View.VISIBLE);
+            }
         }
     }
 
