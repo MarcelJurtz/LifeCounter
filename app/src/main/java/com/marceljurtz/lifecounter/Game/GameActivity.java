@@ -1065,6 +1065,15 @@ public class GameActivity extends AppCompatActivity implements IGameView {
             cmdMinusPlayer1.setVisibility(View.INVISIBLE);
             cmdMinusPlayer2.setVisibility(View.INVISIBLE);
 
+            txtPoisonCountPlayer1.setVisibility(View.INVISIBLE);
+            txtPoisonCountPlayer2.setVisibility(View.INVISIBLE);
+
+            cmdPlusPoisonPlayer1.setVisibility(View.INVISIBLE);
+            cmdPlusPoisonPlayer2.setVisibility(View.INVISIBLE);
+
+            cmdMinusPoisonPlayer1.setVisibility(View.INVISIBLE);
+            cmdMinusPoisonPlayer2.setVisibility(View.INVISIBLE);
+
             if(playeramount == 4) {
                 txtLifeCountPlayer3.setVisibility(View.INVISIBLE);
                 txtLifeCountPlayer4.setVisibility(View.INVISIBLE);
@@ -1074,6 +1083,15 @@ public class GameActivity extends AppCompatActivity implements IGameView {
 
                 cmdMinusPlayer3.setVisibility(View.INVISIBLE);
                 cmdMinusPlayer4.setVisibility(View.INVISIBLE);
+
+                txtPoisonCountPlayer3.setVisibility(View.INVISIBLE);
+                txtPoisonCountPlayer4.setVisibility(View.INVISIBLE);
+
+                cmdPlusPoisonPlayer3.setVisibility(View.INVISIBLE);
+                cmdPlusPoisonPlayer4.setVisibility(View.INVISIBLE);
+
+                cmdMinusPoisonPlayer3.setVisibility(View.INVISIBLE);
+                cmdMinusPoisonPlayer4.setVisibility(View.INVISIBLE);
             }
         }
     }
@@ -1127,6 +1145,15 @@ public class GameActivity extends AppCompatActivity implements IGameView {
             cmdMinusPlayer1.setVisibility(View.VISIBLE);
             cmdMinusPlayer2.setVisibility(View.VISIBLE);
 
+            txtPoisonCountPlayer1.setVisibility(View.VISIBLE);
+            txtPoisonCountPlayer2.setVisibility(View.VISIBLE);
+
+            cmdPlusPoisonPlayer1.setVisibility(View.VISIBLE);
+            cmdPlusPoisonPlayer2.setVisibility(View.VISIBLE);
+
+            cmdMinusPoisonPlayer1.setVisibility(View.VISIBLE);
+            cmdMinusPoisonPlayer2.setVisibility(View.VISIBLE);
+
             if(playeramount == 4) {
                 txtLifeCountPlayer3.setVisibility(View.VISIBLE);
                 txtLifeCountPlayer4.setVisibility(View.VISIBLE);
@@ -1136,6 +1163,15 @@ public class GameActivity extends AppCompatActivity implements IGameView {
 
                 cmdMinusPlayer3.setVisibility(View.VISIBLE);
                 cmdMinusPlayer4.setVisibility(View.VISIBLE);
+
+                txtPoisonCountPlayer3.setVisibility(View.VISIBLE);
+                txtPoisonCountPlayer4.setVisibility(View.VISIBLE);
+
+                cmdPlusPoisonPlayer3.setVisibility(View.VISIBLE);
+                cmdPlusPoisonPlayer4.setVisibility(View.VISIBLE);
+
+                cmdMinusPoisonPlayer3.setVisibility(View.VISIBLE);
+                cmdMinusPoisonPlayer4.setVisibility(View.VISIBLE);
             }
         }
     }

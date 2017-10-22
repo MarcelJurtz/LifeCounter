@@ -42,7 +42,7 @@ public class GamePresenter implements IGamePresenter {
         // Configuration.SCREENLAYOUT_SIZE_SMALL;   --> 1
         // Configuration.SCREENLAYOUT_SIZE_XLARGE;  --> 4
 
-        if(screenLayout != SCREEN_XLARGE) hideOtherControlsWhenSettingsDisplayed = true;
+        if(screenLayout != SCREEN_XLARGE && gameActivity.getPlayerAmount() == 4) hideOtherControlsWhenSettingsDisplayed = true;
 
         player1 = new Player(PlayerID.ONE);
         player2 = new Player(PlayerID.TWO);
@@ -224,13 +224,16 @@ public class GamePresenter implements IGamePresenter {
 
     @Override
     public void onPoisonButtonClick() {
-        poisonVisible = !poisonVisible;
-        if(poisonVisible) {
-            gameActivity.enablePoisonControls(hideOtherControlsWhenSettingsDisplayed);
-            gameActivity.poisonButtonEnable();
-        } else {
-            gameActivity.disablePoisonControls(hideOtherControlsWhenSettingsDisplayed);
-            gameActivity.poisonButtonDisable();
+        // Activation only possible on small screens when settings are hidden
+        if(!hideOtherControlsWhenSettingsDisplayed || !settingsVisible || gameActivity.getPlayerAmount() == 2) {
+            poisonVisible = !poisonVisible;
+            if(poisonVisible) {
+                gameActivity.enablePoisonControls(hideOtherControlsWhenSettingsDisplayed);
+                gameActivity.poisonButtonEnable();
+            } else {
+                gameActivity.disablePoisonControls(hideOtherControlsWhenSettingsDisplayed);
+                gameActivity.poisonButtonDisable();
+            }
         }
     }
 
