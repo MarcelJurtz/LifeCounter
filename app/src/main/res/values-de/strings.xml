@@ -43,4 +43,17 @@
     <string name="menu_area_general"></string>
 
     <string name="action_settings">Einstellungen</string>
+
+    <string name="preferences_cat_points">Punkte</string>
+    <string name="preferences_cat_colors">Farben</string>
+    <string name="preferences_cat_other">Andere</string>
+    <string name="preferences_points_lifepoints">Lebenspunkte</string>
+    <string name="preferences_points_longclickpoints">Gedrückt halten (+/-)</string>
+    <string name="preferences_color_black">Schwarz</string>
+    <string name="preferences_color_blue">Blau</string>
+    <string name="preferences_color_green">Grün</string>
+    <string name="preferences_color_red">Rot</string>
+    <string name="preferences_color_white">Weiss</string>
+    <string name="preferences_other_timeout">Bildschirm-Timeout deaktivieren</string>
+    <string name="preferences_other_energysaving">Energiesparmodus aktivieren</string>
 </resources>

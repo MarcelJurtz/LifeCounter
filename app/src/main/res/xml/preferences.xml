@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:title="@string/preferences_cat_points">
+        <Preference
+            android:key="prefkey_lifepoints"
+            android:title="@string/preferences_points_lifepoints"
+            android:defaultValue="20" />
+        <Preference
+            android:key="prefkey_longclickpoints"
+            android:title="@string/preferences_points_longclickpoints"
+            android:defaultValue="5" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/preferences_cat_colors">
+        <Preference
+            android:key="prefkey_color_black"
+            android:title="@string/preferences_color_black"
+            android:defaultValue="#CCC2C0" />
+        <Preference
+            android:key="prefkey_color_blue"
+            android:title="@string/preferences_color_blue"
+            android:defaultValue="#AAE0FA" />
+        <Preference
+            android:key="prefkey_color_green"
+            android:title="@string/preferences_color_green"
+            android:defaultValue="#9BD3AE" />
+        <Preference
+            android:key="prefkey_color_red"
+            android:title="@string/preferences_color_red"
+            android:defaultValue="#FAAA8F" />
+        <Preference
+            android:key="prefkey_color_white"
+            android:title="@string/preferences_color_white"
+            android:defaultValue="#FFFCF6" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/preferences_cat_other">
+        <SwitchPreference
+            android:key="prefkey_enable_timeout"
+            android:title="@string/preferences_other_timeout"/>
+        <SwitchPreference
+            android:key="prefkey_enable_energysaving"
+            android:title="@string/preferences_other_energysaving"/>
+    </PreferenceCategory>
+</PreferenceScreen>
