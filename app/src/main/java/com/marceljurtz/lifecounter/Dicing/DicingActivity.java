@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.marceljurtz.lifecounter.About.AboutActivity;
 import com.marceljurtz.lifecounter.Game.GameActivity;
+import com.marceljurtz.lifecounter.Helper.Color;
 import com.marceljurtz.lifecounter.Helper.PreferenceManager;
 import com.marceljurtz.lifecounter.R;
 import com.marceljurtz.lifecounter.Settings.SettingsActivity;
@@ -29,18 +30,19 @@ public class DicingActivity extends AppCompatActivity implements IDicingView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dicing);
 
+        lblDicing = (TextView)findViewById(R.id.lblDicing);
+        rlDicing = (RelativeLayout)findViewById(R.id.rlDicing);
+        navigationView = (NavigationView)findViewById(R.id.navigationViewDicing);
+
         presenter = new DicingPresenter(this);
         presenter.onCreate();
 
-        lblDicing = (TextView)findViewById(R.id.lblDicing);
-        rlDicing = (RelativeLayout)findViewById(R.id.rlDicing);
         rlDicing.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 presenter.onScreenTap();
             }
         });
-        navigationView = (NavigationView)findViewById(R.id.navigationViewDicing);
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -114,5 +116,10 @@ public class DicingActivity extends AppCompatActivity implements IDicingView {
     @Override
     public SharedPreferences getPreferences() {
         return getApplicationContext().getSharedPreferences(PreferenceManager.PREFS, Activity.MODE_PRIVATE);
+    }
+
+    @Override
+    public void setBackgroundColor(Color color) {
+        rlDicing.setBackgroundColor(color.getIntValue());
     }
 }
