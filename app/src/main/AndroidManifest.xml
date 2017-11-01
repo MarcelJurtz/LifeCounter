@@ -23,7 +23,8 @@
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme" />
         <activity android:name=".Dicing.DicingActivity" />
-        <activity android:name=".About.AboutActivity"></activity>
+        <activity android:name=".About.AboutActivity" />
+        <activity android:name=".Settings.PrefActivity" />
     </application>
 
 </manifest>

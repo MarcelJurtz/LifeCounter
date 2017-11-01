@@ -37,6 +37,7 @@ import com.marceljurtz.lifecounter.Helper.Operator;
 import com.marceljurtz.lifecounter.Helper.PlayerID;
 import com.marceljurtz.lifecounter.Helper.PreferenceManager;
 import com.marceljurtz.lifecounter.R;
+import com.marceljurtz.lifecounter.Settings.PrefActivity;
 import com.marceljurtz.lifecounter.Settings.SettingsActivity;
 
 import org.w3c.dom.Text;
