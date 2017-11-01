@@ -103,6 +103,8 @@ public class GamePresenter implements IGamePresenter {
 
         if(PreferenceManager.getScreenTimeoutDisabled(preferences)) {
             gameActivity.disableScreenTimeout();
+        } else {
+            gameActivity.enableScreenTimeout();
         }
     }
 

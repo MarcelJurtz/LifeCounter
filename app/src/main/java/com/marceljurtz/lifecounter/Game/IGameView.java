@@ -13,6 +13,7 @@ public interface IGameView extends IView {
 
     // Disable Screen timeout
     void disableScreenTimeout();
+    void enableScreenTimeout();
 
     // Set life- / poisonpoints
     void setLifepoints(PlayerID id, String points);

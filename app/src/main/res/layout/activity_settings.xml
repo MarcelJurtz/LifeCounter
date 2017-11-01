@@ -353,7 +353,7 @@
                     android:layout_height="0dp"
                     android:layout_weight="1" />
 
-                <CheckBox
+                <Switch
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0"
@@ -373,12 +373,6 @@
         android:orientation="vertical"
         android:layout_alignParentBottom="true"
         android:layout_weight="1">
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:id="@+id/linearLayout">
 
             <Button
                 android:layout_width="match_parent"
@@ -388,16 +382,5 @@
                 android:id="@+id/cmdResetSettings"
                 android:background="@drawable/button_regular"
                 android:layout_margin="5dp" />
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/settings_cancel"
-                android:id="@+id/cmdDiscardChanges"
-                android:background="@drawable/button_regular"
-                android:layout_margin="5dp" />
-
-        </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

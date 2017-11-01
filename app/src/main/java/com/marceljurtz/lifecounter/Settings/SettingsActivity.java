@@ -12,7 +12,9 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import com.marceljurtz.lifecounter.Helper.Color;
 import com.marceljurtz.lifecounter.Helper.MagicColor;
@@ -44,7 +46,7 @@ public class SettingsActivity extends Activity implements ISettingsView {
 
     ImageButton cmdBack;
 
-    CheckBox chkKeepScreenOn;
+    Switch chkKeepScreenOn;
 
     //endregion
 
@@ -70,7 +72,16 @@ public class SettingsActivity extends Activity implements ISettingsView {
         txtLifepoints = (EditText) findViewById(R.id.txtLiveSelection);
         txtLongClickPoints = (EditText) findViewById(R.id.txtLongClickPoints);
 
+        /*
         chkKeepScreenOn = (CheckBox)findViewById(R.id.chkKeepScreenOn);
+        chkKeepScreenOn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                presenter.onKeepScreenOnCheckboxClick(isChecked);
+            }
+        });
+        */
+        chkKeepScreenOn = (Switch) findViewById(R.id.chkKeepScreenOn);
         chkKeepScreenOn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -123,6 +134,7 @@ public class SettingsActivity extends Activity implements ISettingsView {
 
         //region Cancel Button Click
 
+        /*
         cmdDiscardChanges = (Button) findViewById(R.id.cmdDiscardChanges);
         cmdDiscardChanges.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -130,6 +142,7 @@ public class SettingsActivity extends Activity implements ISettingsView {
                 presenter.onCancelButtonClick();
             }
         });
+        */
 
         //endregion
 
