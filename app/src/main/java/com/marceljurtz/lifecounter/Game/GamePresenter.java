@@ -64,7 +64,7 @@ public class GamePresenter implements IGamePresenter {
         gameActivity.initColorButton(MagicColor.WHITE, PreferenceManager.getDefaultWhite(preferences));
 
         // Settings, Energy-Saving & Poison
-        gameActivity.disableSettingsControls(hideOtherControlsWhenSettingsDisplayed);
+        gameActivity.disableSettingsControls(hideOtherControlsWhenSettingsDisplayed, false);
         gameActivity.settingsButtonDisable();
         settingsVisible = false;
 
@@ -86,7 +86,7 @@ public class GamePresenter implements IGamePresenter {
     @Override
     public void onResume() {
         settingsVisible = false;
-        gameActivity.disableSettingsControls(hideOtherControlsWhenSettingsDisplayed);
+        gameActivity.disableSettingsControls(hideOtherControlsWhenSettingsDisplayed, poisonVisible);
         gameActivity.settingsButtonDisable();
 
         poisonVisible = false;
@@ -246,10 +246,10 @@ public class GamePresenter implements IGamePresenter {
         } else {
             settingsVisible = !settingsVisible;
             if(settingsVisible) {
-                gameActivity.enableSettingsControls(hideOtherControlsWhenSettingsDisplayed);
+                gameActivity.enableSettingsControls(hideOtherControlsWhenSettingsDisplayed, poisonVisible);
                 gameActivity.settingsButtonEnable();
             } else {
-                gameActivity.disableSettingsControls(hideOtherControlsWhenSettingsDisplayed);
+                gameActivity.disableSettingsControls(hideOtherControlsWhenSettingsDisplayed, poisonVisible);
                 gameActivity.settingsButtonDisable();
             }
         }
@@ -264,7 +264,7 @@ public class GamePresenter implements IGamePresenter {
         poisonVisible = false;
         gameActivity.disablePoisonControls(hideOtherControlsWhenSettingsDisplayed);
         gameActivity.settingsButtonDisable();
-        gameActivity.disableSettingsControls(hideOtherControlsWhenSettingsDisplayed);
+        gameActivity.disableSettingsControls(hideOtherControlsWhenSettingsDisplayed, poisonVisible);
         gameActivity.poisonButtonDisable();
 
         gameActivity.setLifepoints(PlayerID.ONE, String.format("%02d",player1.getLifePoints()));
