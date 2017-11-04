@@ -24,4 +24,8 @@
     <dimen name="fab_margin">16dp</dimen>
 
     <dimen name="dicing_text_size">124dp</dimen>
+
+    <dimen name="dialog_padding">20dp</dimen>
+    <dimen name="dialog_textsize_header">24dp</dimen>
+    <dimen name="dialog_textsize_divider">32dp</dimen>
 </resources>

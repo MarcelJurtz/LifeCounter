@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:padding="@dimen/dialog_padding">
+
+    <TextView
+        android:id="@+id/lblDialogNewHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/dialog_textsize_header"
+        android:text="@string/dialog_countermanager_new_header"/>
+
+    <EditText
+        android:id="@+id/txtCardDescription"
+        android:hint="@string/dialog_countermanager_hint_card_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:maxLines="1"
+        android:layout_below="@id/lblDialogNewHeader"/>
+
+    <LinearLayout
+        android:id="@+id/llCardValues"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/txtCardDescription">
+
+        <EditText
+            android:id="@+id/txtCardAtk"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:inputType="number"
+            android:maxLength="3"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAlignment="center"
+            android:textSize="@dimen/dialog_textsize_divider"
+            android:text="/"/>
+
+        <EditText
+            android:id="@+id/txtCardDef"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:inputType="number"
+            android:maxLength="3"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/dialogButtonOK"
+        android:text="@string/ok"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/llCardValues"/>
+</RelativeLayout>

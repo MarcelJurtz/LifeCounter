@@ -9,6 +9,7 @@
     <string name="setting_default_long_click_points">Points on hold (+/-):</string>
     <string name="setting_screen_timeout_disable">Disable screen timeout:</string>
 
+    <string name="ok">OK</string>
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
 
@@ -58,4 +59,7 @@
     <string name="preferences_other_timeout">Disable Screen Timeout</string>
     <string name="preferences_other_energysaving">Enable Powersave-Mode</string>
     <string name="title_activity_counter">CounterActivity</string>
+
+    <string name="dialog_countermanager_new_header">New Entry</string>
+    <string name="dialog_countermanager_hint_card_description">Card Description</string>
 </resources>

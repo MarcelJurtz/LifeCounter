@@ -1,11 +1,13 @@
 package com.marceljurtz.lifecounter.Counter;
 
+import android.app.Dialog;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
 
 import com.marceljurtz.lifecounter.R;
 
@@ -24,8 +26,27 @@ public class CounterActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                // custom dialog
+                final Dialog dialog = new Dialog(CounterActivity.this);
+                dialog.setContentView(R.layout.dialog_countermanager_new);
+                dialog.setTitle("Title...");
+
+                // set the custom dialog components - text, image and button
+                //TextView text = (TextView) dialog.findViewById(R.id.text);
+                //text.setText("Android custom dialog example!");
+                //ImageView image = (ImageView) dialog.findViewById(R.id.image);
+                //image.setImageResource(R.drawable.ic_launcher);
+
+                Button dialogButton = (Button) dialog.findViewById(R.id.dialogButtonOK);
+                // if button is clicked, close the custom dialog
+                dialogButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+
+                dialog.show();
             }
         });
 
