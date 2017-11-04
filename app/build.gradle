@@ -11,6 +11,7 @@ android {
         versionCode 10
         versionName "10"
 
+        vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -23,6 +24,7 @@ android {
         variant.resValue "string", "versionName", variant.versionName
     }
 }
+
 
 
 

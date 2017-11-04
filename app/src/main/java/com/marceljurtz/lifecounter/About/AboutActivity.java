@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.webkit.WebView;
 
+import com.marceljurtz.lifecounter.Counter.CounterActivity;
 import com.marceljurtz.lifecounter.Dicing.DicingActivity;
 import com.marceljurtz.lifecounter.Game.GameActivity;
 import com.marceljurtz.lifecounter.Helper.PreferenceManager;
@@ -50,6 +51,9 @@ public class AboutActivity extends AppCompatActivity implements IAboutView {
                         break;
                     case R.id.nav_about_settings:
                         presenter.onMenuEntrySettingsTap();
+                        break;
+                    case R.id.nav_countermanager:
+                        presenter.onMenuEntryCounterManagerTap();
                         break;
                     default:
                         break;
@@ -99,6 +103,13 @@ public class AboutActivity extends AppCompatActivity implements IAboutView {
     @Override
     public void startDicingActivity() {
         Intent intent = new Intent(getApplicationContext(), DicingActivity.class);
+        finish();
+        startActivity(intent);
+    }
+
+    @Override
+    public void startCounterManagerActivity() {
+        Intent intent = new Intent(getApplicationContext(), CounterActivity.class);
         finish();
         startActivity(intent);
     }

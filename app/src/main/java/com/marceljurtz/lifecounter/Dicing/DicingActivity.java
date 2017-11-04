@@ -12,6 +12,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.marceljurtz.lifecounter.About.AboutActivity;
+import com.marceljurtz.lifecounter.Counter.CounterActivity;
 import com.marceljurtz.lifecounter.Game.GameActivity;
 import com.marceljurtz.lifecounter.Helper.Color;
 import com.marceljurtz.lifecounter.Helper.PreferenceManager;
@@ -59,6 +60,11 @@ public class DicingActivity extends AppCompatActivity implements IDicingView {
                         break;
                     case R.id.nav_dicing_about:
                         presenter.onMenuEntryAboutTap();
+                        break;
+                    case R.id.nav_countermanager:
+                        presenter.onMenuEntryCounterManagerTap();
+                        break;
+                    default:
                         break;
                 }
                 return true;
@@ -109,6 +115,13 @@ public class DicingActivity extends AppCompatActivity implements IDicingView {
     @Override
     public void startAboutActivity() {
         Intent intent = new Intent(getApplicationContext(), AboutActivity.class);
+        finish();
+        startActivity(intent);
+    }
+
+    @Override
+    public void startCounterManagerActivity() {
+        Intent intent = new Intent(getApplicationContext(), CounterActivity.class);
         finish();
         startActivity(intent);
     }

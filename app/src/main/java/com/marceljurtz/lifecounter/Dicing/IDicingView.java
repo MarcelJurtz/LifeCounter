@@ -11,5 +11,6 @@ public interface IDicingView extends IView {
     void startSettingsActivity();
     void startAboutActivity();
     void setBackgroundColor(Color color);
+    void startCounterManagerActivity();
     SharedPreferences getPreferences();
 }

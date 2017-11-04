@@ -70,5 +70,10 @@ public class AboutPresenter implements IAboutPresenter {
         view.startSettingsActivity();
     }
 
+    @Override
+    public void onMenuEntryCounterManagerTap() {
+        view.startCounterManagerActivity();
+    }
+
     //endregion
 }

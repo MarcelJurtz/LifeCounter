@@ -9,6 +9,13 @@
             android:id="@+id/nav_dicing_useramount_4"
             android:icon="@drawable/ic_users"
             android:title="@string/menu_entry_load_players_4" />
+
+        <item
+            android:id="@+id/nav_countermanager"
+            android:icon="@drawable/ic_layers_black_24dp"
+            android:title="@string/menu_entry_load_countermanager">
+
+        </item>
     </group>
 
     <group android:id="@+id/nav_dicing_GroupConfig">

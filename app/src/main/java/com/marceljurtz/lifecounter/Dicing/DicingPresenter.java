@@ -91,5 +91,10 @@ public class DicingPresenter implements IDicingPresenter {
         view.startGameActivity();
     }
 
+    @Override
+    public void onMenuEntryCounterManagerTap() {
+        view.startCounterManagerActivity();
+    }
+
     //endregion
 }

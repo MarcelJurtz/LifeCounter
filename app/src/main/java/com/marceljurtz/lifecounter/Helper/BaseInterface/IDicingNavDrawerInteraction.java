@@ -4,6 +4,7 @@ package com.marceljurtz.lifecounter.Helper.BaseInterface;
 public interface  IDicingNavDrawerInteraction {
     void onMenuEntryTwoPlayerTap();
     void onMenuEntryFourPlayerTap();
+    void onMenuEntryCounterManagerTap();
     void onMenuEntrySettingsTap();
     void onMenuEntryAboutTap();
 }

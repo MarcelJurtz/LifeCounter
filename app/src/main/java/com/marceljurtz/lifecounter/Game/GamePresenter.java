@@ -6,9 +6,9 @@ import com.marceljurtz.lifecounter.Helper.ClickType;
 import com.marceljurtz.lifecounter.Helper.Color;
 import com.marceljurtz.lifecounter.Helper.MagicColor;
 import com.marceljurtz.lifecounter.Helper.Operator;
+import com.marceljurtz.lifecounter.Helper.Player;
 import com.marceljurtz.lifecounter.Helper.PlayerID;
 import com.marceljurtz.lifecounter.Helper.PreferenceManager;
-import com.marceljurtz.lifecounter.R;
 
 public class GamePresenter implements IGamePresenter {
 
@@ -316,6 +316,11 @@ public class GamePresenter implements IGamePresenter {
     @Override
     public void onMenuEntryAboutTap() {
         gameActivity.loadAboutActivity();
+    }
+
+    @Override
+    public void onMenuEntryCounterManagerTap() {
+        gameActivity.loadCounterManagerActivity();
     }
     //endregion
 }

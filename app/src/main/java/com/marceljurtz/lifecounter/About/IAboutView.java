@@ -9,5 +9,6 @@ public interface IAboutView extends IView {
     void startGameActivity();
     void startSettingsActivity();
     void startDicingActivity();
+    void startCounterManagerActivity();
     SharedPreferences getPreferences();
 }

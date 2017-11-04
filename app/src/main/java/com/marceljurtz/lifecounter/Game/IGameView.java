@@ -27,6 +27,7 @@ public interface IGameView extends IView {
     void loadSettingsActivity();
     void loadDicingActivity();
     void loadAboutActivity();
+    void loadCounterManagerActivity();
 
     // Enable / Disable color controls
     void settingsButtonEnable();

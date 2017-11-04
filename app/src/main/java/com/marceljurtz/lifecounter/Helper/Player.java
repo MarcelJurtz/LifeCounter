@@ -1,4 +1,4 @@
-package com.marceljurtz.lifecounter.Game;
+package com.marceljurtz.lifecounter.Helper;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -12,6 +12,7 @@ public class Player {
     private int lifePoints;
     private int poisonPoints;
     private PlayerID playerID;
+    private String playerIdentification;
 
     private final int DEFAULT_LIFEPOINTS = 20;
 
@@ -52,5 +53,13 @@ public class Player {
         } else if(this.poisonPoints > PreferenceManager.getMaxPoison()) {
             this.lifePoints = PreferenceManager.getMaxPoison();
         }
+    }
+
+    public String getPlayerIdentification() {
+        return playerIdentification;
+    }
+
+    public void setPlayerIdentification(String identification){
+        playerIdentification = identification;
     }
 }
