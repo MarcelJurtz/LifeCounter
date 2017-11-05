@@ -62,4 +62,5 @@
 
     <string name="dialog_countermanager_new_header">New Entry</string>
     <string name="dialog_countermanager_hint_card_description">Card Description</string>
+    <string name="dialog_countermanager_error_invalid_entry">Invalid values!</string>
 </resources>
