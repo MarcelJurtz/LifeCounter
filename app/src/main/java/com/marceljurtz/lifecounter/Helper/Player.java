@@ -8,11 +8,16 @@ import android.widget.TextView;
 import com.marceljurtz.lifecounter.Helper.PlayerID;
 import com.marceljurtz.lifecounter.Helper.PreferenceManager;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Player {
     private int lifePoints;
     private int poisonPoints;
     private PlayerID playerID;
     private String playerIdentification;
+
+    private ArrayList<Counter> counters;
 
     private final int DEFAULT_LIFEPOINTS = 20;
 
@@ -20,6 +25,7 @@ public class Player {
         this.playerID = id;
         this.lifePoints = DEFAULT_LIFEPOINTS;
         this.poisonPoints = 0;
+        counters = new ArrayList<Counter>();
     }
 
     public void resetPoints(SharedPreferences preferences) {
@@ -61,5 +67,18 @@ public class Player {
 
     public void setPlayerIdentification(String identification){
         playerIdentification = identification;
+    }
+
+    public void AddCounter(Counter c) {
+        counters.add(c);
+    }
+
+    public void RemoveCounter(Counter c) {
+        counters.remove(c);
+        c = null;
+    }
+
+    public ArrayList<Counter> GetAllCounters() {
+        return counters;
     }
 }
