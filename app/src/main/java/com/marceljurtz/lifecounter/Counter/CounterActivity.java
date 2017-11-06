@@ -1,18 +1,22 @@
 package com.marceljurtz.lifecounter.Counter;
 
 import android.app.Dialog;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.marceljurtz.lifecounter.Helper.Counter;
 import com.marceljurtz.lifecounter.Helper.Player;
@@ -28,12 +32,25 @@ public class CounterActivity extends AppCompatActivity {
     // TODO
     ArrayList<Player> players;
 
+    //LinearLayout mainLayout;
+    LinearLayout player1Layout;
+    LinearLayout player2Layout;
+    LinearLayout player3Layout;
+    LinearLayout player4Layout;
+
+    public Counter counter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_counter);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        player1Layout = (LinearLayout)findViewById(R.id.llCounterPlayer1);
+        player2Layout = (LinearLayout)findViewById(R.id.llCounterPlayer2);
+        player3Layout = (LinearLayout)findViewById(R.id.llCounterPlayer3);
+        player4Layout = (LinearLayout)findViewById(R.id.llCounterPlayer4);
 
         // TODO
         players = new ArrayList<>();
@@ -55,7 +72,7 @@ public class CounterActivity extends AppCompatActivity {
                 dialog.setContentView(R.layout.dialog_countermanager_new);
                 //dialog.setTitle("Title...");
 
-                final EditText txtCardDescription = (EditText)findViewById(R.id.txtCardDescription);
+                final EditText txtCardDescription = (EditText)dialog.findViewById(R.id.txtCardDescription);
                 final EditText txtATK = (EditText)dialog.findViewById(R.id.txtCardAtk);
                 final EditText txtDEF = (EditText)dialog.findViewById(R.id.txtCardDef);
                 Spinner spPlayers = (Spinner)dialog.findViewById(R.id.spUserSelection);
@@ -63,18 +80,57 @@ public class CounterActivity extends AppCompatActivity {
 
                 Button dialogButton = (Button) dialog.findViewById(R.id.dialogButtonOK);
                 // if button is clicked, close the custom dialog
+
                 dialogButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         try {
-                            Counter counter = new Counter(txtCardDescription.getText().toString(),
+                            counter = new Counter(txtCardDescription.getText().toString(),
                                     Integer.parseInt(txtATK.getText().toString()),
                                     Integer.parseInt(txtDEF.getText().toString()));
-                        } catch(Exception ex) {
+
+
+                            /*
+                            LinearLayout.LayoutParams llParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+
+                            LinearLayout wrapper = new LinearLayout(getApplicationContext());
+                            wrapper.setOrientation(LinearLayout.HORIZONTAL);
+                            wrapper.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT););
+                            //LinearLayout.LayoutParams wrapperParams = new LinearLayout.LayoutParams()
+
+                            TextView lblDescription = new TextView(getApplicationContext());
+                            lblDescription.setText(counter.getDescription());
+                            lblDescription.setLayoutParams(llParams);
+                            wrapper.addView(lblDescription);
+
+                            TextView lblATK = new TextView(getApplicationContext());
+                            lblATK.setText(counter.getATK());
+                            lblATK.setLayoutParams(llParams);
+                            wrapper.addView(lblATK);
+
+                            TextView lblDivider = new TextView(getApplicationContext());
+                            lblDivider.setText("/");
+                            lblDivider.setLayoutParams(llParams);
+                            wrapper.addView(lblDivider);
+
+                            TextView lblDEF = new TextView(getApplicationContext());
+                            lblDEF.setText(counter.getDEF());
+                            lblDEF.setLayoutParams(llParams);
+                            wrapper.addView(lblDEF);
+
+                            mainLayout.addView(wrapper);
+                            */
+
+                        } catch(NullPointerException ex) {
                             Snackbar.make(findViewById(android.R.id.content), R.string.dialog_countermanager_error_invalid_entry, Snackbar.LENGTH_LONG).show();
                         }
 
                         dialog.dismiss();
+
+                        if(counter != null) {
+                            // TODO
+                            AddNewCounterEntry(new Player(PlayerID.ONE));
+                        }
                     }
                 });
 
@@ -102,5 +158,57 @@ public class CounterActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         presenter.onResume();
+    }
+
+    private void AddNewCounterEntry(Player player) {
+        /*
+        TextView hello = new TextView(this);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        hello.setLayoutParams(params);
+        hello.setText("Hello");
+
+        mainLayout.addView(hello);
+        */
+        LinearLayout.LayoutParams llParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+
+        LinearLayout wrapper = new LinearLayout(getApplicationContext());
+        wrapper.setOrientation(LinearLayout.HORIZONTAL);
+        wrapper.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
+        //LinearLayout.LayoutParams wrapperParams = new LinearLayout.LayoutParams()
+
+        TextView lblDescription = new TextView(getApplicationContext());
+        lblDescription.setText(counter.getDescription());
+        lblDescription.setLayoutParams(llParams);
+        lblDescription.setTextColor(getResources().getColor(R.color.textColor));
+        wrapper.addView(lblDescription);
+
+        TextView lblATK = new TextView(getApplicationContext());
+        lblATK.setText(counter.getATK() + "");
+        lblATK.setLayoutParams(llParams);
+        lblATK.setTextColor(getResources().getColor(R.color.textColor));
+        wrapper.addView(lblATK);
+
+        TextView lblDivider = new TextView(getApplicationContext());
+        lblDivider.setText("/");
+        lblDivider.setLayoutParams(llParams);
+        lblDivider.setTextColor(getResources().getColor(R.color.textColor));
+        wrapper.addView(lblDivider);
+
+        TextView lblDEF = new TextView(getApplicationContext());
+        lblDEF.setText(counter.getDEF() + "");
+        lblDEF.setLayoutParams(llParams);
+        lblDEF.setTextColor(getResources().getColor(R.color.textColor));
+        wrapper.addView(lblDEF);
+
+        switch(player.getPlayerID()) {
+            case ONE:
+                player1Layout.addView(wrapper);
+                player1Layout.setVisibility(View.VISIBLE);
+                break;
+            default:
+                break;
+        }
+
+        //mainLayout.addView(wrapper);
     }
 }
