@@ -84,6 +84,7 @@ public class CounterActivity extends AppCompatActivity {
                 dialogButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        counter = null;
                         try {
                             counter = new Counter(txtCardDescription.getText().toString(),
                                     Integer.parseInt(txtATK.getText().toString()),
@@ -121,7 +122,7 @@ public class CounterActivity extends AppCompatActivity {
                             mainLayout.addView(wrapper);
                             */
 
-                        } catch(NullPointerException ex) {
+                        } catch(NullPointerException | NumberFormatException ex) {
                             Snackbar.make(findViewById(android.R.id.content), R.string.dialog_countermanager_error_invalid_entry, Snackbar.LENGTH_LONG).show();
                         }
 
@@ -161,6 +162,10 @@ public class CounterActivity extends AppCompatActivity {
     }
 
     private void AddNewCounterEntry(Player player) {
+
+        int paddingLeft = 50;
+        int paddingRight = 50;
+        int fontSize = 24;
         /*
         TextView hello = new TextView(this);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
@@ -170,33 +175,45 @@ public class CounterActivity extends AppCompatActivity {
         mainLayout.addView(hello);
         */
         LinearLayout.LayoutParams llParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        LinearLayout.LayoutParams llParamsSpacer = new LinearLayout.LayoutParams(0 ,0, 1f);
 
         LinearLayout wrapper = new LinearLayout(getApplicationContext());
         wrapper.setOrientation(LinearLayout.HORIZONTAL);
         wrapper.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
+        wrapper.setPadding(paddingLeft,0,paddingRight,0);
+
         //LinearLayout.LayoutParams wrapperParams = new LinearLayout.LayoutParams()
 
         TextView lblDescription = new TextView(getApplicationContext());
         lblDescription.setText(counter.getDescription());
         lblDescription.setLayoutParams(llParams);
+        lblDescription.setTextSize(fontSize);
         lblDescription.setTextColor(getResources().getColor(R.color.textColor));
         wrapper.addView(lblDescription);
+
+        View spacer = new View(getApplicationContext());
+        spacer.setLayoutParams(llParamsSpacer);
+        wrapper.addView(spacer);
+
 
         TextView lblATK = new TextView(getApplicationContext());
         lblATK.setText(counter.getATK() + "");
         lblATK.setLayoutParams(llParams);
+        lblATK.setTextSize(fontSize);
         lblATK.setTextColor(getResources().getColor(R.color.textColor));
         wrapper.addView(lblATK);
 
         TextView lblDivider = new TextView(getApplicationContext());
-        lblDivider.setText("/");
+        lblDivider.setText(" / ");
         lblDivider.setLayoutParams(llParams);
+        lblDivider.setTextSize(fontSize);
         lblDivider.setTextColor(getResources().getColor(R.color.textColor));
         wrapper.addView(lblDivider);
 
         TextView lblDEF = new TextView(getApplicationContext());
         lblDEF.setText(counter.getDEF() + "");
         lblDEF.setLayoutParams(llParams);
+        lblDEF.setTextSize(fontSize);
         lblDEF.setTextColor(getResources().getColor(R.color.textColor));
         wrapper.addView(lblDEF);
 
