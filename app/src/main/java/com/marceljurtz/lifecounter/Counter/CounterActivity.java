@@ -1,6 +1,8 @@
 package com.marceljurtz.lifecounter.Counter;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -17,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.marceljurtz.lifecounter.Helper.Counter;
 import com.marceljurtz.lifecounter.Helper.Player;
@@ -216,6 +219,21 @@ public class CounterActivity extends AppCompatActivity {
         lblDEF.setTextSize(fontSize);
         lblDEF.setTextColor(getResources().getColor(R.color.textColor));
         wrapper.addView(lblDEF);
+
+        wrapper.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                new AlertDialog.Builder(CounterActivity.this)
+                        .setTitle(getResources().getString(R.string.dialog_countermanager_delete_title))
+                        .setMessage(getResources().getString(R.string.dialog_countermanager_delete_message))
+                        .setPositiveButton(getResources().getString(R.string.yes), new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int whichButton) {
+                                // TODO Delete item
+                            }})
+                        .setNegativeButton(getResources().getString(R.string.no), null).show();
+                return true;
+            }
+        });
 
         switch(player.getPlayerID()) {
             case ONE:

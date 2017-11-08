@@ -9,6 +9,8 @@
     <string name="setting_default_long_click_points">Gedrückt halten (+/-):</string>
     <string name="setting_screen_timeout_disable">Bildschirm-timeout deaktivieren:</string>
 
+    <string name="yes">Ja</string>
+    <string name="no">Nein</string>
     <string name="ok">OK</string>
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
@@ -62,4 +64,8 @@
     <string name="dialog_countermanager_new_header">Neuer Eintrag</string>
     <string name="dialog_countermanager_hint_card_description">Card Description</string>
     <string name="dialog_countermanager_error_invalid_entry">Ungültige Eingabe!</string>
+
+    <string name="dialog_countermanager_delete_title">Eintrag löschen</string>
+    <string name="dialog_countermanager_delete_message">Möchtest du diesen Eintrag löschen?</string>
+    <string name="dialog_countermanager_delete_confirmation">Eintrag gelöscht</string>
 </resources>
