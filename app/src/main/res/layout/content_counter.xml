@@ -7,53 +7,77 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.marceljurtz.lifecounter.Counter.CounterActivity"
     tools:showIn="@layout/activity_counter"
-    android:orientation="vertical"
-    android:id="@+id/llCounterMain">
+    android:orientation="vertical">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/llCounterPlayer1"
-        android:orientation="vertical"
-        android:visibility="gone">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/dialog_textsize_header"
-            android:text="Player 1"/>
+        <LinearLayout
+            android:id="@+id/llCounterMain"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/llCounterPlayer1"
+                android:orientation="vertical"
+                android:visibility="gone">
 
-    </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/dialog_textsize_header"
+                    android:text="Player 1"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/llCounterPlayer2"
-        android:orientation="vertical"
-        android:visibility="gone">
+            </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/llCounterPlayer2"
+                android:orientation="vertical"
+                android:visibility="gone">
 
-    </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/dialog_textsize_header"
+                    android:text="Player 2"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/llCounterPlayer3"
-        android:orientation="vertical"
-        android:visibility="gone">
+            </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/llCounterPlayer3"
+                android:orientation="vertical"
+                android:visibility="gone">
 
-    </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/dialog_textsize_header"
+                    android:text="Player 3"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/llCounterPlayer4"
-        android:orientation="vertical"
-        android:visibility="gone">
+            </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/llCounterPlayer4"
+                android:orientation="vertical"
+                android:visibility="gone">
 
-    </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/dialog_textsize_header"
+                    android:text="Player 4"/>
 
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

@@ -78,7 +78,7 @@ public class CounterActivity extends AppCompatActivity {
                 final EditText txtCardDescription = (EditText)dialog.findViewById(R.id.txtCardDescription);
                 final EditText txtATK = (EditText)dialog.findViewById(R.id.txtCardAtk);
                 final EditText txtDEF = (EditText)dialog.findViewById(R.id.txtCardDef);
-                Spinner spPlayers = (Spinner)dialog.findViewById(R.id.spUserSelection);
+                final Spinner spPlayers = (Spinner)dialog.findViewById(R.id.spUserSelection);
                 spPlayers.setAdapter(adapter);
 
                 Button dialogButton = (Button) dialog.findViewById(R.id.dialogButtonOK);
@@ -133,7 +133,8 @@ public class CounterActivity extends AppCompatActivity {
 
                         if(counter != null) {
                             // TODO
-                            AddNewCounterEntry(new Player(PlayerID.ONE));
+                            // AddNewCounterEntry(new Player(PlayerID.ONE));
+                            AddNewCounterEntry((Player)spPlayers.getSelectedItem());
                         }
                     }
                 });
@@ -180,7 +181,7 @@ public class CounterActivity extends AppCompatActivity {
         LinearLayout.LayoutParams llParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         LinearLayout.LayoutParams llParamsSpacer = new LinearLayout.LayoutParams(0 ,0, 1f);
 
-        LinearLayout wrapper = new LinearLayout(getApplicationContext());
+        final LinearLayout wrapper = new LinearLayout(getApplicationContext());
         wrapper.setOrientation(LinearLayout.HORIZONTAL);
         wrapper.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
         wrapper.setPadding(paddingLeft,0,paddingRight,0);
@@ -240,8 +241,22 @@ public class CounterActivity extends AppCompatActivity {
                 player1Layout.addView(wrapper);
                 player1Layout.setVisibility(View.VISIBLE);
                 break;
+            case TWO:
+                player2Layout.addView(wrapper);
+                player2Layout.setVisibility(View.VISIBLE);
+                break;
+            case THREE:
+                player3Layout.addView(wrapper);
+                player3Layout.setVisibility(View.VISIBLE);
+                break;
+            case FOUR:
+                player4Layout.addView(wrapper);
+                player4Layout.setVisibility(View.VISIBLE);
+                break;
             default:
                 break;
+
+
         }
 
         //mainLayout.addView(wrapper);
