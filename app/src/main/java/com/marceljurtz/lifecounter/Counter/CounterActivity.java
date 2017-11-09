@@ -18,6 +18,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,7 +42,17 @@ public class CounterActivity extends AppCompatActivity {
     LinearLayout player3Layout;
     LinearLayout player4Layout;
 
+    TextView lblCounterHeaderPlayer1;
+    TextView lblCounterHeaderPlayer2;
+    TextView lblCounterHeaderPlayer3;
+    TextView lblCounterHeaderPlayer4;
+
     public Counter counter;
+
+    Player player1;
+    Player player2;
+    Player player3;
+    Player player4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,17 +61,51 @@ public class CounterActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        player1Layout = (LinearLayout)findViewById(R.id.llCounterPlayer1);
-        player2Layout = (LinearLayout)findViewById(R.id.llCounterPlayer2);
-        player3Layout = (LinearLayout)findViewById(R.id.llCounterPlayer3);
-        player4Layout = (LinearLayout)findViewById(R.id.llCounterPlayer4);
+        player1Layout = (LinearLayout) findViewById(R.id.llCounterPlayer1);
+        player2Layout = (LinearLayout) findViewById(R.id.llCounterPlayer2);
+        player3Layout = (LinearLayout) findViewById(R.id.llCounterPlayer3);
+        player4Layout = (LinearLayout) findViewById(R.id.llCounterPlayer4);
+
+        player1 = new Player(PlayerID.ONE);
+        player2 = new Player(PlayerID.TWO);
+        player3 = new Player(PlayerID.THREE);
+        player4 = new Player(PlayerID.FOUR);
+
+        lblCounterHeaderPlayer1 = (TextView) findViewById(R.id.lblCountersPlayer1);
+        lblCounterHeaderPlayer1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LoadPlayerDescriptionDialog(player1);
+            }
+        });
+        lblCounterHeaderPlayer2 = (TextView) findViewById(R.id.lblCountersPlayer2);
+        lblCounterHeaderPlayer2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LoadPlayerDescriptionDialog(player2);
+            }
+        });
+        lblCounterHeaderPlayer3 = (TextView) findViewById(R.id.lblCountersPlayer3);
+        lblCounterHeaderPlayer3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LoadPlayerDescriptionDialog(player3);
+            }
+        });
+        lblCounterHeaderPlayer4 = (TextView) findViewById(R.id.lblCountersPlayer4);
+        lblCounterHeaderPlayer4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LoadPlayerDescriptionDialog(player4);
+            }
+        });
 
         // TODO
         players = new ArrayList<>();
-        players.add(new Player(PlayerID.ONE));
-        players.add(new Player(PlayerID.TWO));
-        players.add(new Player(PlayerID.THREE));
-        players.add(new Player(PlayerID.FOUR));
+        players.add(player1);
+        players.add(player2);
+        players.add(player3);
+        players.add(player4);
 
         final ArrayAdapter<Player> adapter =
                 new ArrayAdapter<Player>(getApplicationContext(), R.layout.spinner_item, players);
@@ -75,10 +120,10 @@ public class CounterActivity extends AppCompatActivity {
                 dialog.setContentView(R.layout.dialog_countermanager_new);
                 //dialog.setTitle("Title...");
 
-                final EditText txtCardDescription = (EditText)dialog.findViewById(R.id.txtCardDescription);
-                final EditText txtATK = (EditText)dialog.findViewById(R.id.txtCardAtk);
-                final EditText txtDEF = (EditText)dialog.findViewById(R.id.txtCardDef);
-                final Spinner spPlayers = (Spinner)dialog.findViewById(R.id.spUserSelection);
+                final EditText txtCardDescription = (EditText) dialog.findViewById(R.id.txtCardDescription);
+                final EditText txtATK = (EditText) dialog.findViewById(R.id.txtCardAtk);
+                final EditText txtDEF = (EditText) dialog.findViewById(R.id.txtCardDef);
+                final Spinner spPlayers = (Spinner) dialog.findViewById(R.id.spUserSelection);
                 spPlayers.setAdapter(adapter);
 
                 Button dialogButton = (Button) dialog.findViewById(R.id.dialogButtonOK);
@@ -125,16 +170,16 @@ public class CounterActivity extends AppCompatActivity {
                             mainLayout.addView(wrapper);
                             */
 
-                        } catch(NullPointerException | NumberFormatException ex) {
+                        } catch (NullPointerException | NumberFormatException ex) {
                             Snackbar.make(findViewById(android.R.id.content), R.string.dialog_countermanager_error_invalid_entry, Snackbar.LENGTH_LONG).show();
                         }
 
                         dialog.dismiss();
 
-                        if(counter != null) {
+                        if (counter != null) {
                             // TODO
                             // AddNewCounterEntry(new Player(PlayerID.ONE));
-                            AddNewCounterEntry((Player)spPlayers.getSelectedItem());
+                            AddNewCounterEntry((Player) spPlayers.getSelectedItem());
                         }
                     }
                 });
@@ -179,12 +224,12 @@ public class CounterActivity extends AppCompatActivity {
         mainLayout.addView(hello);
         */
         LinearLayout.LayoutParams llParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        LinearLayout.LayoutParams llParamsSpacer = new LinearLayout.LayoutParams(0 ,0, 1f);
+        LinearLayout.LayoutParams llParamsSpacer = new LinearLayout.LayoutParams(0, 0, 1f);
 
         final LinearLayout wrapper = new LinearLayout(getApplicationContext());
         wrapper.setOrientation(LinearLayout.HORIZONTAL);
         wrapper.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
-        wrapper.setPadding(paddingLeft,0,paddingRight,0);
+        wrapper.setPadding(paddingLeft, 0, paddingRight, 0);
 
         //LinearLayout.LayoutParams wrapperParams = new LinearLayout.LayoutParams()
 
@@ -230,13 +275,14 @@ public class CounterActivity extends AppCompatActivity {
                         .setPositiveButton(getResources().getString(R.string.yes), new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int whichButton) {
                                 // TODO Delete item
-                            }})
+                            }
+                        })
                         .setNegativeButton(getResources().getString(R.string.no), null).show();
                 return true;
             }
         });
 
-        switch(player.getPlayerID()) {
+        switch (player.getPlayerID()) {
             case ONE:
                 player1Layout.addView(wrapper);
                 player1Layout.setVisibility(View.VISIBLE);
@@ -260,5 +306,52 @@ public class CounterActivity extends AppCompatActivity {
         }
 
         //mainLayout.addView(wrapper);
+    }
+
+    private void LoadPlayerDescriptionDialog(final Player player) {
+        final Dialog dialog = new Dialog(CounterActivity.this);
+        dialog.setContentView(R.layout.dialog_countermanager_playerdescription);
+        //dialog.setTitle("Title...");
+
+        final EditText txtPlayerDescription = (EditText) dialog.findViewById(R.id.txtCounterPlayerDescription);
+        txtPlayerDescription.setText(player.getPlayerIdentification());
+
+
+        Button dialogButton = (Button) dialog.findViewById(R.id.cmdCounterPlayerDescrptionDialogOK);
+        // if button is clicked, close the custom dialog
+
+        dialogButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                counter = null;
+                String newDescription = txtPlayerDescription.getText().toString();
+                dialog.dismiss();
+
+                if (newDescription != null && newDescription.length() > 0) {
+                    switch (player.getPlayerID()) {
+                        case ONE:
+                            lblCounterHeaderPlayer1.setText(newDescription);
+                            player1.setPlayerIdentification(newDescription);
+                            break;
+                        case TWO:
+                            lblCounterHeaderPlayer2.setText(newDescription);
+                            player2.setPlayerIdentification(newDescription);
+                            break;
+                        case THREE:
+                            lblCounterHeaderPlayer3.setText(newDescription);
+                            player3.setPlayerIdentification(newDescription);
+                            break;
+                        case FOUR:
+                            lblCounterHeaderPlayer4.setText(newDescription);
+                            player4.setPlayerIdentification(newDescription);
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+        });
+
+        dialog.show();
     }
 }

@@ -27,8 +27,10 @@
                 android:visibility="gone">
 
                 <TextView
+                    android:id="@+id/lblCountersPlayer1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/counter_player_margin"
                     android:textSize="@dimen/dialog_textsize_header"
                     android:text="Player 1"/>
 
@@ -39,11 +41,14 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/llCounterPlayer2"
                 android:orientation="vertical"
+                android:layout_marginTop="@dimen/counter_player_margin_top"
                 android:visibility="gone">
 
                 <TextView
+                    android:id="@+id/lblCountersPlayer2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/counter_player_margin"
                     android:textSize="@dimen/dialog_textsize_header"
                     android:text="Player 2"/>
 
@@ -54,11 +59,14 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/llCounterPlayer3"
                 android:orientation="vertical"
+                android:layout_marginTop="@dimen/counter_player_margin_top"
                 android:visibility="gone">
 
                 <TextView
+                    android:id="@+id/lblCountersPlayer3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/counter_player_margin"
                     android:textSize="@dimen/dialog_textsize_header"
                     android:text="Player 3"/>
 
@@ -69,11 +77,14 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/llCounterPlayer4"
                 android:orientation="vertical"
+                android:layout_marginTop="@dimen/counter_player_margin_top"
                 android:visibility="gone">
 
                 <TextView
+                    android:id="@+id/lblCountersPlayer4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/counter_player_margin"
                     android:textSize="@dimen/dialog_textsize_header"
                     android:text="Player 4"/>
 
