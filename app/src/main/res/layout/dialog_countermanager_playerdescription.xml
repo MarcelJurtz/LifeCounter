@@ -8,12 +8,12 @@
         android:id="@+id/txtCounterPlayerDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="text"
+        android:inputType="textCapWords"
         android:maxLines="1" />
 
     <Button
         android:id="@+id/cmdCounterPlayerDescrptionDialogOK"
-        android:text="@string/ok"
+        android:text="@string/dialog_countermanager_edit_playername_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
