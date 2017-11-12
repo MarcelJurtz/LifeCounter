@@ -30,7 +30,7 @@ import com.marceljurtz.lifecounter.R;
 
 import java.util.ArrayList;
 
-public class CounterActivity extends AppCompatActivity {
+public class CounterActivity extends AppCompatActivity implements ICounterView {
 
     private CounterPresenter presenter;
 
@@ -54,6 +54,8 @@ public class CounterActivity extends AppCompatActivity {
     Player player2;
     Player player3;
     Player player4;
+
+    ArrayAdapter<Player> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,89 +110,19 @@ public class CounterActivity extends AppCompatActivity {
         players.add(player3);
         players.add(player4);
 
-        final ArrayAdapter<Player> adapter =
-                new ArrayAdapter<Player>(getApplicationContext(), R.layout.spinner_item, players);
+        adapter = new ArrayAdapter<Player>(getApplicationContext(), R.layout.spinner_item, players);
         adapter.setDropDownViewResource(R.layout.spinner_item);
+
+        presenter = new CounterPresenter(this, players);
+        presenter.onCreate();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // custom dialog
-                final Dialog dialog = new Dialog(CounterActivity.this);
-                dialog.setContentView(R.layout.dialog_countermanager_new);
-                //dialog.setTitle("Title...");
-
-                final EditText txtCardDescription = (EditText) dialog.findViewById(R.id.txtCardDescription);
-                final EditText txtATK = (EditText) dialog.findViewById(R.id.txtCardAtk);
-                final EditText txtDEF = (EditText) dialog.findViewById(R.id.txtCardDef);
-                final Spinner spPlayers = (Spinner) dialog.findViewById(R.id.spUserSelection);
-                spPlayers.setAdapter(adapter);
-
-                Button dialogButton = (Button) dialog.findViewById(R.id.dialogButtonOK);
-                // if button is clicked, close the custom dialog
-
-                dialogButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        counter = null;
-                        try {
-                            counter = new Counter(txtCardDescription.getText().toString(),
-                                    Integer.parseInt(txtATK.getText().toString()),
-                                    Integer.parseInt(txtDEF.getText().toString()));
-
-
-                            /*
-                            LinearLayout.LayoutParams llParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-
-                            LinearLayout wrapper = new LinearLayout(getApplicationContext());
-                            wrapper.setOrientation(LinearLayout.HORIZONTAL);
-                            wrapper.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT););
-                            //LinearLayout.LayoutParams wrapperParams = new LinearLayout.LayoutParams()
-
-                            TextView lblDescription = new TextView(getApplicationContext());
-                            lblDescription.setText(counter.getDescription());
-                            lblDescription.setLayoutParams(llParams);
-                            wrapper.addView(lblDescription);
-
-                            TextView lblATK = new TextView(getApplicationContext());
-                            lblATK.setText(counter.getATK());
-                            lblATK.setLayoutParams(llParams);
-                            wrapper.addView(lblATK);
-
-                            TextView lblDivider = new TextView(getApplicationContext());
-                            lblDivider.setText("/");
-                            lblDivider.setLayoutParams(llParams);
-                            wrapper.addView(lblDivider);
-
-                            TextView lblDEF = new TextView(getApplicationContext());
-                            lblDEF.setText(counter.getDEF());
-                            lblDEF.setLayoutParams(llParams);
-                            wrapper.addView(lblDEF);
-
-                            mainLayout.addView(wrapper);
-                            */
-
-                        } catch (NullPointerException | NumberFormatException ex) {
-                            Snackbar.make(findViewById(android.R.id.content), R.string.dialog_countermanager_error_invalid_entry, Snackbar.LENGTH_LONG).show();
-                        }
-
-                        dialog.dismiss();
-
-                        if (counter != null) {
-                            // TODO
-                            // AddNewCounterEntry(new Player(PlayerID.ONE));
-                            AddNewCounterEntry((Player) spPlayers.getSelectedItem());
-                        }
-                    }
-                });
-
-                dialog.show();
+                presenter.OnCreateNewCounterButtonTap();
             }
         });
-
-        presenter = new CounterPresenter();
-        presenter.onCreate();
     }
 
     @Override
@@ -211,19 +143,49 @@ public class CounterActivity extends AppCompatActivity {
         presenter.onResume();
     }
 
-    private void AddNewCounterEntry(Player player) {
+    @Override
+    public void LoadNewCounterDialog() {
+        final Dialog dialog = new Dialog(CounterActivity.this);
+        dialog.setContentView(R.layout.dialog_countermanager_new);
 
+        final EditText txtCardDescription = (EditText) dialog.findViewById(R.id.txtCardDescription);
+        final EditText txtATK = (EditText) dialog.findViewById(R.id.txtCardAtk);
+        final EditText txtDEF = (EditText) dialog.findViewById(R.id.txtCardDef);
+        final Spinner spPlayers = (Spinner) dialog.findViewById(R.id.spUserSelection);
+        spPlayers.setAdapter(adapter);
+
+        Button dialogButton = (Button) dialog.findViewById(R.id.dialogButtonOK);
+
+        dialogButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                counter = null;
+                try {
+                    counter = new Counter(txtCardDescription.getText().toString(),
+                            Integer.parseInt(txtATK.getText().toString()),
+                            Integer.parseInt(txtDEF.getText().toString()));
+
+                } catch (NullPointerException | NumberFormatException ex) {
+                    Snackbar.make(findViewById(android.R.id.content), R.string.dialog_countermanager_error_invalid_entry, Snackbar.LENGTH_LONG).show();
+                }
+
+                dialog.dismiss();
+
+                if (counter != null) {
+                    presenter.AddCounterToPlayer((Player) spPlayers.getSelectedItem(), counter);
+                }
+            }
+        });
+
+        dialog.show();
+    }
+
+    @Override
+    public void DisplayNewCounterEntryToPlayer(Player player, Counter counter) {
         int paddingLeft = 50;
         int paddingRight = 50;
         int fontSize = 24;
-        /*
-        TextView hello = new TextView(this);
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        hello.setLayoutParams(params);
-        hello.setText("Hello");
 
-        mainLayout.addView(hello);
-        */
         LinearLayout.LayoutParams llParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         LinearLayout.LayoutParams llParamsSpacer = new LinearLayout.LayoutParams(0, 0, 1f);
 
@@ -231,8 +193,6 @@ public class CounterActivity extends AppCompatActivity {
         wrapper.setOrientation(LinearLayout.HORIZONTAL);
         wrapper.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
         wrapper.setPadding(paddingLeft, 0, paddingRight, 0);
-
-        //LinearLayout.LayoutParams wrapperParams = new LinearLayout.LayoutParams()
 
         TextView lblDescription = new TextView(getApplicationContext());
         lblDescription.setText(counter.getDescription());
@@ -244,7 +204,6 @@ public class CounterActivity extends AppCompatActivity {
         View spacer = new View(getApplicationContext());
         spacer.setLayoutParams(llParamsSpacer);
         wrapper.addView(spacer);
-
 
         TextView lblATK = new TextView(getApplicationContext());
         lblATK.setText(counter.getATK() + "");
@@ -305,20 +264,17 @@ public class CounterActivity extends AppCompatActivity {
 
 
         }
-
-        //mainLayout.addView(wrapper);
     }
 
-    private void LoadPlayerDescriptionDialog(final Player player) {
+    @Override
+    public void LoadPlayerDescriptionDialog(final Player player) {
         final Dialog dialog = new Dialog(CounterActivity.this);
         dialog.setContentView(R.layout.dialog_countermanager_playerdescription);
-        //dialog.setTitle("Title...");
 
         final EditText txtPlayerDescription = (EditText) dialog.findViewById(R.id.txtCounterPlayerDescription);
         txtPlayerDescription.setText(player.getPlayerIdentification());
 
         Button dialogButton = (Button) dialog.findViewById(R.id.cmdCounterPlayerDescrptionDialogOK);
-        // if button is clicked, close the custom dialog
 
         dialogButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -328,30 +284,31 @@ public class CounterActivity extends AppCompatActivity {
                 dialog.dismiss();
 
                 if (newDescription != null && newDescription.length() > 0) {
-                    switch (player.getPlayerID()) {
-                        case ONE:
-                            lblCounterHeaderPlayer1.setText(newDescription);
-                            player1.setPlayerIdentification(newDescription);
-                            break;
-                        case TWO:
-                            lblCounterHeaderPlayer2.setText(newDescription);
-                            player2.setPlayerIdentification(newDescription);
-                            break;
-                        case THREE:
-                            lblCounterHeaderPlayer3.setText(newDescription);
-                            player3.setPlayerIdentification(newDescription);
-                            break;
-                        case FOUR:
-                            lblCounterHeaderPlayer4.setText(newDescription);
-                            player4.setPlayerIdentification(newDescription);
-                            break;
-                        default:
-                            break;
-                    }
+                    presenter.OnPlayerIdentificationChanged(player, newDescription);
                 }
             }
         });
 
         dialog.show();
+    }
+
+    @Override
+    public void SetPlayerLabelHeader(Player player, String headerText) {
+        switch (player.getPlayerID()) {
+            case ONE:
+                lblCounterHeaderPlayer1.setText(headerText);
+                break;
+            case TWO:
+                lblCounterHeaderPlayer2.setText(headerText);
+                break;
+            case THREE:
+                lblCounterHeaderPlayer3.setText(headerText);
+                break;
+            case FOUR:
+                lblCounterHeaderPlayer4.setText(headerText);
+                break;
+            default:
+                break;
+        }
     }
 }

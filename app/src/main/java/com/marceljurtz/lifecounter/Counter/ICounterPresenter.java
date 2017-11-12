@@ -1,9 +1,14 @@
 package com.marceljurtz.lifecounter.Counter;
 
+import com.marceljurtz.lifecounter.Helper.Counter;
 import com.marceljurtz.lifecounter.Helper.Player;
 import com.marceljurtz.lifecounter.Helper.BaseInterface.ICounterNavDrawerInteraction;
 import com.marceljurtz.lifecounter.Helper.BaseInterface.IPresenter;
 
+import java.util.List;
+
 public interface ICounterPresenter extends IPresenter, ICounterNavDrawerInteraction {
-    void OnPlayerIdentificationClick(Player player);
+    void OnCreateNewCounterButtonTap();
+    void AddCounterToPlayer(Player player, Counter counter);
+    void OnPlayerIdentificationChanged(Player player, String newIdentification);
 }
