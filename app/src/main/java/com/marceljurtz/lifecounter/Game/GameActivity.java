@@ -24,6 +24,7 @@ import com.marceljurtz.lifecounter.About.AboutActivity;
 import com.marceljurtz.lifecounter.Counter.CounterActivity;
 import com.marceljurtz.lifecounter.Dicing.DicingActivity;
 import com.marceljurtz.lifecounter.Helper.ClickType;
+import com.marceljurtz.lifecounter.Helper.Counter;
 import com.marceljurtz.lifecounter.Helper.MagicColor;
 import com.marceljurtz.lifecounter.Helper.Operator;
 import com.marceljurtz.lifecounter.Helper.Player;
@@ -910,6 +911,13 @@ public class GameActivity extends AppCompatActivity implements IGameView {
     @Override
     public void loadCounterManagerActivity() {
         Intent intent = new Intent(getApplicationContext(), CounterActivity.class);
+        player1.AddCounter(new Counter("Test",5,5));
+        intent.putExtra("player1",player1);
+        intent.putExtra("player2",player2);
+        if(playeramount == 4) {
+            intent.putExtra("player3",player3);
+            intent.putExtra("player4",player4);
+        }
         startActivity(intent);
     }
 

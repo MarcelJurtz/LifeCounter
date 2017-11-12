@@ -2,6 +2,8 @@ package com.marceljurtz.lifecounter.Helper;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -11,12 +13,11 @@ import com.marceljurtz.lifecounter.Helper.PreferenceManager;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Player {
+public class Player implements Parcelable {
     private int lifePoints;
     private int poisonPoints;
     private PlayerID playerID;
     private String playerIdentification;
-
     private ArrayList<Counter> counters;
 
     private final int DEFAULT_LIFEPOINTS = 20;
@@ -107,4 +108,40 @@ public class Player {
         }
         else return playerIdentification;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(lifePoints);
+        dest.writeInt(poisonPoints);
+        dest.writeString(playerID.name());
+        dest.writeString(playerIdentification);
+        dest.writeList(counters);
+    }
+
+    private Player(Parcel source) {
+        lifePoints = source.readInt();
+        poisonPoints = source.readInt();
+        playerID = PlayerID.valueOf(source.readString());
+        playerIdentification = source.readString();
+        counters = new ArrayList<>();
+        source.readList(counters, Counter.class.getClassLoader());
+    }
+
+    public static final Parcelable.Creator<Player> CREATOR
+            = new Parcelable.Creator<Player>() {
+        @Override
+        public Player createFromParcel(Parcel in) {
+            return new Player(in);
+        }
+
+        @Override
+        public Player[] newArray(int size) {
+            return new Player[size];
+        }
+    };
 }

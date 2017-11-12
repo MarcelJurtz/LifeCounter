@@ -10,6 +10,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.InputType;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -29,6 +30,7 @@ import com.marceljurtz.lifecounter.Helper.PlayerID;
 import com.marceljurtz.lifecounter.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class CounterActivity extends AppCompatActivity implements ICounterView {
 
@@ -69,10 +71,14 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
         player3Layout = (LinearLayout) findViewById(R.id.llCounterPlayer3);
         player4Layout = (LinearLayout) findViewById(R.id.llCounterPlayer4);
 
-        player1 = new Player(PlayerID.ONE);
-        player2 = new Player(PlayerID.TWO);
-        player3 = new Player(PlayerID.THREE);
-        player4 = new Player(PlayerID.FOUR);
+        player1 = (Player) getIntent().getParcelableExtra("player1");
+        player2 = (Player) getIntent().getParcelableExtra("player2");
+        player3 = (Player) getIntent().getParcelableExtra("player3");
+        player4 = (Player) getIntent().getParcelableExtra("player4");
+
+        players = new ArrayList<>();
+        players.add(player1);
+        players.add(player2);
 
         lblCounterHeaderPlayer1 = (TextView) findViewById(R.id.lblCountersPlayer1);
         lblCounterHeaderPlayer1.setOnClickListener(new View.OnClickListener() {
@@ -88,27 +94,26 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
                 LoadPlayerDescriptionDialog(player2);
             }
         });
-        lblCounterHeaderPlayer3 = (TextView) findViewById(R.id.lblCountersPlayer3);
-        lblCounterHeaderPlayer3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                LoadPlayerDescriptionDialog(player3);
-            }
-        });
-        lblCounterHeaderPlayer4 = (TextView) findViewById(R.id.lblCountersPlayer4);
-        lblCounterHeaderPlayer4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                LoadPlayerDescriptionDialog(player4);
-            }
-        });
 
-        // TODO
-        players = new ArrayList<>();
-        players.add(player1);
-        players.add(player2);
-        players.add(player3);
-        players.add(player4);
+        if(player3 != null && player4 != null) {
+            players.add(player3);
+            players.add(player4);
+
+            lblCounterHeaderPlayer3 = (TextView) findViewById(R.id.lblCountersPlayer3);
+            lblCounterHeaderPlayer3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    LoadPlayerDescriptionDialog(player3);
+                }
+            });
+            lblCounterHeaderPlayer4 = (TextView) findViewById(R.id.lblCountersPlayer4);
+            lblCounterHeaderPlayer4.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    LoadPlayerDescriptionDialog(player4);
+                }
+            });
+        }
 
         adapter = new ArrayAdapter<Player>(getApplicationContext(), R.layout.spinner_item, players);
         adapter.setDropDownViewResource(R.layout.spinner_item);

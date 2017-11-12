@@ -51,9 +51,4 @@ public class CounterPresenter implements ICounterPresenter {
         player.setPlayerIdentification(newIdentification);
         view.SetPlayerLabelHeader(player, newIdentification);
     }
-
-    @Override
-    public void OnPlayerIdentificationTap(Player player) {
-        view.LoadPlayerDescriptionDialog(player);
-    }
 }
