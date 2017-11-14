@@ -2,30 +2,30 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:id="@+id/navGroupGeneral">
         <item
-            android:id="@+id/nav_dicing_useramount_2"
+            android:id="@+id/nav_countermanager_useramount_2"
             android:icon="@drawable/ic_user"
             android:title="@string/menu_entry_load_players_2" />
         <item
-            android:id="@+id/nav_dicing_useramount_4"
+            android:id="@+id/nav_countermanager_useramount_4"
             android:icon="@drawable/ic_users"
             android:title="@string/menu_entry_load_players_4" />
 
         <item
-            android:id="@+id/nav_dicing"
+            android:id="@+id/nav_countermanager_dicing"
             android:icon="@drawable/ic_casino_black_24dp"
             android:title="@string/menu_entry_load_dicing">
 
         </item>
     </group>
 
-    <group android:id="@+id/nav_dicing_GroupConfig">
+    <group android:id="@+id/nav_countermanager_GroupConfig">
         <item android:title="@string/menu_area_settings">
             <item
-                android:id="@+id/nav_dicing_settings"
+                android:id="@+id/nav_countermanager_settings"
                 android:icon="@drawable/ic_settings_black_24dp"
                 android:title="@string/menu_entry_settings" />
             <item
-                android:id="@+id/nav_dicing_about"
+                android:id="@+id/nav_countermanager_about"
                 android:icon="@drawable/ic_info_outline_black_24dp"
                 android:title="@string/menu_entry_about" />
         </item>

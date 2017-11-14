@@ -9,4 +9,11 @@ public interface ICounterView extends IView {
     void LoadPlayerDescriptionDialog(Player player);
     void LoadNewCounterDialog();
     void DisplayNewCounterEntryToPlayer(Player player, Counter counter);
+
+    void LoadGameActivity();
+    void LoadDicingActivity();
+    void LoadSettingsActivity();
+    void LoadAboutActivity();
+
+    void GoBackToPreviousActivity();
 }

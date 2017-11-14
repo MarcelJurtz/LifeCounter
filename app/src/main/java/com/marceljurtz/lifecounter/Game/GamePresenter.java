@@ -1,6 +1,7 @@
 package com.marceljurtz.lifecounter.Game;
 
 import android.content.SharedPreferences;
+import android.view.Gravity;
 
 import com.marceljurtz.lifecounter.Helper.ClickType;
 import com.marceljurtz.lifecounter.Helper.Color;
@@ -44,7 +45,7 @@ public class GamePresenter implements IGamePresenter {
 
         if(screenLayout != SCREEN_XLARGE && gameActivity.getPlayerAmount() == 4) hideOtherControlsWhenSettingsDisplayed = true;
 
-        player1 = new Player(PlayerID.ONE);
+        player1 = new Player(PlayerID.ONE); // SCHEISSE
         player2 = new Player(PlayerID.TWO);
 
         if(gameActivity.getPlayerAmount() == 4) {
@@ -85,6 +86,8 @@ public class GamePresenter implements IGamePresenter {
 
     @Override
     public void onResume() {
+
+        String s = player1.getPlayerIdentification();
         settingsVisible = false;
         gameActivity.disableSettingsControls(hideOtherControlsWhenSettingsDisplayed, poisonVisible);
         gameActivity.settingsButtonDisable();
@@ -106,6 +109,8 @@ public class GamePresenter implements IGamePresenter {
         } else {
             gameActivity.enableScreenTimeout();
         }
+
+        gameActivity.HideNavigationDrawer();
     }
 
     @Override
@@ -295,6 +300,7 @@ public class GamePresenter implements IGamePresenter {
             // Load 4 Player View
             PreferenceManager.saveDefaultPlayerAmount(preferences, 4);
         }
+        gameActivity.HideNavigationDrawer();
         gameActivity.restartActivity();
     }
 
