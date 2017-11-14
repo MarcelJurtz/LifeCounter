@@ -36,12 +36,12 @@ public class DicingActivity extends AppCompatActivity implements IDicingView {
         navigationView = (NavigationView)findViewById(R.id.navigationViewDicing);
 
         presenter = new DicingPresenter(this);
-        presenter.onCreate();
+        presenter.OnCreate();
 
         rlDicing.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.onScreenTap();
+                presenter.OnScreenTap();
             }
         });
 
@@ -50,19 +50,19 @@ public class DicingActivity extends AppCompatActivity implements IDicingView {
             public boolean onNavigationItemSelected(MenuItem item) {
                 switch(item.getItemId()) {
                     case R.id.nav_dicing_useramount_2:
-                        presenter.onMenuEntryTwoPlayerTap();
+                        presenter.OnMenuEntryTwoPlayerTap();
                         break;
                     case R.id.nav_dicing_useramount_4:
-                        presenter.onMenuEntryFourPlayerTap();
+                        presenter.OnMenuEntryFourPlayerTap();
                         break;
                     case R.id.nav_dicing_settings:
-                        presenter.onMenuEntrySettingsTap();
+                        presenter.OnMenuEntrySettingsTap();
                         break;
                     case R.id.nav_dicing_about:
-                        presenter.onMenuEntryAboutTap();
+                        presenter.OnMenuEntryAboutTap();
                         break;
                     case R.id.nav_countermanager:
-                        presenter.onMenuEntryCounterManagerTap();
+                        presenter.OnMenuEntryCounterManagerTap();
                         break;
                     default:
                         break;
@@ -72,67 +72,67 @@ public class DicingActivity extends AppCompatActivity implements IDicingView {
         });
 
         // Initial dice throw when activity is launching
-        presenter.onScreenTap();
+        presenter.OnScreenTap();
     }
 
     @Override
     protected void onDestroy() {
-        presenter.onDestroy();
+        presenter.OnDestroy();
         super.onDestroy();
     }
 
     @Override
     protected void onPause() {
-        presenter.onPause();
+        presenter.OnPause();
         super.onPause();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        presenter.onResume();
+        presenter.OnResume();
     }
 
     @Override
-    public void setDicingText(String text) {
+    public void SetDicingText(String text) {
         lblDicing.setText(text);
     }
 
     @Override
-    public void startGameActivity() {
+    public void LoadGameActivity() {
         Intent intent = new Intent(getApplicationContext(), GameActivity.class);
         finish();
         startActivity(intent);
     }
 
     @Override
-    public void startSettingsActivity() {
+    public void LoadSettingsActivity() {
         Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
         finish();
         startActivity(intent);
     }
 
     @Override
-    public void startAboutActivity() {
+    public void LoadAboutActivity() {
         Intent intent = new Intent(getApplicationContext(), AboutActivity.class);
         finish();
         startActivity(intent);
     }
 
     @Override
-    public void startCounterManagerActivity() {
+    public void LoadCounterManagerActivity() {
         Intent intent = new Intent(getApplicationContext(), CounterActivity.class);
         finish();
         startActivity(intent);
     }
 
     @Override
-    public SharedPreferences getPreferences() {
+    public SharedPreferences GetPreferences() {
         return getApplicationContext().getSharedPreferences(PreferenceManager.PREFS, Activity.MODE_PRIVATE);
     }
 
     @Override
-    public void setBackgroundColor(Color color) {
+    public void SetBackgroundColor(Color color) {
         rlDicing.setBackgroundColor(color.getIntValue());
     }
 }

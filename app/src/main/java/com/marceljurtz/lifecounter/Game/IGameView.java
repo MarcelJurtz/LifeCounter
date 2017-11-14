@@ -6,48 +6,48 @@ import com.marceljurtz.lifecounter.Helper.PlayerID;
 
 public interface IGameView extends IView {
     // Set color of button, identified by original magic color
-    void initColorButton(MagicColor colorLocation, int color);
+    void InitColorButton(MagicColor colorLocation, int color);
 
     // Set players background color TODO Validate possible duplicate
-    void setLayoutColor(PlayerID playerID, int color);
+    void SetLayoutColor(PlayerID playerID, int color);
 
     // Disable Screen timeout
-    void disableScreenTimeout();
-    void enableScreenTimeout();
+    void DisableScreenTimeout();
+    void EnableScreenTimeout();
 
     // Set life- / poisonpoints
-    void setLifepoints(PlayerID id, String points);
-    void setPoisonpoints(PlayerID id, String points);
+    void SetLifepoints(PlayerID id, String points);
+    void SetPoisonpoints(PlayerID id, String points);
 
     // Enable / Disable energy saving mode
-    void enableEnergySaving(int powerSaveColor, int powerSaveTextColor);
-    void disableEnergySaving(int defaultBlack, int regularTextColor);
+    void EnableEnergySaving(int powerSaveColor, int powerSaveTextColor);
+    void DisableEnergySaving(int defaultBlack, int regularTextColor);
 
     // Launch settings activity
-    void loadSettingsActivity();
-    void loadDicingActivity();
-    void loadAboutActivity();
-    void loadCounterManagerActivity();
+    void LoadSettingsActivity();
+    void LoadDicingActivity();
+    void LoadAboutActivity();
+    void LoadCounterManagerActivity();
 
     // Enable / Disable color controls
-    void settingsButtonEnable();
-    void enableSettingsControls(boolean hideLifecountControls, boolean hidePoisonControls);
-    void settingsButtonDisable();
-    void disableSettingsControls(boolean showOtherControls, boolean showPoisonControls);
+    void SettingsButtonEnable();
+    void EnableSettingsControls(boolean hideLifecountControls, boolean hidePoisonControls);
+    void SettingsButtonDisable();
+    void DisableSettingsControls(boolean showOtherControls, boolean showPoisonControls);
 
     // Enable / Disable poison controls
-    void enablePoisonControls(boolean rearrangeLifepoints);
-    void poisonButtonEnable();
-    void disablePoisonControls(boolean rearrangeLifepoints);
-    void poisonButtonDisable();
+    void EnablePoisonControls(boolean rearrangeLifepoints);
+    void PoisonButtonEnable();
+    void DisablePoisonControls(boolean rearrangeLifepoints);
+    void PoisonButtonDisable();
 
     // Drawer Layout Interaction
-    void setDrawerTextPowerSaving(boolean shouldBeEnabled);
+    void SetDrawerTextPowerSaving(boolean shouldBeEnabled);
     void HideNavigationDrawer();
 
-    int getPlayerAmount();
+    int GetPlayerAmount();
 
-    void restartActivity();
+    void RestartActivity();
 
-    int getScreenSize();
+    int GetScreenSize();
 }

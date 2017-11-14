@@ -6,41 +6,30 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.text.InputType;
-import android.util.Log;
-import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
-import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.marceljurtz.lifecounter.About.AboutActivity;
 import com.marceljurtz.lifecounter.Dicing.DicingActivity;
 import com.marceljurtz.lifecounter.Game.GameActivity;
 import com.marceljurtz.lifecounter.Helper.Counter;
 import com.marceljurtz.lifecounter.Helper.Player;
-import com.marceljurtz.lifecounter.Helper.PlayerID;
 import com.marceljurtz.lifecounter.Helper.PreferenceManager;
 import com.marceljurtz.lifecounter.R;
 import com.marceljurtz.lifecounter.Settings.SettingsActivity;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class CounterActivity extends AppCompatActivity implements ICounterView {
 
@@ -138,7 +127,7 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
         adapter.setDropDownViewResource(R.layout.spinner_item);
 
         presenter = new CounterPresenter(this, preferences, players);
-        presenter.onCreate();
+        presenter.OnCreate();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -155,7 +144,7 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
                 int id = item.getItemId();
                 switch(id) {
                     case R.id.nav_countermanager_useramount_2:
-                        //presenter.onSettingsButtonClick(ClickType.LONG);
+                        //presenter.OnSettingsButtonClick(ClickType.LONG);
                         presenter.OnMenuEntryTwoPlayerClick();
                         break;
                     case R.id.nav_countermanager_useramount_4:
@@ -180,20 +169,20 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
 
     @Override
     protected void onDestroy() {
-        presenter.onDestroy();
+        presenter.OnDestroy();
         super.onDestroy();
     }
 
     @Override
     protected void onPause() {
-        presenter.onPause();
+        presenter.OnPause();
         super.onPause();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        presenter.onResume();
+        presenter.OnResume();
     }
 
     @Override

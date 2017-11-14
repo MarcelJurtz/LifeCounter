@@ -2,7 +2,6 @@ package com.marceljurtz.lifecounter.About;
 
 import android.content.SharedPreferences;
 
-import com.marceljurtz.lifecounter.Helper.BaseInterface.IAboutNavDrawerInteraction;
 import com.marceljurtz.lifecounter.Helper.PreferenceManager;
 
 public class AboutPresenter implements IAboutPresenter {
@@ -19,28 +18,28 @@ public class AboutPresenter implements IAboutPresenter {
     //region Activity Lifecycle
 
     @Override
-    public void onCreate() {
-        preferences = view.getPreferences();
+    public void OnCreate() {
+        preferences = view.GetPreferences();
 
         if (languageCode.equals("Deutsch")) {
-            view.loadAboutPage("file:///android_asset/about_de.html");
+            view.LoadAboutPage("file:///android_asset/about_de.html");
         } else {
-            view.loadAboutPage("file:///android_asset/about_en.html");
+            view.LoadAboutPage("file:///android_asset/about_en.html");
         }
     }
 
     @Override
-    public void onPause() {
+    public void OnPause() {
 
     }
 
     @Override
-    public void onResume() {
+    public void OnResume() {
 
     }
 
     @Override
-    public void onDestroy() {
+    public void OnDestroy() {
 
     }
 
@@ -49,30 +48,30 @@ public class AboutPresenter implements IAboutPresenter {
     //region NavDrawer Handling
 
     @Override
-    public void onMenuEntryTwoPlayerTap() {
+    public void OnMenuEntryTwoPlayerTap() {
         PreferenceManager.saveDefaultPlayerAmount(preferences, 2);
-        view.startGameActivity();
+        view.LoadGameActivity();
     }
 
     @Override
-    public void onMenuEntryFourPlayerTap() {
+    public void OnMenuEntryFourPlayerTap() {
         PreferenceManager.saveDefaultPlayerAmount(preferences, 4);
-        view.startGameActivity();
+        view.LoadGameActivity();
     }
 
     @Override
-    public void onMenuEntryDicingTap() {
-        view.startDicingActivity();
+    public void OnMenuEntryDicingTap() {
+        view.LoadDicingActivity();
     }
 
     @Override
-    public void onMenuEntrySettingsTap() {
-        view.startSettingsActivity();
+    public void OnMenuEntrySettingsTap() {
+        view.LoadSettingsActivity();
     }
 
     @Override
-    public void onMenuEntryCounterManagerTap() {
-        view.startCounterManagerActivity();
+    public void OnMenuEntryCounterManagerTap() {
+        view.LoadCounterManagerActivity();
     }
 
     //endregion

@@ -8,13 +8,11 @@ import android.os.Bundle;
 import android.app.AlertDialog;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.ToggleButton;
 
 import com.marceljurtz.lifecounter.Helper.Color;
 import com.marceljurtz.lifecounter.Helper.MagicColor;
@@ -77,7 +75,7 @@ public class SettingsActivity extends Activity implements ISettingsView {
         chkKeepScreenOn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                presenter.onKeepScreenOnCheckboxClick(isChecked);
+                presenter.OnKeepScreenOnCheckboxClick(isChecked);
             }
         });
         */
@@ -85,7 +83,7 @@ public class SettingsActivity extends Activity implements ISettingsView {
         chkKeepScreenOn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                presenter.onKeepScreenOnCheckboxClick(isChecked);
+                presenter.OnKeepScreenOnCheckboxClick(isChecked);
             }
         });
         //endregion
@@ -95,7 +93,7 @@ public class SettingsActivity extends Activity implements ISettingsView {
         cmdSelectBlack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.onColorSelectButtonClick(MagicColor.BLACK);
+                presenter.OnColorSelectButtonClick(MagicColor.BLACK);
             }
         });
 
@@ -103,7 +101,7 @@ public class SettingsActivity extends Activity implements ISettingsView {
         cmdSelectBlue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.onColorSelectButtonClick(MagicColor.BLUE);
+                presenter.OnColorSelectButtonClick(MagicColor.BLUE);
             }
         });
 
@@ -111,7 +109,7 @@ public class SettingsActivity extends Activity implements ISettingsView {
         cmdSelectGreen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.onColorSelectButtonClick(MagicColor.GREEN);
+                presenter.OnColorSelectButtonClick(MagicColor.GREEN);
             }
         });
 
@@ -119,7 +117,7 @@ public class SettingsActivity extends Activity implements ISettingsView {
         cmdSelectRed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.onColorSelectButtonClick(MagicColor.RED);
+                presenter.OnColorSelectButtonClick(MagicColor.RED);
             }
         });
 
@@ -127,7 +125,7 @@ public class SettingsActivity extends Activity implements ISettingsView {
         cmdSelectWhite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.onColorSelectButtonClick(MagicColor.WHITE);
+                presenter.OnColorSelectButtonClick(MagicColor.WHITE);
             }
         });
         //endregion
@@ -139,7 +137,7 @@ public class SettingsActivity extends Activity implements ISettingsView {
         cmdDiscardChanges.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.onCancelButtonClick();
+                presenter.OnCancelButtonClick();
             }
         });
         */
@@ -152,7 +150,7 @@ public class SettingsActivity extends Activity implements ISettingsView {
         cmdReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.onResetButtonClick();
+                presenter.OnResetButtonClick();
             }
         });
 
@@ -171,24 +169,24 @@ public class SettingsActivity extends Activity implements ISettingsView {
         //endregion
 
         presenter = new SettingsPresenter(this, preferences);
-        presenter.onCreate();
+        presenter.OnCreate();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        presenter.onResume();
+        presenter.OnResume();
     }
 
     @Override
     protected void onPause() {
-        presenter.onPause();
+        presenter.OnPause();
         super.onPause();
     }
 
     @Override
     protected void onDestroy() {
-        presenter.onDestroy();
+        presenter.OnDestroy();
         super.onDestroy();
     }
 
@@ -197,12 +195,12 @@ public class SettingsActivity extends Activity implements ISettingsView {
     //region Get EditText and color values
 
     @Override
-    public String getLifepoints() {
+    public String GetLifepoints() {
         return txtLifepoints.getText().toString();
     }
 
     @Override
-    public String getLongClickPoints() {
+    public String GetLongClickPoints() {
         return txtLongClickPoints.getText().toString();
     }
 
@@ -211,12 +209,12 @@ public class SettingsActivity extends Activity implements ISettingsView {
     //region Set EditText values
 
     @Override
-    public void setLifepoints(String lifepointText) {
+    public void SetLifepoints(String lifepointText) {
         txtLifepoints.setText(lifepointText);
     }
 
     @Override
-    public void setLongClickPoints(String longClickPointText) {
+    public void SetLongClickPoints(String longClickPointText) {
         txtLongClickPoints.setText(longClickPointText);
     }
 
@@ -224,16 +222,16 @@ public class SettingsActivity extends Activity implements ISettingsView {
 
     @Override
     public void onBackPressed(){
-        presenter.onBackButtonClick();
+        presenter.OnBackButtonClick();
     }
 
     @Override
-    public void loadGameActivity() {
+    public void LoadGameActivity() {
         finish();
     }
 
     @Override
-    public void loadColorPickerDialog(MagicColor color, int r, int g, int b) {
+    public void LoadColorPickerDialog(MagicColor color, int r, int g, int b) {
         final ColorPicker cp = new ColorPicker(SettingsActivity.this, r, g, b);
         final MagicColor baseColor = color;
 
@@ -245,14 +243,14 @@ public class SettingsActivity extends Activity implements ISettingsView {
             public void onClick(View v) {
                 int newColor = cp.getColor();
                 //updateColor(cmdSelectWhite, txtWhite, selectedWhite);
-                presenter.onColorSelectValueUpdate(new Color(baseColor, newColor));
+                presenter.OnColorSelectValueUpdate(new Color(baseColor, newColor));
                 cp.dismiss();
             }
         });
     }
 
     @Override
-    public void updateColorButtonValue(Color color) {
+    public void UpdateColorButtonValue(Color color) {
         switch(color.getBasecolor()) {
             case BLUE:
                 ((GradientDrawable)cmdSelectBlue.getBackground()).setColor(color.getIntValue());
@@ -278,26 +276,26 @@ public class SettingsActivity extends Activity implements ISettingsView {
     }
 
     @Override
-    public void loadResetConfirmationDialog() {
+    public void LoadResetConfirmationDialog() {
         new AlertDialog.Builder(SettingsActivity.this)
                 .setMessage(R.string.settings_confirm_reset)
                 .setCancelable(false)
                 .setPositiveButton(R.string.settings_confirm_reset_true, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        presenter.onResetButtonConfirm();
+                        presenter.OnResetButtonConfirm();
                     }
                 })
                 .setNegativeButton(R.string.settings_confirm_reset_false, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        presenter.onResetButtonCancel();
+                        presenter.OnResetButtonCancel();
                     }
                 })
                 .show();
     }
 
     @Override
-    public void setKeepScreenOnCheckbox(boolean checked) {
+    public void SetKeepScreenOnCheckbox(boolean checked) {
         chkKeepScreenOn.setChecked(checked);
     }
 }

@@ -23,9 +23,9 @@ public class DicingPresenter implements IDicingPresenter {
     //region Activity Lifecycle
 
     @Override
-    public void onCreate() {
+    public void OnCreate() {
         model = new DicingModel();
-        preferences = view.getPreferences();
+        preferences = view.GetPreferences();
         int num = random.nextInt(4);
         Color color = new Color(MagicColor.WHITE);
         switch(num) {
@@ -41,59 +41,59 @@ public class DicingPresenter implements IDicingPresenter {
             case 3:
                 break;
         }
-        view.setBackgroundColor(color);
+        view.SetBackgroundColor(color);
     }
 
     @Override
-    public void onPause() {
-
-    }
-
-    @Override
-    public void onResume() {
+    public void OnPause() {
 
     }
 
     @Override
-    public void onDestroy() {
+    public void OnResume() {
+
+    }
+
+    @Override
+    public void OnDestroy() {
 
     }
 
     //endregion
 
     @Override
-    public void onScreenTap() {
-        view.setDicingText(model.ThrowDice()+"");
+    public void OnScreenTap() {
+        view.SetDicingText(model.ThrowDice()+"");
     }
 
 
     //region NavDrawer Handling
 
     @Override
-    public void onMenuEntrySettingsTap() {
-        view.startSettingsActivity();
+    public void OnMenuEntrySettingsTap() {
+        view.LoadSettingsActivity();
     }
 
     @Override
-    public void onMenuEntryAboutTap() {
-        view.startAboutActivity();
+    public void OnMenuEntryAboutTap() {
+        view.LoadAboutActivity();
     }
 
     @Override
-    public void onMenuEntryTwoPlayerTap() {
+    public void OnMenuEntryTwoPlayerTap() {
         PreferenceManager.saveDefaultPlayerAmount(preferences, 2);
-        view.startGameActivity();
+        view.LoadGameActivity();
     }
 
     @Override
-    public void onMenuEntryFourPlayerTap() {
+    public void OnMenuEntryFourPlayerTap() {
         PreferenceManager.saveDefaultPlayerAmount(preferences, 4);
-        view.startGameActivity();
+        view.LoadGameActivity();
     }
 
     @Override
-    public void onMenuEntryCounterManagerTap() {
-        view.startCounterManagerActivity();
+    public void OnMenuEntryCounterManagerTap() {
+        view.LoadCounterManagerActivity();
     }
 
     //endregion

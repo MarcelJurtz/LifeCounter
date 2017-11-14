@@ -21,22 +21,22 @@ public class CounterPresenter implements ICounterPresenter {
     }
 
     @Override
-    public void onCreate() {
+    public void OnCreate() {
 
     }
 
     @Override
-    public void onPause() {
+    public void OnPause() {
 
     }
 
     @Override
-    public void onResume() {
+    public void OnResume() {
 
     }
 
     @Override
-    public void onDestroy() {
+    public void OnDestroy() {
 
     }
 

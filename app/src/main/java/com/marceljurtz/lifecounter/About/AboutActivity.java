@@ -34,26 +34,26 @@ public class AboutActivity extends AppCompatActivity implements IAboutView {
         navigationView = (NavigationView)findViewById(R.id.navigationViewAbout);
 
         presenter = new AboutPresenter(this, Locale.getDefault().getDisplayLanguage());
-        presenter.onCreate();
+        presenter.OnCreate();
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
                 switch(item.getItemId()) {
                     case R.id.nav_about_dicing:
-                        presenter.onMenuEntryDicingTap();
+                        presenter.OnMenuEntryDicingTap();
                         break;
                     case R.id.nav_about_useramount_2:
-                        presenter.onMenuEntryTwoPlayerTap();
+                        presenter.OnMenuEntryTwoPlayerTap();
                         break;
                     case R.id.nav_about_useramount_4:
-                        presenter.onMenuEntryFourPlayerTap();
+                        presenter.OnMenuEntryFourPlayerTap();
                         break;
                     case R.id.nav_about_settings:
-                        presenter.onMenuEntrySettingsTap();
+                        presenter.OnMenuEntrySettingsTap();
                         break;
                     case R.id.nav_countermanager:
-                        presenter.onMenuEntryCounterManagerTap();
+                        presenter.OnMenuEntryCounterManagerTap();
                         break;
                     default:
                         break;
@@ -65,57 +65,57 @@ public class AboutActivity extends AppCompatActivity implements IAboutView {
 
     @Override
     protected void onDestroy() {
-        presenter.onDestroy();
+        presenter.OnDestroy();
         super.onDestroy();
     }
 
     @Override
     protected void onPause() {
-        presenter.onPause();
+        presenter.OnPause();
         super.onPause();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        presenter.onResume();
+        presenter.OnResume();
     }
 
     @Override
-    public void loadAboutPage(String url) {
+    public void LoadAboutPage(String url) {
         mainWebView.loadUrl(url);
     }
 
     @Override
-    public void startGameActivity() {
+    public void LoadGameActivity() {
         Intent intent = new Intent(getApplicationContext(), GameActivity.class);
         finish();
         startActivity(intent);
     }
 
     @Override
-    public void startSettingsActivity() {
+    public void LoadSettingsActivity() {
         Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
         finish();
         startActivity(intent);
     }
 
     @Override
-    public void startDicingActivity() {
+    public void LoadDicingActivity() {
         Intent intent = new Intent(getApplicationContext(), DicingActivity.class);
         finish();
         startActivity(intent);
     }
 
     @Override
-    public void startCounterManagerActivity() {
+    public void LoadCounterManagerActivity() {
         Intent intent = new Intent(getApplicationContext(), CounterActivity.class);
         finish();
         startActivity(intent);
     }
 
     @Override
-    public SharedPreferences getPreferences() {
+    public SharedPreferences GetPreferences() {
         return getApplicationContext().getSharedPreferences(PreferenceManager.PREFS, Activity.MODE_PRIVATE);
     }
 }

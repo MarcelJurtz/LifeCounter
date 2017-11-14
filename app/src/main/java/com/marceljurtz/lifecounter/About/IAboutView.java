@@ -5,10 +5,10 @@ import android.content.SharedPreferences;
 import com.marceljurtz.lifecounter.Helper.BaseInterface.IView;
 
 public interface IAboutView extends IView {
-    void loadAboutPage(String url);
-    void startGameActivity();
-    void startSettingsActivity();
-    void startDicingActivity();
-    void startCounterManagerActivity();
-    SharedPreferences getPreferences();
+    void LoadAboutPage(String url);
+    void LoadGameActivity();
+    void LoadSettingsActivity();
+    void LoadDicingActivity();
+    void LoadCounterManagerActivity();
+    SharedPreferences GetPreferences();
 }
