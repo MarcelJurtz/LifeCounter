@@ -54,7 +54,7 @@ public class CounterPresenter implements ICounterPresenter {
     @Override
     public void OnPlayerIdentificationChanged(Player player, String newIdentification) {
         player.setPlayerIdentification(newIdentification);
-        view.SetPlayerLabelHeader(player, newIdentification);
+        view.SetPlayerIdentificationText(player, newIdentification);
     }
 
     @Override

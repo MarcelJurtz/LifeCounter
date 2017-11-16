@@ -92,14 +92,14 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
         lblCounterHeaderPlayer1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LoadPlayerDescriptionDialog(player1);
+                LoadPlayerIdentificationDialog(player1);
             }
         });
         lblCounterHeaderPlayer2 = (TextView) findViewById(R.id.lblCountersPlayer2);
         lblCounterHeaderPlayer2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LoadPlayerDescriptionDialog(player2);
+                LoadPlayerIdentificationDialog(player2);
             }
         });
 
@@ -111,14 +111,14 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
             lblCounterHeaderPlayer3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    LoadPlayerDescriptionDialog(player3);
+                    LoadPlayerIdentificationDialog(player3);
                 }
             });
             lblCounterHeaderPlayer4 = (TextView) findViewById(R.id.lblCountersPlayer4);
             lblCounterHeaderPlayer4.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    LoadPlayerDescriptionDialog(player4);
+                    LoadPlayerIdentificationDialog(player4);
                 }
             });
         }
@@ -186,7 +186,7 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
     }
 
     @Override
-    public void LoadNewCounterDialog() {
+    public void LoadCounterAddDialog() {
         final Dialog dialog = new Dialog(CounterActivity.this);
         dialog.setContentView(R.layout.dialog_countermanager_new);
 
@@ -270,16 +270,7 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
         wrapper.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                new AlertDialog.Builder(CounterActivity.this)
-                        .setTitle(getResources().getString(R.string.dialog_countermanager_delete_title))
-                        .setMessage(getResources().getString(R.string.dialog_countermanager_delete_message))
-                        .setPositiveButton(getResources().getString(R.string.yes), new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int whichButton) {
-                                // TODO Delete item
-                            }
-                        })
-                        .setNegativeButton(getResources().getString(R.string.no), null).show();
-                return true;
+                LoadCounterDeletionDialog(); // TODO: Add Parameters
             }
         });
 
@@ -302,13 +293,11 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
                 break;
             default:
                 break;
-
-
         }
     }
 
     @Override
-    public void LoadPlayerDescriptionDialog(final Player player) {
+    public void LoadPlayerIdentificationDialog(final Player player) {
         final Dialog dialog = new Dialog(CounterActivity.this);
         dialog.setContentView(R.layout.dialog_countermanager_playerdescription);
 
@@ -334,7 +323,7 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
     }
 
     @Override
-    public void SetPlayerLabelHeader(Player player, String headerText) {
+    public void SetPlayerIdentificationText(Player player, String headerText) {
         switch (player.getPlayerID()) {
             case ONE:
                 lblCounterHeaderPlayer1.setText(headerText);
@@ -351,6 +340,19 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
             default:
                 break;
         }
+    }
+
+    @Override
+    public void LoadCounterDeletionDialog() {
+        new AlertDialog.Builder(CounterActivity.this)
+                .setTitle(getResources().getString(R.string.dialog_countermanager_delete_title))
+                .setMessage(getResources().getString(R.string.dialog_countermanager_delete_message))
+                .setPositiveButton(getResources().getString(R.string.yes), new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        // TODO Delete item
+                    }
+                })
+                .setNegativeButton(getResources().getString(R.string.no), null).show();
     }
 
     @Override

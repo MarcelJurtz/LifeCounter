@@ -5,15 +5,17 @@ import com.marceljurtz.lifecounter.Helper.Counter;
 import com.marceljurtz.lifecounter.Helper.Player;
 
 public interface ICounterView extends IView {
-    void SetPlayerLabelHeader(Player player, String headerText);
-    void LoadPlayerDescriptionDialog(Player player);
-    void LoadNewCounterDialog();
+    void SetPlayerIdentificationText(Player player, String headerText);
     void DisplayNewCounterEntryToPlayer(Player player, Counter counter);
 
     void LoadGameActivity();
     void LoadDicingActivity();
     void LoadSettingsActivity();
     void LoadAboutActivity();
+
+    void LoadCounterDeletionDialog();
+    void LoadCounterAddDialog();
+    void LoadPlayerIdentificationDialog(Player player);
 
     void GoBackToPreviousActivity();
 }
