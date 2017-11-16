@@ -35,7 +35,8 @@ public class DicingActivity extends AppCompatActivity implements IDicingView {
         rlDicing = (RelativeLayout)findViewById(R.id.rlDicing);
         navigationView = (NavigationView)findViewById(R.id.navigationViewDicing);
 
-        presenter = new DicingPresenter(this);
+        presenter = new DicingPresenter(this,
+                getApplicationContext().getSharedPreferences(PreferenceManager.PREFS, Activity.MODE_PRIVATE));
         presenter.OnCreate();
 
         rlDicing.setOnClickListener(new View.OnClickListener() {
@@ -124,11 +125,6 @@ public class DicingActivity extends AppCompatActivity implements IDicingView {
         Intent intent = new Intent(getApplicationContext(), CounterActivity.class);
         finish();
         startActivity(intent);
-    }
-
-    @Override
-    public SharedPreferences GetPreferences() {
-        return getApplicationContext().getSharedPreferences(PreferenceManager.PREFS, Activity.MODE_PRIVATE);
     }
 
     @Override

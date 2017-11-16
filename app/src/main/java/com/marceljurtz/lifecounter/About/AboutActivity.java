@@ -33,7 +33,9 @@ public class AboutActivity extends AppCompatActivity implements IAboutView {
 
         navigationView = (NavigationView)findViewById(R.id.navigationViewAbout);
 
-        presenter = new AboutPresenter(this, Locale.getDefault().getDisplayLanguage());
+        presenter = new AboutPresenter(this,
+                getApplicationContext().getSharedPreferences(PreferenceManager.PREFS, Activity.MODE_PRIVATE),
+                Locale.getDefault().getDisplayLanguage());
         presenter.OnCreate();
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -112,10 +114,5 @@ public class AboutActivity extends AppCompatActivity implements IAboutView {
         Intent intent = new Intent(getApplicationContext(), CounterActivity.class);
         finish();
         startActivity(intent);
-    }
-
-    @Override
-    public SharedPreferences GetPreferences() {
-        return getApplicationContext().getSharedPreferences(PreferenceManager.PREFS, Activity.MODE_PRIVATE);
     }
 }
