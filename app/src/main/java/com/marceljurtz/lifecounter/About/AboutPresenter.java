@@ -10,8 +10,9 @@ public class AboutPresenter implements IAboutPresenter {
     IAboutView view;
     private SharedPreferences preferences;
 
-    public AboutPresenter(IAboutView view, String languageCode) {
+    public AboutPresenter(IAboutView view, SharedPreferences preferences, String languageCode) {
         this.view = view;
+        this.preferences = preferences;
         this.languageCode = languageCode;
     }
 
@@ -19,8 +20,6 @@ public class AboutPresenter implements IAboutPresenter {
 
     @Override
     public void OnCreate() {
-        preferences = view.GetPreferences();
-
         if (languageCode.equals("Deutsch")) {
             view.LoadAboutPage("file:///android_asset/about_de.html");
         } else {

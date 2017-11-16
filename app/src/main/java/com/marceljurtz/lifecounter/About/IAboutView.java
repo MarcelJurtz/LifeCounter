@@ -10,5 +10,4 @@ public interface IAboutView extends IView {
     void LoadSettingsActivity();
     void LoadDicingActivity();
     void LoadCounterManagerActivity();
-    SharedPreferences GetPreferences();
 }

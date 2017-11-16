@@ -1,11 +1,11 @@
-package com.marceljurtz.lifecounter.Dicing;
+package com.marceljurtz.lifecounter.Helper;
 
 import java.util.Random;
 
-public class DicingModel {
+public class Dice {
     private Random die;
 
-    public DicingModel() {
+    public Dice() {
         this.die = new Random();
     }
 

@@ -3,6 +3,7 @@ package com.marceljurtz.lifecounter.Dicing;
 import android.content.SharedPreferences;
 
 import com.marceljurtz.lifecounter.Helper.Color;
+import com.marceljurtz.lifecounter.Helper.Dice;
 import com.marceljurtz.lifecounter.Helper.MagicColor;
 import com.marceljurtz.lifecounter.Helper.PreferenceManager;
 
@@ -10,13 +11,14 @@ import java.util.Random;
 
 public class DicingPresenter implements IDicingPresenter {
 
-    private DicingModel model;
+    private Dice model;
     private IDicingView view;
     private SharedPreferences preferences;
     private Random random;
 
-    public DicingPresenter(IDicingView view) {
+    public DicingPresenter(IDicingView view, SharedPreferences preferences) {
         this.view = view;
+        this.preferences = preferences;
         this.random = new Random();
     }
 
@@ -24,8 +26,7 @@ public class DicingPresenter implements IDicingPresenter {
 
     @Override
     public void OnCreate() {
-        model = new DicingModel();
-        preferences = view.GetPreferences();
+        model = new Dice();
         int num = random.nextInt(4);
         Color color = new Color(MagicColor.WHITE);
         switch(num) {

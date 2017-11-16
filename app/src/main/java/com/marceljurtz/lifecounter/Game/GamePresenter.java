@@ -4,6 +4,7 @@ import android.content.SharedPreferences;
 
 import com.marceljurtz.lifecounter.Helper.ClickType;
 import com.marceljurtz.lifecounter.Helper.Color;
+import com.marceljurtz.lifecounter.Helper.Game;
 import com.marceljurtz.lifecounter.Helper.MagicColor;
 import com.marceljurtz.lifecounter.Helper.Operator;
 import com.marceljurtz.lifecounter.Helper.Player;
@@ -13,8 +14,8 @@ import com.marceljurtz.lifecounter.Helper.PreferenceManager;
 public class GamePresenter implements IGamePresenter {
 
     private SharedPreferences preferences;
-    private GameModel gameModel;
-    private IGameView gameActivity;
+    private Game game;
+    private IGameView view;
 
     private boolean settingsVisible;
     private boolean poisonVisible;
@@ -32,44 +33,44 @@ public class GamePresenter implements IGamePresenter {
 
     private boolean hideOtherControlsWhenSettingsDisplayed = false;
 
-    public GamePresenter(GameActivity gameActivity, SharedPreferences preferences) {
+    public GamePresenter(IGameView view, SharedPreferences preferences) {
         this.preferences = preferences;
-        this.gameActivity = gameActivity;
+        this.view = view;
 
-        int screenLayout = gameActivity.GetScreenSize();
+        int screenLayout = view.GetScreenSize();
         // Configuration.SCREENLAYOUT_SIZE_LARGE;   --> 3
         // Configuration.SCREENLAYOUT_SIZE_NORMAL;  --> 2
         // Configuration.SCREENLAYOUT_SIZE_SMALL;   --> 1
         // Configuration.SCREENLAYOUT_SIZE_XLARGE;  --> 4
 
-        if(screenLayout != SCREEN_XLARGE && gameActivity.GetPlayerAmount() == 4) hideOtherControlsWhenSettingsDisplayed = true;
+        if(screenLayout != SCREEN_XLARGE && view.GetPlayerAmount() == 4) hideOtherControlsWhenSettingsDisplayed = true;
 
         player1 = new Player(PlayerID.ONE); // SCHEISSE
         player2 = new Player(PlayerID.TWO);
 
-        if(gameActivity.GetPlayerAmount() == 4) {
+        if(view.GetPlayerAmount() == 4) {
             player3 = new Player(PlayerID.THREE);
             player4 = new Player(PlayerID.FOUR);
-            gameModel = new GameModel(preferences, new Player[]{player1, player2, player3, player4});
+            game = new Game(preferences, new Player[]{player1, player2, player3, player4});
         } else {
-            gameModel = new GameModel(preferences, new Player[]{player1, player2});
+            game = new Game(preferences, new Player[]{player1, player2});
         }
 
 
         // Initiate default colors
-        gameActivity.InitColorButton(MagicColor.BLACK, PreferenceManager.getDefaultBlack(preferences));
-        gameActivity.InitColorButton(MagicColor.BLUE, PreferenceManager.getDefaultBlue(preferences));
-        gameActivity.InitColorButton(MagicColor.GREEN, PreferenceManager.getDefaultGreen(preferences));
-        gameActivity.InitColorButton(MagicColor.RED, PreferenceManager.getDefaultRed(preferences));
-        gameActivity.InitColorButton(MagicColor.WHITE, PreferenceManager.getDefaultWhite(preferences));
+        view.InitColorButton(MagicColor.BLACK, PreferenceManager.getDefaultBlack(preferences));
+        view.InitColorButton(MagicColor.BLUE, PreferenceManager.getDefaultBlue(preferences));
+        view.InitColorButton(MagicColor.GREEN, PreferenceManager.getDefaultGreen(preferences));
+        view.InitColorButton(MagicColor.RED, PreferenceManager.getDefaultRed(preferences));
+        view.InitColorButton(MagicColor.WHITE, PreferenceManager.getDefaultWhite(preferences));
 
         // Settings, Energy-Saving & Poison
-        gameActivity.DisableSettingsControls(hideOtherControlsWhenSettingsDisplayed, false);
-        gameActivity.SettingsButtonDisable();
+        view.DisableSettingsControls(hideOtherControlsWhenSettingsDisplayed, false);
+        view.SettingsButtonDisable();
         settingsVisible = false;
 
-        gameActivity.PoisonButtonDisable();
-        gameActivity.DisablePoisonControls(hideOtherControlsWhenSettingsDisplayed);
+        view.PoisonButtonDisable();
+        view.DisablePoisonControls(hideOtherControlsWhenSettingsDisplayed);
         poisonVisible = false;
     }
 
@@ -88,28 +89,28 @@ public class GamePresenter implements IGamePresenter {
 
         String s = player1.getPlayerIdentification();
         settingsVisible = false;
-        gameActivity.DisableSettingsControls(hideOtherControlsWhenSettingsDisplayed, poisonVisible);
-        gameActivity.SettingsButtonDisable();
+        view.DisableSettingsControls(hideOtherControlsWhenSettingsDisplayed, poisonVisible);
+        view.SettingsButtonDisable();
 
         poisonVisible = false;
-        gameActivity.DisablePoisonControls(hideOtherControlsWhenSettingsDisplayed);
-        gameActivity.PoisonButtonDisable();
+        view.DisablePoisonControls(hideOtherControlsWhenSettingsDisplayed);
+        view.PoisonButtonDisable();
 
         powerSaveEnabled = false;
 
-        gameActivity.InitColorButton(MagicColor.BLACK, PreferenceManager.getCustomColor(preferences, MagicColor.BLACK));
-        gameActivity.InitColorButton(MagicColor.BLUE, PreferenceManager.getCustomColor(preferences, MagicColor.BLUE));
-        gameActivity.InitColorButton(MagicColor.GREEN, PreferenceManager.getCustomColor(preferences, MagicColor.GREEN));
-        gameActivity.InitColorButton(MagicColor.RED, PreferenceManager.getCustomColor(preferences, MagicColor.RED));
-        gameActivity.InitColorButton(MagicColor.WHITE, PreferenceManager.getCustomColor(preferences, MagicColor.WHITE));
+        view.InitColorButton(MagicColor.BLACK, PreferenceManager.getCustomColor(preferences, MagicColor.BLACK));
+        view.InitColorButton(MagicColor.BLUE, PreferenceManager.getCustomColor(preferences, MagicColor.BLUE));
+        view.InitColorButton(MagicColor.GREEN, PreferenceManager.getCustomColor(preferences, MagicColor.GREEN));
+        view.InitColorButton(MagicColor.RED, PreferenceManager.getCustomColor(preferences, MagicColor.RED));
+        view.InitColorButton(MagicColor.WHITE, PreferenceManager.getCustomColor(preferences, MagicColor.WHITE));
 
         if(PreferenceManager.getScreenTimeoutDisabled(preferences)) {
-            gameActivity.DisableScreenTimeout();
+            view.DisableScreenTimeout();
         } else {
-            gameActivity.EnableScreenTimeout();
+            view.EnableScreenTimeout();
         }
 
-        gameActivity.HideNavigationDrawer();
+        view.HideNavigationDrawer();
     }
 
     @Override
@@ -121,9 +122,9 @@ public class GamePresenter implements IGamePresenter {
     public void setSettingsVisible() {
         settingsVisible = !settingsVisible;
         if(settingsVisible) {
-            gameActivity.EnableSettingsControls();
+            view.EnableSettingsControls();
         } else {
-            gameActivity.DisableSettingsControls();
+            view.DisableSettingsControls();
         }
     }
 
@@ -138,11 +139,11 @@ public class GamePresenter implements IGamePresenter {
     public void togglePowerSavingMode() {
         powerSaveEnabled = !powerSaveEnabled;
         if(powerSaveEnabled) {
-            gameActivity.EnableEnergySaving(PreferenceManager.powerSave, PreferenceManager.powerSaveTextcolor);
+            view.EnableEnergySaving(PreferenceManager.powerSave, PreferenceManager.powerSaveTextcolor);
         } else {
-            gameActivity.DisableEnergySaving(PreferenceManager.getDefaultBlack(preferences), PreferenceManager.regularTextcolor);
+            view.DisableEnergySaving(PreferenceManager.getDefaultBlack(preferences), PreferenceManager.regularTextcolor);
         }
-        gameActivity.SetDrawerTextPowerSaving(!powerSaveEnabled);
+        view.SetDrawerTextPowerSaving(!powerSaveEnabled);
     }
 
     /*
@@ -177,20 +178,20 @@ public class GamePresenter implements IGamePresenter {
 */
     @Override
     public void OnLifeUpdate(PlayerID playerID, ClickType clickType, Operator operator) {
-        gameModel.updateLifepoints(playerID, clickType, operator);
-        int points = gameModel.getPlayerLifepoints(playerID);
+        game.updateLifepoints(playerID, clickType, operator);
+        int points = game.getPlayerLifepoints(playerID);
 
         String pointsStr = String.format("%02d",points);
-        gameActivity.SetLifepoints(playerID, pointsStr);
+        view.SetLifepoints(playerID, pointsStr);
     }
 
     @Override
     public void OnPoisonUpdate(PlayerID playerID, ClickType clickType, Operator operator) {
-        gameModel.updatePoisonpoints(playerID, clickType, operator);
-        int points = gameModel.getPlayerPoisonpoints(playerID);
+        game.updatePoisonpoints(playerID, clickType, operator);
+        int points = game.getPlayerPoisonpoints(playerID);
 
         String pointsStr = String.format("%02d",points);
-        gameActivity.SetPoisonpoints(playerID, pointsStr);
+        view.SetPoisonpoints(playerID, pointsStr);
     }
 
 
@@ -222,7 +223,7 @@ public class GamePresenter implements IGamePresenter {
                     break;
             }
 
-            gameActivity.SetLayoutColor(playerID, newColor.getIntValue());
+            view.SetLayoutColor(playerID, newColor.getIntValue());
         } else if(clickType.equals(ClickType.LONG) && color.equals(MagicColor.BLACK)) {
             togglePowerSavingMode();
         }
@@ -231,14 +232,14 @@ public class GamePresenter implements IGamePresenter {
     @Override
     public void OnPoisonButtonClick() {
         // Activation only possible on small screens when settings are hidden
-        if(!hideOtherControlsWhenSettingsDisplayed || !settingsVisible || gameActivity.GetPlayerAmount() == 2) {
+        if(!hideOtherControlsWhenSettingsDisplayed || !settingsVisible || view.GetPlayerAmount() == 2) {
             poisonVisible = !poisonVisible;
             if(poisonVisible) {
-                gameActivity.EnablePoisonControls(hideOtherControlsWhenSettingsDisplayed);
-                gameActivity.PoisonButtonEnable();
+                view.EnablePoisonControls(hideOtherControlsWhenSettingsDisplayed);
+                view.PoisonButtonEnable();
             } else {
-                gameActivity.DisablePoisonControls(hideOtherControlsWhenSettingsDisplayed);
-                gameActivity.PoisonButtonDisable();
+                view.DisablePoisonControls(hideOtherControlsWhenSettingsDisplayed);
+                view.PoisonButtonDisable();
             }
         }
     }
@@ -246,15 +247,15 @@ public class GamePresenter implements IGamePresenter {
     @Override
     public void OnSettingsButtonClick(ClickType clickType) {
         if(clickType.equals(ClickType.LONG)) {
-            gameActivity.LoadSettingsActivity();
+            view.LoadSettingsActivity();
         } else {
             settingsVisible = !settingsVisible;
             if(settingsVisible) {
-                gameActivity.EnableSettingsControls(hideOtherControlsWhenSettingsDisplayed, poisonVisible);
-                gameActivity.SettingsButtonEnable();
+                view.EnableSettingsControls(hideOtherControlsWhenSettingsDisplayed, poisonVisible);
+                view.SettingsButtonEnable();
             } else {
-                gameActivity.DisableSettingsControls(hideOtherControlsWhenSettingsDisplayed, poisonVisible);
-                gameActivity.SettingsButtonDisable();
+                view.DisableSettingsControls(hideOtherControlsWhenSettingsDisplayed, poisonVisible);
+                view.SettingsButtonDisable();
             }
         }
     }
@@ -266,46 +267,46 @@ public class GamePresenter implements IGamePresenter {
 
         settingsVisible = false;
         poisonVisible = false;
-        gameActivity.DisablePoisonControls(hideOtherControlsWhenSettingsDisplayed);
-        gameActivity.SettingsButtonDisable();
-        gameActivity.DisableSettingsControls(hideOtherControlsWhenSettingsDisplayed, poisonVisible);
-        gameActivity.PoisonButtonDisable();
+        view.DisablePoisonControls(hideOtherControlsWhenSettingsDisplayed);
+        view.SettingsButtonDisable();
+        view.DisableSettingsControls(hideOtherControlsWhenSettingsDisplayed, poisonVisible);
+        view.PoisonButtonDisable();
 
-        gameActivity.SetLifepoints(PlayerID.ONE, String.format("%02d",player1.getLifePoints()));
-        gameActivity.SetLifepoints(PlayerID.TWO, String.format("%02d",player2.getLifePoints()));
+        view.SetLifepoints(PlayerID.ONE, String.format("%02d",player1.getLifePoints()));
+        view.SetLifepoints(PlayerID.TWO, String.format("%02d",player2.getLifePoints()));
 
-        gameActivity.SetPoisonpoints(PlayerID.ONE, String.format("%02d",player1.getPoisonPoints()));
-        gameActivity.SetPoisonpoints(PlayerID.TWO, String.format("%02d",player2.getPoisonPoints()));
+        view.SetPoisonpoints(PlayerID.ONE, String.format("%02d",player1.getPoisonPoints()));
+        view.SetPoisonpoints(PlayerID.TWO, String.format("%02d",player2.getPoisonPoints()));
 
-        if(gameActivity.GetPlayerAmount() == 4) {
+        if(view.GetPlayerAmount() == 4) {
             player3.resetPoints(preferences);
             player4.resetPoints(preferences);
 
-            gameActivity.SetLifepoints(PlayerID.THREE, String.format("%02d",player3.getLifePoints()));
-            gameActivity.SetLifepoints(PlayerID.FOUR, String.format("%02d",player4.getLifePoints()));
+            view.SetLifepoints(PlayerID.THREE, String.format("%02d",player3.getLifePoints()));
+            view.SetLifepoints(PlayerID.FOUR, String.format("%02d",player4.getLifePoints()));
 
-            gameActivity.SetPoisonpoints(PlayerID.THREE, String.format("%02d",player3.getPoisonPoints()));
-            gameActivity.SetPoisonpoints(PlayerID.FOUR, String.format("%02d",player4.getPoisonPoints()));
+            view.SetPoisonpoints(PlayerID.THREE, String.format("%02d",player3.getPoisonPoints()));
+            view.SetPoisonpoints(PlayerID.FOUR, String.format("%02d",player4.getPoisonPoints()));
         }
     }
 
     //region NavDrawer Handling
     @Override
     public void OnMenuEntryTogglePlayerTap() {
-        if(gameActivity.GetPlayerAmount() == 4) {
+        if(view.GetPlayerAmount() == 4) {
             // Load 2 Player View
             PreferenceManager.saveDefaultPlayerAmount(preferences, 2);
-        } else if(gameActivity.GetPlayerAmount() == 2) {
+        } else if(view.GetPlayerAmount() == 2) {
             // Load 4 Player View
             PreferenceManager.saveDefaultPlayerAmount(preferences, 4);
         }
-        gameActivity.HideNavigationDrawer();
-        gameActivity.RestartActivity();
+        view.HideNavigationDrawer();
+        view.RestartActivity();
     }
 
     @Override
     public void OnMenuEntryDicingTap() {
-        gameActivity.LoadDicingActivity();
+        view.LoadDicingActivity();
     }
 
     @Override
@@ -320,12 +321,12 @@ public class GamePresenter implements IGamePresenter {
 
     @Override
     public void OnMenuEntryAboutTap() {
-        gameActivity.LoadAboutActivity();
+        view.LoadAboutActivity();
     }
 
     @Override
     public void OnMenuEntryCounterManagerTap() {
-        gameActivity.LoadCounterManagerActivity();
+        view.LoadCounterManagerActivity();
     }
     //endregion
 }

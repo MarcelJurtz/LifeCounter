@@ -1,4 +1,4 @@
-package com.marceljurtz.lifecounter.Game;
+package com.marceljurtz.lifecounter.Helper;
 
 import android.content.SharedPreferences;
 
@@ -8,7 +8,7 @@ import com.marceljurtz.lifecounter.Helper.Player;
 import com.marceljurtz.lifecounter.Helper.PlayerID;
 import com.marceljurtz.lifecounter.Helper.PreferenceManager;
 
-public class GameModel {
+public class Game {
 
     private SharedPreferences preferences;
 
@@ -18,7 +18,7 @@ public class GameModel {
 
     private Player[] players;
 
-    public GameModel(SharedPreferences preferences, Player[] players) {
+    public Game(SharedPreferences preferences, Player[] players) {
         this.preferences = preferences;
         this.players = players;
 
