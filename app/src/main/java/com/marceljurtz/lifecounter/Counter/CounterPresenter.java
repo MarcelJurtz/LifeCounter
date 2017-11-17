@@ -42,7 +42,7 @@ public class CounterPresenter implements ICounterPresenter {
 
     @Override
     public void OnCreateNewCounterButtonTap() {
-        view.LoadNewCounterDialog();
+        view.LoadCounterAddDialog();
     }
 
     @Override

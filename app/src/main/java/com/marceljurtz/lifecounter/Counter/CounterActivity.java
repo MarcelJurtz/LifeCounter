@@ -271,6 +271,7 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
             @Override
             public boolean onLongClick(View v) {
                 LoadCounterDeletionDialog(); // TODO: Add Parameters
+                return true;
             }
         });
 

@@ -251,10 +251,10 @@ public class GamePresenter implements IGamePresenter {
         } else {
             settingsVisible = !settingsVisible;
             if(settingsVisible) {
-                view.EnableSettingsControls(hideOtherControlsWhenSettingsDisplayed, poisonVisible);
+                view.EnableSettingsControls(hideOtherControlsWhenSettingsDisplayed, poisonVisible && hideOtherControlsWhenSettingsDisplayed);
                 view.SettingsButtonEnable();
             } else {
-                view.DisableSettingsControls(hideOtherControlsWhenSettingsDisplayed, poisonVisible);
+                view.DisableSettingsControls(hideOtherControlsWhenSettingsDisplayed, poisonVisible && hideOtherControlsWhenSettingsDisplayed);
                 view.SettingsButtonDisable();
             }
         }
