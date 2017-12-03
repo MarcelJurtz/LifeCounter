@@ -25,6 +25,7 @@ import com.marceljurtz.lifecounter.Dicing.DicingActivity;
 import com.marceljurtz.lifecounter.Game.GameActivity;
 import com.marceljurtz.lifecounter.Helper.Counter;
 import com.marceljurtz.lifecounter.Helper.Player;
+import com.marceljurtz.lifecounter.Helper.PlayerID;
 import com.marceljurtz.lifecounter.Helper.PreferenceManager;
 import com.marceljurtz.lifecounter.R;
 import com.marceljurtz.lifecounter.Settings.SettingsActivity;
@@ -213,7 +214,7 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
                 dialog.dismiss();
 
                 if (counter != null) {
-                    presenter.AddCounterToPlayer((Player) spPlayers.getSelectedItem(), counter);
+                    presenter.AddCounterToPlayer(((Player) spPlayers.getSelectedItem()).getPlayerID(), counter);
                 }
             }
         });
@@ -222,7 +223,7 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
     }
 
     @Override
-    public void DisplayNewCounterEntryToPlayer(Player player, Counter counter) {
+    public void DisplayNewCounterEntryToPlayer(PlayerID playerId, Counter counter) {
         int paddingLeft = 50;
         int paddingRight = 50;
         int fontSize = 24;
@@ -275,7 +276,7 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
             }
         });
 
-        switch (player.getPlayerID()) {
+        switch (playerId) {
             case ONE:
                 player1Layout.addView(wrapper);
                 player1Layout.setVisibility(View.VISIBLE);
@@ -315,7 +316,7 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
                 dialog.dismiss();
 
                 if (newDescription != null && newDescription.length() > 0) {
-                    presenter.OnPlayerIdentificationChanged(player, newDescription);
+                    presenter.OnPlayerIdentificationChanged(player.getPlayerID(), newDescription);
                 }
             }
         });
@@ -324,8 +325,8 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
     }
 
     @Override
-    public void SetPlayerIdentificationText(Player player, String headerText) {
-        switch (player.getPlayerID()) {
+    public void SetPlayerIdentificationText(PlayerID playerId, String headerText) {
+        switch (playerId) {
             case ONE:
                 lblCounterHeaderPlayer1.setText(headerText);
                 break;
@@ -354,6 +355,35 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
                     }
                 })
                 .setNegativeButton(getResources().getString(R.string.no), null).show();
+    }
+
+    @Override
+    public void DeleteAllCounters() {
+
+        for (int i = 0; i < player1Layout.getChildCount(); i++) {
+            View v = player1Layout.getChildAt(i);
+            if(v.getId() != R.id.lblCountersPlayer1) player1Layout.removeView(v);
+        }
+
+        for (int i = 0; i < player2Layout.getChildCount(); i++) {
+            View v = player2Layout.getChildAt(i);
+            if(v.getId() != R.id.lblCountersPlayer2) player2Layout.removeView(v);
+        }
+
+        for (int i = 0; i < player3Layout.getChildCount(); i++) {
+            View v = player3Layout.getChildAt(i);
+            if(v.getId() != R.id.lblCountersPlayer3) player3Layout.removeView(v);
+        }
+
+        for (int i = 0; i < player4Layout.getChildCount(); i++) {
+            View v = player4Layout.getChildAt(i);
+            if(v.getId() != R.id.lblCountersPlayer4) player4Layout.removeView(v);
+        }
+
+        player1Layout.setVisibility(View.GONE);
+        player2Layout.setVisibility(View.GONE);
+        player3Layout.setVisibility(View.GONE);
+        player4Layout.setVisibility(View.GONE);
     }
 
     @Override

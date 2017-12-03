@@ -4,17 +4,21 @@ import android.content.SharedPreferences;
 
 import com.marceljurtz.lifecounter.Helper.Counter;
 import com.marceljurtz.lifecounter.Helper.Player;
+import com.marceljurtz.lifecounter.Helper.PlayerID;
 import com.marceljurtz.lifecounter.Helper.PreferenceManager;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import static com.marceljurtz.lifecounter.Helper.PlayerID.ONE;
 
 public class CounterPresenter implements ICounterPresenter {
 
-    private List<Player> players;
+    private ArrayList<Player> players;
     private ICounterView view;
     private SharedPreferences preferences;
 
-    public CounterPresenter(ICounterView view, SharedPreferences preferences, List<Player> players) {
+    public CounterPresenter(ICounterView view, SharedPreferences preferences, ArrayList<Player> players) {
         this.players = players;
         this.preferences = preferences;
         this.view = view;
@@ -34,7 +38,19 @@ public class CounterPresenter implements ICounterPresenter {
     @Override
     public void OnResume() {
         // Load items from preferences
+        players = PreferenceManager.LoadPlayerData(preferences);
 
+        // Reload View
+        view.DeleteAllCounters();
+
+        for(Player player : players) {
+
+            view.SetPlayerIdentificationText(player.getPlayerID(), player.getPlayerIdentification());
+
+            for(Counter counter : player.GetAllCounters()) {
+                view.DisplayNewCounterEntryToPlayer(player.getPlayerID(), counter);
+            }
+        }
     }
 
     @Override
@@ -48,15 +64,28 @@ public class CounterPresenter implements ICounterPresenter {
     }
 
     @Override
-    public void AddCounterToPlayer(Player player, Counter counter) {
-        player.AddCounter(counter);
-        view.DisplayNewCounterEntryToPlayer(player, counter);
+    public void AddCounterToPlayer(PlayerID playerId, Counter counter) {
+        for(Player player : players) {
+           if(player.getPlayerID().equals(playerId)) {
+               player.AddCounter(counter);
+               break;
+           }
+        }
+
+        view.DisplayNewCounterEntryToPlayer(playerId, counter);
     }
 
     @Override
-    public void OnPlayerIdentificationChanged(Player player, String newIdentification) {
-        player.setPlayerIdentification(newIdentification);
-        view.SetPlayerIdentificationText(player, newIdentification);
+    public void OnPlayerIdentificationChanged(PlayerID playerId, String newIdentification) {
+
+        for(Player player : players) {
+            if(player.getPlayerID() == playerId) {
+                player.setPlayerIdentification(newIdentification);
+                break;
+            }
+        }
+
+        view.SetPlayerIdentificationText(playerId, newIdentification);
     }
 
     @Override

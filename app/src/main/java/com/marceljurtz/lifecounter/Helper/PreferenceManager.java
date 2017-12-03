@@ -9,6 +9,7 @@ package com.marceljurtz.lifecounter.Helper;
 
 import android.content.SharedPreferences;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PreferenceManager {
@@ -225,5 +226,25 @@ public class PreferenceManager {
         }
 
         editor.commit();
+    }
+
+    public static ArrayList<Player> LoadPlayerData(SharedPreferences preferences) {
+        ArrayList<Player> players = new ArrayList<Player>();
+
+        Player p1 = Player.GetInstanceByJson(preferences.getString(PlayerID.ONE.toString(), null));
+        Player p2 = Player.GetInstanceByJson(preferences.getString(PlayerID.TWO.toString(), null));
+        Player p3 = Player.GetInstanceByJson(preferences.getString(PlayerID.THREE.toString(), null));
+        Player p4 = Player.GetInstanceByJson(preferences.getString(PlayerID.FOUR.toString(), null));
+
+        if(p1 != null) players.add(p1);
+        else players.add(new Player(PlayerID.ONE));
+        if(p2 != null) players.add(p2);
+        else players.add(new Player(PlayerID.TWO));
+        if(p3 != null) players.add(p3);
+        else players.add(new Player(PlayerID.THREE));
+        if(p4 != null) players.add(p4);
+        else players.add(new Player(PlayerID.FOUR));
+
+        return players;
     }
 }

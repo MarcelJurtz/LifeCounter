@@ -51,31 +51,51 @@ public class Player implements Parcelable {
         return this.lifePoints;
     }
 
-    public int getPoisonPoints() { return this.poisonPoints; }
+    public int getPoisonPoints() {
+        return this.poisonPoints;
+    }
 
     public void updateLifepoints(int amount) {
         this.lifePoints += amount;
-        if(this.lifePoints < PreferenceManager.getMinLife()) {
+        if (this.lifePoints < PreferenceManager.getMinLife()) {
             this.lifePoints = PreferenceManager.getMinLife();
-        } else if(this.lifePoints > PreferenceManager.getMaxLife()) {
+        } else if (this.lifePoints > PreferenceManager.getMaxLife()) {
             this.lifePoints = PreferenceManager.getMaxLife();
         }
     }
 
     public void updatePoisonpoints(int amount) {
         this.poisonPoints += amount;
-        if(this.poisonPoints < PreferenceManager.getMinPoison()) {
+        if (this.poisonPoints < PreferenceManager.getMinPoison()) {
             this.poisonPoints = PreferenceManager.getMinPoison();
-        } else if(this.poisonPoints > PreferenceManager.getMaxPoison()) {
+        } else if (this.poisonPoints > PreferenceManager.getMaxPoison()) {
             this.lifePoints = PreferenceManager.getMaxPoison();
         }
     }
 
     public String getPlayerIdentification() {
+        if (playerIdentification == null || playerIdentification == "") {
+            switch (playerID) {
+                case ONE:
+                    playerIdentification = "Player 1";
+                    break;
+                case TWO:
+                    playerIdentification = "Player 2";
+                    break;
+                case THREE:
+                    playerIdentification = "Player 3";
+                    break;
+                case FOUR:
+                    playerIdentification = "Player 4";
+                    break;
+                default:
+                    break;
+            }
+        }
         return playerIdentification;
     }
 
-    public void setPlayerIdentification(String identification){
+    public void setPlayerIdentification(String identification) {
         playerIdentification = identification;
     }
 
@@ -94,7 +114,7 @@ public class Player implements Parcelable {
 
     @Override
     public String toString() {
-        if(playerIdentification == null ||playerIdentification == "") {
+        if (playerIdentification == null || playerIdentification == "") {
             int id = 0;
 
             switch (playerID) {
@@ -114,8 +134,7 @@ public class Player implements Parcelable {
                     break;
             }
             return "Player " + id;
-        }
-        else return playerIdentification;
+        } else return playerIdentification;
     }
 
     @Override
