@@ -7,6 +7,7 @@ import android.os.Parcelable;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
 import com.marceljurtz.lifecounter.Helper.PlayerID;
 import com.marceljurtz.lifecounter.Helper.PreferenceManager;
 
@@ -27,6 +28,14 @@ public class Player implements Parcelable {
         this.lifePoints = DEFAULT_LIFEPOINTS;
         this.poisonPoints = 0;
         counters = new ArrayList<Counter>();
+    }
+
+    public String GetJson() {
+        return new Gson().toJson(this);
+    }
+
+    public static Player GetInstanceByJson(String json) {
+        return new Gson().fromJson(json, Player.class);
     }
 
     public void resetPoints(SharedPreferences preferences) {

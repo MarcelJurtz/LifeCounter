@@ -9,6 +9,8 @@ package com.marceljurtz.lifecounter.Helper;
 
 import android.content.SharedPreferences;
 
+import java.util.List;
+
 public class PreferenceManager {
 
     //region Default values
@@ -213,4 +215,15 @@ public class PreferenceManager {
     }
 
     //endregion
+
+    //region Player Data (points + counters)
+    public static void SavePlayerData(SharedPreferences preferences, List<Player> players) {
+        SharedPreferences.Editor editor = preferences.edit();
+
+        for(Player player : players) {
+            editor.putString(player.getPlayerID().toString(), player.GetJson());
+        }
+
+        editor.commit();
+    }
 }

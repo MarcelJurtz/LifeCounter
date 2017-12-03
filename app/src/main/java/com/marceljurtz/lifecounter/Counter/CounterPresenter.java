@@ -27,11 +27,13 @@ public class CounterPresenter implements ICounterPresenter {
 
     @Override
     public void OnPause() {
-
+        // Save items to preferences
+        PreferenceManager.SavePlayerData(preferences, players);
     }
 
     @Override
     public void OnResume() {
+        // Load items from preferences
 
     }
 
