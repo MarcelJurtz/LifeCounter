@@ -915,13 +915,6 @@ public class GameActivity extends AppCompatActivity implements IGameView {
     @Override
     public void LoadCounterManagerActivity() {
         Intent intent = new Intent(getApplicationContext(), CounterActivity.class);
-        player1.AddCounter(new Counter("Test",5,5));
-        intent.putExtra("player1",player1);
-        intent.putExtra("player2",player2);
-        if(playeramount == 4) {
-            intent.putExtra("player3",player3);
-            intent.putExtra("player4",player4);
-        }
         startActivity(intent);
     }
 
