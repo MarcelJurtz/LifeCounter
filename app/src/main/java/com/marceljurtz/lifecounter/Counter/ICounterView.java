@@ -5,6 +5,8 @@ import com.marceljurtz.lifecounter.Helper.Counter;
 import com.marceljurtz.lifecounter.Helper.Player;
 import com.marceljurtz.lifecounter.Helper.PlayerID;
 
+import java.util.ArrayList;
+
 public interface ICounterView extends IView {
     void SetPlayerIdentificationText(PlayerID playerId, String headerText);
     void DisplayNewCounterEntryToPlayer(PlayerID playerId, Counter counter);
@@ -15,9 +17,7 @@ public interface ICounterView extends IView {
     void LoadAboutActivity();
 
     void LoadCounterDeletionDialog();
-    void LoadCounterAddDialog();
-    void LoadPlayerIdentificationDialog(Player player);
+    void LoadCounterAddDialog(ArrayList<Player> players);
+    void LoadPlayerIdentificationDialog(PlayerID playerID, String playername);
     void DeleteAllCounters();
-
-    void GoBackToPreviousActivity();
 }

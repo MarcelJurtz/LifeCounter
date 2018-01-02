@@ -95,14 +95,14 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
         lblCounterHeaderPlayer1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LoadPlayerIdentificationDialog(player1);
+                presenter.OnPlayerIdentificationTap(player1.getPlayerID());
             }
         });
         lblCounterHeaderPlayer2 = (TextView) findViewById(R.id.lblCountersPlayer2);
         lblCounterHeaderPlayer2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LoadPlayerIdentificationDialog(player2);
+                presenter.OnPlayerIdentificationTap(player2.getPlayerID());
             }
         });
 
@@ -110,19 +110,19 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
         lblCounterHeaderPlayer3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LoadPlayerIdentificationDialog(player3);
+                presenter.OnPlayerIdentificationTap(player3.getPlayerID());
             }
         });
         lblCounterHeaderPlayer4 = (TextView) findViewById(R.id.lblCountersPlayer4);
         lblCounterHeaderPlayer4.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    LoadPlayerIdentificationDialog(player4);
+                    presenter.OnPlayerIdentificationTap(player4.getPlayerID());
             }
         });
 
 
-        adapter = new ArrayAdapter<Player>(getApplicationContext(), R.layout.spinner_item, players);
+        adapter = new ArrayAdapter<Player>(getApplicationContext(), R.layout.spinner_item);
         adapter.setDropDownViewResource(R.layout.spinner_item);
 
         presenter = new CounterPresenter(this, preferences, players);
@@ -185,7 +185,11 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
     }
 
     @Override
-    public void LoadCounterAddDialog() {
+    public void LoadCounterAddDialog(ArrayList<Player> players) {
+
+        adapter.clear();
+        adapter.addAll(players);
+
         final Dialog dialog = new Dialog(CounterActivity.this);
         dialog.setContentView(R.layout.dialog_countermanager_new);
 
@@ -297,12 +301,12 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
     }
 
     @Override
-    public void LoadPlayerIdentificationDialog(final Player player) {
+    public void LoadPlayerIdentificationDialog(final PlayerID playerID, final String playername) {
         final Dialog dialog = new Dialog(CounterActivity.this);
         dialog.setContentView(R.layout.dialog_countermanager_playerdescription);
 
         final EditText txtPlayerDescription = (EditText) dialog.findViewById(R.id.txtCounterPlayerDescription);
-        txtPlayerDescription.setText(player.getPlayerIdentification());
+        txtPlayerDescription.setText(playername);
 
         Button dialogButton = (Button) dialog.findViewById(R.id.cmdCounterPlayerDescrptionDialogOK);
 
@@ -314,7 +318,7 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
                 dialog.dismiss();
 
                 if (newDescription != null && newDescription.length() > 0) {
-                    presenter.OnPlayerIdentificationChanged(player.getPlayerID(), newDescription);
+                    presenter.OnPlayerIdentificationChanged(playerID, newDescription);
                 }
             }
         });
@@ -406,10 +410,5 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
     public void LoadAboutActivity() {
         Intent intent = new Intent(getApplicationContext(), AboutActivity.class);
         startActivity(intent);
-    }
-
-    @Override
-    public void GoBackToPreviousActivity() {
-        finish();
     }
 }

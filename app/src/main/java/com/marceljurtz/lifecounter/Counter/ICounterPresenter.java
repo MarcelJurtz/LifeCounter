@@ -11,6 +11,8 @@ import java.util.List;
 public interface ICounterPresenter extends IPresenter, ICounterNavDrawerInteraction {
     void OnCreateNewCounterButtonTap();
     void AddCounterToPlayer(PlayerID playerId, Counter counter);
+
+    void OnPlayerIdentificationTap(PlayerID playerID);
     void OnPlayerIdentificationChanged(PlayerID playerId, String newIdentification);
 
     void OnMenuEntryTwoPlayerClick();
@@ -18,4 +20,6 @@ public interface ICounterPresenter extends IPresenter, ICounterNavDrawerInteract
     void OnMenuEntryDicingClick();
     void OnMenuEntrySettingsClick();
     void OnMenuEntryAboutClick();
+
+    String GetPlayerIdentification(PlayerID playerID);
 }
