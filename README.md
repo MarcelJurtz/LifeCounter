@@ -1,5 +1,6 @@
 # Magic The Gathering - Life Counter
 
+![CircleCI Build State](https://circleci.com/gh/MarcelJurtz/LifeCounter.svg?style=shield&circle-token=:circle-token)
 ![Icon](ASSETS/icon_small.png)
 
 This app is a 2-player, customizable lifecounter for Magic the Gathering
