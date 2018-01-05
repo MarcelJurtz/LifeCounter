@@ -35,6 +35,12 @@
         android:orientation="horizontal"
         android:layout_below="@id/txtCardDescription">
 
+        <ImageButton
+            android:id="@+id/cmdDecreaseCounter"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/icon_minus" />
+
         <EditText
             android:id="@+id/txtCardAtk"
             android:layout_width="match_parent"
@@ -62,6 +68,12 @@
             android:maxLength="3"
             android:layout_weight="1"
             android:hint="DEF"/>
+
+        <ImageButton
+            android:id="@+id/cmdIncreaseCounter"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/icon_plus" />
 
     </LinearLayout>
 
