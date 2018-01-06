@@ -1,5 +1,7 @@
 package com.marceljurtz.lifecounter.Counter;
 
+import android.widget.LinearLayout;
+
 import com.marceljurtz.lifecounter.Helper.Counter;
 import com.marceljurtz.lifecounter.Helper.Player;
 import com.marceljurtz.lifecounter.Helper.BaseInterface.ICounterNavDrawerInteraction;
@@ -14,6 +16,10 @@ public interface ICounterPresenter extends IPresenter, ICounterNavDrawerInteract
 
     void OnPlayerIdentificationTap(PlayerID playerID);
     void OnPlayerIdentificationChanged(PlayerID playerId, String newIdentification);
+
+    void OnCounterTap(String counterDescription, LinearLayout counterLayout);
+    void OnCounterLongTap(LinearLayout counterLayout);
+    void OnCounterDeletionConfirmation(LinearLayout counterLayout);
 
     void OnMenuEntryTwoPlayerClick();
     void OnMenuEntryFourPlayerClick();

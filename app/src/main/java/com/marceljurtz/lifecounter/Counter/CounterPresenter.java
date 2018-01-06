@@ -1,6 +1,7 @@
 package com.marceljurtz.lifecounter.Counter;
 
 import android.content.SharedPreferences;
+import android.widget.LinearLayout;
 
 import com.marceljurtz.lifecounter.Helper.Counter;
 import com.marceljurtz.lifecounter.Helper.Player;
@@ -127,5 +128,21 @@ public class CounterPresenter implements ICounterPresenter {
     @Override
     public void OnPlayerIdentificationTap(PlayerID playerID) {
         view.LoadPlayerIdentificationDialog(playerID, GetPlayerIdentification(playerID));
+    }
+
+    @Override
+    public void OnCounterTap(String counterDescription, LinearLayout counterLayout) {
+
+    }
+
+    @Override
+    public void OnCounterLongTap(LinearLayout counterLayout) {
+        view.LoadCounterDeletionDialog(counterLayout);
+    }
+
+    @Override
+    public void OnCounterDeletionConfirmation(LinearLayout counterLayout) {
+        view.DeleteCounter(counterLayout);
+        // TODO: remove counter from players array
     }
 }
