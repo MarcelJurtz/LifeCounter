@@ -6,6 +6,7 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -17,7 +18,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.QuickContactBadge;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -123,7 +126,6 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
             }
         });
 
-
         adapter = new ArrayAdapter<Player>(getApplicationContext(), R.layout.spinner_item);
         adapter.setDropDownViewResource(R.layout.spinner_item);
 
@@ -199,7 +201,46 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
         final EditText txtATK = (EditText) dialog.findViewById(R.id.txtCardAtk);
         final EditText txtDEF = (EditText) dialog.findViewById(R.id.txtCardDef);
         final Spinner spPlayers = (Spinner) dialog.findViewById(R.id.spUserSelection);
+        final ImageButton cmdIncrease = (ImageButton)dialog.findViewById(R.id.cmdIncreaseCounter);
+        final ImageButton cmdDecrease = (ImageButton)dialog.findViewById(R.id.cmdDecreaseCounter);
+
         spPlayers.setAdapter(adapter);
+
+        cmdIncrease.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                try {
+                    txtATK.setText(Integer.toString(Integer.parseInt(txtATK.getText().toString()) + 1));
+                } catch (NumberFormatException e) {
+                    txtATK.setText("1");
+                }
+
+                try {
+                    txtDEF.setText(Integer.toString(Integer.parseInt(txtDEF.getText().toString()) + 1));
+                } catch(NumberFormatException e) {
+                    txtDEF.setText("1");
+                }
+            }
+        });
+
+        cmdDecrease.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                try {
+                    txtATK.setText(Integer.toString(Integer.parseInt(txtATK.getText().toString()) - 1));
+                } catch (NumberFormatException e) {
+                    txtATK.setText("0");
+                }
+
+                try {
+                    txtDEF.setText(Integer.toString(Integer.parseInt(txtDEF.getText().toString()) - 1));
+                } catch(NumberFormatException e) {
+                    txtDEF.setText("0");
+                }
+            }
+        });
 
         Button dialogButton = (Button) dialog.findViewById(R.id.dialogButtonOK);
         dialogButton.setOnClickListener(new View.OnClickListener() {

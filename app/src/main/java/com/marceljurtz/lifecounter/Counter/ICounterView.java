@@ -10,6 +10,7 @@ import com.marceljurtz.lifecounter.Helper.PlayerID;
 import java.util.ArrayList;
 
 public interface ICounterView extends IView {
+
     void SetPlayerIdentificationText(PlayerID playerId, String headerText);
     void DisplayNewCounterEntryToPlayer(PlayerID playerId, Counter counter);
 
