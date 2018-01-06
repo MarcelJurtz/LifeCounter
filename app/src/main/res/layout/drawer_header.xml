@@ -29,6 +29,7 @@
         android:id="@+id/lblVersionInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/versionName" /> <!-- Don't change manually, this is handled by build.gradle  -->
+        android:text="10"/>
+        <!-- android:text="@string/versionName" /> Don't change manually, this is handled by build.gradle  -->
 
 </LinearLayout>
