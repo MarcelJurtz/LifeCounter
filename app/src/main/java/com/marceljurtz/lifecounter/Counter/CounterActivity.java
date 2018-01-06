@@ -13,12 +13,14 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.marceljurtz.lifecounter.About.AboutActivity;
 import com.marceljurtz.lifecounter.Dicing.DicingActivity;
@@ -273,7 +275,7 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
         wrapper.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                LoadCounterDeletionDialog(); // TODO: Add Parameters
+                LoadCounterDeletionDialog(wrapper); // TODO: Add Parameters
                 return true;
             }
         });
@@ -347,13 +349,16 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
     }
 
     @Override
-    public void LoadCounterDeletionDialog() {
+    public void LoadCounterDeletionDialog(final LinearLayout wrapperLayout) {
         new AlertDialog.Builder(CounterActivity.this)
                 .setTitle(getResources().getString(R.string.dialog_countermanager_delete_title))
                 .setMessage(getResources().getString(R.string.dialog_countermanager_delete_message))
                 .setPositiveButton(getResources().getString(R.string.yes), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
-                        // TODO Delete item
+                        if(((ViewGroup)wrapperLayout.getParent()).getChildCount() == 2) {
+                            ((ViewGroup) wrapperLayout.getParent()).setVisibility(View.GONE);
+                        }
+                        ((ViewGroup)wrapperLayout.getParent()).removeView(wrapperLayout);
                     }
                 })
                 .setNegativeButton(getResources().getString(R.string.no), null).show();

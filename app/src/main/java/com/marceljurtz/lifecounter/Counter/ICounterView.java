@@ -1,5 +1,7 @@
 package com.marceljurtz.lifecounter.Counter;
 
+import android.widget.LinearLayout;
+
 import com.marceljurtz.lifecounter.Helper.BaseInterface.IView;
 import com.marceljurtz.lifecounter.Helper.Counter;
 import com.marceljurtz.lifecounter.Helper.Player;
@@ -16,7 +18,7 @@ public interface ICounterView extends IView {
     void LoadSettingsActivity();
     void LoadAboutActivity();
 
-    void LoadCounterDeletionDialog();
+    void LoadCounterDeletionDialog(LinearLayout linearLayout);
     void LoadCounterAddDialog(ArrayList<Player> players);
     void LoadPlayerIdentificationDialog(PlayerID playerID, String playername);
     void DeleteAllCounters();

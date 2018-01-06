@@ -15,22 +15,6 @@ public class Counter implements Parcelable {
         this.def = DEF;
     }
 
-    public void increaseATK() {
-        this.atk++;
-    }
-
-    public void decreaseATK() {
-        this.atk--;
-    }
-
-    public void increaseDEF() {
-        this.def++;
-    }
-
-    public void decreaseDEF() {
-        this.def--;
-    }
-
     public int getATK() {
         return this.atk;
     }
