@@ -120,27 +120,10 @@ public class Player implements Parcelable {
     @Override
     public String toString() {
         if (playerIdentification == null || playerIdentification == "") {
-            int id = 0;
-            /*
-            switch (playerID) {
-                case ONE:
-                    id = 1;
-                    break;
-                case TWO:
-                    id = 2;
-                    break;
-                case THREE:
-                    id = 3;
-                    break;
-                case FOUR:
-                    id = 4;
-                    break;
-                default:
-                    break;
-            }
-            */
             return "Player " + playerID.GetValue();
-        } else return playerIdentification;
+        } else {
+            return playerIdentification;
+        }
     }
 
     @Override
