@@ -38,7 +38,7 @@ public class Player implements Parcelable {
         return new Gson().fromJson(json, Player.class);
     }
 
-    public void resetPoints(SharedPreferences preferences) {
+    public void ResetPoints(SharedPreferences preferences) {
         this.lifePoints = PreferenceManager.getDefaultLifepoints(preferences);
         this.poisonPoints = 0;
     }
@@ -47,15 +47,15 @@ public class Player implements Parcelable {
         return this.playerID;
     }
 
-    public int getLifePoints() {
+    public int GetLifePoints() {
         return this.lifePoints;
     }
 
-    public int getPoisonPoints() {
+    public int GetPoisonPoints() {
         return this.poisonPoints;
     }
 
-    public void updateLifepoints(int amount) {
+    public void UpdateLifepoints(int amount) {
         this.lifePoints += amount;
         if (this.lifePoints < PreferenceManager.getMinLife()) {
             this.lifePoints = PreferenceManager.getMinLife();
@@ -64,7 +64,7 @@ public class Player implements Parcelable {
         }
     }
 
-    public void updatePoisonpoints(int amount) {
+    public void UpdatePoisonpoints(int amount) {
         this.poisonPoints += amount;
         if (this.poisonPoints < PreferenceManager.getMinPoison()) {
             this.poisonPoints = PreferenceManager.getMinPoison();
@@ -73,7 +73,7 @@ public class Player implements Parcelable {
         }
     }
 
-    public String getPlayerIdentification() {
+    public String GetPlayerIdentification() {
         if (playerIdentification == null || playerIdentification == "") {
             switch (playerID) {
                 case ONE:
@@ -95,7 +95,7 @@ public class Player implements Parcelable {
         return playerIdentification;
     }
 
-    public void setPlayerIdentification(String identification) {
+    public void SetPlayerIdentification(String identification) {
         playerIdentification = identification;
     }
 
@@ -121,7 +121,7 @@ public class Player implements Parcelable {
     public String toString() {
         if (playerIdentification == null || playerIdentification == "") {
             int id = 0;
-
+            /*
             switch (playerID) {
                 case ONE:
                     id = 1;
@@ -138,7 +138,8 @@ public class Player implements Parcelable {
                 default:
                     break;
             }
-            return "Player " + id;
+            */
+            return "Player " + playerID.GetValue();
         } else return playerIdentification;
     }
 

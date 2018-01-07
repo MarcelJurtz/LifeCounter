@@ -87,7 +87,7 @@ public class GamePresenter implements IGamePresenter {
     @Override
     public void OnResume() {
 
-        String s = player1.getPlayerIdentification();
+        String s = player1.GetPlayerIdentification();
         settingsVisible = false;
         view.DisableSettingsControls(hideOtherControlsWhenSettingsDisplayed, poisonVisible);
         view.SettingsButtonDisable();
@@ -262,8 +262,8 @@ public class GamePresenter implements IGamePresenter {
 
     @Override
     public void OnResetButtonClick() {
-        player1.resetPoints(preferences);
-        player2.resetPoints(preferences);
+        player1.ResetPoints(preferences);
+        player2.ResetPoints(preferences);
 
         settingsVisible = false;
         poisonVisible = false;
@@ -272,21 +272,21 @@ public class GamePresenter implements IGamePresenter {
         view.DisableSettingsControls(hideOtherControlsWhenSettingsDisplayed, poisonVisible);
         view.PoisonButtonDisable();
 
-        view.SetLifepoints(PlayerID.ONE, String.format("%02d",player1.getLifePoints()));
-        view.SetLifepoints(PlayerID.TWO, String.format("%02d",player2.getLifePoints()));
+        view.SetLifepoints(PlayerID.ONE, String.format("%02d",player1.GetLifePoints()));
+        view.SetLifepoints(PlayerID.TWO, String.format("%02d",player2.GetLifePoints()));
 
-        view.SetPoisonpoints(PlayerID.ONE, String.format("%02d",player1.getPoisonPoints()));
-        view.SetPoisonpoints(PlayerID.TWO, String.format("%02d",player2.getPoisonPoints()));
+        view.SetPoisonpoints(PlayerID.ONE, String.format("%02d",player1.GetPoisonPoints()));
+        view.SetPoisonpoints(PlayerID.TWO, String.format("%02d",player2.GetPoisonPoints()));
 
         if(view.GetPlayerAmount() == 4) {
-            player3.resetPoints(preferences);
-            player4.resetPoints(preferences);
+            player3.ResetPoints(preferences);
+            player4.ResetPoints(preferences);
 
-            view.SetLifepoints(PlayerID.THREE, String.format("%02d",player3.getLifePoints()));
-            view.SetLifepoints(PlayerID.FOUR, String.format("%02d",player4.getLifePoints()));
+            view.SetLifepoints(PlayerID.THREE, String.format("%02d",player3.GetLifePoints()));
+            view.SetLifepoints(PlayerID.FOUR, String.format("%02d",player4.GetLifePoints()));
 
-            view.SetPoisonpoints(PlayerID.THREE, String.format("%02d",player3.getPoisonPoints()));
-            view.SetPoisonpoints(PlayerID.FOUR, String.format("%02d",player4.getPoisonPoints()));
+            view.SetPoisonpoints(PlayerID.THREE, String.format("%02d",player3.GetPoisonPoints()));
+            view.SetPoisonpoints(PlayerID.FOUR, String.format("%02d",player4.GetPoisonPoints()));
         }
     }
 

@@ -2,12 +2,6 @@ package com.marceljurtz.lifecounter.Helper;
 
 import android.content.SharedPreferences;
 
-import com.marceljurtz.lifecounter.Helper.ClickType;
-import com.marceljurtz.lifecounter.Helper.Operator;
-import com.marceljurtz.lifecounter.Helper.Player;
-import com.marceljurtz.lifecounter.Helper.PlayerID;
-import com.marceljurtz.lifecounter.Helper.PreferenceManager;
-
 public class Game {
 
     private SharedPreferences preferences;
@@ -47,16 +41,16 @@ public class Game {
 
         switch(playerID) {
             case ONE:
-                players[0].updateLifepoints(amount);
+                players[0].UpdateLifepoints(amount);
                 break;
             case TWO:
-                players[1].updateLifepoints(amount);
+                players[1].UpdateLifepoints(amount);
                 break;
             case THREE:
-                players[2].updateLifepoints(amount);
+                players[2].UpdateLifepoints(amount);
                 break;
             case FOUR:
-                players[3].updateLifepoints(amount);
+                players[3].UpdateLifepoints(amount);
                 break;
             default:
                 // Nothing to do
@@ -73,16 +67,16 @@ public class Game {
 
         switch(playerID) {
             case ONE:
-                players[0].updatePoisonpoints(amount);
+                players[0].UpdatePoisonpoints(amount);
                 break;
             case TWO:
-                players[1].updatePoisonpoints(amount);
+                players[1].UpdatePoisonpoints(amount);
                 break;
             case THREE:
-                players[2].updatePoisonpoints(amount);
+                players[2].UpdatePoisonpoints(amount);
                 break;
             case FOUR:
-                players[3].updatePoisonpoints(amount);
+                players[3].UpdatePoisonpoints(amount);
                 break;
             default:
                 // Nothing to do
@@ -93,13 +87,13 @@ public class Game {
     public int getPlayerLifepoints(PlayerID playerID) {
         switch(playerID) {
             case ONE :
-                return players[0].getLifePoints();
+                return players[0].GetLifePoints();
             case TWO:
-                return players[1].getLifePoints();
+                return players[1].GetLifePoints();
             case THREE:
-                return players[2].getLifePoints();
+                return players[2].GetLifePoints();
             case FOUR:
-                return players[3].getLifePoints();
+                return players[3].GetLifePoints();
             default:
                 return 0;
         }
@@ -108,13 +102,13 @@ public class Game {
     public int getPlayerPoisonpoints(PlayerID playerID) {
         switch(playerID) {
             case ONE :
-                return players[0].getPoisonPoints();
+                return players[0].GetPoisonPoints();
             case TWO:
-                return players[1].getPoisonPoints();
+                return players[1].GetPoisonPoints();
             case THREE:
-                return players[2].getPoisonPoints();
+                return players[2].GetPoisonPoints();
             case FOUR:
-                return players[3].getPoisonPoints();
+                return players[3].GetPoisonPoints();
             default:
                 return 0;
         }

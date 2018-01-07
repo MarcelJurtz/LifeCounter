@@ -2,7 +2,6 @@ package com.marceljurtz.lifecounter.Counter;
 
 import android.content.SharedPreferences;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.marceljurtz.lifecounter.Helper.Counter;
 import com.marceljurtz.lifecounter.Helper.Player;
@@ -43,7 +42,7 @@ public class CounterPresenter implements ICounterPresenter {
 
         for (Player player : players) {
 
-            view.SetPlayerIdentificationText(player.getPlayerID(), player.getPlayerIdentification());
+            view.SetPlayerIdentificationText(player.getPlayerID(), player.GetPlayerIdentification());
 
             for (Counter counter : player.GetAllCounters()) {
                 view.AddCounterToPlayer(player.getPlayerID(), counter);
@@ -79,7 +78,7 @@ public class CounterPresenter implements ICounterPresenter {
 
         for (Player player : players) {
             if (player.getPlayerID() == playerId) {
-                player.setPlayerIdentification(newIdentification);
+                player.SetPlayerIdentification(newIdentification);
                 break;
             }
         }
@@ -118,7 +117,7 @@ public class CounterPresenter implements ICounterPresenter {
     public String GetPlayerIdentification(PlayerID playerID) {
         for (Player player : players) {
             if (player.getPlayerID() == playerID) {
-                return player.getPlayerIdentification();
+                return player.GetPlayerIdentification();
             }
         }
         return "";
@@ -139,6 +138,7 @@ public class CounterPresenter implements ICounterPresenter {
         for(Player player : players) {
             if(player.getPlayerID() == playerID) {
                 player.ClearCounters();
+                player.SetPlayerIdentification("");
                 break;
             }
         }
