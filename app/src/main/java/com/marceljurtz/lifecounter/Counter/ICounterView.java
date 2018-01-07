@@ -19,7 +19,7 @@ public interface ICounterView extends IView {
     void LoadSettingsActivity();
     void LoadAboutActivity();
 
-    void DeleteCounter(LinearLayout counterLayout);
+    void DeleteCounter(LinearLayout counterLayout, boolean deleteParent);
     void UpdateCounter(LinearLayout counterLayout);
 
     void LoadCounterDeletionDialog(LinearLayout linearLayout);

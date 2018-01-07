@@ -2,6 +2,7 @@ package com.marceljurtz.lifecounter.Counter;
 
 import android.content.SharedPreferences;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.marceljurtz.lifecounter.Helper.Counter;
 import com.marceljurtz.lifecounter.Helper.Player;
@@ -141,8 +142,23 @@ public class CounterPresenter implements ICounterPresenter {
     }
 
     @Override
-    public void OnCounterDeletionConfirmation(LinearLayout counterLayout) {
-        view.DeleteCounter(counterLayout);
-        // TODO: remove counter from players array
+    public void OnCounterDeletionConfirmation(LinearLayout counterLayout, String playerIdentification) {
+        boolean deleteParent = false;
+
+        for (Player player: players) {
+            if(player.getPlayerIdentification() == playerIdentification) {
+                for (Counter c: player.GetAllCounters()) {
+                    if(c.getDescription() == ((TextView)counterLayout.getChildAt(0)).getText().toString()) {
+                        player.RemoveCounter(c);
+                        break;
+                    }
+                }
+                if(player.GetAllCounters().size() <= 0) {
+                    deleteParent = true;
+                }
+            }
+        }
+
+        view.DeleteCounter(counterLayout, deleteParent);
     }
 }

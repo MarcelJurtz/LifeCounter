@@ -19,7 +19,7 @@ public interface ICounterPresenter extends IPresenter, ICounterNavDrawerInteract
 
     void OnCounterTap(String counterDescription, LinearLayout counterLayout);
     void OnCounterLongTap(LinearLayout counterLayout);
-    void OnCounterDeletionConfirmation(LinearLayout counterLayout);
+    void OnCounterDeletionConfirmation(LinearLayout counterLayout, String playerIdentification);
 
     void OnMenuEntryTwoPlayerClick();
     void OnMenuEntryFourPlayerClick();

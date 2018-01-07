@@ -396,7 +396,7 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
                 .setMessage(getResources().getString(R.string.dialog_countermanager_delete_message))
                 .setPositiveButton(getResources().getString(R.string.yes), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
-                        presenter.OnCounterDeletionConfirmation(wrapperLayout);
+                        presenter.OnCounterDeletionConfirmation(wrapperLayout, ((TextView)((ViewGroup)wrapperLayout.getParent()).getChildAt(0)).getText().toString());
                     }
                 })
                 .setNegativeButton(getResources().getString(R.string.no), null).show();
@@ -456,8 +456,8 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
     }
 
     @Override
-    public void DeleteCounter(LinearLayout counterLayout) {
-        if(((ViewGroup)counterLayout.getParent()).getChildCount() == 2) { // TODO: replace 2 by presenter check for player
+    public void DeleteCounter(LinearLayout counterLayout, boolean deleteParent) {
+        if(deleteParent) {
             ((ViewGroup) counterLayout.getParent()).setVisibility(View.GONE);
         }
         ((ViewGroup)counterLayout.getParent()).removeView(counterLayout);
