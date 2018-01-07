@@ -20,10 +20,12 @@ public interface ICounterView extends IView {
     void LoadAboutActivity();
 
     void DeleteCounter(LinearLayout counterLayout, boolean deleteParent);
+    void DeleteAllCounters();
+    void DeleteAllCountersForPlayer(PlayerID playerID);
     void UpdateCounter(LinearLayout counterLayout);
 
     void LoadCounterDeletionDialog(LinearLayout linearLayout);
+    void LoadMultipleCounterDeletionDialog(PlayerID playerID);
     void LoadCounterAddDialog(ArrayList<Player> players);
     void LoadPlayerIdentificationDialog(PlayerID playerID, String playername);
-    void DeleteAllCounters();
 }

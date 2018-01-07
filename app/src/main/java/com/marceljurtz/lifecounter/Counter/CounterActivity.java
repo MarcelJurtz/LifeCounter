@@ -21,6 +21,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.marceljurtz.lifecounter.About.AboutActivity;
 import com.marceljurtz.lifecounter.Dicing.DicingActivity;
@@ -32,6 +33,7 @@ import com.marceljurtz.lifecounter.Helper.PreferenceManager;
 import com.marceljurtz.lifecounter.R;
 import com.marceljurtz.lifecounter.Settings.SettingsActivity;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class CounterActivity extends AppCompatActivity implements ICounterView {
@@ -93,6 +95,8 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
         players.add(player3);
         players.add(player4);
 
+        presenter = new CounterPresenter(this, preferences, players);
+
         lblCounterHeaderPlayer1 = (TextView) findViewById(R.id.lblCountersPlayer1);
         lblCounterHeaderPlayer1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,11 +104,26 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
                 presenter.OnPlayerIdentificationTap(player1.getPlayerID());
             }
         });
+        lblCounterHeaderPlayer1.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                presenter.OnPlayerIdentificationLongTap(player1.getPlayerID());
+                return true;
+            }
+        });
+
         lblCounterHeaderPlayer2 = (TextView) findViewById(R.id.lblCountersPlayer2);
         lblCounterHeaderPlayer2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 presenter.OnPlayerIdentificationTap(player2.getPlayerID());
+            }
+        });
+        lblCounterHeaderPlayer2.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                presenter.OnPlayerIdentificationLongTap(player2.getPlayerID());
+                return true;
             }
         });
 
@@ -115,6 +134,14 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
                 presenter.OnPlayerIdentificationTap(player3.getPlayerID());
             }
         });
+        lblCounterHeaderPlayer3.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                presenter.OnPlayerIdentificationLongTap(player3.getPlayerID());
+                return true;
+            }
+        });
+
         lblCounterHeaderPlayer4 = (TextView) findViewById(R.id.lblCountersPlayer4);
         lblCounterHeaderPlayer4.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -122,11 +149,17 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
                     presenter.OnPlayerIdentificationTap(player4.getPlayerID());
             }
         });
+        lblCounterHeaderPlayer4.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                presenter.OnPlayerIdentificationLongTap(player4.getPlayerID());
+                return true;
+            }
+        });
 
         adapter = new ArrayAdapter<Player>(getApplicationContext(), R.layout.spinner_item);
         adapter.setDropDownViewResource(R.layout.spinner_item);
 
-        presenter = new CounterPresenter(this, preferences, players);
         presenter.OnCreate();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -394,7 +427,20 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
                 .setMessage(getResources().getString(R.string.dialog_countermanager_delete_message))
                 .setPositiveButton(getResources().getString(R.string.yes), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
-                        presenter.OnCounterDeletionConfirmation(wrapperLayout, ((TextView)((ViewGroup)wrapperLayout.getParent()).getChildAt(0)).getText().toString());
+                        presenter.OnCounterDeletionConfirmation(wrapperLayout);
+                    }
+                })
+                .setNegativeButton(getResources().getString(R.string.no), null).show();
+    }
+
+    @Override
+    public void LoadMultipleCounterDeletionDialog(final PlayerID playerID) {
+        new AlertDialog.Builder(CounterActivity.this)
+                .setTitle(getResources().getString(R.string.dialog_countermanager_delete_title))
+                .setMessage(getResources().getString(R.string.dialog_countermanager_delete_multiple_message))
+                .setPositiveButton(getResources().getString(R.string.yes), new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        presenter.OnPlayerDeletionConfirmation(playerID);
                     }
                 })
                 .setNegativeButton(getResources().getString(R.string.no), null).show();
@@ -402,31 +448,48 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
 
     @Override
     public void DeleteAllCounters() {
+        DeleteAllCountersForPlayer(player1.getPlayerID());
+        DeleteAllCountersForPlayer(player2.getPlayerID());
+        DeleteAllCountersForPlayer(player3.getPlayerID());
+        DeleteAllCountersForPlayer(player4.getPlayerID());
+    }
 
-        for (int i = 0; i < player1Layout.getChildCount(); i++) {
-            View v = player1Layout.getChildAt(i);
-            if(v.getId() != R.id.lblCountersPlayer1) player1Layout.removeView(v);
+    @Override
+    public void DeleteAllCountersForPlayer(PlayerID playerID) {
+        switch (playerID) {
+            case ONE:
+                RemoveAllCounterViewsAndHideLayout(player1Layout, R.id.lblCountersPlayer1);
+                break;
+            case TWO:
+                RemoveAllCounterViewsAndHideLayout(player2Layout, R.id.lblCountersPlayer2);
+                break;
+            case THREE:
+                RemoveAllCounterViewsAndHideLayout(player3Layout, R.id.lblCountersPlayer3);
+                break;
+            case FOUR:
+                RemoveAllCounterViewsAndHideLayout(player4Layout, R.id.lblCountersPlayer4);
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void RemoveAllCounterViewsAndHideLayout(ViewGroup layout, int layoutIdentifier) {
+        ArrayList<View> viewsToRemove = new ArrayList<>();
+
+        for(int i = 0; i < layout.getChildCount(); i++) {
+            View v = layout.getChildAt(i);
+            if(v.getId() != layoutIdentifier) {
+                viewsToRemove.add(v);
+            }
         }
 
-        for (int i = 0; i < player2Layout.getChildCount(); i++) {
-            View v = player2Layout.getChildAt(i);
-            if(v.getId() != R.id.lblCountersPlayer2) player2Layout.removeView(v);
+        for (View v: viewsToRemove) {
+            layout.removeView(v);
         }
 
-        for (int i = 0; i < player3Layout.getChildCount(); i++) {
-            View v = player3Layout.getChildAt(i);
-            if(v.getId() != R.id.lblCountersPlayer3) player3Layout.removeView(v);
-        }
-
-        for (int i = 0; i < player4Layout.getChildCount(); i++) {
-            View v = player4Layout.getChildAt(i);
-            if(v.getId() != R.id.lblCountersPlayer4) player4Layout.removeView(v);
-        }
-
-        player1Layout.setVisibility(View.GONE);
-        player2Layout.setVisibility(View.GONE);
-        player3Layout.setVisibility(View.GONE);
-        player4Layout.setVisibility(View.GONE);
+        viewsToRemove.clear();
+        layout.setVisibility(View.GONE);
     }
 
     @Override

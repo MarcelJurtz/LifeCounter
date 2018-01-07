@@ -15,11 +15,13 @@ public interface ICounterPresenter extends IPresenter, ICounterNavDrawerInteract
     void AddCounterToPlayer(PlayerID playerId, Counter counter);
 
     void OnPlayerIdentificationTap(PlayerID playerID);
+    void OnPlayerIdentificationLongTap(PlayerID playerID);
     void OnPlayerIdentificationChanged(PlayerID playerId, String newIdentification);
+    void OnPlayerDeletionConfirmation(PlayerID playerID);
 
     void OnCounterTap(String counterDescription, LinearLayout counterLayout);
     void OnCounterLongTap(LinearLayout counterLayout);
-    void OnCounterDeletionConfirmation(LinearLayout counterLayout, String playerIdentification);
+    void OnCounterDeletionConfirmation(LinearLayout counterLayout);
 
     void OnMenuEntryTwoPlayerClick();
     void OnMenuEntryFourPlayerClick();

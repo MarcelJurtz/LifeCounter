@@ -113,6 +113,10 @@ public class Player implements Parcelable {
         return counters;
     }
 
+    public void ClearCounters() {
+        counters.clear();
+    }
+
     @Override
     public String toString() {
         if (playerIdentification == null || playerIdentification == "") {

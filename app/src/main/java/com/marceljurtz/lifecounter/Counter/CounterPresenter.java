@@ -130,6 +130,22 @@ public class CounterPresenter implements ICounterPresenter {
     }
 
     @Override
+    public void OnPlayerIdentificationLongTap(PlayerID playerID) {
+        view.LoadMultipleCounterDeletionDialog(playerID);
+    }
+
+    @Override
+    public void OnPlayerDeletionConfirmation(PlayerID playerID) {
+        for(Player player : players) {
+            if(player.getPlayerID() == playerID) {
+                player.ClearCounters();
+                break;
+            }
+        }
+        view.DeleteAllCountersForPlayer(playerID);
+    }
+
+    @Override
     public void OnCounterTap(String counterDescription, LinearLayout counterLayout) {
 
     }
@@ -140,7 +156,7 @@ public class CounterPresenter implements ICounterPresenter {
     }
 
     @Override
-    public void OnCounterDeletionConfirmation(LinearLayout counterLayout, String playerIdentification) {
+    public void OnCounterDeletionConfirmation(LinearLayout counterLayout) {
         boolean deleteParent = false;
 
         Player currentPlayer;
