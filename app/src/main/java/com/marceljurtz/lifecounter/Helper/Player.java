@@ -100,6 +100,7 @@ public class Player implements Parcelable {
     }
 
     public void AddCounter(Counter c) {
+        c.SetIdentifier(playerID.toString() + "_" + counters.size());
         counters.add(c);
     }
 

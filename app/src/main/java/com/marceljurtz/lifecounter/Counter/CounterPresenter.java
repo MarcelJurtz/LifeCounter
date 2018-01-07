@@ -10,9 +10,6 @@ import com.marceljurtz.lifecounter.Helper.PlayerID;
 import com.marceljurtz.lifecounter.Helper.PreferenceManager;
 
 import java.util.ArrayList;
-import java.util.List;
-
-import static com.marceljurtz.lifecounter.Helper.PlayerID.ONE;
 
 public class CounterPresenter implements ICounterPresenter {
 
@@ -49,7 +46,7 @@ public class CounterPresenter implements ICounterPresenter {
             view.SetPlayerIdentificationText(player.getPlayerID(), player.getPlayerIdentification());
 
             for (Counter counter : player.GetAllCounters()) {
-                view.DisplayNewCounterEntryToPlayer(player.getPlayerID(), counter);
+                view.AddCounterToPlayer(player.getPlayerID(), counter);
             }
         }
     }
@@ -68,12 +65,13 @@ public class CounterPresenter implements ICounterPresenter {
     public void AddCounterToPlayer(PlayerID playerId, Counter counter) {
         for (Player player : players) {
             if (player.getPlayerID().equals(playerId)) {
+                counter.SetIdentifier(player.getPlayerID().toString() + "-" + player.GetAllCounters().size());
                 player.AddCounter(counter);
                 break;
             }
         }
 
-        view.DisplayNewCounterEntryToPlayer(playerId, counter);
+        view.AddCounterToPlayer(playerId, counter);
     }
 
     @Override
@@ -118,8 +116,8 @@ public class CounterPresenter implements ICounterPresenter {
 
     @Override
     public String GetPlayerIdentification(PlayerID playerID) {
-        for(Player player : players) {
-            if(player.getPlayerID() == playerID) {
+        for (Player player : players) {
+            if (player.getPlayerID() == playerID) {
                 return player.getPlayerIdentification();
             }
         }
@@ -145,20 +143,38 @@ public class CounterPresenter implements ICounterPresenter {
     public void OnCounterDeletionConfirmation(LinearLayout counterLayout, String playerIdentification) {
         boolean deleteParent = false;
 
-        for (Player player: players) {
-            if(player.getPlayerIdentification() == playerIdentification) {
-                for (Counter c: player.GetAllCounters()) {
-                    if(c.getDescription() == ((TextView)counterLayout.getChildAt(0)).getText().toString()) {
-                        player.RemoveCounter(c);
-                        break;
-                    }
-                }
-                if(player.GetAllCounters().size() <= 0) {
-                    deleteParent = true;
-                }
-            }
+        Player currentPlayer;
+
+        String tag = (String) counterLayout.getTag();
+        switch (PlayerID.valueOf((tag.split("_"))[0])) {
+            case ONE:
+                currentPlayer = players.get(0);
+                break;
+            case TWO:
+                currentPlayer = players.get(1);
+                break;
+            case THREE:
+                currentPlayer = players.get(2);
+                break;
+            case FOUR:
+                currentPlayer = players.get(3);
+                break;
+            default:
+                currentPlayer = null;
         }
 
-        view.DeleteCounter(counterLayout, deleteParent);
+        if (currentPlayer != null) {
+            for (Counter c : currentPlayer.GetAllCounters()) {
+                if (c.GetIdentifier() == tag) {
+                    currentPlayer.RemoveCounter(c);
+                    break;
+                }
+            }
+            if (currentPlayer.GetAllCounters().size() <= 0) {
+                deleteParent = true;
+            }
+
+            view.DeleteCounter(counterLayout, deleteParent);
+        }
     }
 }

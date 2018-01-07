@@ -6,7 +6,6 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.media.Image;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -20,10 +19,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.QuickContactBadge;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.marceljurtz.lifecounter.About.AboutActivity;
 import com.marceljurtz.lifecounter.Dicing.DicingActivity;
@@ -268,7 +265,7 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
     }
 
     @Override
-    public void DisplayNewCounterEntryToPlayer(PlayerID playerId, Counter counter) {
+    public void AddCounterToPlayer(PlayerID playerId, Counter counter) {
         int paddingLeft = 50;
         int paddingRight = 50;
         int fontSize = 24;
@@ -277,12 +274,13 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
         LinearLayout.LayoutParams llParamsSpacer = new LinearLayout.LayoutParams(0, 0, 1f);
 
         final LinearLayout wrapper = new LinearLayout(getApplicationContext());
+        wrapper.setTag(counter.GetIdentifier());
         wrapper.setOrientation(LinearLayout.HORIZONTAL);
         wrapper.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
         wrapper.setPadding(paddingLeft, 0, paddingRight, 0);
 
         TextView lblDescription = new TextView(getApplicationContext());
-        lblDescription.setText(counter.getDescription());
+        lblDescription.setText(counter.GetDescription());
         lblDescription.setLayoutParams(llParams);
         lblDescription.setTextSize(fontSize);
         lblDescription.setTextColor(getResources().getColor(R.color.textColor));
@@ -293,7 +291,7 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
         wrapper.addView(spacer);
 
         TextView lblATK = new TextView(getApplicationContext());
-        lblATK.setText(counter.getATK() + "");
+        lblATK.setText(counter.GetATK() + "");
         lblATK.setLayoutParams(llParams);
         lblATK.setTextSize(fontSize);
         lblATK.setTextColor(getResources().getColor(R.color.textColor));
@@ -307,7 +305,7 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
         wrapper.addView(lblDivider);
 
         TextView lblDEF = new TextView(getApplicationContext());
-        lblDEF.setText(counter.getDEF() + "");
+        lblDEF.setText(counter.GetDEF() + "");
         lblDEF.setLayoutParams(llParams);
         lblDEF.setTextSize(fontSize);
         lblDEF.setTextColor(getResources().getColor(R.color.textColor));

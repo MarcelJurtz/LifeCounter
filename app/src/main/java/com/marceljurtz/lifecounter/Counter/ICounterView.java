@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public interface ICounterView extends IView {
 
     void SetPlayerIdentificationText(PlayerID playerId, String headerText);
-    void DisplayNewCounterEntryToPlayer(PlayerID playerId, Counter counter);
+    void AddCounterToPlayer(PlayerID playerId, Counter counter);
 
     void LoadGameActivity();
     void LoadDicingActivity();
