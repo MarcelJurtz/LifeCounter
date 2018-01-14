@@ -11,6 +11,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Display;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -286,7 +287,7 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
                             Integer.parseInt(txtDEF.getText().toString()));
 
                 } catch (NullPointerException | NumberFormatException ex) {
-                    Snackbar.make(findViewById(android.R.id.content), R.string.dialog_countermanager_error_invalid_entry, Snackbar.LENGTH_LONG).show();
+                    DisplayErrorMessage(getString(R.string.dialog_countermanager_error_invalid_entry));
                 }
 
                 dialog.dismiss();
@@ -661,10 +662,11 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
 
         }
         catch(Exception ex) {
-            // Message user
-            String s = ex.getMessage();
+            DisplayErrorMessage(getString(R.string.dialog_countermanager_edit_counter_error));
         }
+    }
 
-
+    private void DisplayErrorMessage(String errormessage) {
+        Snackbar.make(findViewById(android.R.id.content), errormessage, Snackbar.LENGTH_LONG).show();
     }
 }

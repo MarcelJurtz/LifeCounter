@@ -70,6 +70,7 @@
     <string name="dialog_countermanager_delete_multiple_message">Möchtest du alle Einträge des Spielers löschen?</string>
     <string name="dialog_countermanager_delete_confirmation">Eintrag gelöscht</string>
     <string name="dialog_countermanager_edit_playername_title">Spielernamen speichern</string>
+    <string name="dialog_countermanager_edit_counter_error">Update fehlgeschlagen!</string>
 
     <string name="exc_invalid_object_player">Ungültige Spielerauswahl</string>
     <string name="exc_invalid_object_counter">Ungültige Counterauswahl</string>
