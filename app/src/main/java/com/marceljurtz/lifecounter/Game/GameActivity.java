@@ -24,7 +24,6 @@ import com.marceljurtz.lifecounter.About.AboutActivity;
 import com.marceljurtz.lifecounter.Counter.CounterActivity;
 import com.marceljurtz.lifecounter.Dicing.DicingActivity;
 import com.marceljurtz.lifecounter.Helper.ClickType;
-import com.marceljurtz.lifecounter.Helper.Counter;
 import com.marceljurtz.lifecounter.Helper.MagicColor;
 import com.marceljurtz.lifecounter.Helper.Operator;
 import com.marceljurtz.lifecounter.Helper.Player;
@@ -475,13 +474,13 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         cmdPlusPlayer1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.OnLifeUpdate(player1.getPlayerID(), ClickType.SHORT, Operator.ADD);
+                presenter.OnLifeUpdate(player1.GetPlayerID(), ClickType.SHORT, Operator.ADD);
             }
         });
         cmdPlusPlayer1.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                presenter.OnLifeUpdate(player1.getPlayerID(), ClickType.LONG, Operator.ADD);
+                presenter.OnLifeUpdate(player1.GetPlayerID(), ClickType.LONG, Operator.ADD);
                 return true;
             }
         });
@@ -489,13 +488,13 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         cmdMinusPlayer1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.OnLifeUpdate(player1.getPlayerID(), ClickType.SHORT, Operator.SUBSTRACT);
+                presenter.OnLifeUpdate(player1.GetPlayerID(), ClickType.SHORT, Operator.SUBSTRACT);
             }
         });
         cmdMinusPlayer1.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                presenter.OnLifeUpdate(player1.getPlayerID(), ClickType.LONG, Operator.SUBSTRACT);
+                presenter.OnLifeUpdate(player1.GetPlayerID(), ClickType.LONG, Operator.SUBSTRACT);
                 return true;
             }
         });
@@ -507,13 +506,13 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         cmdPlusPlayer2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.OnLifeUpdate(player2.getPlayerID(), ClickType.SHORT, Operator.ADD);
+                presenter.OnLifeUpdate(player2.GetPlayerID(), ClickType.SHORT, Operator.ADD);
             }
         });
         cmdPlusPlayer2.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                presenter.OnLifeUpdate(player2.getPlayerID(), ClickType.LONG, Operator.ADD);
+                presenter.OnLifeUpdate(player2.GetPlayerID(), ClickType.LONG, Operator.ADD);
                 return true;
             }
         });
@@ -521,13 +520,13 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         cmdMinusPlayer2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.OnLifeUpdate(player2.getPlayerID(), ClickType.SHORT, Operator.SUBSTRACT);
+                presenter.OnLifeUpdate(player2.GetPlayerID(), ClickType.SHORT, Operator.SUBSTRACT);
             }
         });
         cmdMinusPlayer2.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                presenter.OnLifeUpdate(player2.getPlayerID(), ClickType.LONG, Operator.SUBSTRACT);
+                presenter.OnLifeUpdate(player2.GetPlayerID(), ClickType.LONG, Operator.SUBSTRACT);
                 return true;
             }
         });
@@ -536,13 +535,13 @@ public class GameActivity extends AppCompatActivity implements IGameView {
             cmdPlusPlayer3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    presenter.OnLifeUpdate(player3.getPlayerID(), ClickType.SHORT, Operator.ADD);
+                    presenter.OnLifeUpdate(player3.GetPlayerID(), ClickType.SHORT, Operator.ADD);
                 }
             });
             cmdPlusPlayer3.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
-                    presenter.OnLifeUpdate(player3.getPlayerID(), ClickType.LONG, Operator.ADD);
+                    presenter.OnLifeUpdate(player3.GetPlayerID(), ClickType.LONG, Operator.ADD);
                     return true;
                 }
             });
@@ -550,13 +549,13 @@ public class GameActivity extends AppCompatActivity implements IGameView {
             cmdMinusPlayer3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    presenter.OnLifeUpdate(player3.getPlayerID(), ClickType.SHORT, Operator.SUBSTRACT);
+                    presenter.OnLifeUpdate(player3.GetPlayerID(), ClickType.SHORT, Operator.SUBSTRACT);
                 }
             });
             cmdMinusPlayer3.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
-                    presenter.OnLifeUpdate(player3.getPlayerID(), ClickType.LONG, Operator.SUBSTRACT);
+                    presenter.OnLifeUpdate(player3.GetPlayerID(), ClickType.LONG, Operator.SUBSTRACT);
                     return true;
                 }
             });
@@ -564,13 +563,13 @@ public class GameActivity extends AppCompatActivity implements IGameView {
             cmdPlusPlayer4.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    presenter.OnLifeUpdate(player4.getPlayerID(), ClickType.SHORT, Operator.ADD);
+                    presenter.OnLifeUpdate(player4.GetPlayerID(), ClickType.SHORT, Operator.ADD);
                 }
             });
             cmdPlusPlayer4.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
-                    presenter.OnLifeUpdate(player4.getPlayerID(), ClickType.LONG, Operator.ADD);
+                    presenter.OnLifeUpdate(player4.GetPlayerID(), ClickType.LONG, Operator.ADD);
                     return true;
                 }
             });
@@ -578,13 +577,13 @@ public class GameActivity extends AppCompatActivity implements IGameView {
             cmdMinusPlayer4.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    presenter.OnLifeUpdate(player4.getPlayerID(), ClickType.SHORT, Operator.SUBSTRACT);
+                    presenter.OnLifeUpdate(player4.GetPlayerID(), ClickType.SHORT, Operator.SUBSTRACT);
                 }
             });
             cmdMinusPlayer4.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
-                    presenter.OnLifeUpdate(player4.getPlayerID(), ClickType.LONG, Operator.SUBSTRACT);
+                    presenter.OnLifeUpdate(player4.GetPlayerID(), ClickType.LONG, Operator.SUBSTRACT);
                     return true;
                 }
             });
@@ -654,13 +653,13 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         cmdPlusPoisonPlayer1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.OnPoisonUpdate(player1.getPlayerID(), ClickType.SHORT, Operator.ADD);
+                presenter.OnPoisonUpdate(player1.GetPlayerID(), ClickType.SHORT, Operator.ADD);
             }
         });
         cmdPlusPoisonPlayer1.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                presenter.OnPoisonUpdate(player1.getPlayerID(), ClickType.LONG, Operator.ADD);
+                presenter.OnPoisonUpdate(player1.GetPlayerID(), ClickType.LONG, Operator.ADD);
                 return true;
             }
         });
@@ -669,13 +668,13 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         cmdMinusPoisonPlayer1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.OnPoisonUpdate(player1.getPlayerID(), ClickType.SHORT, Operator.SUBSTRACT);
+                presenter.OnPoisonUpdate(player1.GetPlayerID(), ClickType.SHORT, Operator.SUBSTRACT);
             }
         });
         cmdMinusPoisonPlayer1.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                presenter.OnPoisonUpdate(player1.getPlayerID(), ClickType.LONG, Operator.SUBSTRACT);
+                presenter.OnPoisonUpdate(player1.GetPlayerID(), ClickType.LONG, Operator.SUBSTRACT);
                 return true;
             }
         });
@@ -688,13 +687,13 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         cmdPlusPoisonPlayer2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.OnPoisonUpdate(player2.getPlayerID(), ClickType.SHORT, Operator.ADD);
+                presenter.OnPoisonUpdate(player2.GetPlayerID(), ClickType.SHORT, Operator.ADD);
             }
         });
         cmdPlusPoisonPlayer2.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                presenter.OnPoisonUpdate(player2.getPlayerID(), ClickType.LONG, Operator.ADD);
+                presenter.OnPoisonUpdate(player2.GetPlayerID(), ClickType.LONG, Operator.ADD);
                 return true;
             }
         });
@@ -703,13 +702,13 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         cmdMinusPoisonPlayer2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.OnPoisonUpdate(player2.getPlayerID(), ClickType.SHORT, Operator.SUBSTRACT);
+                presenter.OnPoisonUpdate(player2.GetPlayerID(), ClickType.SHORT, Operator.SUBSTRACT);
             }
         });
         cmdMinusPoisonPlayer2.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                presenter.OnPoisonUpdate(player2.getPlayerID(), ClickType.LONG, Operator.SUBSTRACT);
+                presenter.OnPoisonUpdate(player2.GetPlayerID(), ClickType.LONG, Operator.SUBSTRACT);
                 return true;
             }
         });
@@ -720,13 +719,13 @@ public class GameActivity extends AppCompatActivity implements IGameView {
             cmdPlusPoisonPlayer3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    presenter.OnPoisonUpdate(player3.getPlayerID(), ClickType.SHORT, Operator.ADD);
+                    presenter.OnPoisonUpdate(player3.GetPlayerID(), ClickType.SHORT, Operator.ADD);
                 }
             });
             cmdPlusPoisonPlayer3.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
-                    presenter.OnPoisonUpdate(player3.getPlayerID(), ClickType.LONG, Operator.ADD);
+                    presenter.OnPoisonUpdate(player3.GetPlayerID(), ClickType.LONG, Operator.ADD);
                     return true;
                 }
             });
@@ -734,13 +733,13 @@ public class GameActivity extends AppCompatActivity implements IGameView {
             cmdMinusPoisonPlayer3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    presenter.OnPoisonUpdate(player3.getPlayerID(), ClickType.SHORT, Operator.SUBSTRACT);
+                    presenter.OnPoisonUpdate(player3.GetPlayerID(), ClickType.SHORT, Operator.SUBSTRACT);
                 }
             });
             cmdMinusPoisonPlayer3.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
-                    presenter.OnPoisonUpdate(player3.getPlayerID(), ClickType.LONG, Operator.SUBSTRACT);
+                    presenter.OnPoisonUpdate(player3.GetPlayerID(), ClickType.LONG, Operator.SUBSTRACT);
                     return true;
                 }
             });
@@ -749,13 +748,13 @@ public class GameActivity extends AppCompatActivity implements IGameView {
             cmdPlusPoisonPlayer4.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    presenter.OnPoisonUpdate(player4.getPlayerID(), ClickType.SHORT, Operator.ADD);
+                    presenter.OnPoisonUpdate(player4.GetPlayerID(), ClickType.SHORT, Operator.ADD);
                 }
             });
             cmdPlusPoisonPlayer4.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
-                    presenter.OnPoisonUpdate(player4.getPlayerID(), ClickType.LONG, Operator.ADD);
+                    presenter.OnPoisonUpdate(player4.GetPlayerID(), ClickType.LONG, Operator.ADD);
                     return true;
                 }
             });
@@ -763,13 +762,13 @@ public class GameActivity extends AppCompatActivity implements IGameView {
             cmdMinusPoisonPlayer4.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    presenter.OnPoisonUpdate(player4.getPlayerID(), ClickType.SHORT, Operator.SUBSTRACT);
+                    presenter.OnPoisonUpdate(player4.GetPlayerID(), ClickType.SHORT, Operator.SUBSTRACT);
                 }
             });
             cmdMinusPoisonPlayer4.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
-                    presenter.OnPoisonUpdate(player4.getPlayerID(), ClickType.LONG, Operator.SUBSTRACT);
+                    presenter.OnPoisonUpdate(player4.GetPlayerID(), ClickType.LONG, Operator.SUBSTRACT);
                     return true;
                 }
             });

@@ -18,7 +18,7 @@ public class Counter implements Parcelable {
         this.def = DEF;
     }
 
-    // ID to link counter to view
+    // ID to link counterToAdd to view
     // template: playerID_increment
     private String identifier;
 

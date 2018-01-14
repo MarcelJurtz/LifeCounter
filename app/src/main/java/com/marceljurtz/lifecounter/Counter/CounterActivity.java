@@ -21,7 +21,6 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.marceljurtz.lifecounter.About.AboutActivity;
 import com.marceljurtz.lifecounter.Dicing.DicingActivity;
@@ -30,10 +29,13 @@ import com.marceljurtz.lifecounter.Helper.Counter;
 import com.marceljurtz.lifecounter.Helper.Player;
 import com.marceljurtz.lifecounter.Helper.PlayerID;
 import com.marceljurtz.lifecounter.Helper.PreferenceManager;
+import com.marceljurtz.lifecounter.Helper.ViewHelper;
 import com.marceljurtz.lifecounter.R;
 import com.marceljurtz.lifecounter.Settings.SettingsActivity;
 
-import java.lang.reflect.Array;
+import org.w3c.dom.Text;
+
+import java.io.InvalidObjectException;
 import java.util.ArrayList;
 
 public class CounterActivity extends AppCompatActivity implements ICounterView {
@@ -56,7 +58,8 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
 
     NavigationView  navigationView;
 
-    public Counter counter;
+    public Counter counterToAdd;
+    public Counter counterToEdit;
 
     Player player1;
     Player player2;
@@ -101,13 +104,13 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
         lblCounterHeaderPlayer1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.OnPlayerIdentificationTap(player1.getPlayerID());
+                presenter.OnPlayerIdentificationTap(player1.GetPlayerID());
             }
         });
         lblCounterHeaderPlayer1.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                presenter.OnPlayerIdentificationLongTap(player1.getPlayerID());
+                presenter.OnPlayerIdentificationLongTap(player1.GetPlayerID());
                 return true;
             }
         });
@@ -116,13 +119,13 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
         lblCounterHeaderPlayer2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.OnPlayerIdentificationTap(player2.getPlayerID());
+                presenter.OnPlayerIdentificationTap(player2.GetPlayerID());
             }
         });
         lblCounterHeaderPlayer2.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                presenter.OnPlayerIdentificationLongTap(player2.getPlayerID());
+                presenter.OnPlayerIdentificationLongTap(player2.GetPlayerID());
                 return true;
             }
         });
@@ -131,13 +134,13 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
         lblCounterHeaderPlayer3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.OnPlayerIdentificationTap(player3.getPlayerID());
+                presenter.OnPlayerIdentificationTap(player3.GetPlayerID());
             }
         });
         lblCounterHeaderPlayer3.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                presenter.OnPlayerIdentificationLongTap(player3.getPlayerID());
+                presenter.OnPlayerIdentificationLongTap(player3.GetPlayerID());
                 return true;
             }
         });
@@ -146,13 +149,13 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
         lblCounterHeaderPlayer4.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    presenter.OnPlayerIdentificationTap(player4.getPlayerID());
+                    presenter.OnPlayerIdentificationTap(player4.GetPlayerID());
             }
         });
         lblCounterHeaderPlayer4.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                presenter.OnPlayerIdentificationLongTap(player4.getPlayerID());
+                presenter.OnPlayerIdentificationLongTap(player4.GetPlayerID());
                 return true;
             }
         });
@@ -276,9 +279,9 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
         dialogButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                counter = null;
+                counterToAdd = null;
                 try {
-                    counter = new Counter(txtCardDescription.getText().toString(),
+                    counterToAdd = new Counter(txtCardDescription.getText().toString(),
                             Integer.parseInt(txtATK.getText().toString()),
                             Integer.parseInt(txtDEF.getText().toString()));
 
@@ -288,8 +291,8 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
 
                 dialog.dismiss();
 
-                if (counter != null) {
-                    presenter.AddCounterToPlayer(((Player) spPlayers.getSelectedItem()).getPlayerID(), counter);
+                if (counterToAdd != null) {
+                    presenter.AddCounterToPlayer(((Player) spPlayers.getSelectedItem()).GetPlayerID(), counterToAdd);
                 }
             }
         });
@@ -317,6 +320,7 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
         lblDescription.setLayoutParams(llParams);
         lblDescription.setTextSize(fontSize);
         lblDescription.setTextColor(getResources().getColor(R.color.textColor));
+        lblDescription.setTag(ViewHelper.lblDescriptionTag);
         wrapper.addView(lblDescription);
 
         View spacer = new View(getApplicationContext());
@@ -328,6 +332,7 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
         lblATK.setLayoutParams(llParams);
         lblATK.setTextSize(fontSize);
         lblATK.setTextColor(getResources().getColor(R.color.textColor));
+        lblATK.setTag(ViewHelper.lblAtkTag);
         wrapper.addView(lblATK);
 
         TextView lblDivider = new TextView(getApplicationContext());
@@ -342,7 +347,15 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
         lblDEF.setLayoutParams(llParams);
         lblDEF.setTextSize(fontSize);
         lblDEF.setTextColor(getResources().getColor(R.color.textColor));
+        lblDEF.setTag(ViewHelper.lblDefTag);
         wrapper.addView(lblDEF);
+
+        wrapper.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.OnEditCounterTap(wrapper.getTag().toString());
+            }
+        });
 
         wrapper.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
@@ -387,7 +400,7 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
         dialogButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                counter = null;
+                counterToAdd = null;
                 String newDescription = txtPlayerDescription.getText().toString();
                 dialog.dismiss();
 
@@ -448,10 +461,10 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
 
     @Override
     public void DeleteAllCounters() {
-        DeleteAllCountersForPlayer(player1.getPlayerID());
-        DeleteAllCountersForPlayer(player2.getPlayerID());
-        DeleteAllCountersForPlayer(player3.getPlayerID());
-        DeleteAllCountersForPlayer(player4.getPlayerID());
+        DeleteAllCountersForPlayer(player1.GetPlayerID());
+        DeleteAllCountersForPlayer(player2.GetPlayerID());
+        DeleteAllCountersForPlayer(player3.GetPlayerID());
+        DeleteAllCountersForPlayer(player4.GetPlayerID());
     }
 
     @Override
@@ -525,7 +538,133 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
     }
 
     @Override
-    public void UpdateCounter(LinearLayout counterLayout) {
+    public void LoadCounterEditDialog(ArrayList<Player> players, Counter counter) {
+        adapter.clear();
+        adapter.addAll(players);
+
+        final String identifier = counter.GetIdentifier();
+
+        final Dialog dialog = new Dialog(CounterActivity.this);
+        dialog.setContentView(R.layout.dialog_countermanager_new);
+
+        final EditText txtCardDescription = (EditText) dialog.findViewById(R.id.txtCardDescription);
+        txtCardDescription.setText(counter.GetDescription());
+
+        final EditText txtATK = (EditText) dialog.findViewById(R.id.txtCardAtk);
+        txtATK.setText(Integer.toString(counter.GetATK()));
+
+        final EditText txtDEF = (EditText) dialog.findViewById(R.id.txtCardDef);
+        txtDEF.setText(Integer.toString(counter.GetDEF()));
+
+        final Spinner spPlayers = (Spinner) dialog.findViewById(R.id.spUserSelection);
+        final ImageButton cmdIncrease = (ImageButton)dialog.findViewById(R.id.cmdIncreaseCounter);
+        final ImageButton cmdDecrease = (ImageButton)dialog.findViewById(R.id.cmdDecreaseCounter);
+
+        spPlayers.setAdapter(adapter);
+
+        cmdIncrease.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                try {
+                    txtATK.setText(Integer.toString(Integer.parseInt(txtATK.getText().toString()) + 1));
+                } catch (NumberFormatException e) {
+                    txtATK.setText("1");
+                }
+
+                try {
+                    txtDEF.setText(Integer.toString(Integer.parseInt(txtDEF.getText().toString()) + 1));
+                } catch(NumberFormatException e) {
+                    txtDEF.setText("1");
+                }
+            }
+        });
+
+        cmdDecrease.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                try {
+                    txtATK.setText(Integer.toString(Integer.parseInt(txtATK.getText().toString()) - 1));
+                } catch (NumberFormatException e) {
+                    txtATK.setText("0");
+                }
+
+                try {
+                    txtDEF.setText(Integer.toString(Integer.parseInt(txtDEF.getText().toString()) - 1));
+                } catch(NumberFormatException e) {
+                    txtDEF.setText("0");
+                }
+            }
+        });
+
+        Button dialogButton = (Button) dialog.findViewById(R.id.dialogButtonOK);
+        dialogButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                counterToEdit = null;
+                try {
+                    counterToEdit = new Counter(txtCardDescription.getText().toString(),
+                            Integer.parseInt(txtATK.getText().toString()),
+                            Integer.parseInt(txtDEF.getText().toString()));
+
+                } catch (NullPointerException | NumberFormatException ex) {
+                    Snackbar.make(findViewById(android.R.id.content), R.string.dialog_countermanager_error_invalid_entry, Snackbar.LENGTH_LONG).show();
+                }
+
+                dialog.dismiss();
+
+                if (counterToEdit != null) {
+                    presenter.OnCounterEditCompleted(((Player) spPlayers.getSelectedItem()).GetPlayerID(), identifier, counterToEdit);
+                }
+            }
+        });
+
+        dialog.show();
+    }
+
+    @Override
+    public void UpdateCounterView(Player player, Counter counter) {
+        LinearLayout currentPlayerLayout;
+
+        try {
+            switch(player.GetPlayerID()) {
+                case ONE:
+                    currentPlayerLayout = player1Layout;
+                    break;
+                case TWO:
+                    currentPlayerLayout = player2Layout;
+                    break;
+                case THREE:
+                    currentPlayerLayout = player3Layout;
+                    break;
+                case FOUR:
+                    currentPlayerLayout = player4Layout;
+                    break;
+                default:
+                    throw new InvalidObjectException(getString(R.string.exc_invalid_object_player));
+            }
+
+            LinearLayout counterView = (LinearLayout) ViewHelper.findFirstViewByTag(currentPlayerLayout, counter.GetIdentifier());
+            if(counterView == null) {
+                throw new InvalidObjectException(getString(R.string.exc_invalid_object_counter));
+            }
+
+            // Update Description
+            ((TextView)ViewHelper.findFirstViewByTag(counterView, ViewHelper.lblDescriptionTag)).setText(counter.GetDescription());
+
+            // Update ATK
+            ((TextView)ViewHelper.findFirstViewByTag(counterView, ViewHelper.lblAtkTag)).setText(Integer.toString(counter.GetATK()));
+
+            // Update DEF
+            ((TextView)ViewHelper.findFirstViewByTag(counterView, ViewHelper.lblDefTag)).setText(Integer.toString(counter.GetDEF()));
+
+        }
+        catch(Exception ex) {
+            // Message user
+            String s = ex.getMessage();
+        }
+
 
     }
 }

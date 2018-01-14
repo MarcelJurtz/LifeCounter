@@ -43,7 +43,7 @@ public class Player implements Parcelable {
         this.poisonPoints = 0;
     }
 
-    public PlayerID getPlayerID() {
+    public PlayerID GetPlayerID() {
         return this.playerID;
     }
 
@@ -107,6 +107,19 @@ public class Player implements Parcelable {
     public void RemoveCounter(Counter c) {
         counters.remove(c);
         c = null;
+    }
+
+    public void UpdateCounter(Counter counter) {
+        for (Counter c: counters) {
+            if(c.GetIdentifier() == counter.GetIdentifier()) {
+
+                c.SetATK(counter.GetATK());
+                c.SetDEF(counter.GetDEF());
+                c.SetDescription(counter.GetDescription());
+
+                return;
+            }
+        }
     }
 
     public ArrayList<Counter> GetAllCounters() {

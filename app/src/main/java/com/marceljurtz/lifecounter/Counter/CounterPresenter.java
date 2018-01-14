@@ -42,10 +42,10 @@ public class CounterPresenter implements ICounterPresenter {
 
         for (Player player : players) {
 
-            view.SetPlayerIdentificationText(player.getPlayerID(), player.GetPlayerIdentification());
+            view.SetPlayerIdentificationText(player.GetPlayerID(), player.GetPlayerIdentification());
 
             for (Counter counter : player.GetAllCounters()) {
-                view.AddCounterToPlayer(player.getPlayerID(), counter);
+                view.AddCounterToPlayer(player.GetPlayerID(), counter);
             }
         }
     }
@@ -63,8 +63,8 @@ public class CounterPresenter implements ICounterPresenter {
     @Override
     public void AddCounterToPlayer(PlayerID playerId, Counter counter) {
         for (Player player : players) {
-            if (player.getPlayerID().equals(playerId)) {
-                counter.SetIdentifier(player.getPlayerID().toString() + "-" + player.GetAllCounters().size());
+            if (player.GetPlayerID().equals(playerId)) {
+                counter.SetIdentifier(player.GetPlayerID().toString() + "-" + player.GetAllCounters().size());
                 player.AddCounter(counter);
                 break;
             }
@@ -77,7 +77,7 @@ public class CounterPresenter implements ICounterPresenter {
     public void OnPlayerIdentificationChanged(PlayerID playerId, String newIdentification) {
 
         for (Player player : players) {
-            if (player.getPlayerID() == playerId) {
+            if (player.GetPlayerID() == playerId) {
                 player.SetPlayerIdentification(newIdentification);
                 break;
             }
@@ -116,7 +116,7 @@ public class CounterPresenter implements ICounterPresenter {
     @Override
     public String GetPlayerIdentification(PlayerID playerID) {
         for (Player player : players) {
-            if (player.getPlayerID() == playerID) {
+            if (player.GetPlayerID() == playerID) {
                 return player.GetPlayerIdentification();
             }
         }
@@ -135,8 +135,8 @@ public class CounterPresenter implements ICounterPresenter {
 
     @Override
     public void OnPlayerDeletionConfirmation(PlayerID playerID) {
-        for(Player player : players) {
-            if(player.getPlayerID() == playerID) {
+        for (Player player : players) {
+            if (player.GetPlayerID() == playerID) {
                 player.ClearCounters();
                 player.SetPlayerIdentification("");
                 break;
@@ -159,10 +159,53 @@ public class CounterPresenter implements ICounterPresenter {
     public void OnCounterDeletionConfirmation(LinearLayout counterLayout) {
         boolean deleteParent = false;
 
+        Counter currentCounter = GetCounterByIdentifier(counterLayout.getTag().toString());
+        Player currentPlayer = GetPlayerByCounterIdentifier(counterLayout.getTag().toString());
+
+        if (currentPlayer != null && currentCounter != null) {
+            currentPlayer.RemoveCounter(currentCounter);
+            if (currentPlayer.GetAllCounters().size() <= 0) {
+                deleteParent = true;
+            }
+        }
+
+        view.DeleteCounter(counterLayout, deleteParent);
+    }
+
+    @Override
+    public void OnEditCounterTap(String identifier) {
+        view.LoadCounterEditDialog(players, GetCounterByIdentifier(identifier));
+    }
+
+    @Override
+    public void OnCounterEditCompleted(PlayerID playerID, String oldCounterIdentifier, Counter newCounter) {
+        newCounter.SetIdentifier(oldCounterIdentifier);
+        switch (playerID) {
+            case ONE:
+                players.get(0).UpdateCounter(newCounter);
+                view.UpdateCounterView(players.get(0), newCounter);
+                break;
+            case TWO:
+                players.get(1).UpdateCounter(newCounter);
+                view.UpdateCounterView(players.get(1), newCounter);
+                break;
+            case THREE:
+                players.get(2).UpdateCounter(newCounter);
+                view.UpdateCounterView(players.get(2), newCounter);
+                break;
+            case FOUR:
+                players.get(3).UpdateCounter(newCounter);
+                view.UpdateCounterView(players.get(3), newCounter);
+                break;
+            default:
+                break;
+        }
+    }
+
+    private Counter GetCounterByIdentifier(String identifier) {
         Player currentPlayer;
 
-        String tag = (String) counterLayout.getTag();
-        switch (PlayerID.valueOf((tag.split("_"))[0])) {
+        switch (PlayerID.valueOf((identifier.split("_"))[0])) {
             case ONE:
                 currentPlayer = players.get(0);
                 break;
@@ -181,16 +224,27 @@ public class CounterPresenter implements ICounterPresenter {
 
         if (currentPlayer != null) {
             for (Counter c : currentPlayer.GetAllCounters()) {
-                if (c.GetIdentifier() == tag) {
-                    currentPlayer.RemoveCounter(c);
-                    break;
+                if (c.GetIdentifier() == identifier) {
+                    return c;
                 }
             }
-            if (currentPlayer.GetAllCounters().size() <= 0) {
-                deleteParent = true;
-            }
+        }
 
-            view.DeleteCounter(counterLayout, deleteParent);
+        return null;
+    }
+
+    private Player GetPlayerByCounterIdentifier(String identifier) {
+        switch (PlayerID.valueOf((identifier.split("_"))[0])) {
+            case ONE:
+                return players.get(0);
+            case TWO:
+                return players.get(1);
+            case THREE:
+                return players.get(2);
+            case FOUR:
+                return players.get(3);
+            default:
+                return null;
         }
     }
 }

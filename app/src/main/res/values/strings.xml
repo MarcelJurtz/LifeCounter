@@ -71,4 +71,7 @@
     <string name="dialog_countermanager_delete_multiple_message">Do you want to delete all entries for this player?</string>
     <string name="dialog_countermanager_delete_confirmation">Entry deleted</string>
     <string name="dialog_countermanager_edit_playername_title">Save player name</string>
+
+    <string name="exc_invalid_object_player">Invalid player selected</string>
+    <string name="exc_invalid_object_counter">Invalid counter selected</string>
 </resources>

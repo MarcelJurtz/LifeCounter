@@ -222,7 +222,7 @@ public class PreferenceManager {
         SharedPreferences.Editor editor = preferences.edit();
 
         for(Player player : players) {
-            editor.putString(player.getPlayerID().toString(), player.GetJson());
+            editor.putString(player.GetPlayerID().toString(), player.GetJson());
         }
 
         editor.commit();

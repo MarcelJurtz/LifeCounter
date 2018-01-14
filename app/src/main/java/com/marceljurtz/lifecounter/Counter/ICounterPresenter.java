@@ -14,6 +14,9 @@ public interface ICounterPresenter extends IPresenter, ICounterNavDrawerInteract
     void OnCreateNewCounterButtonTap();
     void AddCounterToPlayer(PlayerID playerId, Counter counter);
 
+    void OnEditCounterTap(String counterIdentifier);
+    void OnCounterEditCompleted(PlayerID playerID, String oldCounterIdentifier, Counter newCounter);
+
     void OnPlayerIdentificationTap(PlayerID playerID);
     void OnPlayerIdentificationLongTap(PlayerID playerID);
     void OnPlayerIdentificationChanged(PlayerID playerId, String newIdentification);

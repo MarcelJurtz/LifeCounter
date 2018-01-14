@@ -22,10 +22,12 @@ public interface ICounterView extends IView {
     void DeleteCounter(LinearLayout counterLayout, boolean deleteParent);
     void DeleteAllCounters();
     void DeleteAllCountersForPlayer(PlayerID playerID);
-    void UpdateCounter(LinearLayout counterLayout);
+
+    void UpdateCounterView(Player player, Counter counter);
 
     void LoadCounterDeletionDialog(LinearLayout linearLayout);
     void LoadMultipleCounterDeletionDialog(PlayerID playerID);
     void LoadCounterAddDialog(ArrayList<Player> players);
+    void LoadCounterEditDialog(ArrayList<Player> players, Counter counter);
     void LoadPlayerIdentificationDialog(PlayerID playerID, String playername);
 }
