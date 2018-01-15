@@ -174,7 +174,7 @@ public class CounterPresenter implements ICounterPresenter {
 
     @Override
     public void OnEditCounterTap(String identifier) {
-        view.LoadCounterEditDialog(players, GetCounterByIdentifier(identifier));
+        view.LoadCounterEditDialog(GetPlayerByCounterIdentifier(identifier), GetCounterByIdentifier(identifier));
     }
 
     @Override

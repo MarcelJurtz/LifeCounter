@@ -539,9 +539,10 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
     }
 
     @Override
-    public void LoadCounterEditDialog(ArrayList<Player> players, Counter counter) {
+    public void LoadCounterEditDialog(Player player, Counter counter) {
         adapter.clear();
-        adapter.addAll(players);
+        //adapter.addAll(players);
+        adapter.add(player);
 
         final String identifier = counter.GetIdentifier();
 
@@ -558,10 +559,11 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
         txtDEF.setText(Integer.toString(counter.GetDEF()));
 
         final Spinner spPlayers = (Spinner) dialog.findViewById(R.id.spUserSelection);
+        spPlayers.setAdapter(adapter);
+        spPlayers.setEnabled(false);
+
         final ImageButton cmdIncrease = (ImageButton)dialog.findViewById(R.id.cmdIncreaseCounter);
         final ImageButton cmdDecrease = (ImageButton)dialog.findViewById(R.id.cmdDecreaseCounter);
-
-        spPlayers.setAdapter(adapter);
 
         cmdIncrease.setOnClickListener(new View.OnClickListener() {
 

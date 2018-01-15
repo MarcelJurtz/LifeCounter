@@ -74,7 +74,7 @@ public class Player implements Parcelable {
     }
 
     public String GetPlayerIdentification() {
-        if (playerIdentification == null || playerIdentification == "") {
+        if (playerIdentification == null || playerIdentification.trim() == "") {
             switch (playerID) {
                 case ONE:
                     playerIdentification = "Player 1";
@@ -132,11 +132,7 @@ public class Player implements Parcelable {
 
     @Override
     public String toString() {
-        if (playerIdentification == null || playerIdentification == "") {
-            return "Player " + playerID.GetValue();
-        } else {
-            return playerIdentification;
-        }
+        return GetPlayerIdentification();
     }
 
     @Override
