@@ -3,28 +3,48 @@ package com.marceljurtz.lifecounter.Counter;
 import android.content.SharedPreferences;
 import android.widget.LinearLayout;
 
+import com.marceljurtz.lifecounter.Helper.Color;
 import com.marceljurtz.lifecounter.Helper.Counter;
+import com.marceljurtz.lifecounter.Helper.MagicColor;
 import com.marceljurtz.lifecounter.Helper.Player;
 import com.marceljurtz.lifecounter.Helper.PlayerID;
 import com.marceljurtz.lifecounter.Helper.PreferenceManager;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class CounterPresenter implements ICounterPresenter {
 
     private ArrayList<Player> players;
     private ICounterView view;
     private SharedPreferences preferences;
+    private Random random;
 
     public CounterPresenter(ICounterView view, SharedPreferences preferences, ArrayList<Player> players) {
         this.players = players;
         this.preferences = preferences;
         this.view = view;
+        random = new Random();
     }
 
     @Override
     public void OnCreate() {
-
+        int num = random.nextInt(4);
+        Color color = new Color(MagicColor.WHITE);
+        switch(num) {
+            case 0:
+                color = new Color(MagicColor.BLUE);
+                break;
+            case 1:
+                color = new Color(MagicColor.GREEN);
+                break;
+            case 2:
+                color = new Color(MagicColor.RED);
+                break;
+            case 3:
+                break;
+        }
+        view.SetBackgroundColor(color);
     }
 
     @Override
@@ -45,7 +65,7 @@ public class CounterPresenter implements ICounterPresenter {
             view.SetPlayerIdentificationText(player.GetPlayerID(), player.GetPlayerIdentification());
 
             for (Counter counter : player.GetAllCounters()) {
-                view.AddCounterToPlayer(player.GetPlayerID(), counter);
+                view.AddCounter(player.GetPlayerID(), counter);
             }
         }
     }
@@ -56,12 +76,12 @@ public class CounterPresenter implements ICounterPresenter {
     }
 
     @Override
-    public void OnCreateNewCounterButtonTap() {
+    public void OnFloatingActionButtonTap() {
         view.LoadCounterAddDialog(players);
     }
 
     @Override
-    public void AddCounterToPlayer(PlayerID playerId, Counter counter) {
+    public void AddCounter(PlayerID playerId, Counter counter) {
         for (Player player : players) {
             if (player.GetPlayerID().equals(playerId)) {
                 counter.SetIdentifier(player.GetPlayerID().toString() + "-" + player.GetAllCounters().size());
@@ -70,11 +90,11 @@ public class CounterPresenter implements ICounterPresenter {
             }
         }
 
-        view.AddCounterToPlayer(playerId, counter);
+        view.AddCounter(playerId, counter);
     }
 
     @Override
-    public void OnPlayerIdentificationChanged(PlayerID playerId, String newIdentification) {
+    public void OnPlayerIdentificationChangeConfirmed(PlayerID playerId, String newIdentification) {
 
         for (Player player : players) {
             if (player.GetPlayerID() == playerId) {
@@ -130,11 +150,11 @@ public class CounterPresenter implements ICounterPresenter {
 
     @Override
     public void OnPlayerIdentificationLongTap(PlayerID playerID) {
-        view.LoadMultipleCounterDeletionDialog(playerID);
+        view.LoadPlayerDeletionDialog(playerID);
     }
 
     @Override
-    public void OnPlayerDeletionConfirmation(PlayerID playerID) {
+    public void OnPlayerDeletionConfirmed(PlayerID playerID) {
         for (Player player : players) {
             if (player.GetPlayerID() == playerID) {
                 player.ClearCounters();
@@ -146,17 +166,7 @@ public class CounterPresenter implements ICounterPresenter {
     }
 
     @Override
-    public void OnCounterTap(String counterDescription, LinearLayout counterLayout) {
-
-    }
-
-    @Override
-    public void OnCounterLongTap(LinearLayout counterLayout) {
-        view.LoadCounterDeletionDialog(counterLayout);
-    }
-
-    @Override
-    public void OnCounterDeletionConfirmation(LinearLayout counterLayout) {
+    public void OnCounterDeletionConfirmed(LinearLayout counterLayout) {
         boolean deleteParent = false;
 
         Counter currentCounter = GetCounterByIdentifier(counterLayout.getTag().toString());
@@ -173,8 +183,13 @@ public class CounterPresenter implements ICounterPresenter {
     }
 
     @Override
-    public void OnEditCounterTap(String identifier) {
+    public void OnCounterTap(String identifier) {
         view.LoadCounterEditDialog(GetPlayerByCounterIdentifier(identifier), GetCounterByIdentifier(identifier));
+    }
+
+    @Override
+    public void OnCounterLongTap(LinearLayout counterLayout) {
+        view.LoadCounterDeletionDialog(counterLayout);
     }
 
     @Override

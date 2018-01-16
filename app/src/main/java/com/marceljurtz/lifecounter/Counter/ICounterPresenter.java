@@ -11,20 +11,18 @@ import com.marceljurtz.lifecounter.Helper.PlayerID;
 import java.util.List;
 
 public interface ICounterPresenter extends IPresenter, ICounterNavDrawerInteraction {
-    void OnCreateNewCounterButtonTap();
-    void AddCounterToPlayer(PlayerID playerId, Counter counter);
+    void OnFloatingActionButtonTap();
+    void AddCounter(PlayerID playerId, Counter counter);
 
-    void OnEditCounterTap(String counterIdentifier);
+    void OnCounterTap(String counterIdentifier);
+    void OnCounterLongTap(LinearLayout counterWrapper);
     void OnCounterEditCompleted(PlayerID playerID, String oldCounterIdentifier, Counter newCounter);
 
     void OnPlayerIdentificationTap(PlayerID playerID);
     void OnPlayerIdentificationLongTap(PlayerID playerID);
-    void OnPlayerIdentificationChanged(PlayerID playerId, String newIdentification);
-    void OnPlayerDeletionConfirmation(PlayerID playerID);
-
-    void OnCounterTap(String counterDescription, LinearLayout counterLayout);
-    void OnCounterLongTap(LinearLayout counterLayout);
-    void OnCounterDeletionConfirmation(LinearLayout counterLayout);
+    void OnPlayerIdentificationChangeConfirmed(PlayerID playerId, String newIdentification);
+    void OnPlayerDeletionConfirmed(PlayerID playerID); // TODO presenter logic
+    void OnCounterDeletionConfirmed(LinearLayout counterLayout); // TODO presenter logic
 
     void OnMenuEntryTwoPlayerClick();
     void OnMenuEntryFourPlayerClick();

@@ -1,7 +1,5 @@
 package com.marceljurtz.lifecounter.Dicing;
 
-import android.content.SharedPreferences;
-
 import com.marceljurtz.lifecounter.Helper.BaseInterface.IView;
 import com.marceljurtz.lifecounter.Helper.Color;
 

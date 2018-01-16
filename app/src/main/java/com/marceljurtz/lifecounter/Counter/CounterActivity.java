@@ -11,7 +11,6 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Display;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,12 +19,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.marceljurtz.lifecounter.About.AboutActivity;
 import com.marceljurtz.lifecounter.Dicing.DicingActivity;
 import com.marceljurtz.lifecounter.Game.GameActivity;
+import com.marceljurtz.lifecounter.Helper.Color;
 import com.marceljurtz.lifecounter.Helper.Counter;
 import com.marceljurtz.lifecounter.Helper.Player;
 import com.marceljurtz.lifecounter.Helper.PlayerID;
@@ -34,8 +35,6 @@ import com.marceljurtz.lifecounter.Helper.ViewHelper;
 import com.marceljurtz.lifecounter.R;
 import com.marceljurtz.lifecounter.Settings.SettingsActivity;
 
-import org.w3c.dom.Text;
-
 import java.io.InvalidObjectException;
 import java.util.ArrayList;
 
@@ -43,10 +42,9 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
 
     private CounterPresenter presenter;
 
-    // TODO
     ArrayList<Player> players;
 
-    //LinearLayout mainLayout;
+    RelativeLayout rlCounter;
     LinearLayout player1Layout;
     LinearLayout player2Layout;
     LinearLayout player3Layout;
@@ -79,6 +77,7 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
         //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
         //getSupportActionBar().hide();
+        rlCounter = (RelativeLayout)findViewById(R.id.rlCounter);
 
         preferences = getApplicationContext().getSharedPreferences(PreferenceManager.PREFS, Activity.MODE_PRIVATE);
 
@@ -170,7 +169,7 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                presenter.OnCreateNewCounterButtonTap();
+                presenter.OnFloatingActionButtonTap();
             }
         });
 
@@ -293,7 +292,7 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
                 dialog.dismiss();
 
                 if (counterToAdd != null) {
-                    presenter.AddCounterToPlayer(((Player) spPlayers.getSelectedItem()).GetPlayerID(), counterToAdd);
+                    presenter.AddCounter(((Player) spPlayers.getSelectedItem()).GetPlayerID(), counterToAdd);
                 }
             }
         });
@@ -302,7 +301,7 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
     }
 
     @Override
-    public void AddCounterToPlayer(PlayerID playerId, Counter counter) {
+    public void AddCounter(PlayerID playerId, Counter counter) {
         int paddingLeft = 50;
         int paddingRight = 50;
         int fontSize = 24;
@@ -354,14 +353,14 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
         wrapper.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.OnEditCounterTap(wrapper.getTag().toString());
+                presenter.OnCounterTap(wrapper.getTag().toString());
             }
         });
 
         wrapper.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                LoadCounterDeletionDialog(wrapper); // TODO: Add Parameters
+                presenter.OnCounterLongTap(wrapper);
                 return true;
             }
         });
@@ -406,7 +405,7 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
                 dialog.dismiss();
 
                 if (newDescription != null && newDescription.length() > 0) {
-                    presenter.OnPlayerIdentificationChanged(playerID, newDescription);
+                    presenter.OnPlayerIdentificationChangeConfirmed(playerID, newDescription);
                 }
             }
         });
@@ -441,20 +440,20 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
                 .setMessage(getResources().getString(R.string.dialog_countermanager_delete_message))
                 .setPositiveButton(getResources().getString(R.string.yes), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
-                        presenter.OnCounterDeletionConfirmation(wrapperLayout);
+                        presenter.OnCounterDeletionConfirmed(wrapperLayout);
                     }
                 })
                 .setNegativeButton(getResources().getString(R.string.no), null).show();
     }
 
     @Override
-    public void LoadMultipleCounterDeletionDialog(final PlayerID playerID) {
+    public void LoadPlayerDeletionDialog(final PlayerID playerID) {
         new AlertDialog.Builder(CounterActivity.this)
                 .setTitle(getResources().getString(R.string.dialog_countermanager_delete_title))
                 .setMessage(getResources().getString(R.string.dialog_countermanager_delete_multiple_message))
                 .setPositiveButton(getResources().getString(R.string.yes), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
-                        presenter.OnPlayerDeletionConfirmation(playerID);
+                        presenter.OnPlayerDeletionConfirmed(playerID);
                     }
                 })
                 .setNegativeButton(getResources().getString(R.string.no), null).show();
@@ -670,5 +669,10 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
 
     private void DisplayErrorMessage(String errormessage) {
         Snackbar.make(findViewById(android.R.id.content), errormessage, Snackbar.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void SetBackgroundColor(Color color) {
+        rlCounter.setBackgroundColor(color.getIntValue());
     }
 }
