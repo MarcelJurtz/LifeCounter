@@ -11,7 +11,7 @@ android {
         versionCode 10
         versionName "10"
 
-        vectorDrawables.useSupportLibrary = true
+        android.defaultConfig.vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -26,15 +26,11 @@ android {
     }
 }
 
-
-
-
-
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     testImplementation 'junit:junit:4.12'
-    implementation 'com.android.support:appcompat-v7:23.1.1'
-    implementation 'com.android.support:support-v4:23.0.+'
+    implementation 'com.android.support:appcompat-v7:23.4.0'
+    implementation 'com.android.support:support-v4:23.4.0'
     implementation 'com.pes.materialcolorpicker:library:1.0.2'
     implementation 'com.google.code.gson:gson:2.8.2'
     implementation 'com.android.support:design:23.4.0'

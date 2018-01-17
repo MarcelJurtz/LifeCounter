@@ -57,9 +57,10 @@
     <string name="preferences_color_blue">Blau</string>
     <string name="preferences_color_green">Grün</string>
     <string name="preferences_color_red">Rot</string>
-    <string name="preferences_color_white">Weiss</string>
+    <string name="preferences_color_white">Weiß</string>
     <string name="preferences_other_timeout">Bildschirm-Timeout deaktivieren</string>
     <string name="preferences_other_energysaving">Energiesparmodus aktivieren</string>
+    <string name="title_activity_counter">CounterActivity</string>
 
     <string name="dialog_countermanager_new_header">Neuer Eintrag</string>
     <string name="dialog_countermanager_hint_card_description">Card Description</string>

@@ -80,7 +80,7 @@ public class PreferenceManager {
     public static void saveColor(SharedPreferences preferences, Color color) {
         SharedPreferences.Editor editor = preferences.edit();
         editor.putInt(color.getPreferenceString(), color.getIntValue());
-        editor.commit();
+        editor.apply();
     }
 
     // Reset all custom colors
@@ -134,7 +134,7 @@ public class PreferenceManager {
         if(playeramount == 2 || playeramount == 4) {
             SharedPreferences.Editor editor = preferences.edit();
             editor.putInt(PREF_PLAYER_AMOUNT, playeramount);
-            editor.commit();
+            editor.apply();
         }
     }
     //endregion
@@ -148,7 +148,7 @@ public class PreferenceManager {
     public static void saveScreenTimeoutDisabled(SharedPreferences preferences, boolean timeoutDisabled) {
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean(PREF_KEEP_SCREEN_ON, timeoutDisabled);
-        editor.commit();
+        editor.apply();
     }
 
     //endregion
@@ -164,7 +164,7 @@ public class PreferenceManager {
     public static void saveDefaultLifepoints(SharedPreferences preferences, int lifepoints) {
         SharedPreferences.Editor editor = preferences.edit();
         editor.putInt(PREF_LIFEPOINTS, lifepoints);
-        editor.commit();
+        editor.apply();
     }
 
     // Reset Lifepoints
@@ -187,7 +187,7 @@ public class PreferenceManager {
     public static void saveDefaultLongClickPoints(SharedPreferences preferences, int longClickPoints) {
         SharedPreferences.Editor editor = preferences.edit();
         editor.putInt(PREF_LONG_CLICK_POINTS, longClickPoints);
-        editor.commit();
+        editor.apply();
     }
 
     // Reset Longclickpoints
@@ -225,7 +225,7 @@ public class PreferenceManager {
             editor.putString(player.GetPlayerID().toString(), player.GetJson());
         }
 
-        editor.commit();
+        editor.apply();
     }
 
     public static ArrayList<Player> LoadPlayerData(SharedPreferences preferences) {
