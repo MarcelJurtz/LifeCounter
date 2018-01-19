@@ -2,7 +2,7 @@
 
 ![CircleCI Build State](https://circleci.com/gh/MarcelJurtz/LifeCounter.svg?style=shield&circle-token=:circle-token)
 
-![Icon](icon_small.png)
+![Icon](https://raw.githubusercontent.com/MarcelJurtz/LifeCounter/master/ASSETS/icon_small.png)
 
 This app is a 2-player, customizable lifecounter for Magic the Gathering
 Players should be seated in front of each other, since the layout contains identical controls mirror-flipped for both players.
@@ -45,7 +45,7 @@ For direct download, use the .apk-files from the [*RELEASE*-Folder](./RELEASE).
 
 ## Screenshots
 
-![Screenshots](screenshots.png)
+![Screenshots](https://raw.githubusercontent.com/MarcelJurtz/LifeCounter/master/ASSETS/screenshots.png)
 
 ## Languages
 
