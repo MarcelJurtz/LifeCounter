@@ -125,8 +125,8 @@ The strings are located under ```/app/src/main/res/values/strings.xml```
 
 Also distributed under MIT-License.
 
-## License
+## License & Legal Stuff
 
-[MIT](LICENSE)
-
-Google Play and the Google Play logo are trademarks of Google Inc.
+* This app is published under the [MIT-License](LICENSE)
+* Google Play and the Google Play logo are trademarks of Google Inc.
+* Check out my website for the [Impressum](https://mjurtz.com/Impressum.html).
