@@ -28,7 +28,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/counter_player_margin"
-                android:text="Player 1"
+                android:text="@string/counter_default_player1"
                 android:textSize="@dimen/dialog_textsize_header" />
 
         </LinearLayout>
@@ -46,7 +46,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/counter_player_margin"
-                android:text="Player 2"
+                android:text="@string/counter_default_player2"
                 android:textSize="@dimen/dialog_textsize_header" />
 
         </LinearLayout>
@@ -64,7 +64,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/counter_player_margin"
-                android:text="Player 3"
+                android:text="@string/counter_default_player3"
                 android:textSize="@dimen/dialog_textsize_header" />
 
         </LinearLayout>
@@ -82,7 +82,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/counter_player_margin"
-                android:text="Player 4"
+                android:text="@string/counter_default_player4"
                 android:textSize="@dimen/dialog_textsize_header" />
 
         </LinearLayout>

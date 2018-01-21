@@ -49,7 +49,7 @@
             android:inputType="number"
             android:maxLength="3"
             android:layout_weight="1"
-            android:hint="ATK"/>
+            android:hint="@string/dialog_countermanager_hint_atk"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -57,7 +57,7 @@
             android:layout_weight="1"
             android:textAlignment="center"
             android:textSize="@dimen/dialog_textsize_divider"
-            android:text="/"/>
+            android:text="@string/dialog_countermanager_separator"/>
 
         <EditText
             android:id="@+id/txtCardDef"
@@ -67,7 +67,7 @@
             android:inputType="number"
             android:maxLength="3"
             android:layout_weight="1"
-            android:hint="DEF"/>
+            android:hint="@string/dialog_countermanager_hint_def"/>
 
         <ImageButton
             android:id="@+id/cmdIncreaseCounter"

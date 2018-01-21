@@ -80,7 +80,7 @@
                     android:paddingRight="16dp"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:id="@+id/txtColorBlack"
-                    android:hint="Black" />
+                    android:hint="@string/color_black" />
 
                 <Button
                     android:layout_width="36dp"
@@ -121,7 +121,7 @@
                     android:paddingRight="16dp"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:id="@+id/txtColorBlue"
-                    android:hint="Blue" />
+                    android:hint="@string/color_blue" />
 
                 <Button
                     android:layout_width="36dp"
@@ -162,7 +162,7 @@
                     android:paddingEnd="16dp"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:id="@+id/txtColorGreen"
-                    android:hint="Green" />
+                    android:hint="@string/color_green" />
 
                 <Button
                     android:layout_width="36dp"
@@ -203,7 +203,7 @@
                     android:paddingRight="16dp"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:id="@+id/txtColorRed"
-                    android:hint="Red" />
+                    android:hint="@string/color_red" />
 
                 <Button
                     android:layout_width="36dp"
@@ -244,7 +244,7 @@
                     android:paddingRight="16dp"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:id="@+id/txtColorWhite"
-                    android:hint="White" />
+                    android:hint="@string/color_white" />
 
                 <Button
                     android:layout_width="36dp"
@@ -285,7 +285,7 @@
                     android:paddingRight="16dp"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:id="@+id/txtLiveSelection"
-                    android:hint="20"
+                    android:hint="@string/preferences_default_lifepoints"
                     android:ems="5"
                     android:maxLength="3"
                     android:textAlignment="center"
@@ -325,7 +325,7 @@
                     android:paddingRight="16dp"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:id="@+id/txtLongClickPoints"
-                    android:hint="5"
+                    android:hint="@string/preferences_default_longlickpoints"
                     android:ems="5"
                     android:maxLength="2"
                     android:textAlignment="center" />

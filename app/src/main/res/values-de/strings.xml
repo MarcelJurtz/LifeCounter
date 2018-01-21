@@ -1,5 +1,13 @@
 <resources>
     <string name="app_name">LifeCounter</string>
+    <string name="app_version">v1.8.2</string>
+
+    <string name="color_black">Schwarz</string>
+    <string name="color_blue">Blau</string>
+    <string name="color_green">Grün</string>
+    <string name="color_red">Rot</string>
+    <string name="color_white">Weiß</string>
+
     <string name="setting_color_black">Schwarz:</string>
     <string name="setting_color_blue">Blau:</string>
     <string name="setting_color_green">Grün:</string>
@@ -60,11 +68,21 @@
     <string name="preferences_color_white">Weiß</string>
     <string name="preferences_other_timeout">Bildschirm-Timeout deaktivieren</string>
     <string name="preferences_other_energysaving">Energiesparmodus aktivieren</string>
+    <string name="preferences_default_lifepoints">20</string>
+    <string name="preferences_default_longlickpoints">5</string>
+
     <string name="title_activity_counter">CounterActivity</string>
+    <string name="counter_default_player1">Player 1</string>
+    <string name="counter_default_player2">Player 2</string>
+    <string name="counter_default_player3">Player 3</string>
+    <string name="counter_default_player4">Player 4</string>
 
     <string name="dialog_countermanager_new_header">Neuer Eintrag</string>
     <string name="dialog_countermanager_hint_card_description">Card Description</string>
     <string name="dialog_countermanager_error_invalid_entry">Ungültige Eingabe!</string>
+    <string name="dialog_countermanager_hint_atk">ATK</string>
+    <string name="dialog_countermanager_hint_def">DEF</string>
+    <string name="dialog_countermanager_separator">/</string>
 
     <string name="dialog_countermanager_delete_title">Eintrag löschen</string>
     <string name="dialog_countermanager_delete_message">Möchtest du diesen Eintrag löschen?</string>
