@@ -75,4 +75,12 @@
 
     <string name="exc_invalid_object_player">Ungültige Spielerauswahl</string>
     <string name="exc_invalid_object_counter">Ungültige Counterauswahl</string>
+
+    <string name="descr_lp_plus">Lebenspunkte erhöhen</string>
+    <string name="descr_lp_minus">Lebenspunkte reduzieren</string>
+    <string name="descr_pp_plus">Giftpunkte erhöhen</string>
+    <string name="descr_pp_minus">Giftpunkte reduzieren</string>
+    <string name="descr_pp_toggle">Giftpunkte umschalten</string>
+    <string name="descr_settings_toggle">Einstellungen umschalten</string>
+    <string name="descr_reset">Spiel zurücksetzen</string>
 </resources>

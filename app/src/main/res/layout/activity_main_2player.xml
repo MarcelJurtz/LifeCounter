@@ -35,6 +35,7 @@
 
             <!-- Reset-Button -->
             <ImageButton
+                android:contentDescription="@string/descr_reset"
                 android:id="@+id/cmdResetLP"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
@@ -43,6 +44,7 @@
 
             <!-- Toggle PoisonCounter -->
             <ImageButton
+                android:contentDescription="@string/descr_pp_toggle"
                 android:id="@+id/cmdTogglePoison"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
@@ -53,6 +55,7 @@
 
             <!-- Toggle Color Settings -->
             <ImageButton
+                android:contentDescription="@string/descr_settings_toggle"
                 android:id="@+id/cmdToggleColors"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
@@ -84,6 +87,7 @@
 
             <!-- Add / Reduce Life Away -->
             <ImageButton
+                android:contentDescription="@string/descr_lp_plus"
                 android:id="@+id/cmdPlusGuest"
                 style="@style/mtg_button_lifepoints_top"
                 android:layout_marginRight="@dimen/button_space_vertical"
@@ -93,6 +97,7 @@
                 android:background="@drawable/icon_plus" />
 
             <ImageButton
+                android:contentDescription="@string/descr_lp_minus"
                 android:id="@+id/cmdMinusGuest"
                 style="@style/mtg_button_lifepoints_top"
                 android:layout_marginLeft="@dimen/button_space_vertical"
@@ -110,6 +115,7 @@
 
             <!-- Add / Reduce Poison Away -->
             <ImageButton
+                android:contentDescription="@string/descr_pp_minus"
                 android:id="@+id/cmdMinusPoisonGuest"
                 style="@style/poisonbutton_minus"
                 android:layout_toEndOf="@+id/txtPoisonCount2p1"
@@ -118,6 +124,7 @@
                 android:layout_alignTop="@+id/txtPoisonCount2p1" />
 
             <ImageButton
+                android:contentDescription="@string/descr_pp_plus"
                 android:id="@+id/cmdPlusPoisonGuest"
                 style="@style/poisonbutton_plus"
                 android:layout_toStartOf="@id/txtPoisonCount2p1"
@@ -178,6 +185,7 @@
 
             <!-- Add / Reduce Life Home -->
             <ImageButton
+                android:contentDescription="@string/descr_lp_minus"
                 android:id="@+id/cmdMinusHome"
                 style="@style/mtg_button_lifepoints_bottom"
                 android:layout_marginRight="@dimen/button_space_vertical"
@@ -187,6 +195,7 @@
                 android:background="@drawable/icon_minus" />
 
             <ImageButton
+                android:contentDescription="@string/descr_lp_plus"
                 android:id="@+id/cmdPlusHome"
                 style="@style/mtg_button_lifepoints_bottom"
                 android:layout_marginLeft="@dimen/button_space_vertical"
@@ -204,6 +213,7 @@
 
             <!-- Add / Reduce Poison Home -->
             <ImageButton
+                android:contentDescription="@string/descr_pp_plus"
                 android:id="@+id/cmdPlusPoisonHome"
                 style="@style/poisonbutton_plus"
                 android:layout_toEndOf="@+id/txtPoisonCount2p2"
@@ -212,6 +222,7 @@
                 android:layout_alignTop="@+id/txtPoisonCount2p2" />
 
             <ImageButton
+                android:contentDescription="@string/descr_pp_minus"
                 android:id="@+id/cmdMinusPoisonHome"
                 style="@style/poisonbutton_minus"
                 android:layout_toStartOf="@id/txtPoisonCount2p2"

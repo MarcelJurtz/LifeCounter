@@ -11,10 +11,9 @@
         android:layout_height="wrap_content"
         android:fillViewport="true"
         android:layout_above="@+id/lButtonLayout"
-        android:layout_alignParentTop="true"
-        android:layout_weight="1">
+        android:layout_alignParentTop="true">
 
-        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        <RelativeLayout
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -371,8 +370,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/lButtonLayout"
         android:orientation="vertical"
-        android:layout_alignParentBottom="true"
-        android:layout_weight="1">
+        android:layout_alignParentBottom="true">
 
             <Button
                 android:layout_width="match_parent"

@@ -34,6 +34,7 @@
 
             <!-- Toggle PoisonCounter -->
             <ImageButton
+                android:contentDescription="@string/descr_pp_toggle"
                 android:id="@+id/cmdTogglePoison4p"
                 android:rotation="90"
                 android:layout_width="50dp"
@@ -45,6 +46,7 @@
 
             <!-- Reset-Button -->
             <ImageButton
+                android:contentDescription="@string/descr_reset"
                 android:id="@+id/cmdResetLP4p"
                 android:rotation="90"
                 android:layout_width="50dp"
@@ -54,6 +56,7 @@
 
             <!-- Toggle Color Settings -->
             <ImageButton
+                android:contentDescription="@string/descr_settings_toggle"
                 android:id="@+id/cmdToggleColors4p"
                 android:rotation="90"
                 android:layout_width="50dp"
@@ -86,6 +89,7 @@
                     style="@style/mtg_textview_lifepoints" />
 
                 <ImageButton
+                    android:contentDescription="@string/descr_lp_plus"
                     android:id="@+id/cmdPlus4p1"
                     android:rotation="90"
                     style="@style/lifebutton_4p_plus"
@@ -96,6 +100,7 @@
                     android:layout_below="@id/txtLifeCount4p1" />
 
                 <ImageButton
+                    android:contentDescription="@string/descr_lp_minus"
                     android:id="@+id/cmdMinus4p1"
                     android:rotation="90"
                     style="@style/lifebutton_4p_minus"
@@ -114,6 +119,7 @@
                     android:rotation="90" />
 
                 <ImageButton
+                    android:contentDescription="@string/descr_lp_minus"
                     android:id="@+id/cmdMinusPoison4p1"
                     style="@style/poisonbutton_minus"
                     android:rotation="90"
@@ -124,6 +130,7 @@
                     android:layout_above="@id/txtPoisonCount4p1" />
 
                 <ImageButton
+                    android:contentDescription="@string/descr_pp_plus"
                     android:id="@+id/cmdPlusPoison4p1"
                     style="@style/poisonbutton_plus"
                     android:rotation="90"
@@ -179,6 +186,7 @@
                     style="@style/mtg_textview_lifepoints" />
 
                 <ImageButton
+                    android:contentDescription="@string/descr_lp_plus"
                     android:id="@+id/cmdPlus4p3"
                     android:rotation="90"
                     style="@style/lifebutton_4p_plus"
@@ -189,6 +197,7 @@
                     android:layout_below="@id/txtLifeCount4p3" />
 
                 <ImageButton
+                    android:contentDescription="@string/descr_lp_minus"
                     android:id="@+id/cmdMinus4p3"
                     android:rotation="90"
                     style="@style/lifebutton_4p_minus"
@@ -207,6 +216,7 @@
                     android:rotation="90" />
 
                 <ImageButton
+                    android:contentDescription="@string/descr_pp_minus"
                     android:id="@+id/cmdMinusPoison4p3"
                     style="@style/poisonbutton_minus"
                     android:rotation="90"
@@ -217,6 +227,7 @@
                     android:layout_above="@id/txtPoisonCount4p3" />
 
                 <ImageButton
+                    android:contentDescription="@string/descr_pp_plus"
                     android:id="@+id/cmdPlusPoison4p3"
                     style="@style/poisonbutton_plus"
                     android:rotation="90"
@@ -278,6 +289,7 @@
                     style="@style/mtg_textview_lifepoints" />
 
                 <ImageButton
+                    android:contentDescription="@string/descr_lp_plus"
                     android:id="@+id/cmdPlus4p2"
                     android:rotation="270"
                     style="@style/lifebutton_4p_plus"
@@ -288,6 +300,7 @@
                     android:layout_above="@id/txtLifeCount4p2" />
 
                 <ImageButton
+                    android:contentDescription="@string/descr_lp_minus"
                     android:id="@+id/cmdMinus4p2"
                     android:rotation="270"
                     style="@style/lifebutton_4p_minus"
@@ -306,6 +319,7 @@
                     android:layout_alignParentEnd="true" />
 
                 <ImageButton
+                    android:contentDescription="@string/descr_pp_minus"
                     android:id="@+id/cmdMinusPoison4p2"
                     style="@style/poisonbutton_minus"
                     android:rotation="270"
@@ -316,6 +330,7 @@
                     android:layout_below="@id/txtPoisonCount4p2" />
 
                 <ImageButton
+                    android:contentDescription="@string/descr_pp_plus"
                     android:id="@+id/cmdPlusPoison4p2"
                     style="@style/poisonbutton_plus"
                     android:rotation="270"
@@ -370,6 +385,7 @@
                     style="@style/mtg_textview_lifepoints" />
 
                 <ImageButton
+                    android:contentDescription="@string/descr_lp_plus"
                     android:id="@+id/cmdPlus4p4"
                     android:rotation="270"
                     style="@style/lifebutton_4p_plus"
@@ -380,6 +396,7 @@
                     android:layout_above="@id/txtLifeCount4p4" />
 
                 <ImageButton
+                    android:contentDescription="@string/descr_lp_minus"
                     android:id="@+id/cmdMinus4p4"
                     android:rotation="270"
                     style="@style/lifebutton_4p_minus"
@@ -398,6 +415,7 @@
                     android:layout_alignParentEnd="true"/>
 
                 <ImageButton
+                    android:contentDescription="@string/descr_pp_minus"
                     android:id="@+id/cmdMinusPoison4p4"
                     style="@style/poisonbutton_minus"
                     android:rotation="270"
@@ -408,6 +426,7 @@
                     android:layout_below="@id/txtPoisonCount4p4" />
 
                 <ImageButton
+                    android:contentDescription="@string/descr_pp_plus"
                     android:id="@+id/cmdPlusPoison4p4"
                     style="@style/poisonbutton_plus"
                     android:rotation="270"

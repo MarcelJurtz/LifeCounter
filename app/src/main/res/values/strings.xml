@@ -75,4 +75,12 @@
 
     <string name="exc_invalid_object_player">Invalid player selected</string>
     <string name="exc_invalid_object_counter">Invalid counter selected</string>
+
+    <string name="descr_lp_plus">Increase Lifepoints</string>
+    <string name="descr_lp_minus">Decrease Lifepoints</string>
+    <string name="descr_pp_plus">Increase Poisonpoints</string>
+    <string name="descr_pp_minus">Decrease Poisonpoints</string>
+    <string name="descr_pp_toggle">Toggle Poisonpoints</string>
+    <string name="descr_settings_toggle">Toggle Settings</string>
+    <string name="descr_reset">Reset Game</string>
 </resources>
