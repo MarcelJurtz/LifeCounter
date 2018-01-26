@@ -218,7 +218,7 @@ public class PreferenceManager {
     //endregion
 
     //region Player Data (points + counters)
-    public static void SavePlayerData(SharedPreferences preferences, List<Player> players) {
+    public static void SavePlayerCounterData(SharedPreferences preferences, List<Player> players) {
         SharedPreferences.Editor editor = preferences.edit();
 
         for(Player player : players) {
@@ -228,7 +228,7 @@ public class PreferenceManager {
         editor.apply();
     }
 
-    public static ArrayList<Player> LoadPlayerData(SharedPreferences preferences) {
+    public static ArrayList<Player> LoadPlayerCounterData(SharedPreferences preferences) {
         ArrayList<Player> players = new ArrayList<Player>();
 
         Player p1 = Player.GetInstanceByJson(preferences.getString(PlayerID.ONE.toString(), null));
@@ -244,6 +244,60 @@ public class PreferenceManager {
         else players.add(new Player(PlayerID.THREE));
         if(p4 != null) players.add(p4);
         else players.add(new Player(PlayerID.FOUR));
+
+        return players;
+    }
+
+    public static void Save2PlayerPointsData(SharedPreferences preferences, Player[] players) {
+        SharedPreferences.Editor editor = preferences.edit();
+
+        for(Player player : players) {
+            editor.putString(player.GetPlayerID().toString() + "_POINTS2", player.GetJson());
+        }
+
+        editor.apply();
+    }
+
+    public static Player[] Load2PlayerPointsData(SharedPreferences preferences) {
+        Player[] players = new Player[2];
+
+        Player p1 = Player.GetInstanceByJson(preferences.getString(PlayerID.ONE.toString() + "_POINTS2", null));
+        Player p2 = Player.GetInstanceByJson(preferences.getString(PlayerID.TWO.toString() + "_POINTS2", null));
+
+        if(p1 != null) players[0] = p1;
+        else players[0] = new Player(PlayerID.ONE);
+        if(p2 != null) players[1] = p2;
+        else players[1] = new Player(PlayerID.TWO);
+
+        return players;
+    }
+
+    public static void Save4PlayerPointsData(SharedPreferences preferences, Player[] players) {
+        SharedPreferences.Editor editor = preferences.edit();
+
+        for(Player player : players) {
+            editor.putString(player.GetPlayerID().toString() + "_POINTS4", player.GetJson());
+        }
+
+        editor.apply();
+    }
+
+    public static Player[] Load4PlayerPointsData(SharedPreferences preferences) {
+        Player[] players = new Player[4];
+
+        Player p1 = Player.GetInstanceByJson(preferences.getString(PlayerID.ONE.toString() + "_POINT4S", null));
+        Player p2 = Player.GetInstanceByJson(preferences.getString(PlayerID.TWO.toString() + "_POINTS4", null));
+        Player p3 = Player.GetInstanceByJson(preferences.getString(PlayerID.THREE.toString() + "_POINTS4", null));
+        Player p4 = Player.GetInstanceByJson(preferences.getString(PlayerID.FOUR.toString() + "_POINTS4", null));
+
+        if(p1 != null) players[0] = p1;
+        else players[0] = new Player(PlayerID.ONE);
+        if(p2 != null) players[1] = p2;
+        else players[1] = new Player(PlayerID.TWO);
+        if(p3 != null) players[2] = p3;
+        else players[2] = new Player(PlayerID.THREE);
+        if(p4 != null) players[3] = p4;
+        else players[3] = new Player(PlayerID.FOUR);
 
         return players;
     }

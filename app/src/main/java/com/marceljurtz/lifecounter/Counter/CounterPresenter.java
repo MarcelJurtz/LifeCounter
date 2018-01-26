@@ -49,13 +49,13 @@ public class CounterPresenter implements ICounterPresenter {
 
     @Override
     public void OnPause() {
-        PreferenceManager.SavePlayerData(preferences, players);
+        PreferenceManager.SavePlayerCounterData(preferences, players);
     }
 
     @Override
     public void OnResume() {
         // Load items from preferences
-        players = PreferenceManager.LoadPlayerData(preferences);
+        players = PreferenceManager.LoadPlayerCounterData(preferences);
 
         // Reload View
         view.DeleteAllCounters();

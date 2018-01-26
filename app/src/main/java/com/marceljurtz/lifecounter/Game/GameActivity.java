@@ -821,9 +821,15 @@ public class GameActivity extends AppCompatActivity implements IGameView {
     }
 
     @Override
-    protected void onStart() {
+    protected void onPause() {
+        presenter.OnPause();
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
         presenter.OnResume();
-        super.onStart();
+        super.onResume();
     }
 
     @Override

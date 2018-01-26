@@ -19,6 +19,26 @@ public class Game {
         startGame();
     }
 
+    public void SaveGameState(SharedPreferences preferences) {
+        if(players.length == 4) {
+            PreferenceManager.Save4PlayerPointsData(preferences, players);
+        } else {
+            PreferenceManager.Save2PlayerPointsData(preferences, players);
+        }
+    }
+
+    public void LoadGameState(SharedPreferences preferences, int playeramount) {
+        if(playeramount == 4) {
+            players = PreferenceManager.Load4PlayerPointsData(preferences);
+        } else {
+            players = PreferenceManager.Load2PlayerPointsData(preferences);
+        }
+    }
+
+    public Player[] GetPlayers() {
+        return players;
+    }
+
     static int lifepoints = 20;
 
     public int getColor(String colorString, int nullReturn) {

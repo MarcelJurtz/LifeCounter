@@ -1,6 +1,7 @@
 package com.marceljurtz.lifecounter.Game;
 
 import android.content.SharedPreferences;
+import android.preference.Preference;
 
 import com.marceljurtz.lifecounter.Helper.ClickType;
 import com.marceljurtz.lifecounter.Helper.Color;
@@ -10,6 +11,9 @@ import com.marceljurtz.lifecounter.Helper.Operator;
 import com.marceljurtz.lifecounter.Helper.Player;
 import com.marceljurtz.lifecounter.Helper.PlayerID;
 import com.marceljurtz.lifecounter.Helper.PreferenceManager;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class GamePresenter implements IGamePresenter {
 
@@ -81,13 +85,24 @@ public class GamePresenter implements IGamePresenter {
 
     @Override
     public void OnPause() {
-
+        game.SaveGameState(preferences);
     }
 
     @Override
     public void OnResume() {
 
-        String s = player1.GetPlayerIdentification();
+
+        if(view.GetPlayerAmount() == 4) {
+            game.LoadGameState(preferences, 4);
+        } else {
+            game.LoadGameState(preferences, 2);
+        }
+
+        for(Player player : game.GetPlayers()) {
+            view.SetLifepoints(player.GetPlayerID(), player.GetLifePoints() + "");
+            view.SetPoisonpoints(player.GetPlayerID(), player.GetPoisonPoints() + "");
+        }
+
         settingsVisible = false;
         view.DisableSettingsControls(hideOtherControlsWhenSettingsDisplayed, poisonVisible);
         view.SettingsButtonDisable();
@@ -150,28 +165,6 @@ public class GamePresenter implements IGamePresenter {
 
     public boolean getPowerSaveEnabled() {
         return powerSaveEnabled;
-    }
-
-    //region Activity Lifecycle functions
-
-    @Override
-    public void OnCreate() {
-
-    }
-
-    @Override
-    public void OnPause() {
-
-    }
-
-    @Override
-    public void OnResume() {
-
-    }
-
-    @Override
-    public void OnDestroy() {
-
     }
 
     //endregion
