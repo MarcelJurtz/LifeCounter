@@ -673,6 +673,6 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
 
     @Override
     public void SetBackgroundColor(Color color) {
-        rlCounter.setBackgroundColor(color.getIntValue());
+        rlCounter.setBackgroundColor(color.GetIntValue());
     }
 }

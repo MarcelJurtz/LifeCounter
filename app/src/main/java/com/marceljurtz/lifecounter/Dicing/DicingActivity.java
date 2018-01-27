@@ -2,7 +2,6 @@ package com.marceljurtz.lifecounter.Dicing;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.support.design.widget.NavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -129,6 +128,6 @@ public class DicingActivity extends AppCompatActivity implements IDicingView {
 
     @Override
     public void SetBackgroundColor(Color color) {
-        rlDicing.setBackgroundColor(color.getIntValue());
+        rlDicing.setBackgroundColor(color.GetIntValue());
     }
 }

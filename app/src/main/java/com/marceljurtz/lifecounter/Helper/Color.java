@@ -9,6 +9,11 @@ Custom Color Manager for Magic Lifecounter
 
 package com.marceljurtz.lifecounter.Helper;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.util.ArrayList;
+
 public class Color {
 
     //region Default colors
@@ -60,19 +65,19 @@ public class Color {
 
     //region Getter
 
-    public String getPreferenceString() {
+    public String GetPreferenceString() {
         return this.prefString;
     }
 
-    public MagicColor getBasecolor() {
+    public MagicColor GetBasecolor() {
         return baseColor;
     }
 
-    public int getIntValue() {
+    public int GetIntValue() {
         return intValue;
     }
 
-    public String getHexString() {
+    public String GetHexString() {
         return String.format("#%06X", 0xFFFFFF & intValue);
     }
 
@@ -109,4 +114,31 @@ public class Color {
     }
 
     //endregion
+
+//    @Override
+//    public int describeContents() {
+//        return 0;
+//    }
+//
+//    @Override
+//    public void writeToParcel(Parcel dest, int flags) {
+//        dest.writeString(baseColor.name());
+//    }
+//
+//    private Color(Parcel source) {
+//        baseColor = MagicColor.valueOf(source.readString());
+//    }
+//
+//    public static final Parcelable.Creator<Color> CREATOR
+//            = new Parcelable.Creator<Color>() {
+//        @Override
+//        public Color createFromParcel(Parcel in) {
+//            return new Color(in);
+//        }
+//
+//        @Override
+//        public Color[] newArray(int size) {
+//            return new Color[size];
+//        }
+//    };
 }

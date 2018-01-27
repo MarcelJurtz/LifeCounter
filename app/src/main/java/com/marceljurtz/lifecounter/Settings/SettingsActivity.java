@@ -251,26 +251,26 @@ public class SettingsActivity extends Activity implements ISettingsView {
 
     @Override
     public void UpdateColorButtonValue(Color color) {
-        switch(color.getBasecolor()) {
+        switch(color.GetBasecolor()) {
             case BLUE:
-                ((GradientDrawable)cmdSelectBlue.getBackground()).setColor(color.getIntValue());
-                txtBlue.setText(color.getHexString());
+                ((GradientDrawable)cmdSelectBlue.getBackground()).setColor(color.GetIntValue());
+                txtBlue.setText(color.GetHexString());
                 break;
             case GREEN:
-                ((GradientDrawable)cmdSelectGreen.getBackground()).setColor(color.getIntValue());
-                txtGreen.setText(color.getHexString());
+                ((GradientDrawable)cmdSelectGreen.getBackground()).setColor(color.GetIntValue());
+                txtGreen.setText(color.GetHexString());
                 break;
             case RED:
-                ((GradientDrawable)cmdSelectRed.getBackground()).setColor(color.getIntValue());
-                txtRed.setText(color.getHexString());
+                ((GradientDrawable)cmdSelectRed.getBackground()).setColor(color.GetIntValue());
+                txtRed.setText(color.GetHexString());
                 break;
             case WHITE:
-                ((GradientDrawable)cmdSelectWhite.getBackground()).setColor(color.getIntValue());
-                txtWhite.setText(color.getHexString());
+                ((GradientDrawable)cmdSelectWhite.getBackground()).setColor(color.GetIntValue());
+                txtWhite.setText(color.GetHexString());
                 break;
             default:
-                ((GradientDrawable)cmdSelectBlack.getBackground()).setColor(color.getIntValue());
-                txtBlack.setText(color.getHexString());
+                ((GradientDrawable)cmdSelectBlack.getBackground()).setColor(color.GetIntValue());
+                txtBlack.setText(color.GetHexString());
                 break;
         }
     }

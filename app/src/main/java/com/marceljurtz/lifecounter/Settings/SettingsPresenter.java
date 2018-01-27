@@ -110,7 +110,7 @@ public class SettingsPresenter implements ISettingsPresenter {
 
     @Override
     public void OnColorSelectValueUpdate(Color color) {
-        switch(color.getBasecolor()) {
+        switch(color.GetBasecolor()) {
             case BLUE:
                 blue = color;
                 break;

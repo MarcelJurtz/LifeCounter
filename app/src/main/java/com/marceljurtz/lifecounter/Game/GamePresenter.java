@@ -1,7 +1,6 @@
 package com.marceljurtz.lifecounter.Game;
 
 import android.content.SharedPreferences;
-import android.preference.Preference;
 
 import com.marceljurtz.lifecounter.Helper.ClickType;
 import com.marceljurtz.lifecounter.Helper.Color;
@@ -11,9 +10,6 @@ import com.marceljurtz.lifecounter.Helper.Operator;
 import com.marceljurtz.lifecounter.Helper.Player;
 import com.marceljurtz.lifecounter.Helper.PlayerID;
 import com.marceljurtz.lifecounter.Helper.PreferenceManager;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class GamePresenter implements IGamePresenter {
 
@@ -91,11 +87,16 @@ public class GamePresenter implements IGamePresenter {
     @Override
     public void OnResume() {
 
-
         if(view.GetPlayerAmount() == 4) {
             game.LoadGameState(preferences, 4);
+            view.SetLayoutColor(PlayerID.ONE, game.GetPlayers()[0].GetColorOrDefault().GetIntValue());
+            view.SetLayoutColor(PlayerID.TWO, game.GetPlayers()[1].GetColorOrDefault().GetIntValue());
+            view.SetLayoutColor(PlayerID.THREE, game.GetPlayers()[2].GetColorOrDefault().GetIntValue());
+            view.SetLayoutColor(PlayerID.FOUR, game.GetPlayers()[3].GetColorOrDefault().GetIntValue());
         } else {
             game.LoadGameState(preferences, 2);
+            view.SetLayoutColor(PlayerID.ONE, game.GetPlayers()[0].GetColorOrDefault().GetIntValue());
+            view.SetLayoutColor(PlayerID.TWO, game.GetPlayers()[1].GetColorOrDefault().GetIntValue());
         }
 
         for(Player player : game.GetPlayers()) {
@@ -216,7 +217,27 @@ public class GamePresenter implements IGamePresenter {
                     break;
             }
 
-            view.SetLayoutColor(playerID, newColor.getIntValue());
+            switch(playerID) {
+                case ONE:
+                    player1.SetColor(newColor);
+                    game.GetPlayers()[0].SetColor(newColor);
+                    break;
+                case TWO:
+                    player2.SetColor(newColor);
+                    game.GetPlayers()[1].SetColor(newColor);
+                    break;
+                case THREE:
+                    player3.SetColor(newColor);
+                    game.GetPlayers()[2].SetColor(newColor);
+                    break;
+                case FOUR:
+                    player4.SetColor(newColor);
+                    game.GetPlayers()[3].SetColor(newColor);
+                    break;
+                default:
+            }
+
+            view.SetLayoutColor(playerID, newColor.GetIntValue());
         } else if(clickType.equals(ClickType.LONG) && color.equals(MagicColor.BLACK)) {
             togglePowerSavingMode();
         }
