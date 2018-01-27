@@ -52,44 +52,20 @@ public class PreferenceManager {
 
     //region Custom colors
 
-    // Get custom color
-    public static int getCustomColor(SharedPreferences preferences, MagicColor color) {
-        String colorString;
-
-        switch(color) {
-            case BLUE:
-                colorString = PREF_COLOR_BLUE;
-                break;
-            case GREEN:
-                colorString = PREF_COLOR_GREEN;
-                break;
-            case RED:
-                colorString = PREF_COLOR_RED;
-                break;
-            case WHITE:
-                colorString = PREF_COLOR_WHITE;
-                break;
-            default:
-                colorString = PREF_COLOR_BLACK;
-        }
-
-        return preferences.getInt(colorString, Color.getDefaultColorInt(color));
-    }
-
     // Set custom color
-    public static void saveColor(SharedPreferences preferences, Color color) {
+    public static void SaveColor(SharedPreferences preferences, Color color) {
         SharedPreferences.Editor editor = preferences.edit();
         editor.putInt(color.GetPreferenceString(), color.GetIntValue());
         editor.apply();
     }
 
     // Reset all custom colors
-    public static void resetColors(SharedPreferences preferences) {
-        saveColor(preferences, new Color(MagicColor.BLACK));
-        saveColor(preferences, new Color(MagicColor.BLUE));
-        saveColor(preferences, new Color(MagicColor.GREEN));
-        saveColor(preferences, new Color(MagicColor.RED));
-        saveColor(preferences, new Color(MagicColor.WHITE));
+    public static void ResetColors(SharedPreferences preferences) {
+        SaveColor(preferences, Color.GetDefaultColor(MagicColor.BLACK));
+        SaveColor(preferences, Color.GetDefaultColor(MagicColor.BLUE));
+        SaveColor(preferences, Color.GetDefaultColor(MagicColor.GREEN));
+        SaveColor(preferences, Color.GetDefaultColor(MagicColor.RED));
+        SaveColor(preferences, Color.GetDefaultColor(MagicColor.WHITE));
     }
 
     // Powersave values
@@ -98,29 +74,19 @@ public class PreferenceManager {
     public static final int regularTextcolor = android.graphics.Color.parseColor("#161618");
 
     // Getter for default colors
-    public static int getDefaultBlack(SharedPreferences preferences){
-        int black = preferences.getInt(PREF_COLOR_BLACK, Color.DEFAULT_BLACK);
-        return black;
-    }
-
-    public static int getDefaultBlue(SharedPreferences preferences){
-        int blue = preferences.getInt(PREF_COLOR_BLUE, Color.DEFAULT_BLUE);
-        return blue;
-    }
-
-    public static int getDefaultGreen(SharedPreferences preferences){
-        int green = preferences.getInt(PREF_COLOR_GREEN, Color.DEFAULT_GREEN);
-        return green;
-    }
-
-    public static int getDefaultRed(SharedPreferences preferences) {
-        int red = preferences.getInt(PREF_COLOR_RED, Color.DEFAULT_RED);
-        return red;
-    }
-
-    public static int getDefaultWhite(SharedPreferences preferences){
-        int white = preferences.getInt(PREF_COLOR_WHITE, Color.DEFAULT_WHITE);
-        return white;
+    public static int GetCustomizedColorOrDefault(MagicColor color, SharedPreferences preferences) {
+        switch(color) {
+            case BLUE:
+                return preferences.getInt(PREF_COLOR_BLUE, Color.DEFAULT_BLUE);
+            case GREEN:
+                return preferences.getInt(PREF_COLOR_GREEN, Color.DEFAULT_GREEN);
+            case RED:
+                return preferences.getInt(PREF_COLOR_RED, Color.DEFAULT_RED);
+            case WHITE:
+                return preferences.getInt(PREF_COLOR_WHITE, Color.DEFAULT_WHITE);
+            default:
+                return preferences.getInt(PREF_COLOR_BLACK, Color.DEFAULT_BLACK);
+        }
     }
 
     //endregion

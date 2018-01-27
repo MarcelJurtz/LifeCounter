@@ -28,16 +28,16 @@ public class DicingPresenter implements IDicingPresenter {
     public void OnCreate() {
         model = new Dice();
         int num = random.nextInt(4);
-        Color color = new Color(MagicColor.WHITE);
+        Color color = new Color(MagicColor.WHITE, preferences);
         switch(num) {
             case 0:
-                color = new Color(MagicColor.BLUE);
+                color = new Color(MagicColor.BLUE, preferences);
                 break;
             case 1:
-                color = new Color(MagicColor.GREEN);
+                color = new Color(MagicColor.GREEN, preferences);
                 break;
             case 2:
-                color = new Color(MagicColor.RED);
+                color = new Color(MagicColor.RED, preferences);
                 break;
             case 3:
                 break;

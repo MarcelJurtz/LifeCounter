@@ -9,10 +9,8 @@ Custom Color Manager for Magic Lifecounter
 
 package com.marceljurtz.lifecounter.Helper;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
-import java.util.ArrayList;
+import android.content.SharedPreferences;
+import android.preference.Preference;
 
 public class Color {
 
@@ -32,41 +30,33 @@ public class Color {
 
     private int intValue;
     private MagicColor baseColor;
-    private String prefString;
 
-    public Color(MagicColor baseColor, int intValue) {
-        this.intValue = intValue;
+    public Color(MagicColor baseColor, SharedPreferences preferences) {
         this.baseColor = baseColor;
-
-        switch(baseColor) {
-            case BLUE:
-                prefString = PreferenceManager.PREF_COLOR_BLUE;
-                break;
-            case GREEN:
-                prefString = PreferenceManager.PREF_COLOR_GREEN;
-                break;
-            case RED:
-                prefString = PreferenceManager.PREF_COLOR_RED;
-                break;
-            case WHITE:
-                prefString = PreferenceManager.PREF_COLOR_WHITE;
-                break;
-            default:
-                prefString = PreferenceManager.PREF_COLOR_BLACK;
-        }
+        this.intValue = PreferenceManager.GetCustomizedColorOrDefault(baseColor, preferences);
     }
 
-
-    public Color(MagicColor baseColor) {
-        this(baseColor, getDefaultColorInt(baseColor));
+    public Color(MagicColor color, int intValue) {
+        this.baseColor = color;
+        this.intValue = intValue;
     }
 
     //endregion
 
     //region Getter
-
     public String GetPreferenceString() {
-        return this.prefString;
+        switch(baseColor) {
+            case BLUE:
+                return PreferenceManager.PREF_COLOR_BLUE;
+            case GREEN:
+                return PreferenceManager.PREF_COLOR_GREEN;
+            case RED:
+                return PreferenceManager.PREF_COLOR_RED;
+            case WHITE:
+                return PreferenceManager.PREF_COLOR_WHITE;
+            default:
+                return PreferenceManager.PREF_COLOR_BLACK;
+        }
     }
 
     public MagicColor GetBasecolor() {
@@ -85,7 +75,7 @@ public class Color {
 
     //region Static members
 
-    public static Color getDefaultColor(MagicColor color) {
+    public static Color GetDefaultColor(MagicColor color) {
         switch(color) {
             case BLUE:
                 return new Color(MagicColor.BLUE, DEFAULT_BLUE);
@@ -100,12 +90,12 @@ public class Color {
         }
     }
 
-    public static int getDefaultColorInt(MagicColor color) {
-        return getDefaultColor(color).intValue;
+    public static int GetDefaultColorInt(MagicColor color) {
+        return GetDefaultColor(color).intValue;
     }
 
     // Get RGB version for int color
-    public static int[] getRGB(int color) {
+    public static int[] GetRGB(int color) {
         int[] rgb = new int[3];
         rgb[0] = (color >> 16) & 0xFF;
         rgb[1] = (color >> 8) & 0xFF;
@@ -114,31 +104,4 @@ public class Color {
     }
 
     //endregion
-
-//    @Override
-//    public int describeContents() {
-//        return 0;
-//    }
-//
-//    @Override
-//    public void writeToParcel(Parcel dest, int flags) {
-//        dest.writeString(baseColor.name());
-//    }
-//
-//    private Color(Parcel source) {
-//        baseColor = MagicColor.valueOf(source.readString());
-//    }
-//
-//    public static final Parcelable.Creator<Color> CREATOR
-//            = new Parcelable.Creator<Color>() {
-//        @Override
-//        public Color createFromParcel(Parcel in) {
-//            return new Color(in);
-//        }
-//
-//        @Override
-//        public Color[] newArray(int size) {
-//            return new Color[size];
-//        }
-//    };
 }

@@ -29,11 +29,11 @@ public class SettingsPresenter implements ISettingsPresenter {
 
     @Override
     public void OnCreate() {
-        black = new Color(MagicColor.BLACK, PreferenceManager.getCustomColor(preferences, MagicColor.BLACK));
-        blue = new Color(MagicColor.BLUE, PreferenceManager.getCustomColor(preferences, MagicColor.BLUE));
-        green = new Color(MagicColor.GREEN, PreferenceManager.getCustomColor(preferences, MagicColor.GREEN));
-        red = new Color(MagicColor.RED, PreferenceManager.getCustomColor(preferences, MagicColor.RED));
-        white = new Color(MagicColor.WHITE, PreferenceManager.getCustomColor(preferences, MagicColor.WHITE));
+        black = new Color(MagicColor.BLACK, preferences);
+        blue = new Color(MagicColor.BLUE, preferences);
+        green = new Color(MagicColor.GREEN, preferences);
+        red = new Color(MagicColor.RED, preferences);
+        white = new Color(MagicColor.WHITE, preferences);
 
         settingsView.UpdateColorButtonValue(black);
         settingsView.UpdateColorButtonValue(blue);
@@ -72,11 +72,11 @@ public class SettingsPresenter implements ISettingsPresenter {
     @Override
     public void OnBackButtonClick() {
 
-        PreferenceManager.saveColor(preferences, black);
-        PreferenceManager.saveColor(preferences, blue);
-        PreferenceManager.saveColor(preferences, green);
-        PreferenceManager.saveColor(preferences, red);
-        PreferenceManager.saveColor(preferences, white);
+        PreferenceManager.SaveColor(preferences, black);
+        PreferenceManager.SaveColor(preferences, blue);
+        PreferenceManager.SaveColor(preferences, green);
+        PreferenceManager.SaveColor(preferences, red);
+        PreferenceManager.SaveColor(preferences, white);
 
         lifepoints = Integer.parseInt(settingsView.GetLifepoints());
         longClickPoints = Integer.parseInt(settingsView.GetLongClickPoints());
@@ -99,11 +99,11 @@ public class SettingsPresenter implements ISettingsPresenter {
 
     @Override
     public void OnColorSelectButtonClick(MagicColor color) {
-        int savedColor = PreferenceManager.getCustomColor(preferences, color);
+        int savedColor = PreferenceManager.GetCustomizedColorOrDefault(color, preferences);
 
-        int r = Color.getRGB(savedColor)[0];
-        int g = Color.getRGB(savedColor)[1];
-        int b = Color.getRGB(savedColor)[2];
+        int r = Color.GetRGB(savedColor)[0];
+        int g = Color.GetRGB(savedColor)[1];
+        int b = Color.GetRGB(savedColor)[2];
 
         settingsView.LoadColorPickerDialog(color, r, g, b);
     }
@@ -149,7 +149,7 @@ public class SettingsPresenter implements ISettingsPresenter {
         // Reset all Settings
         PreferenceManager.resetLongClickPoints(preferences);
         PreferenceManager.resetLifepoints(preferences);
-        PreferenceManager.resetColors(preferences);
+        PreferenceManager.ResetColors(preferences);
 
         settingsView.LoadGameActivity();
     }

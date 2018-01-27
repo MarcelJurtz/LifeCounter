@@ -29,7 +29,7 @@ public class Player implements Parcelable {
         this.lifePoints = DEFAULT_LIFEPOINTS;
         this.poisonPoints = 0;
         counters = new ArrayList<Counter>();
-        color = new Color(MagicColor.BLACK);
+        color = Color.GetDefaultColor(MagicColor.BLACK);
     }
 
     public String GetJson() {
@@ -134,7 +134,7 @@ public class Player implements Parcelable {
 
     public Color GetColorOrDefault() {
         if(color == null) {
-            color = new Color(MagicColor.BLACK);
+            color = Color.GetDefaultColor(MagicColor.BLACK);
         }
         return color;
     }
@@ -168,7 +168,7 @@ public class Player implements Parcelable {
         poisonPoints = source.readInt();
         playerID = PlayerID.valueOf(source.readString());
         playerIdentification = source.readString();
-        color = new Color(MagicColor.valueOf(source.readString()));
+        color = Color.GetDefaultColor(MagicColor.valueOf(source.readString()));
         counters = new ArrayList<>();
         source.readList(counters, Counter.class.getClassLoader());
     }

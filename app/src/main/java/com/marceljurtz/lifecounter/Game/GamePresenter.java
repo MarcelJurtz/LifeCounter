@@ -58,11 +58,11 @@ public class GamePresenter implements IGamePresenter {
 
 
         // Initiate default colors
-        view.InitColorButton(MagicColor.BLACK, PreferenceManager.getDefaultBlack(preferences));
-        view.InitColorButton(MagicColor.BLUE, PreferenceManager.getDefaultBlue(preferences));
-        view.InitColorButton(MagicColor.GREEN, PreferenceManager.getDefaultGreen(preferences));
-        view.InitColorButton(MagicColor.RED, PreferenceManager.getDefaultRed(preferences));
-        view.InitColorButton(MagicColor.WHITE, PreferenceManager.getDefaultWhite(preferences));
+        view.InitColorButton(MagicColor.BLACK, PreferenceManager.GetCustomizedColorOrDefault(MagicColor.BLACK, preferences));
+        view.InitColorButton(MagicColor.BLUE, PreferenceManager.GetCustomizedColorOrDefault(MagicColor.BLUE, preferences));
+        view.InitColorButton(MagicColor.GREEN, PreferenceManager.GetCustomizedColorOrDefault(MagicColor.GREEN, preferences));
+        view.InitColorButton(MagicColor.RED, PreferenceManager.GetCustomizedColorOrDefault(MagicColor.RED, preferences));
+        view.InitColorButton(MagicColor.WHITE, PreferenceManager.GetCustomizedColorOrDefault(MagicColor.WHITE, preferences));
 
         // Settings, Energy-Saving & Poison
         view.DisableSettingsControls(hideOtherControlsWhenSettingsDisplayed, false);
@@ -89,19 +89,15 @@ public class GamePresenter implements IGamePresenter {
 
         if(view.GetPlayerAmount() == 4) {
             game.LoadGameState(preferences, 4);
-            view.SetLayoutColor(PlayerID.ONE, game.GetPlayers()[0].GetColorOrDefault().GetIntValue());
-            view.SetLayoutColor(PlayerID.TWO, game.GetPlayers()[1].GetColorOrDefault().GetIntValue());
-            view.SetLayoutColor(PlayerID.THREE, game.GetPlayers()[2].GetColorOrDefault().GetIntValue());
-            view.SetLayoutColor(PlayerID.FOUR, game.GetPlayers()[3].GetColorOrDefault().GetIntValue());
         } else {
             game.LoadGameState(preferences, 2);
-            view.SetLayoutColor(PlayerID.ONE, game.GetPlayers()[0].GetColorOrDefault().GetIntValue());
-            view.SetLayoutColor(PlayerID.TWO, game.GetPlayers()[1].GetColorOrDefault().GetIntValue());
         }
 
         for(Player player : game.GetPlayers()) {
+            player.SetColor(new Color(player.GetColorOrDefault().GetBasecolor(), PreferenceManager.GetCustomizedColorOrDefault(player.GetColorOrDefault().GetBasecolor(), preferences)));
             view.SetLifepoints(player.GetPlayerID(), player.GetLifePoints() + "");
             view.SetPoisonpoints(player.GetPlayerID(), player.GetPoisonPoints() + "");
+            view.SetLayoutColor(player.GetPlayerID(), player.GetColorOrDefault().GetIntValue());
         }
 
         settingsVisible = false;
@@ -114,11 +110,11 @@ public class GamePresenter implements IGamePresenter {
 
         powerSaveEnabled = false;
 
-        view.InitColorButton(MagicColor.BLACK, PreferenceManager.getCustomColor(preferences, MagicColor.BLACK));
-        view.InitColorButton(MagicColor.BLUE, PreferenceManager.getCustomColor(preferences, MagicColor.BLUE));
-        view.InitColorButton(MagicColor.GREEN, PreferenceManager.getCustomColor(preferences, MagicColor.GREEN));
-        view.InitColorButton(MagicColor.RED, PreferenceManager.getCustomColor(preferences, MagicColor.RED));
-        view.InitColorButton(MagicColor.WHITE, PreferenceManager.getCustomColor(preferences, MagicColor.WHITE));
+        view.InitColorButton(MagicColor.BLACK, PreferenceManager.GetCustomizedColorOrDefault(MagicColor.BLACK, preferences));
+        view.InitColorButton(MagicColor.BLUE, PreferenceManager.GetCustomizedColorOrDefault(MagicColor.BLUE, preferences));
+        view.InitColorButton(MagicColor.GREEN, PreferenceManager.GetCustomizedColorOrDefault(MagicColor.GREEN, preferences));
+        view.InitColorButton(MagicColor.RED, PreferenceManager.GetCustomizedColorOrDefault(MagicColor.RED, preferences));
+        view.InitColorButton(MagicColor.WHITE, PreferenceManager.GetCustomizedColorOrDefault(MagicColor.WHITE, preferences));
 
         if(PreferenceManager.getScreenTimeoutDisabled(preferences)) {
             view.DisableScreenTimeout();
@@ -157,7 +153,7 @@ public class GamePresenter implements IGamePresenter {
         if(powerSaveEnabled) {
             view.EnableEnergySaving(PreferenceManager.powerSave, PreferenceManager.powerSaveTextcolor);
         } else {
-            view.DisableEnergySaving(PreferenceManager.getDefaultBlack(preferences), PreferenceManager.regularTextcolor);
+            view.DisableEnergySaving(PreferenceManager.GetCustomizedColorOrDefault(MagicColor.BLACK, preferences), PreferenceManager.regularTextcolor);
         }
         view.SetDrawerTextPowerSaving(!powerSaveEnabled);
     }
@@ -201,19 +197,19 @@ public class GamePresenter implements IGamePresenter {
 
             switch (color) {
                 case BLUE:
-                    newColor = new Color(MagicColor.BLUE, PreferenceManager.getCustomColor(preferences, MagicColor.BLUE));
+                    newColor = new Color(MagicColor.BLUE, PreferenceManager.GetCustomizedColorOrDefault(MagicColor.BLUE, preferences));
                     break;
                 case GREEN:
-                    newColor = new Color(MagicColor.GREEN, PreferenceManager.getCustomColor(preferences, MagicColor.GREEN));
+                    newColor = new Color(MagicColor.GREEN, PreferenceManager.GetCustomizedColorOrDefault(MagicColor.GREEN, preferences));
                     break;
                 case RED:
-                    newColor = new Color(MagicColor.RED, PreferenceManager.getCustomColor(preferences, MagicColor.RED));
+                    newColor = new Color(MagicColor.RED, PreferenceManager.GetCustomizedColorOrDefault(MagicColor.RED, preferences));
                     break;
                 case WHITE:
-                    newColor = new Color(MagicColor.WHITE, PreferenceManager.getCustomColor(preferences, MagicColor.WHITE));
+                    newColor = new Color(MagicColor.WHITE, PreferenceManager.GetCustomizedColorOrDefault(MagicColor.WHITE, preferences));
                     break;
                 default:
-                    newColor = new Color(MagicColor.BLACK, PreferenceManager.getCustomColor(preferences, MagicColor.BLACK));
+                    newColor = new Color(MagicColor.BLACK, PreferenceManager.GetCustomizedColorOrDefault(MagicColor.BLACK, preferences));
                     break;
             }
 
