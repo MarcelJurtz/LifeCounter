@@ -79,7 +79,7 @@ public class PreferenceManager {
     // Set custom color
     public static void saveColor(SharedPreferences preferences, Color color) {
         SharedPreferences.Editor editor = preferences.edit();
-        editor.putInt(color.getPreferenceString(), color.getIntValue());
+        editor.putInt(color.GetPreferenceString(), color.GetIntValue());
         editor.apply();
     }
 
@@ -285,7 +285,7 @@ public class PreferenceManager {
     public static Player[] Load4PlayerPointsData(SharedPreferences preferences) {
         Player[] players = new Player[4];
 
-        Player p1 = Player.GetInstanceByJson(preferences.getString(PlayerID.ONE.toString() + "_POINT4S", null));
+        Player p1 = Player.GetInstanceByJson(preferences.getString(PlayerID.ONE.toString() + "_POINTS4", null));
         Player p2 = Player.GetInstanceByJson(preferences.getString(PlayerID.TWO.toString() + "_POINTS4", null));
         Player p3 = Player.GetInstanceByJson(preferences.getString(PlayerID.THREE.toString() + "_POINTS4", null));
         Player p4 = Player.GetInstanceByJson(preferences.getString(PlayerID.FOUR.toString() + "_POINTS4", null));
