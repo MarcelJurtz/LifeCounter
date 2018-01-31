@@ -5,13 +5,13 @@ import com.marceljurtz.lifecounter.Helper.Color;
 import com.marceljurtz.lifecounter.Helper.MagicColor;
 
 public interface ISettingsPresenter extends IPresenter {
-    void OnBackButtonClick();
-    void OnCancelButtonClick();
-    void OnResetButtonClick();
-    void OnColorSelectButtonClick(MagicColor color);
-    void OnColorSelectValueUpdate(Color color);
-    void OnKeepScreenOnCheckboxClick(boolean checked);
+    void onBackButtonClick();
+    void onCancelButtonClick();
+    void onResetButtonClick();
+    void onColorSelectButtonClick(MagicColor color);
+    void onColorSelectValueUpdate(Color color);
+    void onKeepScreenOnCheckboxClick(boolean checked);
 
-    void OnResetButtonConfirm();
-    void OnResetButtonCancel();
+    void onResetButtonConfirm();
+    void onResetButtonCancel();
 }

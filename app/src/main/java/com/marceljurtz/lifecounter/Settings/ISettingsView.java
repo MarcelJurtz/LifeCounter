@@ -6,17 +6,17 @@ import com.marceljurtz.lifecounter.Helper.MagicColor;
 
 public interface ISettingsView extends IView {
     // Lifepoints and Longclickpoints Getter & Setter
-    void SetLifepoints(String lifepointText);
-    String GetLifepoints();
-    void SetLongClickPoints(String longClickPointText);
-    String GetLongClickPoints();
+    void setLifepoints(String lifepointText);
+    String getLifepoints();
+    void setLongClickPoints(String longClickPointText);
+    String getLongClickPoints();
 
     // Launch Game Activity
-    void LoadGameActivity();
+    void loadGameActivity();
 
-    void LoadResetConfirmationDialog();
-    void LoadColorPickerDialog(MagicColor color, int r, int g, int b);
-    void UpdateColorButtonValue(Color color);
+    void loadResetConfirmationDialog();
+    void loadColorPickerDialog(MagicColor color, int r, int g, int b);
+    void updateColorButtonValue(Color color);
 
-    void SetKeepScreenOnCheckbox(boolean checked);
+    void setKeepScreenOnCheckbox(boolean checked);
 }

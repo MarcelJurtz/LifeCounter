@@ -18,45 +18,52 @@ public class Counter implements Parcelable {
         this.def = DEF;
     }
 
+    private Counter(Parcel source) {
+        identifier = source.readString();
+        description = source.readString();
+        atk = source.readInt();
+        def = source.readInt();
+    }
+
     // ID to link counterToAdd to view
     // template: playerID_increment
     private String identifier;
 
-    public String GetIdentifier() {
+    public String getIdentifier() {
         return identifier;
     }
 
-    public void SetIdentifier (String identifier) {
+    public void setIdentifier(String identifier) {
         this.identifier = identifier;
     }
 
     private String description;
 
-    public String GetDescription() {
+    public String getDescription() {
         return this.description;
     }
 
-    public void SetDescription(String description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 
     private int atk;
 
-    public int GetATK() {
+    public int getATK() {
         return this.atk;
     }
 
-    public void SetATK(int atk) {
+    public void setATK(int atk) {
         this.atk = atk;
     }
 
     private int def;
 
-    public int GetDEF() {
+    public int getDEF() {
         return this.def;
     }
 
-    public void SetDEF(int def) {
+    public void setDEF(int def) {
         this.def = def;
     }
 
@@ -71,13 +78,6 @@ public class Counter implements Parcelable {
         dest.writeString(description);
         dest.writeInt(atk);
         dest.writeInt(def);
-    }
-
-    private Counter(Parcel source) {
-        identifier = source.readString();
-        description = source.readString();
-        atk = source.readInt();
-        def = source.readInt();
     }
 
     public static final Parcelable.Creator<Counter> CREATOR

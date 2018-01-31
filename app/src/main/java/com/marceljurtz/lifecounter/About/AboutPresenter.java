@@ -19,7 +19,7 @@ public class AboutPresenter implements IAboutPresenter {
     //region Activity Lifecycle
 
     @Override
-    public void OnCreate() {
+    public void onCreate() {
         if (languageCode.equals("Deutsch")) {
             view.LoadAboutPage("file:///android_asset/about_de.html");
         } else {
@@ -28,17 +28,17 @@ public class AboutPresenter implements IAboutPresenter {
     }
 
     @Override
-    public void OnPause() {
+    public void onPause() {
 
     }
 
     @Override
-    public void OnResume() {
+    public void onResume() {
 
     }
 
     @Override
-    public void OnDestroy() {
+    public void onDestroy() {
 
     }
 
@@ -47,29 +47,29 @@ public class AboutPresenter implements IAboutPresenter {
     //region NavDrawer Handling
 
     @Override
-    public void OnMenuEntryTwoPlayerTap() {
+    public void onMenuEntryTwoPlayerTap() {
         PreferenceManager.saveDefaultPlayerAmount(preferences, 2);
         view.LoadGameActivity();
     }
 
     @Override
-    public void OnMenuEntryFourPlayerTap() {
+    public void onMenuEntryFourPlayerTap() {
         PreferenceManager.saveDefaultPlayerAmount(preferences, 4);
         view.LoadGameActivity();
     }
 
     @Override
-    public void OnMenuEntryDicingTap() {
+    public void onMenuEntryDicingTap() {
         view.LoadDicingActivity();
     }
 
     @Override
-    public void OnMenuEntrySettingsTap() {
+    public void onMenuEntrySettingsTap() {
         view.LoadSettingsActivity();
     }
 
     @Override
-    public void OnMenuEntryCounterManagerTap() {
+    public void onMenuEntryCounterManagerTap() {
         view.LoadCounterManagerActivity();
     }
 

@@ -37,18 +37,18 @@ public class GamePresenter implements IGamePresenter {
         this.preferences = preferences;
         this.view = view;
 
-        int screenLayout = view.GetScreenSize();
+        int screenLayout = view.getScreenSize();
         // Configuration.SCREENLAYOUT_SIZE_LARGE;   --> 3
         // Configuration.SCREENLAYOUT_SIZE_NORMAL;  --> 2
         // Configuration.SCREENLAYOUT_SIZE_SMALL;   --> 1
         // Configuration.SCREENLAYOUT_SIZE_XLARGE;  --> 4
 
-        if(screenLayout != SCREEN_XLARGE && view.GetPlayerAmount() == 4) hideOtherControlsWhenSettingsDisplayed = true;
+        if(screenLayout != SCREEN_XLARGE && view.getPlayerAmount() == 4) hideOtherControlsWhenSettingsDisplayed = true;
 
         player1 = new Player(PlayerID.ONE); // SCHEISSE
         player2 = new Player(PlayerID.TWO);
 
-        if(view.GetPlayerAmount() == 4) {
+        if(view.getPlayerAmount() == 4) {
             player3 = new Player(PlayerID.THREE);
             player4 = new Player(PlayerID.FOUR);
             game = new Game(preferences, new Player[]{player1, player2, player3, player4});
@@ -58,136 +58,108 @@ public class GamePresenter implements IGamePresenter {
 
 
         // Initiate default colors
-        view.InitColorButton(MagicColor.BLACK, PreferenceManager.GetCustomizedColorOrDefault(MagicColor.BLACK, preferences));
-        view.InitColorButton(MagicColor.BLUE, PreferenceManager.GetCustomizedColorOrDefault(MagicColor.BLUE, preferences));
-        view.InitColorButton(MagicColor.GREEN, PreferenceManager.GetCustomizedColorOrDefault(MagicColor.GREEN, preferences));
-        view.InitColorButton(MagicColor.RED, PreferenceManager.GetCustomizedColorOrDefault(MagicColor.RED, preferences));
-        view.InitColorButton(MagicColor.WHITE, PreferenceManager.GetCustomizedColorOrDefault(MagicColor.WHITE, preferences));
+        view.initColorButton(MagicColor.BLACK, PreferenceManager.getCustomizedColorOrDefault(MagicColor.BLACK, preferences));
+        view.initColorButton(MagicColor.BLUE, PreferenceManager.getCustomizedColorOrDefault(MagicColor.BLUE, preferences));
+        view.initColorButton(MagicColor.GREEN, PreferenceManager.getCustomizedColorOrDefault(MagicColor.GREEN, preferences));
+        view.initColorButton(MagicColor.RED, PreferenceManager.getCustomizedColorOrDefault(MagicColor.RED, preferences));
+        view.initColorButton(MagicColor.WHITE, PreferenceManager.getCustomizedColorOrDefault(MagicColor.WHITE, preferences));
 
         // Settings, Energy-Saving & Poison
-        view.DisableSettingsControls(hideOtherControlsWhenSettingsDisplayed, false);
-        view.SettingsButtonDisable();
+        view.disableSettingsControls(hideOtherControlsWhenSettingsDisplayed, false);
+        view.settingsButtonDisable();
         settingsVisible = false;
 
-        view.PoisonButtonDisable();
-        view.DisablePoisonControls(hideOtherControlsWhenSettingsDisplayed);
+        view.poisonButtonDisable();
+        view.disablePoisonControls(hideOtherControlsWhenSettingsDisplayed);
         poisonVisible = false;
     }
 
     @Override
-    public void OnCreate() {
+    public void onCreate() {
 
     }
 
     @Override
-    public void OnPause() {
-        game.SaveGameState(preferences);
+    public void onPause() {
+        game.saveGameState(preferences);
     }
 
     @Override
-    public void OnResume() {
+    public void onResume() {
 
-        if(view.GetPlayerAmount() == 4) {
-            game.LoadGameState(preferences, 4);
+        if(view.getPlayerAmount() == 4) {
+            game.loadGameState(preferences, 4);
         } else {
-            game.LoadGameState(preferences, 2);
+            game.loadGameState(preferences, 2);
         }
 
-        for(Player player : game.GetPlayers()) {
-            player.SetColor(new Color(player.GetColorOrDefault().GetBasecolor(), PreferenceManager.GetCustomizedColorOrDefault(player.GetColorOrDefault().GetBasecolor(), preferences)));
-            view.SetLifepoints(player.GetPlayerID(), player.GetLifePoints() + "");
-            view.SetPoisonpoints(player.GetPlayerID(), player.GetPoisonPoints() + "");
-            view.SetLayoutColor(player.GetPlayerID(), player.GetColorOrDefault().GetIntValue());
+        for(Player player : game.getPlayers()) {
+            player.setColor(new Color(player.getColorOrDefault().getBasecolor(), PreferenceManager.getCustomizedColorOrDefault(player.getColorOrDefault().getBasecolor(), preferences)));
+            view.setLifepoints(player.getPlayerID(), player.getLifePoints() + "");
+            view.setPoisonpoints(player.getPlayerID(), player.getPoisonPoints() + "");
+            view.setLayoutColor(player.getPlayerID(), player.getColorOrDefault().getIntValue());
         }
 
         settingsVisible = false;
-        view.DisableSettingsControls(hideOtherControlsWhenSettingsDisplayed, poisonVisible);
-        view.SettingsButtonDisable();
+        view.disableSettingsControls(hideOtherControlsWhenSettingsDisplayed, poisonVisible);
+        view.settingsButtonDisable();
 
         poisonVisible = false;
-        view.DisablePoisonControls(hideOtherControlsWhenSettingsDisplayed);
-        view.PoisonButtonDisable();
+        view.disablePoisonControls(hideOtherControlsWhenSettingsDisplayed);
+        view.poisonButtonDisable();
 
         powerSaveEnabled = false;
 
-        view.InitColorButton(MagicColor.BLACK, PreferenceManager.GetCustomizedColorOrDefault(MagicColor.BLACK, preferences));
-        view.InitColorButton(MagicColor.BLUE, PreferenceManager.GetCustomizedColorOrDefault(MagicColor.BLUE, preferences));
-        view.InitColorButton(MagicColor.GREEN, PreferenceManager.GetCustomizedColorOrDefault(MagicColor.GREEN, preferences));
-        view.InitColorButton(MagicColor.RED, PreferenceManager.GetCustomizedColorOrDefault(MagicColor.RED, preferences));
-        view.InitColorButton(MagicColor.WHITE, PreferenceManager.GetCustomizedColorOrDefault(MagicColor.WHITE, preferences));
+        view.initColorButton(MagicColor.BLACK, PreferenceManager.getCustomizedColorOrDefault(MagicColor.BLACK, preferences));
+        view.initColorButton(MagicColor.BLUE, PreferenceManager.getCustomizedColorOrDefault(MagicColor.BLUE, preferences));
+        view.initColorButton(MagicColor.GREEN, PreferenceManager.getCustomizedColorOrDefault(MagicColor.GREEN, preferences));
+        view.initColorButton(MagicColor.RED, PreferenceManager.getCustomizedColorOrDefault(MagicColor.RED, preferences));
+        view.initColorButton(MagicColor.WHITE, PreferenceManager.getCustomizedColorOrDefault(MagicColor.WHITE, preferences));
 
         if(PreferenceManager.getScreenTimeoutDisabled(preferences)) {
-            view.DisableScreenTimeout();
+            view.disableScreenTimeout();
         } else {
-            view.EnableScreenTimeout();
+            view.enableScreenTimeout();
         }
 
-        view.HideNavigationDrawer();
+        view.hideNavigationDrawer();
     }
 
     @Override
-    public void OnDestroy() {
+    public void onDestroy() {
 
     }
-
-    /*
-    public void setSettingsVisible() {
-        settingsVisible = !settingsVisible;
-        if(settingsVisible) {
-            view.EnableSettingsControls();
-        } else {
-            view.DisableSettingsControls();
-        }
-    }
-
-    public boolean getSettingsVisible() {
-        return settingsVisible;
-    }
-*/
-    /*public boolean getPoisonVisible() {
-        return poisonVisible;
-    }*/
 
     public void togglePowerSavingMode() {
         powerSaveEnabled = !powerSaveEnabled;
         if(powerSaveEnabled) {
-            view.EnableEnergySaving(PreferenceManager.powerSave, PreferenceManager.powerSaveTextcolor);
+            view.enableEnergySaving(PreferenceManager.powerSave, PreferenceManager.powerSaveTextcolor);
         } else {
-            view.DisableEnergySaving(PreferenceManager.GetCustomizedColorOrDefault(MagicColor.BLACK, preferences), PreferenceManager.regularTextcolor);
+            view.disableEnergySaving(PreferenceManager.getCustomizedColorOrDefault(MagicColor.BLACK, preferences), PreferenceManager.regularTextcolor);
         }
-        view.SetDrawerTextPowerSaving(!powerSaveEnabled);
+        view.setDrawerTextPowerSaving(!powerSaveEnabled);
     }
 
-    /*
-
-    public boolean getPowerSaveEnabled() {
-        return powerSaveEnabled;
-    }
-
-    //endregion
-*/
     @Override
-    public void OnLifeUpdate(PlayerID playerID, ClickType clickType, Operator operator) {
+    public void onLifeUpdate(PlayerID playerID, ClickType clickType, Operator operator) {
         game.updateLifepoints(playerID, clickType, operator);
         int points = game.getPlayerLifepoints(playerID);
 
         String pointsStr = String.format("%02d",points);
-        view.SetLifepoints(playerID, pointsStr);
+        view.setLifepoints(playerID, pointsStr);
     }
 
     @Override
-    public void OnPoisonUpdate(PlayerID playerID, ClickType clickType, Operator operator) {
+    public void onPoisonUpdate(PlayerID playerID, ClickType clickType, Operator operator) {
         game.updatePoisonpoints(playerID, clickType, operator);
         int points = game.getPlayerPoisonpoints(playerID);
 
         String pointsStr = String.format("%02d",points);
-        view.SetPoisonpoints(playerID, pointsStr);
+        view.setPoisonpoints(playerID, pointsStr);
     }
 
-
-
     @Override
-    public void OnColorButtonClick(PlayerID playerID, MagicColor color, ClickType clickType) {
+    public void onColorButtonClick(PlayerID playerID, MagicColor color, ClickType clickType) {
         if(clickType.equals(ClickType.SHORT)) {
 
             // Disable PowerSaveMode if enabled
@@ -197,146 +169,146 @@ public class GamePresenter implements IGamePresenter {
 
             switch (color) {
                 case BLUE:
-                    newColor = new Color(MagicColor.BLUE, PreferenceManager.GetCustomizedColorOrDefault(MagicColor.BLUE, preferences));
+                    newColor = new Color(MagicColor.BLUE, PreferenceManager.getCustomizedColorOrDefault(MagicColor.BLUE, preferences));
                     break;
                 case GREEN:
-                    newColor = new Color(MagicColor.GREEN, PreferenceManager.GetCustomizedColorOrDefault(MagicColor.GREEN, preferences));
+                    newColor = new Color(MagicColor.GREEN, PreferenceManager.getCustomizedColorOrDefault(MagicColor.GREEN, preferences));
                     break;
                 case RED:
-                    newColor = new Color(MagicColor.RED, PreferenceManager.GetCustomizedColorOrDefault(MagicColor.RED, preferences));
+                    newColor = new Color(MagicColor.RED, PreferenceManager.getCustomizedColorOrDefault(MagicColor.RED, preferences));
                     break;
                 case WHITE:
-                    newColor = new Color(MagicColor.WHITE, PreferenceManager.GetCustomizedColorOrDefault(MagicColor.WHITE, preferences));
+                    newColor = new Color(MagicColor.WHITE, PreferenceManager.getCustomizedColorOrDefault(MagicColor.WHITE, preferences));
                     break;
                 default:
-                    newColor = new Color(MagicColor.BLACK, PreferenceManager.GetCustomizedColorOrDefault(MagicColor.BLACK, preferences));
+                    newColor = new Color(MagicColor.BLACK, PreferenceManager.getCustomizedColorOrDefault(MagicColor.BLACK, preferences));
                     break;
             }
 
             switch(playerID) {
                 case ONE:
-                    player1.SetColor(newColor);
-                    game.GetPlayers()[0].SetColor(newColor);
+                    player1.setColor(newColor);
+                    game.getPlayers()[0].setColor(newColor);
                     break;
                 case TWO:
-                    player2.SetColor(newColor);
-                    game.GetPlayers()[1].SetColor(newColor);
+                    player2.setColor(newColor);
+                    game.getPlayers()[1].setColor(newColor);
                     break;
                 case THREE:
-                    player3.SetColor(newColor);
-                    game.GetPlayers()[2].SetColor(newColor);
+                    player3.setColor(newColor);
+                    game.getPlayers()[2].setColor(newColor);
                     break;
                 case FOUR:
-                    player4.SetColor(newColor);
-                    game.GetPlayers()[3].SetColor(newColor);
+                    player4.setColor(newColor);
+                    game.getPlayers()[3].setColor(newColor);
                     break;
                 default:
             }
 
-            view.SetLayoutColor(playerID, newColor.GetIntValue());
+            view.setLayoutColor(playerID, newColor.getIntValue());
         } else if(clickType.equals(ClickType.LONG) && color.equals(MagicColor.BLACK)) {
             togglePowerSavingMode();
         }
     }
 
     @Override
-    public void OnPoisonButtonClick() {
+    public void onPoisonButtonClick() {
         // Activation only possible on small screens when settings are hidden
-        if(!hideOtherControlsWhenSettingsDisplayed || !settingsVisible || view.GetPlayerAmount() == 2) {
+        if(!hideOtherControlsWhenSettingsDisplayed || !settingsVisible || view.getPlayerAmount() == 2) {
             poisonVisible = !poisonVisible;
             if(poisonVisible) {
-                view.EnablePoisonControls(hideOtherControlsWhenSettingsDisplayed);
-                view.PoisonButtonEnable();
+                view.enablePoisonControls(hideOtherControlsWhenSettingsDisplayed);
+                view.poisonButtonEnable();
             } else {
-                view.DisablePoisonControls(hideOtherControlsWhenSettingsDisplayed);
-                view.PoisonButtonDisable();
+                view.disablePoisonControls(hideOtherControlsWhenSettingsDisplayed);
+                view.poisonButtonDisable();
             }
         }
     }
 
     @Override
-    public void OnSettingsButtonClick(ClickType clickType) {
+    public void onSettingsButtonClick(ClickType clickType) {
         if(clickType.equals(ClickType.LONG)) {
-            view.LoadSettingsActivity();
+            view.loadSettingsActivity();
         } else {
             settingsVisible = !settingsVisible;
             if(settingsVisible) {
-                view.EnableSettingsControls(hideOtherControlsWhenSettingsDisplayed, poisonVisible && hideOtherControlsWhenSettingsDisplayed);
-                view.SettingsButtonEnable();
+                view.enableSettingsControls(hideOtherControlsWhenSettingsDisplayed, poisonVisible && hideOtherControlsWhenSettingsDisplayed);
+                view.settingsButtonEnable();
             } else {
-                view.DisableSettingsControls(hideOtherControlsWhenSettingsDisplayed, poisonVisible && hideOtherControlsWhenSettingsDisplayed);
-                view.SettingsButtonDisable();
+                view.disableSettingsControls(hideOtherControlsWhenSettingsDisplayed, poisonVisible && hideOtherControlsWhenSettingsDisplayed);
+                view.settingsButtonDisable();
             }
         }
     }
 
     @Override
-    public void OnResetButtonClick() {
-        player1.ResetPoints(preferences);
-        player2.ResetPoints(preferences);
+    public void onResetButtonClick() {
+        player1.resetPoints(preferences);
+        player2.resetPoints(preferences);
 
         settingsVisible = false;
         poisonVisible = false;
-        view.DisablePoisonControls(hideOtherControlsWhenSettingsDisplayed);
-        view.SettingsButtonDisable();
-        view.DisableSettingsControls(hideOtherControlsWhenSettingsDisplayed, poisonVisible);
-        view.PoisonButtonDisable();
+        view.disablePoisonControls(hideOtherControlsWhenSettingsDisplayed);
+        view.settingsButtonDisable();
+        view.disableSettingsControls(hideOtherControlsWhenSettingsDisplayed, poisonVisible);
+        view.poisonButtonDisable();
 
-        view.SetLifepoints(PlayerID.ONE, String.format("%02d",player1.GetLifePoints()));
-        view.SetLifepoints(PlayerID.TWO, String.format("%02d",player2.GetLifePoints()));
+        view.setLifepoints(PlayerID.ONE, String.format("%02d",player1.getLifePoints()));
+        view.setLifepoints(PlayerID.TWO, String.format("%02d",player2.getLifePoints()));
 
-        view.SetPoisonpoints(PlayerID.ONE, String.format("%02d",player1.GetPoisonPoints()));
-        view.SetPoisonpoints(PlayerID.TWO, String.format("%02d",player2.GetPoisonPoints()));
+        view.setPoisonpoints(PlayerID.ONE, String.format("%02d",player1.getPoisonPoints()));
+        view.setPoisonpoints(PlayerID.TWO, String.format("%02d",player2.getPoisonPoints()));
 
-        if(view.GetPlayerAmount() == 4) {
-            player3.ResetPoints(preferences);
-            player4.ResetPoints(preferences);
+        if(view.getPlayerAmount() == 4) {
+            player3.resetPoints(preferences);
+            player4.resetPoints(preferences);
 
-            view.SetLifepoints(PlayerID.THREE, String.format("%02d",player3.GetLifePoints()));
-            view.SetLifepoints(PlayerID.FOUR, String.format("%02d",player4.GetLifePoints()));
+            view.setLifepoints(PlayerID.THREE, String.format("%02d",player3.getLifePoints()));
+            view.setLifepoints(PlayerID.FOUR, String.format("%02d",player4.getLifePoints()));
 
-            view.SetPoisonpoints(PlayerID.THREE, String.format("%02d",player3.GetPoisonPoints()));
-            view.SetPoisonpoints(PlayerID.FOUR, String.format("%02d",player4.GetPoisonPoints()));
+            view.setPoisonpoints(PlayerID.THREE, String.format("%02d",player3.getPoisonPoints()));
+            view.setPoisonpoints(PlayerID.FOUR, String.format("%02d",player4.getPoisonPoints()));
         }
     }
 
     //region NavDrawer Handling
     @Override
-    public void OnMenuEntryTogglePlayerTap() {
-        if(view.GetPlayerAmount() == 4) {
+    public void onMenuEntryTogglePlayerTap() {
+        if(view.getPlayerAmount() == 4) {
             // Load 2 Player View
             PreferenceManager.saveDefaultPlayerAmount(preferences, 2);
-        } else if(view.GetPlayerAmount() == 2) {
+        } else if(view.getPlayerAmount() == 2) {
             // Load 4 Player View
             PreferenceManager.saveDefaultPlayerAmount(preferences, 4);
         }
-        view.HideNavigationDrawer();
-        view.RestartActivity();
+        view.hideNavigationDrawer();
+        view.restartActivity();
     }
 
     @Override
-    public void OnMenuEntryDicingTap() {
-        view.LoadDicingActivity();
+    public void onMenuEntryDicingTap() {
+        view.loadDicingActivity();
     }
 
     @Override
-    public void OnMenuEntryEnergySaveTap() {
+    public void onMenuEntryEnergySaveTap() {
         togglePowerSavingMode();
     }
 
     @Override
-    public void OnMenuEntrySettingsTap() {
-        OnSettingsButtonClick(ClickType.LONG);
+    public void onMenuEntrySettingsTap() {
+        onSettingsButtonClick(ClickType.LONG);
     }
 
     @Override
-    public void OnMenuEntryAboutTap() {
-        view.LoadAboutActivity();
+    public void onMenuEntryAboutTap() {
+        view.loadAboutActivity();
     }
 
     @Override
-    public void OnMenuEntryCounterManagerTap() {
-        view.LoadCounterManagerActivity();
+    public void onMenuEntryCounterManagerTap() {
+        view.loadCounterManagerActivity();
     }
     //endregion
 }

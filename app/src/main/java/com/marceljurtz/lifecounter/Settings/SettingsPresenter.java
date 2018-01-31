@@ -28,40 +28,40 @@ public class SettingsPresenter implements ISettingsPresenter {
     //region Activity LifeCycle Functions
 
     @Override
-    public void OnCreate() {
+    public void onCreate() {
         black = new Color(MagicColor.BLACK, preferences);
         blue = new Color(MagicColor.BLUE, preferences);
         green = new Color(MagicColor.GREEN, preferences);
         red = new Color(MagicColor.RED, preferences);
         white = new Color(MagicColor.WHITE, preferences);
 
-        settingsView.UpdateColorButtonValue(black);
-        settingsView.UpdateColorButtonValue(blue);
-        settingsView.UpdateColorButtonValue(green);
-        settingsView.UpdateColorButtonValue(red);
-        settingsView.UpdateColorButtonValue(white);
+        settingsView.updateColorButtonValue(black);
+        settingsView.updateColorButtonValue(blue);
+        settingsView.updateColorButtonValue(green);
+        settingsView.updateColorButtonValue(red);
+        settingsView.updateColorButtonValue(white);
 
         lifepoints = PreferenceManager.getDefaultLifepoints(preferences);
-        settingsView.SetLifepoints(String.format("%02d", lifepoints));
+        settingsView.setLifepoints(String.format("%02d", lifepoints));
 
         longClickPoints = PreferenceManager.getLongclickPoints(preferences);
-        settingsView.SetLongClickPoints(String.format("%02d", longClickPoints));
+        settingsView.setLongClickPoints(String.format("%02d", longClickPoints));
 
-        settingsView.SetKeepScreenOnCheckbox(PreferenceManager.getScreenTimeoutDisabled(preferences));
+        settingsView.setKeepScreenOnCheckbox(PreferenceManager.getScreenTimeoutDisabled(preferences));
     }
 
     @Override
-    public void OnPause() {
-
-    }
-
-    @Override
-    public void OnResume() {
+    public void onPause() {
 
     }
 
     @Override
-    public void OnDestroy() {
+    public void onResume() {
+
+    }
+
+    @Override
+    public void onDestroy() {
 
     }
 
@@ -70,27 +70,27 @@ public class SettingsPresenter implements ISettingsPresenter {
     //region Back & Cancel Button
 
     @Override
-    public void OnBackButtonClick() {
+    public void onBackButtonClick() {
 
-        PreferenceManager.SaveColor(preferences, black);
-        PreferenceManager.SaveColor(preferences, blue);
-        PreferenceManager.SaveColor(preferences, green);
-        PreferenceManager.SaveColor(preferences, red);
-        PreferenceManager.SaveColor(preferences, white);
+        PreferenceManager.saveColor(preferences, black);
+        PreferenceManager.saveColor(preferences, blue);
+        PreferenceManager.saveColor(preferences, green);
+        PreferenceManager.saveColor(preferences, red);
+        PreferenceManager.saveColor(preferences, white);
 
-        lifepoints = Integer.parseInt(settingsView.GetLifepoints());
-        longClickPoints = Integer.parseInt(settingsView.GetLongClickPoints());
+        lifepoints = Integer.parseInt(settingsView.getLifepoints());
+        longClickPoints = Integer.parseInt(settingsView.getLongClickPoints());
 
         PreferenceManager.saveDefaultLifepoints(preferences, lifepoints);
         PreferenceManager.saveDefaultLongClickPoints(preferences, longClickPoints);
 
-        settingsView.LoadGameActivity();
+        settingsView.loadGameActivity();
     }
 
     @Override
-    public void OnCancelButtonClick() {
+    public void onCancelButtonClick() {
         // Discard Settings
-        settingsView.LoadGameActivity();
+        settingsView.loadGameActivity();
     }
 
     //endregion
@@ -98,19 +98,19 @@ public class SettingsPresenter implements ISettingsPresenter {
     //region Update color values
 
     @Override
-    public void OnColorSelectButtonClick(MagicColor color) {
-        int savedColor = PreferenceManager.GetCustomizedColorOrDefault(color, preferences);
+    public void onColorSelectButtonClick(MagicColor color) {
+        int savedColor = PreferenceManager.getCustomizedColorOrDefault(color, preferences);
 
-        int r = Color.GetRGB(savedColor)[0];
-        int g = Color.GetRGB(savedColor)[1];
-        int b = Color.GetRGB(savedColor)[2];
+        int r = Color.getRGB(savedColor)[0];
+        int g = Color.getRGB(savedColor)[1];
+        int b = Color.getRGB(savedColor)[2];
 
-        settingsView.LoadColorPickerDialog(color, r, g, b);
+        settingsView.loadColorPickerDialog(color, r, g, b);
     }
 
     @Override
-    public void OnColorSelectValueUpdate(Color color) {
-        switch(color.GetBasecolor()) {
+    public void onColorSelectValueUpdate(Color color) {
+        switch(color.getBasecolor()) {
             case BLUE:
                 blue = color;
                 break;
@@ -126,13 +126,13 @@ public class SettingsPresenter implements ISettingsPresenter {
             default:
                 black = color;
         }
-        settingsView.UpdateColorButtonValue(color);
+        settingsView.updateColorButtonValue(color);
     }
 
     //endregion
 
     @Override
-    public void OnKeepScreenOnCheckboxClick(boolean checked) {
+    public void onKeepScreenOnCheckboxClick(boolean checked) {
         PreferenceManager.saveScreenTimeoutDisabled(preferences, checked);
     }
 
@@ -140,22 +140,22 @@ public class SettingsPresenter implements ISettingsPresenter {
     //region Reset Button Click
 
     @Override
-    public void OnResetButtonClick() {
-        settingsView.LoadResetConfirmationDialog();
+    public void onResetButtonClick() {
+        settingsView.loadResetConfirmationDialog();
     }
 
     @Override
-    public void OnResetButtonConfirm() {
+    public void onResetButtonConfirm() {
         // Reset all Settings
         PreferenceManager.resetLongClickPoints(preferences);
         PreferenceManager.resetLifepoints(preferences);
-        PreferenceManager.ResetColors(preferences);
+        PreferenceManager.resetColors(preferences);
 
-        settingsView.LoadGameActivity();
+        settingsView.loadGameActivity();
     }
 
     @Override
-    public void OnResetButtonCancel() {
+    public void onResetButtonCancel() {
         // Nothing to do here
     }
 

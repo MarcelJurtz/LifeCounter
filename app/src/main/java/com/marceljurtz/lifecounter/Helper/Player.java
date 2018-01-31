@@ -1,18 +1,12 @@
 package com.marceljurtz.lifecounter.Helper;
 
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import com.google.gson.Gson;
-import com.marceljurtz.lifecounter.Helper.PlayerID;
-import com.marceljurtz.lifecounter.Helper.PreferenceManager;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Player implements Parcelable {
     private int lifePoints;
@@ -29,10 +23,20 @@ public class Player implements Parcelable {
         this.lifePoints = DEFAULT_LIFEPOINTS;
         this.poisonPoints = 0;
         counters = new ArrayList<Counter>();
-        color = Color.GetDefaultColor(MagicColor.BLACK);
+        color = Color.getDefaultColor(MagicColor.BLACK);
     }
 
-    public String GetJson() {
+    private Player(Parcel source) {
+        lifePoints = source.readInt();
+        poisonPoints = source.readInt();
+        playerID = PlayerID.valueOf(source.readString());
+        playerIdentification = source.readString();
+        color = Color.getDefaultColor(MagicColor.valueOf(source.readString()));
+        counters = new ArrayList<>();
+        source.readList(counters, Counter.class.getClassLoader());
+    }
+
+    public String getJson() {
         return new Gson().toJson(this);
     }
 
@@ -40,24 +44,24 @@ public class Player implements Parcelable {
         return new Gson().fromJson(json, Player.class);
     }
 
-    public void ResetPoints(SharedPreferences preferences) {
+    public void resetPoints(SharedPreferences preferences) {
         this.lifePoints = PreferenceManager.getDefaultLifepoints(preferences);
         this.poisonPoints = 0;
     }
 
-    public PlayerID GetPlayerID() {
+    public PlayerID getPlayerID() {
         return this.playerID;
     }
 
-    public int GetLifePoints() {
+    public int getLifePoints() {
         return this.lifePoints;
     }
 
-    public int GetPoisonPoints() {
+    public int getPoisonPoints() {
         return this.poisonPoints;
     }
 
-    public void UpdateLifepoints(int amount) {
+    public void updateLifepoints(int amount) {
         this.lifePoints += amount;
         if (this.lifePoints < PreferenceManager.getMinLife()) {
             this.lifePoints = PreferenceManager.getMinLife();
@@ -66,7 +70,7 @@ public class Player implements Parcelable {
         }
     }
 
-    public void UpdatePoisonpoints(int amount) {
+    public void updatePoisonpoints(int amount) {
         this.poisonPoints += amount;
         if (this.poisonPoints < PreferenceManager.getMinPoison()) {
             this.poisonPoints = PreferenceManager.getMinPoison();
@@ -75,7 +79,7 @@ public class Player implements Parcelable {
         }
     }
 
-    public String GetPlayerIdentification() {
+    public String getPlayerIdentification() {
         if (playerIdentification == null || playerIdentification.trim() == "") {
             switch (playerID) {
                 case ONE:
@@ -97,55 +101,55 @@ public class Player implements Parcelable {
         return playerIdentification;
     }
 
-    public void SetPlayerIdentification(String identification) {
+    public void setPlayerIdentification(String identification) {
         playerIdentification = identification;
     }
 
-    public void AddCounter(Counter c) {
-        c.SetIdentifier(playerID.toString() + "_" + counters.size());
+    public void addCounter(Counter c) {
+        c.setIdentifier(playerID.toString() + "_" + counters.size());
         counters.add(c);
     }
 
-    public void RemoveCounter(Counter c) {
+    public void removeCounter(Counter c) {
         counters.remove(c);
         c = null;
     }
 
-    public void UpdateCounter(Counter counter) {
+    public void updateCounter(Counter counter) {
         for (Counter c: counters) {
-            if(c.GetIdentifier() == counter.GetIdentifier()) {
+            if(c.getIdentifier() == counter.getIdentifier()) {
 
-                c.SetATK(counter.GetATK());
-                c.SetDEF(counter.GetDEF());
-                c.SetDescription(counter.GetDescription());
+                c.setATK(counter.getATK());
+                c.setDEF(counter.getDEF());
+                c.setDescription(counter.getDescription());
 
                 return;
             }
         }
     }
 
-    public ArrayList<Counter> GetAllCounters() {
+    public ArrayList<Counter> getAllCounters() {
         return counters;
     }
 
-    public void ClearCounters() {
+    public void clearCounters() {
         counters.clear();
     }
 
-    public Color GetColorOrDefault() {
+    public Color getColorOrDefault() {
         if(color == null) {
-            color = Color.GetDefaultColor(MagicColor.BLACK);
+            color = Color.getDefaultColor(MagicColor.BLACK);
         }
         return color;
     }
 
-    public void SetColor(Color color) {
+    public void setColor(Color color) {
         this.color = color;
     }
 
     @Override
     public String toString() {
-        return GetPlayerIdentification();
+        return getPlayerIdentification();
     }
 
     @Override
@@ -161,16 +165,6 @@ public class Player implements Parcelable {
         dest.writeString(playerIdentification);
         dest.writeValue(color);
         dest.writeList(counters);
-    }
-
-    private Player(Parcel source) {
-        lifePoints = source.readInt();
-        poisonPoints = source.readInt();
-        playerID = PlayerID.valueOf(source.readString());
-        playerIdentification = source.readString();
-        color = Color.GetDefaultColor(MagicColor.valueOf(source.readString()));
-        counters = new ArrayList<>();
-        source.readList(counters, Counter.class.getClassLoader());
     }
 
     public static final Parcelable.Creator<Player> CREATOR

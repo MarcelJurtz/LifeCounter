@@ -1,8 +1,8 @@
 package com.marceljurtz.lifecounter.Helper.BaseInterface;
 
 public interface IPresenter {
-    void OnCreate();
-    void OnPause();
-    void OnResume();
-    void OnDestroy();
+    void onCreate();
+    void onPause();
+    void onResume();
+    void onDestroy();
 }

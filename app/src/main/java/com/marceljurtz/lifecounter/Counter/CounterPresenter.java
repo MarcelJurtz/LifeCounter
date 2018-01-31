@@ -28,7 +28,7 @@ public class CounterPresenter implements ICounterPresenter {
     }
 
     @Override
-    public void OnCreate() {
+    public void onCreate() {
         int num = random.nextInt(4);
         Color color = new Color(MagicColor.WHITE, preferences);
         switch(num) {
@@ -44,180 +44,180 @@ public class CounterPresenter implements ICounterPresenter {
             case 3:
                 break;
         }
-        view.SetBackgroundColor(color);
+        view.setBackgroundColor(color);
     }
 
     @Override
-    public void OnPause() {
-        PreferenceManager.SavePlayerCounterData(preferences, players);
+    public void onPause() {
+        PreferenceManager.savePlayerCounterData(preferences, players);
     }
 
     @Override
-    public void OnResume() {
+    public void onResume() {
         // Load items from preferences
-        players = PreferenceManager.LoadPlayerCounterData(preferences);
+        players = PreferenceManager.loadPlayerCounterData(preferences);
 
         // Reload View
-        view.DeleteAllCounters();
+        view.deleteAllCounters();
 
         for (Player player : players) {
 
-            view.SetPlayerIdentificationText(player.GetPlayerID(), player.GetPlayerIdentification());
+            view.setPlayerIdentificationText(player.getPlayerID(), player.getPlayerIdentification());
 
-            for (Counter counter : player.GetAllCounters()) {
-                view.AddCounter(player.GetPlayerID(), counter);
+            for (Counter counter : player.getAllCounters()) {
+                view.addCounter(player.getPlayerID(), counter);
             }
         }
     }
 
     @Override
-    public void OnDestroy() {
+    public void onDestroy() {
 
     }
 
     @Override
-    public void OnFloatingActionButtonTap() {
-        view.LoadCounterAddDialog(players);
+    public void onFloatingActionButtonTap() {
+        view.loadCounterAddDialog(players);
     }
 
     @Override
-    public void AddCounter(PlayerID playerId, Counter counter) {
+    public void addCounter(PlayerID playerId, Counter counter) {
         for (Player player : players) {
-            if (player.GetPlayerID().equals(playerId)) {
-                counter.SetIdentifier(player.GetPlayerID().toString() + "-" + player.GetAllCounters().size());
-                player.AddCounter(counter);
+            if (player.getPlayerID().equals(playerId)) {
+                counter.setIdentifier(player.getPlayerID().toString() + "-" + player.getAllCounters().size());
+                player.addCounter(counter);
                 break;
             }
         }
 
-        view.AddCounter(playerId, counter);
+        view.addCounter(playerId, counter);
     }
 
     @Override
-    public void OnPlayerIdentificationChangeConfirmed(PlayerID playerId, String newIdentification) {
+    public void onPlayerIdentificationChangeConfirmed(PlayerID playerId, String newIdentification) {
 
         for (Player player : players) {
-            if (player.GetPlayerID() == playerId) {
-                player.SetPlayerIdentification(newIdentification);
+            if (player.getPlayerID() == playerId) {
+                player.setPlayerIdentification(newIdentification);
                 break;
             }
         }
 
-        view.SetPlayerIdentificationText(playerId, newIdentification);
+        view.setPlayerIdentificationText(playerId, newIdentification);
     }
 
     @Override
-    public void OnMenuEntryTwoPlayerClick() {
+    public void onMenuEntryTwoPlayerClick() {
         PreferenceManager.saveDefaultPlayerAmount(preferences, 2);
-        view.LoadGameActivity();
+        view.loadGameActivity();
     }
 
     @Override
-    public void OnMenuEntryFourPlayerClick() {
+    public void onMenuEntryFourPlayerClick() {
         PreferenceManager.saveDefaultPlayerAmount(preferences, 4);
-        view.LoadGameActivity();
+        view.loadGameActivity();
     }
 
     @Override
-    public void OnMenuEntryDicingClick() {
-        view.LoadDicingActivity();
+    public void onMenuEntryDicingClick() {
+        view.loadDicingActivity();
     }
 
     @Override
-    public void OnMenuEntrySettingsClick() {
-        view.LoadSettingsActivity();
+    public void onMenuEntrySettingsClick() {
+        view.loadSettingsActivity();
     }
 
     @Override
-    public void OnMenuEntryAboutClick() {
-        view.LoadAboutActivity();
+    public void onMenuEntryAboutClick() {
+        view.loadAboutActivity();
     }
 
     @Override
-    public String GetPlayerIdentification(PlayerID playerID) {
+    public String getPlayerIdentification(PlayerID playerID) {
         for (Player player : players) {
-            if (player.GetPlayerID() == playerID) {
-                return player.GetPlayerIdentification();
+            if (player.getPlayerID() == playerID) {
+                return player.getPlayerIdentification();
             }
         }
         return "";
     }
 
     @Override
-    public void OnPlayerIdentificationTap(PlayerID playerID) {
-        view.LoadPlayerIdentificationDialog(playerID, GetPlayerIdentification(playerID));
+    public void onPlayerIdentificationTap(PlayerID playerID) {
+        view.loadPlayerIdentificationDialog(playerID, getPlayerIdentification(playerID));
     }
 
     @Override
-    public void OnPlayerIdentificationLongTap(PlayerID playerID) {
-        view.LoadPlayerDeletionDialog(playerID);
+    public void onPlayerIdentificationLongTap(PlayerID playerID) {
+        view.loadPlayerDeletionDialog(playerID);
     }
 
     @Override
-    public void OnPlayerDeletionConfirmed(PlayerID playerID) {
+    public void onPlayerDeletionConfirmed(PlayerID playerID) {
         for (Player player : players) {
-            if (player.GetPlayerID() == playerID) {
-                player.ClearCounters();
-                player.SetPlayerIdentification("");
+            if (player.getPlayerID() == playerID) {
+                player.clearCounters();
+                player.setPlayerIdentification("");
                 break;
             }
         }
-        view.DeleteAllCountersForPlayer(playerID);
+        view.deleteAllCountersForPlayer(playerID);
     }
 
     @Override
-    public void OnCounterDeletionConfirmed(LinearLayout counterLayout) {
+    public void onCounterDeletionConfirmed(LinearLayout counterLayout) {
         boolean deleteParent = false;
 
-        Counter currentCounter = GetCounterByIdentifier(counterLayout.getTag().toString());
-        Player currentPlayer = GetPlayerByCounterIdentifier(counterLayout.getTag().toString());
+        Counter currentCounter = getCounterByIdentifier(counterLayout.getTag().toString());
+        Player currentPlayer = getPlayerByCounterIdentifier(counterLayout.getTag().toString());
 
         if (currentPlayer != null && currentCounter != null) {
-            currentPlayer.RemoveCounter(currentCounter);
-            if (currentPlayer.GetAllCounters().size() <= 0) {
+            currentPlayer.removeCounter(currentCounter);
+            if (currentPlayer.getAllCounters().size() <= 0) {
                 deleteParent = true;
             }
         }
 
-        view.DeleteCounter(counterLayout, deleteParent);
+        view.deleteCounter(counterLayout, deleteParent);
     }
 
     @Override
-    public void OnCounterTap(String identifier) {
-        view.LoadCounterEditDialog(GetPlayerByCounterIdentifier(identifier), GetCounterByIdentifier(identifier));
+    public void onCounterTap(String identifier) {
+        view.loadCounterEditDialog(getPlayerByCounterIdentifier(identifier), getCounterByIdentifier(identifier));
     }
 
     @Override
-    public void OnCounterLongTap(LinearLayout counterLayout) {
-        view.LoadCounterDeletionDialog(counterLayout);
+    public void onCounterLongTap(LinearLayout counterLayout) {
+        view.loadCounterDeletionDialog(counterLayout);
     }
 
     @Override
-    public void OnCounterEditCompleted(PlayerID playerID, String oldCounterIdentifier, Counter newCounter) {
-        newCounter.SetIdentifier(oldCounterIdentifier);
+    public void onCounterEditCompleted(PlayerID playerID, String oldCounterIdentifier, Counter newCounter) {
+        newCounter.setIdentifier(oldCounterIdentifier);
         switch (playerID) {
             case ONE:
-                players.get(0).UpdateCounter(newCounter);
-                view.UpdateCounterView(players.get(0), newCounter);
+                players.get(0).updateCounter(newCounter);
+                view.updateCounterView(players.get(0), newCounter);
                 break;
             case TWO:
-                players.get(1).UpdateCounter(newCounter);
-                view.UpdateCounterView(players.get(1), newCounter);
+                players.get(1).updateCounter(newCounter);
+                view.updateCounterView(players.get(1), newCounter);
                 break;
             case THREE:
-                players.get(2).UpdateCounter(newCounter);
-                view.UpdateCounterView(players.get(2), newCounter);
+                players.get(2).updateCounter(newCounter);
+                view.updateCounterView(players.get(2), newCounter);
                 break;
             case FOUR:
-                players.get(3).UpdateCounter(newCounter);
-                view.UpdateCounterView(players.get(3), newCounter);
+                players.get(3).updateCounter(newCounter);
+                view.updateCounterView(players.get(3), newCounter);
                 break;
             default:
                 break;
         }
     }
 
-    private Counter GetCounterByIdentifier(String identifier) {
+    private Counter getCounterByIdentifier(String identifier) {
         Player currentPlayer;
 
         switch (PlayerID.valueOf((identifier.split("_"))[0])) {
@@ -238,8 +238,8 @@ public class CounterPresenter implements ICounterPresenter {
         }
 
         if (currentPlayer != null) {
-            for (Counter c : currentPlayer.GetAllCounters()) {
-                if (c.GetIdentifier() == identifier) {
+            for (Counter c : currentPlayer.getAllCounters()) {
+                if (c.getIdentifier() == identifier) {
                     return c;
                 }
             }
@@ -248,7 +248,7 @@ public class CounterPresenter implements ICounterPresenter {
         return null;
     }
 
-    private Player GetPlayerByCounterIdentifier(String identifier) {
+    private Player getPlayerByCounterIdentifier(String identifier) {
         switch (PlayerID.valueOf((identifier.split("_"))[0])) {
             case ONE:
                 return players.get(0);

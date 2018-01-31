@@ -19,23 +19,23 @@ public class Game {
         startGame();
     }
 
-    public void SaveGameState(SharedPreferences preferences) {
+    public void saveGameState(SharedPreferences preferences) {
         if(players.length == 4) {
-            PreferenceManager.Save4PlayerPointsData(preferences, players);
+            PreferenceManager.save4PlayerPointsData(preferences, players);
         } else {
-            PreferenceManager.Save2PlayerPointsData(preferences, players);
+            PreferenceManager.save2PlayerPointsData(preferences, players);
         }
     }
 
-    public void LoadGameState(SharedPreferences preferences, int playeramount) {
+    public void loadGameState(SharedPreferences preferences, int playeramount) {
         if(playeramount == 4) {
-            players = PreferenceManager.Load4PlayerPointsData(preferences);
+            players = PreferenceManager.load4PlayerPointsData(preferences);
         } else {
-            players = PreferenceManager.Load2PlayerPointsData(preferences);
+            players = PreferenceManager.load2PlayerPointsData(preferences);
         }
     }
 
-    public Player[] GetPlayers() {
+    public Player[] getPlayers() {
         return players;
     }
 
@@ -61,16 +61,16 @@ public class Game {
 
         switch(playerID) {
             case ONE:
-                players[0].UpdateLifepoints(amount);
+                players[0].updateLifepoints(amount);
                 break;
             case TWO:
-                players[1].UpdateLifepoints(amount);
+                players[1].updateLifepoints(amount);
                 break;
             case THREE:
-                players[2].UpdateLifepoints(amount);
+                players[2].updateLifepoints(amount);
                 break;
             case FOUR:
-                players[3].UpdateLifepoints(amount);
+                players[3].updateLifepoints(amount);
                 break;
             default:
                 // Nothing to do
@@ -87,16 +87,16 @@ public class Game {
 
         switch(playerID) {
             case ONE:
-                players[0].UpdatePoisonpoints(amount);
+                players[0].updatePoisonpoints(amount);
                 break;
             case TWO:
-                players[1].UpdatePoisonpoints(amount);
+                players[1].updatePoisonpoints(amount);
                 break;
             case THREE:
-                players[2].UpdatePoisonpoints(amount);
+                players[2].updatePoisonpoints(amount);
                 break;
             case FOUR:
-                players[3].UpdatePoisonpoints(amount);
+                players[3].updatePoisonpoints(amount);
                 break;
             default:
                 // Nothing to do
@@ -107,13 +107,13 @@ public class Game {
     public int getPlayerLifepoints(PlayerID playerID) {
         switch(playerID) {
             case ONE :
-                return players[0].GetLifePoints();
+                return players[0].getLifePoints();
             case TWO:
-                return players[1].GetLifePoints();
+                return players[1].getLifePoints();
             case THREE:
-                return players[2].GetLifePoints();
+                return players[2].getLifePoints();
             case FOUR:
-                return players[3].GetLifePoints();
+                return players[3].getLifePoints();
             default:
                 return 0;
         }
@@ -122,13 +122,13 @@ public class Game {
     public int getPlayerPoisonpoints(PlayerID playerID) {
         switch(playerID) {
             case ONE :
-                return players[0].GetPoisonPoints();
+                return players[0].getPoisonPoints();
             case TWO:
-                return players[1].GetPoisonPoints();
+                return players[1].getPoisonPoints();
             case THREE:
-                return players[2].GetPoisonPoints();
+                return players[2].getPoisonPoints();
             case FOUR:
-                return players[3].GetPoisonPoints();
+                return players[3].getPoisonPoints();
             default:
                 return 0;
         }

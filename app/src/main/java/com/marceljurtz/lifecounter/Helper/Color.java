@@ -10,7 +10,6 @@ Custom Color Manager for Magic Lifecounter
 package com.marceljurtz.lifecounter.Helper;
 
 import android.content.SharedPreferences;
-import android.preference.Preference;
 
 public class Color {
 
@@ -33,7 +32,7 @@ public class Color {
 
     public Color(MagicColor baseColor, SharedPreferences preferences) {
         this.baseColor = baseColor;
-        this.intValue = PreferenceManager.GetCustomizedColorOrDefault(baseColor, preferences);
+        this.intValue = PreferenceManager.getCustomizedColorOrDefault(baseColor, preferences);
     }
 
     public Color(MagicColor color, int intValue) {
@@ -44,7 +43,7 @@ public class Color {
     //endregion
 
     //region Getter
-    public String GetPreferenceString() {
+    public String getPreferenceString() {
         switch(baseColor) {
             case BLUE:
                 return PreferenceManager.PREF_COLOR_BLUE;
@@ -59,15 +58,15 @@ public class Color {
         }
     }
 
-    public MagicColor GetBasecolor() {
+    public MagicColor getBasecolor() {
         return baseColor;
     }
 
-    public int GetIntValue() {
+    public int getIntValue() {
         return intValue;
     }
 
-    public String GetHexString() {
+    public String getHexString() {
         return String.format("#%06X", 0xFFFFFF & intValue);
     }
 
@@ -75,7 +74,7 @@ public class Color {
 
     //region Static members
 
-    public static Color GetDefaultColor(MagicColor color) {
+    public static Color getDefaultColor(MagicColor color) {
         switch(color) {
             case BLUE:
                 return new Color(MagicColor.BLUE, DEFAULT_BLUE);
@@ -90,12 +89,12 @@ public class Color {
         }
     }
 
-    public static int GetDefaultColorInt(MagicColor color) {
-        return GetDefaultColor(color).intValue;
+    public static int getDefaultColorInt(MagicColor color) {
+        return getDefaultColor(color).intValue;
     }
 
     // Get RGB version for int color
-    public static int[] GetRGB(int color) {
+    public static int[] getRGB(int color) {
         int[] rgb = new int[3];
         rgb[0] = (color >> 16) & 0xFF;
         rgb[1] = (color >> 8) & 0xFF;

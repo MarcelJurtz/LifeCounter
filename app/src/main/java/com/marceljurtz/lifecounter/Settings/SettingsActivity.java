@@ -70,20 +70,11 @@ public class SettingsActivity extends Activity implements ISettingsView {
         txtLifepoints = (EditText) findViewById(R.id.txtLiveSelection);
         txtLongClickPoints = (EditText) findViewById(R.id.txtLongClickPoints);
 
-        /*
-        chkKeepScreenOn = (CheckBox)findViewById(R.id.chkKeepScreenOn);
-        chkKeepScreenOn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                presenter.OnKeepScreenOnCheckboxClick(isChecked);
-            }
-        });
-        */
         chkKeepScreenOn = (Switch) findViewById(R.id.chkKeepScreenOn);
         chkKeepScreenOn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                presenter.OnKeepScreenOnCheckboxClick(isChecked);
+                presenter.onKeepScreenOnCheckboxClick(isChecked);
             }
         });
         //endregion
@@ -93,7 +84,7 @@ public class SettingsActivity extends Activity implements ISettingsView {
         cmdSelectBlack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.OnColorSelectButtonClick(MagicColor.BLACK);
+                presenter.onColorSelectButtonClick(MagicColor.BLACK);
             }
         });
 
@@ -101,7 +92,7 @@ public class SettingsActivity extends Activity implements ISettingsView {
         cmdSelectBlue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.OnColorSelectButtonClick(MagicColor.BLUE);
+                presenter.onColorSelectButtonClick(MagicColor.BLUE);
             }
         });
 
@@ -109,7 +100,7 @@ public class SettingsActivity extends Activity implements ISettingsView {
         cmdSelectGreen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.OnColorSelectButtonClick(MagicColor.GREEN);
+                presenter.onColorSelectButtonClick(MagicColor.GREEN);
             }
         });
 
@@ -117,7 +108,7 @@ public class SettingsActivity extends Activity implements ISettingsView {
         cmdSelectRed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.OnColorSelectButtonClick(MagicColor.RED);
+                presenter.onColorSelectButtonClick(MagicColor.RED);
             }
         });
 
@@ -125,23 +116,9 @@ public class SettingsActivity extends Activity implements ISettingsView {
         cmdSelectWhite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.OnColorSelectButtonClick(MagicColor.WHITE);
+                presenter.onColorSelectButtonClick(MagicColor.WHITE);
             }
         });
-        //endregion
-
-        //region Cancel Button Click
-
-        /*
-        cmdDiscardChanges = (Button) findViewById(R.id.cmdDiscardChanges);
-        cmdDiscardChanges.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                presenter.OnCancelButtonClick();
-            }
-        });
-        */
-
         //endregion
 
         //region Reset Button Click
@@ -150,7 +127,7 @@ public class SettingsActivity extends Activity implements ISettingsView {
         cmdReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.OnResetButtonClick();
+                presenter.onResetButtonClick();
             }
         });
 
@@ -169,24 +146,24 @@ public class SettingsActivity extends Activity implements ISettingsView {
         //endregion
 
         presenter = new SettingsPresenter(this, preferences);
-        presenter.OnCreate();
+        presenter.onCreate();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        presenter.OnResume();
+        presenter.onResume();
     }
 
     @Override
     protected void onPause() {
-        presenter.OnPause();
+        presenter.onPause();
         super.onPause();
     }
 
     @Override
     protected void onDestroy() {
-        presenter.OnDestroy();
+        presenter.onDestroy();
         super.onDestroy();
     }
 
@@ -195,12 +172,12 @@ public class SettingsActivity extends Activity implements ISettingsView {
     //region Get EditText and color values
 
     @Override
-    public String GetLifepoints() {
+    public String getLifepoints() {
         return txtLifepoints.getText().toString();
     }
 
     @Override
-    public String GetLongClickPoints() {
+    public String getLongClickPoints() {
         return txtLongClickPoints.getText().toString();
     }
 
@@ -209,12 +186,12 @@ public class SettingsActivity extends Activity implements ISettingsView {
     //region Set EditText values
 
     @Override
-    public void SetLifepoints(String lifepointText) {
+    public void setLifepoints(String lifepointText) {
         txtLifepoints.setText(lifepointText);
     }
 
     @Override
-    public void SetLongClickPoints(String longClickPointText) {
+    public void setLongClickPoints(String longClickPointText) {
         txtLongClickPoints.setText(longClickPointText);
     }
 
@@ -222,16 +199,16 @@ public class SettingsActivity extends Activity implements ISettingsView {
 
     @Override
     public void onBackPressed(){
-        presenter.OnBackButtonClick();
+        presenter.onBackButtonClick();
     }
 
     @Override
-    public void LoadGameActivity() {
+    public void loadGameActivity() {
         finish();
     }
 
     @Override
-    public void LoadColorPickerDialog(MagicColor color, int r, int g, int b) {
+    public void loadColorPickerDialog(MagicColor color, int r, int g, int b) {
         final ColorPicker cp = new ColorPicker(SettingsActivity.this, r, g, b);
         final MagicColor baseColor = color;
 
@@ -243,59 +220,59 @@ public class SettingsActivity extends Activity implements ISettingsView {
             public void onClick(View v) {
                 int newColor = cp.getColor();
                 //updateColor(cmdSelectWhite, txtWhite, selectedWhite);
-                presenter.OnColorSelectValueUpdate(new Color(baseColor, newColor));
+                presenter.onColorSelectValueUpdate(new Color(baseColor, newColor));
                 cp.dismiss();
             }
         });
     }
 
     @Override
-    public void UpdateColorButtonValue(Color color) {
-        switch(color.GetBasecolor()) {
+    public void updateColorButtonValue(Color color) {
+        switch(color.getBasecolor()) {
             case BLUE:
-                ((GradientDrawable)cmdSelectBlue.getBackground()).setColor(color.GetIntValue());
-                txtBlue.setText(color.GetHexString());
+                ((GradientDrawable)cmdSelectBlue.getBackground()).setColor(color.getIntValue());
+                txtBlue.setText(color.getHexString());
                 break;
             case GREEN:
-                ((GradientDrawable)cmdSelectGreen.getBackground()).setColor(color.GetIntValue());
-                txtGreen.setText(color.GetHexString());
+                ((GradientDrawable)cmdSelectGreen.getBackground()).setColor(color.getIntValue());
+                txtGreen.setText(color.getHexString());
                 break;
             case RED:
-                ((GradientDrawable)cmdSelectRed.getBackground()).setColor(color.GetIntValue());
-                txtRed.setText(color.GetHexString());
+                ((GradientDrawable)cmdSelectRed.getBackground()).setColor(color.getIntValue());
+                txtRed.setText(color.getHexString());
                 break;
             case WHITE:
-                ((GradientDrawable)cmdSelectWhite.getBackground()).setColor(color.GetIntValue());
-                txtWhite.setText(color.GetHexString());
+                ((GradientDrawable)cmdSelectWhite.getBackground()).setColor(color.getIntValue());
+                txtWhite.setText(color.getHexString());
                 break;
             default:
-                ((GradientDrawable)cmdSelectBlack.getBackground()).setColor(color.GetIntValue());
-                txtBlack.setText(color.GetHexString());
+                ((GradientDrawable)cmdSelectBlack.getBackground()).setColor(color.getIntValue());
+                txtBlack.setText(color.getHexString());
                 break;
         }
     }
 
     @Override
-    public void LoadResetConfirmationDialog() {
+    public void loadResetConfirmationDialog() {
         new AlertDialog.Builder(SettingsActivity.this)
                 .setMessage(R.string.settings_confirm_reset)
                 .setCancelable(false)
                 .setPositiveButton(R.string.settings_confirm_reset_true, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        presenter.OnResetButtonConfirm();
+                        presenter.onResetButtonConfirm();
                     }
                 })
                 .setNegativeButton(R.string.settings_confirm_reset_false, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        presenter.OnResetButtonCancel();
+                        presenter.onResetButtonCancel();
                     }
                 })
                 .show();
     }
 
     @Override
-    public void SetKeepScreenOnCheckbox(boolean checked) {
+    public void setKeepScreenOnCheckbox(boolean checked) {
         chkKeepScreenOn.setChecked(checked);
     }
 }

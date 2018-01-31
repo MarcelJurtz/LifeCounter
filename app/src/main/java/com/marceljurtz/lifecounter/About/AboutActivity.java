@@ -2,7 +2,6 @@ package com.marceljurtz.lifecounter.About;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.support.design.widget.NavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -36,26 +35,26 @@ public class AboutActivity extends AppCompatActivity implements IAboutView {
         presenter = new AboutPresenter(this,
                 getApplicationContext().getSharedPreferences(PreferenceManager.PREFS, Activity.MODE_PRIVATE),
                 Locale.getDefault().getDisplayLanguage());
-        presenter.OnCreate();
+        presenter.onCreate();
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
                 switch(item.getItemId()) {
                     case R.id.nav_about_dicing:
-                        presenter.OnMenuEntryDicingTap();
+                        presenter.onMenuEntryDicingTap();
                         break;
                     case R.id.nav_about_useramount_2:
-                        presenter.OnMenuEntryTwoPlayerTap();
+                        presenter.onMenuEntryTwoPlayerTap();
                         break;
                     case R.id.nav_about_useramount_4:
-                        presenter.OnMenuEntryFourPlayerTap();
+                        presenter.onMenuEntryFourPlayerTap();
                         break;
                     case R.id.nav_about_settings:
-                        presenter.OnMenuEntrySettingsTap();
+                        presenter.onMenuEntrySettingsTap();
                         break;
                     case R.id.nav_countermanager:
-                        presenter.OnMenuEntryCounterManagerTap();
+                        presenter.onMenuEntryCounterManagerTap();
                         break;
                     default:
                         break;
@@ -67,20 +66,20 @@ public class AboutActivity extends AppCompatActivity implements IAboutView {
 
     @Override
     protected void onDestroy() {
-        presenter.OnDestroy();
+        presenter.onDestroy();
         super.onDestroy();
     }
 
     @Override
     protected void onPause() {
-        presenter.OnPause();
+        presenter.onPause();
         super.onPause();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        presenter.OnResume();
+        presenter.onResume();
     }
 
     @Override

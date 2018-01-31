@@ -11,24 +11,24 @@ import com.marceljurtz.lifecounter.Helper.PlayerID;
 import java.util.List;
 
 public interface ICounterPresenter extends IPresenter, ICounterNavDrawerInteraction {
-    void OnFloatingActionButtonTap();
-    void AddCounter(PlayerID playerId, Counter counter);
+    void onFloatingActionButtonTap();
+    void addCounter(PlayerID playerId, Counter counter);
 
-    void OnCounterTap(String counterIdentifier);
-    void OnCounterLongTap(LinearLayout counterWrapper);
-    void OnCounterEditCompleted(PlayerID playerID, String oldCounterIdentifier, Counter newCounter);
+    void onCounterTap(String counterIdentifier);
+    void onCounterLongTap(LinearLayout counterWrapper);
+    void onCounterEditCompleted(PlayerID playerID, String oldCounterIdentifier, Counter newCounter);
 
-    void OnPlayerIdentificationTap(PlayerID playerID);
-    void OnPlayerIdentificationLongTap(PlayerID playerID);
-    void OnPlayerIdentificationChangeConfirmed(PlayerID playerId, String newIdentification);
-    void OnPlayerDeletionConfirmed(PlayerID playerID); // TODO presenter logic
-    void OnCounterDeletionConfirmed(LinearLayout counterLayout); // TODO presenter logic
+    void onPlayerIdentificationTap(PlayerID playerID);
+    void onPlayerIdentificationLongTap(PlayerID playerID);
+    void onPlayerIdentificationChangeConfirmed(PlayerID playerId, String newIdentification);
+    void onPlayerDeletionConfirmed(PlayerID playerID); // TODO presenter logic
+    void onCounterDeletionConfirmed(LinearLayout counterLayout); // TODO presenter logic
 
-    void OnMenuEntryTwoPlayerClick();
-    void OnMenuEntryFourPlayerClick();
-    void OnMenuEntryDicingClick();
-    void OnMenuEntrySettingsClick();
-    void OnMenuEntryAboutClick();
+    void onMenuEntryTwoPlayerClick();
+    void onMenuEntryFourPlayerClick();
+    void onMenuEntryDicingClick();
+    void onMenuEntrySettingsClick();
+    void onMenuEntryAboutClick();
 
-    String GetPlayerIdentification(PlayerID playerID);
+    String getPlayerIdentification(PlayerID playerID);
 }

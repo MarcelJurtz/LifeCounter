@@ -9,18 +9,18 @@ import com.marceljurtz.lifecounter.Helper.PlayerID;
 
 public interface IGamePresenter extends IPresenter, IGameNavDrawerInteraction {
     // Updating players life- and poisonpoints
-    void OnLifeUpdate(PlayerID playerID, ClickType clickType, Operator operator);
-    void OnPoisonUpdate(PlayerID playerID, ClickType clickType, Operator operator);
+    void onLifeUpdate(PlayerID playerID, ClickType clickType, Operator operator);
+    void onPoisonUpdate(PlayerID playerID, ClickType clickType, Operator operator);
 
     // Change player background color
-    void OnColorButtonClick(PlayerID playerID, MagicColor color, ClickType clickType);
+    void onColorButtonClick(PlayerID playerID, MagicColor color, ClickType clickType);
 
     // Enable / Disable poison controls
-    void OnPoisonButtonClick();
+    void onPoisonButtonClick();
 
     // Enable / Disable color controls
-    void OnSettingsButtonClick(ClickType clickType);
+    void onSettingsButtonClick(ClickType clickType);
 
     // Hit reset button
-    void OnResetButtonClick();
+    void onResetButtonClick();
 }

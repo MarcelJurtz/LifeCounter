@@ -279,14 +279,14 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         cmdBlackPlayer1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.OnColorButtonClick(PlayerID.ONE, MagicColor.BLACK, ClickType.SHORT);
+                presenter.onColorButtonClick(PlayerID.ONE, MagicColor.BLACK, ClickType.SHORT);
             }
         });
         cmdBlackPlayer1.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
                 // toggleEnergySaveMode();
-                presenter.OnColorButtonClick(PlayerID.ONE, MagicColor.BLACK, ClickType.LONG);
+                presenter.onColorButtonClick(PlayerID.ONE, MagicColor.BLACK, ClickType.LONG);
                 return true;
             }
         });
@@ -294,14 +294,14 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         cmdBlackPlayer2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.OnColorButtonClick(PlayerID.TWO, MagicColor.BLACK, ClickType.SHORT);
+                presenter.onColorButtonClick(PlayerID.TWO, MagicColor.BLACK, ClickType.SHORT);
             }
         });
         cmdBlackPlayer2.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
                 // toggleEnergySaveMode();
-                presenter.OnColorButtonClick(PlayerID.TWO, MagicColor.BLACK, ClickType.LONG);
+                presenter.onColorButtonClick(PlayerID.TWO, MagicColor.BLACK, ClickType.LONG);
                 return true;
             }
         });
@@ -310,14 +310,14 @@ public class GameActivity extends AppCompatActivity implements IGameView {
             cmdBlackPlayer3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    presenter.OnColorButtonClick(PlayerID.THREE, MagicColor.BLACK, ClickType.SHORT);
+                    presenter.onColorButtonClick(PlayerID.THREE, MagicColor.BLACK, ClickType.SHORT);
                 }
             });
             cmdBlackPlayer3.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
                     // toggleEnergySaveMode();
-                    presenter.OnColorButtonClick(PlayerID.THREE, MagicColor.BLACK, ClickType.LONG);
+                    presenter.onColorButtonClick(PlayerID.THREE, MagicColor.BLACK, ClickType.LONG);
                     return true;
                 }
             });
@@ -325,14 +325,14 @@ public class GameActivity extends AppCompatActivity implements IGameView {
             cmdBlackPlayer4.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    presenter.OnColorButtonClick(PlayerID.FOUR, MagicColor.BLACK, ClickType.SHORT);
+                    presenter.onColorButtonClick(PlayerID.FOUR, MagicColor.BLACK, ClickType.SHORT);
                 }
             });
             cmdBlackPlayer4.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
                     // toggleEnergySaveMode();
-                    presenter.OnColorButtonClick(PlayerID.FOUR, MagicColor.BLACK, ClickType.LONG);
+                    presenter.onColorButtonClick(PlayerID.FOUR, MagicColor.BLACK, ClickType.LONG);
                     return true;
                 }
             });
@@ -345,14 +345,14 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         cmdBluePlayer1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.OnColorButtonClick(PlayerID.ONE, MagicColor.BLUE, ClickType.SHORT);
+                presenter.onColorButtonClick(PlayerID.ONE, MagicColor.BLUE, ClickType.SHORT);
             }
         });
 
         cmdBluePlayer2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.OnColorButtonClick(PlayerID.TWO, MagicColor.BLUE, ClickType.SHORT);
+                presenter.onColorButtonClick(PlayerID.TWO, MagicColor.BLUE, ClickType.SHORT);
             }
         });
 
@@ -360,14 +360,14 @@ public class GameActivity extends AppCompatActivity implements IGameView {
             cmdBluePlayer3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    presenter.OnColorButtonClick(PlayerID.THREE, MagicColor.BLUE, ClickType.SHORT);
+                    presenter.onColorButtonClick(PlayerID.THREE, MagicColor.BLUE, ClickType.SHORT);
                 }
             });
 
             cmdBluePlayer4.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    presenter.OnColorButtonClick(PlayerID.FOUR, MagicColor.BLUE, ClickType.SHORT);
+                    presenter.onColorButtonClick(PlayerID.FOUR, MagicColor.BLUE, ClickType.SHORT);
                 }
             });
         }
@@ -378,14 +378,14 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         cmdGreenPlayer1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.OnColorButtonClick(PlayerID.ONE, MagicColor.GREEN, ClickType.SHORT);
+                presenter.onColorButtonClick(PlayerID.ONE, MagicColor.GREEN, ClickType.SHORT);
             }
         });
 
         cmdGreenPlayer2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.OnColorButtonClick(PlayerID.TWO, MagicColor.GREEN, ClickType.SHORT);
+                presenter.onColorButtonClick(PlayerID.TWO, MagicColor.GREEN, ClickType.SHORT);
             }
         });
 
@@ -393,14 +393,14 @@ public class GameActivity extends AppCompatActivity implements IGameView {
             cmdGreenPlayer3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    presenter.OnColorButtonClick(PlayerID.THREE, MagicColor.GREEN, ClickType.SHORT);
+                    presenter.onColorButtonClick(PlayerID.THREE, MagicColor.GREEN, ClickType.SHORT);
                 }
             });
 
             cmdGreenPlayer4.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    presenter.OnColorButtonClick(PlayerID.FOUR, MagicColor.GREEN, ClickType.SHORT);
+                    presenter.onColorButtonClick(PlayerID.FOUR, MagicColor.GREEN, ClickType.SHORT);
                 }
             });
         }
@@ -410,14 +410,14 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         cmdRedPlayer1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.OnColorButtonClick(PlayerID.ONE, MagicColor.RED, ClickType.SHORT);
+                presenter.onColorButtonClick(PlayerID.ONE, MagicColor.RED, ClickType.SHORT);
             }
         });
 
         cmdRedPlayer2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.OnColorButtonClick(PlayerID.TWO, MagicColor.RED, ClickType.SHORT);
+                presenter.onColorButtonClick(PlayerID.TWO, MagicColor.RED, ClickType.SHORT);
             }
         });
 
@@ -425,14 +425,14 @@ public class GameActivity extends AppCompatActivity implements IGameView {
             cmdRedPlayer3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    presenter.OnColorButtonClick(PlayerID.THREE, MagicColor.RED, ClickType.SHORT);
+                    presenter.onColorButtonClick(PlayerID.THREE, MagicColor.RED, ClickType.SHORT);
                 }
             });
 
             cmdRedPlayer4.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    presenter.OnColorButtonClick(PlayerID.FOUR, MagicColor.RED, ClickType.SHORT);
+                    presenter.onColorButtonClick(PlayerID.FOUR, MagicColor.RED, ClickType.SHORT);
                 }
             });
         }
@@ -442,14 +442,14 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         cmdWhitePlayer1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.OnColorButtonClick(PlayerID.ONE, MagicColor.WHITE, ClickType.SHORT);
+                presenter.onColorButtonClick(PlayerID.ONE, MagicColor.WHITE, ClickType.SHORT);
             }
         });
 
         cmdWhitePlayer2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.OnColorButtonClick(PlayerID.TWO, MagicColor.WHITE, ClickType.SHORT);
+                presenter.onColorButtonClick(PlayerID.TWO, MagicColor.WHITE, ClickType.SHORT);
             }
         });
 
@@ -457,14 +457,14 @@ public class GameActivity extends AppCompatActivity implements IGameView {
             cmdWhitePlayer3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    presenter.OnColorButtonClick(PlayerID.THREE, MagicColor.WHITE, ClickType.SHORT);
+                    presenter.onColorButtonClick(PlayerID.THREE, MagicColor.WHITE, ClickType.SHORT);
                 }
             });
 
             cmdWhitePlayer4.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    presenter.OnColorButtonClick(PlayerID.FOUR, MagicColor.WHITE, ClickType.SHORT);
+                    presenter.onColorButtonClick(PlayerID.FOUR, MagicColor.WHITE, ClickType.SHORT);
                 }
             });
         }
@@ -474,13 +474,13 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         cmdPlusPlayer1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.OnLifeUpdate(player1.GetPlayerID(), ClickType.SHORT, Operator.ADD);
+                presenter.onLifeUpdate(player1.getPlayerID(), ClickType.SHORT, Operator.ADD);
             }
         });
         cmdPlusPlayer1.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                presenter.OnLifeUpdate(player1.GetPlayerID(), ClickType.LONG, Operator.ADD);
+                presenter.onLifeUpdate(player1.getPlayerID(), ClickType.LONG, Operator.ADD);
                 return true;
             }
         });
@@ -488,13 +488,13 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         cmdMinusPlayer1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.OnLifeUpdate(player1.GetPlayerID(), ClickType.SHORT, Operator.SUBSTRACT);
+                presenter.onLifeUpdate(player1.getPlayerID(), ClickType.SHORT, Operator.SUBSTRACT);
             }
         });
         cmdMinusPlayer1.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                presenter.OnLifeUpdate(player1.GetPlayerID(), ClickType.LONG, Operator.SUBSTRACT);
+                presenter.onLifeUpdate(player1.getPlayerID(), ClickType.LONG, Operator.SUBSTRACT);
                 return true;
             }
         });
@@ -506,13 +506,13 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         cmdPlusPlayer2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.OnLifeUpdate(player2.GetPlayerID(), ClickType.SHORT, Operator.ADD);
+                presenter.onLifeUpdate(player2.getPlayerID(), ClickType.SHORT, Operator.ADD);
             }
         });
         cmdPlusPlayer2.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                presenter.OnLifeUpdate(player2.GetPlayerID(), ClickType.LONG, Operator.ADD);
+                presenter.onLifeUpdate(player2.getPlayerID(), ClickType.LONG, Operator.ADD);
                 return true;
             }
         });
@@ -520,13 +520,13 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         cmdMinusPlayer2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.OnLifeUpdate(player2.GetPlayerID(), ClickType.SHORT, Operator.SUBSTRACT);
+                presenter.onLifeUpdate(player2.getPlayerID(), ClickType.SHORT, Operator.SUBSTRACT);
             }
         });
         cmdMinusPlayer2.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                presenter.OnLifeUpdate(player2.GetPlayerID(), ClickType.LONG, Operator.SUBSTRACT);
+                presenter.onLifeUpdate(player2.getPlayerID(), ClickType.LONG, Operator.SUBSTRACT);
                 return true;
             }
         });
@@ -535,13 +535,13 @@ public class GameActivity extends AppCompatActivity implements IGameView {
             cmdPlusPlayer3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    presenter.OnLifeUpdate(player3.GetPlayerID(), ClickType.SHORT, Operator.ADD);
+                    presenter.onLifeUpdate(player3.getPlayerID(), ClickType.SHORT, Operator.ADD);
                 }
             });
             cmdPlusPlayer3.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
-                    presenter.OnLifeUpdate(player3.GetPlayerID(), ClickType.LONG, Operator.ADD);
+                    presenter.onLifeUpdate(player3.getPlayerID(), ClickType.LONG, Operator.ADD);
                     return true;
                 }
             });
@@ -549,13 +549,13 @@ public class GameActivity extends AppCompatActivity implements IGameView {
             cmdMinusPlayer3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    presenter.OnLifeUpdate(player3.GetPlayerID(), ClickType.SHORT, Operator.SUBSTRACT);
+                    presenter.onLifeUpdate(player3.getPlayerID(), ClickType.SHORT, Operator.SUBSTRACT);
                 }
             });
             cmdMinusPlayer3.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
-                    presenter.OnLifeUpdate(player3.GetPlayerID(), ClickType.LONG, Operator.SUBSTRACT);
+                    presenter.onLifeUpdate(player3.getPlayerID(), ClickType.LONG, Operator.SUBSTRACT);
                     return true;
                 }
             });
@@ -563,13 +563,13 @@ public class GameActivity extends AppCompatActivity implements IGameView {
             cmdPlusPlayer4.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    presenter.OnLifeUpdate(player4.GetPlayerID(), ClickType.SHORT, Operator.ADD);
+                    presenter.onLifeUpdate(player4.getPlayerID(), ClickType.SHORT, Operator.ADD);
                 }
             });
             cmdPlusPlayer4.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
-                    presenter.OnLifeUpdate(player4.GetPlayerID(), ClickType.LONG, Operator.ADD);
+                    presenter.onLifeUpdate(player4.getPlayerID(), ClickType.LONG, Operator.ADD);
                     return true;
                 }
             });
@@ -577,13 +577,13 @@ public class GameActivity extends AppCompatActivity implements IGameView {
             cmdMinusPlayer4.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    presenter.OnLifeUpdate(player4.GetPlayerID(), ClickType.SHORT, Operator.SUBSTRACT);
+                    presenter.onLifeUpdate(player4.getPlayerID(), ClickType.SHORT, Operator.SUBSTRACT);
                 }
             });
             cmdMinusPlayer4.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
-                    presenter.OnLifeUpdate(player4.GetPlayerID(), ClickType.LONG, Operator.SUBSTRACT);
+                    presenter.onLifeUpdate(player4.getPlayerID(), ClickType.LONG, Operator.SUBSTRACT);
                     return true;
                 }
             });
@@ -597,23 +597,23 @@ public class GameActivity extends AppCompatActivity implements IGameView {
                 int id = item.getItemId();
                 switch(id) {
                     case R.id.nav_settings:
-                        //presenter.OnSettingsButtonClick(ClickType.LONG);
-                        presenter.OnMenuEntrySettingsTap();
+                        //presenter.onSettingsButtonClick(ClickType.LONG);
+                        presenter.onMenuEntrySettingsTap();
                         break;
                     case R.id.nav_about:
-                        presenter.OnMenuEntryAboutTap();
+                        presenter.onMenuEntryAboutTap();
                         break;
                     case R.id.nav_energy_save_mode:
-                        presenter.OnMenuEntryEnergySaveTap();
+                        presenter.onMenuEntryEnergySaveTap();
                         break;
                     case R.id.nav_useramount:
-                        presenter.OnMenuEntryTogglePlayerTap();
+                        presenter.onMenuEntryTogglePlayerTap();
                         break;
                     case R.id.nav_dicing:
-                        presenter.OnMenuEntryDicingTap();
+                        presenter.onMenuEntryDicingTap();
                         break;
                     case R.id.nav_countermanager:
-                        presenter.OnMenuEntryCounterManagerTap();
+                        presenter.onMenuEntryCounterManagerTap();
                         break;
                     default:
                         break;
@@ -630,7 +630,7 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         cmdResetLP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.OnResetButtonClick();
+                presenter.onResetButtonClick();
             }
         });
 
@@ -641,7 +641,7 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         cmdTogglePoison.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.OnPoisonButtonClick();
+                presenter.onPoisonButtonClick();
             }
         });
 
@@ -653,13 +653,13 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         cmdPlusPoisonPlayer1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.OnPoisonUpdate(player1.GetPlayerID(), ClickType.SHORT, Operator.ADD);
+                presenter.onPoisonUpdate(player1.getPlayerID(), ClickType.SHORT, Operator.ADD);
             }
         });
         cmdPlusPoisonPlayer1.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                presenter.OnPoisonUpdate(player1.GetPlayerID(), ClickType.LONG, Operator.ADD);
+                presenter.onPoisonUpdate(player1.getPlayerID(), ClickType.LONG, Operator.ADD);
                 return true;
             }
         });
@@ -668,13 +668,13 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         cmdMinusPoisonPlayer1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.OnPoisonUpdate(player1.GetPlayerID(), ClickType.SHORT, Operator.SUBSTRACT);
+                presenter.onPoisonUpdate(player1.getPlayerID(), ClickType.SHORT, Operator.SUBSTRACT);
             }
         });
         cmdMinusPoisonPlayer1.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                presenter.OnPoisonUpdate(player1.GetPlayerID(), ClickType.LONG, Operator.SUBSTRACT);
+                presenter.onPoisonUpdate(player1.getPlayerID(), ClickType.LONG, Operator.SUBSTRACT);
                 return true;
             }
         });
@@ -687,13 +687,13 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         cmdPlusPoisonPlayer2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.OnPoisonUpdate(player2.GetPlayerID(), ClickType.SHORT, Operator.ADD);
+                presenter.onPoisonUpdate(player2.getPlayerID(), ClickType.SHORT, Operator.ADD);
             }
         });
         cmdPlusPoisonPlayer2.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                presenter.OnPoisonUpdate(player2.GetPlayerID(), ClickType.LONG, Operator.ADD);
+                presenter.onPoisonUpdate(player2.getPlayerID(), ClickType.LONG, Operator.ADD);
                 return true;
             }
         });
@@ -702,13 +702,13 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         cmdMinusPoisonPlayer2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.OnPoisonUpdate(player2.GetPlayerID(), ClickType.SHORT, Operator.SUBSTRACT);
+                presenter.onPoisonUpdate(player2.getPlayerID(), ClickType.SHORT, Operator.SUBSTRACT);
             }
         });
         cmdMinusPoisonPlayer2.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                presenter.OnPoisonUpdate(player2.GetPlayerID(), ClickType.LONG, Operator.SUBSTRACT);
+                presenter.onPoisonUpdate(player2.getPlayerID(), ClickType.LONG, Operator.SUBSTRACT);
                 return true;
             }
         });
@@ -719,13 +719,13 @@ public class GameActivity extends AppCompatActivity implements IGameView {
             cmdPlusPoisonPlayer3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    presenter.OnPoisonUpdate(player3.GetPlayerID(), ClickType.SHORT, Operator.ADD);
+                    presenter.onPoisonUpdate(player3.getPlayerID(), ClickType.SHORT, Operator.ADD);
                 }
             });
             cmdPlusPoisonPlayer3.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
-                    presenter.OnPoisonUpdate(player3.GetPlayerID(), ClickType.LONG, Operator.ADD);
+                    presenter.onPoisonUpdate(player3.getPlayerID(), ClickType.LONG, Operator.ADD);
                     return true;
                 }
             });
@@ -733,13 +733,13 @@ public class GameActivity extends AppCompatActivity implements IGameView {
             cmdMinusPoisonPlayer3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    presenter.OnPoisonUpdate(player3.GetPlayerID(), ClickType.SHORT, Operator.SUBSTRACT);
+                    presenter.onPoisonUpdate(player3.getPlayerID(), ClickType.SHORT, Operator.SUBSTRACT);
                 }
             });
             cmdMinusPoisonPlayer3.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
-                    presenter.OnPoisonUpdate(player3.GetPlayerID(), ClickType.LONG, Operator.SUBSTRACT);
+                    presenter.onPoisonUpdate(player3.getPlayerID(), ClickType.LONG, Operator.SUBSTRACT);
                     return true;
                 }
             });
@@ -748,13 +748,13 @@ public class GameActivity extends AppCompatActivity implements IGameView {
             cmdPlusPoisonPlayer4.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    presenter.OnPoisonUpdate(player4.GetPlayerID(), ClickType.SHORT, Operator.ADD);
+                    presenter.onPoisonUpdate(player4.getPlayerID(), ClickType.SHORT, Operator.ADD);
                 }
             });
             cmdPlusPoisonPlayer4.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
-                    presenter.OnPoisonUpdate(player4.GetPlayerID(), ClickType.LONG, Operator.ADD);
+                    presenter.onPoisonUpdate(player4.getPlayerID(), ClickType.LONG, Operator.ADD);
                     return true;
                 }
             });
@@ -762,13 +762,13 @@ public class GameActivity extends AppCompatActivity implements IGameView {
             cmdMinusPoisonPlayer4.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    presenter.OnPoisonUpdate(player4.GetPlayerID(), ClickType.SHORT, Operator.SUBSTRACT);
+                    presenter.onPoisonUpdate(player4.getPlayerID(), ClickType.SHORT, Operator.SUBSTRACT);
                 }
             });
             cmdMinusPoisonPlayer4.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
-                    presenter.OnPoisonUpdate(player4.GetPlayerID(), ClickType.LONG, Operator.SUBSTRACT);
+                    presenter.onPoisonUpdate(player4.getPlayerID(), ClickType.LONG, Operator.SUBSTRACT);
                     return true;
                 }
             });
@@ -778,72 +778,42 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         cmdToggleColorSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.OnSettingsButtonClick(ClickType.SHORT);
+                presenter.onSettingsButtonClick(ClickType.SHORT);
             }
         });
         cmdToggleColorSettings.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                presenter.OnSettingsButtonClick(ClickType.LONG);
+                presenter.onSettingsButtonClick(ClickType.LONG);
                 return true;
             }
         });
-
-        //endregion
-
-        /* region Drawer Layout
-
-        cmdDrawerTogglePowerSaving.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                presenter.onTogglePowerSaveClick();
-            }
-        });
-
-
-
-        String versionName = BuildConfig.VERSION_NAME;
-        lblVersionInfo.setText("Version " + versionName);
-
-
-
-        cmdSettings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                presenter.OnSettingsButtonClick(ClickType.LONG);
-            }
-        });
-
-        //endregion
-
-        //endregion
-        */
     }
 
     @Override
     protected void onPause() {
-        presenter.OnPause();
+        presenter.onPause();
         super.onPause();
     }
 
     @Override
     protected void onResume() {
-        presenter.OnResume();
+        presenter.onResume();
         super.onResume();
     }
 
     @Override
-    public void RestartActivity() {
+    public void restartActivity() {
         recreate();
     }
 
     @Override
-    public void HideNavigationDrawer() {
+    public void hideNavigationDrawer() {
         mainLayout.closeDrawer(Gravity.START);
     }
 
     @Override
-    public void InitColorButton(MagicColor colorLocation, int color) {
+    public void initColorButton(MagicColor colorLocation, int color) {
 
         Button buttonPlayer1;
         Button buttonPlayer2;
@@ -900,31 +870,31 @@ public class GameActivity extends AppCompatActivity implements IGameView {
 
 
     @Override
-    public void LoadSettingsActivity() {
+    public void loadSettingsActivity() {
         Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
         startActivity(intent);
     }
 
     @Override
-    public void LoadDicingActivity() {
+    public void loadDicingActivity() {
         Intent intent = new Intent(getApplicationContext(), DicingActivity.class);
         startActivity(intent);
     }
 
     @Override
-    public void LoadAboutActivity() {
+    public void loadAboutActivity() {
         Intent intent = new Intent(getApplicationContext(), AboutActivity.class);
         startActivity(intent);
     }
 
     @Override
-    public void LoadCounterManagerActivity() {
+    public void loadCounterManagerActivity() {
         Intent intent = new Intent(getApplicationContext(), CounterActivity.class);
         startActivity(intent);
     }
 
     @Override
-    public void SetLayoutColor(PlayerID playerID, int color) {
+    public void setLayoutColor(PlayerID playerID, int color) {
         if(playerID.equals(PlayerID.ONE)) {
             layoutPlayer1.setBackgroundColor(color);
         } else if(playerID.equals(PlayerID.TWO)) {
@@ -938,7 +908,7 @@ public class GameActivity extends AppCompatActivity implements IGameView {
 
     //region Toggle Poison Controls
     @Override
-    public void EnablePoisonControls(boolean rearrangeLifepoints) {
+    public void enablePoisonControls(boolean rearrangeLifepoints) {
         txtPoisonCountPlayer1.setVisibility(View.VISIBLE);
         txtPoisonCountPlayer2.setVisibility(View.VISIBLE);
 
@@ -979,12 +949,12 @@ public class GameActivity extends AppCompatActivity implements IGameView {
     }
 
     @Override
-    public void PoisonButtonEnable() {
+    public void poisonButtonEnable() {
         cmdTogglePoison.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.icon_poison));
     }
 
     @Override
-    public void DisablePoisonControls(boolean rearrangeLifepoints) {
+    public void disablePoisonControls(boolean rearrangeLifepoints) {
         txtPoisonCountPlayer1.setVisibility(View.INVISIBLE);
         txtPoisonCountPlayer2.setVisibility(View.INVISIBLE);
 
@@ -1025,14 +995,14 @@ public class GameActivity extends AppCompatActivity implements IGameView {
     }
 
     @Override
-    public void PoisonButtonDisable(){
+    public void poisonButtonDisable(){
         cmdTogglePoison.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.icon_poison_disabled));
     }
     //endregion
 
     //region Toggle Settings Controls
     @Override
-    public void EnableSettingsControls(boolean hideLifecountControls, boolean hidePoisonControls) {
+    public void enableSettingsControls(boolean hideLifecountControls, boolean hidePoisonControls) {
         cmdBlackPlayer1.setVisibility(View.VISIBLE);
         cmdBlackPlayer2.setVisibility(View.VISIBLE);
 
@@ -1110,12 +1080,12 @@ public class GameActivity extends AppCompatActivity implements IGameView {
     }
 
     @Override
-    public void SettingsButtonEnable() {
+    public void settingsButtonEnable() {
         cmdToggleColorSettings.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.icon_settings));
     }
 
     @Override
-    public void DisableSettingsControls(boolean showLifecountControls, boolean showPoisonControls) {
+    public void disableSettingsControls(boolean showLifecountControls, boolean showPoisonControls) {
         cmdBlackPlayer1.setVisibility(View.INVISIBLE);
         cmdBlackPlayer2.setVisibility(View.INVISIBLE);
 
@@ -1193,7 +1163,7 @@ public class GameActivity extends AppCompatActivity implements IGameView {
     }
 
     @Override
-    public void SettingsButtonDisable() {
+    public void settingsButtonDisable() {
         cmdToggleColorSettings.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.icon_settings_disabled));
     }
 
@@ -1201,7 +1171,7 @@ public class GameActivity extends AppCompatActivity implements IGameView {
 
     //region Toggle Energy Saving Option
     @Override
-    public void EnableEnergySaving(int powerSaveColor, int powerSaveTextColor) {
+    public void enableEnergySaving(int powerSaveColor, int powerSaveTextColor) {
         layoutPlayer1.setBackgroundColor(powerSaveColor);
         layoutPlayer2.setBackgroundColor(powerSaveColor);
         if(playeramount == 4) {
@@ -1225,7 +1195,7 @@ public class GameActivity extends AppCompatActivity implements IGameView {
     }
 
     @Override
-    public void DisableEnergySaving(int defaultBlack, int regularTextColor) {
+    public void disableEnergySaving(int defaultBlack, int regularTextColor) {
         layoutPlayer1.setBackgroundColor(defaultBlack);
         layoutPlayer2.setBackgroundColor(defaultBlack);
         if(playeramount == 4) {
@@ -1253,7 +1223,7 @@ public class GameActivity extends AppCompatActivity implements IGameView {
 
     //region Set Life- and Poisonpoints
     @Override
-    public void SetLifepoints(PlayerID id, String points) {
+    public void setLifepoints(PlayerID id, String points) {
         if(id.equals(PlayerID.ONE)) {
             txtLifeCountPlayer1.setText(points);
         } else if(id.equals(PlayerID.TWO)) {
@@ -1266,7 +1236,7 @@ public class GameActivity extends AppCompatActivity implements IGameView {
     }
 
         @Override
-        public void SetPoisonpoints(PlayerID id, String points) {
+        public void setPoisonpoints(PlayerID id, String points) {
             if(id.equals(PlayerID.ONE)) {
                 txtPoisonCountPlayer1.setText(points);
             } else if(id.equals(PlayerID.TWO)) {
@@ -1297,7 +1267,7 @@ public class GameActivity extends AppCompatActivity implements IGameView {
 
     //region Navigation Drawer
     @Override
-    public void SetDrawerTextPowerSaving(boolean shouldBeEnabled) {
+    public void setDrawerTextPowerSaving(boolean shouldBeEnabled) {
         String string = "";
         if(shouldBeEnabled) {
             string = getResources().getString(R.string.cmdPowerSaveEnable);
@@ -1312,22 +1282,22 @@ public class GameActivity extends AppCompatActivity implements IGameView {
     //endregion
 
     @Override
-    public int GetPlayerAmount() {
+    public int getPlayerAmount() {
         return playeramount;
     }
 
     @Override
-    public void DisableScreenTimeout() {
+    public void disableScreenTimeout() {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     }
 
     @Override
-    public void EnableScreenTimeout() {
+    public void enableScreenTimeout() {
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     }
 
     @Override
-    public int GetScreenSize() {
+    public int getScreenSize() {
         return getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK;
     }
 }

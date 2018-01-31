@@ -53,19 +53,19 @@ public class PreferenceManager {
     //region Custom colors
 
     // Set custom color
-    public static void SaveColor(SharedPreferences preferences, Color color) {
+    public static void saveColor(SharedPreferences preferences, Color color) {
         SharedPreferences.Editor editor = preferences.edit();
-        editor.putInt(color.GetPreferenceString(), color.GetIntValue());
+        editor.putInt(color.getPreferenceString(), color.getIntValue());
         editor.apply();
     }
 
     // Reset all custom colors
-    public static void ResetColors(SharedPreferences preferences) {
-        SaveColor(preferences, Color.GetDefaultColor(MagicColor.BLACK));
-        SaveColor(preferences, Color.GetDefaultColor(MagicColor.BLUE));
-        SaveColor(preferences, Color.GetDefaultColor(MagicColor.GREEN));
-        SaveColor(preferences, Color.GetDefaultColor(MagicColor.RED));
-        SaveColor(preferences, Color.GetDefaultColor(MagicColor.WHITE));
+    public static void resetColors(SharedPreferences preferences) {
+        saveColor(preferences, Color.getDefaultColor(MagicColor.BLACK));
+        saveColor(preferences, Color.getDefaultColor(MagicColor.BLUE));
+        saveColor(preferences, Color.getDefaultColor(MagicColor.GREEN));
+        saveColor(preferences, Color.getDefaultColor(MagicColor.RED));
+        saveColor(preferences, Color.getDefaultColor(MagicColor.WHITE));
     }
 
     // Powersave values
@@ -74,7 +74,7 @@ public class PreferenceManager {
     public static final int regularTextcolor = android.graphics.Color.parseColor("#161618");
 
     // Getter for default colors
-    public static int GetCustomizedColorOrDefault(MagicColor color, SharedPreferences preferences) {
+    public static int getCustomizedColorOrDefault(MagicColor color, SharedPreferences preferences) {
         switch(color) {
             case BLUE:
                 return preferences.getInt(PREF_COLOR_BLUE, Color.DEFAULT_BLUE);
@@ -184,17 +184,17 @@ public class PreferenceManager {
     //endregion
 
     //region Player Data (points + counters)
-    public static void SavePlayerCounterData(SharedPreferences preferences, List<Player> players) {
+    public static void savePlayerCounterData(SharedPreferences preferences, List<Player> players) {
         SharedPreferences.Editor editor = preferences.edit();
 
         for(Player player : players) {
-            editor.putString(player.GetPlayerID().toString(), player.GetJson());
+            editor.putString(player.getPlayerID().toString(), player.getJson());
         }
 
         editor.apply();
     }
 
-    public static ArrayList<Player> LoadPlayerCounterData(SharedPreferences preferences) {
+    public static ArrayList<Player> loadPlayerCounterData(SharedPreferences preferences) {
         ArrayList<Player> players = new ArrayList<Player>();
 
         Player p1 = Player.GetInstanceByJson(preferences.getString(PlayerID.ONE.toString(), null));
@@ -214,17 +214,17 @@ public class PreferenceManager {
         return players;
     }
 
-    public static void Save2PlayerPointsData(SharedPreferences preferences, Player[] players) {
+    public static void save2PlayerPointsData(SharedPreferences preferences, Player[] players) {
         SharedPreferences.Editor editor = preferences.edit();
 
         for(Player player : players) {
-            editor.putString(player.GetPlayerID().toString() + "_POINTS2", player.GetJson());
+            editor.putString(player.getPlayerID().toString() + "_POINTS2", player.getJson());
         }
 
         editor.apply();
     }
 
-    public static Player[] Load2PlayerPointsData(SharedPreferences preferences) {
+    public static Player[] load2PlayerPointsData(SharedPreferences preferences) {
         Player[] players = new Player[2];
 
         Player p1 = Player.GetInstanceByJson(preferences.getString(PlayerID.ONE.toString() + "_POINTS2", null));
@@ -238,17 +238,17 @@ public class PreferenceManager {
         return players;
     }
 
-    public static void Save4PlayerPointsData(SharedPreferences preferences, Player[] players) {
+    public static void save4PlayerPointsData(SharedPreferences preferences, Player[] players) {
         SharedPreferences.Editor editor = preferences.edit();
 
         for(Player player : players) {
-            editor.putString(player.GetPlayerID().toString() + "_POINTS4", player.GetJson());
+            editor.putString(player.getPlayerID().toString() + "_POINTS4", player.getJson());
         }
 
         editor.apply();
     }
 
-    public static Player[] Load4PlayerPointsData(SharedPreferences preferences) {
+    public static Player[] load4PlayerPointsData(SharedPreferences preferences) {
         Player[] players = new Player[4];
 
         Player p1 = Player.GetInstanceByJson(preferences.getString(PlayerID.ONE.toString() + "_POINTS4", null));

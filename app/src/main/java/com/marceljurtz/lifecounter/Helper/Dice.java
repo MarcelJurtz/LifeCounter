@@ -9,7 +9,7 @@ public class Dice {
         this.die = new Random();
     }
 
-    public int ThrowDice() {
+    public int throwDice() {
         return die.nextInt(20)+1;
     }
 }

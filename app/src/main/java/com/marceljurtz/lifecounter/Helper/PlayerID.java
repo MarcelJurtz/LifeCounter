@@ -8,7 +8,7 @@ public enum PlayerID {
         this.value = value;
     }
 
-    public int GetValue() {
+    public int getValue() {
         return value;
     }
 }

@@ -11,24 +11,24 @@ import com.marceljurtz.lifecounter.Helper.PlayerID;
 import java.util.ArrayList;
 
 public interface ICounterView extends IView {
-    void SetBackgroundColor(Color color);
-    void SetPlayerIdentificationText(PlayerID playerId, String headerText);
-    void AddCounter(PlayerID playerId, Counter counter);
+    void setBackgroundColor(Color color);
+    void setPlayerIdentificationText(PlayerID playerId, String headerText);
+    void addCounter(PlayerID playerId, Counter counter);
 
-    void LoadGameActivity();
-    void LoadDicingActivity();
-    void LoadSettingsActivity();
-    void LoadAboutActivity();
+    void loadGameActivity();
+    void loadDicingActivity();
+    void loadSettingsActivity();
+    void loadAboutActivity();
 
-    void DeleteCounter(LinearLayout counterLayout, boolean deleteParent);
-    void DeleteAllCounters();
-    void DeleteAllCountersForPlayer(PlayerID playerID);
+    void deleteCounter(LinearLayout counterLayout, boolean deleteParent);
+    void deleteAllCounters();
+    void deleteAllCountersForPlayer(PlayerID playerID);
 
-    void UpdateCounterView(Player player, Counter counter);
+    void updateCounterView(Player player, Counter counter);
 
-    void LoadPlayerIdentificationDialog(PlayerID playerID, String playername);
-    void LoadPlayerDeletionDialog(PlayerID playerID);
-    void LoadCounterAddDialog(ArrayList<Player> players);
-    void LoadCounterEditDialog(Player player, Counter counter);
-    void LoadCounterDeletionDialog(LinearLayout linearLayout);
+    void loadPlayerIdentificationDialog(PlayerID playerID, String playername);
+    void loadPlayerDeletionDialog(PlayerID playerID);
+    void loadCounterAddDialog(ArrayList<Player> players);
+    void loadCounterEditDialog(Player player, Counter counter);
+    void loadCounterDeletionDialog(LinearLayout linearLayout);
 }

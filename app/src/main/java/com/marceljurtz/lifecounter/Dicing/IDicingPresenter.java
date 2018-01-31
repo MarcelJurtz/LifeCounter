@@ -4,5 +4,5 @@ import com.marceljurtz.lifecounter.Helper.BaseInterface.IDicingNavDrawerInteract
 import com.marceljurtz.lifecounter.Helper.BaseInterface.IPresenter;
 
 public interface IDicingPresenter extends IPresenter, IDicingNavDrawerInteraction{
-    void OnScreenTap();
+    void onScreenTap();
 }
