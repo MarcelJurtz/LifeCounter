@@ -41,16 +41,16 @@ public class AboutActivity extends AppCompatActivity implements IAboutView {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
                 switch(item.getItemId()) {
-                    case R.id.nav_about_dicing:
+                    case R.id.nav_dicing:
                         presenter.onMenuEntryDicingTap();
                         break;
-                    case R.id.nav_about_useramount_2:
+                    case R.id.nav_game_2players:
                         presenter.onMenuEntryTwoPlayerTap();
                         break;
-                    case R.id.nav_about_useramount_4:
+                    case R.id.nav_game_4players:
                         presenter.onMenuEntryFourPlayerTap();
                         break;
-                    case R.id.nav_about_settings:
+                    case R.id.nav_settings:
                         presenter.onMenuEntrySettingsTap();
                         break;
                     case R.id.nav_countermanager:

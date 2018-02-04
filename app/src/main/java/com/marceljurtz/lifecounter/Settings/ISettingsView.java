@@ -11,8 +11,8 @@ public interface ISettingsView extends IView {
     void setLongClickPoints(String longClickPointText);
     String getLongClickPoints();
 
-    // Launch Game Activity
-    void loadGameActivity();
+    void returnToPrevActivity();
+    void loadActivity(Class c);
 
     void loadResetConfirmationDialog();
     void loadColorPickerDialog(MagicColor color, int r, int g, int b);

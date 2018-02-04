@@ -2,6 +2,10 @@ package com.marceljurtz.lifecounter.Settings;
 
 import android.content.SharedPreferences;
 
+import com.marceljurtz.lifecounter.About.AboutActivity;
+import com.marceljurtz.lifecounter.Counter.CounterActivity;
+import com.marceljurtz.lifecounter.Dicing.DicingActivity;
+import com.marceljurtz.lifecounter.Game.GameActivity;
 import com.marceljurtz.lifecounter.Helper.Color;
 import com.marceljurtz.lifecounter.Helper.MagicColor;
 import com.marceljurtz.lifecounter.Helper.PreferenceManager;
@@ -84,13 +88,13 @@ public class SettingsPresenter implements ISettingsPresenter {
         PreferenceManager.saveDefaultLifepoints(preferences, lifepoints);
         PreferenceManager.saveDefaultLongClickPoints(preferences, longClickPoints);
 
-        settingsView.loadGameActivity();
+        settingsView.returnToPrevActivity();
     }
 
     @Override
     public void onCancelButtonClick() {
         // Discard Settings
-        settingsView.loadGameActivity();
+        settingsView.returnToPrevActivity();
     }
 
     //endregion
@@ -151,12 +155,39 @@ public class SettingsPresenter implements ISettingsPresenter {
         PreferenceManager.resetLifepoints(preferences);
         PreferenceManager.resetColors(preferences);
 
-        settingsView.loadGameActivity();
+        settingsView.returnToPrevActivity();
     }
 
     @Override
     public void onResetButtonCancel() {
         // Nothing to do here
+    }
+
+    @Override
+    public void onMenuEntryTwoPlayerTap() {
+        PreferenceManager.saveDefaultPlayerAmount(preferences, 2);
+        settingsView.loadActivity(GameActivity.class);
+    }
+
+    @Override
+    public void onMenuEntryFourPlayerTap() {
+        PreferenceManager.saveDefaultPlayerAmount(preferences, 4);
+        settingsView.loadActivity(GameActivity.class);
+    }
+
+    @Override
+    public void onMenuEntryCounterManagerTap() {
+        settingsView.loadActivity(CounterActivity.class);
+    }
+
+    @Override
+    public void onMenuEntryDicingTap() {
+        settingsView.loadActivity(DicingActivity.class);
+    }
+
+    @Override
+    public void onMenuEntryAboutTap() {
+        settingsView.loadActivity(AboutActivity.class);
     }
 
     //endregion

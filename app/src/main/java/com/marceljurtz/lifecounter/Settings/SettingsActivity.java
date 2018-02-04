@@ -2,10 +2,13 @@ package com.marceljurtz.lifecounter.Settings;
 
 import android.app.Activity;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.app.AlertDialog;
+import android.support.design.widget.NavigationView;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -45,6 +48,8 @@ public class SettingsActivity extends Activity implements ISettingsView {
     ImageButton cmdBack;
 
     Switch chkKeepScreenOn;
+
+    private NavigationView navigationView;
 
     //endregion
 
@@ -145,6 +150,39 @@ public class SettingsActivity extends Activity implements ISettingsView {
 
         //endregion
 
+        //region Menu
+
+        navigationView = (NavigationView)findViewById(R.id.navigationViewSettings);
+        navigationView.getMenu().findItem(R.id.nav_settings).setVisible(false);
+        navigationView.getMenu().findItem(R.id.nav_energy_save_mode).setVisible(false);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(MenuItem item) {
+                switch(item.getItemId()) {
+                    case R.id.nav_about:
+                        presenter.onMenuEntryAboutTap();
+                        break;
+                    case R.id.nav_game_2players:
+                        presenter.onMenuEntryTwoPlayerTap();
+                        break;
+                    case R.id.nav_game_4players:
+                        presenter.onMenuEntryFourPlayerTap();
+                        break;
+                    case R.id.nav_dicing:
+                        presenter.onMenuEntryDicingTap();
+                        break;
+                    case R.id.nav_countermanager:
+                        presenter.onMenuEntryCounterManagerTap();
+                        break;
+                    default:
+                        break;
+                }
+                return true;
+            }
+        });
+
+        //
+
         presenter = new SettingsPresenter(this, preferences);
         presenter.onCreate();
     }
@@ -203,8 +241,14 @@ public class SettingsActivity extends Activity implements ISettingsView {
     }
 
     @Override
-    public void loadGameActivity() {
+    public void returnToPrevActivity() {
         finish();
+    }
+
+    @Override
+    public void loadActivity(Class c) {
+        Intent intent = new Intent(getApplicationContext(), c);
+        startActivity(intent);
     }
 
     @Override

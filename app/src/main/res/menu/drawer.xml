@@ -6,9 +6,14 @@
             android:icon="@drawable/ic_power_black_24dp"
             android:title="@string/menu_entry_energysaving_enable" />
         <item
-            android:id="@+id/nav_useramount"
+            android:id="@+id/nav_game_2players"
             android:icon="@drawable/ic_person_black_24dp"
-            android:title="@string/menu_entry_load_players_4" />
+            android:title="@string/menu_entry_load_players_2" />
+
+        <item
+            android:id="@+id/nav_game_4players"
+            android:icon="@drawable/ic_users"
+            android:title="@string/menu_entry_load_players_4"/>
 
         <item
             android:id="@+id/nav_dicing"
