@@ -99,29 +99,8 @@ public class DicingActivity extends AppCompatActivity implements IDicingView {
     }
 
     @Override
-    public void loadGameActivity() {
-        Intent intent = new Intent(getApplicationContext(), GameActivity.class);
-        finish();
-        startActivity(intent);
-    }
-
-    @Override
-    public void loadSettingsActivity() {
-        Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
-        finish();
-        startActivity(intent);
-    }
-
-    @Override
-    public void loadAboutActivity() {
-        Intent intent = new Intent(getApplicationContext(), AboutActivity.class);
-        finish();
-        startActivity(intent);
-    }
-
-    @Override
-    public void loadCounterManagerActivity() {
-        Intent intent = new Intent(getApplicationContext(), CounterActivity.class);
+    public void loadActivity(Class c) {
+        Intent intent = new Intent(getApplicationContext(), c);
         finish();
         startActivity(intent);
     }

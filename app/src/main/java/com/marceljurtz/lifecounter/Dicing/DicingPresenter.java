@@ -2,10 +2,14 @@ package com.marceljurtz.lifecounter.Dicing;
 
 import android.content.SharedPreferences;
 
+import com.marceljurtz.lifecounter.About.AboutActivity;
+import com.marceljurtz.lifecounter.Counter.CounterActivity;
+import com.marceljurtz.lifecounter.Game.GameActivity;
 import com.marceljurtz.lifecounter.Helper.Color;
 import com.marceljurtz.lifecounter.Helper.Dice;
 import com.marceljurtz.lifecounter.Helper.MagicColor;
 import com.marceljurtz.lifecounter.Helper.PreferenceManager;
+import com.marceljurtz.lifecounter.Settings.SettingsActivity;
 
 import java.util.Random;
 
@@ -72,29 +76,29 @@ public class DicingPresenter implements IDicingPresenter {
 
     @Override
     public void onMenuEntrySettingsTap() {
-        view.loadSettingsActivity();
+        view.loadActivity(SettingsActivity.class);
     }
 
     @Override
     public void onMenuEntryAboutTap() {
-        view.loadAboutActivity();
+        view.loadActivity(AboutActivity.class);
     }
 
     @Override
     public void onMenuEntryTwoPlayerTap() {
         PreferenceManager.saveDefaultPlayerAmount(preferences, 2);
-        view.loadGameActivity();
+        view.loadActivity(GameActivity.class);
     }
 
     @Override
     public void onMenuEntryFourPlayerTap() {
         PreferenceManager.saveDefaultPlayerAmount(preferences, 4);
-        view.loadGameActivity();
+        view.loadActivity(GameActivity.class);
     }
 
     @Override
     public void onMenuEntryCounterManagerTap() {
-        view.loadCounterManagerActivity();
+        view.loadActivity(CounterActivity.class);
     }
 
     //endregion

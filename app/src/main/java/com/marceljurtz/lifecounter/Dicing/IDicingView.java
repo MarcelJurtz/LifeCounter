@@ -5,9 +5,6 @@ import com.marceljurtz.lifecounter.Helper.Color;
 
 public interface IDicingView extends IView {
     void setDicingText(String text);
-    void loadGameActivity();
-    void loadSettingsActivity();
-    void loadAboutActivity();
-    void loadCounterManagerActivity();
+    void loadActivity(Class c);
     void setBackgroundColor(Color color);
 }

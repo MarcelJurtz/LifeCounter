@@ -873,26 +873,8 @@ public class GameActivity extends AppCompatActivity implements IGameView {
 
 
     @Override
-    public void loadSettingsActivity() {
-        Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
-        startActivity(intent);
-    }
-
-    @Override
-    public void loadDicingActivity() {
-        Intent intent = new Intent(getApplicationContext(), DicingActivity.class);
-        startActivity(intent);
-    }
-
-    @Override
-    public void loadAboutActivity() {
-        Intent intent = new Intent(getApplicationContext(), AboutActivity.class);
-        startActivity(intent);
-    }
-
-    @Override
-    public void loadCounterManagerActivity() {
-        Intent intent = new Intent(getApplicationContext(), CounterActivity.class);
+    public void loadActivity(Class c) {
+        Intent intent = new Intent(getApplicationContext(), c);
         startActivity(intent);
     }
 

@@ -2,7 +2,11 @@ package com.marceljurtz.lifecounter.About;
 
 import android.content.SharedPreferences;
 
+import com.marceljurtz.lifecounter.Counter.CounterActivity;
+import com.marceljurtz.lifecounter.Dicing.DicingActivity;
+import com.marceljurtz.lifecounter.Game.GameActivity;
 import com.marceljurtz.lifecounter.Helper.PreferenceManager;
+import com.marceljurtz.lifecounter.Settings.SettingsActivity;
 
 public class AboutPresenter implements IAboutPresenter {
 
@@ -21,9 +25,9 @@ public class AboutPresenter implements IAboutPresenter {
     @Override
     public void onCreate() {
         if (languageCode.equals("Deutsch")) {
-            view.LoadAboutPage("file:///android_asset/about_de.html");
+            view.loadAboutPage("file:///android_asset/about_de.html");
         } else {
-            view.LoadAboutPage("file:///android_asset/about_en.html");
+            view.loadAboutPage("file:///android_asset/about_en.html");
         }
     }
 
@@ -49,28 +53,28 @@ public class AboutPresenter implements IAboutPresenter {
     @Override
     public void onMenuEntryTwoPlayerTap() {
         PreferenceManager.saveDefaultPlayerAmount(preferences, 2);
-        view.LoadGameActivity();
+        view.loadActivity(GameActivity.class);
     }
 
     @Override
     public void onMenuEntryFourPlayerTap() {
         PreferenceManager.saveDefaultPlayerAmount(preferences, 4);
-        view.LoadGameActivity();
+        view.loadActivity(GameActivity.class);
     }
 
     @Override
     public void onMenuEntryDicingTap() {
-        view.LoadDicingActivity();
+        view.loadActivity(DicingActivity.class);
     }
 
     @Override
     public void onMenuEntrySettingsTap() {
-        view.LoadSettingsActivity();
+        view.loadActivity(SettingsActivity.class);
     }
 
     @Override
     public void onMenuEntryCounterManagerTap() {
-        view.LoadCounterManagerActivity();
+        view.loadActivity(CounterActivity.class);
     }
 
     //endregion
