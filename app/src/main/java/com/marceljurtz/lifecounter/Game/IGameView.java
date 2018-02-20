@@ -24,10 +24,7 @@ public interface IGameView extends IView {
     void disableEnergySaving(int defaultBlack, int regularTextColor);
 
     // Launch settings activity
-    void loadSettingsActivity();
-    void loadDicingActivity();
-    void loadAboutActivity();
-    void loadCounterManagerActivity();
+    void loadActivity(Class c);
 
     // Enable / Disable color controls
     void settingsButtonEnable();

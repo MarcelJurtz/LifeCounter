@@ -223,8 +223,8 @@ public class GameActivity extends AppCompatActivity implements IGameView {
             cmdSettings = (Button)findViewById(R.id.nav_settings);
             lblVersionInfo = (TextView)findViewById(R.id.lblVersionInfo);
             */
-            navigationView = (NavigationView) findViewById(R.id.navigationView4p);
-            navigationView.getMenu().findItem(R.id.nav_useramount).setTitle(R.string.menu_entry_load_players_2);
+            navigationView = (NavigationView) findViewById(R.id.navigationView4players);
+            navigationView.getMenu().findItem(R.id.nav_game_4players).setVisible(false);
 
         } else {
             layoutPlayer1 = (RelativeLayout) findViewById(R.id.rl2Player1);
@@ -267,8 +267,8 @@ public class GameActivity extends AppCompatActivity implements IGameView {
             lblVersionInfo = (TextView)findViewById(R.id.lblAppVersion2p);
             */
 
-            navigationView = (NavigationView) findViewById(R.id.navigationView2p);
-            navigationView.getMenu().findItem(R.id.nav_useramount).setTitle(R.string.menu_entry_load_players_4);
+            navigationView = (NavigationView) findViewById(R.id.navigationView2players);
+            navigationView.getMenu().findItem(R.id.nav_game_2players).setVisible(false);
         }
 
         // Init GamePresenter
@@ -606,7 +606,10 @@ public class GameActivity extends AppCompatActivity implements IGameView {
                     case R.id.nav_energy_save_mode:
                         presenter.onMenuEntryEnergySaveTap();
                         break;
-                    case R.id.nav_useramount:
+                    case R.id.nav_game_2players:
+                        presenter.onMenuEntryTogglePlayerTap();
+                        break;
+                    case R.id.nav_game_4players:
                         presenter.onMenuEntryTogglePlayerTap();
                         break;
                     case R.id.nav_dicing:
@@ -870,26 +873,8 @@ public class GameActivity extends AppCompatActivity implements IGameView {
 
 
     @Override
-    public void loadSettingsActivity() {
-        Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
-        startActivity(intent);
-    }
-
-    @Override
-    public void loadDicingActivity() {
-        Intent intent = new Intent(getApplicationContext(), DicingActivity.class);
-        startActivity(intent);
-    }
-
-    @Override
-    public void loadAboutActivity() {
-        Intent intent = new Intent(getApplicationContext(), AboutActivity.class);
-        startActivity(intent);
-    }
-
-    @Override
-    public void loadCounterManagerActivity() {
-        Intent intent = new Intent(getApplicationContext(), CounterActivity.class);
+    public void loadActivity(Class c) {
+        Intent intent = new Intent(getApplicationContext(), c);
         startActivity(intent);
     }
 

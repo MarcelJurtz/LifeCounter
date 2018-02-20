@@ -41,16 +41,16 @@ public class AboutActivity extends AppCompatActivity implements IAboutView {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
                 switch(item.getItemId()) {
-                    case R.id.nav_about_dicing:
+                    case R.id.nav_dicing:
                         presenter.onMenuEntryDicingTap();
                         break;
-                    case R.id.nav_about_useramount_2:
+                    case R.id.nav_game_2players:
                         presenter.onMenuEntryTwoPlayerTap();
                         break;
-                    case R.id.nav_about_useramount_4:
+                    case R.id.nav_game_4players:
                         presenter.onMenuEntryFourPlayerTap();
                         break;
-                    case R.id.nav_about_settings:
+                    case R.id.nav_settings:
                         presenter.onMenuEntrySettingsTap();
                         break;
                     case R.id.nav_countermanager:
@@ -83,34 +83,13 @@ public class AboutActivity extends AppCompatActivity implements IAboutView {
     }
 
     @Override
-    public void LoadAboutPage(String url) {
+    public void loadAboutPage(String url) {
         mainWebView.loadUrl(url);
     }
 
     @Override
-    public void LoadGameActivity() {
-        Intent intent = new Intent(getApplicationContext(), GameActivity.class);
-        finish();
-        startActivity(intent);
-    }
-
-    @Override
-    public void LoadSettingsActivity() {
-        Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
-        finish();
-        startActivity(intent);
-    }
-
-    @Override
-    public void LoadDicingActivity() {
-        Intent intent = new Intent(getApplicationContext(), DicingActivity.class);
-        finish();
-        startActivity(intent);
-    }
-
-    @Override
-    public void LoadCounterManagerActivity() {
-        Intent intent = new Intent(getApplicationContext(), CounterActivity.class);
+    public void loadActivity(Class c) {
+        Intent intent = new Intent(getApplicationContext(), c);
         finish();
         startActivity(intent);
     }

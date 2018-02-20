@@ -2,6 +2,9 @@ package com.marceljurtz.lifecounter.Game;
 
 import android.content.SharedPreferences;
 
+import com.marceljurtz.lifecounter.About.AboutActivity;
+import com.marceljurtz.lifecounter.Counter.CounterActivity;
+import com.marceljurtz.lifecounter.Dicing.DicingActivity;
 import com.marceljurtz.lifecounter.Helper.ClickType;
 import com.marceljurtz.lifecounter.Helper.Color;
 import com.marceljurtz.lifecounter.Helper.Game;
@@ -10,6 +13,7 @@ import com.marceljurtz.lifecounter.Helper.Operator;
 import com.marceljurtz.lifecounter.Helper.Player;
 import com.marceljurtz.lifecounter.Helper.PlayerID;
 import com.marceljurtz.lifecounter.Helper.PreferenceManager;
+import com.marceljurtz.lifecounter.Settings.SettingsActivity;
 
 public class GamePresenter implements IGamePresenter {
 
@@ -229,7 +233,7 @@ public class GamePresenter implements IGamePresenter {
     @Override
     public void onSettingsButtonClick(ClickType clickType) {
         if(clickType.equals(ClickType.LONG)) {
-            view.loadSettingsActivity();
+            view.loadActivity(SettingsActivity.class);
         } else {
             settingsVisible = !settingsVisible;
             if(settingsVisible) {
@@ -288,7 +292,7 @@ public class GamePresenter implements IGamePresenter {
 
     @Override
     public void onMenuEntryDicingTap() {
-        view.loadDicingActivity();
+        view.loadActivity(DicingActivity.class);
     }
 
     @Override
@@ -303,12 +307,12 @@ public class GamePresenter implements IGamePresenter {
 
     @Override
     public void onMenuEntryAboutTap() {
-        view.loadAboutActivity();
+        view.loadActivity(AboutActivity.class);
     }
 
     @Override
     public void onMenuEntryCounterManagerTap() {
-        view.loadCounterManagerActivity();
+        view.loadActivity(CounterActivity.class);
     }
     //endregion
 }

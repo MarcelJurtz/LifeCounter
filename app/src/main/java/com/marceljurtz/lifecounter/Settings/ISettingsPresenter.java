@@ -14,4 +14,10 @@ public interface ISettingsPresenter extends IPresenter {
 
     void onResetButtonConfirm();
     void onResetButtonCancel();
+
+    void onMenuEntryTwoPlayerTap();
+    void onMenuEntryFourPlayerTap();
+    void onMenuEntryCounterManagerTap();
+    void onMenuEntryDicingTap();
+    void onMenuEntryAboutTap();
 }

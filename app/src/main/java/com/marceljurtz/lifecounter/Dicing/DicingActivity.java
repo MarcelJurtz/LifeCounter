@@ -49,16 +49,16 @@ public class DicingActivity extends AppCompatActivity implements IDicingView {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
                 switch(item.getItemId()) {
-                    case R.id.nav_dicing_useramount_2:
+                    case R.id.nav_game_2players:
                         presenter.onMenuEntryTwoPlayerTap();
                         break;
-                    case R.id.nav_dicing_useramount_4:
+                    case R.id.nav_game_4players:
                         presenter.onMenuEntryFourPlayerTap();
                         break;
-                    case R.id.nav_dicing_settings:
+                    case R.id.nav_settings:
                         presenter.onMenuEntrySettingsTap();
                         break;
-                    case R.id.nav_dicing_about:
+                    case R.id.nav_about:
                         presenter.onMenuEntryAboutTap();
                         break;
                     case R.id.nav_countermanager:
@@ -99,29 +99,8 @@ public class DicingActivity extends AppCompatActivity implements IDicingView {
     }
 
     @Override
-    public void loadGameActivity() {
-        Intent intent = new Intent(getApplicationContext(), GameActivity.class);
-        finish();
-        startActivity(intent);
-    }
-
-    @Override
-    public void loadSettingsActivity() {
-        Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
-        finish();
-        startActivity(intent);
-    }
-
-    @Override
-    public void loadAboutActivity() {
-        Intent intent = new Intent(getApplicationContext(), AboutActivity.class);
-        finish();
-        startActivity(intent);
-    }
-
-    @Override
-    public void loadCounterManagerActivity() {
-        Intent intent = new Intent(getApplicationContext(), CounterActivity.class);
+    public void loadActivity(Class c) {
+        Intent intent = new Intent(getApplicationContext(), c);
         finish();
         startActivity(intent);
     }

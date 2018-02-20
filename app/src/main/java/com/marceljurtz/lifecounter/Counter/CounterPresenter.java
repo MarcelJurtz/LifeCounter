@@ -3,12 +3,16 @@ package com.marceljurtz.lifecounter.Counter;
 import android.content.SharedPreferences;
 import android.widget.LinearLayout;
 
+import com.marceljurtz.lifecounter.About.AboutActivity;
+import com.marceljurtz.lifecounter.Dicing.DicingActivity;
+import com.marceljurtz.lifecounter.Game.GameActivity;
 import com.marceljurtz.lifecounter.Helper.Color;
 import com.marceljurtz.lifecounter.Helper.Counter;
 import com.marceljurtz.lifecounter.Helper.MagicColor;
 import com.marceljurtz.lifecounter.Helper.Player;
 import com.marceljurtz.lifecounter.Helper.PlayerID;
 import com.marceljurtz.lifecounter.Helper.PreferenceManager;
+import com.marceljurtz.lifecounter.Settings.SettingsActivity;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -109,28 +113,28 @@ public class CounterPresenter implements ICounterPresenter {
     @Override
     public void onMenuEntryTwoPlayerClick() {
         PreferenceManager.saveDefaultPlayerAmount(preferences, 2);
-        view.loadGameActivity();
+        view.loadActivity(GameActivity.class);
     }
 
     @Override
     public void onMenuEntryFourPlayerClick() {
         PreferenceManager.saveDefaultPlayerAmount(preferences, 4);
-        view.loadGameActivity();
+        view.loadActivity(GameActivity.class);
     }
 
     @Override
     public void onMenuEntryDicingClick() {
-        view.loadDicingActivity();
+        view.loadActivity(DicingActivity.class);
     }
 
     @Override
     public void onMenuEntrySettingsClick() {
-        view.loadSettingsActivity();
+        view.loadActivity(SettingsActivity.class);
     }
 
     @Override
     public void onMenuEntryAboutClick() {
-        view.loadAboutActivity();
+        view.loadActivity(AboutActivity.class);
     }
 
     @Override
