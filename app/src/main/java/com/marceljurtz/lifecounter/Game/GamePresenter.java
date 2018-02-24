@@ -99,8 +99,8 @@ public class GamePresenter implements IGamePresenter {
 
         for(Player player : game.getPlayers()) {
             player.setColor(new Color(player.getColorOrDefault().getBasecolor(), PreferenceManager.getCustomizedColorOrDefault(player.getColorOrDefault().getBasecolor(), preferences)));
-            view.setLifepoints(player.getPlayerID(), player.getLifePoints() + "");
-            view.setPoisonpoints(player.getPlayerID(), player.getPoisonPoints() + "");
+            view.setLifepoints(player.getPlayerID(), String.format("%02d",player.getLifePoints()));
+            view.setPoisonpoints(player.getPlayerID(), String.format("%02d", player.getPoisonPoints()));
             view.setLayoutColor(player.getPlayerID(), player.getColorOrDefault().getIntValue());
         }
 
