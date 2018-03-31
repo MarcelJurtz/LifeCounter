@@ -59,6 +59,8 @@
         <item name="android:layout_centerHorizontal">true</item>
         <item name="android:gravity">center</item>
         <item name="android:maxLines">1</item>
+        <item name="android:layout_marginLeft">@dimen/poison_margin_horizontally</item>
+        <item name="android:layout_marginRight">@dimen/poison_margin_horizontally</item>
     </style>
 
     <style name="lifebutton_4p">
@@ -81,7 +83,7 @@
     <style name="poisonbutton">
         <item name="android:layout_width">@dimen/size_config_buttons</item>
         <item name="android:layout_height">@dimen/size_config_buttons</item>
-        <item name="android:scaleType">fitCenter</item>
+        <item name="android:scaleType">centerInside</item>
         <item name="android:adjustViewBounds">true</item>
         <item name="android:background">?android:selectableItemBackground</item>
     </style>

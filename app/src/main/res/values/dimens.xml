@@ -6,6 +6,7 @@
 
     <dimen name="size_color_button">35dp</dimen>
     <dimen name="textsize_poison">40dp</dimen>
+    <dimen name="poison_margin_horizontally">8dp</dimen>
     <dimen name="textsize_life">90dp</dimen>
     <dimen name="buttonPlusMinusLifepoints">60dp</dimen>
     <dimen name="lifecount_button_size">80dp</dimen>

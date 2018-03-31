@@ -188,6 +188,7 @@
                 android:contentDescription="@string/descr_lp_minus"
                 android:id="@+id/cmdMinusHome"
                 style="@style/mtg_button_lifepoints_bottom"
+                android:layout_marginTop="45dp"
                 android:layout_marginRight="@dimen/button_space_vertical"
                 android:layout_toLeftOf="@id/txtLifeCount2p2"
                 android:layout_toStartOf="@id/txtLifeCount2p2"
