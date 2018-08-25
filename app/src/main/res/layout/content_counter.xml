@@ -7,7 +7,7 @@
     android:layout_margin="@dimen/activity_margin"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.marceljurtz.lifecounter.Counter.CounterActivity"
+    tools:context=".views.Counter.CounterActivity"
     tools:showIn="@layout/activity_counter">
 
     <LinearLayout

@@ -9,7 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Game.GameActivity"
+            android:name=".views.Game.GameActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,16 +17,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Settings.SettingsActivity" />
+        <activity android:name=".views.Settings.SettingsActivity" />
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme" />
-        <activity android:name=".Dicing.DicingActivity" />
-        <activity android:name=".About.AboutActivity" />
-        <activity android:name=".Settings.PrefActivity" />
+        <activity android:name=".views.Dicing.DicingActivity" />
+        <activity android:name=".views.About.AboutActivity" />
+        <activity android:name=".views.Settings.PrefActivity" />
         <activity
-            android:name=".Counter.CounterActivity"
+            android:name=".views.Counter.CounterActivity"
             android:label="@string/title_activity_counter"
             android:theme="@style/AppTheme"></activity>
     </application>
