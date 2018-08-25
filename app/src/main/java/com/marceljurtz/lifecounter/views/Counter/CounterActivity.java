@@ -270,8 +270,8 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
             }
         });
 
-        Button dialogButton = (Button) dialog.findViewById(R.id.dialogButtonOK);
-        dialogButton.setOnClickListener(new View.OnClickListener() {
+        Button cmdDialogOk = (Button) dialog.findViewById(R.id.dialogButtonOK);
+        cmdDialogOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 counterToAdd = null;
@@ -291,6 +291,10 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
                 }
             }
         });
+
+        // Delete button only for editing entries
+        Button cmdDialogDelete = (Button)dialog.findViewById(R.id.dialogButtonDelete);
+        cmdDialogDelete.setVisibility(View.INVISIBLE);
 
         dialog.show();
     }
@@ -348,7 +352,7 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
         wrapper.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.onCounterTap(wrapper.getTag().toString());
+                presenter.onCounterTap(wrapper);
             }
         });
 
@@ -516,7 +520,7 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
     }
 
     @Override
-    public void loadCounterEditDialog(Player player, Counter counter) {
+    public void loadCounterEditDialog(final LinearLayout counterLayout, Player player, final Counter counter) {
         adapter.clear();
         //adapter.addAll(players);
         adapter.add(player);
@@ -597,6 +601,15 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
                 if (counterToEdit != null) {
                     presenter.onCounterEditCompleted(((Player) spPlayers.getSelectedItem()).getPlayerIdEnum(), identifier, counterToEdit);
                 }
+            }
+        });
+
+        Button cmdDialogDelete = (Button) dialog.findViewById(R.id.dialogButtonDelete);
+        cmdDialogDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+                presenter.onCounterLongTap(counterLayout);
             }
         });
 

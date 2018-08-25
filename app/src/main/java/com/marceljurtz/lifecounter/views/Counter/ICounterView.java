@@ -26,6 +26,6 @@ public interface ICounterView extends IView {
     void loadPlayerIdentificationDialog(PlayerIdEnum playerIdEnum, String playername);
     void loadPlayerDeletionDialog(PlayerIdEnum playerIdEnum);
     void loadCounterAddDialog(ArrayList<Player> players);
-    void loadCounterEditDialog(Player player, Counter counter);
+    void loadCounterEditDialog(LinearLayout counterLayout, Player player, Counter counter);
     void loadCounterDeletionDialog(LinearLayout linearLayout);
 }

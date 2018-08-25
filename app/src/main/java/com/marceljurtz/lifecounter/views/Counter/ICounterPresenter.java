@@ -11,7 +11,7 @@ public interface ICounterPresenter extends IPresenter, ICounterNavDrawerInteract
     void onFloatingActionButtonTap();
     void addCounter(PlayerIdEnum playerIdEnum, Counter counter);
 
-    void onCounterTap(String counterIdentifier);
+    void onCounterTap(LinearLayout counterWrapper);
     void onCounterLongTap(LinearLayout counterWrapper);
     void onCounterEditCompleted(PlayerIdEnum playerIdEnum, String oldCounterIdentifier, Counter newCounter);
 

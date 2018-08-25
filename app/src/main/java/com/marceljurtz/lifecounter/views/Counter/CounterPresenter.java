@@ -187,8 +187,9 @@ public class CounterPresenter implements ICounterPresenter {
     }
 
     @Override
-    public void onCounterTap(String identifier) {
-        view.loadCounterEditDialog(getPlayerByCounterIdentifier(identifier), getCounterByIdentifier(identifier));
+    public void onCounterTap(LinearLayout counterLayout) {
+        String identifier = counterLayout.getTag().toString();
+        view.loadCounterEditDialog(counterLayout, getPlayerByCounterIdentifier(identifier), getCounterByIdentifier(identifier));
     }
 
     @Override

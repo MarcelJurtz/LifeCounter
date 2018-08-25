@@ -20,6 +20,7 @@
     <string name="yes">Ja</string>
     <string name="no">Nein</string>
     <string name="ok">OK</string>
+    <string name="delete">Löschen</string>
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
 
@@ -77,8 +78,8 @@
     <string name="counter_default_player3">Player 3</string>
     <string name="counter_default_player4">Player 4</string>
 
-    <string name="dialog_countermanager_new_header">Neuer Eintrag</string>
-    <string name="dialog_countermanager_hint_card_description">Card Description</string>
+    <string name="dialog_countermanager_new_header">Eintrag bearbeiten</string>
+    <string name="dialog_countermanager_hint_card_description">Bezeichnung</string>
     <string name="dialog_countermanager_error_invalid_entry">Ungültige Eingabe!</string>
     <string name="dialog_countermanager_hint_atk">ATK</string>
     <string name="dialog_countermanager_hint_def">DEF</string>

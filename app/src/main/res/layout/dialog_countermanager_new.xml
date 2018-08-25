@@ -78,6 +78,14 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/dialogButtonDelete"
+        android:text="@string/delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@id/dialogButtonOK"
+        android:layout_below="@id/llCardValues"/>
+
+    <Button
         android:id="@+id/dialogButtonOK"
         android:text="@string/ok"
         android:layout_width="wrap_content"
