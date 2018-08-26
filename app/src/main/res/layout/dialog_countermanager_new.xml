@@ -32,14 +32,20 @@
         android:id="@+id/llCardValues"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dialog_padding"
         android:orientation="horizontal"
+        android:gravity="center_vertical"
         android:layout_below="@id/txtCardDescription">
 
         <ImageButton
             android:id="@+id/cmdDecreaseCounter"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:background="@drawable/icon_minus" />
+            android:padding="5dp"
+            android:src="@drawable/icon_minus"
+            style="?android:attr/borderlessButtonStyle"
+            android:adjustViewBounds="true"
+            android:scaleType="centerInside" />
 
         <EditText
             android:id="@+id/txtCardAtk"
@@ -73,13 +79,18 @@
             android:id="@+id/cmdIncreaseCounter"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:background="@drawable/icon_plus" />
+            android:padding="5dp"
+            android:src="@drawable/icon_plus"
+            style="?android:attr/borderlessButtonStyle"
+            android:adjustViewBounds="true"
+            android:scaleType="centerInside"/>
 
     </LinearLayout>
 
     <Button
         android:id="@+id/dialogButtonDelete"
         android:text="@string/delete"
+        style="?android:attr/borderlessButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toLeftOf="@id/dialogButtonOK"
@@ -88,6 +99,7 @@
     <Button
         android:id="@+id/dialogButtonOK"
         android:text="@string/ok"
+        style="?android:attr/borderlessButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/llCardValues"
