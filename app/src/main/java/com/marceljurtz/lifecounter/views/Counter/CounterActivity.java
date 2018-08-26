@@ -3,6 +3,7 @@ package com.marceljurtz.lifecounter.views.Counter;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -14,6 +15,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -295,6 +298,8 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
         // Delete button only for editing entries
         Button cmdDialogDelete = (Button)dialog.findViewById(R.id.dialogButtonDelete);
         cmdDialogDelete.setVisibility(View.INVISIBLE);
+
+        dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
 
         dialog.show();
     }
