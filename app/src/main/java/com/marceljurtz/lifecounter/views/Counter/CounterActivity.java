@@ -414,6 +414,8 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
             }
         });
 
+        dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
+
         dialog.show();
     }
 

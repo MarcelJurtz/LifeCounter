@@ -102,4 +102,7 @@
     <string name="descr_pp_toggle">Toggle Poisonpoints</string>
     <string name="descr_settings_toggle">Toggle Settings</string>
     <string name="descr_reset">Reset Game</string>
+
+    <string name="dialog_firstlaunch_heading">Hey there!</string>
+    <string name="dialog_changelog_heading">What\'s new?</string>
 </resources>

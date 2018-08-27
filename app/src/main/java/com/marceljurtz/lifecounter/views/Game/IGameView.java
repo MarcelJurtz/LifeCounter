@@ -1,5 +1,7 @@
 package com.marceljurtz.lifecounter.views.Game;
 
+import android.content.Context;
+
 import com.marceljurtz.lifecounter.contracts.base.IView;
 import com.marceljurtz.lifecounter.enums.MagicColorEnum;
 import com.marceljurtz.lifecounter.enums.PlayerIdEnum;
@@ -47,4 +49,9 @@ public interface IGameView extends IView {
     void restartActivity();
 
     int getScreenSize();
+
+    String getVersionName();
+
+    void runFirstLaunchDialog();
+    void runUpdateDialog();
 }

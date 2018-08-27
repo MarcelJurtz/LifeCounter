@@ -51,6 +51,8 @@ public class PreferenceManager {
 
     private static final String PREF_KEEP_SCREEN_ON = "KEEP_SCREEN_ON";
 
+    private static final String PREF_VERSIONNUMBER = "VERSION";
+
     //endregion
 
     //region Custom colors
@@ -269,5 +271,15 @@ public class PreferenceManager {
         else players[3] = new Player(PlayerIdEnum.FOUR);
 
         return players;
+    }
+
+    public static String getVersionNumber(SharedPreferences preferences) {
+        return preferences.getString(PREF_VERSIONNUMBER, null);
+    }
+
+    public static void setVersionNumber(SharedPreferences preferences, String versionNumber) {
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString(PREF_VERSIONNUMBER, versionNumber);
+        editor.apply();
     }
 }

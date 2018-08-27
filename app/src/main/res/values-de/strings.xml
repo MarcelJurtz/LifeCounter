@@ -102,4 +102,7 @@
     <string name="descr_pp_toggle">Giftpunkte umschalten</string>
     <string name="descr_settings_toggle">Einstellungen umschalten</string>
     <string name="descr_reset">Spiel zurücksetzen</string>
+
+    <string name="dialog_firstlaunch_heading">Hey!</string>
+    <string name="dialog_changelog_heading">Neuigkeiten</string>
 </resources>

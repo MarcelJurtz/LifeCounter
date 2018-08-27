@@ -79,6 +79,20 @@ public class GamePresenter implements IGamePresenter {
     }
 
     @Override
+    public void checkFirstLaunch() {
+        String installedVersionName = view.getVersionName();
+        String storedVersionName = PreferenceManager.getVersionNumber(preferences);
+
+        if(storedVersionName == null || storedVersionName.length() == 0) {
+            view.runFirstLaunchDialog();
+        } else if(storedVersionName != installedVersionName) {
+            view.runUpdateDialog();
+        }
+
+        PreferenceManager.setVersionNumber(preferences, installedVersionName);
+    }
+
+    @Override
     public void onCreate() {
 
     }

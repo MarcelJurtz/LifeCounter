@@ -1,8 +1,12 @@
 package com.marceljurtz.lifecounter.views.Game;
 
 import android.app.Activity;
+import android.app.Dialog;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
 import android.content.res.Configuration;
 import android.graphics.drawable.GradientDrawable;
 import android.support.design.widget.NavigationView;
@@ -269,6 +273,8 @@ public class GameActivity extends AppCompatActivity implements IGameView {
 
         // Init GamePresenter
         presenter = new GamePresenter(this, preferences);
+
+        presenter.checkFirstLaunch();
 
         //region Button Black
 
@@ -790,6 +796,17 @@ public class GameActivity extends AppCompatActivity implements IGameView {
     }
 
     @Override
+    public String getVersionName() {
+        try {
+            ComponentName comp = new ComponentName(this, GameActivity.class);
+            PackageInfo pinfo = this.getPackageManager().getPackageInfo(comp.getPackageName(), 0);
+            return "version: " + pinfo.versionName;
+        } catch (android.content.pm.PackageManager.NameNotFoundException e) {
+            return null;
+        }
+    }
+
+    @Override
     protected void onPause() {
         presenter.onPause();
         super.onPause();
@@ -1280,5 +1297,53 @@ public class GameActivity extends AppCompatActivity implements IGameView {
     @Override
     public int getScreenSize() {
         return getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK;
+    }
+
+    public void runFirstLaunchDialog() {
+        final Dialog dialog = new Dialog(GameActivity.this);
+        dialog.setContentView(R.layout.dialog_firstlaunch);
+
+        final TextView lblInfo = (TextView) dialog.findViewById(R.id.lblFirstLaunchContent);
+        lblInfo.setText(getFirstLaunchInfo());
+
+        Button cmdClose = (Button) dialog.findViewById(R.id.cmdFirstLaunchClose);
+        cmdClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+    }
+
+    public void runUpdateDialog() {
+        final Dialog dialog = new Dialog(GameActivity.this);
+        dialog.setContentView(R.layout.dialog_changelog);
+
+        final TextView lblInfo = (TextView) dialog.findViewById(R.id.lblChangeLogContent);
+        lblInfo.setText(getLatestChanges());
+
+        Button cmdClose = (Button) dialog.findViewById(R.id.cmdChangeLogClose);
+        cmdClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+    }
+
+    private String getFirstLaunchInfo() {
+        String launchInfo = "";
+
+        return launchInfo;
+    }
+
+    private String getLatestChanges() {
+        String changeLog = "";
+
+        return changeLog;
     }
 }

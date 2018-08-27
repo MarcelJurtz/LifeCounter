@@ -1,5 +1,7 @@
 package com.marceljurtz.lifecounter.views.Game;
 
+import android.content.Context;
+
 import com.marceljurtz.lifecounter.contracts.IGameNavDrawerInteraction;
 import com.marceljurtz.lifecounter.contracts.base.IPresenter;
 import com.marceljurtz.lifecounter.enums.ClickTypeEnum;
@@ -8,6 +10,10 @@ import com.marceljurtz.lifecounter.enums.OperatorEnum;
 import com.marceljurtz.lifecounter.enums.PlayerIdEnum;
 
 public interface IGamePresenter extends IPresenter, IGameNavDrawerInteraction {
+
+    // Check if app is launched for the first time or has been updated
+    void checkFirstLaunch();
+
     // Updating players life- and poisonpoints
     void onLifeUpdate(PlayerIdEnum playerIdEnum, ClickTypeEnum clickTypeEnum, OperatorEnum operatorEnum);
     void onPoisonUpdate(PlayerIdEnum playerIdEnum, ClickTypeEnum clickTypeEnum, OperatorEnum operatorEnum);
