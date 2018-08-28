@@ -1303,9 +1303,6 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         final Dialog dialog = new Dialog(GameActivity.this);
         dialog.setContentView(R.layout.dialog_firstlaunch);
 
-        final TextView lblInfo = (TextView) dialog.findViewById(R.id.lblFirstLaunchContent);
-        lblInfo.setText(getFirstLaunchInfo());
-
         Button cmdClose = (Button) dialog.findViewById(R.id.cmdFirstLaunchClose);
         cmdClose.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -1314,15 +1311,18 @@ public class GameActivity extends AppCompatActivity implements IGameView {
             }
         });
 
+        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+        lp.copyFrom(dialog.getWindow().getAttributes());
+        lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+
         dialog.show();
+        dialog.getWindow().setAttributes(lp);
     }
 
     public void runUpdateDialog() {
         final Dialog dialog = new Dialog(GameActivity.this);
         dialog.setContentView(R.layout.dialog_changelog);
-
-        final TextView lblInfo = (TextView) dialog.findViewById(R.id.lblChangeLogContent);
-        lblInfo.setText(getLatestChanges());
 
         Button cmdClose = (Button) dialog.findViewById(R.id.cmdChangeLogClose);
         cmdClose.setOnClickListener(new View.OnClickListener() {
@@ -1332,17 +1332,23 @@ public class GameActivity extends AppCompatActivity implements IGameView {
             }
         });
 
+        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+        lp.copyFrom(dialog.getWindow().getAttributes());
+        lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+
         dialog.show();
+        dialog.getWindow().setAttributes(lp);
     }
 
     private String getFirstLaunchInfo() {
-        String launchInfo = "";
+        String launchInfo = getResources().getString(R.string.changelog);
 
         return launchInfo;
     }
 
     private String getLatestChanges() {
-        String changeLog = "";
+        String changeLog = getResources().getString(R.string.changelog);
 
         return changeLog;
     }

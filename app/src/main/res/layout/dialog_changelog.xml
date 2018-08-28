@@ -9,12 +9,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textStyle="bold"
-        android:text="@string/dialog_firstlaunch_heading" />
+        android:text="@string/dialog_changelog_heading" />
 
     <TextView
         android:id="@+id/lblChangeLogContent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="@string/changelog"/>
 
     <Button
         android:id="@+id/cmdChangeLogClose"

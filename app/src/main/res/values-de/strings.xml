@@ -104,5 +104,25 @@
     <string name="descr_reset">Spiel zurücksetzen</string>
 
     <string name="dialog_firstlaunch_heading">Hey!</string>
-    <string name="dialog_changelog_heading">Neuigkeiten</string>
+    <string name="dialog_changelog_heading">Neu in Version 1.9</string>
+
+    <string name="changelog">
+        - 4 Spieler-Modus\n
+        - Würfel-Funktionalität\n
+        - Counter-Manager\n
+    </string>
+
+    <string name="firstlaunch">
+        Schön, dass du meine App gefunden hast! Mit dem letzten Update hat sich einiges getan, weswegen ich dir hier kurz die Neuigkeiten zeigen möchte.\n
+        \n
+        Wenn du vom linken Bildschirmrand nach rechts ziehst, öffnet sich das Menü. Du findest hier den Zugriff auf die verschiedenen Funktionen und Einstellungen.\n
+        \n
+        Du kannst hier zwischen 2- und 4-Spieler Modus wechseln. Außerdem gibt es nun eine Würfel-Funktion und einen Counter-Manager.
+        Letzterer dient dazu, den Überblick über die +/- X-Marken auf deinen Karten zu behalten.\n
+        \n
+        Wenn du Anregungen oder Verbesserungsvorschläge hast, kannst du mich gerne per Mail kontaktieren: feedback@mjurtz.com.
+        \n
+        \n
+        Danke!
+    </string>
 </resources>

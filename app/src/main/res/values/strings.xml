@@ -104,5 +104,24 @@
     <string name="descr_reset">Reset Game</string>
 
     <string name="dialog_firstlaunch_heading">Hey there!</string>
-    <string name="dialog_changelog_heading">What\'s new?</string>
+    <string name="dialog_changelog_heading">New in Version 1.9</string>
+
+    <string name="changelog">
+        - 4 Player Mode\n
+        - Dice-Functionality\n
+        - Counter-Manager\n
+    </string>
+
+    <string name="firstlaunch">
+        Glad you found my app! With the last update a lot has happened, so I would like to show you the news here.\n
+        \n
+        Dragging from the left edge of the screen to the right opens the menu. Here you find the access to the different functions and settings.\n
+        \n
+        You can switch between 2 and 4 player mode here. There is also a dice function and a counter manager.\n
+        The latter is used to keep track of the +/- X tokens on your cards.\n
+        \n
+        If you have any suggestions or ideas for improvement, you are welcome to contact me by e-mail: feedback@mjurtz.com.\n
+        \n
+        Thank you!
+    </string>
 </resources>
