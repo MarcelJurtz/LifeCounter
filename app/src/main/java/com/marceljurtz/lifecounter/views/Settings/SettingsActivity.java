@@ -7,7 +7,6 @@ import android.content.SharedPreferences;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.app.AlertDialog;
-import android.support.design.widget.NavigationView;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +16,7 @@ import android.widget.ImageButton;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import com.google.android.material.navigation.NavigationView;
 import com.marceljurtz.lifecounter.models.Color;
 import com.marceljurtz.lifecounter.enums.MagicColorEnum;
 import com.marceljurtz.lifecounter.models.PreferenceManager;

@@ -2,16 +2,17 @@ package com.marceljurtz.lifecounter.views.About;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.design.widget.NavigationView;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.webkit.WebView;
 
+import com.google.android.material.navigation.NavigationView;
 import com.marceljurtz.lifecounter.models.PreferenceManager;
 import com.marceljurtz.lifecounter.R;
 
 import java.util.Locale;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class AboutActivity extends AppCompatActivity implements IAboutView {
 

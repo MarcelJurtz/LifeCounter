@@ -9,12 +9,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.res.Configuration;
 import android.graphics.drawable.GradientDrawable;
-import android.support.design.widget.NavigationView;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,6 +19,7 @@ import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.android.material.navigation.NavigationView;
 import com.marceljurtz.lifecounter.enums.ClickTypeEnum;
 import com.marceljurtz.lifecounter.enums.MagicColorEnum;
 import com.marceljurtz.lifecounter.enums.OperatorEnum;
@@ -31,6 +27,11 @@ import com.marceljurtz.lifecounter.models.Player;
 import com.marceljurtz.lifecounter.enums.PlayerIdEnum;
 import com.marceljurtz.lifecounter.models.PreferenceManager;
 import com.marceljurtz.lifecounter.R;
+
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 public class GameActivity extends AppCompatActivity implements IGameView {
 
@@ -117,7 +118,7 @@ public class GameActivity extends AppCompatActivity implements IGameView {
 
     SharedPreferences preferences;
 
-    Toolbar toolbar;
+    Toolbar toolbar; // TODO Dependency Checken (Multiple Choice)
     ActionBarDrawerToggle drawerToggle;
 
     @Override
@@ -825,7 +826,7 @@ public class GameActivity extends AppCompatActivity implements IGameView {
 
     @Override
     public void hideNavigationDrawer() {
-        mainLayout.closeDrawer(Gravity.START);
+        mainLayout.closeDrawer(Gravity.LEFT);
     }
 
     @Override
@@ -1275,7 +1276,7 @@ public class GameActivity extends AppCompatActivity implements IGameView {
 
         // Close drawer
         navigationView.getMenu().findItem(R.id.nav_energy_save_mode).setTitle(string);
-        mainLayout.closeDrawer(Gravity.START);
+        mainLayout.closeDrawer(Gravity.LEFT);
     }
     //endregion
 

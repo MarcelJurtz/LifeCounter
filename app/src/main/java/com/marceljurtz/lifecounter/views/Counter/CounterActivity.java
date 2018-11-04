@@ -8,10 +8,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +22,9 @@ import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
 import com.marceljurtz.lifecounter.models.Color;
 import com.marceljurtz.lifecounter.models.Counter;
 import com.marceljurtz.lifecounter.models.Player;
@@ -36,6 +35,8 @@ import com.marceljurtz.lifecounter.R;
 
 import java.io.InvalidObjectException;
 import java.util.ArrayList;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class CounterActivity extends AppCompatActivity implements ICounterView {
 
@@ -54,7 +55,7 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
     TextView lblCounterHeaderPlayer3;
     TextView lblCounterHeaderPlayer4;
 
-    NavigationView  navigationView;
+    NavigationView navigationView;
 
     public Counter counterToAdd;
     public Counter counterToEdit;
