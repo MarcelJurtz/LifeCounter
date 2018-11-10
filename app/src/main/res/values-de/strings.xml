@@ -125,4 +125,25 @@
         \n
         Danke!
     </string>
+
+    <string name="intro_1_header">MTG LifeCounter</string>
+    <string name="intro_1_description">Hey, danke fürs Downloaden! Ich möchte dich einmal kurz durch die Steuerung der App führen, mit dem Knopf links unten kannst du das überspringen.</string>
+
+    <string name="intro_2_header">Navigation</string>
+    <string name="intro_2_description">Durch eine Bewegung vom linken Rand des Bildschirm nach Rechts öffnest du das Menü.</string>
+
+    <string name="intro_3_header">Einstellungen</string>
+    <string name="intro_3_description">In den Einstellungen kannst du verschiedene Anpassungen wie Farben und Standardwerte selbst definieren.</string>
+
+    <string name="intro_4_header">Spiel</string>
+    <string name="intro_4_description">In der Hauptansicht werden Spiele verwaltet. Du kannst dabei zwischen 2- und 4-Spieler-Modus wechseln. Spielstände werden beim Verlassen der App zwischengespeichert.</string>
+
+    <string name="intro_5_header">Energiesparmodus</string>
+    <string name="intro_5_description">Für AMOLED-Displays steht ein Energiesparmodus bereit, mit dem die Hauptansicht weitestgehend verdunkelt wird.</string>
+
+    <string name="intro_6_header">Würfeln</string>
+    <string name="intro_6_description">Über die Würfel-Funktion steht dir ein 20-seitiger Würfel zur Verfügung.</string>
+
+    <string name="intro_7_header">Zähler-Verwaltung</string>
+    <string name="intro_7_description">Mit der Zähler-Verwaltung behältst du den Stand deiner +1-Counter immer im Blick</string>
 </resources>

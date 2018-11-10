@@ -124,4 +124,25 @@
         \n
         Thank you!
     </string>
+
+    <string name="intro_1_header">MTG LifeCounter</string>
+    <string name="intro_1_description">Hey, thanks for downloading! I\'d like to quickly guide you through the app, which you can skip by clicking the button in the bottom left corner.</string>
+
+    <string name="intro_2_header">Navigation</string>
+    <string name="intro_2_description">By sliding from the left hand side of the screen to the right, you can open the menu.</string>
+
+    <string name="intro_3_header">Settings</string>
+    <string name="intro_3_description">The settings provide a way to customize several things like colors or default values as you like.</string>
+
+    <string name="intro_4_header">Game</string>
+    <string name="intro_4_description">The main view is used to manage games. You can select between 2- and 4-player modes. When closing the app, standings will be saved.</string>
+
+    <string name="intro_5_header">Energy Saving Mode</string>
+    <string name="intro_5_description">If your phone has an AMOLED-Display, you can make use of the power-saving mode which darkens most of the main view.</string>
+
+    <string name="intro_6_header">Dice</string>
+    <string name="intro_6_description">the dice feature gives you the functionality of a 20-sided dice.</string>
+
+    <string name="intro_7_header">Counter Manager</string>
+    <string name="intro_7_description">With the counter management you can keep track of your +1 counters at all times.</string>
 </resources>

@@ -27,6 +27,7 @@ import com.marceljurtz.lifecounter.models.Player;
 import com.marceljurtz.lifecounter.enums.PlayerIdEnum;
 import com.marceljurtz.lifecounter.models.PreferenceManager;
 import com.marceljurtz.lifecounter.R;
+import com.marceljurtz.lifecounter.views.Intro.IntroActivity;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -118,12 +119,15 @@ public class GameActivity extends AppCompatActivity implements IGameView {
 
     SharedPreferences preferences;
 
-    Toolbar toolbar; // TODO Dependency Checken (Multiple Choice)
+    Toolbar toolbar;
     ActionBarDrawerToggle drawerToggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        checkFirstLaunch();
+
 
         // Init SharedPreferences
         preferences = getApplicationContext().getSharedPreferences(PreferenceManager.PREFS, Activity.MODE_PRIVATE);
@@ -275,7 +279,7 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         // Init GamePresenter
         presenter = new GamePresenter(this, preferences);
 
-        presenter.checkFirstLaunch();
+        //presenter.checkFirstLaunch();
 
         //region Button Black
 
@@ -794,6 +798,48 @@ public class GameActivity extends AppCompatActivity implements IGameView {
                 return true;
             }
         });
+    }
+
+    private void checkFirstLaunch() {
+        //  Declare a new thread to do a preference check
+        Thread t = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                //  Initialize SharedPreferences
+                SharedPreferences getPrefs = getApplicationContext().getSharedPreferences(PreferenceManager.PREFS, Activity.MODE_PRIVATE);
+
+                //  Create a new boolean and preference and set it to true
+                boolean isFirstStart = getPrefs.getBoolean("firstStart", true);
+
+                //  If the activity has never started before...
+                if (isFirstStart) {
+
+                    //  Launch app intro
+                    final Intent i = new Intent(GameActivity.this, IntroActivity.class);
+
+                    runOnUiThread(new Runnable() {
+                        @Override public void run() {
+                            startActivity(i);
+                        }
+                    });
+
+                    /*
+
+                    //  Make a new preferences editor
+                    SharedPreferences.Editor e = getPrefs.edit();
+
+                    //  Edit preference to make it false because we don't want this to run again
+                    e.putBoolean("firstStart", false);
+
+                    //  Apply changes
+                    e.apply();
+                    */
+                }
+            }
+        });
+
+        // Start the thread
+        t.start();
     }
 
     @Override
