@@ -16,10 +16,12 @@
     <string name="setting_default_lives">Lifepoints:</string>
     <string name="setting_default_long_click_points">Points on hold (+/-):</string>
     <string name="setting_screen_timeout_disable">Disable screen timeout:</string>
+    <string name="setting_show_intro">Show app-intro:</string>
 
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="ok">OK</string>
+    <string name="go">Go!</string>
     <string name="delete">Delete</string>
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
@@ -126,7 +128,10 @@
     </string>
 
     <string name="intro_1_header">MTG LifeCounter</string>
-    <string name="intro_1_description">Hey, thanks for downloading! I\'d like to quickly guide you through the app, which you can skip by clicking the button in the bottom left corner.</string>
+    <string name="intro_1_description">Hey, thanks for buying pro! I\'d like to quickly guide you through the app, which you can skip by clicking the button in the bottom left corner.</string>
+
+    <string name="lite_intro_1_header">MTG LifeCounter</string>
+    <string name="lite_intro_1_description">Hey, thanks for downloading! I\'d like to quickly guide you through the app, which you can skip by clicking the button in the bottom left corner.</string>
 
     <string name="intro_2_header">Navigation</string>
     <string name="intro_2_description">By sliding from the left hand side of the screen to the right, you can open the menu.</string>
@@ -137,6 +142,9 @@
     <string name="intro_4_header">Game</string>
     <string name="intro_4_description">The main view is used to manage games. You can select between 2- and 4-player modes. When closing the app, standings will be saved.</string>
 
+    <string name="lite_intro_4_header">Game</string>
+    <string name="lite_intro_4_description">The main view is used to manage games. When closing the app, standings will be saved.</string>
+
     <string name="intro_5_header">Energy Saving Mode</string>
     <string name="intro_5_description">If your phone has an AMOLED-Display, you can make use of the power-saving mode which darkens most of the main view.</string>
 
@@ -145,4 +153,10 @@
 
     <string name="intro_7_header">Counter Manager</string>
     <string name="intro_7_description">With the counter management you can keep track of your +1 counters at all times.</string>
+
+    <string name="intro_8_header">About</string>
+    <string name="intro_8_description">That\'s it! If you have any feedback, improvement ideas or questions, I would be happy to hear from you. You can find my contact details in the about menu.</string>
+
+    <string name="intro_pro_header">Go Pro</string>
+    <string name="intro_pro_description">If you like my app, you can download the pro version from PlayStore. To find out more about the advantages of going pro, check out the details in the about menu.</string>
 </resources>

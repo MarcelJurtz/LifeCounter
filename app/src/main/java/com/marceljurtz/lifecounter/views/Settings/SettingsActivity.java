@@ -42,6 +42,7 @@ public class SettingsActivity extends Activity implements ISettingsView {
     Button cmdSelectRed;
     Button cmdSelectWhite;
 
+    Button cmdShowAppIntro;
     Button cmdDiscardChanges;
     Button cmdReset;
 
@@ -145,6 +146,18 @@ public class SettingsActivity extends Activity implements ISettingsView {
             @Override
             public void onClick(View v) {
                 onBackPressed();
+            }
+        });
+
+        //endregion
+
+        //region App Intro
+
+        cmdShowAppIntro = (Button)findViewById(R.id.cmdShowIntro);
+        cmdShowAppIntro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                presenter.onShowAppIntroClick();
             }
         });
 

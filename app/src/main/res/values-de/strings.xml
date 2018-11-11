@@ -16,10 +16,12 @@
     <string name="setting_default_lives">Lebenspunkte:</string>
     <string name="setting_default_long_click_points">Gedrückt halten (+/-):</string>
     <string name="setting_screen_timeout_disable">Bildschirm-timeout deaktivieren:</string>
+    <string name="setting_show_intro">App-Einführung anzeigen:</string>
 
     <string name="yes">Ja</string>
     <string name="no">Nein</string>
     <string name="ok">OK</string>
+    <string name="go">Los!</string>
     <string name="delete">Löschen</string>
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
@@ -127,7 +129,10 @@
     </string>
 
     <string name="intro_1_header">MTG LifeCounter</string>
-    <string name="intro_1_description">Hey, danke fürs Downloaden! Ich möchte dich einmal kurz durch die Steuerung der App führen, mit dem Knopf links unten kannst du das überspringen.</string>
+    <string name="intro_1_description">Hey, danke dass du dir die Pro-Version gekauft hast! Ich möchte dich einmal kurz durch die Steuerung der App führen, mit dem Knopf links unten kannst du das überspringen.</string>
+
+    <string name="lite_intro_1_header">MTG LifeCounter</string>
+    <string name="lite_intro_1_description">Hey, danke fürs Downloaden! Ich möchte dich einmal kurz durch die Steuerung der App führen, mit dem Knopf links unten kannst du das überspringen.</string>
 
     <string name="intro_2_header">Navigation</string>
     <string name="intro_2_description">Durch eine Bewegung vom linken Rand des Bildschirm nach Rechts öffnest du das Menü.</string>
@@ -138,6 +143,9 @@
     <string name="intro_4_header">Spiel</string>
     <string name="intro_4_description">In der Hauptansicht werden Spiele verwaltet. Du kannst dabei zwischen 2- und 4-Spieler-Modus wechseln. Spielstände werden beim Verlassen der App zwischengespeichert.</string>
 
+    <string name="lite_intro_4_header">Spiel</string>
+    <string name="lite_intro_4_description">In der Hauptansicht werden Spiele verwaltet. Spielstände werden beim Verlassen der App zwischengespeichert.</string>
+
     <string name="intro_5_header">Energiesparmodus</string>
     <string name="intro_5_description">Für AMOLED-Displays steht ein Energiesparmodus bereit, mit dem die Hauptansicht weitestgehend verdunkelt wird.</string>
 
@@ -146,4 +154,10 @@
 
     <string name="intro_7_header">Zähler-Verwaltung</string>
     <string name="intro_7_description">Mit der Zähler-Verwaltung behältst du den Stand deiner +1-Counter immer im Blick</string>
+
+    <string name="intro_8_header">Geschafft!</string>
+    <string name="intro_8_description">Das wars auch schon! Wenn du irgendwelche Rückmeldungen, Verbesserungsvorschläge oder Fragen hast, würde ich mich über eine Nachricht freuen. Du findest meine Kontaktdaten im Menüpunkt \"Über\".</string>
+
+    <string name="intro_pro_header">PRO</string>
+    <string name="intro_pro_description">Wenn dir meine App gefällt, kannst du dir im PlayStore auch die Pro-Version herunterladen. Um herauszufinden, welche Vorteile die Pro-Version mit sich bringt, schau dir die Details im Menüpunkt \"Über\" an.</string>
 </resources>

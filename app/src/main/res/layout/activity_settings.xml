@@ -336,6 +336,7 @@
 
             </LinearLayout>
 
+            <!-- Disable Timeout -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -364,6 +365,39 @@
                     android:paddingRight="16dp"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:id="@+id/chkKeepScreenOn" />
+
+            </LinearLayout>
+
+            <!-- Show Intro -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/lKeepScreenOn"
+                android:id="@+id/lShowAppIntro">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/setting_show_intro"
+                    android:id="@+id/lblShowAppIntro" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:paddingEnd="16dp"
+                    android:paddingRight="16dp"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/go"
+                    android:id="@+id/cmdShowIntro" />
 
             </LinearLayout>
         </RelativeLayout>

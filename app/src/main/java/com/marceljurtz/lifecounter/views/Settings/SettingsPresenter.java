@@ -9,6 +9,7 @@ import com.marceljurtz.lifecounter.views.Game.GameActivity;
 import com.marceljurtz.lifecounter.models.Color;
 import com.marceljurtz.lifecounter.enums.MagicColorEnum;
 import com.marceljurtz.lifecounter.models.PreferenceManager;
+import com.marceljurtz.lifecounter.views.Intro.IntroActivity;
 
 public class SettingsPresenter implements ISettingsPresenter {
 
@@ -140,7 +141,11 @@ public class SettingsPresenter implements ISettingsPresenter {
         PreferenceManager.saveScreenTimeoutDisabled(preferences, checked);
     }
 
-
+    @Override
+    public void onShowAppIntroClick() {
+        settingsView.loadActivity(IntroActivity.class);
+    }
+    
     //region Reset Button Click
 
     @Override
