@@ -145,7 +145,7 @@ public class SettingsPresenter implements ISettingsPresenter {
     public void onShowAppIntroClick() {
         settingsView.loadActivity(IntroActivity.class);
     }
-    
+
     //region Reset Button Click
 
     @Override

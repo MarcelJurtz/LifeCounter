@@ -2,6 +2,7 @@ package com.marceljurtz.lifecounter.views.About;
 
 import android.content.SharedPreferences;
 
+import com.marceljurtz.lifecounter.models.AppManager;
 import com.marceljurtz.lifecounter.views.Counter.CounterActivity;
 import com.marceljurtz.lifecounter.views.Dicing.DicingActivity;
 import com.marceljurtz.lifecounter.views.Game.GameActivity;
@@ -24,10 +25,21 @@ public class AboutPresenter implements IAboutPresenter {
 
     @Override
     public void onCreate() {
-        if (languageCode.equals("Deutsch")) {
-            view.loadAboutPage("file:///android_asset/about_de.html");
-        } else {
-            view.loadAboutPage("file:///android_asset/about_en.html");
+        if(AppManager.IsProMode)
+        {
+            if (languageCode.equals("Deutsch")) {
+                view.loadAboutPage("file:///android_asset/about_de.html");
+            } else {
+                view.loadAboutPage("file:///android_asset/about_en.html");
+            }
+        }
+        else
+        {
+            if (languageCode.equals("Deutsch")) {
+                view.loadAboutPage("file:///android_asset/about_lite_de.html");
+            } else {
+                view.loadAboutPage("file:///android_asset/about_lite_en.html");
+            }
         }
     }
 
