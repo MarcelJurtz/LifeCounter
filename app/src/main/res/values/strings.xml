@@ -159,4 +159,42 @@
 
     <string name="intro_pro_header">Go Pro</string>
     <string name="intro_pro_description">If you like my app, you can download the pro version from PlayStore. To find out more about the advantages of going pro, check out the details in the about menu.</string>
+
+
+    <string name="about_lics_header">OpenSource-Licenses</string>
+    <string name="about_lics_content">
+        Medyo / Android About Page\n
+        GitHub: https://github.com/medyo/android-about-page\n
+        MIT-License\n\n
+
+        Pes8 / Android Material Color Picker Dialog\n
+        https://github.com/Pes8/android-material-color-picker-dialog\n
+        MIT-License\n\n
+
+        Paolo Rotolo / AppIntro\n
+        https://github.com/PaoloRotolo/AppIntro\n
+        Apache 2.0 License
+    </string>
+
+    <string name="about_copyright">Copyright Marcel Jurtz 2016 - 2018</string>
+
+    <string name="about_caption">LifeCounter</string>
+    <string name="about_introduction">
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+        sed diam nonumy eirmod tempor invidunt ut labore et dolore
+        magna aliquyam erat, sed diam voluptua. At vero eos et accusam
+        et justo duo dolores et ea rebum. Stet clita kasd gubergren,
+        no sea takimata sanctus est Lorem ipsum dolor sit amet.
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+        sed diam nonumy eirmod tempor invidunt ut labore et dolore
+        magna aliquyam erat, sed diam voluptua. At vero eos et accusam
+        et justo duo dolores et ea rebum. Stet clita kasd gubergren,
+        no sea takimata sanctus est Lorem ipsum dolor sit amet.
+    </string>
+    <string name="about_changelog_header">Changelog</string>
+    <string name="about_changelog_content">
+        01.12.2018\n
+        - General Improvements\n
+        - New Pro-Version\n
+    </string>
 </resources>

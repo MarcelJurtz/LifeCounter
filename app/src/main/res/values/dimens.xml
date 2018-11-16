@@ -33,4 +33,8 @@
     <dimen name="dialog_padding">20dp</dimen>
     <dimen name="dialog_textsize_header">24dp</dimen>
     <dimen name="dialog_textsize_divider">32dp</dimen>
+
+    <dimen name="about_caption_main">36dp</dimen>
+    <dimen name="about_caption_sub">24dp</dimen>
+    <dimen name="about_padding">25dp</dimen>
 </resources>

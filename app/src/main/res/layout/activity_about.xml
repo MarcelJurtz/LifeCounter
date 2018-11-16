@@ -5,16 +5,77 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".views.About.AboutActivity">
-<RelativeLayout
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+<LinearLayout
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="@dimen/about_padding">
+    <!--
     <WebView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/wvAbout">
 
     </WebView>
-</RelativeLayout>
+    -->
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/about_caption"
+        android:textAlignment="center"
+        android:textSize="@dimen/about_caption_main"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/about_introduction"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/about_padding"
+        android:textAlignment="center"
+        android:text="@string/about_changelog_header"
+        android:textSize="@dimen/about_caption_sub"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/about_changelog_content"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/about_padding"
+        android:textAlignment="center"
+        android:text="@string/about_lics_header"
+        android:textSize="@dimen/about_caption_sub"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/about_lics_content"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/about_padding"
+        android:textAlignment="center"
+        android:text="@string/about_copyright"/>
+
+
+</LinearLayout>
+    </ScrollView>
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigationViewAbout"
         android:layout_width="wrap_content"
