@@ -3,6 +3,7 @@ package com.marceljurtz.lifecounter.views.Dicing;
 import android.content.SharedPreferences;
 
 import com.marceljurtz.lifecounter.views.About.AboutActivity;
+import com.marceljurtz.lifecounter.views.Base.Presenter;
 import com.marceljurtz.lifecounter.views.Counter.CounterActivity;
 import com.marceljurtz.lifecounter.views.Game.GameActivity;
 import com.marceljurtz.lifecounter.models.Color;
@@ -13,62 +14,46 @@ import com.marceljurtz.lifecounter.views.Settings.SettingsActivity;
 
 import java.util.Random;
 
-public class DicingPresenter implements IDicingPresenter {
+public class DicingPresenter extends Presenter implements IDicingPresenter {
 
-    private Dice model;
-    private IDicingView view;
-    private SharedPreferences preferences;
-    private Random random;
+    private Dice _dice;
+    private Random _random;
+    private IDicingView _view;
 
     public DicingPresenter(IDicingView view, SharedPreferences preferences) {
-        this.view = view;
-        this.preferences = preferences;
-        this.random = new Random();
+        super(view, preferences);
+        _view = view;
+        this._random = new Random();
     }
 
     //region Activity Lifecycle
 
     @Override
     public void onCreate() {
-        model = new Dice();
-        int num = random.nextInt(4);
-        Color color = new Color(MagicColorEnum.WHITE, preferences);
+        _dice = new Dice();
+        int num = _random.nextInt(4);
+        Color color = new Color(MagicColorEnum.WHITE, _preferences);
         switch(num) {
             case 0:
-                color = new Color(MagicColorEnum.BLUE, preferences);
+                color = new Color(MagicColorEnum.BLUE, _preferences);
                 break;
             case 1:
-                color = new Color(MagicColorEnum.GREEN, preferences);
+                color = new Color(MagicColorEnum.GREEN, _preferences);
                 break;
             case 2:
-                color = new Color(MagicColorEnum.RED, preferences);
+                color = new Color(MagicColorEnum.RED, _preferences);
                 break;
             case 3:
                 break;
         }
-        view.setBackgroundColor(color);
-    }
-
-    @Override
-    public void onPause() {
-
-    }
-
-    @Override
-    public void onResume() {
-
-    }
-
-    @Override
-    public void onDestroy() {
-
+        _view.setBackgroundColor(color);
     }
 
     //endregion
 
     @Override
     public void onScreenTap() {
-        view.setDicingText(model.throwDice()+"");
+        _view.setDicingText(_dice.throwDice()+"");
     }
 
 
@@ -76,29 +61,29 @@ public class DicingPresenter implements IDicingPresenter {
 
     @Override
     public void onMenuEntrySettingsTap() {
-        view.loadActivity(SettingsActivity.class);
+        _view.loadActivity(SettingsActivity.class);
     }
 
     @Override
     public void onMenuEntryAboutTap() {
-        view.loadActivity(AboutActivity.class);
+        _view.loadActivity(AboutActivity.class);
     }
 
     @Override
     public void onMenuEntryTwoPlayerTap() {
-        PreferenceManager.saveDefaultPlayerAmount(preferences, 2);
-        view.loadActivity(GameActivity.class);
+        PreferenceManager.saveDefaultPlayerAmount(_preferences, 2);
+        _view.loadActivity(GameActivity.class);
     }
 
     @Override
     public void onMenuEntryFourPlayerTap() {
-        PreferenceManager.saveDefaultPlayerAmount(preferences, 4);
-        view.loadActivity(GameActivity.class);
+        PreferenceManager.saveDefaultPlayerAmount(_preferences, 4);
+        _view.loadActivity(GameActivity.class);
     }
 
     @Override
     public void onMenuEntryCounterManagerTap() {
-        view.loadActivity(CounterActivity.class);
+        _view.loadActivity(CounterActivity.class);
     }
 
     //endregion

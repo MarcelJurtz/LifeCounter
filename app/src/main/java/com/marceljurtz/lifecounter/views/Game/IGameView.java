@@ -50,8 +50,6 @@ public interface IGameView extends IView {
 
     int getScreenSize();
 
-    String getVersionName();
-
     void runFirstLaunchDialog();
     void runUpdateDialog();
 }

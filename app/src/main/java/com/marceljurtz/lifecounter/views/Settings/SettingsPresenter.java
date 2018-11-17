@@ -3,6 +3,7 @@ package com.marceljurtz.lifecounter.views.Settings;
 import android.content.SharedPreferences;
 
 import com.marceljurtz.lifecounter.views.About.AboutActivity;
+import com.marceljurtz.lifecounter.views.Base.Presenter;
 import com.marceljurtz.lifecounter.views.Counter.CounterActivity;
 import com.marceljurtz.lifecounter.views.Dicing.DicingActivity;
 import com.marceljurtz.lifecounter.views.Game.GameActivity;
@@ -11,7 +12,7 @@ import com.marceljurtz.lifecounter.enums.MagicColorEnum;
 import com.marceljurtz.lifecounter.models.PreferenceManager;
 import com.marceljurtz.lifecounter.views.Intro.IntroActivity;
 
-public class SettingsPresenter implements ISettingsPresenter {
+public class SettingsPresenter extends Presenter implements ISettingsPresenter {
 
     ISettingsView settingsView;
     SharedPreferences preferences;
@@ -26,6 +27,7 @@ public class SettingsPresenter implements ISettingsPresenter {
     private int longClickPoints;
 
     public SettingsPresenter(ISettingsView view, SharedPreferences preferences) {
+        super(view, preferences);
         settingsView = view;
         this.preferences = preferences;
     }
@@ -53,21 +55,6 @@ public class SettingsPresenter implements ISettingsPresenter {
         settingsView.setLongClickPoints(String.format("%02d", longClickPoints));
 
         settingsView.setKeepScreenOnCheckbox(PreferenceManager.getScreenTimeoutDisabled(preferences));
-    }
-
-    @Override
-    public void onPause() {
-
-    }
-
-    @Override
-    public void onResume() {
-
-    }
-
-    @Override
-    public void onDestroy() {
-
     }
 
     //endregion
@@ -166,33 +153,6 @@ public class SettingsPresenter implements ISettingsPresenter {
     @Override
     public void onResetButtonCancel() {
         // Nothing to do here
-    }
-
-    @Override
-    public void onMenuEntryTwoPlayerTap() {
-        PreferenceManager.saveDefaultPlayerAmount(preferences, 2);
-        settingsView.loadActivity(GameActivity.class);
-    }
-
-    @Override
-    public void onMenuEntryFourPlayerTap() {
-        PreferenceManager.saveDefaultPlayerAmount(preferences, 4);
-        settingsView.loadActivity(GameActivity.class);
-    }
-
-    @Override
-    public void onMenuEntryCounterManagerTap() {
-        settingsView.loadActivity(CounterActivity.class);
-    }
-
-    @Override
-    public void onMenuEntryDicingTap() {
-        settingsView.loadActivity(DicingActivity.class);
-    }
-
-    @Override
-    public void onMenuEntryAboutTap() {
-        settingsView.loadActivity(AboutActivity.class);
     }
 
     //endregion

@@ -4,6 +4,7 @@ import android.content.SharedPreferences;
 import android.widget.LinearLayout;
 
 import com.marceljurtz.lifecounter.views.About.AboutActivity;
+import com.marceljurtz.lifecounter.views.Base.Presenter;
 import com.marceljurtz.lifecounter.views.Dicing.DicingActivity;
 import com.marceljurtz.lifecounter.views.Game.GameActivity;
 import com.marceljurtz.lifecounter.models.Color;
@@ -17,71 +18,64 @@ import com.marceljurtz.lifecounter.views.Settings.SettingsActivity;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class CounterPresenter implements ICounterPresenter {
+public class CounterPresenter extends Presenter implements ICounterPresenter {
 
     private ArrayList<Player> players;
-    private ICounterView view;
-    private SharedPreferences preferences;
-    private Random random;
+    private Random _random;
 
     public CounterPresenter(ICounterView view, SharedPreferences preferences, ArrayList<Player> players) {
+        super(view, preferences);
         this.players = players;
-        this.preferences = preferences;
-        this.view = view;
-        random = new Random();
+        _view = view;
+        _random = new Random();
     }
 
     @Override
     public void onCreate() {
-        int num = random.nextInt(4);
-        Color color = new Color(MagicColorEnum.WHITE, preferences);
+        int num = _random.nextInt(4);
+        Color color = new Color(MagicColorEnum.WHITE, _preferences);
         switch(num) {
             case 0:
-                color = new Color(MagicColorEnum.BLUE, preferences);
+                color = new Color(MagicColorEnum.BLUE, _preferences);
                 break;
             case 1:
-                color = new Color(MagicColorEnum.GREEN, preferences);
+                color = new Color(MagicColorEnum.GREEN, _preferences);
                 break;
             case 2:
-                color = new Color(MagicColorEnum.RED, preferences);
+                color = new Color(MagicColorEnum.RED, _preferences);
                 break;
             case 3:
                 break;
         }
-        view.setBackgroundColor(color);
+        ((ICounterView)_view).setBackgroundColor(color);
     }
 
     @Override
     public void onPause() {
-        PreferenceManager.savePlayerCounterData(preferences, players);
+        PreferenceManager.savePlayerCounterData(_preferences, players);
     }
 
     @Override
     public void onResume() {
         // Load items from preferences
-        players = PreferenceManager.loadPlayerCounterData(preferences);
+        players = PreferenceManager.loadPlayerCounterData(_preferences);
 
         // Reload View
-        view.deleteAllCounters();
+        ((ICounterView)_view).deleteAllCounters();
 
         for (Player player : players) {
 
-            view.setPlayerIdentificationText(player.getPlayerIdEnum(), player.getPlayerIdentification());
+            ((ICounterView)_view).setPlayerIdentificationText(player.getPlayerIdEnum(), player.getPlayerIdentification());
 
             for (Counter counter : player.getAllCounters()) {
-                view.addCounter(player.getPlayerIdEnum(), counter);
+                ((ICounterView)_view).addCounter(player.getPlayerIdEnum(), counter);
             }
         }
     }
 
     @Override
-    public void onDestroy() {
-
-    }
-
-    @Override
     public void onFloatingActionButtonTap() {
-        view.loadCounterAddDialog(players);
+        ((ICounterView)_view).loadCounterAddDialog(players);
     }
 
     @Override
@@ -94,7 +88,7 @@ public class CounterPresenter implements ICounterPresenter {
             }
         }
 
-        view.addCounter(playerIdEnum, counter);
+        ((ICounterView)_view).addCounter(playerIdEnum, counter);
     }
 
     @Override
@@ -107,34 +101,7 @@ public class CounterPresenter implements ICounterPresenter {
             }
         }
 
-        view.setPlayerIdentificationText(playerIdEnum, newIdentification);
-    }
-
-    @Override
-    public void onMenuEntryTwoPlayerClick() {
-        PreferenceManager.saveDefaultPlayerAmount(preferences, 2);
-        view.loadActivity(GameActivity.class);
-    }
-
-    @Override
-    public void onMenuEntryFourPlayerClick() {
-        PreferenceManager.saveDefaultPlayerAmount(preferences, 4);
-        view.loadActivity(GameActivity.class);
-    }
-
-    @Override
-    public void onMenuEntryDicingClick() {
-        view.loadActivity(DicingActivity.class);
-    }
-
-    @Override
-    public void onMenuEntrySettingsClick() {
-        view.loadActivity(SettingsActivity.class);
-    }
-
-    @Override
-    public void onMenuEntryAboutClick() {
-        view.loadActivity(AboutActivity.class);
+        ((ICounterView)_view).setPlayerIdentificationText(playerIdEnum, newIdentification);
     }
 
     @Override
@@ -149,12 +116,12 @@ public class CounterPresenter implements ICounterPresenter {
 
     @Override
     public void onPlayerIdentificationTap(PlayerIdEnum playerIdEnum) {
-        view.loadPlayerIdentificationDialog(playerIdEnum, getPlayerIdentification(playerIdEnum));
+        ((ICounterView)_view).loadPlayerIdentificationDialog(playerIdEnum, getPlayerIdentification(playerIdEnum));
     }
 
     @Override
     public void onPlayerIdentificationLongTap(PlayerIdEnum playerIdEnum) {
-        view.loadPlayerDeletionDialog(playerIdEnum);
+        ((ICounterView)_view).loadPlayerDeletionDialog(playerIdEnum);
     }
 
     @Override
@@ -166,7 +133,7 @@ public class CounterPresenter implements ICounterPresenter {
                 break;
             }
         }
-        view.deleteAllCountersForPlayer(playerIdEnum);
+        ((ICounterView)_view).deleteAllCountersForPlayer(playerIdEnum);
     }
 
     @Override
@@ -183,18 +150,18 @@ public class CounterPresenter implements ICounterPresenter {
             }
         }
 
-        view.deleteCounter(counterLayout, deleteParent);
+        ((ICounterView)_view).deleteCounter(counterLayout, deleteParent);
     }
 
     @Override
     public void onCounterTap(LinearLayout counterLayout) {
         String identifier = counterLayout.getTag().toString();
-        view.loadCounterEditDialog(counterLayout, getPlayerByCounterIdentifier(identifier), getCounterByIdentifier(identifier));
+        ((ICounterView)_view).loadCounterEditDialog(counterLayout, getPlayerByCounterIdentifier(identifier), getCounterByIdentifier(identifier));
     }
 
     @Override
     public void onCounterLongTap(LinearLayout counterLayout) {
-        view.loadCounterDeletionDialog(counterLayout);
+        ((ICounterView)_view).loadCounterDeletionDialog(counterLayout);
     }
 
     @Override
@@ -203,19 +170,19 @@ public class CounterPresenter implements ICounterPresenter {
         switch (playerIdEnum) {
             case ONE:
                 players.get(0).updateCounter(newCounter);
-                view.updateCounterView(players.get(0), newCounter);
+                ((ICounterView)_view).updateCounterView(players.get(0), newCounter);
                 break;
             case TWO:
                 players.get(1).updateCounter(newCounter);
-                view.updateCounterView(players.get(1), newCounter);
+                ((ICounterView)_view).updateCounterView(players.get(1), newCounter);
                 break;
             case THREE:
                 players.get(2).updateCounter(newCounter);
-                view.updateCounterView(players.get(2), newCounter);
+                ((ICounterView)_view).updateCounterView(players.get(2), newCounter);
                 break;
             case FOUR:
                 players.get(3).updateCounter(newCounter);
-                view.updateCounterView(players.get(3), newCounter);
+                ((ICounterView)_view).updateCounterView(players.get(3), newCounter);
                 break;
             default:
                 break;

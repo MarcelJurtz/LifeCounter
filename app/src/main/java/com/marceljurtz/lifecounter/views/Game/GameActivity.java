@@ -34,7 +34,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-public class GameActivity extends AppCompatActivity implements IGameView {
+public class GameActivity extends com.marceljurtz.lifecounter.views.Base.View implements IGameView {
 
     private IGamePresenter presenter;
 
@@ -126,11 +126,11 @@ public class GameActivity extends AppCompatActivity implements IGameView {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        checkFirstLaunch();
-
-
         // Init SharedPreferences
         preferences = getApplicationContext().getSharedPreferences(PreferenceManager.PREFS, Activity.MODE_PRIVATE);
+
+        checkFirstLaunch();
+
         playeramount = PreferenceManager.getPlayerAmount(preferences);
 
         if(playeramount == 4) {
@@ -801,68 +801,22 @@ public class GameActivity extends AppCompatActivity implements IGameView {
     }
 
     private void checkFirstLaunch() {
-        //  Declare a new thread to do a preference check
         Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
-                //  Initialize SharedPreferences
-                SharedPreferences getPrefs = getApplicationContext().getSharedPreferences(PreferenceManager.PREFS, Activity.MODE_PRIVATE);
-
-                //  Create a new boolean and preference and set it to true
-                boolean isFirstStart = getPrefs.getBoolean("firstStart", true);
-
-                //  If the activity has never started before...
+                boolean isFirstStart = preferences.getBoolean("firstStart", true);
                 if (isFirstStart) {
-
-                    //  Launch app intro
                     final Intent i = new Intent(GameActivity.this, IntroActivity.class);
-
                     runOnUiThread(new Runnable() {
                         @Override public void run() {
                             startActivity(i);
                         }
                     });
-
-                    /*
-
-                    //  Make a new preferences editor
-                    SharedPreferences.Editor e = getPrefs.edit();
-
-                    //  Edit preference to make it false because we don't want this to run again
-                    e.putBoolean("firstStart", false);
-
-                    //  Apply changes
-                    e.apply();
-                    */
                 }
             }
         });
 
-        // Start the thread
         t.start();
-    }
-
-    @Override
-    public String getVersionName() {
-        try {
-            ComponentName comp = new ComponentName(this, GameActivity.class);
-            PackageInfo pinfo = this.getPackageManager().getPackageInfo(comp.getPackageName(), 0);
-            return "version: " + pinfo.versionName;
-        } catch (android.content.pm.PackageManager.NameNotFoundException e) {
-            return null;
-        }
-    }
-
-    @Override
-    protected void onPause() {
-        presenter.onPause();
-        super.onPause();
-    }
-
-    @Override
-    protected void onResume() {
-        presenter.onResume();
-        super.onResume();
     }
 
     @Override

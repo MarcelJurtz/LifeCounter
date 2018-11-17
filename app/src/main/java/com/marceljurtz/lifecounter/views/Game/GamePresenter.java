@@ -3,6 +3,7 @@ package com.marceljurtz.lifecounter.views.Game;
 import android.content.SharedPreferences;
 
 import com.marceljurtz.lifecounter.views.About.AboutActivity;
+import com.marceljurtz.lifecounter.views.Base.Presenter;
 import com.marceljurtz.lifecounter.views.Counter.CounterActivity;
 import com.marceljurtz.lifecounter.views.Dicing.DicingActivity;
 import com.marceljurtz.lifecounter.enums.ClickTypeEnum;
@@ -15,9 +16,8 @@ import com.marceljurtz.lifecounter.enums.PlayerIdEnum;
 import com.marceljurtz.lifecounter.models.PreferenceManager;
 import com.marceljurtz.lifecounter.views.Settings.SettingsActivity;
 
-public class GamePresenter implements IGamePresenter {
+public class GamePresenter extends Presenter implements IGamePresenter {
 
-    private SharedPreferences preferences;
     private Game game;
     private IGameView view;
 
@@ -38,7 +38,8 @@ public class GamePresenter implements IGamePresenter {
     private boolean hideOtherControlsWhenSettingsDisplayed = false;
 
     public GamePresenter(IGameView view, SharedPreferences preferences) {
-        this.preferences = preferences;
+        super(view, preferences);
+
         this.view = view;
 
         int screenLayout = view.getScreenSize();
@@ -55,18 +56,18 @@ public class GamePresenter implements IGamePresenter {
         if(view.getPlayerAmount() == 4) {
             player3 = new Player(PlayerIdEnum.THREE);
             player4 = new Player(PlayerIdEnum.FOUR);
-            game = new Game(preferences, new Player[]{player1, player2, player3, player4});
+            game = new Game(_preferences, new Player[]{player1, player2, player3, player4});
         } else {
-            game = new Game(preferences, new Player[]{player1, player2});
+            game = new Game(_preferences, new Player[]{player1, player2});
         }
 
 
         // Initiate default colors
-        view.initColorButton(MagicColorEnum.BLACK, PreferenceManager.getCustomizedColorOrDefault(MagicColorEnum.BLACK, preferences));
-        view.initColorButton(MagicColorEnum.BLUE, PreferenceManager.getCustomizedColorOrDefault(MagicColorEnum.BLUE, preferences));
-        view.initColorButton(MagicColorEnum.GREEN, PreferenceManager.getCustomizedColorOrDefault(MagicColorEnum.GREEN, preferences));
-        view.initColorButton(MagicColorEnum.RED, PreferenceManager.getCustomizedColorOrDefault(MagicColorEnum.RED, preferences));
-        view.initColorButton(MagicColorEnum.WHITE, PreferenceManager.getCustomizedColorOrDefault(MagicColorEnum.WHITE, preferences));
+        view.initColorButton(MagicColorEnum.BLACK, PreferenceManager.getCustomizedColorOrDefault(MagicColorEnum.BLACK, _preferences));
+        view.initColorButton(MagicColorEnum.BLUE, PreferenceManager.getCustomizedColorOrDefault(MagicColorEnum.BLUE, _preferences));
+        view.initColorButton(MagicColorEnum.GREEN, PreferenceManager.getCustomizedColorOrDefault(MagicColorEnum.GREEN, _preferences));
+        view.initColorButton(MagicColorEnum.RED, PreferenceManager.getCustomizedColorOrDefault(MagicColorEnum.RED, _preferences));
+        view.initColorButton(MagicColorEnum.WHITE, PreferenceManager.getCustomizedColorOrDefault(MagicColorEnum.WHITE, _preferences));
 
         // Settings, Energy-Saving & Poison
         view.disableSettingsControls(hideOtherControlsWhenSettingsDisplayed, false);
@@ -79,40 +80,21 @@ public class GamePresenter implements IGamePresenter {
     }
 
     @Override
-    public void checkFirstLaunch() {
-        String installedVersionName = view.getVersionName();
-        String storedVersionName = PreferenceManager.getVersionNumber(preferences);
-
-        if(storedVersionName == null || storedVersionName.length() == 0) {
-            view.runFirstLaunchDialog();
-        } else if(storedVersionName != installedVersionName) {
-            view.runUpdateDialog();
-        }
-
-        PreferenceManager.setVersionNumber(preferences, installedVersionName);
-    }
-
-    @Override
-    public void onCreate() {
-
-    }
-
-    @Override
     public void onPause() {
-        game.saveGameState(preferences);
+        game.saveGameState(_preferences);
     }
 
     @Override
     public void onResume() {
 
         if(view.getPlayerAmount() == 4) {
-            game.loadGameState(preferences, 4);
+            game.loadGameState(_preferences, 4);
         } else {
-            game.loadGameState(preferences, 2);
+            game.loadGameState(_preferences, 2);
         }
 
         for(Player player : game.getPlayers()) {
-            player.setColor(new Color(player.getColorOrDefault().getBasecolor(), PreferenceManager.getCustomizedColorOrDefault(player.getColorOrDefault().getBasecolor(), preferences)));
+            player.setColor(new Color(player.getColorOrDefault().getBasecolor(), PreferenceManager.getCustomizedColorOrDefault(player.getColorOrDefault().getBasecolor(), _preferences)));
             view.setLifepoints(player.getPlayerIdEnum(), String.format("%02d",player.getLifePoints()));
             view.setPoisonpoints(player.getPlayerIdEnum(), String.format("%02d", player.getPoisonPoints()));
             view.setLayoutColor(player.getPlayerIdEnum(), player.getColorOrDefault().getIntValue());
@@ -128,34 +110,19 @@ public class GamePresenter implements IGamePresenter {
 
         powerSaveEnabled = false;
 
-        view.initColorButton(MagicColorEnum.BLACK, PreferenceManager.getCustomizedColorOrDefault(MagicColorEnum.BLACK, preferences));
-        view.initColorButton(MagicColorEnum.BLUE, PreferenceManager.getCustomizedColorOrDefault(MagicColorEnum.BLUE, preferences));
-        view.initColorButton(MagicColorEnum.GREEN, PreferenceManager.getCustomizedColorOrDefault(MagicColorEnum.GREEN, preferences));
-        view.initColorButton(MagicColorEnum.RED, PreferenceManager.getCustomizedColorOrDefault(MagicColorEnum.RED, preferences));
-        view.initColorButton(MagicColorEnum.WHITE, PreferenceManager.getCustomizedColorOrDefault(MagicColorEnum.WHITE, preferences));
+        view.initColorButton(MagicColorEnum.BLACK, PreferenceManager.getCustomizedColorOrDefault(MagicColorEnum.BLACK, _preferences));
+        view.initColorButton(MagicColorEnum.BLUE, PreferenceManager.getCustomizedColorOrDefault(MagicColorEnum.BLUE, _preferences));
+        view.initColorButton(MagicColorEnum.GREEN, PreferenceManager.getCustomizedColorOrDefault(MagicColorEnum.GREEN, _preferences));
+        view.initColorButton(MagicColorEnum.RED, PreferenceManager.getCustomizedColorOrDefault(MagicColorEnum.RED, _preferences));
+        view.initColorButton(MagicColorEnum.WHITE, PreferenceManager.getCustomizedColorOrDefault(MagicColorEnum.WHITE, _preferences));
 
-        if(PreferenceManager.getScreenTimeoutDisabled(preferences)) {
+        if(PreferenceManager.getScreenTimeoutDisabled(_preferences)) {
             view.disableScreenTimeout();
         } else {
             view.enableScreenTimeout();
         }
 
         view.hideNavigationDrawer();
-    }
-
-    @Override
-    public void onDestroy() {
-
-    }
-
-    public void togglePowerSavingMode() {
-        powerSaveEnabled = !powerSaveEnabled;
-        if(powerSaveEnabled) {
-            view.enableEnergySaving(PreferenceManager.powerSave, PreferenceManager.powerSaveTextcolor);
-        } else {
-            view.disableEnergySaving(PreferenceManager.getCustomizedColorOrDefault(MagicColorEnum.BLACK, preferences), PreferenceManager.regularTextcolor);
-        }
-        view.setDrawerTextPowerSaving(!powerSaveEnabled);
     }
 
     @Override
@@ -181,25 +148,25 @@ public class GamePresenter implements IGamePresenter {
         if(clickTypeEnum.equals(ClickTypeEnum.SHORT)) {
 
             // Disable PowerSaveMode if enabled
-            if(powerSaveEnabled) togglePowerSavingMode();
+            if(powerSaveEnabled) onMenuEntryEnergySaveTap();
 
             Color newColor;
 
             switch (color) {
                 case BLUE:
-                    newColor = new Color(MagicColorEnum.BLUE, PreferenceManager.getCustomizedColorOrDefault(MagicColorEnum.BLUE, preferences));
+                    newColor = new Color(MagicColorEnum.BLUE, PreferenceManager.getCustomizedColorOrDefault(MagicColorEnum.BLUE, _preferences));
                     break;
                 case GREEN:
-                    newColor = new Color(MagicColorEnum.GREEN, PreferenceManager.getCustomizedColorOrDefault(MagicColorEnum.GREEN, preferences));
+                    newColor = new Color(MagicColorEnum.GREEN, PreferenceManager.getCustomizedColorOrDefault(MagicColorEnum.GREEN, _preferences));
                     break;
                 case RED:
-                    newColor = new Color(MagicColorEnum.RED, PreferenceManager.getCustomizedColorOrDefault(MagicColorEnum.RED, preferences));
+                    newColor = new Color(MagicColorEnum.RED, PreferenceManager.getCustomizedColorOrDefault(MagicColorEnum.RED, _preferences));
                     break;
                 case WHITE:
-                    newColor = new Color(MagicColorEnum.WHITE, PreferenceManager.getCustomizedColorOrDefault(MagicColorEnum.WHITE, preferences));
+                    newColor = new Color(MagicColorEnum.WHITE, PreferenceManager.getCustomizedColorOrDefault(MagicColorEnum.WHITE, _preferences));
                     break;
                 default:
-                    newColor = new Color(MagicColorEnum.BLACK, PreferenceManager.getCustomizedColorOrDefault(MagicColorEnum.BLACK, preferences));
+                    newColor = new Color(MagicColorEnum.BLACK, PreferenceManager.getCustomizedColorOrDefault(MagicColorEnum.BLACK, _preferences));
                     break;
             }
 
@@ -225,7 +192,7 @@ public class GamePresenter implements IGamePresenter {
 
             view.setLayoutColor(playerIdEnum, newColor.getIntValue());
         } else if(clickTypeEnum.equals(ClickTypeEnum.LONG) && color.equals(MagicColorEnum.BLACK)) {
-            togglePowerSavingMode();
+            onMenuEntryEnergySaveTap();
         }
     }
 
@@ -262,8 +229,8 @@ public class GamePresenter implements IGamePresenter {
 
     @Override
     public void onResetButtonClick() {
-        player1.resetPoints(preferences);
-        player2.resetPoints(preferences);
+        player1.resetPoints(_preferences);
+        player2.resetPoints(_preferences);
 
         settingsVisible = false;
         poisonVisible = false;
@@ -279,8 +246,8 @@ public class GamePresenter implements IGamePresenter {
         view.setPoisonpoints(PlayerIdEnum.TWO, String.format("%02d",player2.getPoisonPoints()));
 
         if(view.getPlayerAmount() == 4) {
-            player3.resetPoints(preferences);
-            player4.resetPoints(preferences);
+            player3.resetPoints(_preferences);
+            player4.resetPoints(_preferences);
 
             view.setLifepoints(PlayerIdEnum.THREE, String.format("%02d",player3.getLifePoints()));
             view.setLifepoints(PlayerIdEnum.FOUR, String.format("%02d",player4.getLifePoints()));
@@ -289,44 +256,4 @@ public class GamePresenter implements IGamePresenter {
             view.setPoisonpoints(PlayerIdEnum.FOUR, String.format("%02d",player4.getPoisonPoints()));
         }
     }
-
-    //region NavDrawer Handling
-    @Override
-    public void onMenuEntryTogglePlayerTap() {
-        if(view.getPlayerAmount() == 4) {
-            // Load 2 Player View
-            PreferenceManager.saveDefaultPlayerAmount(preferences, 2);
-        } else if(view.getPlayerAmount() == 2) {
-            // Load 4 Player View
-            PreferenceManager.saveDefaultPlayerAmount(preferences, 4);
-        }
-        view.hideNavigationDrawer();
-        view.restartActivity();
-    }
-
-    @Override
-    public void onMenuEntryDicingTap() {
-        view.loadActivity(DicingActivity.class);
-    }
-
-    @Override
-    public void onMenuEntryEnergySaveTap() {
-        togglePowerSavingMode();
-    }
-
-    @Override
-    public void onMenuEntrySettingsTap() {
-        onSettingsButtonClick(ClickTypeEnum.LONG);
-    }
-
-    @Override
-    public void onMenuEntryAboutTap() {
-        view.loadActivity(AboutActivity.class);
-    }
-
-    @Override
-    public void onMenuEntryCounterManagerTap() {
-        view.loadActivity(CounterActivity.class);
-    }
-    //endregion
 }

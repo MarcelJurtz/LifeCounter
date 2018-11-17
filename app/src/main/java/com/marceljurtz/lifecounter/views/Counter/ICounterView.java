@@ -15,8 +15,6 @@ public interface ICounterView extends IView {
     void setPlayerIdentificationText(PlayerIdEnum playerIdEnum, String headerText);
     void addCounter(PlayerIdEnum playerIdEnum, Counter counter);
 
-    void loadActivity(Class c);
-
     void deleteCounter(LinearLayout counterLayout, boolean deleteParent);
     void deleteAllCounters();
     void deleteAllCountersForPlayer(PlayerIdEnum playerIdEnum);

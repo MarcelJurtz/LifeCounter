@@ -15,15 +15,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/about_padding">
-    <!--
-    <WebView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/wvAbout">
-
-    </WebView>
-    -->
-
 
     <TextView
         android:layout_width="match_parent"

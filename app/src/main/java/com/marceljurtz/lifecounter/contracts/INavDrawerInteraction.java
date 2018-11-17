@@ -1,10 +1,12 @@
 package com.marceljurtz.lifecounter.contracts;
 
-// Interface for dicing navigation drawer
-public interface  IDicingNavDrawerInteraction {
+public interface INavDrawerInteraction {
     void onMenuEntryTwoPlayerTap();
     void onMenuEntryFourPlayerTap();
+    void onMenuEntryDicingTap();
     void onMenuEntryCounterManagerTap();
     void onMenuEntrySettingsTap();
     void onMenuEntryAboutTap();
+    void onMenuEntryEnergySaveTap();
+    void onMenuEntryTogglePlayerTap();
 }

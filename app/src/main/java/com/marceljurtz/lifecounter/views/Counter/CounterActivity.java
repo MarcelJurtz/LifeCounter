@@ -38,9 +38,7 @@ import java.util.ArrayList;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class CounterActivity extends AppCompatActivity implements ICounterView {
-
-    private CounterPresenter presenter;
+public class CounterActivity extends com.marceljurtz.lifecounter.views.Base.View implements ICounterView {
 
     ArrayList<Player> players;
 
@@ -98,19 +96,19 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
         players.add(player3);
         players.add(player4);
 
-        presenter = new CounterPresenter(this, preferences, players);
+        _presenter = new CounterPresenter(this, preferences, players);
 
         lblCounterHeaderPlayer1 = (TextView) findViewById(R.id.lblCountersPlayer1);
         lblCounterHeaderPlayer1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.onPlayerIdentificationTap(player1.getPlayerIdEnum());
+                ((ICounterPresenter)_presenter).onPlayerIdentificationTap(player1.getPlayerIdEnum());
             }
         });
         lblCounterHeaderPlayer1.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                presenter.onPlayerIdentificationLongTap(player1.getPlayerIdEnum());
+                ((ICounterPresenter)_presenter).onPlayerIdentificationLongTap(player1.getPlayerIdEnum());
                 return true;
             }
         });
@@ -119,13 +117,13 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
         lblCounterHeaderPlayer2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.onPlayerIdentificationTap(player2.getPlayerIdEnum());
+                ((ICounterPresenter)_presenter).onPlayerIdentificationTap(player2.getPlayerIdEnum());
             }
         });
         lblCounterHeaderPlayer2.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                presenter.onPlayerIdentificationLongTap(player2.getPlayerIdEnum());
+                ((ICounterPresenter)_presenter).onPlayerIdentificationLongTap(player2.getPlayerIdEnum());
                 return true;
             }
         });
@@ -134,13 +132,13 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
         lblCounterHeaderPlayer3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.onPlayerIdentificationTap(player3.getPlayerIdEnum());
+                ((ICounterPresenter)_presenter).onPlayerIdentificationTap(player3.getPlayerIdEnum());
             }
         });
         lblCounterHeaderPlayer3.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                presenter.onPlayerIdentificationLongTap(player3.getPlayerIdEnum());
+                ((ICounterPresenter)_presenter).onPlayerIdentificationLongTap(player3.getPlayerIdEnum());
                 return true;
             }
         });
@@ -149,13 +147,13 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
         lblCounterHeaderPlayer4.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    presenter.onPlayerIdentificationTap(player4.getPlayerIdEnum());
+                    ((ICounterPresenter)_presenter).onPlayerIdentificationTap(player4.getPlayerIdEnum());
             }
         });
         lblCounterHeaderPlayer4.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                presenter.onPlayerIdentificationLongTap(player4.getPlayerIdEnum());
+                ((ICounterPresenter)_presenter).onPlayerIdentificationLongTap(player4.getPlayerIdEnum());
                 return true;
             }
         });
@@ -163,13 +161,13 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
         adapter = new ArrayAdapter<Player>(getApplicationContext(), R.layout.spinner_item);
         adapter.setDropDownViewResource(R.layout.spinner_item);
 
-        presenter.onCreate();
+        _presenter.onCreate();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                presenter.onFloatingActionButtonTap();
+                ((ICounterPresenter)_presenter).onFloatingActionButtonTap();
             }
         });
 
@@ -180,19 +178,22 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
                 int id = item.getItemId();
                 switch(id) {
                     case R.id.nav_game_2players:
-                        presenter.onMenuEntryTwoPlayerClick();
+                        _presenter.onMenuEntryTwoPlayerTap();
                         break;
                     case R.id.nav_game_4players:
-                        presenter.onMenuEntryFourPlayerClick();
+                        _presenter.onMenuEntryFourPlayerTap();
                         break;
                     case R.id.nav_countermanager:
-                        presenter.onMenuEntryDicingClick();
+                        _presenter.onMenuEntryCounterManagerTap();
                         break;
                     case R.id.nav_settings:
-                        presenter.onMenuEntrySettingsClick();
+                        _presenter.onMenuEntrySettingsTap();
+                        break;
+                    case R.id.nav_dicing:
+                        _presenter.onMenuEntryDicingTap();
                         break;
                     case R.id.nav_about:
-                        presenter.onMenuEntryAboutClick();
+                        _presenter.onMenuEntryAboutTap();
                         break;
                     default:
                         break;
@@ -200,24 +201,6 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
                 return true;
             }
         });
-    }
-
-    @Override
-    protected void onDestroy() {
-        presenter.onDestroy();
-        super.onDestroy();
-    }
-
-    @Override
-    protected void onPause() {
-        presenter.onPause();
-        super.onPause();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        presenter.onResume();
     }
 
     @Override
@@ -291,7 +274,7 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
                 dialog.dismiss();
 
                 if (counterToAdd != null) {
-                    presenter.addCounter(((Player) spPlayers.getSelectedItem()).getPlayerIdEnum(), counterToAdd);
+                    ((ICounterPresenter)_presenter).addCounter(((Player) spPlayers.getSelectedItem()).getPlayerIdEnum(), counterToAdd);
                 }
             }
         });
@@ -358,14 +341,14 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
         wrapper.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.onCounterTap(wrapper);
+                ((ICounterPresenter)_presenter).onCounterTap(wrapper);
             }
         });
 
         wrapper.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                presenter.onCounterLongTap(wrapper);
+                ((ICounterPresenter)_presenter).onCounterLongTap(wrapper);
                 return true;
             }
         });
@@ -410,7 +393,7 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
                 dialog.dismiss();
 
                 if (newDescription != null && newDescription.length() > 0) {
-                    presenter.onPlayerIdentificationChangeConfirmed(playerIdEnum, newDescription);
+                    ((ICounterPresenter)_presenter).onPlayerIdentificationChangeConfirmed(playerIdEnum, newDescription);
                 }
             }
         });
@@ -447,7 +430,7 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
                 .setMessage(getResources().getString(R.string.dialog_countermanager_delete_message))
                 .setPositiveButton(getResources().getString(R.string.yes), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
-                        presenter.onCounterDeletionConfirmed(wrapperLayout);
+                        ((ICounterPresenter)_presenter).onCounterDeletionConfirmed(wrapperLayout);
                     }
                 })
                 .setNegativeButton(getResources().getString(R.string.no), null).show();
@@ -460,7 +443,7 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
                 .setMessage(getResources().getString(R.string.dialog_countermanager_delete_multiple_message))
                 .setPositiveButton(getResources().getString(R.string.yes), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
-                        presenter.onPlayerDeletionConfirmed(playerIdEnum);
+                        ((ICounterPresenter)_presenter).onPlayerDeletionConfirmed(playerIdEnum);
                     }
                 })
                 .setNegativeButton(getResources().getString(R.string.no), null).show();
@@ -510,13 +493,6 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
 
         viewsToRemove.clear();
         layout.setVisibility(View.GONE);
-    }
-
-    @Override
-    public void loadActivity(Class c) {
-        Intent intent = new Intent(getApplicationContext(), c);
-        finish();
-        startActivity(intent);
     }
 
     @Override
@@ -607,7 +583,7 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
                 dialog.dismiss();
 
                 if (counterToEdit != null) {
-                    presenter.onCounterEditCompleted(((Player) spPlayers.getSelectedItem()).getPlayerIdEnum(), identifier, counterToEdit);
+                    ((ICounterPresenter)_presenter).onCounterEditCompleted(((Player) spPlayers.getSelectedItem()).getPlayerIdEnum(), identifier, counterToEdit);
                 }
             }
         });
@@ -617,7 +593,7 @@ public class CounterActivity extends AppCompatActivity implements ICounterView {
             @Override
             public void onClick(View view) {
                 dialog.dismiss();
-                presenter.onCounterLongTap(counterLayout);
+                ((ICounterPresenter)_presenter).onCounterLongTap(counterLayout);
             }
         });
 
