@@ -23,7 +23,7 @@ import com.marceljurtz.lifecounter.models.PreferenceManager;
 import com.marceljurtz.lifecounter.R;
 import com.pes.androidmaterialcolorpickerdialog.ColorPicker;
 
-public class SettingsActivity extends Activity implements ISettingsView {
+public class SettingsActivity extends com.marceljurtz.lifecounter.views.Base.View implements ISettingsView {
 
     //region View declarations
 
@@ -166,8 +166,10 @@ public class SettingsActivity extends Activity implements ISettingsView {
         //region Menu
 
         navigationView = (NavigationView)findViewById(R.id.navigationViewSettings);
-        navigationView.getMenu().findItem(R.id.nav_settings).setVisible(false);
-        navigationView.getMenu().findItem(R.id.nav_energy_save_mode).setVisible(false);
+
+        disableMenuItem(navigationView, R.id.nav_energy_save_mode);
+        disableMenuItem(navigationView, R.id.nav_settings);
+
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {

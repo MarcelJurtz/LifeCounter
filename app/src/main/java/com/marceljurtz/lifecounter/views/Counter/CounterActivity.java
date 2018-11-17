@@ -172,6 +172,10 @@ public class CounterActivity extends com.marceljurtz.lifecounter.views.Base.View
         });
 
         navigationView = (NavigationView)findViewById(R.id.navigationViewCountermanager);
+
+        disableMenuItem(navigationView, R.id.nav_energy_save_mode);
+        disableMenuItem(navigationView, R.id.nav_countermanager);
+
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {

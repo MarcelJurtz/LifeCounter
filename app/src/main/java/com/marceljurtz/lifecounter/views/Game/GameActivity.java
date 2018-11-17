@@ -229,7 +229,7 @@ public class GameActivity extends com.marceljurtz.lifecounter.views.Base.View im
             lblVersionInfo = (TextView)findViewById(R.id.lblVersionInfo);
             */
             navigationView = (NavigationView) findViewById(R.id.navigationView4players);
-            navigationView.getMenu().findItem(R.id.nav_game_4players).setVisible(false);
+            disableMenuItem(navigationView, R.id.nav_game_4players);
 
         } else {
             layoutPlayer1 = (RelativeLayout) findViewById(R.id.rl2Player1);
@@ -273,7 +273,7 @@ public class GameActivity extends com.marceljurtz.lifecounter.views.Base.View im
             */
 
             navigationView = (NavigationView) findViewById(R.id.navigationView2players);
-            navigationView.getMenu().findItem(R.id.nav_game_2players).setVisible(false);
+            disableMenuItem(navigationView, R.id.nav_game_2players);
         }
 
         // Init GamePresenter
