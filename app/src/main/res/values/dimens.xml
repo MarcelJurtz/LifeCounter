@@ -36,5 +36,8 @@
 
     <dimen name="about_caption_main">36dp</dimen>
     <dimen name="about_caption_sub">24dp</dimen>
+    <dimen name="about_caption_subsub">18dp</dimen>
     <dimen name="about_padding">25dp</dimen>
+    <dimen name="about_padding_hyperlink">10dp</dimen>
+
 </resources>

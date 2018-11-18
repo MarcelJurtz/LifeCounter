@@ -20,6 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/about_caption"
+        android:paddingBottom="@dimen/about_padding"
         android:textAlignment="center"
         android:textSize="@dimen/about_caption_main"
         android:textStyle="bold"/>
@@ -27,8 +28,51 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/about_introduction"/>
+        android:text="@string/about_introduction" />
 
+    <TextView
+        android:id="@+id/lblContactMail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/contact_mail"
+        android:textColor="@color/hyperlink"
+        android:paddingTop="@dimen/about_padding_hyperlink"
+        android:paddingBottom="@dimen/about_padding_hyperlink"/>
+
+    <TextView
+        android:id="@+id/lblContactTwitter"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/contact_twitter"
+        android:textColor="@color/hyperlink"
+        android:paddingBottom="@dimen/about_padding_hyperlink" />
+
+    <!-- PRO MODE -->
+    <TextView
+        android:id="@+id/lblProCaption"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/about_padding"
+        android:textAlignment="center"
+        android:text="@string/about_pro_header"
+        android:textSize="@dimen/about_caption_sub"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/lblProContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/about_pro_content"/>
+
+    <TextView
+        android:id="@+id/lblProDownload"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/about_padding_hyperlink"
+        android:textColor="@color/hyperlink"
+        android:text="@string/about_pro_download"/>
+
+    <!-- CHANGELOG -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -38,11 +82,21 @@
         android:textSize="@dimen/about_caption_sub"
         android:textStyle="bold"/>
 
+    <!-- V2.0 - 01.12.2018 -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/about_changelog_content"/>
+        android:textSize="@dimen/about_caption_subsub"
+        android:padding="@dimen/about_text_padding"
+        android:text="@string/about_changelog_v2_header"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/about_padding_hyperlink"
+        android:text="@string/about_changelog_v2_content"/>
+
+    <!-- OPEN SOURCE LICENSES -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -52,15 +106,40 @@
         android:textSize="@dimen/about_caption_sub"
         android:textStyle="bold"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/about_lics_content"/>
-
+    <!-- PES8 / MaterialColorPicker-->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="@dimen/about_padding"
+        android:text="@string/about_lic_colorpicker_caption"
+        android:textSize="@dimen/about_caption_subsub" />
+
+    <TextView
+        android:id="@+id/lblLicColorPicker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/about_lic_colorpicker_link"
+        android:textColor="@color/hyperlink"
+        android:paddingBottom="@dimen/about_padding_hyperlink"/>
+
+    <!-- PaoloRotolo / AppIntro-->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/about_lic_appintro_caption"
+        android:textSize="@dimen/about_caption_subsub" />
+
+    <TextView
+        android:id="@+id/lblLicAppIntro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/about_lic_appintro_link"
+        android:textColor="@color/hyperlink"/>
+
+    <!-- Copyright -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/about_padding"
         android:textAlignment="center"
         android:text="@string/about_copyright"/>
 

@@ -15,4 +15,5 @@
     <color name="mtg_white">#FFFCD6</color>
     <color name="dicing_foreground">#161618</color>
     <color name="dicing_background">#FFFCD6</color>
+    <color name="hyperlink">#0000CC</color>
 </resources>

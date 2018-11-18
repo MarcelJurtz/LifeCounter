@@ -38,6 +38,17 @@ public class GameActivity extends com.marceljurtz.lifecounter.views.Base.View im
 
     private IGamePresenter presenter;
 
+    int playeramount;
+
+    Player player1;
+    Player player2;
+    Player player3;
+    Player player4;
+
+    SharedPreferences preferences;
+
+    //region Controls
+
     DrawerLayout mainLayout;
     RelativeLayout layoutPlayer1;
     RelativeLayout layoutPlayer2;
@@ -110,23 +121,15 @@ public class GameActivity extends com.marceljurtz.lifecounter.views.Base.View im
 
     NavigationView  navigationView;
 
-    int playeramount;
-
-    Player player1;
-    Player player2;
-    Player player3;
-    Player player4;
-
-    SharedPreferences preferences;
-
     Toolbar toolbar;
     ActionBarDrawerToggle drawerToggle;
+
+    //endregion Controls
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Init SharedPreferences
         preferences = getApplicationContext().getSharedPreferences(PreferenceManager.PREFS, Activity.MODE_PRIVATE);
 
         checkFirstLaunch();
@@ -139,20 +142,6 @@ public class GameActivity extends com.marceljurtz.lifecounter.views.Base.View im
             setContentView(R.layout.activity_main_2player);
         }
 
-        mainLayout = (DrawerLayout)findViewById(R.id.mainLayout);
-
-
-        toolbar = (Toolbar) findViewById(R.id.tbMain);
-        setSupportActionBar(toolbar);
-
-        // DEBUG ONLY
-        //getSupportActionBar().hide();
-
-        //drawerToggle = new ActionBarDrawerToggle(GameActivity.this, mainLayout, R.string.drawer_open, R.string.drawer_close);
-        //mainLayout.setDrawerListener(drawerToggle);
-
-
-        // Players
         player1 = new Player(PlayerIdEnum.ONE);
         player2 = new Player(PlayerIdEnum.TWO);
         if(playeramount == 4) {
@@ -160,7 +149,523 @@ public class GameActivity extends com.marceljurtz.lifecounter.views.Base.View im
             player4 = new Player(PlayerIdEnum.FOUR);
         }
 
-        //playeramount = 4;
+        initControls();
+
+        if(playeramount == 4) {
+            disableMenuItem(navigationView, R.id.nav_game_4players);
+        } else {
+            disableMenuItem(navigationView, R.id.nav_game_2players);
+        }
+
+        presenter = new GamePresenter(this, preferences);
+    }
+
+    private void checkFirstLaunch() {
+        Thread t = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                boolean isFirstStart = preferences.getBoolean("firstStart", true);
+                if (isFirstStart) {
+                    final Intent i = new Intent(GameActivity.this, IntroActivity.class);
+                    runOnUiThread(new Runnable() {
+                        @Override public void run() {
+                            startActivity(i);
+                        }
+                    });
+                }
+            }
+        });
+
+        t.start();
+    }
+
+    @Override
+    public void restartActivity() {
+        recreate();
+    }
+
+    @Override
+    public void hideNavigationDrawer() {
+        mainLayout.closeDrawer(Gravity.LEFT);
+    }
+
+    @Override
+    public void initColorButton(MagicColorEnum colorLocation, int color) {
+
+        Button buttonPlayer1;
+        Button buttonPlayer2;
+        Button buttonPlayer3;
+        Button buttonPlayer4;
+
+        switch(colorLocation) {
+            case BLACK:
+                buttonPlayer1 = cmdBlackPlayer1;
+                buttonPlayer2 = cmdBlackPlayer2;
+                buttonPlayer3 = cmdBlackPlayer3;
+                buttonPlayer4 = cmdBlackPlayer4;
+                break;
+            case BLUE:
+                buttonPlayer1 = cmdBluePlayer1;
+                buttonPlayer2 = cmdBluePlayer2;
+                buttonPlayer3 = cmdBluePlayer3;
+                buttonPlayer4 = cmdBluePlayer4;
+                break;
+            case GREEN:
+                buttonPlayer1 = cmdGreenPlayer1;
+                buttonPlayer2 = cmdGreenPlayer2;
+                buttonPlayer3 = cmdGreenPlayer3;
+                buttonPlayer4 = cmdGreenPlayer4;
+                break;
+            case RED:
+                buttonPlayer1 = cmdRedPlayer1;
+                buttonPlayer2 = cmdRedPlayer2;
+                buttonPlayer3 = cmdRedPlayer3;
+                buttonPlayer4 = cmdRedPlayer4;
+                break;
+            case WHITE:
+                buttonPlayer1 = cmdWhitePlayer1;
+                buttonPlayer2 = cmdWhitePlayer2;
+                buttonPlayer3 = cmdWhitePlayer3;
+                buttonPlayer4 = cmdWhitePlayer4;
+                break;
+            default:
+                buttonPlayer1 = null;
+                buttonPlayer2 = null;
+                buttonPlayer3 = null;
+                buttonPlayer4 = null;
+        }
+        if(buttonPlayer1 != null && buttonPlayer2 != null) {
+            ((GradientDrawable)buttonPlayer1.getBackground()).setColor(color);
+            ((GradientDrawable)buttonPlayer2.getBackground()).setColor(color);
+            if(playeramount == 4) {
+                ((GradientDrawable)buttonPlayer3.getBackground()).setColor(color);
+                ((GradientDrawable)buttonPlayer4.getBackground()).setColor(color);
+            }
+        }
+    }
+
+
+
+    @Override
+    public void loadActivity(Class c) {
+        Intent intent = new Intent(getApplicationContext(), c);
+        startActivity(intent);
+    }
+
+    @Override
+    public void setLayoutColor(PlayerIdEnum playerIdEnum, int color) {
+        if(playerIdEnum.equals(PlayerIdEnum.ONE)) {
+            layoutPlayer1.setBackgroundColor(color);
+        } else if(playerIdEnum.equals(PlayerIdEnum.TWO)) {
+            layoutPlayer2.setBackgroundColor(color);
+        } else if(playerIdEnum.equals(PlayerIdEnum.THREE)) {
+            layoutPlayer3.setBackgroundColor(color);
+        } else if(playerIdEnum.equals(PlayerIdEnum.FOUR)) {
+            layoutPlayer4.setBackgroundColor(color);
+        }
+    }
+
+    //region Toggle Poison Controls
+    @Override
+    public void enablePoisonControls(boolean rearrangeLifepoints) {
+        txtPoisonCountPlayer1.setVisibility(View.VISIBLE);
+        txtPoisonCountPlayer2.setVisibility(View.VISIBLE);
+
+        cmdPlusPoisonPlayer1.setVisibility(View.VISIBLE);
+        cmdPlusPoisonPlayer2.setVisibility(View.VISIBLE);
+
+        cmdMinusPoisonPlayer1.setVisibility(View.VISIBLE);
+        cmdMinusPoisonPlayer2.setVisibility(View.VISIBLE);
+
+        if(playeramount == 4) {
+            txtPoisonCountPlayer3.setVisibility(View.VISIBLE);
+            txtPoisonCountPlayer4.setVisibility(View.VISIBLE);
+
+            cmdPlusPoisonPlayer3.setVisibility(View.VISIBLE);
+            cmdPlusPoisonPlayer4.setVisibility(View.VISIBLE);
+
+            cmdMinusPoisonPlayer3.setVisibility(View.VISIBLE);
+            cmdMinusPoisonPlayer4.setVisibility(View.VISIBLE);
+        }
+
+        if(rearrangeLifepoints) {
+            RelativeLayout.LayoutParams paramsLeft = (RelativeLayout.LayoutParams)txtLifeCountPlayer1.getLayoutParams();
+            paramsLeft.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+            paramsLeft.addRule(RelativeLayout.ALIGN_PARENT_END);
+
+            RelativeLayout.LayoutParams paramsRight = (RelativeLayout.LayoutParams)txtLifeCountPlayer2.getLayoutParams();
+            paramsRight.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
+            paramsRight.addRule(RelativeLayout.ALIGN_PARENT_START);
+
+            txtLifeCountPlayer1.setLayoutParams(paramsLeft);
+            txtLifeCountPlayer2.setLayoutParams(paramsRight);
+
+            if(playeramount == 4) {
+                txtLifeCountPlayer3.setLayoutParams(paramsLeft);
+                txtLifeCountPlayer4.setLayoutParams(paramsRight);
+            }
+        }
+    }
+
+    @Override
+    public void poisonButtonEnable() {
+        cmdTogglePoison.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.icon_poison));
+    }
+
+    @Override
+    public void disablePoisonControls(boolean rearrangeLifepoints) {
+        txtPoisonCountPlayer1.setVisibility(View.INVISIBLE);
+        txtPoisonCountPlayer2.setVisibility(View.INVISIBLE);
+
+        cmdPlusPoisonPlayer1.setVisibility(View.INVISIBLE);
+        cmdPlusPoisonPlayer2.setVisibility(View.INVISIBLE);
+
+        cmdMinusPoisonPlayer1.setVisibility(View.INVISIBLE);
+        cmdMinusPoisonPlayer2.setVisibility(View.INVISIBLE);
+
+        if(playeramount == 4) {
+            txtPoisonCountPlayer3.setVisibility(View.INVISIBLE);
+            txtPoisonCountPlayer4.setVisibility(View.INVISIBLE);
+
+            cmdPlusPoisonPlayer3.setVisibility(View.INVISIBLE);
+            cmdPlusPoisonPlayer4.setVisibility(View.INVISIBLE);
+
+            cmdMinusPoisonPlayer3.setVisibility(View.INVISIBLE);
+            cmdMinusPoisonPlayer4.setVisibility(View.INVISIBLE);
+        }
+
+        if(rearrangeLifepoints) {
+            RelativeLayout.LayoutParams paramsLeft = (RelativeLayout.LayoutParams)txtLifeCountPlayer1.getLayoutParams();
+            paramsLeft.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, 0);
+            paramsLeft.addRule(RelativeLayout.ALIGN_PARENT_END, 0);
+
+            RelativeLayout.LayoutParams paramsRight = (RelativeLayout.LayoutParams)txtLifeCountPlayer2.getLayoutParams();
+            paramsRight.addRule(RelativeLayout.ALIGN_PARENT_LEFT, 0);
+            paramsRight.addRule(RelativeLayout.ALIGN_PARENT_START, 0);
+
+            txtLifeCountPlayer1.setLayoutParams(paramsLeft);
+            txtLifeCountPlayer2.setLayoutParams(paramsRight);
+
+            if(playeramount == 4) {
+                txtLifeCountPlayer3.setLayoutParams(paramsLeft);
+                txtLifeCountPlayer4.setLayoutParams(paramsRight);
+            }
+        }
+    }
+
+    @Override
+    public void poisonButtonDisable(){
+        cmdTogglePoison.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.icon_poison_disabled));
+    }
+    //endregion
+
+    //region Toggle Settings Controls
+    @Override
+    public void enableSettingsControls(boolean hideLifecountControls, boolean hidePoisonControls) {
+        cmdBlackPlayer1.setVisibility(View.VISIBLE);
+        cmdBlackPlayer2.setVisibility(View.VISIBLE);
+
+        cmdBluePlayer1.setVisibility(View.VISIBLE);
+        cmdBluePlayer2.setVisibility(View.VISIBLE);
+
+        cmdGreenPlayer1.setVisibility(View.VISIBLE);
+        cmdGreenPlayer2.setVisibility(View.VISIBLE);
+
+        cmdRedPlayer1.setVisibility(View.VISIBLE);
+        cmdRedPlayer2.setVisibility(View.VISIBLE);
+
+        cmdWhitePlayer1.setVisibility(View.VISIBLE);
+        cmdWhitePlayer2.setVisibility(View.VISIBLE);
+
+        if(playeramount == 4) {
+            cmdBlackPlayer3.setVisibility(View.VISIBLE);
+            cmdBlackPlayer4.setVisibility(View.VISIBLE);
+
+            cmdBluePlayer3.setVisibility(View.VISIBLE);
+            cmdBluePlayer4.setVisibility(View.VISIBLE);
+
+            cmdGreenPlayer3.setVisibility(View.VISIBLE);
+            cmdGreenPlayer4.setVisibility(View.VISIBLE);
+
+            cmdRedPlayer3.setVisibility(View.VISIBLE);
+            cmdRedPlayer4.setVisibility(View.VISIBLE);
+
+            cmdWhitePlayer3.setVisibility(View.VISIBLE);
+            cmdWhitePlayer4.setVisibility(View.VISIBLE);
+        }
+
+        if(hideLifecountControls) {
+            txtLifeCountPlayer1.setVisibility(View.INVISIBLE);
+            txtLifeCountPlayer2.setVisibility(View.INVISIBLE);
+
+            cmdPlusPlayer1.setVisibility(View.INVISIBLE);
+            cmdPlusPlayer2.setVisibility(View.INVISIBLE);
+
+            cmdMinusPlayer1.setVisibility(View.INVISIBLE);
+            cmdMinusPlayer2.setVisibility(View.INVISIBLE);
+
+            if(playeramount == 4) {
+                txtLifeCountPlayer3.setVisibility(View.INVISIBLE);
+                txtLifeCountPlayer4.setVisibility(View.INVISIBLE);
+
+                cmdPlusPlayer3.setVisibility(View.INVISIBLE);
+                cmdPlusPlayer4.setVisibility(View.INVISIBLE);
+
+                cmdMinusPlayer3.setVisibility(View.INVISIBLE);
+                cmdMinusPlayer4.setVisibility(View.INVISIBLE);
+            }
+        }
+
+        if(hidePoisonControls) {
+
+            cmdPlusPoisonPlayer1.setVisibility(View.INVISIBLE);
+            cmdMinusPoisonPlayer1.setVisibility(View.INVISIBLE);
+            txtPoisonCountPlayer1.setVisibility(View.INVISIBLE);
+
+            cmdPlusPoisonPlayer2.setVisibility(View.INVISIBLE);
+            cmdMinusPoisonPlayer2.setVisibility(View.INVISIBLE);
+            txtPoisonCountPlayer2.setVisibility(View.INVISIBLE);
+
+            if(playeramount == 4) {
+                cmdPlusPoisonPlayer3.setVisibility(View.INVISIBLE);
+                cmdMinusPoisonPlayer3.setVisibility(View.INVISIBLE);
+                txtPoisonCountPlayer3.setVisibility(View.INVISIBLE);
+
+                cmdPlusPoisonPlayer4.setVisibility(View.INVISIBLE);
+                cmdMinusPoisonPlayer4.setVisibility(View.INVISIBLE);
+                txtPoisonCountPlayer4.setVisibility(View.INVISIBLE);
+            }
+        }
+    }
+
+    @Override
+    public void settingsButtonEnable() {
+        cmdToggleColorSettings.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.icon_settings));
+    }
+
+    @Override
+    public void disableSettingsControls(boolean showLifecountControls, boolean showPoisonControls) {
+        cmdBlackPlayer1.setVisibility(View.INVISIBLE);
+        cmdBlackPlayer2.setVisibility(View.INVISIBLE);
+
+        cmdBluePlayer1.setVisibility(View.INVISIBLE);
+        cmdBluePlayer2.setVisibility(View.INVISIBLE);
+
+        cmdGreenPlayer1.setVisibility(View.INVISIBLE);
+        cmdGreenPlayer2.setVisibility(View.INVISIBLE);
+
+        cmdRedPlayer1.setVisibility(View.INVISIBLE);
+        cmdRedPlayer2.setVisibility(View.INVISIBLE);
+
+        cmdWhitePlayer1.setVisibility(View.INVISIBLE);
+        cmdWhitePlayer2.setVisibility(View.INVISIBLE);
+
+        if(playeramount == 4) {
+            cmdBlackPlayer3.setVisibility(View.INVISIBLE);
+            cmdBlackPlayer4.setVisibility(View.INVISIBLE);
+
+            cmdBluePlayer3.setVisibility(View.INVISIBLE);
+            cmdBluePlayer4.setVisibility(View.INVISIBLE);
+
+            cmdGreenPlayer3.setVisibility(View.INVISIBLE);
+            cmdGreenPlayer4.setVisibility(View.INVISIBLE);
+
+            cmdRedPlayer3.setVisibility(View.INVISIBLE);
+            cmdRedPlayer4.setVisibility(View.INVISIBLE);
+
+            cmdWhitePlayer3.setVisibility(View.INVISIBLE);
+            cmdWhitePlayer4.setVisibility(View.INVISIBLE);
+        }
+
+        if(showLifecountControls) {
+            txtLifeCountPlayer1.setVisibility(View.VISIBLE);
+            txtLifeCountPlayer2.setVisibility(View.VISIBLE);
+
+            cmdPlusPlayer1.setVisibility(View.VISIBLE);
+            cmdPlusPlayer2.setVisibility(View.VISIBLE);
+
+            cmdMinusPlayer1.setVisibility(View.VISIBLE);
+            cmdMinusPlayer2.setVisibility(View.VISIBLE);
+
+            if(playeramount == 4) {
+                txtLifeCountPlayer3.setVisibility(View.VISIBLE);
+                txtLifeCountPlayer4.setVisibility(View.VISIBLE);
+
+                cmdPlusPlayer3.setVisibility(View.VISIBLE);
+                cmdPlusPlayer4.setVisibility(View.VISIBLE);
+
+                cmdMinusPlayer3.setVisibility(View.VISIBLE);
+                cmdMinusPlayer4.setVisibility(View.VISIBLE);
+            }
+        }
+
+        if(showPoisonControls) {
+
+            cmdPlusPoisonPlayer1.setVisibility(View.VISIBLE);
+            cmdMinusPoisonPlayer1.setVisibility(View.VISIBLE);
+            txtPoisonCountPlayer1.setVisibility(View.VISIBLE);
+
+            cmdPlusPoisonPlayer2.setVisibility(View.VISIBLE);
+            cmdMinusPoisonPlayer2.setVisibility(View.VISIBLE);
+            txtPoisonCountPlayer2.setVisibility(View.VISIBLE);
+
+            if(playeramount == 4) {
+                cmdPlusPoisonPlayer3.setVisibility(View.VISIBLE);
+                cmdMinusPoisonPlayer3.setVisibility(View.VISIBLE);
+                txtPoisonCountPlayer3.setVisibility(View.VISIBLE);
+
+                cmdPlusPoisonPlayer4.setVisibility(View.VISIBLE);
+                cmdMinusPoisonPlayer4.setVisibility(View.VISIBLE);
+                txtPoisonCountPlayer4.setVisibility(View.VISIBLE);
+            }
+        }
+    }
+
+    @Override
+    public void settingsButtonDisable() {
+        cmdToggleColorSettings.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.icon_settings_disabled));
+    }
+
+    //endregion
+
+    //region Toggle Energy Saving Option
+    @Override
+    public void enableEnergySaving(int powerSaveColor, int powerSaveTextColor) {
+        layoutPlayer1.setBackgroundColor(powerSaveColor);
+        layoutPlayer2.setBackgroundColor(powerSaveColor);
+        if(playeramount == 4) {
+            layoutPlayer3.setBackgroundColor(powerSaveColor);
+            layoutPlayer4.setBackgroundColor(powerSaveColor);
+        }
+
+        txtLifeCountPlayer1.setTextColor(powerSaveTextColor);
+        txtLifeCountPlayer2.setTextColor(powerSaveTextColor);
+        if(playeramount == 4) {
+            txtLifeCountPlayer3.setTextColor(powerSaveTextColor);
+            txtLifeCountPlayer4.setTextColor(powerSaveTextColor);
+        }
+
+        txtPoisonCountPlayer1.setTextColor(powerSaveTextColor);
+        txtPoisonCountPlayer2.setTextColor(powerSaveTextColor);
+        if(playeramount == 4) {
+            txtPoisonCountPlayer3.setTextColor(powerSaveTextColor);
+            txtPoisonCountPlayer4.setTextColor(powerSaveTextColor);
+        }
+    }
+
+    @Override
+    public void disableEnergySaving(int defaultBlack, int regularTextColor) {
+        layoutPlayer1.setBackgroundColor(defaultBlack);
+        layoutPlayer2.setBackgroundColor(defaultBlack);
+        if(playeramount == 4) {
+            layoutPlayer3.setBackgroundColor(defaultBlack);
+            layoutPlayer4.setBackgroundColor(defaultBlack);
+        }
+
+        txtLifeCountPlayer1.setTextColor(regularTextColor);
+        txtLifeCountPlayer2.setTextColor(regularTextColor);
+        if(playeramount == 4) {
+            txtLifeCountPlayer3.setTextColor(regularTextColor);
+            txtLifeCountPlayer4.setTextColor(regularTextColor);
+        }
+
+        txtPoisonCountPlayer1.setTextColor(regularTextColor);
+        txtPoisonCountPlayer2.setTextColor(regularTextColor);
+        if(playeramount == 4) {
+            txtPoisonCountPlayer3.setTextColor(regularTextColor);
+            txtPoisonCountPlayer4.setTextColor(regularTextColor);
+        }
+    }
+    //endregion
+
+
+
+    //region Set Life- and Poisonpoints
+    @Override
+    public void setLifepoints(PlayerIdEnum id, String points) {
+        if(id.equals(PlayerIdEnum.ONE)) {
+            txtLifeCountPlayer1.setText(points);
+        } else if(id.equals(PlayerIdEnum.TWO)) {
+            txtLifeCountPlayer2.setText(points);
+        } else if(id.equals(PlayerIdEnum.THREE)) {
+            txtLifeCountPlayer3.setText(points);
+        } else if(id.equals(PlayerIdEnum.FOUR)) {
+            txtLifeCountPlayer4.setText(points);
+        }
+    }
+
+        @Override
+        public void setPoisonpoints(PlayerIdEnum id, String points) {
+            if(id.equals(PlayerIdEnum.ONE)) {
+                txtPoisonCountPlayer1.setText(points);
+            } else if(id.equals(PlayerIdEnum.TWO)) {
+                txtPoisonCountPlayer2.setText(points);
+            } else if(id.equals(PlayerIdEnum.THREE)) {
+                txtPoisonCountPlayer3.setText(points);
+            } else if(id.equals(PlayerIdEnum.FOUR)) {
+                txtPoisonCountPlayer4.setText(points);
+            }
+        }
+        //endregion
+
+        //region Overrides for NavigationDrawer
+/*
+        @Override
+        protected void onPostCreate(@Nullable Bundle savedInstanceState) {
+            super.onPostCreate(savedInstanceState);
+            drawerToggle.syncState();
+        }
+
+        @Override
+        public void onConfigurationChanged(Configuration newConfig) {
+            super.onConfigurationChanged(newConfig);
+            drawerToggle.onConfigurationChanged(new Configuration());
+        }
+*/
+        //endregion
+
+    //region Navigation Drawer
+    @Override
+    public void setDrawerTextPowerSaving(boolean shouldBeEnabled) {
+        String string = "";
+        if(shouldBeEnabled) {
+            string = getResources().getString(R.string.cmdPowerSaveEnable);
+        } else {
+            string = getResources().getString(R.string.cmdPowerSaveDisable);
+        }
+
+        // Close drawer
+        navigationView.getMenu().findItem(R.id.nav_energy_save_mode).setTitle(string);
+        mainLayout.closeDrawer(Gravity.LEFT);
+    }
+    //endregion
+
+    @Override
+    public int getPlayerAmount() {
+        return playeramount;
+    }
+
+    @Override
+    public void disableScreenTimeout() {
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+    }
+
+    @Override
+    public void enableScreenTimeout() {
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+    }
+
+    @Override
+    public int getScreenSize() {
+        return getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK;
+    }
+
+    private void initControls() {
+
+        mainLayout = (DrawerLayout)findViewById(R.id.mainLayout);
+
+        toolbar = (Toolbar) findViewById(R.id.tbMain);
+        setSupportActionBar(toolbar);
 
         if (playeramount == 4) {
             layoutPlayer1 = (RelativeLayout) findViewById(R.id.rl4Player1);
@@ -229,8 +734,6 @@ public class GameActivity extends com.marceljurtz.lifecounter.views.Base.View im
             lblVersionInfo = (TextView)findViewById(R.id.lblVersionInfo);
             */
             navigationView = (NavigationView) findViewById(R.id.navigationView4players);
-            disableMenuItem(navigationView, R.id.nav_game_4players);
-
         } else {
             layoutPlayer1 = (RelativeLayout) findViewById(R.id.rl2Player1);
             layoutPlayer2 = (RelativeLayout) findViewById(R.id.rl2Player2);
@@ -273,13 +776,7 @@ public class GameActivity extends com.marceljurtz.lifecounter.views.Base.View im
             */
 
             navigationView = (NavigationView) findViewById(R.id.navigationView2players);
-            disableMenuItem(navigationView, R.id.nav_game_2players);
         }
-
-        // Init GamePresenter
-        presenter = new GamePresenter(this, preferences);
-
-        //presenter.checkFirstLaunch();
 
         //region Button Black
 
@@ -798,559 +1295,5 @@ public class GameActivity extends com.marceljurtz.lifecounter.views.Base.View im
                 return true;
             }
         });
-    }
-
-    private void checkFirstLaunch() {
-        Thread t = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                boolean isFirstStart = preferences.getBoolean("firstStart", true);
-                if (isFirstStart) {
-                    final Intent i = new Intent(GameActivity.this, IntroActivity.class);
-                    runOnUiThread(new Runnable() {
-                        @Override public void run() {
-                            startActivity(i);
-                        }
-                    });
-                }
-            }
-        });
-
-        t.start();
-    }
-
-    @Override
-    public void restartActivity() {
-        recreate();
-    }
-
-    @Override
-    public void hideNavigationDrawer() {
-        mainLayout.closeDrawer(Gravity.LEFT);
-    }
-
-    @Override
-    public void initColorButton(MagicColorEnum colorLocation, int color) {
-
-        Button buttonPlayer1;
-        Button buttonPlayer2;
-        Button buttonPlayer3;
-        Button buttonPlayer4;
-
-        switch(colorLocation) {
-            case BLACK:
-                buttonPlayer1 = cmdBlackPlayer1;
-                buttonPlayer2 = cmdBlackPlayer2;
-                buttonPlayer3 = cmdBlackPlayer3;
-                buttonPlayer4 = cmdBlackPlayer4;
-                break;
-            case BLUE:
-                buttonPlayer1 = cmdBluePlayer1;
-                buttonPlayer2 = cmdBluePlayer2;
-                buttonPlayer3 = cmdBluePlayer3;
-                buttonPlayer4 = cmdBluePlayer4;
-                break;
-            case GREEN:
-                buttonPlayer1 = cmdGreenPlayer1;
-                buttonPlayer2 = cmdGreenPlayer2;
-                buttonPlayer3 = cmdGreenPlayer3;
-                buttonPlayer4 = cmdGreenPlayer4;
-                break;
-            case RED:
-                buttonPlayer1 = cmdRedPlayer1;
-                buttonPlayer2 = cmdRedPlayer2;
-                buttonPlayer3 = cmdRedPlayer3;
-                buttonPlayer4 = cmdRedPlayer4;
-                break;
-            case WHITE:
-                buttonPlayer1 = cmdWhitePlayer1;
-                buttonPlayer2 = cmdWhitePlayer2;
-                buttonPlayer3 = cmdWhitePlayer3;
-                buttonPlayer4 = cmdWhitePlayer4;
-                break;
-            default:
-                buttonPlayer1 = null;
-                buttonPlayer2 = null;
-                buttonPlayer3 = null;
-                buttonPlayer4 = null;
-        }
-        if(buttonPlayer1 != null && buttonPlayer2 != null) {
-            ((GradientDrawable)buttonPlayer1.getBackground()).setColor(color);
-            ((GradientDrawable)buttonPlayer2.getBackground()).setColor(color);
-            if(playeramount == 4) {
-                ((GradientDrawable)buttonPlayer3.getBackground()).setColor(color);
-                ((GradientDrawable)buttonPlayer4.getBackground()).setColor(color);
-            }
-        }
-    }
-
-
-
-    @Override
-    public void loadActivity(Class c) {
-        Intent intent = new Intent(getApplicationContext(), c);
-        startActivity(intent);
-    }
-
-    @Override
-    public void setLayoutColor(PlayerIdEnum playerIdEnum, int color) {
-        if(playerIdEnum.equals(PlayerIdEnum.ONE)) {
-            layoutPlayer1.setBackgroundColor(color);
-        } else if(playerIdEnum.equals(PlayerIdEnum.TWO)) {
-            layoutPlayer2.setBackgroundColor(color);
-        } else if(playerIdEnum.equals(PlayerIdEnum.THREE)) {
-            layoutPlayer3.setBackgroundColor(color);
-        } else if(playerIdEnum.equals(PlayerIdEnum.FOUR)) {
-            layoutPlayer4.setBackgroundColor(color);
-        }
-    }
-
-    //region Toggle Poison Controls
-    @Override
-    public void enablePoisonControls(boolean rearrangeLifepoints) {
-        txtPoisonCountPlayer1.setVisibility(View.VISIBLE);
-        txtPoisonCountPlayer2.setVisibility(View.VISIBLE);
-
-        cmdPlusPoisonPlayer1.setVisibility(View.VISIBLE);
-        cmdPlusPoisonPlayer2.setVisibility(View.VISIBLE);
-
-        cmdMinusPoisonPlayer1.setVisibility(View.VISIBLE);
-        cmdMinusPoisonPlayer2.setVisibility(View.VISIBLE);
-
-        if(playeramount == 4) {
-            txtPoisonCountPlayer3.setVisibility(View.VISIBLE);
-            txtPoisonCountPlayer4.setVisibility(View.VISIBLE);
-
-            cmdPlusPoisonPlayer3.setVisibility(View.VISIBLE);
-            cmdPlusPoisonPlayer4.setVisibility(View.VISIBLE);
-
-            cmdMinusPoisonPlayer3.setVisibility(View.VISIBLE);
-            cmdMinusPoisonPlayer4.setVisibility(View.VISIBLE);
-        }
-
-        if(rearrangeLifepoints) {
-            RelativeLayout.LayoutParams paramsLeft = (RelativeLayout.LayoutParams)txtLifeCountPlayer1.getLayoutParams();
-            paramsLeft.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
-            paramsLeft.addRule(RelativeLayout.ALIGN_PARENT_END);
-
-            RelativeLayout.LayoutParams paramsRight = (RelativeLayout.LayoutParams)txtLifeCountPlayer2.getLayoutParams();
-            paramsRight.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
-            paramsRight.addRule(RelativeLayout.ALIGN_PARENT_START);
-
-            txtLifeCountPlayer1.setLayoutParams(paramsLeft);
-            txtLifeCountPlayer2.setLayoutParams(paramsRight);
-
-            if(playeramount == 4) {
-                txtLifeCountPlayer3.setLayoutParams(paramsLeft);
-                txtLifeCountPlayer4.setLayoutParams(paramsRight);
-            }
-        }
-    }
-
-    @Override
-    public void poisonButtonEnable() {
-        cmdTogglePoison.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.icon_poison));
-    }
-
-    @Override
-    public void disablePoisonControls(boolean rearrangeLifepoints) {
-        txtPoisonCountPlayer1.setVisibility(View.INVISIBLE);
-        txtPoisonCountPlayer2.setVisibility(View.INVISIBLE);
-
-        cmdPlusPoisonPlayer1.setVisibility(View.INVISIBLE);
-        cmdPlusPoisonPlayer2.setVisibility(View.INVISIBLE);
-
-        cmdMinusPoisonPlayer1.setVisibility(View.INVISIBLE);
-        cmdMinusPoisonPlayer2.setVisibility(View.INVISIBLE);
-
-        if(playeramount == 4) {
-            txtPoisonCountPlayer3.setVisibility(View.INVISIBLE);
-            txtPoisonCountPlayer4.setVisibility(View.INVISIBLE);
-
-            cmdPlusPoisonPlayer3.setVisibility(View.INVISIBLE);
-            cmdPlusPoisonPlayer4.setVisibility(View.INVISIBLE);
-
-            cmdMinusPoisonPlayer3.setVisibility(View.INVISIBLE);
-            cmdMinusPoisonPlayer4.setVisibility(View.INVISIBLE);
-        }
-
-        if(rearrangeLifepoints) {
-            RelativeLayout.LayoutParams paramsLeft = (RelativeLayout.LayoutParams)txtLifeCountPlayer1.getLayoutParams();
-            paramsLeft.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, 0);
-            paramsLeft.addRule(RelativeLayout.ALIGN_PARENT_END, 0);
-
-            RelativeLayout.LayoutParams paramsRight = (RelativeLayout.LayoutParams)txtLifeCountPlayer2.getLayoutParams();
-            paramsRight.addRule(RelativeLayout.ALIGN_PARENT_LEFT, 0);
-            paramsRight.addRule(RelativeLayout.ALIGN_PARENT_START, 0);
-
-            txtLifeCountPlayer1.setLayoutParams(paramsLeft);
-            txtLifeCountPlayer2.setLayoutParams(paramsRight);
-
-            if(playeramount == 4) {
-                txtLifeCountPlayer3.setLayoutParams(paramsLeft);
-                txtLifeCountPlayer4.setLayoutParams(paramsRight);
-            }
-        }
-    }
-
-    @Override
-    public void poisonButtonDisable(){
-        cmdTogglePoison.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.icon_poison_disabled));
-    }
-    //endregion
-
-    //region Toggle Settings Controls
-    @Override
-    public void enableSettingsControls(boolean hideLifecountControls, boolean hidePoisonControls) {
-        cmdBlackPlayer1.setVisibility(View.VISIBLE);
-        cmdBlackPlayer2.setVisibility(View.VISIBLE);
-
-        cmdBluePlayer1.setVisibility(View.VISIBLE);
-        cmdBluePlayer2.setVisibility(View.VISIBLE);
-
-        cmdGreenPlayer1.setVisibility(View.VISIBLE);
-        cmdGreenPlayer2.setVisibility(View.VISIBLE);
-
-        cmdRedPlayer1.setVisibility(View.VISIBLE);
-        cmdRedPlayer2.setVisibility(View.VISIBLE);
-
-        cmdWhitePlayer1.setVisibility(View.VISIBLE);
-        cmdWhitePlayer2.setVisibility(View.VISIBLE);
-
-        if(playeramount == 4) {
-            cmdBlackPlayer3.setVisibility(View.VISIBLE);
-            cmdBlackPlayer4.setVisibility(View.VISIBLE);
-
-            cmdBluePlayer3.setVisibility(View.VISIBLE);
-            cmdBluePlayer4.setVisibility(View.VISIBLE);
-
-            cmdGreenPlayer3.setVisibility(View.VISIBLE);
-            cmdGreenPlayer4.setVisibility(View.VISIBLE);
-
-            cmdRedPlayer3.setVisibility(View.VISIBLE);
-            cmdRedPlayer4.setVisibility(View.VISIBLE);
-
-            cmdWhitePlayer3.setVisibility(View.VISIBLE);
-            cmdWhitePlayer4.setVisibility(View.VISIBLE);
-        }
-
-        if(hideLifecountControls) {
-            txtLifeCountPlayer1.setVisibility(View.INVISIBLE);
-            txtLifeCountPlayer2.setVisibility(View.INVISIBLE);
-
-            cmdPlusPlayer1.setVisibility(View.INVISIBLE);
-            cmdPlusPlayer2.setVisibility(View.INVISIBLE);
-
-            cmdMinusPlayer1.setVisibility(View.INVISIBLE);
-            cmdMinusPlayer2.setVisibility(View.INVISIBLE);
-
-            if(playeramount == 4) {
-                txtLifeCountPlayer3.setVisibility(View.INVISIBLE);
-                txtLifeCountPlayer4.setVisibility(View.INVISIBLE);
-
-                cmdPlusPlayer3.setVisibility(View.INVISIBLE);
-                cmdPlusPlayer4.setVisibility(View.INVISIBLE);
-
-                cmdMinusPlayer3.setVisibility(View.INVISIBLE);
-                cmdMinusPlayer4.setVisibility(View.INVISIBLE);
-            }
-        }
-
-        if(hidePoisonControls) {
-
-            cmdPlusPoisonPlayer1.setVisibility(View.INVISIBLE);
-            cmdMinusPoisonPlayer1.setVisibility(View.INVISIBLE);
-            txtPoisonCountPlayer1.setVisibility(View.INVISIBLE);
-
-            cmdPlusPoisonPlayer2.setVisibility(View.INVISIBLE);
-            cmdMinusPoisonPlayer2.setVisibility(View.INVISIBLE);
-            txtPoisonCountPlayer2.setVisibility(View.INVISIBLE);
-
-            if(playeramount == 4) {
-                cmdPlusPoisonPlayer3.setVisibility(View.INVISIBLE);
-                cmdMinusPoisonPlayer3.setVisibility(View.INVISIBLE);
-                txtPoisonCountPlayer3.setVisibility(View.INVISIBLE);
-
-                cmdPlusPoisonPlayer4.setVisibility(View.INVISIBLE);
-                cmdMinusPoisonPlayer4.setVisibility(View.INVISIBLE);
-                txtPoisonCountPlayer4.setVisibility(View.INVISIBLE);
-            }
-        }
-    }
-
-    @Override
-    public void settingsButtonEnable() {
-        cmdToggleColorSettings.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.icon_settings));
-    }
-
-    @Override
-    public void disableSettingsControls(boolean showLifecountControls, boolean showPoisonControls) {
-        cmdBlackPlayer1.setVisibility(View.INVISIBLE);
-        cmdBlackPlayer2.setVisibility(View.INVISIBLE);
-
-        cmdBluePlayer1.setVisibility(View.INVISIBLE);
-        cmdBluePlayer2.setVisibility(View.INVISIBLE);
-
-        cmdGreenPlayer1.setVisibility(View.INVISIBLE);
-        cmdGreenPlayer2.setVisibility(View.INVISIBLE);
-
-        cmdRedPlayer1.setVisibility(View.INVISIBLE);
-        cmdRedPlayer2.setVisibility(View.INVISIBLE);
-
-        cmdWhitePlayer1.setVisibility(View.INVISIBLE);
-        cmdWhitePlayer2.setVisibility(View.INVISIBLE);
-
-        if(playeramount == 4) {
-            cmdBlackPlayer3.setVisibility(View.INVISIBLE);
-            cmdBlackPlayer4.setVisibility(View.INVISIBLE);
-
-            cmdBluePlayer3.setVisibility(View.INVISIBLE);
-            cmdBluePlayer4.setVisibility(View.INVISIBLE);
-
-            cmdGreenPlayer3.setVisibility(View.INVISIBLE);
-            cmdGreenPlayer4.setVisibility(View.INVISIBLE);
-
-            cmdRedPlayer3.setVisibility(View.INVISIBLE);
-            cmdRedPlayer4.setVisibility(View.INVISIBLE);
-
-            cmdWhitePlayer3.setVisibility(View.INVISIBLE);
-            cmdWhitePlayer4.setVisibility(View.INVISIBLE);
-        }
-
-        if(showLifecountControls) {
-            txtLifeCountPlayer1.setVisibility(View.VISIBLE);
-            txtLifeCountPlayer2.setVisibility(View.VISIBLE);
-
-            cmdPlusPlayer1.setVisibility(View.VISIBLE);
-            cmdPlusPlayer2.setVisibility(View.VISIBLE);
-
-            cmdMinusPlayer1.setVisibility(View.VISIBLE);
-            cmdMinusPlayer2.setVisibility(View.VISIBLE);
-
-            if(playeramount == 4) {
-                txtLifeCountPlayer3.setVisibility(View.VISIBLE);
-                txtLifeCountPlayer4.setVisibility(View.VISIBLE);
-
-                cmdPlusPlayer3.setVisibility(View.VISIBLE);
-                cmdPlusPlayer4.setVisibility(View.VISIBLE);
-
-                cmdMinusPlayer3.setVisibility(View.VISIBLE);
-                cmdMinusPlayer4.setVisibility(View.VISIBLE);
-            }
-        }
-
-        if(showPoisonControls) {
-
-            cmdPlusPoisonPlayer1.setVisibility(View.VISIBLE);
-            cmdMinusPoisonPlayer1.setVisibility(View.VISIBLE);
-            txtPoisonCountPlayer1.setVisibility(View.VISIBLE);
-
-            cmdPlusPoisonPlayer2.setVisibility(View.VISIBLE);
-            cmdMinusPoisonPlayer2.setVisibility(View.VISIBLE);
-            txtPoisonCountPlayer2.setVisibility(View.VISIBLE);
-
-            if(playeramount == 4) {
-                cmdPlusPoisonPlayer3.setVisibility(View.VISIBLE);
-                cmdMinusPoisonPlayer3.setVisibility(View.VISIBLE);
-                txtPoisonCountPlayer3.setVisibility(View.VISIBLE);
-
-                cmdPlusPoisonPlayer4.setVisibility(View.VISIBLE);
-                cmdMinusPoisonPlayer4.setVisibility(View.VISIBLE);
-                txtPoisonCountPlayer4.setVisibility(View.VISIBLE);
-            }
-        }
-    }
-
-    @Override
-    public void settingsButtonDisable() {
-        cmdToggleColorSettings.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.icon_settings_disabled));
-    }
-
-    //endregion
-
-    //region Toggle Energy Saving Option
-    @Override
-    public void enableEnergySaving(int powerSaveColor, int powerSaveTextColor) {
-        layoutPlayer1.setBackgroundColor(powerSaveColor);
-        layoutPlayer2.setBackgroundColor(powerSaveColor);
-        if(playeramount == 4) {
-            layoutPlayer3.setBackgroundColor(powerSaveColor);
-            layoutPlayer4.setBackgroundColor(powerSaveColor);
-        }
-
-        txtLifeCountPlayer1.setTextColor(powerSaveTextColor);
-        txtLifeCountPlayer2.setTextColor(powerSaveTextColor);
-        if(playeramount == 4) {
-            txtLifeCountPlayer3.setTextColor(powerSaveTextColor);
-            txtLifeCountPlayer4.setTextColor(powerSaveTextColor);
-        }
-
-        txtPoisonCountPlayer1.setTextColor(powerSaveTextColor);
-        txtPoisonCountPlayer2.setTextColor(powerSaveTextColor);
-        if(playeramount == 4) {
-            txtPoisonCountPlayer3.setTextColor(powerSaveTextColor);
-            txtPoisonCountPlayer4.setTextColor(powerSaveTextColor);
-        }
-    }
-
-    @Override
-    public void disableEnergySaving(int defaultBlack, int regularTextColor) {
-        layoutPlayer1.setBackgroundColor(defaultBlack);
-        layoutPlayer2.setBackgroundColor(defaultBlack);
-        if(playeramount == 4) {
-            layoutPlayer3.setBackgroundColor(defaultBlack);
-            layoutPlayer4.setBackgroundColor(defaultBlack);
-        }
-
-        txtLifeCountPlayer1.setTextColor(regularTextColor);
-        txtLifeCountPlayer2.setTextColor(regularTextColor);
-        if(playeramount == 4) {
-            txtLifeCountPlayer3.setTextColor(regularTextColor);
-            txtLifeCountPlayer4.setTextColor(regularTextColor);
-        }
-
-        txtPoisonCountPlayer1.setTextColor(regularTextColor);
-        txtPoisonCountPlayer2.setTextColor(regularTextColor);
-        if(playeramount == 4) {
-            txtPoisonCountPlayer3.setTextColor(regularTextColor);
-            txtPoisonCountPlayer4.setTextColor(regularTextColor);
-        }
-    }
-    //endregion
-
-
-
-    //region Set Life- and Poisonpoints
-    @Override
-    public void setLifepoints(PlayerIdEnum id, String points) {
-        if(id.equals(PlayerIdEnum.ONE)) {
-            txtLifeCountPlayer1.setText(points);
-        } else if(id.equals(PlayerIdEnum.TWO)) {
-            txtLifeCountPlayer2.setText(points);
-        } else if(id.equals(PlayerIdEnum.THREE)) {
-            txtLifeCountPlayer3.setText(points);
-        } else if(id.equals(PlayerIdEnum.FOUR)) {
-            txtLifeCountPlayer4.setText(points);
-        }
-    }
-
-        @Override
-        public void setPoisonpoints(PlayerIdEnum id, String points) {
-            if(id.equals(PlayerIdEnum.ONE)) {
-                txtPoisonCountPlayer1.setText(points);
-            } else if(id.equals(PlayerIdEnum.TWO)) {
-                txtPoisonCountPlayer2.setText(points);
-            } else if(id.equals(PlayerIdEnum.THREE)) {
-                txtPoisonCountPlayer3.setText(points);
-            } else if(id.equals(PlayerIdEnum.FOUR)) {
-                txtPoisonCountPlayer4.setText(points);
-            }
-        }
-        //endregion
-
-        //region Overrides for NavigationDrawer
-/*
-        @Override
-        protected void onPostCreate(@Nullable Bundle savedInstanceState) {
-            super.onPostCreate(savedInstanceState);
-            drawerToggle.syncState();
-        }
-
-        @Override
-        public void onConfigurationChanged(Configuration newConfig) {
-            super.onConfigurationChanged(newConfig);
-            drawerToggle.onConfigurationChanged(new Configuration());
-        }
-*/
-        //endregion
-
-    //region Navigation Drawer
-    @Override
-    public void setDrawerTextPowerSaving(boolean shouldBeEnabled) {
-        String string = "";
-        if(shouldBeEnabled) {
-            string = getResources().getString(R.string.cmdPowerSaveEnable);
-        } else {
-            string = getResources().getString(R.string.cmdPowerSaveDisable);
-        }
-
-        // Close drawer
-        navigationView.getMenu().findItem(R.id.nav_energy_save_mode).setTitle(string);
-        mainLayout.closeDrawer(Gravity.LEFT);
-    }
-    //endregion
-
-    @Override
-    public int getPlayerAmount() {
-        return playeramount;
-    }
-
-    @Override
-    public void disableScreenTimeout() {
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-    }
-
-    @Override
-    public void enableScreenTimeout() {
-        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-    }
-
-    @Override
-    public int getScreenSize() {
-        return getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK;
-    }
-
-    public void runFirstLaunchDialog() {
-        final Dialog dialog = new Dialog(GameActivity.this);
-        dialog.setContentView(R.layout.dialog_firstlaunch);
-
-        Button cmdClose = (Button) dialog.findViewById(R.id.cmdFirstLaunchClose);
-        cmdClose.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
-
-        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
-        lp.copyFrom(dialog.getWindow().getAttributes());
-        lp.width = WindowManager.LayoutParams.MATCH_PARENT;
-        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
-
-        dialog.show();
-        dialog.getWindow().setAttributes(lp);
-    }
-
-    public void runUpdateDialog() {
-        final Dialog dialog = new Dialog(GameActivity.this);
-        dialog.setContentView(R.layout.dialog_changelog);
-
-        Button cmdClose = (Button) dialog.findViewById(R.id.cmdChangeLogClose);
-        cmdClose.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
-
-        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
-        lp.copyFrom(dialog.getWindow().getAttributes());
-        lp.width = WindowManager.LayoutParams.MATCH_PARENT;
-        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
-
-        dialog.show();
-        dialog.getWindow().setAttributes(lp);
-    }
-
-    private String getFirstLaunchInfo() {
-        String launchInfo = getResources().getString(R.string.changelog);
-
-        return launchInfo;
-    }
-
-    private String getLatestChanges() {
-        String changeLog = getResources().getString(R.string.changelog);
-
-        return changeLog;
     }
 }

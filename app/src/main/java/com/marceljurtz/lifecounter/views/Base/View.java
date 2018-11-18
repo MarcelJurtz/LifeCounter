@@ -1,6 +1,7 @@
 package com.marceljurtz.lifecounter.views.Base;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -22,6 +23,13 @@ public class View extends AppCompatActivity implements IView {
         Intent intent = new Intent(getApplicationContext(), c);
         finish();
         startActivity(intent);
+    }
+
+    public void startBrowserIntent(String url) {
+        Intent browserIntent = new Intent(
+                Intent.ACTION_VIEW,
+                Uri.parse(url));
+        startActivity(browserIntent);
     }
 
     @Override

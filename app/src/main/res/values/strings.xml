@@ -160,41 +160,37 @@
     <string name="intro_pro_header">Go Pro</string>
     <string name="intro_pro_description">If you like my app, you can download the pro version from PlayStore. To find out more about the advantages of going pro, check out the details in the about menu.</string>
 
+    <string name="about_pro_header">Go Pro</string>
+    <string name="about_pro_content">
+        If you like my app and want to support me as a developer, you can buy the Pro version from PlayStore.
+        The Pro version includes the same features as the Standard version, but adds a 4-player mode and a +1 token management feature,
+        so you don\'t have to keep checklists of the points on your cards.
+    </string>
+    <string name="about_pro_download"><u>Download Pro</u></string>
 
     <string name="about_lics_header">OpenSource-Licenses</string>
-    <string name="about_lics_content">
-        Medyo / Android About Page\n
-        GitHub: https://github.com/medyo/android-about-page\n
-        MIT-License\n\n
 
-        Pes8 / Android Material Color Picker Dialog\n
-        https://github.com/Pes8/android-material-color-picker-dialog\n
-        MIT-License\n\n
+    <string name="about_lic_colorpicker_caption">Pes8 / Color Picker Dialog</string>
+    <string name="about_lic_colorpicker_link"><u>https://github.com/Pes8/android-material-color-picker-dialog</u></string>
 
-        Paolo Rotolo / AppIntro\n
-        https://github.com/PaoloRotolo/AppIntro\n
-        Apache 2.0 License
-    </string>
+    <string name="about_lic_appintro_caption">Paolo Rotolo / AppIntro</string>
+    <string name="about_lic_appintro_link"><u>https://github.com/PaoloRotolo/AppIntro</u></string>
 
     <string name="about_copyright">Copyright Marcel Jurtz 2016 - 2018</string>
 
     <string name="about_caption">LifeCounter</string>
     <string name="about_introduction">
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-        sed diam nonumy eirmod tempor invidunt ut labore et dolore
-        magna aliquyam erat, sed diam voluptua. At vero eos et accusam
-        et justo duo dolores et ea rebum. Stet clita kasd gubergren,
-        no sea takimata sanctus est Lorem ipsum dolor sit amet.
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-        sed diam nonumy eirmod tempor invidunt ut labore et dolore
-        magna aliquyam erat, sed diam voluptua. At vero eos et accusam
-        et justo duo dolores et ea rebum. Stet clita kasd gubergren,
-        no sea takimata sanctus est Lorem ipsum dolor sit amet.
+        Hey, thanks for using my app! If you have any suggestions for improvement or found an error,
+        I\'d be very happy to receive constructive feedback.
+
+        To contact me, please use one of the following options:
     </string>
     <string name="about_changelog_header">Changelog</string>
-    <string name="about_changelog_content">
-        01.12.2018\n
-        - General Improvements\n
-        - New Pro-Version\n
+    <string name="about_changelog_v2_header">01.12.2018</string>
+    <string name="about_changelog_v2_content">
+        - General improvements\n- New Pro-Version with additional features
     </string>
+
+    <string name="contact_mail"><u>Mail: feedback@mjurtz.com</u></string>
+    <string name="contact_twitter"><u>Twitter: @MarcelJurtz</u></string>
 </resources>

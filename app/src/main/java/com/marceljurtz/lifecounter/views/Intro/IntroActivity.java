@@ -8,7 +8,7 @@ import com.github.paolorotolo.appintro.AppIntroFragment;
 import com.github.paolorotolo.appintro.model.SliderPage;
 import com.marceljurtz.lifecounter.R;
 import com.marceljurtz.lifecounter.enums.MagicColorEnum;
-import com.marceljurtz.lifecounter.models.AppManager;
+import com.marceljurtz.lifecounter.models.AppDetails;
 import com.marceljurtz.lifecounter.models.PreferenceManager;
 
 import androidx.annotation.Nullable;
@@ -37,7 +37,7 @@ public class IntroActivity extends AppIntro {
         int white = new com.marceljurtz.lifecounter.models.Color(MagicColorEnum.WHITE, getApplicationContext().getSharedPreferences(PreferenceManager.PREFS, Activity.MODE_PRIVATE)).getIntValue();
         int black = new com.marceljurtz.lifecounter.models.Color(MagicColorEnum.BLACK, getApplicationContext().getSharedPreferences(PreferenceManager.PREFS, Activity.MODE_PRIVATE)).getIntValue();
 
-        if(AppManager.IsProMode) {
+        if(AppDetails.IS_PRO_MODE) {
 
             // Slide 1 - Welcome
             SliderPage pg1 = new SliderPage();

@@ -25,39 +25,36 @@ import com.pes.androidmaterialcolorpickerdialog.ColorPicker;
 
 public class SettingsActivity extends com.marceljurtz.lifecounter.views.Base.View implements ISettingsView {
 
-    //region View declarations
+    //region Controls
 
-    TextView txtBlack;
-    TextView txtBlue;
-    TextView txtGreen;
-    TextView txtRed;
-    TextView txtWhite;
+    private TextView txtBlack;
+    private TextView txtBlue;
+    private TextView txtGreen;
+    private TextView txtRed;
+    private TextView txtWhite;
 
-    EditText txtLifepoints;
-    EditText txtLongClickPoints;
+    private EditText txtLifepoints;
+    private EditText txtLongClickPoints;
 
-    Button cmdSelectBlack;
-    Button cmdSelectBlue;
-    Button cmdSelectGreen;
-    Button cmdSelectRed;
-    Button cmdSelectWhite;
+    private Button cmdSelectBlack;
+    private Button cmdSelectBlue;
+    private Button cmdSelectGreen;
+    private Button cmdSelectRed;
+    private Button cmdSelectWhite;
 
-    Button cmdShowAppIntro;
-    Button cmdDiscardChanges;
-    Button cmdReset;
+    private Button cmdShowAppIntro;
+    private Button cmdReset;
 
-    ImageButton cmdBack;
+    private ImageButton cmdBack;
 
-    Switch chkKeepScreenOn;
+    private Switch chkKeepScreenOn;
 
     private NavigationView navigationView;
 
-    //endregion
+    //endregion Controls
 
     SharedPreferences preferences;
     ISettingsPresenter presenter;
-
-    //region Activity Lifecycle Functions
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,161 +63,15 @@ public class SettingsActivity extends com.marceljurtz.lifecounter.views.Base.Vie
 
         preferences = getApplicationContext().getSharedPreferences(PreferenceManager.PREFS, Activity.MODE_PRIVATE);
 
-        //region View Initialization
-        txtBlack = (TextView) findViewById(R.id.txtColorBlack);
-        txtBlue = (TextView) findViewById(R.id.txtColorBlue);
-        txtGreen = (TextView) findViewById(R.id.txtColorGreen);
-        txtRed = (TextView) findViewById(R.id.txtColorRed);
-        txtWhite = (TextView) findViewById(R.id.txtColorWhite);
-
-        txtLifepoints = (EditText) findViewById(R.id.txtLiveSelection);
-        txtLongClickPoints = (EditText) findViewById(R.id.txtLongClickPoints);
-
-        chkKeepScreenOn = (Switch) findViewById(R.id.chkKeepScreenOn);
-        chkKeepScreenOn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                presenter.onKeepScreenOnCheckboxClick(isChecked);
-            }
-        });
-        //endregion
-
-        //region Color Selection Buttons
-        cmdSelectBlack = (Button) findViewById(R.id.cmdSelectBlack);
-        cmdSelectBlack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                presenter.onColorSelectButtonClick(MagicColorEnum.BLACK);
-            }
-        });
-
-        cmdSelectBlue = (Button) findViewById(R.id.cmdSelectBlue);
-        cmdSelectBlue.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                presenter.onColorSelectButtonClick(MagicColorEnum.BLUE);
-            }
-        });
-
-        cmdSelectGreen = (Button) findViewById(R.id.cmdSelectGreen);
-        cmdSelectGreen.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                presenter.onColorSelectButtonClick(MagicColorEnum.GREEN);
-            }
-        });
-
-        cmdSelectRed = (Button) findViewById(R.id.cmdSelectRed);
-        cmdSelectRed.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                presenter.onColorSelectButtonClick(MagicColorEnum.RED);
-            }
-        });
-
-        cmdSelectWhite = (Button) findViewById(R.id.cmdSelectWhite);
-        cmdSelectWhite.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                presenter.onColorSelectButtonClick(MagicColorEnum.WHITE);
-            }
-        });
-        //endregion
-
-        //region Reset Button Click
-
-        cmdReset = (Button) findViewById(R.id.cmdResetSettings);
-        cmdReset.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                presenter.onResetButtonClick();
-            }
-        });
-
-        //endregion
-
-        //region Back Button Click
-
-        cmdBack = (ImageButton)findViewById(R.id.cmdBack);
-        cmdBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
-
-        //endregion
-
-        //region App Intro
-
-        cmdShowAppIntro = (Button)findViewById(R.id.cmdShowIntro);
-        cmdShowAppIntro.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                presenter.onShowAppIntroClick();
-            }
-        });
-
-        //endregion
-
-        //region Menu
-
-        navigationView = (NavigationView)findViewById(R.id.navigationViewSettings);
+        initControls();
 
         disableMenuItem(navigationView, R.id.nav_energy_save_mode);
         disableMenuItem(navigationView, R.id.nav_settings);
-
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(MenuItem item) {
-                switch(item.getItemId()) {
-                    case R.id.nav_about:
-                        presenter.onMenuEntryAboutTap();
-                        break;
-                    case R.id.nav_game_2players:
-                        presenter.onMenuEntryTwoPlayerTap();
-                        break;
-                    case R.id.nav_game_4players:
-                        presenter.onMenuEntryFourPlayerTap();
-                        break;
-                    case R.id.nav_dicing:
-                        presenter.onMenuEntryDicingTap();
-                        break;
-                    case R.id.nav_countermanager:
-                        presenter.onMenuEntryCounterManagerTap();
-                        break;
-                    default:
-                        break;
-                }
-                return true;
-            }
-        });
-
-        //
 
         presenter = new SettingsPresenter(this, preferences);
         presenter.onCreate();
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        presenter.onResume();
-    }
-
-    @Override
-    protected void onPause() {
-        presenter.onPause();
-        super.onPause();
-    }
-
-    @Override
-    protected void onDestroy() {
-        presenter.onDestroy();
-        super.onDestroy();
-    }
-
-    //endregion
 
     //region Get EditText and color values
 
@@ -278,7 +129,6 @@ public class SettingsActivity extends com.marceljurtz.lifecounter.views.Base.Vie
             @Override
             public void onClick(View v) {
                 int newColor = cp.getColor();
-                //updateColor(cmdSelectWhite, txtWhite, selectedWhite);
                 presenter.onColorSelectValueUpdate(new Color(baseColor, newColor));
                 cp.dismiss();
             }
@@ -333,5 +183,116 @@ public class SettingsActivity extends com.marceljurtz.lifecounter.views.Base.Vie
     @Override
     public void setKeepScreenOnCheckbox(boolean checked) {
         chkKeepScreenOn.setChecked(checked);
+    }
+
+    private void initControls() {
+
+        txtBlack = (TextView) findViewById(R.id.txtColorBlack);
+        txtBlue = (TextView) findViewById(R.id.txtColorBlue);
+        txtGreen = (TextView) findViewById(R.id.txtColorGreen);
+        txtRed = (TextView) findViewById(R.id.txtColorRed);
+        txtWhite = (TextView) findViewById(R.id.txtColorWhite);
+
+        txtLifepoints = (EditText) findViewById(R.id.txtLiveSelection);
+        txtLongClickPoints = (EditText) findViewById(R.id.txtLongClickPoints);
+
+        chkKeepScreenOn = (Switch) findViewById(R.id.chkKeepScreenOn);
+        chkKeepScreenOn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                presenter.onKeepScreenOnCheckboxClick(isChecked);
+            }
+        });
+
+        cmdSelectBlack = (Button) findViewById(R.id.cmdSelectBlack);
+        cmdSelectBlack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.onColorSelectButtonClick(MagicColorEnum.BLACK);
+            }
+        });
+
+        cmdSelectBlue = (Button) findViewById(R.id.cmdSelectBlue);
+        cmdSelectBlue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.onColorSelectButtonClick(MagicColorEnum.BLUE);
+            }
+        });
+
+        cmdSelectGreen = (Button) findViewById(R.id.cmdSelectGreen);
+        cmdSelectGreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.onColorSelectButtonClick(MagicColorEnum.GREEN);
+            }
+        });
+
+        cmdSelectRed = (Button) findViewById(R.id.cmdSelectRed);
+        cmdSelectRed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.onColorSelectButtonClick(MagicColorEnum.RED);
+            }
+        });
+
+        cmdSelectWhite = (Button) findViewById(R.id.cmdSelectWhite);
+        cmdSelectWhite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.onColorSelectButtonClick(MagicColorEnum.WHITE);
+            }
+        });
+
+        cmdReset = (Button) findViewById(R.id.cmdResetSettings);
+        cmdReset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.onResetButtonClick();
+            }
+        });
+
+        cmdBack = (ImageButton)findViewById(R.id.cmdBack);
+        cmdBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
+        cmdShowAppIntro = (Button)findViewById(R.id.cmdShowIntro);
+        cmdShowAppIntro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                presenter.onShowAppIntroClick();
+            }
+        });
+
+        navigationView = (NavigationView)findViewById(R.id.navigationViewSettings);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(MenuItem item) {
+                switch(item.getItemId()) {
+                    case R.id.nav_about:
+                        presenter.onMenuEntryAboutTap();
+                        break;
+                    case R.id.nav_game_2players:
+                        presenter.onMenuEntryTwoPlayerTap();
+                        break;
+                    case R.id.nav_game_4players:
+                        presenter.onMenuEntryFourPlayerTap();
+                        break;
+                    case R.id.nav_dicing:
+                        presenter.onMenuEntryDicingTap();
+                        break;
+                    case R.id.nav_countermanager:
+                        presenter.onMenuEntryCounterManagerTap();
+                        break;
+                    default:
+                        break;
+                }
+                return true;
+            }
+        });
     }
 }
