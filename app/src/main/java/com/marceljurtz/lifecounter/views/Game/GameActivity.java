@@ -244,8 +244,6 @@ public class GameActivity extends com.marceljurtz.lifecounter.views.Base.View im
         }
     }
 
-
-
     @Override
     public void loadActivity(Class c) {
         Intent intent = new Intent(getApplicationContext(), c);

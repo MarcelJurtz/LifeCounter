@@ -23,7 +23,6 @@ public class GamePresenter extends Presenter implements IGamePresenter {
 
     private boolean settingsVisible;
     private boolean poisonVisible;
-    private boolean powerSaveEnabled;
 
     private Player player1;
     private Player player2;
@@ -108,7 +107,7 @@ public class GamePresenter extends Presenter implements IGamePresenter {
         view.disablePoisonControls(hideOtherControlsWhenSettingsDisplayed);
         view.poisonButtonDisable();
 
-        powerSaveEnabled = false;
+        _powerSaveEnabled = false;
 
         view.initColorButton(MagicColorEnum.BLACK, PreferenceManager.getCustomizedColorOrDefault(MagicColorEnum.BLACK, _preferences));
         view.initColorButton(MagicColorEnum.BLUE, PreferenceManager.getCustomizedColorOrDefault(MagicColorEnum.BLUE, _preferences));
@@ -148,7 +147,7 @@ public class GamePresenter extends Presenter implements IGamePresenter {
         if(clickTypeEnum.equals(ClickTypeEnum.SHORT)) {
 
             // Disable PowerSaveMode if enabled
-            if(powerSaveEnabled) onMenuEntryEnergySaveTap();
+            if(_powerSaveEnabled) onMenuEntryEnergySaveTap();
 
             Color newColor;
 

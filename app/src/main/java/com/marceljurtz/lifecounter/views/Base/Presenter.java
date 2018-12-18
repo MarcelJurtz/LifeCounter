@@ -19,7 +19,7 @@ public class Presenter implements IPresenter {
 
     protected SharedPreferences _preferences;
     protected IView _view;
-    private boolean _powerSaveEnabled;
+    protected boolean _powerSaveEnabled;
 
     public Presenter(IView view, SharedPreferences prefs) {
         _view = view;
