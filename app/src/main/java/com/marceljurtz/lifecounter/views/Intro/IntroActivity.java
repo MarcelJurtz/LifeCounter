@@ -20,17 +20,6 @@ public class IntroActivity extends AppIntro {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Note here that we DO NOT use setContentView();
-
-        // Add your slide fragments here.
-        // AppIntro will automatically generate the dots indicator and buttons.
-        // addSlide(firstFragment);
-        // addSlide(secondFragment);
-
-        // Instead of fragments, you can also use our default slide.
-        // Just create a `SliderPage` and provide title, description, background and image.
-        // AppIntro will do the rest.
-
         int red = new com.marceljurtz.lifecounter.models.Color(MagicColorEnum.RED, getApplicationContext().getSharedPreferences(PreferenceManager.PREFS, Activity.MODE_PRIVATE)).getIntValue();
         int green = new com.marceljurtz.lifecounter.models.Color(MagicColorEnum.GREEN, getApplicationContext().getSharedPreferences(PreferenceManager.PREFS, Activity.MODE_PRIVATE)).getIntValue();
         int blue = new com.marceljurtz.lifecounter.models.Color(MagicColorEnum.BLUE, getApplicationContext().getSharedPreferences(PreferenceManager.PREFS, Activity.MODE_PRIVATE)).getIntValue();
@@ -172,19 +161,9 @@ public class IntroActivity extends AppIntro {
             addSlide(AppIntroFragment.newInstance(pg8));
         }
 
-        // OPTIONAL METHODS
-        // Override bar/separator color.
-        // setBarColor(Color.parseColor("#3F51B5"));
-        // setSeparatorColor(Color.parseColor("#2196F3"));
-
         // Hide Skip/Done button.
         showSkipButton(true);
         setProgressButtonEnabled(true);
-
-        // Turn vibration on and set intensity.
-        // NOTE: you will probably need to ask VIBRATE permission in Manifest.
-        // setVibrate(true);
-        // setVibrateIntensity(30);
     }
 
     @Override

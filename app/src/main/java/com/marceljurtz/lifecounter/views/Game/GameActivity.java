@@ -166,6 +166,9 @@ public class GameActivity extends com.marceljurtz.lifecounter.views.Base.View im
             public void run() {
                 boolean isFirstStart = preferences.getBoolean("firstStart", true);
                 if (isFirstStart) {
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putBoolean("firstStart", false);
+                    editor.apply();
                     final Intent i = new Intent(GameActivity.this, IntroActivity.class);
                     runOnUiThread(new Runnable() {
                         @Override public void run() {
