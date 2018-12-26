@@ -153,8 +153,7 @@ public class PreferenceManager {
 
     // Get Longclickpoints
     public static int getLongclickPoints(SharedPreferences preferences) {
-        int points = preferences.getInt(PREF_LONG_CLICK_POINTS, DEFAULT_LONGCLICK_POINTS);
-        return points;
+        return preferences.getInt(PREF_LONG_CLICK_POINTS, DEFAULT_LONGCLICK_POINTS);
     }
 
     // Set Longclickpoints
@@ -203,7 +202,7 @@ public class PreferenceManager {
     }
 
     public static ArrayList<Player> loadPlayerCounterData(SharedPreferences preferences) {
-        ArrayList<Player> players = new ArrayList<Player>();
+        ArrayList<Player> players = new ArrayList<>();
 
         Player p1 = Player.GetInstanceByJson(preferences.getString(PlayerIdEnum.ONE.toString(), null));
         Player p2 = Player.GetInstanceByJson(preferences.getString(PlayerIdEnum.TWO.toString(), null));

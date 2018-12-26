@@ -10,17 +10,11 @@ public class Game {
 
     private SharedPreferences preferences;
 
-    private final int DEFAULT_POISONPOINTS = 0;
-    private final int DEFAULT_LIFEPOINTS = 20;
-    private int customLifepoints;
-
     private Player[] players;
 
     public Game(SharedPreferences preferences, Player[] players) {
         this.preferences = preferences;
         this.players = players;
-
-        startGame();
     }
 
     public void saveGameState(SharedPreferences preferences) {
@@ -41,19 +35,6 @@ public class Game {
 
     public Player[] getPlayers() {
         return players;
-    }
-
-    static int lifepoints = 20;
-
-    public int getColor(String colorString, int nullReturn) {
-        return preferences.getInt(colorString, nullReturn);
-    }
-
-    public void startGame() {
-        int lifepoints = PreferenceManager.getDefaultLifepoints(preferences);
-        if(lifepoints == 0) {
-            lifepoints = DEFAULT_LIFEPOINTS;
-        }
     }
 
     public void updateLifepoints(PlayerIdEnum playerIdEnum, ClickTypeEnum clickTypeEnum, OperatorEnum operatorEnum) {

@@ -2,10 +2,7 @@ package com.marceljurtz.lifecounter.views.Game;
 
 import android.content.SharedPreferences;
 
-import com.marceljurtz.lifecounter.views.About.AboutActivity;
 import com.marceljurtz.lifecounter.views.Base.Presenter;
-import com.marceljurtz.lifecounter.views.Counter.CounterActivity;
-import com.marceljurtz.lifecounter.views.Dicing.DicingActivity;
 import com.marceljurtz.lifecounter.enums.ClickTypeEnum;
 import com.marceljurtz.lifecounter.models.Color;
 import com.marceljurtz.lifecounter.models.Game;
@@ -36,7 +33,7 @@ public class GamePresenter extends Presenter implements IGamePresenter {
 
     private boolean hideOtherControlsWhenSettingsDisplayed = false;
 
-    public GamePresenter(IGameView view, SharedPreferences preferences) {
+    GamePresenter(IGameView view, SharedPreferences preferences) {
         super(view, preferences);
 
         this.view = view;
