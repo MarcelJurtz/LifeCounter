@@ -27,6 +27,9 @@ public class PreferenceManager {
 
     private static final boolean DEFAULT_KEEP_SCREEN_ON = true;
 
+    private static final String SUFFIX_2PLAYER = "_POINTS2";
+    private static final String SUFFIX_4PLAYER = "_POINTS4";
+
     // MAX and MIN Values
     private static final int MAX_POISON = 25;
     private static final int MIN_POISON = 0;
@@ -223,7 +226,7 @@ public class PreferenceManager {
         SharedPreferences.Editor editor = preferences.edit();
 
         for(Player player : players) {
-            editor.putString(player.getPlayerIdEnum().toString() + "_POINTS2", player.getJson());
+            editor.putString(player.getPlayerIdEnum().toString() + SUFFIX_2PLAYER, player.getJson());
         }
 
         editor.apply();
@@ -232,11 +235,12 @@ public class PreferenceManager {
     public static Player[] load2PlayerPointsData(SharedPreferences preferences) {
         Player[] players = new Player[2];
 
-        Player p1 = Player.GetInstanceByJson(preferences.getString(PlayerIdEnum.ONE.toString() + "_POINTS2", null));
-        Player p2 = Player.GetInstanceByJson(preferences.getString(PlayerIdEnum.TWO.toString() + "_POINTS2", null));
+        Player p1 = Player.GetInstanceByJson(preferences.getString(PlayerIdEnum.ONE.toString() + SUFFIX_2PLAYER, null));
+        Player p2 = Player.GetInstanceByJson(preferences.getString(PlayerIdEnum.TWO.toString() + SUFFIX_2PLAYER, null));
 
         if(p1 != null) players[0] = p1;
         else players[0] = new Player(PlayerIdEnum.ONE);
+
         if(p2 != null) players[1] = p2;
         else players[1] = new Player(PlayerIdEnum.TWO);
 
@@ -247,7 +251,7 @@ public class PreferenceManager {
         SharedPreferences.Editor editor = preferences.edit();
 
         for(Player player : players) {
-            editor.putString(player.getPlayerIdEnum().toString() + "_POINTS4", player.getJson());
+            editor.putString(player.getPlayerIdEnum().toString() + SUFFIX_4PLAYER, player.getJson());
         }
 
         editor.apply();
@@ -256,17 +260,20 @@ public class PreferenceManager {
     public static Player[] load4PlayerPointsData(SharedPreferences preferences) {
         Player[] players = new Player[4];
 
-        Player p1 = Player.GetInstanceByJson(preferences.getString(PlayerIdEnum.ONE.toString() + "_POINTS4", null));
-        Player p2 = Player.GetInstanceByJson(preferences.getString(PlayerIdEnum.TWO.toString() + "_POINTS4", null));
-        Player p3 = Player.GetInstanceByJson(preferences.getString(PlayerIdEnum.THREE.toString() + "_POINTS4", null));
-        Player p4 = Player.GetInstanceByJson(preferences.getString(PlayerIdEnum.FOUR.toString() + "_POINTS4", null));
+        Player p1 = Player.GetInstanceByJson(preferences.getString(PlayerIdEnum.ONE.toString() + SUFFIX_4PLAYER, null));
+        Player p2 = Player.GetInstanceByJson(preferences.getString(PlayerIdEnum.TWO.toString() + SUFFIX_4PLAYER, null));
+        Player p3 = Player.GetInstanceByJson(preferences.getString(PlayerIdEnum.THREE.toString() + SUFFIX_4PLAYER, null));
+        Player p4 = Player.GetInstanceByJson(preferences.getString(PlayerIdEnum.FOUR.toString() + SUFFIX_4PLAYER, null));
 
         if(p1 != null) players[0] = p1;
         else players[0] = new Player(PlayerIdEnum.ONE);
+
         if(p2 != null) players[1] = p2;
         else players[1] = new Player(PlayerIdEnum.TWO);
+
         if(p3 != null) players[2] = p3;
         else players[2] = new Player(PlayerIdEnum.THREE);
+
         if(p4 != null) players[3] = p4;
         else players[3] = new Player(PlayerIdEnum.FOUR);
 
