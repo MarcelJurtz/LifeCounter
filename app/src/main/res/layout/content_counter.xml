@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/activity_margin"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".views.Counter.CounterActivity"
+    tools:showIn="@layout/activity_counter">
+
+    <LinearLayout
+        android:id="@+id/llCounterMain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/llCounterPlayer1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/lblCountersPlayer1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/counter_player_margin"
+                android:text="@string/counter_default_player1"
+                android:textSize="@dimen/dialog_textsize_header" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llCounterPlayer2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/counter_player_margin_top"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/lblCountersPlayer2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/counter_player_margin"
+                android:text="@string/counter_default_player2"
+                android:textSize="@dimen/dialog_textsize_header" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llCounterPlayer3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/counter_player_margin_top"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/lblCountersPlayer3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/counter_player_margin"
+                android:text="@string/counter_default_player3"
+                android:textSize="@dimen/dialog_textsize_header" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llCounterPlayer4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/counter_player_margin_top"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/lblCountersPlayer4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/counter_player_margin"
+                android:text="@string/counter_default_player4"
+                android:textSize="@dimen/dialog_textsize_header" />
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

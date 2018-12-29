@@ -2,13 +2,42 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="activity_margin">16dp</dimen>
 
     <dimen name="size_color_button">35dp</dimen>
     <dimen name="textsize_poison">40dp</dimen>
+    <dimen name="poison_margin_horizontally">8dp</dimen>
     <dimen name="textsize_life">90dp</dimen>
+    <dimen name="buttonPlusMinusLifepoints">60dp</dimen>
+    <dimen name="lifecount_button_size">80dp</dimen>
     <dimen name="color_button_space_horizontal">12dp</dimen>
     <dimen name="button_space_vertical">20dp</dimen>
     <dimen name="button_poison_space_vertical">16dp</dimen>
+    <dimen name="button_poison_space_vertical_4p">6dp</dimen>
 
     <dimen name="size_config_buttons">30dp</dimen>
+
+    <dimen name="ndHeaderTextSize">32dp</dimen>
+    <dimen name="ndSubHeaderTextSize">12dp</dimen>
+    <dimen name="ndPadding">5dp</dimen>
+    <dimen name="spacerMargin">10dp</dimen>
+    <dimen name="nav_header_vertical_spacing">8dp</dimen>
+    <dimen name="nav_header_height">176dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+
+    <dimen name="dicing_text_size">124dp</dimen>
+
+    <dimen name="counter_player_margin">5dp</dimen>
+    <dimen name="counter_player_margin_top">10dp</dimen>
+
+    <dimen name="dialog_padding">20dp</dimen>
+    <dimen name="dialog_textsize_header">24dp</dimen>
+    <dimen name="dialog_textsize_divider">32dp</dimen>
+
+    <dimen name="about_caption_main">36dp</dimen>
+    <dimen name="about_caption_sub">24dp</dimen>
+    <dimen name="about_caption_subsub">18dp</dimen>
+    <dimen name="about_padding">25dp</dimen>
+    <dimen name="about_padding_hyperlink">10dp</dimen>
+
 </resources>

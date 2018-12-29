@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/LifeCounter.iml" filepath="$PROJECT_DIR$/LifeCounter.iml" />
       <module fileurl="file://$PROJECT_DIR$/android_mtg_lifecounter.iml" filepath="$PROJECT_DIR$/android_mtg_lifecounter.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>

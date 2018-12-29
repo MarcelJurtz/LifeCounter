@@ -1,27 +1,11 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Base.Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-    </style>
-
-    <style name="mtg_color_button_bottom">
-        <item name="android:layout_height">@dimen/size_color_button</item>
-        <item name="android:layout_width">@dimen/size_color_button</item>
-        <item name="android:background">@drawable/button_round</item>
-        <item name="android:layout_alignParentTop">true</item>
-        <item name="android:layout_marginTop">@dimen/color_button_space_horizontal</item>
-    </style>
-
-    <style name="mtg_color_button_top">
-        <item name="android:layout_height">@dimen/size_color_button</item>
-        <item name="android:layout_width">@dimen/size_color_button</item>
-        <item name="android:background">@drawable/button_round</item>
-        <item name="android:layout_alignParentBottom">true</item>
-        <item name="android:layout_marginBottom">@dimen/color_button_space_horizontal</item>
     </style>
 
     <style name="mtg_textview_lifepoints">
@@ -29,23 +13,41 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:text">20</item>
         <item name="android:textColor">@color/textColor</item>
-        <item name="android:textAlignment">center</item>
+        <item name="android:gravity">center</item>
         <item name="android:textSize">@dimen/textsize_life</item>
         <item name="android:layout_centerInParent">true</item>
+        <item name="android:maxLines">1</item>
+    </style>
+
+    <style name="mtg_textview_lifepoints_smallerscreen">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">20</item>
+        <item name="android:textColor">@color/textColor</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/textsize_life</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:maxLines">1</item>
+    </style>
+
+    <style name="mtg_textview_lifepoints_smallerscreen_right" parent="mtg_textview_lifepoints_smallerscreen">
+        <item name="android:layout_alignParentLeft">true</item>
+    </style>
+
+    <style name="mtg_textview_lifepoints_smallerscreen_left" parent="mtg_textview_lifepoints_smallerscreen">
+        <item name="android:layout_alignParentRight">true</item>
     </style>
 
     <style name="mtg_button_lifepoints_bottom">
         <item name="android:layout_width">40dp</item>
         <item name="android:layout_height">40dp</item>
         <item name="android:layout_marginTop">45dp</item>
-        <item name="android:layout_alignTop">@id/txtLifeCountHome</item>
     </style>
 
     <style name="mtg_button_lifepoints_top">
         <item name="android:layout_width">40dp</item>
         <item name="android:layout_height">40dp</item>
         <item name="android:layout_marginBottom">45dp</item>
-        <item name="android:layout_alignBottom">@id/txtLifeCountGuest</item>
     </style>
 
     <style name="mtg_textview_poison">
@@ -55,21 +57,120 @@
         <item name="android:textColor">@color/textColor</item>
         <item name="android:textSize">@dimen/textsize_poison</item>
         <item name="android:layout_centerHorizontal">true</item>
-        <item name="android:textAlignment">center</item>
+        <item name="android:gravity">center</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:layout_marginLeft">@dimen/poison_margin_horizontally</item>
+        <item name="android:layout_marginRight">@dimen/poison_margin_horizontally</item>
     </style>
 
-    <style name="mtg_button_poison_bottom">
-        <item name="android:layout_width">@dimen/size_config_buttons</item>
-        <item name="android:layout_height">@dimen/size_config_buttons</item>
-        <item name="android:layout_marginBottom">7dp</item>
-        <item name="android:layout_alignBottom">@+id/txtPoisonCountHome</item>
+    <style name="lifebutton_4p">
+        <item name="android:layout_width">@dimen/buttonPlusMinusLifepoints</item>
+        <item name="android:layout_height">@dimen/buttonPlusMinusLifepoints</item>
+        <item name="android:scaleType">centerInside</item>
+        <item name="android:adjustViewBounds">true</item>
+        <item name="android:background">?android:selectableItemBackground</item>
+        <item name="android:padding">10dp</item>
     </style>
 
-    <style name="mtg_button_poison_top">
+    <style name="lifebutton_4p_plus" parent="lifebutton_4p">
+        <item name="android:src">@drawable/icon_plus</item>
+    </style>
+
+    <style name="lifebutton_4p_minus" parent="lifebutton_4p">
+        <item name="android:src">@drawable/icon_minus</item>
+    </style>
+
+    <style name="poisonbutton">
         <item name="android:layout_width">@dimen/size_config_buttons</item>
         <item name="android:layout_height">@dimen/size_config_buttons</item>
-        <item name="android:layout_marginTop">7dp</item>
-        <item name="android:layout_alignTop">@+id/txtPoisonCountGuest</item>
+        <item name="android:scaleType">centerInside</item>
+        <item name="android:adjustViewBounds">true</item>
+        <item name="android:background">?android:selectableItemBackground</item>
     </style>
+
+    <style name="poisonbutton_plus" parent="poisonbutton">
+        <item name="android:src">@drawable/icon_plus</item>
+    </style>
+
+    <style name="poisonbutton_minus" parent="poisonbutton">
+        <item name="android:src">@drawable/icon_minus</item>
+    </style>
+
+    <!-- COLOR BUTTONS -->
+
+    <style name="colorbutton_4p">
+        <item name="android:layout_height">@dimen/size_color_button</item>
+        <item name="android:layout_width">@dimen/size_color_button</item>
+        <item name="android:padding">40dp</item>
+        <item name="android:background">@drawable/button_round</item>
+    </style>
+
+    <style name="colorbutton_4p_top" parent="colorbutton_4p">
+        <item name="android:layout_marginBottom">@dimen/button_space_vertical</item>
+    </style>
+
+    <style name="colorbutton_4p_bottom" parent="colorbutton_4p">
+        <item name="android:layout_marginTop">@dimen/button_space_vertical</item>
+    </style>
+
+    <style name="colorbutton_2p">
+        <item name="android:layout_height">@dimen/size_color_button</item>
+        <item name="android:layout_width">@dimen/size_color_button</item>
+        <item name="android:background">@drawable/button_round</item>
+    </style>
+
+    <style name="colorbutton_2p_left" parent="colorbutton_4p">
+        <item name="android:layout_marginRight">@dimen/button_space_vertical</item>
+    </style>
+
+    <style name="colorbutton_2p_right" parent="colorbutton_4p">
+        <item name="android:layout_marginLeft">@dimen/button_space_vertical</item>
+    </style>
+
+    <!-- NAVIGATION DRAWER -->
+
+    <style name="nd_button">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/navdrawer_button</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingLeft">@dimen/ndPadding</item>
+    </style>
+
+    <style name="nd_button_noborder">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingLeft">@dimen/ndPadding</item>
+    </style>
+
+    <style name="nd_button_border_bottom_only">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/navdrawer_button_bottom_only</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingLeft">@dimen/ndPadding</item>
+    </style>
+
+    <style name="ndHeaderText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/ndHeaderTextSize</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginTop">@dimen/ndPadding</item>
+    </style>
+
+    <style name="ndSubHeaderText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/ndSubHeaderTextSize</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginTop">@dimen/ndPadding</item>
+        <item name="android:layout_marginBottom">@dimen/ndPadding</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>

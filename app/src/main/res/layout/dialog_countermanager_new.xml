@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:padding="@dimen/dialog_padding">
+
+    <TextView
+        android:id="@+id/lblDialogNewHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/dialog_textsize_header"
+        android:text="@string/dialog_countermanager_new_header"/>
+
+    <Spinner
+        android:id="@+id/spUserSelection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lblDialogNewHeader">
+
+    </Spinner>
+
+    <EditText
+        android:id="@+id/txtCardDescription"
+        android:hint="@string/dialog_countermanager_hint_card_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textCapWords"
+        android:maxLines="1"
+        android:layout_below="@id/spUserSelection"/>
+
+    <LinearLayout
+        android:id="@+id/llCardValues"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dialog_padding"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_below="@id/txtCardDescription">
+
+        <ImageButton
+            android:id="@+id/cmdDecreaseCounter"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="5dp"
+            android:src="@drawable/icon_minus"
+            style="?android:attr/borderlessButtonStyle"
+            android:adjustViewBounds="true"
+            android:scaleType="centerInside" />
+
+        <EditText
+            android:id="@+id/txtCardAtk"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:inputType="number"
+            android:maxLength="3"
+            android:layout_weight="1"
+            android:hint="@string/dialog_countermanager_hint_atk"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAlignment="center"
+            android:textSize="@dimen/dialog_textsize_divider"
+            android:text="@string/dialog_countermanager_separator"/>
+
+        <EditText
+            android:id="@+id/txtCardDef"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:inputType="number"
+            android:maxLength="3"
+            android:layout_weight="1"
+            android:hint="@string/dialog_countermanager_hint_def"/>
+
+        <ImageButton
+            android:id="@+id/cmdIncreaseCounter"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="5dp"
+            android:src="@drawable/icon_plus"
+            style="?android:attr/borderlessButtonStyle"
+            android:adjustViewBounds="true"
+            android:scaleType="centerInside"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/dialogButtonDelete"
+        android:text="@string/delete"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@id/dialogButtonOK"
+        android:layout_below="@id/llCardValues"/>
+
+    <Button
+        android:id="@+id/dialogButtonOK"
+        android:text="@string/ok"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/llCardValues"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
+</RelativeLayout>

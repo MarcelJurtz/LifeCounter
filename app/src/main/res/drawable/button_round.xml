@@ -6,5 +6,5 @@
         android:bottomLeftRadius="36dp"
         android:topRightRadius="36dp"
         android:topLeftRadius="36dp"/>
-    <stroke android:width="2px" android:color="#161618"/>
+    <stroke android:width="2dp" android:color="#161618"/>
 </shape>

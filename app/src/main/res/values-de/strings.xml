@@ -1,5 +1,13 @@
 <resources>
     <string name="app_name">LifeCounter</string>
+    <string name="app_version">v2.0</string>
+
+    <string name="color_black">Schwarz</string>
+    <string name="color_blue">Blau</string>
+    <string name="color_green">Grün</string>
+    <string name="color_red">Rot</string>
+    <string name="color_white">Weiß</string>
+
     <string name="setting_color_black">Schwarz:</string>
     <string name="setting_color_blue">Blau:</string>
     <string name="setting_color_green">Grün:</string>
@@ -7,6 +15,16 @@
     <string name="setting_color_white">Weiß:</string>
     <string name="setting_default_lives">Lebenspunkte:</string>
     <string name="setting_default_long_click_points">Gedrückt halten (+/-):</string>
+    <string name="setting_screen_timeout_disable">Bildschirm-timeout deaktivieren:</string>
+    <string name="setting_show_intro">App-Einführung anzeigen:</string>
+
+    <string name="yes">Ja</string>
+    <string name="no">Nein</string>
+    <string name="ok">OK</string>
+    <string name="go">Los!</string>
+    <string name="delete">Löschen</string>
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
 
     <string name="settings_title">Einstellungen</string>
     <string name="settings_cancel">Abbrechen</string>
@@ -14,4 +32,168 @@
     <string name="settings_confirm_reset">Alle Einstellungen zurücksetzen?</string>
     <string name="settings_confirm_reset_true">Ja</string>
     <string name="settings_confirm_reset_false">Nein</string>
+
+    <string name="cmdPowerSaveEnable">Energiesparmodus aktivieren</string>
+    <string name="cmdPowerSaveDisable">Energiesparmodus deaktivieren</string>
+
+    <string name="cmdTogglePlayerAmount2">4-Spielermodus laden</string>
+    <string name="cmdTogglePlayerAmount4">2-Spielermodus laden</string>
+
+    <string name="ndHeader">MTG LifeCounter</string>
+    <string name="cmdAbout">Über</string>
+    <string name="title_activity_main">MainActivity</string>
+
+    <string name="navigation_drawer_open">Navigation Drawer Öffnen</string>
+    <string name="navigation_drawer_close">Navigation Drawer Schließen</string>
+
+    <string name="menu_entry_energysaving_enable">Energiesparmodus aktivieren</string>
+    <string name="menu_entry_energysaving_disable">Energiesparmodus deaktivieren</string>
+    <string name="menu_entry_load_players_2">2-Spielermodus laden</string>
+    <string name="menu_entry_load_players_4">4-Spielermodus laden</string>
+    <string name="menu_entry_settings">Einstellungen</string>
+    <string name="menu_entry_load_countermanager">Counter-Manager</string>
+    <string name="menu_entry_about">Über</string>
+    <string name="menu_entry_load_dicing">Würfeln</string>
+    <string name="menu_area_settings">Konfiguration</string>
+    <string name="menu_area_general"></string>
+
+    <string name="action_settings">Einstellungen</string>
+
+    <string name="preferences_cat_points">Punkte</string>
+    <string name="preferences_cat_colors">Farben</string>
+    <string name="preferences_cat_other">Andere</string>
+    <string name="preferences_points_lifepoints">Lebenspunkte</string>
+    <string name="preferences_points_longclickpoints">Gedrückt halten (+/-)</string>
+    <string name="preferences_color_black">Schwarz</string>
+    <string name="preferences_color_blue">Blau</string>
+    <string name="preferences_color_green">Grün</string>
+    <string name="preferences_color_red">Rot</string>
+    <string name="preferences_color_white">Weiß</string>
+    <string name="preferences_other_timeout">Bildschirm-Timeout deaktivieren</string>
+    <string name="preferences_other_energysaving">Energiesparmodus aktivieren</string>
+    <string name="preferences_default_lifepoints">20</string>
+    <string name="preferences_default_longlickpoints">5</string>
+
+    <string name="title_activity_counter">CounterActivity</string>
+    <string name="counter_default_player1">Player 1</string>
+    <string name="counter_default_player2">Player 2</string>
+    <string name="counter_default_player3">Player 3</string>
+    <string name="counter_default_player4">Player 4</string>
+
+    <string name="dialog_countermanager_new_header">Eintrag bearbeiten</string>
+    <string name="dialog_countermanager_hint_card_description">Bezeichnung</string>
+    <string name="dialog_countermanager_error_invalid_entry">Ungültige Eingabe!</string>
+    <string name="dialog_countermanager_hint_atk">ATK</string>
+    <string name="dialog_countermanager_hint_def">DEF</string>
+    <string name="dialog_countermanager_separator">/</string>
+
+    <string name="dialog_countermanager_delete_title">Eintrag löschen</string>
+    <string name="dialog_countermanager_delete_message">Möchtest du diesen Eintrag löschen?</string>
+    <string name="dialog_countermanager_delete_multiple_message">Möchtest du alle Einträge des Spielers löschen?</string>
+    <string name="dialog_countermanager_delete_confirmation">Eintrag gelöscht</string>
+    <string name="dialog_countermanager_edit_playername_title">Spielernamen speichern</string>
+    <string name="dialog_countermanager_edit_counter_error">Update fehlgeschlagen!</string>
+
+    <string name="exc_invalid_object_player">Ungültige Spielerauswahl</string>
+    <string name="exc_invalid_object_counter">Ungültige Counterauswahl</string>
+
+    <string name="descr_lp_plus">Lebenspunkte erhöhen</string>
+    <string name="descr_lp_minus">Lebenspunkte reduzieren</string>
+    <string name="descr_pp_plus">Giftpunkte erhöhen</string>
+    <string name="descr_pp_minus">Giftpunkte reduzieren</string>
+    <string name="descr_pp_toggle">Giftpunkte umschalten</string>
+    <string name="descr_settings_toggle">Einstellungen umschalten</string>
+    <string name="descr_reset">Spiel zurücksetzen</string>
+
+    <string name="dialog_firstlaunch_heading">Hey!</string>
+    <string name="dialog_changelog_heading">Neu in Version 1.9</string>
+
+    <string name="changelog">
+        - 4 Spieler-Modus\n
+        - Würfel-Funktionalität\n
+        - Counter-Manager\n
+    </string>
+
+    <string name="firstlaunch">
+        Schön, dass du meine App gefunden hast! Mit dem letzten Update hat sich einiges getan, weswegen ich dir hier kurz die Neuigkeiten zeigen möchte.\n
+        \n
+        Wenn du vom linken Bildschirmrand nach rechts ziehst, öffnet sich das Menü. Du findest hier den Zugriff auf die verschiedenen Funktionen und Einstellungen.\n
+        \n
+        Du kannst hier zwischen 2- und 4-Spieler Modus wechseln. Außerdem gibt es nun eine Würfel-Funktion und einen Counter-Manager.
+        Letzterer dient dazu, den Überblick über die +/- X-Marken auf deinen Karten zu behalten.\n
+        \n
+        Wenn du Anregungen oder Verbesserungsvorschläge hast, kannst du mich gerne per Mail kontaktieren: feedback@mjurtz.com.
+        \n
+        \n
+        Danke!
+    </string>
+
+    <string name="intro_1_header">MTG LifeCounter</string>
+    <string name="intro_1_description">Hey, danke dass du dir die Pro-Version gekauft hast! Ich möchte dich einmal kurz durch die Steuerung der App führen, mit dem Knopf links unten kannst du das überspringen.</string>
+
+    <string name="lite_intro_1_header">MTG LifeCounter</string>
+    <string name="lite_intro_1_description">Hey, danke fürs Downloaden! Ich möchte dich einmal kurz durch die Steuerung der App führen, mit dem Knopf links unten kannst du das überspringen.</string>
+
+    <string name="intro_2_header">Navigation</string>
+    <string name="intro_2_description">Durch eine Bewegung vom linken Rand des Bildschirm nach Rechts öffnest du das Menü.</string>
+
+    <string name="intro_3_header">Einstellungen</string>
+    <string name="intro_3_description">In den Einstellungen kannst du verschiedene Anpassungen wie Farben und Standardwerte selbst definieren.</string>
+
+    <string name="intro_4_header">Spiel</string>
+    <string name="intro_4_description">In der Hauptansicht werden Spiele verwaltet. Du kannst dabei zwischen 2- und 4-Spieler-Modus wechseln. Spielstände werden beim Verlassen der App zwischengespeichert.</string>
+
+    <string name="lite_intro_4_header">Spiel</string>
+    <string name="lite_intro_4_description">In der Hauptansicht werden Spiele verwaltet. Spielstände werden beim Verlassen der App zwischengespeichert.</string>
+
+    <string name="intro_5_header">Energiesparmodus</string>
+    <string name="intro_5_description">Für AMOLED-Displays steht ein Energiesparmodus bereit, mit dem die Hauptansicht weitestgehend verdunkelt wird.</string>
+
+    <string name="intro_6_header">Würfeln</string>
+    <string name="intro_6_description">Über die Würfel-Funktion steht dir ein 20-seitiger Würfel zur Verfügung.</string>
+
+    <string name="intro_7_header">Zähler-Verwaltung</string>
+    <string name="intro_7_description">Mit der Zähler-Verwaltung behältst du den Stand deiner +1-Counter immer im Blick</string>
+
+    <string name="intro_8_header">Geschafft!</string>
+    <string name="intro_8_description">Das wars auch schon! Wenn du irgendwelche Rückmeldungen, Verbesserungsvorschläge oder Fragen hast, würde ich mich über eine Nachricht freuen. Du findest meine Kontaktdaten im Menüpunkt \"Über\".</string>
+
+    <string name="intro_pro_header">PRO</string>
+    <string name="intro_pro_description">Wenn dir meine App gefällt, kannst du dir im PlayStore auch die Pro-Version herunterladen. Um herauszufinden, welche Vorteile die Pro-Version mit sich bringt, schau dir die Details im Menüpunkt \"Über\" an.</string>
+
+    <string name="about_pro_header">PRO-Version</string>
+    <string name="about_pro_content">
+        Wenn dir meine App gefällt und du mich als Entwickler unterstützen möchtest, kannst du dir die Pro-Version im PlayStore kaufen.
+        Die Pro-Version umfasst die gleichen Funktionen wie die Standard-Version, ergänzt diese aber um einen 4-Spieler-Modus und eine Verwaltungsfunktion für +1-Marken,
+        sodass du keine Strichlisten mehr über die Punkte deiner Karten führen musst.
+    </string>
+    <string name="about_pro_download"><u>Pro-Version herunterladen</u></string>
+
+    <string name="about_lics_header">OpenSource-Licenses</string>
+
+    <string name="about_lic_colorpicker_caption">Pes8 / Color Picker Dialog</string>
+    <string name="about_lic_colorpicker_link"><u>https://github.com/Pes8/android-material-color-picker-dialog</u></string>
+
+    <string name="about_lic_appintro_caption">Paolo Rotolo / AppIntro</string>
+    <string name="about_lic_appintro_link"><u>https://github.com/PaoloRotolo/AppIntro</u></string>
+
+    <string name="about_copyright">Copyright Marcel Jurtz 2016 - 2018</string>
+
+    <string name="about_caption">LifeCounter</string>
+    <string name="about_introduction">
+        Hey, danke, dass du meine App verwendest! Wenn du Verbesserungsvorschläge oder einen Fehler gefunden hast,
+        freue ich mich sehr über konstruktives Feedback.\n\n
+
+        Bitte verwende eine der folgenden Möglichkeiten, um mich zu kontaktieren:
+    </string>
+    <string name="about_changelog_header">Changelog</string>
+
+    <string name="about_changelog_v2_header">01.12.2018</string>
+    <string name="about_changelog_v2_content">
+        - Allgemeine Überarbeitung\n
+        - Neue Pro-Version mit zusätzlichen Features
+    </string>
+
+    <string name="contact_mail"><u>Mail: feedback@mjurtz.com</u></string>
+    <string name="contact_twitter"><u>Twitter: @MarcelJurtz</u></string>
 </resources>
