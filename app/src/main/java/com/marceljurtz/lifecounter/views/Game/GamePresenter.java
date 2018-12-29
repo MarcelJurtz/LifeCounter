@@ -104,7 +104,9 @@ public class GamePresenter extends Presenter implements IGamePresenter {
         view.disablePoisonControls(hideOtherControlsWhenSettingsDisplayed);
         view.poisonButtonDisable();
 
-        _powerSaveEnabled = false;
+        // Reset PowerSave Mode
+        _powerSaveEnabled = true;
+        onMenuEntryEnergySaveTap();
 
         view.initColorButton(MagicColorEnum.BLACK, PreferenceManager.getCustomizedColorOrDefault(MagicColorEnum.BLACK, _preferences));
         view.initColorButton(MagicColorEnum.BLUE, PreferenceManager.getCustomizedColorOrDefault(MagicColorEnum.BLUE, _preferences));

@@ -278,14 +278,4 @@ public class PreferenceManager {
 
         return players;
     }
-
-    public static String getVersionNumber(SharedPreferences preferences) {
-        return preferences.getString(PREF_VERSIONNUMBER, null);
-    }
-
-    public static void setVersionNumber(SharedPreferences preferences, String versionNumber) {
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putString(PREF_VERSIONNUMBER, versionNumber);
-        editor.apply();
-    }
 }
