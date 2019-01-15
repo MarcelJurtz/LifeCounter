@@ -12,9 +12,9 @@ public class Game {
 
     private Player[] players;
 
-    public Game(SharedPreferences preferences, Player[] players) {
+    public Game(SharedPreferences preferences, int playerAmount) {
         this.preferences = preferences;
-        this.players = players;
+        this.players = new Player[playerAmount];
     }
 
     public void saveGameState(SharedPreferences preferences) {
@@ -60,6 +60,13 @@ public class Game {
             default:
                 // Nothing to do
                 break;
+        }
+    }
+
+    public void resetLifePoints() {
+        for(Player player : players) {
+            player.resetPoints(preferences);
+            player.updatePoisonpoints(0);
         }
     }
 
@@ -118,4 +125,9 @@ public class Game {
                 return 0;
         }
     }
+
+    public Player getPlayer1() { return players[0]; }
+    public Player getPlayer2() { return players[1]; }
+    public Player getPlayer3() { return players[2]; }
+    public Player getPlayer4() { return players[3]; }
 }

@@ -21,11 +21,6 @@ public class GamePresenter extends Presenter implements IGamePresenter {
     private boolean settingsVisible;
     private boolean poisonVisible;
 
-    private Player player1;
-    private Player player2;
-    private Player player3;
-    private Player player4;
-
     private final int SCREEN_SMALL = 1;
     private final int SCREEN_NORMAL = 2;
     private final int SCREEN_LARGE = 3;
@@ -46,17 +41,7 @@ public class GamePresenter extends Presenter implements IGamePresenter {
 
         if(screenLayout != SCREEN_XLARGE && view.getPlayerAmount() == 4) hideOtherControlsWhenSettingsDisplayed = true;
 
-        player1 = new Player(PlayerIdEnum.ONE); // SCHEISSE
-        player2 = new Player(PlayerIdEnum.TWO);
-
-        if(view.getPlayerAmount() == 4) {
-            player3 = new Player(PlayerIdEnum.THREE);
-            player4 = new Player(PlayerIdEnum.FOUR);
-            game = new Game(_preferences, new Player[]{player1, player2, player3, player4});
-        } else {
-            game = new Game(_preferences, new Player[]{player1, player2});
-        }
-
+        game = new Game(_preferences, view.getPlayerAmount());
 
         // Initiate default colors
         view.initColorButton(MagicColorEnum.BLACK, PreferenceManager.getCustomizedColorOrDefault(MagicColorEnum.BLACK, _preferences));
@@ -170,20 +155,20 @@ public class GamePresenter extends Presenter implements IGamePresenter {
 
             switch(playerIdEnum) {
                 case ONE:
-                    player1.setColor(newColor);
-                    game.getPlayers()[0].setColor(newColor);
+                    game.getPlayer1().setColor(newColor);
+                    game.getPlayer1().setColor(newColor);
                     break;
                 case TWO:
-                    player2.setColor(newColor);
-                    game.getPlayers()[1].setColor(newColor);
+                    game.getPlayer2().setColor(newColor);
+                    game.getPlayer2().setColor(newColor);
                     break;
                 case THREE:
-                    player3.setColor(newColor);
-                    game.getPlayers()[2].setColor(newColor);
+                    game.getPlayer3().setColor(newColor);
+                    game.getPlayer3().setColor(newColor);
                     break;
                 case FOUR:
-                    player4.setColor(newColor);
-                    game.getPlayers()[3].setColor(newColor);
+                    game.getPlayer4().setColor(newColor);
+                    game.getPlayer4().setColor(newColor);
                     break;
                 default:
             }
@@ -227,8 +212,8 @@ public class GamePresenter extends Presenter implements IGamePresenter {
 
     @Override
     public void onResetButtonClick() {
-        player1.resetPoints(_preferences);
-        player2.resetPoints(_preferences);
+
+        game.resetLifePoints();
 
         settingsVisible = false;
         poisonVisible = false;
@@ -237,21 +222,18 @@ public class GamePresenter extends Presenter implements IGamePresenter {
         view.disableSettingsControls(hideOtherControlsWhenSettingsDisplayed, poisonVisible);
         view.poisonButtonDisable();
 
-        view.setLifepoints(PlayerIdEnum.ONE, String.format("%02d",player1.getLifePoints()));
-        view.setLifepoints(PlayerIdEnum.TWO, String.format("%02d",player2.getLifePoints()));
+        view.setLifepoints(PlayerIdEnum.ONE, String.format("%02d",game.getPlayer1().getLifePoints()));
+        view.setLifepoints(PlayerIdEnum.TWO, String.format("%02d",game.getPlayer2().getLifePoints()));
 
-        view.setPoisonpoints(PlayerIdEnum.ONE, String.format("%02d",player1.getPoisonPoints()));
-        view.setPoisonpoints(PlayerIdEnum.TWO, String.format("%02d",player2.getPoisonPoints()));
+        view.setPoisonpoints(PlayerIdEnum.ONE, String.format("%02d",game.getPlayer1().getPoisonPoints()));
+        view.setPoisonpoints(PlayerIdEnum.TWO, String.format("%02d",game.getPlayer2().getPoisonPoints()));
 
         if(view.getPlayerAmount() == 4) {
-            player3.resetPoints(_preferences);
-            player4.resetPoints(_preferences);
+            view.setLifepoints(PlayerIdEnum.THREE, String.format("%02d",game.getPlayer3().getLifePoints()));
+            view.setLifepoints(PlayerIdEnum.FOUR, String.format("%02d",game.getPlayer3().getLifePoints()));
 
-            view.setLifepoints(PlayerIdEnum.THREE, String.format("%02d",player3.getLifePoints()));
-            view.setLifepoints(PlayerIdEnum.FOUR, String.format("%02d",player4.getLifePoints()));
-
-            view.setPoisonpoints(PlayerIdEnum.THREE, String.format("%02d",player3.getPoisonPoints()));
-            view.setPoisonpoints(PlayerIdEnum.FOUR, String.format("%02d",player4.getPoisonPoints()));
+            view.setPoisonpoints(PlayerIdEnum.THREE, String.format("%02d",game.getPlayer3().getPoisonPoints()));
+            view.setPoisonpoints(PlayerIdEnum.FOUR, String.format("%02d",game.getPlayer4().getPoisonPoints()));
         }
     }
 }
