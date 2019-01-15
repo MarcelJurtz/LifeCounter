@@ -5,11 +5,11 @@ android {
     buildToolsVersion '28.0.3'
 
     defaultConfig {
-        applicationId "com.marceljurtz.lifecounter"
+        applicationId "com.marceljurtz.lifecounterpro"
         minSdkVersion 17
         targetSdkVersion 27
-        versionCode 10
-        versionName "10"
+        versionCode 12
+        versionName "2.0"
 
         android.defaultConfig.vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"

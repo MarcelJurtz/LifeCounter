@@ -35,6 +35,8 @@ public class AboutActivity extends View implements IAboutView {
         disableMenuItem(navigationView, R.id.nav_energy_save_mode);
         disableMenuItem(navigationView, R.id.nav_about);
 
+        setMenuItemsForPro(navigationView);
+
         _presenter = new AboutPresenter(this,
                 getApplicationContext().getSharedPreferences(PreferenceManager.PREFS, Activity.MODE_PRIVATE));
 

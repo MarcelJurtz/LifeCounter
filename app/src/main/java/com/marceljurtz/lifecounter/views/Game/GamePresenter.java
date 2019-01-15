@@ -89,13 +89,6 @@ public class GamePresenter extends Presenter implements IGamePresenter {
             game.loadGameState(_preferences, 2);
         }
 
-        for(Player player : game.getPlayers()) {
-            player.setColor(new Color(player.getColorOrDefault().getBasecolor(), PreferenceManager.getCustomizedColorOrDefault(player.getColorOrDefault().getBasecolor(), _preferences)));
-            view.setLifepoints(player.getPlayerIdEnum(), String.format("%02d",player.getLifePoints()));
-            view.setPoisonpoints(player.getPlayerIdEnum(), String.format("%02d", player.getPoisonPoints()));
-            view.setLayoutColor(player.getPlayerIdEnum(), player.getColorOrDefault().getIntValue());
-        }
-
         settingsVisible = false;
         view.disableSettingsControls(hideOtherControlsWhenSettingsDisplayed, poisonVisible);
         view.settingsButtonDisable();
@@ -107,6 +100,13 @@ public class GamePresenter extends Presenter implements IGamePresenter {
         // Reset PowerSave Mode
         _powerSaveEnabled = true;
         onMenuEntryEnergySaveTap();
+
+        for(Player player : game.getPlayers()) {
+            player.setColor(new Color(player.getColorOrDefault().getBasecolor(), PreferenceManager.getCustomizedColorOrDefault(player.getColorOrDefault().getBasecolor(), _preferences)));
+            view.setLifepoints(player.getPlayerIdEnum(), String.format("%02d",player.getLifePoints()));
+            view.setPoisonpoints(player.getPlayerIdEnum(), String.format("%02d", player.getPoisonPoints()));
+            view.setLayoutColor(player.getPlayerIdEnum(), player.getColorOrDefault().getIntValue());
+        }
 
         view.initColorButton(MagicColorEnum.BLACK, PreferenceManager.getCustomizedColorOrDefault(MagicColorEnum.BLACK, _preferences));
         view.initColorButton(MagicColorEnum.BLUE, PreferenceManager.getCustomizedColorOrDefault(MagicColorEnum.BLUE, _preferences));

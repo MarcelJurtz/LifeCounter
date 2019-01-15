@@ -146,6 +146,8 @@ public class GameActivity extends com.marceljurtz.lifecounter.views.Base.View im
             disableMenuItem(navigationView, R.id.nav_game_2players);
         }
 
+        setMenuItemsForPro(navigationView);
+
         _presenter = new GamePresenter(this, preferences);
     }
 

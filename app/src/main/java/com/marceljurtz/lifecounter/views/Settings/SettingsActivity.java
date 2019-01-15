@@ -68,6 +68,8 @@ public class SettingsActivity extends com.marceljurtz.lifecounter.views.Base.Vie
         disableMenuItem(navigationView, R.id.nav_energy_save_mode);
         disableMenuItem(navigationView, R.id.nav_settings);
 
+        setMenuItemsForPro(navigationView);
+
         presenter = new SettingsPresenter(this, preferences);
         presenter.onCreate();
     }
