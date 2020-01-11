@@ -65,21 +65,4 @@ public abstract class View extends AppCompatActivity implements IView {
 
         _navMenu.findItem(menuItemId).setVisible(false);
     }
-
-    protected void setMenuItemsForPro(NavigationView view) {
-
-        if(AppDetails.IS_PRO_MODE)
-            return;
-
-        Menu menu = view.getMenu();
-
-        MenuItem item4Players = menu.findItem(R.id.nav_game_4players);
-        MenuItem itemCounterMgr = menu.findItem(R.id.nav_countermanager);
-
-        if(item4Players != null)
-            item4Players.setVisible(false);
-
-        if(itemCounterMgr != null)
-            itemCounterMgr.setVisible(false);
-    }
 }

@@ -8,15 +8,16 @@
     <string name="color_red">Red</string>
     <string name="color_white">White</string>
 
-    <string name="setting_color_black">Black:</string>
-    <string name="setting_color_blue">Blue:</string>
-    <string name="setting_color_green">Green:</string>
-    <string name="setting_color_red">Red:</string>
-    <string name="setting_color_white">White:</string>
-    <string name="setting_default_lives">Lifepoints:</string>
-    <string name="setting_default_long_click_points">Points on hold (+/-):</string>
-    <string name="setting_screen_timeout_disable">Disable screen timeout:</string>
-    <string name="setting_show_intro">Show app-intro:</string>
+    <string name="setting_color_black">Black</string>
+    <string name="setting_color_blue">Blue</string>
+    <string name="setting_color_green">Green</string>
+    <string name="setting_color_red">Red</string>
+    <string name="setting_color_white">White</string>
+    <string name="setting_default_lives">Lifepoints</string>
+    <string name="setting_default_long_click_points">Points on hold (+/-)</string>
+    <string name="setting_screen_timeout_disable">Disable screen timeout</string>
+    <string name="setting_show_intro">Show app-intro</string>
+    <string name="setting_confirm_game_reset">Confirm Game Reset</string>
 
     <string name="yes">Yes</string>
     <string name="no">No</string>
@@ -80,6 +81,9 @@
     <string name="counter_default_player3">Player 3</string>
     <string name="counter_default_player4">Player 4</string>
 
+    <string name="dialog_game_reset_confirm_title">Confirm</string>
+    <string name="dialog_game_reset_confirm_message">Do you want to reset?</string>
+
     <string name="dialog_countermanager_new_header">Edit entry</string>
     <string name="dialog_countermanager_hint_card_description">Designation</string>
     <string name="dialog_countermanager_error_invalid_entry">Invalid values!</string>
@@ -115,7 +119,7 @@
     </string>
 
     <string name="firstlaunch">
-        Glad you found my app! With the last update a lot has happened, so I would like to show you the news here.\n
+        Hey, glad you found my app! With the last update a lot has happened, so I would like to show you the news here.\n
         \n
         Dragging from the left edge of the screen to the right opens the menu. Here you find the access to the different functions and settings.\n
         \n
@@ -157,17 +161,6 @@
     <string name="intro_8_header">About</string>
     <string name="intro_8_description">That\'s it! If you have any feedback, improvement ideas or questions, I would be happy to hear from you. You can find my contact details in the about menu.</string>
 
-    <string name="intro_pro_header">Go Pro</string>
-    <string name="intro_pro_description">If you like my app, you can download the pro version from PlayStore. To find out more about the advantages of going pro, check out the details in the about menu.</string>
-
-    <string name="about_pro_header">Go Pro</string>
-    <string name="about_pro_content">
-        If you like my app and want to support me as a developer, you can buy the Pro version from PlayStore.
-        The Pro version includes the same features as the Standard version, but adds a 4-player mode and a +1 token management feature,
-        so you don\'t have to keep checklists of the points on your cards.
-    </string>
-    <string name="about_pro_download"><u>Download Pro</u></string>
-
     <string name="about_lics_header">OpenSource-Licenses</string>
 
     <string name="about_lic_colorpicker_caption">Pes8 / Color Picker Dialog</string>
@@ -176,21 +169,25 @@
     <string name="about_lic_appintro_caption">Paolo Rotolo / AppIntro</string>
     <string name="about_lic_appintro_link"><u>https://github.com/PaoloRotolo/AppIntro</u></string>
 
-    <string name="about_copyright">Copyright Marcel Jurtz 2016 - 2018</string>
+    <string name="about_copyright">Copyright Marcel Jurtz 2016 - 2020</string>
 
     <string name="about_caption">LifeCounter</string>
     <string name="about_introduction">
         Hey, thanks for using my app! If you have any suggestions for improvement or found an error,
         I\'d be very happy to receive constructive feedback.
 
-        To contact me, please use one of the following options:
+        To contact me, please use the following email:
     </string>
     <string name="about_changelog_header">Changelog</string>
-    <string name="about_changelog_v2_header">01.12.2018</string>
+    <string name="about_changelog_v2_header">2020-01-11</string>
     <string name="about_changelog_v2_content">
-        - General improvements\n- New Pro-Version with additional features
+        - New Feature: 4-player mode\n
+        - New Feature: counter manager\n
+        - New Feature: dicing\n
+        - Extended settings\n
+        - Optional game reset confirmation\n
+        - General improvements
     </string>
 
     <string name="contact_mail"><u>Mail: feedback@mjurtz.com</u></string>
-    <string name="contact_twitter"><u>Twitter: @MarcelJurtz</u></string>
 </resources>

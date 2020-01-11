@@ -39,39 +39,6 @@
         android:paddingTop="@dimen/about_padding_hyperlink"
         android:paddingBottom="@dimen/about_padding_hyperlink"/>
 
-    <TextView
-        android:id="@+id/lblContactTwitter"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/contact_twitter"
-        android:textColor="@color/hyperlink"
-        android:paddingBottom="@dimen/about_padding_hyperlink" />
-
-    <!-- PRO MODE -->
-    <TextView
-        android:id="@+id/lblProCaption"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/about_padding"
-        android:textAlignment="center"
-        android:text="@string/about_pro_header"
-        android:textSize="@dimen/about_caption_sub"
-        android:textStyle="bold"/>
-
-    <TextView
-        android:id="@+id/lblProContent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/about_pro_content"/>
-
-    <TextView
-        android:id="@+id/lblProDownload"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="@dimen/about_padding_hyperlink"
-        android:textColor="@color/hyperlink"
-        android:text="@string/about_pro_download"/>
-
     <!-- CHANGELOG -->
     <TextView
         android:layout_width="match_parent"

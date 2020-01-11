@@ -17,6 +17,7 @@
     <string name="setting_default_long_click_points">Gedrückt halten (+/-):</string>
     <string name="setting_screen_timeout_disable">Bildschirm-timeout deaktivieren:</string>
     <string name="setting_show_intro">App-Einführung anzeigen:</string>
+    <string name="setting_confirm_game_reset">Reset-Bestätigung</string>
 
     <string name="yes">Ja</string>
     <string name="no">Nein</string>
@@ -79,6 +80,9 @@
     <string name="counter_default_player2">Player 2</string>
     <string name="counter_default_player3">Player 3</string>
     <string name="counter_default_player4">Player 4</string>
+
+    <string name="dialog_game_reset_confirm_title">Bestätigen</string>
+    <string name="dialog_game_reset_confirm_message">Spiel zurücksetzen?</string>
 
     <string name="dialog_countermanager_new_header">Eintrag bearbeiten</string>
     <string name="dialog_countermanager_hint_card_description">Bezeichnung</string>
@@ -158,17 +162,6 @@
     <string name="intro_8_header">Geschafft!</string>
     <string name="intro_8_description">Das wars auch schon! Wenn du irgendwelche Rückmeldungen, Verbesserungsvorschläge oder Fragen hast, würde ich mich über eine Nachricht freuen. Du findest meine Kontaktdaten im Menüpunkt \"Über\".</string>
 
-    <string name="intro_pro_header">PRO</string>
-    <string name="intro_pro_description">Wenn dir meine App gefällt, kannst du dir im PlayStore auch die Pro-Version herunterladen. Um herauszufinden, welche Vorteile die Pro-Version mit sich bringt, schau dir die Details im Menüpunkt \"Über\" an.</string>
-
-    <string name="about_pro_header">PRO-Version</string>
-    <string name="about_pro_content">
-        Wenn dir meine App gefällt und du mich als Entwickler unterstützen möchtest, kannst du dir die Pro-Version im PlayStore kaufen.
-        Die Pro-Version umfasst die gleichen Funktionen wie die Standard-Version, ergänzt diese aber um einen 4-Spieler-Modus und eine Verwaltungsfunktion für +1-Marken,
-        sodass du keine Strichlisten mehr über die Punkte deiner Karten führen musst.
-    </string>
-    <string name="about_pro_download"><u>Pro-Version herunterladen</u></string>
-
     <string name="about_lics_header">OpenSource-Licenses</string>
 
     <string name="about_lic_colorpicker_caption">Pes8 / Color Picker Dialog</string>
@@ -177,23 +170,26 @@
     <string name="about_lic_appintro_caption">Paolo Rotolo / AppIntro</string>
     <string name="about_lic_appintro_link"><u>https://github.com/PaoloRotolo/AppIntro</u></string>
 
-    <string name="about_copyright">Copyright Marcel Jurtz 2016 - 2018</string>
+    <string name="about_copyright">Copyright Marcel Jurtz 2016 - 2020</string>
 
     <string name="about_caption">LifeCounter</string>
     <string name="about_introduction">
-        Hey, danke, dass du meine App verwendest! Wenn du Verbesserungsvorschläge oder einen Fehler gefunden hast,
+        Hey, schön, dass du meine App verwendest! Wenn du Verbesserungsvorschläge oder einen Fehler gefunden hast,
         freue ich mich sehr über konstruktives Feedback.\n\n
 
-        Bitte verwende eine der folgenden Möglichkeiten, um mich zu kontaktieren:
+        Bitte verwende die folgende eMail-Adresse, um mich zu kontaktieren:
     </string>
     <string name="about_changelog_header">Changelog</string>
 
-    <string name="about_changelog_v2_header">01.12.2018</string>
+    <string name="about_changelog_v2_header">11.01.2020</string>
     <string name="about_changelog_v2_content">
-        - Allgemeine Überarbeitung\n
-        - Neue Pro-Version mit zusätzlichen Features
+        - Neu: 4-Spieler Modus\n
+        - Neu: Counter Manager\n
+        - Neu: Würfel-Funktion\n
+        - Erweiterte Einstellungen\n
+        - Optionaler Bestätigungs-Dialog für Spiel-Reset\n
+        - Allgemeine Funktionsüberarbeitung
     </string>
 
     <string name="contact_mail"><u>Mail: feedback@mjurtz.com</u></string>
-    <string name="contact_twitter"><u>Twitter: @MarcelJurtz</u></string>
 </resources>

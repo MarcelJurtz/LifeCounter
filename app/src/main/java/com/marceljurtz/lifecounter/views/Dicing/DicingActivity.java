@@ -30,8 +30,6 @@ public class DicingActivity extends com.marceljurtz.lifecounter.views.Base.View 
         disableMenuItem(navigationView, R.id.nav_dicing);
         disableMenuItem(navigationView, R.id.nav_energy_save_mode);
 
-        setMenuItemsForPro(navigationView);
-
         _presenter = new DicingPresenter(this, getApplicationContext().getSharedPreferences(PreferenceManager.PREFS, Activity.MODE_PRIVATE));
         _presenter.onCreate();
 

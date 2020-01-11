@@ -5,10 +5,10 @@ android {
     buildToolsVersion '28.0.3'
 
     defaultConfig {
-        applicationId "com.marceljurtz.lifecounterpro"
+        applicationId "com.marceljurtz.lifecounter"
         minSdkVersion 17
-        targetSdkVersion 27
-        versionCode 12
+        targetSdkVersion 28
+        versionCode 15
         versionName "2.0"
 
         android.defaultConfig.vectorDrawables.useSupportLibrary = true
