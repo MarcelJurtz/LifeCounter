@@ -105,6 +105,8 @@ public class GamePresenter extends Presenter implements IGamePresenter {
             view.enableScreenTimeout();
         }
 
+        view.setConfirmGameReset(PreferenceManager.getConfirmGameReset(_preferences));
+
         view.hideNavigationDrawer();
     }
 

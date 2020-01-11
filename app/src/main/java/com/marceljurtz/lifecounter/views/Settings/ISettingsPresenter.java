@@ -11,6 +11,7 @@ public interface ISettingsPresenter extends IPresenter {
     void onColorSelectButtonClick(MagicColorEnum color);
     void onColorSelectValueUpdate(Color color);
     void onKeepScreenOnCheckboxClick(boolean checked);
+    void onConfirmGameResetCheckboxClick(boolean checked);
     void onShowAppIntroClick();
 
     void onResetButtonConfirm();

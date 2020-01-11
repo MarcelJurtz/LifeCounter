@@ -42,6 +42,8 @@ public interface IGameView extends IView {
     void setDrawerTextPowerSaving(boolean shouldBeEnabled);
     void hideNavigationDrawer();
 
+    void setConfirmGameReset(boolean confirmGameReset);
+
     int getPlayerAmount();
 
     void restartActivity();

@@ -26,6 +26,7 @@ public class PreferenceManager {
     private static final int DEFAULT_PLAYER_AMOUNT = 2;
 
     private static final boolean DEFAULT_KEEP_SCREEN_ON = true;
+    private static final boolean DEFAULT_CONFIRM_GAME_RESET = false;
 
     private static final String SUFFIX_2PLAYER = "_POINTS2";
     private static final String SUFFIX_4PLAYER = "_POINTS4";
@@ -53,6 +54,7 @@ public class PreferenceManager {
     private static final String PREF_PLAYER_AMOUNT = "PLAYER_AMOUNT";
 
     private static final String PREF_KEEP_SCREEN_ON = "KEEP_SCREEN_ON";
+    private static final String PREF_CONFIRM_GAME_RESET = "CONFIRM_GAME_RESET";
 
     private static final String PREF_VERSIONNUMBER = "VERSION";
 
@@ -122,6 +124,20 @@ public class PreferenceManager {
     public static void saveScreenTimeoutDisabled(SharedPreferences preferences, boolean timeoutDisabled) {
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean(PREF_KEEP_SCREEN_ON, timeoutDisabled);
+        editor.apply();
+    }
+
+    //endregion
+
+    //region Confirm Game Reset
+
+    public static boolean getConfirmGameReset(SharedPreferences preferences) {
+        return preferences.getBoolean(PREF_CONFIRM_GAME_RESET, DEFAULT_CONFIRM_GAME_RESET);
+    }
+
+    public static void saveConfirmGameReset(SharedPreferences preferences, boolean confirmGameReset) {
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putBoolean(PREF_CONFIRM_GAME_RESET, confirmGameReset);
         editor.apply();
     }
 

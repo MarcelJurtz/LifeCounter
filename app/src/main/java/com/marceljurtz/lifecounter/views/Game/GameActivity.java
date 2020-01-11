@@ -1,6 +1,8 @@
 package com.marceljurtz.lifecounter.views.Game;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -115,6 +117,8 @@ public class GameActivity extends com.marceljurtz.lifecounter.views.Base.View im
 
     //endregion Controls
 
+    boolean showResetConfirmation;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -146,8 +150,6 @@ public class GameActivity extends com.marceljurtz.lifecounter.views.Base.View im
             disableMenuItem(navigationView, R.id.nav_game_2players);
         }
 
-        setMenuItemsForPro(navigationView);
-
         _presenter = new GamePresenter(this, preferences);
     }
 
@@ -171,6 +173,11 @@ public class GameActivity extends com.marceljurtz.lifecounter.views.Base.View im
         });
 
         t.start();
+    }
+
+    @Override
+    public void setConfirmGameReset(boolean confirmGameReset) {
+        showResetConfirmation = confirmGameReset;
     }
 
     @Override
@@ -1129,7 +1136,35 @@ public class GameActivity extends com.marceljurtz.lifecounter.views.Base.View im
         cmdResetLP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((IGamePresenter)_presenter).onResetButtonClick();
+
+                if(!showResetConfirmation) {
+                    ((IGamePresenter)_presenter).onResetButtonClick();
+                } else {
+
+                    boolean confirmed = false;
+
+                    AlertDialog.Builder alert = new AlertDialog.Builder(GameActivity.this);
+                    alert.setTitle(getResources().getString(R.string.dialog_game_reset_confirm_title));
+                    alert.setMessage(getResources().getString(R.string.dialog_game_reset_confirm_message));
+                    alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                            ((IGamePresenter)_presenter).onResetButtonClick();
+                        }
+                    });
+
+                    alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
+
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+
+                    alert.show();
+                }
             }
         });
 

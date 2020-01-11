@@ -55,6 +55,7 @@ public class SettingsPresenter extends Presenter implements ISettingsPresenter {
         settingsView.setLongClickPoints(String.format("%02d", longClickPoints));
 
         settingsView.setKeepScreenOnCheckbox(PreferenceManager.getScreenTimeoutDisabled(preferences));
+        settingsView.setConfirmGameResetCheckbox(PreferenceManager.getConfirmGameReset(preferences));
     }
 
     //endregion
@@ -131,6 +132,11 @@ public class SettingsPresenter extends Presenter implements ISettingsPresenter {
     @Override
     public void onShowAppIntroClick() {
         settingsView.loadActivity(IntroActivity.class);
+    }
+
+    @Override
+    public void onConfirmGameResetCheckboxClick(boolean checked) {
+        PreferenceManager.saveConfirmGameReset(preferences, checked);
     }
 
     //region Reset Button Click

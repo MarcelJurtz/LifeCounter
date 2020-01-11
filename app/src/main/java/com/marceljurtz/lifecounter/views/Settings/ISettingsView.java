@@ -19,4 +19,5 @@ public interface ISettingsView extends IView {
     void updateColorButtonValue(Color color);
 
     void setKeepScreenOnCheckbox(boolean checked);
+    void setConfirmGameResetCheckbox(boolean checked);
 }

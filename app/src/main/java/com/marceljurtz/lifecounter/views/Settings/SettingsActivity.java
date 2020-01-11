@@ -45,9 +45,8 @@ public class SettingsActivity extends com.marceljurtz.lifecounter.views.Base.Vie
     private Button cmdShowAppIntro;
     private Button cmdReset;
 
-    private ImageButton cmdBack;
-
     private Switch chkKeepScreenOn;
+    private Switch chkConfirmGameReset;
 
     private NavigationView navigationView;
 
@@ -67,8 +66,6 @@ public class SettingsActivity extends com.marceljurtz.lifecounter.views.Base.Vie
 
         disableMenuItem(navigationView, R.id.nav_energy_save_mode);
         disableMenuItem(navigationView, R.id.nav_settings);
-
-        setMenuItemsForPro(navigationView);
 
         presenter = new SettingsPresenter(this, preferences);
         presenter.onCreate();
@@ -187,6 +184,11 @@ public class SettingsActivity extends com.marceljurtz.lifecounter.views.Base.Vie
         chkKeepScreenOn.setChecked(checked);
     }
 
+    @Override
+    public void setConfirmGameResetCheckbox(boolean checked) {
+        chkConfirmGameReset.setChecked(checked);
+    }
+
     private void initControls() {
 
         txtBlack = (TextView) findViewById(R.id.txtColorBlack);
@@ -203,6 +205,14 @@ public class SettingsActivity extends com.marceljurtz.lifecounter.views.Base.Vie
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 presenter.onKeepScreenOnCheckboxClick(isChecked);
+            }
+        });
+
+        chkConfirmGameReset = (Switch) findViewById(R.id.chkConfirmReset);
+        chkConfirmGameReset.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                presenter.onConfirmGameResetCheckboxClick(isChecked);
             }
         });
 
@@ -251,14 +261,6 @@ public class SettingsActivity extends com.marceljurtz.lifecounter.views.Base.Vie
             @Override
             public void onClick(View v) {
                 presenter.onResetButtonClick();
-            }
-        });
-
-        cmdBack = (ImageButton)findViewById(R.id.cmdBack);
-        cmdBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
             }
         });
 

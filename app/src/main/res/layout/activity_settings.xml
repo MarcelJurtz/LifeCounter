@@ -27,30 +27,17 @@
             android:paddingTop="@dimen/activity_vertical_margin"
             tools:context=".views.Settings.SettingsActivity">
 
-            <RelativeLayout
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/rlHeadline"
-                android:paddingBottom="10dp"
+                android:layout_centerInParent="true"
                 android:layout_alignParentTop="true"
-                android:gravity="fill">
-                <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/cmdBack"
-                    app:srcCompat="@drawable/ic_keyboard_backspace_24dp"
-                    android:background="@android:color/transparent"
-                    android:layout_alignParentLeft="true"
-                    android:layout_centerVertical="true"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:text="@string/settings_title"
-                    android:textSize="@dimen/about_caption_main"
-                    android:textStyle="bold"
-                    android:id="@+id/lblHeadline" />
-            </RelativeLayout>
+                android:paddingBottom="10dp"
+                android:text="@string/settings_title"
+                android:textSize="@dimen/about_caption_main"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:id="@+id/lblHeadline" />
 
 
             <!-- BLACK -->
@@ -58,7 +45,7 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/rlHeadline"
+                android:layout_below="@+id/lblHeadline"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:id="@+id/lColorBlack"
@@ -370,12 +357,44 @@
 
             </LinearLayout>
 
-            <!-- Show Intro -->
+            <!-- Toggle Reset Confirmation -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_below="@id/lKeepScreenOn"
+                android:id="@+id/lConfirmReset">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/setting_confirm_game_reset"
+                    android:id="@+id/lblConfirmReset" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <Switch
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:paddingEnd="16dp"
+                    android:paddingRight="16dp"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:id="@+id/chkConfirmReset" />
+
+            </LinearLayout>
+
+            <!-- Show Intro -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/lConfirmReset"
                 android:id="@+id/lShowAppIntro">
 
                 <TextView
