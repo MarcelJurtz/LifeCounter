@@ -48,7 +48,7 @@ The strings are located under ```/app/src/main/res/values/strings.xml```
 
 ## Changelog
 
-### Jan. 11, 2019 - Version 2.0
+### Jan. 11, 2020 - Version 2.0
 
 * New 4-Player Mode
 * New Counter Manager
