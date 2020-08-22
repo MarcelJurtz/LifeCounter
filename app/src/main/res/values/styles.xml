@@ -89,11 +89,11 @@
     </style>
 
     <style name="poisonbutton_plus" parent="poisonbutton">
-        <item name="android:src">@drawable/icon_plus</item>
+        <item name="android:background">@drawable/icon_plus</item>
     </style>
 
     <style name="poisonbutton_minus" parent="poisonbutton">
-        <item name="android:src">@drawable/icon_minus</item>
+        <item name="android:background">@drawable/icon_minus</item>
     </style>
 
     <!-- COLOR BUTTONS -->

@@ -121,7 +121,7 @@
                 android:layout_toEndOf="@+id/txtPoisonCount2p1"
                 android:layout_toRightOf="@+id/txtPoisonCount2p1"
                 android:layout_alignBottom="@id/txtPoisonCount2p1"
-                android:layout_alignTop="@+id/txtPoisonCount2p1" />
+                android:layout_marginBottom="@dimen/button_poison_margin" />
 
             <ImageButton
                 android:contentDescription="@string/descr_pp_plus"
@@ -130,7 +130,7 @@
                 android:layout_toStartOf="@id/txtPoisonCount2p1"
                 android:layout_toLeftOf="@id/txtPoisonCount2p1"
                 android:layout_alignBottom="@id/txtPoisonCount2p1"
-                android:layout_alignTop="@+id/txtPoisonCount2p1" />
+                android:layout_marginBottom="@dimen/button_poison_margin" />
 
             <!-- Colors: Guest -->
             <Button
@@ -220,7 +220,7 @@
                 android:layout_toEndOf="@+id/txtPoisonCount2p2"
                 android:layout_toRightOf="@+id/txtPoisonCount2p2"
                 android:layout_alignBottom="@id/txtPoisonCount2p2"
-                android:layout_alignTop="@+id/txtPoisonCount2p2" />
+                android:layout_marginBottom="@dimen/button_poison_margin" />
 
             <ImageButton
                 android:contentDescription="@string/descr_pp_minus"
@@ -229,7 +229,7 @@
                 android:layout_toStartOf="@id/txtPoisonCount2p2"
                 android:layout_toLeftOf="@id/txtPoisonCount2p2"
                 android:layout_alignBottom="@id/txtPoisonCount2p2"
-                android:layout_alignTop="@+id/txtPoisonCount2p2" />
+                android:layout_marginBottom="@dimen/button_poison_margin" />
 
             <!-- Colors: Home -->
             <Button
