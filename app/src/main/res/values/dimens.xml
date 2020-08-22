@@ -15,6 +15,7 @@
     <dimen name="button_poison_space_vertical">16dp</dimen>
     <dimen name="button_poison_space_vertical_4p">6dp</dimen>
     <dimen name="button_poison_margin">12dp</dimen>
+    <dimen name="button_poison_margin_4p">6dp</dimen>
 
     <dimen name="size_config_buttons">30dp</dimen>
 
