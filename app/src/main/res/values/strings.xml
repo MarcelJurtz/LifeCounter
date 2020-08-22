@@ -132,10 +132,7 @@
     </string>
 
     <string name="intro_1_header">MTG LifeCounter</string>
-    <string name="intro_1_description">Hey, thanks for buying pro! I\'d like to quickly guide you through the app, which you can skip by clicking the button in the bottom left corner.</string>
-
-    <string name="lite_intro_1_header">MTG LifeCounter</string>
-    <string name="lite_intro_1_description">Hey, thanks for downloading! I\'d like to quickly guide you through the app, which you can skip by clicking the button in the bottom left corner.</string>
+    <string name="intro_1_description">Hey, thanks for downloading! I\'d like to quickly guide you through the app, which you can skip by clicking the button in the bottom left corner.</string>
 
     <string name="intro_2_header">Navigation</string>
     <string name="intro_2_description">By sliding from the left hand side of the screen to the right, you can open the menu.</string>

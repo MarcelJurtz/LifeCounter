@@ -133,10 +133,7 @@
     </string>
 
     <string name="intro_1_header">MTG LifeCounter</string>
-    <string name="intro_1_description">Hey, danke dass du dir die Pro-Version gekauft hast! Ich möchte dich einmal kurz durch die Steuerung der App führen, mit dem Knopf links unten kannst du das überspringen.</string>
-
-    <string name="lite_intro_1_header">MTG LifeCounter</string>
-    <string name="lite_intro_1_description">Hey, danke fürs Downloaden! Ich möchte dich einmal kurz durch die Steuerung der App führen, mit dem Knopf links unten kannst du das überspringen.</string>
+    <string name="intro_1_description">Hey, danke fürs Downloaden! Ich möchte dich einmal kurz durch die Steuerung der App führen, mit dem Knopf links unten kannst du das überspringen.</string>
 
     <string name="intro_2_header">Navigation</string>
     <string name="intro_2_description">Durch eine Bewegung vom linken Rand des Bildschirm nach Rechts öffnest du das Menü.</string>
