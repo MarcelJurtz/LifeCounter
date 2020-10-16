@@ -3,6 +3,8 @@ package com.marceljurtz.lifecounter.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.marceljurtz.lifecounter.enums.CounterType;
+
 public class Counter implements Parcelable {
 
     public Counter(String description, int ATK, int DEF) {
@@ -23,6 +25,7 @@ public class Counter implements Parcelable {
         description = source.readString();
         atk = source.readInt();
         def = source.readInt();
+        counterType = CounterType.valueOf(source.readString());
     }
 
     // ID to link counterToAdd to view
@@ -67,6 +70,12 @@ public class Counter implements Parcelable {
         this.def = def;
     }
 
+    private CounterType counterType;
+
+    public CounterType getCounterType() { return this.counterType; }
+
+    public void setCounterType (CounterType counterType) { this.counterType = counterType; }
+
     @Override
     public int describeContents() {
         return 0;
@@ -78,6 +87,7 @@ public class Counter implements Parcelable {
         dest.writeString(description);
         dest.writeInt(atk);
         dest.writeInt(def);
+        dest.writeString(this.counterType.name());
     }
 
     public static final Parcelable.Creator<Counter> CREATOR

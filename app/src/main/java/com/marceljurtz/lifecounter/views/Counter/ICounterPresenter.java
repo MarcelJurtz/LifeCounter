@@ -7,7 +7,8 @@ import com.marceljurtz.lifecounter.contracts.base.IPresenter;
 import com.marceljurtz.lifecounter.enums.PlayerIdEnum;
 
 public interface ICounterPresenter extends IPresenter {
-    void onFloatingActionButtonTap();
+    void onFabCtTap();
+    void onFabPwTap();
     void addCounter(PlayerIdEnum playerIdEnum, Counter counter);
 
     void onCounterTap(LinearLayout counterWrapper);

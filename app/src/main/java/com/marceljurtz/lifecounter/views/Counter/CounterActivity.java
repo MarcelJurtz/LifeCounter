@@ -3,16 +3,15 @@ package com.marceljurtz.lifecounter.views.Counter;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.view.inputmethod.InputMethodManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,6 +24,7 @@ import android.widget.TextView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
+import com.marceljurtz.lifecounter.enums.CounterType;
 import com.marceljurtz.lifecounter.models.Color;
 import com.marceljurtz.lifecounter.models.Counter;
 import com.marceljurtz.lifecounter.models.Player;
@@ -35,8 +35,6 @@ import com.marceljurtz.lifecounter.R;
 
 import java.io.InvalidObjectException;
 import java.util.ArrayList;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 public class CounterActivity extends com.marceljurtz.lifecounter.views.Base.View implements ICounterView {
 
@@ -67,6 +65,13 @@ public class CounterActivity extends com.marceljurtz.lifecounter.views.Base.View
 
     private SharedPreferences preferences;
 
+    // FAB Add item
+    private FloatingActionButton fabMain, fabCt, fabPw;
+    private Animation fabOpen, fabClose, fabCw, fabCcw;
+    TextView txtCt, txtPw;
+
+    Boolean isOpen = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,6 +100,18 @@ public class CounterActivity extends com.marceljurtz.lifecounter.views.Base.View
         players.add(player2);
         players.add(player3);
         players.add(player4);
+
+        fabMain = findViewById(R.id.fab);
+        fabCt = findViewById(R.id.fabCounter);
+        fabPw = findViewById(R.id.fabPlaneswalker);
+        fabClose = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_close);
+        fabOpen = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_open);
+        fabCw = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_rotate_cw);
+        fabCcw = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_rotate_ccw);
+
+        txtCt = (TextView) findViewById(R.id.txtCounter);
+        txtPw = (TextView) findViewById(R.id.txtPlaneswalker);
+
 
         _presenter = new CounterPresenter(this, preferences, players);
 
@@ -163,11 +180,43 @@ public class CounterActivity extends com.marceljurtz.lifecounter.views.Base.View
 
         _presenter.onCreate();
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        fabMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((ICounterPresenter)_presenter).onFloatingActionButtonTap();
+                if (isOpen) {
+                    txtPw.setVisibility(View.INVISIBLE);
+                    txtCt.setVisibility(View.INVISIBLE);
+                    fabPw.startAnimation(fabClose);
+                    fabCt.startAnimation(fabClose);
+                    fabMain.startAnimation(fabCcw);
+                } else {
+                    txtPw.setVisibility(View.VISIBLE);
+                    txtCt.setVisibility(View.VISIBLE);
+                    fabPw.startAnimation(fabOpen);
+                    fabCt.startAnimation(fabOpen);
+                    fabMain.startAnimation(fabCw);
+                }
+
+                fabPw.setClickable(!isOpen);
+                fabCt.setClickable(!isOpen);
+
+                isOpen = !isOpen;
+
+                //((ICounterPresenter)_presenter).onFabCtTap();
+            }
+        });
+
+        fabCt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((ICounterPresenter) _presenter).onFabCtTap();
+            }
+        });
+
+        fabPw.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((ICounterPresenter)_presenter).onFabPwTap();
             }
         });
 
@@ -208,20 +257,26 @@ public class CounterActivity extends com.marceljurtz.lifecounter.views.Base.View
     }
 
     @Override
-    public void loadCounterAddDialog(ArrayList<Player> players) {
+    public void loadCounterAddDialog(ArrayList<Player> players, CounterType counterType) {
 
         adapter.clear();
         adapter.addAll(players);
 
         final Dialog dialog = new Dialog(CounterActivity.this);
-        dialog.setContentView(R.layout.dialog_countermanager_new);
+            dialog.setContentView(R.layout.dialog_countermanager_new);
 
         final EditText txtCardDescription = (EditText) dialog.findViewById(R.id.txtCardDescription);
         final EditText txtATK = (EditText) dialog.findViewById(R.id.txtCardAtk);
         final EditText txtDEF = (EditText) dialog.findViewById(R.id.txtCardDef);
+        final TextView lblDivider = (TextView) dialog.findViewById(R.id.lblDivider);
         final Spinner spPlayers = (Spinner) dialog.findViewById(R.id.spUserSelection);
         final ImageButton cmdIncrease = (ImageButton)dialog.findViewById(R.id.cmdIncreaseCounter);
         final ImageButton cmdDecrease = (ImageButton)dialog.findViewById(R.id.cmdDecreaseCounter);
+
+        if(counterType == CounterType.Planeswalker){
+            txtATK.setVisibility(View.GONE);
+            lblDivider.setVisibility(View.GONE);
+        }
 
         spPlayers.setAdapter(adapter);
 
@@ -319,20 +374,22 @@ public class CounterActivity extends com.marceljurtz.lifecounter.views.Base.View
         spacer.setLayoutParams(llParamsSpacer);
         wrapper.addView(spacer);
 
-        TextView lblATK = new TextView(getApplicationContext());
-        lblATK.setText(counter.getATK() + "");
-        lblATK.setLayoutParams(llParams);
-        lblATK.setTextSize(fontSize);
-        lblATK.setTextColor(getResources().getColor(R.color.textColor));
-        lblATK.setTag(ViewHelper.lblAtkTag);
-        wrapper.addView(lblATK);
+        if(counter.getCounterType() == CounterType.Counter) {
+            TextView lblATK = new TextView(getApplicationContext());
+            lblATK.setText(counter.getATK() + "");
+            lblATK.setLayoutParams(llParams);
+            lblATK.setTextSize(fontSize);
+            lblATK.setTextColor(getResources().getColor(R.color.textColor));
+            lblATK.setTag(ViewHelper.lblAtkTag);
+            wrapper.addView(lblATK);
 
-        TextView lblDivider = new TextView(getApplicationContext());
-        lblDivider.setText(" / ");
-        lblDivider.setLayoutParams(llParams);
-        lblDivider.setTextSize(fontSize);
-        lblDivider.setTextColor(getResources().getColor(R.color.textColor));
-        wrapper.addView(lblDivider);
+            TextView lblDivider = new TextView(getApplicationContext());
+            lblDivider.setText(" / ");
+            lblDivider.setLayoutParams(llParams);
+            lblDivider.setTextSize(fontSize);
+            lblDivider.setTextColor(getResources().getColor(R.color.textColor));
+            wrapper.addView(lblDivider);
+        }
 
         TextView lblDEF = new TextView(getApplicationContext());
         lblDEF.setText(counter.getDEF() + "");

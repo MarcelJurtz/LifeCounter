@@ -3,6 +3,7 @@ package com.marceljurtz.lifecounter.views.Counter;
 import android.content.SharedPreferences;
 import android.widget.LinearLayout;
 
+import com.marceljurtz.lifecounter.enums.CounterType;
 import com.marceljurtz.lifecounter.views.About.AboutActivity;
 import com.marceljurtz.lifecounter.views.Base.Presenter;
 import com.marceljurtz.lifecounter.views.Dicing.DicingActivity;
@@ -74,8 +75,13 @@ public class CounterPresenter extends Presenter implements ICounterPresenter {
     }
 
     @Override
-    public void onFloatingActionButtonTap() {
-        ((ICounterView)_view).loadCounterAddDialog(players);
+    public void onFabCtTap() {
+        ((ICounterView)_view).loadCounterAddDialog(players, CounterType.Counter);
+    }
+
+    @Override
+    public void onFabPwTap() {
+        ((ICounterView)_view).loadCounterAddDialog(players, CounterType.Planeswalker);
     }
 
     @Override
