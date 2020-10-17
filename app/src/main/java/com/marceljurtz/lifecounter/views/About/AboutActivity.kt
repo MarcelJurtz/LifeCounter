@@ -26,21 +26,21 @@ class AboutActivity : View(), IAboutView {
 
         initControls()
 
-        disableMenuItem(navigationView, R.id.nav_energy_save_mode)
-        disableMenuItem(navigationView, R.id.nav_about)
+        disableMenuItem(navigationView!!, R.id.nav_energy_save_mode)
+        disableMenuItem(navigationView!!, R.id.nav_about)
 
         _presenter = AboutPresenter(this,
                 applicationContext.getSharedPreferences(PreferenceManager.PREFS, Activity.MODE_PRIVATE))
 
-        _presenter.onCreate()
+        _presenter!!.onCreate()
 
         navigationView!!.setNavigationItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.nav_dicing -> _presenter.onMenuEntryDicingTap()
-                R.id.nav_game_2players -> _presenter.onMenuEntryTwoPlayerTap()
-                R.id.nav_game_4players -> _presenter.onMenuEntryFourPlayerTap()
-                R.id.nav_settings -> _presenter.onMenuEntrySettingsTap()
-                R.id.nav_countermanager -> _presenter.onMenuEntryCounterManagerTap()
+                R.id.nav_dicing -> _presenter!!.onMenuEntryDicingTap()
+                R.id.nav_game_2players -> _presenter!!.onMenuEntryTwoPlayerTap()
+                R.id.nav_game_4players -> _presenter!!.onMenuEntryFourPlayerTap()
+                R.id.nav_settings -> _presenter!!.onMenuEntrySettingsTap()
+                R.id.nav_countermanager -> _presenter!!.onMenuEntryCounterManagerTap()
                 else -> {
                 }
             }

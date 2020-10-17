@@ -78,8 +78,8 @@ class SettingsActivity : com.marceljurtz.lifecounter.views.Base.View(), ISetting
 
         initControls()
 
-        disableMenuItem(navigationView, R.id.nav_energy_save_mode)
-        disableMenuItem(navigationView, R.id.nav_settings)
+        disableMenuItem(navigationView!!, R.id.nav_energy_save_mode)
+        disableMenuItem(navigationView!!, R.id.nav_settings)
 
         presenter = SettingsPresenter(this, preferences)
         presenter.onCreate()

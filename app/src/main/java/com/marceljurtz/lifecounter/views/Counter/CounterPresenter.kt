@@ -53,20 +53,20 @@ class CounterPresenter(view: ICounterView, preferences: SharedPreferences, priva
 
         for (player in players!!) {
 
-            (_view as ICounterView).setPlayerIdentificationText(player.playerIdEnum, player.getPlayerIdentification())
+            (_view as ICounterView).setPlayerIdentificationText(player.playerIdEnum!!, player.getPlayerIdentification())
 
             for (counter in player.allCounters!!) {
-                (_view as ICounterView).addCounter(player.playerIdEnum, counter)
+                (_view as ICounterView).addCounter(player.playerIdEnum!!, counter)
             }
         }
     }
 
     override fun onFabCtTap() {
-        (_view as ICounterView).loadCounterAddDialog(players, CounterType.Counter)
+        (_view as ICounterView).loadCounterAddDialog(players!!, CounterType.Counter)
     }
 
     override fun onFabPwTap() {
-        (_view as ICounterView).loadCounterAddDialog(players, CounterType.Planeswalker)
+        (_view as ICounterView).loadCounterAddDialog(players!!, CounterType.Planeswalker)
     }
 
     override fun addCounter(playerIdEnum: PlayerIdEnum, counter: Counter) {
@@ -139,7 +139,7 @@ class CounterPresenter(view: ICounterView, preferences: SharedPreferences, priva
 
     override fun onCounterTap(counterLayout: LinearLayout) {
         val identifier = counterLayout.tag.toString()
-        (_view as ICounterView).loadCounterEditDialog(counterLayout, getPlayerByCounterIdentifier(identifier), getCounterByIdentifier(identifier))
+        (_view as ICounterView).loadCounterEditDialog(counterLayout, getPlayerByCounterIdentifier(identifier)!!, getCounterByIdentifier(identifier)!!)
     }
 
     override fun onCounterLongTap(counterLayout: LinearLayout) {

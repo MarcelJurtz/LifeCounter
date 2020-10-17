@@ -1,9 +1,9 @@
-package com.marceljurtz.lifecounter.enums;
+package com.marceljurtz.lifecounter.enums
 
 /**
  * Enumeration to differentiate between long and regular clicks
  */
 
-public enum ClickTypeEnum {
+enum class ClickTypeEnum {
     SHORT, LONG
 }
