@@ -48,14 +48,14 @@ public class SettingsPresenter extends Presenter implements ISettingsPresenter {
         settingsView.updateColorButtonValue(red);
         settingsView.updateColorButtonValue(white);
 
-        lifepoints = PreferenceManager.getDefaultLifepoints(preferences);
+        lifepoints = PreferenceManager.INSTANCE.getDefaultLifepoints(preferences);
         settingsView.setLifepoints(String.format("%02d", lifepoints));
 
-        longClickPoints = PreferenceManager.getLongclickPoints(preferences);
+        longClickPoints = PreferenceManager.INSTANCE.getLongclickPoints(preferences);
         settingsView.setLongClickPoints(String.format("%02d", longClickPoints));
 
-        settingsView.setKeepScreenOnCheckbox(PreferenceManager.getScreenTimeoutDisabled(preferences));
-        settingsView.setConfirmGameResetCheckbox(PreferenceManager.getConfirmGameReset(preferences));
+        settingsView.setKeepScreenOnCheckbox(PreferenceManager.INSTANCE.getScreenTimeoutDisabled(preferences));
+        settingsView.setConfirmGameResetCheckbox(PreferenceManager.INSTANCE.getConfirmGameReset(preferences));
     }
 
     //endregion
@@ -65,17 +65,17 @@ public class SettingsPresenter extends Presenter implements ISettingsPresenter {
     @Override
     public void onBackButtonClick() {
 
-        PreferenceManager.saveColor(preferences, black);
-        PreferenceManager.saveColor(preferences, blue);
-        PreferenceManager.saveColor(preferences, green);
-        PreferenceManager.saveColor(preferences, red);
-        PreferenceManager.saveColor(preferences, white);
+        PreferenceManager.INSTANCE.saveColor(preferences, black);
+        PreferenceManager.INSTANCE.saveColor(preferences, blue);
+        PreferenceManager.INSTANCE.saveColor(preferences, green);
+        PreferenceManager.INSTANCE.saveColor(preferences, red);
+        PreferenceManager.INSTANCE.saveColor(preferences, white);
 
         lifepoints = Integer.parseInt(settingsView.getLifepoints());
         longClickPoints = Integer.parseInt(settingsView.getLongClickPoints());
 
-        PreferenceManager.saveDefaultLifepoints(preferences, lifepoints);
-        PreferenceManager.saveDefaultLongClickPoints(preferences, longClickPoints);
+        PreferenceManager.INSTANCE.saveDefaultLifepoints(preferences, lifepoints);
+        PreferenceManager.INSTANCE.saveDefaultLongClickPoints(preferences, longClickPoints);
 
         settingsView.returnToPrevActivity();
     }
@@ -92,11 +92,11 @@ public class SettingsPresenter extends Presenter implements ISettingsPresenter {
 
     @Override
     public void onColorSelectButtonClick(MagicColorEnum color) {
-        int savedColor = PreferenceManager.getCustomizedColorOrDefault(color, preferences);
+        int savedColor = PreferenceManager.INSTANCE.getCustomizedColorOrDefault(color, preferences);
 
-        int r = Color.getRGB(savedColor)[0];
-        int g = Color.getRGB(savedColor)[1];
-        int b = Color.getRGB(savedColor)[2];
+        int r = Color.Companion.getRGB(savedColor)[0];
+        int g = Color.Companion.getRGB(savedColor)[1];
+        int b = Color.Companion.getRGB(savedColor)[2];
 
         settingsView.loadColorPickerDialog(color, r, g, b);
     }
@@ -126,7 +126,7 @@ public class SettingsPresenter extends Presenter implements ISettingsPresenter {
 
     @Override
     public void onKeepScreenOnCheckboxClick(boolean checked) {
-        PreferenceManager.saveScreenTimeoutDisabled(preferences, checked);
+        PreferenceManager.INSTANCE.saveScreenTimeoutDisabled(preferences, checked);
     }
 
     @Override
@@ -136,7 +136,7 @@ public class SettingsPresenter extends Presenter implements ISettingsPresenter {
 
     @Override
     public void onConfirmGameResetCheckboxClick(boolean checked) {
-        PreferenceManager.saveConfirmGameReset(preferences, checked);
+        PreferenceManager.INSTANCE.saveConfirmGameReset(preferences, checked);
     }
 
     //region Reset Button Click
@@ -149,9 +149,9 @@ public class SettingsPresenter extends Presenter implements ISettingsPresenter {
     @Override
     public void onResetButtonConfirm() {
         // Reset all Settings
-        PreferenceManager.resetLongClickPoints(preferences);
-        PreferenceManager.resetLifepoints(preferences);
-        PreferenceManager.resetColors(preferences);
+        PreferenceManager.INSTANCE.resetLongClickPoints(preferences);
+        PreferenceManager.INSTANCE.resetLifepoints(preferences);
+        PreferenceManager.INSTANCE.resetColors(preferences);
 
         settingsView.returnToPrevActivity();
     }

@@ -44,11 +44,11 @@ public class GamePresenter extends Presenter implements IGamePresenter {
         game = new Game(_preferences, view.getPlayerAmount());
 
         // Initiate default colors
-        view.initColorButton(MagicColorEnum.BLACK, PreferenceManager.getCustomizedColorOrDefault(MagicColorEnum.BLACK, _preferences));
-        view.initColorButton(MagicColorEnum.BLUE, PreferenceManager.getCustomizedColorOrDefault(MagicColorEnum.BLUE, _preferences));
-        view.initColorButton(MagicColorEnum.GREEN, PreferenceManager.getCustomizedColorOrDefault(MagicColorEnum.GREEN, _preferences));
-        view.initColorButton(MagicColorEnum.RED, PreferenceManager.getCustomizedColorOrDefault(MagicColorEnum.RED, _preferences));
-        view.initColorButton(MagicColorEnum.WHITE, PreferenceManager.getCustomizedColorOrDefault(MagicColorEnum.WHITE, _preferences));
+        view.initColorButton(MagicColorEnum.BLACK, PreferenceManager.INSTANCE.getCustomizedColorOrDefault(MagicColorEnum.BLACK, _preferences));
+        view.initColorButton(MagicColorEnum.BLUE, PreferenceManager.INSTANCE.getCustomizedColorOrDefault(MagicColorEnum.BLUE, _preferences));
+        view.initColorButton(MagicColorEnum.GREEN, PreferenceManager.INSTANCE.getCustomizedColorOrDefault(MagicColorEnum.GREEN, _preferences));
+        view.initColorButton(MagicColorEnum.RED, PreferenceManager.INSTANCE.getCustomizedColorOrDefault(MagicColorEnum.RED, _preferences));
+        view.initColorButton(MagicColorEnum.WHITE, PreferenceManager.INSTANCE.getCustomizedColorOrDefault(MagicColorEnum.WHITE, _preferences));
 
         // Settings, Energy-Saving & Poison
         view.disableSettingsControls(hideOtherControlsWhenSettingsDisplayed, false);
@@ -87,25 +87,25 @@ public class GamePresenter extends Presenter implements IGamePresenter {
         onMenuEntryEnergySaveTap();
 
         for(Player player : game.getPlayers()) {
-            player.setColor(new Color(player.getColorOrDefault().getBasecolor(), PreferenceManager.getCustomizedColorOrDefault(player.getColorOrDefault().getBasecolor(), _preferences)));
+            player.setColor(new Color(player.getColorOrDefault().getBasecolor(), PreferenceManager.INSTANCE.getCustomizedColorOrDefault(player.getColorOrDefault().getBasecolor(), _preferences)));
             view.setLifepoints(player.getPlayerIdEnum(), String.format("%02d",player.getLifePoints()));
             view.setPoisonpoints(player.getPlayerIdEnum(), String.format("%02d", player.getPoisonPoints()));
             view.setLayoutColor(player.getPlayerIdEnum(), player.getColorOrDefault().getIntValue());
         }
 
-        view.initColorButton(MagicColorEnum.BLACK, PreferenceManager.getCustomizedColorOrDefault(MagicColorEnum.BLACK, _preferences));
-        view.initColorButton(MagicColorEnum.BLUE, PreferenceManager.getCustomizedColorOrDefault(MagicColorEnum.BLUE, _preferences));
-        view.initColorButton(MagicColorEnum.GREEN, PreferenceManager.getCustomizedColorOrDefault(MagicColorEnum.GREEN, _preferences));
-        view.initColorButton(MagicColorEnum.RED, PreferenceManager.getCustomizedColorOrDefault(MagicColorEnum.RED, _preferences));
-        view.initColorButton(MagicColorEnum.WHITE, PreferenceManager.getCustomizedColorOrDefault(MagicColorEnum.WHITE, _preferences));
+        view.initColorButton(MagicColorEnum.BLACK, PreferenceManager.INSTANCE.getCustomizedColorOrDefault(MagicColorEnum.BLACK, _preferences));
+        view.initColorButton(MagicColorEnum.BLUE, PreferenceManager.INSTANCE.getCustomizedColorOrDefault(MagicColorEnum.BLUE, _preferences));
+        view.initColorButton(MagicColorEnum.GREEN, PreferenceManager.INSTANCE.getCustomizedColorOrDefault(MagicColorEnum.GREEN, _preferences));
+        view.initColorButton(MagicColorEnum.RED, PreferenceManager.INSTANCE.getCustomizedColorOrDefault(MagicColorEnum.RED, _preferences));
+        view.initColorButton(MagicColorEnum.WHITE, PreferenceManager.INSTANCE.getCustomizedColorOrDefault(MagicColorEnum.WHITE, _preferences));
 
-        if(PreferenceManager.getScreenTimeoutDisabled(_preferences)) {
+        if(PreferenceManager.INSTANCE.getScreenTimeoutDisabled(_preferences)) {
             view.disableScreenTimeout();
         } else {
             view.enableScreenTimeout();
         }
 
-        view.setConfirmGameReset(PreferenceManager.getConfirmGameReset(_preferences));
+        view.setConfirmGameReset(PreferenceManager.INSTANCE.getConfirmGameReset(_preferences));
 
         view.hideNavigationDrawer();
     }
@@ -139,19 +139,19 @@ public class GamePresenter extends Presenter implements IGamePresenter {
 
             switch (color) {
                 case BLUE:
-                    newColor = new Color(MagicColorEnum.BLUE, PreferenceManager.getCustomizedColorOrDefault(MagicColorEnum.BLUE, _preferences));
+                    newColor = new Color(MagicColorEnum.BLUE, PreferenceManager.INSTANCE.getCustomizedColorOrDefault(MagicColorEnum.BLUE, _preferences));
                     break;
                 case GREEN:
-                    newColor = new Color(MagicColorEnum.GREEN, PreferenceManager.getCustomizedColorOrDefault(MagicColorEnum.GREEN, _preferences));
+                    newColor = new Color(MagicColorEnum.GREEN, PreferenceManager.INSTANCE.getCustomizedColorOrDefault(MagicColorEnum.GREEN, _preferences));
                     break;
                 case RED:
-                    newColor = new Color(MagicColorEnum.RED, PreferenceManager.getCustomizedColorOrDefault(MagicColorEnum.RED, _preferences));
+                    newColor = new Color(MagicColorEnum.RED, PreferenceManager.INSTANCE.getCustomizedColorOrDefault(MagicColorEnum.RED, _preferences));
                     break;
                 case WHITE:
-                    newColor = new Color(MagicColorEnum.WHITE, PreferenceManager.getCustomizedColorOrDefault(MagicColorEnum.WHITE, _preferences));
+                    newColor = new Color(MagicColorEnum.WHITE, PreferenceManager.INSTANCE.getCustomizedColorOrDefault(MagicColorEnum.WHITE, _preferences));
                     break;
                 default:
-                    newColor = new Color(MagicColorEnum.BLACK, PreferenceManager.getCustomizedColorOrDefault(MagicColorEnum.BLACK, _preferences));
+                    newColor = new Color(MagicColorEnum.BLACK, PreferenceManager.INSTANCE.getCustomizedColorOrDefault(MagicColorEnum.BLACK, _preferences));
                     break;
             }
 

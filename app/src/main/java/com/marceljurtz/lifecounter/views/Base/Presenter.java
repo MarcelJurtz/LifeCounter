@@ -49,12 +49,12 @@ public class Presenter implements IPresenter {
     //region NavDrawer
 
     public void onMenuEntryTwoPlayerTap() {
-        PreferenceManager.saveDefaultPlayerAmount(_preferences, 2);
+        PreferenceManager.INSTANCE.saveDefaultPlayerAmount(_preferences, 2);
         _view.loadActivity(GameActivity.class);
     }
 
     public void onMenuEntryFourPlayerTap() {
-        PreferenceManager.saveDefaultPlayerAmount(_preferences, 4);
+        PreferenceManager.INSTANCE.saveDefaultPlayerAmount(_preferences, 4);
         _view.loadActivity(GameActivity.class);
     }
 
@@ -79,10 +79,10 @@ public class Presenter implements IPresenter {
             GameActivity v = (GameActivity)_view;
             if (v.getPlayerAmount() == 4) {
                 // Load 2 Player View
-                PreferenceManager.saveDefaultPlayerAmount(_preferences, 2);
+                PreferenceManager.INSTANCE.saveDefaultPlayerAmount(_preferences, 2);
             } else if (v.getPlayerAmount() == 2) {
                 // Load 4 Player View
-                PreferenceManager.saveDefaultPlayerAmount(_preferences, 4);
+                PreferenceManager.INSTANCE.saveDefaultPlayerAmount(_preferences, 4);
             }
             v.hideNavigationDrawer();
             v.restartActivity();
@@ -94,9 +94,9 @@ public class Presenter implements IPresenter {
             GameActivity v = (GameActivity)_view;
             _powerSaveEnabled = !_powerSaveEnabled;
             if (_powerSaveEnabled) {
-                v.enableEnergySaving(PreferenceManager.powerSave, PreferenceManager.powerSaveTextcolor);
+                v.enableEnergySaving(PreferenceManager.INSTANCE.getPowerSave(), PreferenceManager.INSTANCE.getPowerSaveTextcolor());
             } else {
-                v.disableEnergySaving(PreferenceManager.getCustomizedColorOrDefault(MagicColorEnum.BLACK, _preferences), PreferenceManager.regularTextcolor);
+                v.disableEnergySaving(PreferenceManager.INSTANCE.getCustomizedColorOrDefault(MagicColorEnum.BLACK, _preferences), PreferenceManager.INSTANCE.getRegularTextcolor());
             }
             v.setDrawerTextPowerSaving(!_powerSaveEnabled);
         }

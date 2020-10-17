@@ -60,7 +60,7 @@ public class SettingsActivity extends com.marceljurtz.lifecounter.views.Base.Vie
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        preferences = getApplicationContext().getSharedPreferences(PreferenceManager.PREFS, Activity.MODE_PRIVATE);
+        preferences = getApplicationContext().getSharedPreferences(PreferenceManager.INSTANCE.getPREFS(), Activity.MODE_PRIVATE);
 
         initControls();
 

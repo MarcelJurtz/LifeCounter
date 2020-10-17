@@ -20,8 +20,8 @@ public class IntroActivity extends AppIntro {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        int red = new com.marceljurtz.lifecounter.models.Color(MagicColorEnum.RED, getApplicationContext().getSharedPreferences(PreferenceManager.PREFS, Activity.MODE_PRIVATE)).getIntValue();
-        int blue = new com.marceljurtz.lifecounter.models.Color(MagicColorEnum.BLUE, getApplicationContext().getSharedPreferences(PreferenceManager.PREFS, Activity.MODE_PRIVATE)).getIntValue();
+        int red = new com.marceljurtz.lifecounter.models.Color(MagicColorEnum.RED, getApplicationContext().getSharedPreferences(PreferenceManager.INSTANCE.getPREFS(), Activity.MODE_PRIVATE)).getIntValue();
+        int blue = new com.marceljurtz.lifecounter.models.Color(MagicColorEnum.BLUE, getApplicationContext().getSharedPreferences(PreferenceManager.INSTANCE.getPREFS(), Activity.MODE_PRIVATE)).getIntValue();
 
         // Slide 1 - Welcome
         SliderPage pg1 = new SliderPage();

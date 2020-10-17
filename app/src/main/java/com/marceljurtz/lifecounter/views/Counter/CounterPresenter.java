@@ -53,13 +53,13 @@ public class CounterPresenter extends Presenter implements ICounterPresenter {
 
     @Override
     public void onPause() {
-        PreferenceManager.savePlayerCounterData(_preferences, players);
+        PreferenceManager.INSTANCE.savePlayerCounterData(_preferences, players);
     }
 
     @Override
     public void onResume() {
         // Load items from preferences
-        players = PreferenceManager.loadPlayerCounterData(_preferences);
+        players = PreferenceManager.INSTANCE.loadPlayerCounterData(_preferences);
 
         // Reload View
         ((ICounterView)_view).deleteAllCounters();

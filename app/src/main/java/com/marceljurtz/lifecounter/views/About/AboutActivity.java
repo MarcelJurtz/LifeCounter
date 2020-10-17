@@ -31,7 +31,7 @@ public class AboutActivity extends View implements IAboutView {
         disableMenuItem(navigationView, R.id.nav_about);
 
         _presenter = new AboutPresenter(this,
-                getApplicationContext().getSharedPreferences(PreferenceManager.PREFS, Activity.MODE_PRIVATE));
+                getApplicationContext().getSharedPreferences(PreferenceManager.INSTANCE.getPREFS(), Activity.MODE_PRIVATE));
 
         _presenter.onCreate();
 
@@ -73,7 +73,7 @@ public class AboutActivity extends View implements IAboutView {
         lblContactMail.setOnClickListener(new android.view.View.OnClickListener() {
             @Override
             public void onClick(android.view.View view) {
-                AboutActivity.super.startBrowserIntent(AppDetails.CONTACT_MAIL);
+                AboutActivity.super.startBrowserIntent(AppDetails.INSTANCE.getCONTACT_MAIL());
             }
         });
 

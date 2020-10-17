@@ -123,11 +123,11 @@ public class GameActivity extends com.marceljurtz.lifecounter.views.Base.View im
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        preferences = getApplicationContext().getSharedPreferences(PreferenceManager.PREFS, Activity.MODE_PRIVATE);
+        preferences = getApplicationContext().getSharedPreferences(PreferenceManager.INSTANCE.getPREFS(), Activity.MODE_PRIVATE);
 
         checkFirstLaunch();
 
-        playeramount = PreferenceManager.getPlayerAmount(preferences);
+        playeramount = PreferenceManager.INSTANCE.getPlayerAmount(preferences);
 
         if(playeramount == 4) {
             setContentView(R.layout.activity_main_4player);

@@ -71,13 +71,13 @@ public class DicingPresenter extends Presenter implements IDicingPresenter {
 
     @Override
     public void onMenuEntryTwoPlayerTap() {
-        PreferenceManager.saveDefaultPlayerAmount(_preferences, 2);
+        PreferenceManager.INSTANCE.saveDefaultPlayerAmount(_preferences, 2);
         _view.loadActivity(GameActivity.class);
     }
 
     @Override
     public void onMenuEntryFourPlayerTap() {
-        PreferenceManager.saveDefaultPlayerAmount(_preferences, 4);
+        PreferenceManager.INSTANCE.saveDefaultPlayerAmount(_preferences, 4);
         _view.loadActivity(GameActivity.class);
     }
 

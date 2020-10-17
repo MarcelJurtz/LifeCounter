@@ -84,7 +84,7 @@ public class CounterActivity extends com.marceljurtz.lifecounter.views.Base.View
         //getSupportActionBar().hide();
         rlCounter = (RelativeLayout)findViewById(R.id.rlCounter);
 
-        preferences = getApplicationContext().getSharedPreferences(PreferenceManager.PREFS, Activity.MODE_PRIVATE);
+        preferences = getApplicationContext().getSharedPreferences(PreferenceManager.INSTANCE.getPREFS(), Activity.MODE_PRIVATE);
 
         player1Layout = (LinearLayout) findViewById(R.id.llCounterPlayer1);
         player2Layout = (LinearLayout) findViewById(R.id.llCounterPlayer2);
@@ -374,7 +374,7 @@ public class CounterActivity extends com.marceljurtz.lifecounter.views.Base.View
         lblDescription.setLayoutParams(llParams);
         lblDescription.setTextSize(fontSize);
         lblDescription.setTextColor(getResources().getColor(R.color.textColor));
-        lblDescription.setTag(ViewHelper.lblDescriptionTag);
+        lblDescription.setTag(ViewHelper.INSTANCE.getLblDescriptionTag());
         wrapper.addView(lblDescription);
 
         View spacer = new View(getApplicationContext());
@@ -387,7 +387,7 @@ public class CounterActivity extends com.marceljurtz.lifecounter.views.Base.View
             lblATK.setLayoutParams(llParams);
             lblATK.setTextSize(fontSize);
             lblATK.setTextColor(getResources().getColor(R.color.textColor));
-            lblATK.setTag(ViewHelper.lblAtkTag);
+            lblATK.setTag(ViewHelper.INSTANCE.getLblAtkTag());
             wrapper.addView(lblATK);
 
             TextView lblDivider = new TextView(getApplicationContext());
@@ -403,7 +403,7 @@ public class CounterActivity extends com.marceljurtz.lifecounter.views.Base.View
         lblDEF.setLayoutParams(llParams);
         lblDEF.setTextSize(fontSize);
         lblDEF.setTextColor(getResources().getColor(R.color.textColor));
-        lblDEF.setTag(ViewHelper.lblDefTag);
+        lblDEF.setTag(ViewHelper.INSTANCE.getLblDefTag());
         wrapper.addView(lblDEF);
 
         wrapper.setOnClickListener(new View.OnClickListener() {
@@ -691,21 +691,21 @@ public class CounterActivity extends com.marceljurtz.lifecounter.views.Base.View
                     throw new InvalidObjectException(getString(R.string.exc_invalid_object_player));
             }
 
-            LinearLayout counterView = (LinearLayout) ViewHelper.findFirstViewByTag(currentPlayerLayout, counter.getIdentifier());
+            LinearLayout counterView = (LinearLayout) ViewHelper.INSTANCE.findFirstViewByTag(currentPlayerLayout, counter.getIdentifier());
             if(counterView == null) {
                 throw new InvalidObjectException(getString(R.string.exc_invalid_object_counter));
             }
 
             // Update Description
-            ((TextView)ViewHelper.findFirstViewByTag(counterView, ViewHelper.lblDescriptionTag)).setText(counter.getDescription());
+            ((TextView) ViewHelper.INSTANCE.findFirstViewByTag(counterView, ViewHelper.INSTANCE.getLblDescriptionTag())).setText(counter.getDescription());
 
             // Update ATK
             if(counter.getCounterType() == CounterType.Counter) {
-                ((TextView) ViewHelper.findFirstViewByTag(counterView, ViewHelper.lblAtkTag)).setText(Integer.toString(counter.getATK()));
+                ((TextView) ViewHelper.INSTANCE.findFirstViewByTag(counterView, ViewHelper.INSTANCE.getLblAtkTag())).setText(Integer.toString(counter.getATK()));
             }
 
             // Update DEF
-            ((TextView)ViewHelper.findFirstViewByTag(counterView, ViewHelper.lblDefTag)).setText(Integer.toString(counter.getDEF()));
+            ((TextView) ViewHelper.INSTANCE.findFirstViewByTag(counterView, ViewHelper.INSTANCE.getLblDefTag())).setText(Integer.toString(counter.getDEF()));
 
         }
         catch(Exception ex) {
