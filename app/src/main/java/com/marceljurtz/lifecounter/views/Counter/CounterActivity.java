@@ -65,6 +65,8 @@ public class CounterActivity extends com.marceljurtz.lifecounter.views.Base.View
 
     private SharedPreferences preferences;
 
+    private CounterType modalMode = CounterType.Counter;
+
     // FAB Add item
     private FloatingActionButton fabMain, fabCt, fabPw;
     private Animation fabOpen, fabClose, fabCw, fabCcw;
@@ -210,6 +212,7 @@ public class CounterActivity extends com.marceljurtz.lifecounter.views.Base.View
             @Override
             public void onClick(View view) {
                 ((ICounterPresenter) _presenter).onFabCtTap();
+                fabMain.callOnClick();
             }
         });
 
@@ -217,6 +220,7 @@ public class CounterActivity extends com.marceljurtz.lifecounter.views.Base.View
             @Override
             public void onClick(View view) {
                 ((ICounterPresenter)_presenter).onFabPwTap();
+                fabMain.callOnClick();
             }
         });
 
@@ -257,7 +261,7 @@ public class CounterActivity extends com.marceljurtz.lifecounter.views.Base.View
     }
 
     @Override
-    public void loadCounterAddDialog(ArrayList<Player> players, CounterType counterType) {
+    public void loadCounterAddDialog(ArrayList<Player> players, final CounterType counterType) {
 
         adapter.clear();
         adapter.addAll(players);
@@ -277,6 +281,8 @@ public class CounterActivity extends com.marceljurtz.lifecounter.views.Base.View
             txtATK.setVisibility(View.GONE);
             lblDivider.setVisibility(View.GONE);
         }
+
+        modalMode = counterType;
 
         spPlayers.setAdapter(adapter);
 
@@ -324,7 +330,8 @@ public class CounterActivity extends com.marceljurtz.lifecounter.views.Base.View
                 try {
                     counterToAdd = new Counter(txtCardDescription.getText().toString(),
                             Integer.parseInt(txtATK.getText().toString()),
-                            Integer.parseInt(txtDEF.getText().toString()));
+                            Integer.parseInt(txtDEF.getText().toString()),
+                            counterType);
 
                 } catch (NullPointerException | NumberFormatException ex) {
                     displayErrorMessage(getString(R.string.dialog_countermanager_error_invalid_entry));
@@ -635,7 +642,8 @@ public class CounterActivity extends com.marceljurtz.lifecounter.views.Base.View
                 try {
                     counterToEdit = new Counter(txtCardDescription.getText().toString(),
                             Integer.parseInt(txtATK.getText().toString()),
-                            Integer.parseInt(txtDEF.getText().toString()));
+                            Integer.parseInt(txtDEF.getText().toString()),
+                            modalMode);
 
                 } catch (NullPointerException | NumberFormatException ex) {
                     Snackbar.make(findViewById(android.R.id.content), R.string.dialog_countermanager_error_invalid_entry, Snackbar.LENGTH_LONG).show();
@@ -692,7 +700,9 @@ public class CounterActivity extends com.marceljurtz.lifecounter.views.Base.View
             ((TextView)ViewHelper.findFirstViewByTag(counterView, ViewHelper.lblDescriptionTag)).setText(counter.getDescription());
 
             // Update ATK
-            ((TextView)ViewHelper.findFirstViewByTag(counterView, ViewHelper.lblAtkTag)).setText(Integer.toString(counter.getATK()));
+            if(counter.getCounterType() == CounterType.Counter) {
+                ((TextView) ViewHelper.findFirstViewByTag(counterView, ViewHelper.lblAtkTag)).setText(Integer.toString(counter.getATK()));
+            }
 
             // Update DEF
             ((TextView)ViewHelper.findFirstViewByTag(counterView, ViewHelper.lblDefTag)).setText(Integer.toString(counter.getDEF()));

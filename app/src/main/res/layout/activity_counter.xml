@@ -47,7 +47,7 @@
             android:visibility="invisible"
             app:backgroundTint="#ffffff"
             app:pressedTranslationZ="12dp"
-            app:srcCompat="@drawable/ic_add_24dp" />
+            app:srcCompat="@drawable/ic_add__black_24dp" />
 
         <TextView
             android:id="@+id/txtPlaneswalker"
@@ -79,7 +79,7 @@
             android:visibility="invisible"
             app:backgroundTint="#ffffff"
             app:pressedTranslationZ="12dp"
-            app:srcCompat="@drawable/ic_add_24dp" />
+            app:srcCompat="@drawable/ic_add__black_24dp" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab"
@@ -96,7 +96,7 @@
             android:visibility="visible"
             app:backgroundTint="#ffffff"
             app:pressedTranslationZ="12dp"
-            app:srcCompat="@drawable/ic_add_24dp" />
+            app:srcCompat="@drawable/ic_add__black_24dp" />
 
     </RelativeLayout>
 

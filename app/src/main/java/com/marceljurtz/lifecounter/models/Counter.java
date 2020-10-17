@@ -7,17 +7,19 @@ import com.marceljurtz.lifecounter.enums.CounterType;
 
 public class Counter implements Parcelable {
 
-    public Counter(String description, int ATK, int DEF) {
+    public Counter(String description, int ATK, int DEF, CounterType counterType) {
         this.description = description;
         this.atk = ATK;
         this.def = DEF;
+        this.counterType = counterType;
     }
 
-    public Counter(String identifier, String description, int ATK, int DEF) {
+    public Counter(String identifier, String description, int ATK, int DEF, CounterType counterType) {
         this.identifier = identifier;
         this.description = description;
         this.atk = ATK;
         this.def = DEF;
+        this.counterType = counterType;
     }
 
     private Counter(Parcel source) {
