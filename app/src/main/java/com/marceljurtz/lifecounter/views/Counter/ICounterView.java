@@ -3,6 +3,7 @@ package com.marceljurtz.lifecounter.views.Counter;
 import android.widget.LinearLayout;
 
 import com.marceljurtz.lifecounter.contracts.base.IView;
+import com.marceljurtz.lifecounter.enums.CounterType;
 import com.marceljurtz.lifecounter.models.Color;
 import com.marceljurtz.lifecounter.models.Counter;
 import com.marceljurtz.lifecounter.models.Player;
@@ -23,7 +24,7 @@ public interface ICounterView extends IView {
 
     void loadPlayerIdentificationDialog(PlayerIdEnum playerIdEnum, String playername);
     void loadPlayerDeletionDialog(PlayerIdEnum playerIdEnum);
-    void loadCounterAddDialog(ArrayList<Player> players);
+    void loadCounterAddDialog(ArrayList<Player> players, CounterType counterType);
     void loadCounterEditDialog(LinearLayout counterLayout, Player player, Counter counter);
     void loadCounterDeletionDialog(LinearLayout linearLayout);
 }

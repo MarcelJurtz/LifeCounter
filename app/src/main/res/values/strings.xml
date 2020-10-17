@@ -80,6 +80,8 @@
     <string name="counter_default_player2">Player 2</string>
     <string name="counter_default_player3">Player 3</string>
     <string name="counter_default_player4">Player 4</string>
+    <string name="counter_add_counter">Counter</string>
+    <string name="counter_add_planeswalker">Planeswalker</string>
 
     <string name="dialog_game_reset_confirm_title">Confirm</string>
     <string name="dialog_game_reset_confirm_message">Do you want to reset?</string>
