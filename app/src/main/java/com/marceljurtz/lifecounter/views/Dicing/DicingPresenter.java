@@ -32,16 +32,16 @@ public class DicingPresenter extends Presenter implements IDicingPresenter {
     public void onCreate() {
         _dice = new Dice();
         int num = _random.nextInt(4);
-        Color color = new Color(MagicColorEnum.WHITE, _preferences);
+        Color color = new Color(MagicColorEnum.WHITE, get_preferences());
         switch(num) {
             case 0:
-                color = new Color(MagicColorEnum.BLUE, _preferences);
+                color = new Color(MagicColorEnum.BLUE, get_preferences());
                 break;
             case 1:
-                color = new Color(MagicColorEnum.GREEN, _preferences);
+                color = new Color(MagicColorEnum.GREEN, get_preferences());
                 break;
             case 2:
-                color = new Color(MagicColorEnum.RED, _preferences);
+                color = new Color(MagicColorEnum.RED, get_preferences());
                 break;
             case 3:
                 break;
@@ -71,13 +71,13 @@ public class DicingPresenter extends Presenter implements IDicingPresenter {
 
     @Override
     public void onMenuEntryTwoPlayerTap() {
-        PreferenceManager.INSTANCE.saveDefaultPlayerAmount(_preferences, 2);
+        PreferenceManager.INSTANCE.saveDefaultPlayerAmount(get_preferences(), 2);
         _view.loadActivity(GameActivity.class);
     }
 
     @Override
     public void onMenuEntryFourPlayerTap() {
-        PreferenceManager.INSTANCE.saveDefaultPlayerAmount(_preferences, 4);
+        PreferenceManager.INSTANCE.saveDefaultPlayerAmount(get_preferences(), 4);
         _view.loadActivity(GameActivity.class);
     }
 

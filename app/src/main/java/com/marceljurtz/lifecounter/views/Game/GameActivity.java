@@ -150,7 +150,7 @@ public class GameActivity extends com.marceljurtz.lifecounter.views.Base.View im
             disableMenuItem(navigationView, R.id.nav_game_2players);
         }
 
-        _presenter = new GamePresenter(this, preferences);
+        set_presenter(new GamePresenter(this, preferences));
     }
 
     private void checkFirstLaunch() {
@@ -782,14 +782,14 @@ public class GameActivity extends com.marceljurtz.lifecounter.views.Base.View im
         cmdBlackPlayer1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((IGamePresenter)_presenter).onColorButtonClick(PlayerIdEnum.ONE, MagicColorEnum.BLACK, ClickTypeEnum.SHORT);
+                ((IGamePresenter) get_presenter()).onColorButtonClick(PlayerIdEnum.ONE, MagicColorEnum.BLACK, ClickTypeEnum.SHORT);
             }
         });
         cmdBlackPlayer1.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
                 // toggleEnergySaveMode();
-                ((IGamePresenter)_presenter).onColorButtonClick(PlayerIdEnum.ONE, MagicColorEnum.BLACK, ClickTypeEnum.LONG);
+                ((IGamePresenter) get_presenter()).onColorButtonClick(PlayerIdEnum.ONE, MagicColorEnum.BLACK, ClickTypeEnum.LONG);
                 return true;
             }
         });
@@ -797,14 +797,14 @@ public class GameActivity extends com.marceljurtz.lifecounter.views.Base.View im
         cmdBlackPlayer2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((IGamePresenter)_presenter).onColorButtonClick(PlayerIdEnum.TWO, MagicColorEnum.BLACK, ClickTypeEnum.SHORT);
+                ((IGamePresenter) get_presenter()).onColorButtonClick(PlayerIdEnum.TWO, MagicColorEnum.BLACK, ClickTypeEnum.SHORT);
             }
         });
         cmdBlackPlayer2.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
                 // toggleEnergySaveMode();
-                ((IGamePresenter)_presenter).onColorButtonClick(PlayerIdEnum.TWO, MagicColorEnum.BLACK, ClickTypeEnum.LONG);
+                ((IGamePresenter) get_presenter()).onColorButtonClick(PlayerIdEnum.TWO, MagicColorEnum.BLACK, ClickTypeEnum.LONG);
                 return true;
             }
         });
@@ -813,14 +813,14 @@ public class GameActivity extends com.marceljurtz.lifecounter.views.Base.View im
             cmdBlackPlayer3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    ((IGamePresenter)_presenter).onColorButtonClick(PlayerIdEnum.THREE, MagicColorEnum.BLACK, ClickTypeEnum.SHORT);
+                    ((IGamePresenter) get_presenter()).onColorButtonClick(PlayerIdEnum.THREE, MagicColorEnum.BLACK, ClickTypeEnum.SHORT);
                 }
             });
             cmdBlackPlayer3.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
                     // toggleEnergySaveMode();
-                    ((IGamePresenter)_presenter).onColorButtonClick(PlayerIdEnum.THREE, MagicColorEnum.BLACK, ClickTypeEnum.LONG);
+                    ((IGamePresenter) get_presenter()).onColorButtonClick(PlayerIdEnum.THREE, MagicColorEnum.BLACK, ClickTypeEnum.LONG);
                     return true;
                 }
             });
@@ -828,14 +828,14 @@ public class GameActivity extends com.marceljurtz.lifecounter.views.Base.View im
             cmdBlackPlayer4.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    ((IGamePresenter)_presenter).onColorButtonClick(PlayerIdEnum.FOUR, MagicColorEnum.BLACK, ClickTypeEnum.SHORT);
+                    ((IGamePresenter) get_presenter()).onColorButtonClick(PlayerIdEnum.FOUR, MagicColorEnum.BLACK, ClickTypeEnum.SHORT);
                 }
             });
             cmdBlackPlayer4.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
                     // toggleEnergySaveMode();
-                    ((IGamePresenter)_presenter).onColorButtonClick(PlayerIdEnum.FOUR, MagicColorEnum.BLACK, ClickTypeEnum.LONG);
+                    ((IGamePresenter) get_presenter()).onColorButtonClick(PlayerIdEnum.FOUR, MagicColorEnum.BLACK, ClickTypeEnum.LONG);
                     return true;
                 }
             });
@@ -848,14 +848,14 @@ public class GameActivity extends com.marceljurtz.lifecounter.views.Base.View im
         cmdBluePlayer1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((IGamePresenter)_presenter).onColorButtonClick(PlayerIdEnum.ONE, MagicColorEnum.BLUE, ClickTypeEnum.SHORT);
+                ((IGamePresenter) get_presenter()).onColorButtonClick(PlayerIdEnum.ONE, MagicColorEnum.BLUE, ClickTypeEnum.SHORT);
             }
         });
 
         cmdBluePlayer2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((IGamePresenter)_presenter).onColorButtonClick(PlayerIdEnum.TWO, MagicColorEnum.BLUE, ClickTypeEnum.SHORT);
+                ((IGamePresenter) get_presenter()).onColorButtonClick(PlayerIdEnum.TWO, MagicColorEnum.BLUE, ClickTypeEnum.SHORT);
             }
         });
 
@@ -863,14 +863,14 @@ public class GameActivity extends com.marceljurtz.lifecounter.views.Base.View im
             cmdBluePlayer3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    ((IGamePresenter)_presenter).onColorButtonClick(PlayerIdEnum.THREE, MagicColorEnum.BLUE, ClickTypeEnum.SHORT);
+                    ((IGamePresenter) get_presenter()).onColorButtonClick(PlayerIdEnum.THREE, MagicColorEnum.BLUE, ClickTypeEnum.SHORT);
                 }
             });
 
             cmdBluePlayer4.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    ((IGamePresenter)_presenter).onColorButtonClick(PlayerIdEnum.FOUR, MagicColorEnum.BLUE, ClickTypeEnum.SHORT);
+                    ((IGamePresenter) get_presenter()).onColorButtonClick(PlayerIdEnum.FOUR, MagicColorEnum.BLUE, ClickTypeEnum.SHORT);
                 }
             });
         }
@@ -881,14 +881,14 @@ public class GameActivity extends com.marceljurtz.lifecounter.views.Base.View im
         cmdGreenPlayer1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((IGamePresenter)_presenter).onColorButtonClick(PlayerIdEnum.ONE, MagicColorEnum.GREEN, ClickTypeEnum.SHORT);
+                ((IGamePresenter) get_presenter()).onColorButtonClick(PlayerIdEnum.ONE, MagicColorEnum.GREEN, ClickTypeEnum.SHORT);
             }
         });
 
         cmdGreenPlayer2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((IGamePresenter)_presenter).onColorButtonClick(PlayerIdEnum.TWO, MagicColorEnum.GREEN, ClickTypeEnum.SHORT);
+                ((IGamePresenter) get_presenter()).onColorButtonClick(PlayerIdEnum.TWO, MagicColorEnum.GREEN, ClickTypeEnum.SHORT);
             }
         });
 
@@ -896,14 +896,14 @@ public class GameActivity extends com.marceljurtz.lifecounter.views.Base.View im
             cmdGreenPlayer3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    ((IGamePresenter)_presenter).onColorButtonClick(PlayerIdEnum.THREE, MagicColorEnum.GREEN, ClickTypeEnum.SHORT);
+                    ((IGamePresenter) get_presenter()).onColorButtonClick(PlayerIdEnum.THREE, MagicColorEnum.GREEN, ClickTypeEnum.SHORT);
                 }
             });
 
             cmdGreenPlayer4.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    ((IGamePresenter)_presenter).onColorButtonClick(PlayerIdEnum.FOUR, MagicColorEnum.GREEN, ClickTypeEnum.SHORT);
+                    ((IGamePresenter) get_presenter()).onColorButtonClick(PlayerIdEnum.FOUR, MagicColorEnum.GREEN, ClickTypeEnum.SHORT);
                 }
             });
         }
@@ -913,14 +913,14 @@ public class GameActivity extends com.marceljurtz.lifecounter.views.Base.View im
         cmdRedPlayer1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((IGamePresenter)_presenter).onColorButtonClick(PlayerIdEnum.ONE, MagicColorEnum.RED, ClickTypeEnum.SHORT);
+                ((IGamePresenter) get_presenter()).onColorButtonClick(PlayerIdEnum.ONE, MagicColorEnum.RED, ClickTypeEnum.SHORT);
             }
         });
 
         cmdRedPlayer2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((IGamePresenter)_presenter).onColorButtonClick(PlayerIdEnum.TWO, MagicColorEnum.RED, ClickTypeEnum.SHORT);
+                ((IGamePresenter) get_presenter()).onColorButtonClick(PlayerIdEnum.TWO, MagicColorEnum.RED, ClickTypeEnum.SHORT);
             }
         });
 
@@ -928,14 +928,14 @@ public class GameActivity extends com.marceljurtz.lifecounter.views.Base.View im
             cmdRedPlayer3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    ((IGamePresenter)_presenter).onColorButtonClick(PlayerIdEnum.THREE, MagicColorEnum.RED, ClickTypeEnum.SHORT);
+                    ((IGamePresenter) get_presenter()).onColorButtonClick(PlayerIdEnum.THREE, MagicColorEnum.RED, ClickTypeEnum.SHORT);
                 }
             });
 
             cmdRedPlayer4.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    ((IGamePresenter)_presenter).onColorButtonClick(PlayerIdEnum.FOUR, MagicColorEnum.RED, ClickTypeEnum.SHORT);
+                    ((IGamePresenter) get_presenter()).onColorButtonClick(PlayerIdEnum.FOUR, MagicColorEnum.RED, ClickTypeEnum.SHORT);
                 }
             });
         }
@@ -945,14 +945,14 @@ public class GameActivity extends com.marceljurtz.lifecounter.views.Base.View im
         cmdWhitePlayer1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((IGamePresenter)_presenter).onColorButtonClick(PlayerIdEnum.ONE, MagicColorEnum.WHITE, ClickTypeEnum.SHORT);
+                ((IGamePresenter) get_presenter()).onColorButtonClick(PlayerIdEnum.ONE, MagicColorEnum.WHITE, ClickTypeEnum.SHORT);
             }
         });
 
         cmdWhitePlayer2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((IGamePresenter)_presenter).onColorButtonClick(PlayerIdEnum.TWO, MagicColorEnum.WHITE, ClickTypeEnum.SHORT);
+                ((IGamePresenter) get_presenter()).onColorButtonClick(PlayerIdEnum.TWO, MagicColorEnum.WHITE, ClickTypeEnum.SHORT);
             }
         });
 
@@ -960,14 +960,14 @@ public class GameActivity extends com.marceljurtz.lifecounter.views.Base.View im
             cmdWhitePlayer3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    ((IGamePresenter)_presenter).onColorButtonClick(PlayerIdEnum.THREE, MagicColorEnum.WHITE, ClickTypeEnum.SHORT);
+                    ((IGamePresenter) get_presenter()).onColorButtonClick(PlayerIdEnum.THREE, MagicColorEnum.WHITE, ClickTypeEnum.SHORT);
                 }
             });
 
             cmdWhitePlayer4.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    ((IGamePresenter)_presenter).onColorButtonClick(PlayerIdEnum.FOUR, MagicColorEnum.WHITE, ClickTypeEnum.SHORT);
+                    ((IGamePresenter) get_presenter()).onColorButtonClick(PlayerIdEnum.FOUR, MagicColorEnum.WHITE, ClickTypeEnum.SHORT);
                 }
             });
         }
@@ -977,13 +977,13 @@ public class GameActivity extends com.marceljurtz.lifecounter.views.Base.View im
         cmdPlusPlayer1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((IGamePresenter)_presenter).onLifeUpdate(player1.getPlayerIdEnum(), ClickTypeEnum.SHORT, OperatorEnum.ADD);
+                ((IGamePresenter) get_presenter()).onLifeUpdate(player1.getPlayerIdEnum(), ClickTypeEnum.SHORT, OperatorEnum.ADD);
             }
         });
         cmdPlusPlayer1.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                ((IGamePresenter)_presenter).onLifeUpdate(player1.getPlayerIdEnum(), ClickTypeEnum.LONG, OperatorEnum.ADD);
+                ((IGamePresenter) get_presenter()).onLifeUpdate(player1.getPlayerIdEnum(), ClickTypeEnum.LONG, OperatorEnum.ADD);
                 return true;
             }
         });
@@ -991,13 +991,13 @@ public class GameActivity extends com.marceljurtz.lifecounter.views.Base.View im
         cmdMinusPlayer1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((IGamePresenter)_presenter).onLifeUpdate(player1.getPlayerIdEnum(), ClickTypeEnum.SHORT, OperatorEnum.SUBSTRACT);
+                ((IGamePresenter) get_presenter()).onLifeUpdate(player1.getPlayerIdEnum(), ClickTypeEnum.SHORT, OperatorEnum.SUBSTRACT);
             }
         });
         cmdMinusPlayer1.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                ((IGamePresenter)_presenter).onLifeUpdate(player1.getPlayerIdEnum(), ClickTypeEnum.LONG, OperatorEnum.SUBSTRACT);
+                ((IGamePresenter) get_presenter()).onLifeUpdate(player1.getPlayerIdEnum(), ClickTypeEnum.LONG, OperatorEnum.SUBSTRACT);
                 return true;
             }
         });
@@ -1009,13 +1009,13 @@ public class GameActivity extends com.marceljurtz.lifecounter.views.Base.View im
         cmdPlusPlayer2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((IGamePresenter)_presenter).onLifeUpdate(player2.getPlayerIdEnum(), ClickTypeEnum.SHORT, OperatorEnum.ADD);
+                ((IGamePresenter) get_presenter()).onLifeUpdate(player2.getPlayerIdEnum(), ClickTypeEnum.SHORT, OperatorEnum.ADD);
             }
         });
         cmdPlusPlayer2.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                ((IGamePresenter)_presenter).onLifeUpdate(player2.getPlayerIdEnum(), ClickTypeEnum.LONG, OperatorEnum.ADD);
+                ((IGamePresenter) get_presenter()).onLifeUpdate(player2.getPlayerIdEnum(), ClickTypeEnum.LONG, OperatorEnum.ADD);
                 return true;
             }
         });
@@ -1023,13 +1023,13 @@ public class GameActivity extends com.marceljurtz.lifecounter.views.Base.View im
         cmdMinusPlayer2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((IGamePresenter)_presenter).onLifeUpdate(player2.getPlayerIdEnum(), ClickTypeEnum.SHORT, OperatorEnum.SUBSTRACT);
+                ((IGamePresenter) get_presenter()).onLifeUpdate(player2.getPlayerIdEnum(), ClickTypeEnum.SHORT, OperatorEnum.SUBSTRACT);
             }
         });
         cmdMinusPlayer2.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                ((IGamePresenter)_presenter).onLifeUpdate(player2.getPlayerIdEnum(), ClickTypeEnum.LONG, OperatorEnum.SUBSTRACT);
+                ((IGamePresenter) get_presenter()).onLifeUpdate(player2.getPlayerIdEnum(), ClickTypeEnum.LONG, OperatorEnum.SUBSTRACT);
                 return true;
             }
         });
@@ -1038,13 +1038,13 @@ public class GameActivity extends com.marceljurtz.lifecounter.views.Base.View im
             cmdPlusPlayer3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    ((IGamePresenter)_presenter).onLifeUpdate(player3.getPlayerIdEnum(), ClickTypeEnum.SHORT, OperatorEnum.ADD);
+                    ((IGamePresenter) get_presenter()).onLifeUpdate(player3.getPlayerIdEnum(), ClickTypeEnum.SHORT, OperatorEnum.ADD);
                 }
             });
             cmdPlusPlayer3.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
-                    ((IGamePresenter)_presenter).onLifeUpdate(player3.getPlayerIdEnum(), ClickTypeEnum.LONG, OperatorEnum.ADD);
+                    ((IGamePresenter) get_presenter()).onLifeUpdate(player3.getPlayerIdEnum(), ClickTypeEnum.LONG, OperatorEnum.ADD);
                     return true;
                 }
             });
@@ -1052,13 +1052,13 @@ public class GameActivity extends com.marceljurtz.lifecounter.views.Base.View im
             cmdMinusPlayer3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    ((IGamePresenter)_presenter).onLifeUpdate(player3.getPlayerIdEnum(), ClickTypeEnum.SHORT, OperatorEnum.SUBSTRACT);
+                    ((IGamePresenter) get_presenter()).onLifeUpdate(player3.getPlayerIdEnum(), ClickTypeEnum.SHORT, OperatorEnum.SUBSTRACT);
                 }
             });
             cmdMinusPlayer3.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
-                    ((IGamePresenter)_presenter).onLifeUpdate(player3.getPlayerIdEnum(), ClickTypeEnum.LONG, OperatorEnum.SUBSTRACT);
+                    ((IGamePresenter) get_presenter()).onLifeUpdate(player3.getPlayerIdEnum(), ClickTypeEnum.LONG, OperatorEnum.SUBSTRACT);
                     return true;
                 }
             });
@@ -1066,13 +1066,13 @@ public class GameActivity extends com.marceljurtz.lifecounter.views.Base.View im
             cmdPlusPlayer4.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    ((IGamePresenter)_presenter).onLifeUpdate(player4.getPlayerIdEnum(), ClickTypeEnum.SHORT, OperatorEnum.ADD);
+                    ((IGamePresenter) get_presenter()).onLifeUpdate(player4.getPlayerIdEnum(), ClickTypeEnum.SHORT, OperatorEnum.ADD);
                 }
             });
             cmdPlusPlayer4.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
-                    ((IGamePresenter)_presenter).onLifeUpdate(player4.getPlayerIdEnum(), ClickTypeEnum.LONG, OperatorEnum.ADD);
+                    ((IGamePresenter) get_presenter()).onLifeUpdate(player4.getPlayerIdEnum(), ClickTypeEnum.LONG, OperatorEnum.ADD);
                     return true;
                 }
             });
@@ -1080,13 +1080,13 @@ public class GameActivity extends com.marceljurtz.lifecounter.views.Base.View im
             cmdMinusPlayer4.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    ((IGamePresenter)_presenter).onLifeUpdate(player4.getPlayerIdEnum(), ClickTypeEnum.SHORT, OperatorEnum.SUBSTRACT);
+                    ((IGamePresenter) get_presenter()).onLifeUpdate(player4.getPlayerIdEnum(), ClickTypeEnum.SHORT, OperatorEnum.SUBSTRACT);
                 }
             });
             cmdMinusPlayer4.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
-                    ((IGamePresenter)_presenter).onLifeUpdate(player4.getPlayerIdEnum(), ClickTypeEnum.LONG, OperatorEnum.SUBSTRACT);
+                    ((IGamePresenter) get_presenter()).onLifeUpdate(player4.getPlayerIdEnum(), ClickTypeEnum.LONG, OperatorEnum.SUBSTRACT);
                     return true;
                 }
             });
@@ -1101,25 +1101,25 @@ public class GameActivity extends com.marceljurtz.lifecounter.views.Base.View im
                 switch(id) {
                     case R.id.nav_settings:
                         //presenter.onSettingsButtonClick(ClickTypeEnum.LONG);
-                        _presenter.onMenuEntrySettingsTap();
+                        get_presenter().onMenuEntrySettingsTap();
                         break;
                     case R.id.nav_about:
-                        _presenter.onMenuEntryAboutTap();
+                        get_presenter().onMenuEntryAboutTap();
                         break;
                     case R.id.nav_energy_save_mode:
-                        _presenter.onMenuEntryEnergySaveTap();
+                        get_presenter().onMenuEntryEnergySaveTap();
                         break;
                     case R.id.nav_game_2players:
-                        _presenter.onMenuEntryTogglePlayerTap();
+                        get_presenter().onMenuEntryTogglePlayerTap();
                         break;
                     case R.id.nav_game_4players:
-                        _presenter.onMenuEntryTogglePlayerTap();
+                        get_presenter().onMenuEntryTogglePlayerTap();
                         break;
                     case R.id.nav_dicing:
-                        _presenter.onMenuEntryDicingTap();
+                        get_presenter().onMenuEntryDicingTap();
                         break;
                     case R.id.nav_countermanager:
-                        _presenter.onMenuEntryCounterManagerTap();
+                        get_presenter().onMenuEntryCounterManagerTap();
                         break;
                     default:
                         break;
@@ -1138,7 +1138,7 @@ public class GameActivity extends com.marceljurtz.lifecounter.views.Base.View im
             public void onClick(View v) {
 
                 if(!showResetConfirmation) {
-                    ((IGamePresenter)_presenter).onResetButtonClick();
+                    ((IGamePresenter) get_presenter()).onResetButtonClick();
                 } else {
 
                     boolean confirmed = false;
@@ -1151,7 +1151,7 @@ public class GameActivity extends com.marceljurtz.lifecounter.views.Base.View im
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             dialog.dismiss();
-                            ((IGamePresenter)_presenter).onResetButtonClick();
+                            ((IGamePresenter) get_presenter()).onResetButtonClick();
                         }
                     });
 
@@ -1175,7 +1175,7 @@ public class GameActivity extends com.marceljurtz.lifecounter.views.Base.View im
         cmdTogglePoison.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((IGamePresenter)_presenter).onPoisonButtonClick();
+                ((IGamePresenter) get_presenter()).onPoisonButtonClick();
             }
         });
 
@@ -1187,13 +1187,13 @@ public class GameActivity extends com.marceljurtz.lifecounter.views.Base.View im
         cmdPlusPoisonPlayer1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((IGamePresenter)_presenter).onPoisonUpdate(player1.getPlayerIdEnum(), ClickTypeEnum.SHORT, OperatorEnum.ADD);
+                ((IGamePresenter) get_presenter()).onPoisonUpdate(player1.getPlayerIdEnum(), ClickTypeEnum.SHORT, OperatorEnum.ADD);
             }
         });
         cmdPlusPoisonPlayer1.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                ((IGamePresenter)_presenter).onPoisonUpdate(player1.getPlayerIdEnum(), ClickTypeEnum.LONG, OperatorEnum.ADD);
+                ((IGamePresenter) get_presenter()).onPoisonUpdate(player1.getPlayerIdEnum(), ClickTypeEnum.LONG, OperatorEnum.ADD);
                 return true;
             }
         });
@@ -1202,13 +1202,13 @@ public class GameActivity extends com.marceljurtz.lifecounter.views.Base.View im
         cmdMinusPoisonPlayer1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((IGamePresenter)_presenter).onPoisonUpdate(player1.getPlayerIdEnum(), ClickTypeEnum.SHORT, OperatorEnum.SUBSTRACT);
+                ((IGamePresenter) get_presenter()).onPoisonUpdate(player1.getPlayerIdEnum(), ClickTypeEnum.SHORT, OperatorEnum.SUBSTRACT);
             }
         });
         cmdMinusPoisonPlayer1.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                ((IGamePresenter)_presenter).onPoisonUpdate(player1.getPlayerIdEnum(), ClickTypeEnum.LONG, OperatorEnum.SUBSTRACT);
+                ((IGamePresenter) get_presenter()).onPoisonUpdate(player1.getPlayerIdEnum(), ClickTypeEnum.LONG, OperatorEnum.SUBSTRACT);
                 return true;
             }
         });
@@ -1221,13 +1221,13 @@ public class GameActivity extends com.marceljurtz.lifecounter.views.Base.View im
         cmdPlusPoisonPlayer2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((IGamePresenter)_presenter).onPoisonUpdate(player2.getPlayerIdEnum(), ClickTypeEnum.SHORT, OperatorEnum.ADD);
+                ((IGamePresenter) get_presenter()).onPoisonUpdate(player2.getPlayerIdEnum(), ClickTypeEnum.SHORT, OperatorEnum.ADD);
             }
         });
         cmdPlusPoisonPlayer2.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                ((IGamePresenter)_presenter).onPoisonUpdate(player2.getPlayerIdEnum(), ClickTypeEnum.LONG, OperatorEnum.ADD);
+                ((IGamePresenter) get_presenter()).onPoisonUpdate(player2.getPlayerIdEnum(), ClickTypeEnum.LONG, OperatorEnum.ADD);
                 return true;
             }
         });
@@ -1236,13 +1236,13 @@ public class GameActivity extends com.marceljurtz.lifecounter.views.Base.View im
         cmdMinusPoisonPlayer2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((IGamePresenter)_presenter).onPoisonUpdate(player2.getPlayerIdEnum(), ClickTypeEnum.SHORT, OperatorEnum.SUBSTRACT);
+                ((IGamePresenter) get_presenter()).onPoisonUpdate(player2.getPlayerIdEnum(), ClickTypeEnum.SHORT, OperatorEnum.SUBSTRACT);
             }
         });
         cmdMinusPoisonPlayer2.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                ((IGamePresenter)_presenter).onPoisonUpdate(player2.getPlayerIdEnum(), ClickTypeEnum.LONG, OperatorEnum.SUBSTRACT);
+                ((IGamePresenter) get_presenter()).onPoisonUpdate(player2.getPlayerIdEnum(), ClickTypeEnum.LONG, OperatorEnum.SUBSTRACT);
                 return true;
             }
         });
@@ -1253,13 +1253,13 @@ public class GameActivity extends com.marceljurtz.lifecounter.views.Base.View im
             cmdPlusPoisonPlayer3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    ((IGamePresenter)_presenter).onPoisonUpdate(player3.getPlayerIdEnum(), ClickTypeEnum.SHORT, OperatorEnum.ADD);
+                    ((IGamePresenter) get_presenter()).onPoisonUpdate(player3.getPlayerIdEnum(), ClickTypeEnum.SHORT, OperatorEnum.ADD);
                 }
             });
             cmdPlusPoisonPlayer3.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
-                    ((IGamePresenter)_presenter).onPoisonUpdate(player3.getPlayerIdEnum(), ClickTypeEnum.LONG, OperatorEnum.ADD);
+                    ((IGamePresenter) get_presenter()).onPoisonUpdate(player3.getPlayerIdEnum(), ClickTypeEnum.LONG, OperatorEnum.ADD);
                     return true;
                 }
             });
@@ -1267,13 +1267,13 @@ public class GameActivity extends com.marceljurtz.lifecounter.views.Base.View im
             cmdMinusPoisonPlayer3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    ((IGamePresenter)_presenter).onPoisonUpdate(player3.getPlayerIdEnum(), ClickTypeEnum.SHORT, OperatorEnum.SUBSTRACT);
+                    ((IGamePresenter) get_presenter()).onPoisonUpdate(player3.getPlayerIdEnum(), ClickTypeEnum.SHORT, OperatorEnum.SUBSTRACT);
                 }
             });
             cmdMinusPoisonPlayer3.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
-                    ((IGamePresenter)_presenter).onPoisonUpdate(player3.getPlayerIdEnum(), ClickTypeEnum.LONG, OperatorEnum.SUBSTRACT);
+                    ((IGamePresenter) get_presenter()).onPoisonUpdate(player3.getPlayerIdEnum(), ClickTypeEnum.LONG, OperatorEnum.SUBSTRACT);
                     return true;
                 }
             });
@@ -1282,13 +1282,13 @@ public class GameActivity extends com.marceljurtz.lifecounter.views.Base.View im
             cmdPlusPoisonPlayer4.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    ((IGamePresenter)_presenter).onPoisonUpdate(player4.getPlayerIdEnum(), ClickTypeEnum.SHORT, OperatorEnum.ADD);
+                    ((IGamePresenter) get_presenter()).onPoisonUpdate(player4.getPlayerIdEnum(), ClickTypeEnum.SHORT, OperatorEnum.ADD);
                 }
             });
             cmdPlusPoisonPlayer4.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
-                    ((IGamePresenter)_presenter).onPoisonUpdate(player4.getPlayerIdEnum(), ClickTypeEnum.LONG, OperatorEnum.ADD);
+                    ((IGamePresenter) get_presenter()).onPoisonUpdate(player4.getPlayerIdEnum(), ClickTypeEnum.LONG, OperatorEnum.ADD);
                     return true;
                 }
             });
@@ -1296,13 +1296,13 @@ public class GameActivity extends com.marceljurtz.lifecounter.views.Base.View im
             cmdMinusPoisonPlayer4.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    ((IGamePresenter)_presenter).onPoisonUpdate(player4.getPlayerIdEnum(), ClickTypeEnum.SHORT, OperatorEnum.SUBSTRACT);
+                    ((IGamePresenter) get_presenter()).onPoisonUpdate(player4.getPlayerIdEnum(), ClickTypeEnum.SHORT, OperatorEnum.SUBSTRACT);
                 }
             });
             cmdMinusPoisonPlayer4.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
-                    ((IGamePresenter)_presenter).onPoisonUpdate(player4.getPlayerIdEnum(), ClickTypeEnum.LONG, OperatorEnum.SUBSTRACT);
+                    ((IGamePresenter) get_presenter()).onPoisonUpdate(player4.getPlayerIdEnum(), ClickTypeEnum.LONG, OperatorEnum.SUBSTRACT);
                     return true;
                 }
             });
@@ -1312,13 +1312,13 @@ public class GameActivity extends com.marceljurtz.lifecounter.views.Base.View im
         cmdToggleColorSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((IGamePresenter)_presenter).onSettingsButtonClick(ClickTypeEnum.SHORT);
+                ((IGamePresenter) get_presenter()).onSettingsButtonClick(ClickTypeEnum.SHORT);
             }
         });
         cmdToggleColorSettings.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                ((IGamePresenter)_presenter).onSettingsButtonClick(ClickTypeEnum.LONG);
+                ((IGamePresenter) get_presenter()).onSettingsButtonClick(ClickTypeEnum.LONG);
                 return true;
             }
         });

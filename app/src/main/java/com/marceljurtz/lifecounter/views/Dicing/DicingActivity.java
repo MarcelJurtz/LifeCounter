@@ -30,13 +30,13 @@ public class DicingActivity extends com.marceljurtz.lifecounter.views.Base.View 
         disableMenuItem(navigationView, R.id.nav_dicing);
         disableMenuItem(navigationView, R.id.nav_energy_save_mode);
 
-        _presenter = new DicingPresenter(this, getApplicationContext().getSharedPreferences(PreferenceManager.INSTANCE.getPREFS(), Activity.MODE_PRIVATE));
-        _presenter.onCreate();
+        set_presenter(new DicingPresenter(this, getApplicationContext().getSharedPreferences(PreferenceManager.INSTANCE.getPREFS(), Activity.MODE_PRIVATE)));
+        get_presenter().onCreate();
 
         rlDicing.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((IDicingPresenter)_presenter).onScreenTap();
+                ((IDicingPresenter) get_presenter()).onScreenTap();
             }
         });
 
@@ -45,19 +45,19 @@ public class DicingActivity extends com.marceljurtz.lifecounter.views.Base.View 
             public boolean onNavigationItemSelected(MenuItem item) {
                 switch(item.getItemId()) {
                     case R.id.nav_game_2players:
-                        _presenter.onMenuEntryTwoPlayerTap();
+                        get_presenter().onMenuEntryTwoPlayerTap();
                         break;
                     case R.id.nav_game_4players:
-                        _presenter.onMenuEntryFourPlayerTap();
+                        get_presenter().onMenuEntryFourPlayerTap();
                         break;
                     case R.id.nav_settings:
-                        _presenter.onMenuEntrySettingsTap();
+                        get_presenter().onMenuEntrySettingsTap();
                         break;
                     case R.id.nav_about:
-                        _presenter.onMenuEntryAboutTap();
+                        get_presenter().onMenuEntryAboutTap();
                         break;
                     case R.id.nav_countermanager:
-                        _presenter.onMenuEntryCounterManagerTap();
+                        get_presenter().onMenuEntryCounterManagerTap();
                         break;
                     default:
                         break;
@@ -67,7 +67,7 @@ public class DicingActivity extends com.marceljurtz.lifecounter.views.Base.View 
         });
 
         // Initial dice throw when activity is launching
-        ((IDicingPresenter)_presenter).onScreenTap();
+        ((IDicingPresenter) get_presenter()).onScreenTap();
     }
 
     @Override
