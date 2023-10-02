@@ -30,106 +30,105 @@ import com.marceljurtz.lifecounter.views.Intro.IntroActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 
+@Suppress("DEPRECATION")
 class GameActivity : com.marceljurtz.lifecounter.views.Base.View(), IGameView {
 
     //endregion
-
+    private lateinit var preferences: SharedPreferences
     override var playerAmount: Int = 0
-//        internal set(value: Int) {
-//            super.playerAmount = value
-//        }
 
-    internal var player1: Player? = null
-    internal var player2: Player? = null
-    internal var player3: Player? = null
-    internal var player4: Player? = null
+    private var player1: Player? = null
+    private var player2: Player? = null
+    private var player3: Player? = null
+    private var player4: Player? = null
 
-    internal val preferences: SharedPreferences = getSharedPreferences(PreferenceManager.PREFS, Activity.MODE_PRIVATE)
+//    private val preferences: SharedPreferences = this.getSharedPreferences(PreferenceManager.PREFS, Activity.MODE_PRIVATE)
 
     //region Controls
 
-    internal var mainLayout: DrawerLayout? = null;
-    internal var layoutPlayer1: RelativeLayout? = null;
-    internal var layoutPlayer2: RelativeLayout? = null;
-    internal var layoutPlayer3: RelativeLayout? = null;
-    internal var layoutPlayer4: RelativeLayout? = null;
+    private var mainLayout: DrawerLayout? = null;
+    private var layoutPlayer1: RelativeLayout? = null;
+    private var layoutPlayer2: RelativeLayout? = null;
+    private var layoutPlayer3: RelativeLayout? = null;
+    private var layoutPlayer4: RelativeLayout? = null;
 
-    internal var cmdPlusPlayer1: ImageButton? = null;
-    internal var cmdPlusPlayer2: ImageButton? = null;
-    internal var cmdPlusPlayer3: ImageButton? = null;
-    internal var cmdPlusPlayer4: ImageButton? = null;
+    private var cmdPlusPlayer1: ImageButton? = null;
+    private var cmdPlusPlayer2: ImageButton? = null;
+    private var cmdPlusPlayer3: ImageButton? = null;
+    private var cmdPlusPlayer4: ImageButton? = null;
 
-    internal var cmdMinusPlayer1: ImageButton? = null;
-    internal var cmdMinusPlayer2: ImageButton? = null;
-    internal var cmdMinusPlayer3: ImageButton? = null;
-    internal var cmdMinusPlayer4: ImageButton? = null;
+    private var cmdMinusPlayer1: ImageButton? = null;
+    private var cmdMinusPlayer2: ImageButton? = null;
+    private var cmdMinusPlayer3: ImageButton? = null;
+    private var cmdMinusPlayer4: ImageButton? = null;
 
-    internal var cmdResetLP: ImageButton? = null;
-    internal var cmdTogglePoison: ImageButton? = null;
+    private var cmdResetLP: ImageButton? = null;
+    private var cmdTogglePoison: ImageButton? = null;
 
-    internal var cmdPlusPoisonPlayer1: ImageButton? = null;
-    internal var cmdPlusPoisonPlayer2: ImageButton? = null;
-    internal var cmdPlusPoisonPlayer3: ImageButton? = null;
-    internal var cmdPlusPoisonPlayer4: ImageButton? = null;
+    private var cmdPlusPoisonPlayer1: ImageButton? = null
+    private var cmdPlusPoisonPlayer2: ImageButton? = null
+    private var cmdPlusPoisonPlayer3: ImageButton? = null
+    private var cmdPlusPoisonPlayer4: ImageButton? = null
 
-    internal var cmdMinusPoisonPlayer1: ImageButton? = null;
-    internal var cmdMinusPoisonPlayer2: ImageButton? = null;
-    internal var cmdMinusPoisonPlayer3: ImageButton? = null;
-    internal var cmdMinusPoisonPlayer4: ImageButton? = null;
+    private var cmdMinusPoisonPlayer1: ImageButton? = null
+    private var cmdMinusPoisonPlayer2: ImageButton? = null
+    private var cmdMinusPoisonPlayer3: ImageButton? = null
+    private var cmdMinusPoisonPlayer4: ImageButton? = null
 
-    internal var cmdToggleColorSettings: ImageButton? = null;
+    private var cmdToggleColorSettings: ImageButton? = null
 
-    internal var cmdBlackPlayer1: Button? = null;
-    internal var cmdBlackPlayer2: Button? = null;
-    internal var cmdBlackPlayer3: Button? = null;
-    internal var cmdBlackPlayer4: Button? = null;
+    private var cmdBlackPlayer1: Button? = null
+    private var cmdBlackPlayer2: Button? = null
+    private var cmdBlackPlayer3: Button? = null
+    private var cmdBlackPlayer4: Button? = null
 
-    internal var cmdBluePlayer1: Button? = null;
-    internal var cmdBluePlayer2: Button? = null;
-    internal var cmdBluePlayer3: Button? = null;
-    internal var cmdBluePlayer4: Button? = null;
+    private var cmdBluePlayer1: Button? = null
+    private var cmdBluePlayer2: Button? = null
+    private var cmdBluePlayer3: Button? = null
+    private var cmdBluePlayer4: Button? = null
 
-    internal var cmdGreenPlayer1: Button? = null;
-    internal var cmdGreenPlayer2: Button? = null;
-    internal var cmdGreenPlayer3: Button? = null;
-    internal var cmdGreenPlayer4: Button? = null;
+    private var cmdGreenPlayer1: Button? = null
+    private var cmdGreenPlayer2: Button? = null
+    private var cmdGreenPlayer3: Button? = null
+    private var cmdGreenPlayer4: Button? = null
 
-    internal var cmdRedPlayer1: Button? = null;
-    internal var cmdRedPlayer2: Button? = null;
-    internal var cmdRedPlayer3: Button? = null;
-    internal var cmdRedPlayer4: Button? = null;
+    private var cmdRedPlayer1: Button? = null
+    private var cmdRedPlayer2: Button? = null
+    private var cmdRedPlayer3: Button? = null
+    private var cmdRedPlayer4: Button? = null
 
-    internal var cmdWhitePlayer1: Button? = null;
-    internal var cmdWhitePlayer2: Button? = null;
-    internal var cmdWhitePlayer3: Button? = null;
-    internal var cmdWhitePlayer4: Button? = null;
+    private var cmdWhitePlayer1: Button? = null
+    private var cmdWhitePlayer2: Button? = null
+    private var cmdWhitePlayer3: Button? = null
+    private var cmdWhitePlayer4: Button? = null
 
-    internal var txtLifeCountPlayer1: TextView? = null;
-    internal var txtLifeCountPlayer2: TextView? = null;
-    internal var txtLifeCountPlayer3: TextView? = null;
-    internal var txtLifeCountPlayer4: TextView? = null;
+    private var txtLifeCountPlayer1: TextView? = null
+    private var txtLifeCountPlayer2: TextView? = null
+    private var txtLifeCountPlayer3: TextView? = null
+    private var txtLifeCountPlayer4: TextView? = null
 
-    internal var txtPoisonCountPlayer1: TextView? = null;
-    internal var txtPoisonCountPlayer2: TextView? = null;
-    internal var txtPoisonCountPlayer3: TextView? = null;
-    internal var txtPoisonCountPlayer4: TextView? = null;
+    private var txtPoisonCountPlayer1: TextView? = null
+    private var txtPoisonCountPlayer2: TextView? = null
+    private var txtPoisonCountPlayer3: TextView? = null
+    private var txtPoisonCountPlayer4: TextView? = null
 
-    internal var navigationView: NavigationView? = null;
+    private var navigationView: NavigationView? = null
 
-    internal var toolbar: Toolbar? = null;
+    private var toolbar: Toolbar? = null
+
 
     //endregion Controls
 
-    internal var showResetConfirmation: Boolean = false
+    private var showResetConfirmation: Boolean = false
 
     override val screenSize: Int
         get() = resources.configuration.screenLayout and Configuration.SCREENLAYOUT_SIZE_MASK
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        preferences = this.getSharedPreferences(PreferenceManager.PREFS, Activity.MODE_PRIVATE)
 
         checkFirstLaunch()
-
         playerAmount = PreferenceManager.getPlayerAmount(preferences)
 
         if (playerAmount == 4) {
@@ -220,12 +219,6 @@ class GameActivity : com.marceljurtz.lifecounter.views.Base.View(), IGameView {
                 buttonPlayer2 = cmdWhitePlayer2
                 buttonPlayer3 = cmdWhitePlayer3
                 buttonPlayer4 = cmdWhitePlayer4
-            }
-            else -> {
-                buttonPlayer1 = null
-                buttonPlayer2 = null
-                buttonPlayer3 = null
-                buttonPlayer4 = null
             }
         }
         if (buttonPlayer1 != null && buttonPlayer2 != null) {
