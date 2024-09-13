@@ -1,0 +1,192 @@
+<resources>
+    <string name="app_name">LifeCounter</string>
+    <string name="app_version">v2.0</string>
+
+    <string name="color_black">Noir</string>
+    <string name="color_blue">Bleu</string>
+    <string name="color_green">Vert</string>
+    <string name="color_red">Rouge</string>
+    <string name="color_white">Blanc</string>
+
+    <string name="setting_color_black">Noir</string>
+    <string name="setting_color_blue">Bleu</string>
+    <string name="setting_color_green">Vert</string>
+    <string name="setting_color_red">Rouge</string>
+    <string name="setting_color_white">Blanc</string>
+    <string name="setting_default_lives">Points de vie</string>
+    <string name="setting_default_long_click_points">Points en attente (+/-)</string>
+    <string name="setting_screen_timeout_disable">Désactiver la mise en veille de l'écran</string>
+    <string name="setting_show_intro">Montrer l'intro de l'application</string>
+    <string name="setting_confirm_game_reset">Confirmer la réinitialisation de la partie</string>
+
+    <string name="yes">Oui</string>
+    <string name="no">Non</string>
+    <string name="ok">OK</string>
+    <string name="go">Go !</string>
+    <string name="delete">Supprimer</string>
+    <string name="drawer_open">Ouvrir</string>
+    <string name="drawer_close">Fermer</string>
+
+    <string name="settings_title">Paramètres</string>
+    <string name="settings_cancel">Annuler</string>
+    <string name="settings_reset">Réinitialiser</string>
+    <string name="settings_confirm_reset">Réinitialiser les paramètres ?</string>
+    <string name="settings_confirm_reset_true">Oui</string>
+    <string name="settings_confirm_reset_false">Non</string>
+
+    <string name="cmdPowerSaveEnable">Activer l'économie d'énergie</string>
+    <string name="cmdPowerSaveDisable">Désactiver l'économie d'énergie</string>
+
+    <string name="cmdTogglePlayerAmount2">Activer le mode à 4 joueurs</string>
+    <string name="cmdTogglePlayerAmount4">Activer le mode à 2 joueurs</string>
+
+    <string name="ndHeader">MTG LifeCounter</string>
+    <string name="cmdAbout">A propos</string>
+    <string name="title_activity_main">MainActivity</string>
+
+    <string name="navigation_drawer_open">Ouvrir le menu de navigation</string>
+    <string name="navigation_drawer_close">Fermer le menu de navigation</string>
+
+    <string name="menu_entry_energysaving_enable">Activer l'économie d'énergie</string>
+    <string name="menu_entry_energysaving_disable">Désactiver l'économie d'énergie</string>
+    <string name="menu_entry_load_players_2">Charger le mode à 2 joueurs</string>
+    <string name="menu_entry_load_players_4">Charger le mode à 4 joueurs</string>
+    <string name="menu_entry_settings">Paramètres</string>
+    <string name="menu_entry_about">A propos</string>
+    <string name="menu_entry_load_dicing">Dés</string>
+    <string name="menu_entry_load_countermanager">Gestionnaire de compteurs</string>
+    <string name="menu_area_settings">Configuration</string>
+    <string name="menu_area_general"></string>
+
+    <string name="action_settings">Paramètres</string>
+
+    <string name="preferences_cat_points">Points</string>
+    <string name="preferences_cat_colors">Couleurs</string>
+    <string name="preferences_cat_other">Autre</string>
+    <string name="preferences_points_lifepoints">Points de vie</string>
+    <string name="preferences_points_longclickpoints">Appui long (+/-)</string>
+    <string name="preferences_color_black">Noir</string>
+    <string name="preferences_color_blue">Bleu</string>
+    <string name="preferences_color_green">Vert</string>
+    <string name="preferences_color_red">Rouge</string>
+    <string name="preferences_color_white">Blanc</string>
+    <string name="preferences_other_timeout">Désactiver la mise en veille de l'écran</string>
+    <string name="preferences_other_energysaving">Activer le mode économie d'énergie</string>
+    <string name="preferences_default_lifepoints">20</string>
+    <string name="preferences_default_longlickpoints">5</string>
+
+    <string name="title_activity_counter">CounterActivity</string>
+    <string name="counter_default_player1">Joueur 1</string>
+    <string name="counter_default_player2">Joueur 2</string>
+    <string name="counter_default_player3">Joueur 3</string>
+    <string name="counter_default_player4">Joueur 4</string>
+    <string name="counter_add_counter">Compteur</string>
+    <string name="counter_add_planeswalker">Planeswalker</string>
+
+    <string name="dialog_game_reset_confirm_title">Confirmer</string>
+    <string name="dialog_game_reset_confirm_message">Voulez-vous réinitialiser ?</string>
+
+    <string name="dialog_countermanager_new_header">Editer l'entrée</string>
+    <string name="dialog_countermanager_hint_card_description">Désignation</string>
+    <string name="dialog_countermanager_error_invalid_entry">Valeur invalide !</string>
+    <string name="dialog_countermanager_hint_atk">ATT</string>
+    <string name="dialog_countermanager_hint_def">DEF</string>
+    <string name="dialog_countermanager_separator">/</string>
+
+    <string name="dialog_countermanager_delete_title">Supprimer l'entrée</string>
+    <string name="dialog_countermanager_delete_message">Voulez-vous supprimer cette entrée ?</string>
+    <string name="dialog_countermanager_delete_multiple_message">Voulez-vous supprimer toutes les entrées pour ce joueur ?</string>
+    <string name="dialog_countermanager_delete_confirmation">Entrée supprimée</string>
+    <string name="dialog_countermanager_edit_playername_title">Sauvegarder le nom du joueur</string>
+    <string name="dialog_countermanager_edit_counter_error">Echec à mettre à jour le compteur !</string>
+
+    <string name="exc_invalid_object_player">Joueur invalide sélectionné</string>
+    <string name="exc_invalid_object_counter">Compteur invalide sélectionné</string>
+
+    <string name="descr_lp_plus">Augmenter les points de vie</string>
+    <string name="descr_lp_minus">Diminuer les points de vie</string>
+    <string name="descr_pp_plus">Augmenter les marqueurs poison</string>
+    <string name="descr_pp_minus">Diminuer les marqueurs poison</string>
+    <string name="descr_pp_toggle">Marqueurs poison ?</string>
+    <string name="descr_settings_toggle">Paramètres ?</string>
+    <string name="descr_reset">Réinitialiser la partie</string>
+
+    <string name="dialog_firstlaunch_heading">Hey !</string>
+    <string name="dialog_changelog_heading">Nouveautés de la version 1.9</string>
+
+    <string name="changelog">
+        - Mode à 4 joueurs\n
+        - Lancer de dés\n
+        - Gestionnaire de compteur\n
+    </string>
+
+    <string name="firstlaunch">
+        Hey, ravi que vous ayez trouvé mon appli ! Avec la dernière mise à jour, beaucoup de nouveautés ont été rajoutées, dont j'aimerais vous parler :
+        \n
+        Toucher-glisser depuis le côté gauche de l'écran vers la droite ouvre le menu. Ici vous trouverez les différentes fonctionnalités et paramètres.\n
+        \n
+        Possibilité de passer d'un mode 2 joueurs à un mode 4 joueurs. L'application permet aussi de lancer un dé 20 et de gérer des compteurs.\n
+        Celui-ci sert à gérer les marqueurs +/- X sur vos cartes, notamment.\n
+        \n
+        Si vous avez une suggestion ou idée pour améliorer l'application, n'hésitez pas à me contacter par e-mail : feedback@mjurtz.com.\n
+        \n
+        Merci !
+    </string>
+
+    <string name="intro_1_header">MTG LifeCounter</string>
+    <string name="intro_1_description">Merci d'avoir téléchargé l'application ! J\'aimerais vous guider rapidement à travers l\'application, que vous pouvez sauter en cliquant sur le bouton en bas à gauche.</string>
+
+    <string name="intro_2_header">Navigation</string>
+    <string name="intro_2_description">En glissant de la gauche vers la droite de l\'écran, vous pouvez ouvrir le menu.</string>
+
+    <string name="intro_3_header">Paramètres</string>
+    <string name="intro_3_description">Les paramètres permettent de personnaliser plusieurs éléments, tels que les couleurs ou les valeurs par défaut, comme vous le souhaitez.</string>
+
+    <string name="intro_4_header">Partie</string>
+    <string name="intro_4_description">La vue principale permet de gérer les jeux. Vous pouvez choisir entre les modes 2 et 4 joueurs. Lorsque vous fermez l\'application, les informations sont sauvegardées.</string>
+
+    <string name="lite_intro_4_header">Partie</string>
+    <string name="lite_intro_4_description">La vue principale permet de gérer les parties. Lorsque vous fermez l\'application, les informations sont sauvegardées.</string>
+
+    <string name="intro_5_header">Mode économie d'énergie</string>
+    <string name="intro_5_description">Si votre téléphone est équipé d\'un écran AMOLED, vous pouvez utiliser le mode d\'économie d'énergie qui assombrit la majeure partie de l\'écran principal.</string>
+
+    <string name="intro_6_header">Dés</string>
+    <string name="intro_6_description">La fonction de dé vous offre la fonctionnalité d\'un dé à 20 faces.</string>
+
+    <string name="intro_7_header">Gestionnaire de compteurs</string>
+    <string name="intro_7_description">Grâce à la gestion des compteurs, vous pouvez suivre à tout moment l\'évolution de vos compteurs +1/+1 ou -1/-1.</string>
+
+    <string name="intro_8_header">A propos</string>
+    <string name="intro_8_description">C\'est tout ! Si vous avez des commentaires, des idées d\'amélioration ou des questions, je serais heureux de les recevoir. Vous trouverez mes coordonnées dans le menu « À propos ».</string>
+
+    <string name="about_lics_header">Licences OpenSource</string>
+
+    <string name="about_lic_colorpicker_caption">Pes8 / Color Picker Dialog</string>
+    <string name="about_lic_colorpicker_link"><u>https://github.com/Pes8/android-material-color-picker-dialog</u></string>
+
+    <string name="about_lic_appintro_caption">Paolo Rotolo / AppIntro</string>
+    <string name="about_lic_appintro_link"><u>https://github.com/PaoloRotolo/AppIntro</u></string>
+
+    <string name="about_copyright">Copyright Marcel Jurtz 2016 - 2024</string>
+
+    <string name="about_caption">LifeCounter</string>
+    <string name="about_introduction">
+        Merci d\'avoir utilisé mon application ! Si vous avez des suggestions d\'amélioration ou si vous avez trouvé une erreur,
+        je serais très heureux de recevoir des commentaires constructifs.
+
+        Pour me contacter, veuillez utiliser l'adresse électronique suivante :
+    </string>
+    <string name="about_changelog_header">Mises à jour</string>
+    <string name="about_changelog_v2_header">2020-01-11</string>
+    <string name="about_changelog_v2_content">
+        - Nouvelle fonctionnalité : mode 4 joueurs\n
+        - Nouvelle fonctionnalité : gestion des compteurs\n
+        - Nouvelle fonctionnalité : lancé de dés\n
+        - Paramètres étendus\n
+        - Confirmation optionnelle de la réinitialisation du jeu\n
+        - Améliorations générales\n
+    </string>
+
+    <string name="contact_mail"><u>Mail : feedback@mjurtz.com</u></string>
+</resources>
