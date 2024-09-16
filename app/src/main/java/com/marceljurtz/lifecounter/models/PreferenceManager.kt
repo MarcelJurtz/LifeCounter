@@ -194,10 +194,14 @@ object PreferenceManager {
     fun loadPlayerCounterData(preferences: SharedPreferences): ArrayList<Player> {
         val players = ArrayList<Player>()
 
-        val p1 = Player.GetInstanceByJson(preferences.getString(PlayerIdEnum.ONE.toString(), null))
-        val p2 = Player.GetInstanceByJson(preferences.getString(PlayerIdEnum.TWO.toString(), null))
-        val p3 = Player.GetInstanceByJson(preferences.getString(PlayerIdEnum.THREE.toString(), null))
-        val p4 = Player.GetInstanceByJson(preferences.getString(PlayerIdEnum.FOUR.toString(), null))
+        val p1 = preferences.getString(PlayerIdEnum.ONE.toString(), "0")
+            ?.let { Player.GetInstanceByJson(it) }
+        val p2 = preferences.getString(PlayerIdEnum.TWO.toString(), "0")
+            ?.let { Player.GetInstanceByJson(it) }
+        val p3 = preferences.getString(PlayerIdEnum.THREE.toString(), "0")
+            ?.let { Player.GetInstanceByJson(it) }
+        val p4 = preferences.getString(PlayerIdEnum.FOUR.toString(), "0")
+            ?.let { Player.GetInstanceByJson(it) }
 
         if (p1 != null)
             players.add(p1)
@@ -232,8 +236,10 @@ object PreferenceManager {
     fun load2PlayerPointsData(preferences: SharedPreferences): Array<Player?> {
         val players = arrayOfNulls<Player>(2)
 
-        val p1 = Player.GetInstanceByJson(preferences.getString(PlayerIdEnum.ONE.toString() + SUFFIX_2PLAYER, null))
-        val p2 = Player.GetInstanceByJson(preferences.getString(PlayerIdEnum.TWO.toString() + SUFFIX_2PLAYER, null))
+        val p1 = preferences.getString(PlayerIdEnum.ONE.toString() + SUFFIX_2PLAYER, null)
+            ?.let { Player.GetInstanceByJson(it) }
+        val p2 = preferences.getString(PlayerIdEnum.TWO.toString() + SUFFIX_2PLAYER, null)
+            ?.let { Player.GetInstanceByJson(it) }
 
         if (p1 != null)
             players[0] = p1
@@ -261,10 +267,14 @@ object PreferenceManager {
     fun load4PlayerPointsData(preferences: SharedPreferences): Array<Player?> {
         val players = arrayOfNulls<Player>(4)
 
-        val p1 = Player.GetInstanceByJson(preferences.getString(PlayerIdEnum.ONE.toString() + SUFFIX_4PLAYER, null))
-        val p2 = Player.GetInstanceByJson(preferences.getString(PlayerIdEnum.TWO.toString() + SUFFIX_4PLAYER, null))
-        val p3 = Player.GetInstanceByJson(preferences.getString(PlayerIdEnum.THREE.toString() + SUFFIX_4PLAYER, null))
-        val p4 = Player.GetInstanceByJson(preferences.getString(PlayerIdEnum.FOUR.toString() + SUFFIX_4PLAYER, null))
+        val p1 = preferences.getString(PlayerIdEnum.ONE.toString() + SUFFIX_4PLAYER, null)
+            ?.let { Player.GetInstanceByJson(it) }
+        val p2 = preferences.getString(PlayerIdEnum.TWO.toString() + SUFFIX_4PLAYER, null)
+            ?.let { Player.GetInstanceByJson(it) }
+        val p3 = preferences.getString(PlayerIdEnum.THREE.toString() + SUFFIX_4PLAYER, null)
+            ?.let { Player.GetInstanceByJson(it) }
+        val p4 = preferences.getString(PlayerIdEnum.FOUR.toString() + SUFFIX_4PLAYER, null)
+            ?.let { Player.GetInstanceByJson(it) }
 
         if (p1 != null)
             players[0] = p1
